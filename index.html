@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wayne · 台股量化投資</title>
+<meta property="og:title" content="Wayne · 台股量化投資">
+<meta property="og:description" content="免費台股量化工具｜ETF分析｜大飆股DNA｜回測系統">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0a0a0f;
+    color: #e8e8f0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 20px 64px;
+  }
+
+  /* Background glow */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(99,102,241,.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .avatar {
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+    margin-bottom: 16px;
+    box-shadow: 0 0 32px rgba(99,102,241,.4);
+  }
+
+  h1 {
+    font-size: 22px; font-weight: 700;
+    letter-spacing: .5px;
+    margin-bottom: 8px;
+  }
+
+  .bio {
+    font-size: 13.5px; color: #9090b0;
+    text-align: center;
+    max-width: 280px;
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+
+  .section-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #5555777;
+    margin-bottom: 12px;
+    align-self: flex-start;
+    max-width: 420px;
+    width: 100%;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 32px;
+  }
+
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: all .2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .link-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+    opacity: 0;
+    transition: opacity .2s;
+  }
+
+  .link-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.18); }
+  .link-card:hover::before { opacity: .06; }
+
+  .link-icon {
+    font-size: 28px;
+    min-width: 40px; text-align: center;
+    position: relative; z-index: 1;
+  }
+
+  .link-text { position: relative; z-index: 1; flex: 1; }
+  .link-title { font-size: 15px; font-weight: 600; margin-bottom: 3px; }
+  .link-desc { font-size: 12px; color: #7070a0; line-height: 1.4; }
+
+  .link-arrow {
+    position: relative; z-index: 1;
+    color: #4444664; font-size: 18px;
+    transition: transform .2s;
+  }
+  .link-card:hover .link-arrow { transform: translateX(3px); color: #9090c0; }
+
+  /* Card accent colours */
+  .card-etf   { --accent-start: #6366f1; --accent-end: #8b5cf6; }
+  .card-dna   { --accent-start: #10b981; --accent-end: #06b6d4; }
+  .card-back  { --accent-start: #f59e0b; --accent-end: #ef4444; }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: .5px;
+    padding: 2px 7px;
+    border-radius: 99px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .badge-free { background: rgba(16,185,129,.2); color: #10b981; }
+  .badge-pro  { background: rgba(245,158,11,.2); color: #f59e0b; }
+
+  /* Social row */
+  .socials {
+    display: flex; gap: 14px;
+    margin-top: 8px;
+  }
+
+  .social-btn {
+    display: flex; align-items: center; gap: 7px;
+    padding: 9px 18px;
+    border-radius: 99px;
+    border: 1px solid rgba(255,255,255,.1);
+    background: rgba(255,255,255,.04);
+    text-decoration: none;
+    color: #9090b0;
+    font-size: 13px;
+    transition: all .2s;
+  }
+  .social-btn:hover { color: #e8e8f0; border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.08); }
+  .social-icon { font-size: 16px; }
+
+  .footer {
+    margin-top: 48px;
+    font-size: 11px; color: #444460;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="avatar">📊</div>
+<h1>Wayne · 台股量化投資</h1>
+<p class="bio">免費台股分析工具<br>ETF追蹤 · 大飆股DNA · 策略回測</p>
+
+<div class="section-label">免費工具</div>
+<div class="links">
+
+  <a class="link-card card-etf" href="https://slashman413.github.io/tw-etf-dashboard/dashboard.html" target="_blank">
+    <div class="link-icon">🎯</div>
+    <div class="link-text">
+      <div class="link-title">ETF 分析 Dashboard <span class="badge badge-free">免費</span></div>
+      <div class="link-desc">0050／0056／00878 等 62 支成分股｜財務、技術、估值三維分析｜每日自動更新</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a class="link-card card-dna" href="https://slashman413.github.io/twse-surge-stocks-dna/" target="_blank">
+    <div class="link-icon">🧬</div>
+    <div class="link-text">
+      <div class="link-title">大飆股 DNA 量化篩選 <span class="badge badge-free">免費</span></div>
+      <div class="link-desc">趨勢拉回 20MA＋RSI 進出場策略｜2004–2026 年歷史回測驗證</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a class="link-card card-back" href="https://slashman413.github.io/twse-backtests/" target="_blank">
+    <div class="link-icon">📈</div>
+    <div class="link-text">
+      <div class="link-title">台股回測儀表板 <span class="badge badge-free">免費</span></div>
+      <div class="link-desc">K線突破、MACD、ADX、W%R 四大指標｜每年獨立資金模擬，不美化績效</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+</div>
+
+<div class="section-label">社群</div>
+<div class="socials">
+  <a class="social-btn" href="https://www.instagram.com/ytstories0413/" target="_blank">
+    <span class="social-icon">📸</span> Instagram
+  </a>
+  <a class="social-btn" href="https://www.threads.com/@ytstories0413" target="_blank">
+    <span class="social-icon">🧵</span> Threads
+  </a>
+</div>
+
+<div class="footer">© 2026 Wayne · 本站資訊僅供參考，非投資建議</div>
+
+</body>
+</html>
