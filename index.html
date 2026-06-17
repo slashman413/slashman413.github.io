@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>全球市場量化投資 · slashman413</title>
+<title>AI工具人</title>
 <meta name="description" content="免費量化工具｜ETF分析｜大飆股DNA｜台股回測｜LLM硬體計算機｜全球大事追蹤">
-<meta property="og:title" content="全球市場量化投資 · slashman413">
-<meta property="og:description" content="免費量化分析工具 · ETF追蹤 · 大飆股DNA · 台股回測 · AI工具">
+<meta property="og:title" content="AI工具人">
+<meta property="og:description" content="台股分析 · 全球追蹤 · AI工具 · 完全免費">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5115666613619890" crossorigin="anonymous"></script>
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -64,8 +64,8 @@
     padding: 9px 0;
     border: none; border-radius: 10px;
     background: transparent;
-    color: #6060888;
-    font-size: 13.5px; font-weight: 600;
+    color: #606088;
+    font-size: 13px; font-weight: 600;
     cursor: pointer;
     transition: all .2s;
   }
@@ -117,7 +117,7 @@
   .link-icon { font-size: 26px; min-width: 36px; text-align: center; position: relative; z-index: 1; }
   .link-text { flex: 1; position: relative; z-index: 1; }
   .link-title { font-size: 14.5px; font-weight: 600; margin-bottom: 3px; }
-  .link-desc  { font-size: 11.5px; color: #6868988; line-height: 1.45; }
+  .link-desc  { font-size: 11.5px; color: #686898; line-height: 1.45; }
   .link-arrow { position: relative; z-index: 1; color: #404060; font-size: 18px; transition: transform .2s; }
   .link-card:hover .link-arrow { transform: translateX(3px); color: #8888b0; }
 
@@ -127,7 +127,6 @@
   .c-back { --c1:#f59e0b; --c2:#ef4444; }
   .c-glob { --c1:#06b6d4; --c2:#3b82f6; }
   .c-llm  { --c1:#8b5cf6; --c2:#ec4899; }
-  .c-tool { --c1:#f59e0b; --c2:#10b981; }
 
   /* ── Badges ── */
   .badge {
@@ -139,19 +138,6 @@
   .b-free { background: rgba(16,185,129,.18); color: #10b981; }
   .b-new  { background: rgba(139,92,246,.25);  color: #a78bfa; }
   .b-ai   { background: rgba(236,72,153,.2);   color: #f472b6; }
-
-  /* ── Tool detail box ── */
-  .tool-detail {
-    background: rgba(255,255,255,.025);
-    border: 1px solid rgba(255,255,255,.07);
-    border-radius: 12px;
-    padding: 14px 16px;
-    font-size: 12px;
-    color: #6060888;
-    line-height: 1.7;
-    margin-top: -4px;
-  }
-  .tool-detail strong { color: #9090c0; }
 
   /* ── Social ── */
   .socials { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
@@ -192,21 +178,20 @@
 
   <!-- Header -->
   <div class="header">
-    <div class="avatar">📊</div>
-    <h1>全球市場量化投資</h1>
-    <p>免費量化分析工具 · ETF追蹤 · 大飆股DNA<br>台股回測 · AI工具 · 全球大事追蹤</p>
+    <div class="avatar">🤖</div>
+    <h1>AI工具人</h1>
+    <p>台股分析 · 全球追蹤 · AI工具<br>完全免費 · 每日更新</p>
   </div>
 
   <!-- Tabs -->
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('quant', this)">📈 量化投資</button>
+    <button class="tab-btn active" onclick="switchTab('twstock', this)">📈 台股分析</button>
+    <button class="tab-btn" onclick="switchTab('global', this)">🌍 全球追蹤</button>
     <button class="tab-btn" onclick="switchTab('tools', this)">🛠️ 工具網站</button>
   </div>
 
-  <!-- Tab 1: 量化投資 -->
-  <div id="panel-quant" class="tab-panel active">
-
-    <div class="section-label">台股分析</div>
+  <!-- Tab 1: 台股分析 -->
+  <div id="panel-twstock" class="tab-panel active">
 
     <a class="link-card c-etf" href="https://slashman413.github.io/tw-etf-dashboard/dashboard.html" target="_blank">
       <div class="link-icon">🎯</div>
@@ -227,21 +212,10 @@
     </a>
 
     <a class="link-card c-back" href="https://slashman413.github.io/twse-backtests/" target="_blank">
-      <div class="link-icon">📈</div>
+      <div class="link-icon">📊</div>
       <div class="link-text">
         <div class="link-title">台股回測儀表板 <span class="badge b-free">免費</span></div>
         <div class="link-desc">K線突破、MACD、ADX、W%R 四大指標｜每年獨立資金模擬</div>
-      </div>
-      <div class="link-arrow">›</div>
-    </a>
-
-    <div class="section-label">全球追蹤</div>
-
-    <a class="link-card c-glob" href="https://slashman413.github.io/global-events-tracker/" target="_blank">
-      <div class="link-icon">🌍</div>
-      <div class="link-text">
-        <div class="link-title">全球大事 3D 地球儀 <span class="badge b-free">免費</span></div>
-        <div class="link-desc">互動式 3D 地球 · 每日 60 筆全球重大新聞 · 六大洲即時追蹤</div>
       </div>
       <div class="link-arrow">›</div>
     </a>
@@ -257,7 +231,24 @@
 
   </div>
 
-  <!-- Tab 2: 工具網站 -->
+  <!-- Tab 2: 全球追蹤 -->
+  <div id="panel-global" class="tab-panel">
+
+    <a class="link-card c-glob" href="https://slashman413.github.io/global-events-tracker/" target="_blank">
+      <div class="link-icon">🌍</div>
+      <div class="link-text">
+        <div class="link-title">全球大事 3D 地球儀 <span class="badge b-free">免費</span></div>
+        <div class="link-desc">互動式 3D 地球 · 每日 60 筆全球重大新聞 · 六大洲即時追蹤</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <!-- Ad -->
+    <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-5115666613619890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+
+  </div>
+
+  <!-- Tab 3: 工具網站 -->
   <div id="panel-tools" class="tab-panel">
 
     <div class="section-label">AI 工具</div>
@@ -270,14 +261,6 @@
       </div>
       <div class="link-arrow">›</div>
     </a>
-
-    <div class="tool-detail">
-      <strong>功能亮點：</strong><br>
-      · 支援 7 種量化格式：FP16、Q8_0、Q6_K、Q5_K_M、Q4_K_M、Q3_K_M、AWQ<br>
-      · Context Window 滑桿（2K–128K）即時計算 KV Cache<br>
-      · 比對 Apple M系列、NVIDIA RTX/A100、AMD RX/MI300X、CPU RAM<br>
-      · 完全免費，無需登入，客戶端運算
-    </div>
 
     <!-- Ad -->
     <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-5115666613619890" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -299,7 +282,8 @@
     btn.classList.add('active');
     document.getElementById('panel-' + id).classList.add('active');
   }
-  // Push AdSense
+  // Push AdSense (one per ins element)
+  try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
   try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
   try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
 </script>
