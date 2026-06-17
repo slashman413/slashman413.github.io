@@ -282,7 +282,8 @@ def post_to_threads(text: str) -> bool:
 
         try:
             page = context.new_page()
-            page.goto("https://www.threads.net", wait_until="networkidle", timeout=30000)
+            # Navigate to threads.com (matches .threads.com cookie domain)
+            page.goto("https://www.threads.com", wait_until="networkidle", timeout=30000)
             time.sleep(3)
 
             if "login" in page.url.lower():
