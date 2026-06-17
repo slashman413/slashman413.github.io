@@ -5,11 +5,12 @@ Promotes the 5 websites by rotating through them each posting day.
 
 Required GitHub Secrets:
   THREADS_CHROME_SESSION  - full JSON from threads_chrome_session.json
-  IG_SESSION_JSON         - full JSON from ig_pw_session.json (optional)
-  FB_SESSION_JSON         - full JSON from fb_pw_session.json (optional)
-  FB_EMAIL / FB_PASSWORD  - FB credentials if no session (optional)
+  IG_SESSION_JSON         - full JSON from ig_session.json (from capture_sessions.py --ig)
+  IG_USERNAME             - Instagram username
+  IG_PASSWORD             - Instagram password
+  FB_SESSION_JSON         - full JSON from fb_pw_session.json (from capture_sessions.py --fb)
 """
-import os, sys, json, time, datetime
+import os, sys, json, time, datetime, platform
 from pathlib import Path
 
 # ── Site rotation ─────────────────────────────────────────────────────────────
@@ -18,6 +19,8 @@ SITES = [
     {
         "name": "ETF分析Dashboard",
         "url": "https://slashman413.github.io/tw-etf-dashboard/dashboard.html",
+        "color": (99, 102, 241),
+        "icon": "📊",
         "text": (
             "📊 台灣 ETF 全方位分析，完全免費！\n\n"
             "追蹤 0050・0056・00878・00713 等主流 ETF\n"
@@ -27,10 +30,14 @@ SITES = [
             "👉 https://slashman413.github.io/tw-etf-dashboard/dashboard.html\n\n"
             "#台股 #ETF #00878 #0050 #投資理財 #免費工具"
         ),
+        "subtitle": "追蹤 0050・0056・00878 等主流 ETF",
+        "features": ["財務面：EPS / ROE / 殖利率", "技術面：RSI / MACD / K 線", "全市場掃描 · 每日自動更新"],
     },
     {
         "name": "大飆股DNA量化篩選",
         "url": "https://slashman413.github.io/twse-surge-stocks-dna/",
+        "color": (16, 185, 129),
+        "icon": "🧬",
         "text": (
             "🧬 大飆股 DNA 量化篩選，完全免費！\n\n"
             "用數據找出下一檔潛力飆股\n"
@@ -40,10 +47,14 @@ SITES = [
             "👉 https://slashman413.github.io/twse-surge-stocks-dna/\n\n"
             "#台股 #量化投資 #技術分析 #選股 #免費工具"
         ),
+        "subtitle": "用數據找出下一檔潛力飆股",
+        "features": ["趨勢拉回 20MA + RSI 策略", "2004–2026 年歷史回測驗證", "每日掃描台股全市場"],
     },
     {
         "name": "台股回測儀表板",
         "url": "https://slashman413.github.io/twse-backtests/",
+        "color": (245, 158, 11),
+        "icon": "📈",
         "text": (
             "📈 台股策略回測儀表板，完全免費！\n\n"
             "歷史資料驗證你的投資策略\n"
@@ -53,10 +64,14 @@ SITES = [
             "👉 https://slashman413.github.io/twse-backtests/\n\n"
             "#台股 #回測 #量化交易 #技術分析 #免費工具"
         ),
+        "subtitle": "歷史資料驗證你的投資策略",
+        "features": ["K 線突破 / MACD / ADX 趨勢", "Williams %R 超買超賣訊號", "每年獨立資金模擬"],
     },
     {
         "name": "全球大事3D追蹤",
         "url": "https://slashman413.github.io/global-events-tracker/",
+        "color": (6, 182, 212),
+        "icon": "🌍",
         "text": (
             "🌍 全球大事 3D 地球儀，完全免費！\n\n"
             "互動式地球追蹤全球重大事件\n"
@@ -66,10 +81,14 @@ SITES = [
             "👉 https://slashman413.github.io/global-events-tracker/\n\n"
             "#全球局勢 #國際新聞 #地緣政治 #免費工具"
         ),
+        "subtitle": "互動式地球追蹤全球重大事件",
+        "features": ["每日 60+ 筆全球新聞", "六大洲即時覆蓋", "3D 視覺化地球儀"],
     },
     {
         "name": "LLM VRAM計算機",
         "url": "https://slashman413.github.io/llm-calc/",
+        "color": (139, 92, 246),
+        "icon": "🖥",
         "text": (
             "🖥️ LLM VRAM 計算機，完全免費！\n\n"
             "跑本地 AI 需要多少記憶體？馬上算出來\n"
@@ -79,6 +98,8 @@ SITES = [
             "👉 https://slashman413.github.io/llm-calc/\n\n"
             "#LocalLLM #AI #VRAM #Ollama #免費工具"
         ),
+        "subtitle": "本地 AI 需要多少 VRAM？馬上算",
+        "features": ["支援 7B 到 405B 全規格模型", "GGUF / AWQ / FP16 量化對比", "主流顯卡相容性一覽"],
     },
 ]
 
@@ -90,6 +111,137 @@ def get_site_for_today() -> dict:
     slot = {2: 0, 4: 1, 6: 2}.get(day, 0)
     index = (week_num * 3 + slot) % len(SITES)
     return SITES[index]
+
+
+# ── Promo image generation ────────────────────────────────────────────────────
+
+def _find_font(size, bold=False):
+    from PIL import ImageFont
+    if platform.system() == "Windows":
+        candidates = (
+            [r"C:\Windows\Fonts\msjhbd.ttc", r"C:\Windows\Fonts\arialbd.ttf"] if bold
+            else [r"C:\Windows\Fonts\msjh.ttc", r"C:\Windows\Fonts\arial.ttf"]
+        )
+    else:
+        candidates = (
+            [
+                "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc",
+                "/usr/share/fonts/truetype/noto/NotoSansCJK-Bold.ttc",
+                "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+            ] if bold else [
+                "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+                "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
+                "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+            ]
+        )
+    for p in candidates:
+        if Path(p).exists():
+            return ImageFont.truetype(p, size)
+    return ImageFont.load_default()
+
+
+def generate_promo_image(site: dict) -> str:
+    """Generate a 1080x1080 promo card. Returns absolute path to PNG."""
+    try:
+        from PIL import Image, ImageDraw
+    except ImportError:
+        print("[img] pillow not installed, cannot generate image.", flush=True)
+        return ""
+
+    W = H = 1080
+    accent = site["color"]
+    accent_dim = tuple(max(0, c - 80) for c in accent)
+
+    BG1    = (8, 12, 28)
+    BG2    = (4, 7, 18)
+    WHITE  = (255, 255, 255)
+    GRAY   = (140, 155, 185)
+    CARD   = (14, 22, 50)
+    BORDER = (35, 55, 110)
+
+    img = Image.new("RGB", (W, H))
+    draw = ImageDraw.Draw(img)
+
+    # Background gradient
+    for y in range(H):
+        t = y / H
+        r = int(BG1[0] + (BG2[0] - BG1[0]) * t)
+        g = int(BG1[1] + (BG2[1] - BG1[1]) * t)
+        b = int(BG1[2] + (BG2[2] - BG1[2]) * t)
+        draw.line([(0, y), (W, y)], fill=(r, g, b))
+
+    # Top accent bar (gradient)
+    for x in range(W):
+        t = x / W
+        c = tuple(int(accent[i] * (1 - t) + 99 * t) for i in range(3))
+        draw.line([(x, 0), (x, 6)], fill=c)
+
+    # Icon circle
+    draw.rounded_rectangle([W // 2 - 55, 60, W // 2 + 55, 170], radius=20, fill=CARD, outline=accent_dim, width=2)
+
+    # Title
+    f_title = _find_font(50, bold=True)
+    f_sub   = _find_font(30)
+    f_feat  = _find_font(26)
+    f_url   = _find_font(27, bold=True)
+    f_tag   = _find_font(22)
+    f_free  = _find_font(34, bold=True)
+
+    def cx(text, y, fnt, fill):
+        w = draw.textlength(text, font=fnt)
+        draw.text(((W - w) // 2, y), text, font=fnt, fill=fill)
+
+    cx(site["name"], 195, f_title, WHITE)
+    cx(site["subtitle"], 260, f_sub, GRAY)
+
+    # Divider
+    draw.line([(120, 305), (W - 120, 305)], fill=BORDER, width=1)
+
+    # FREE badge
+    FREE_Y = 325
+    draw.rounded_rectangle([W // 2 - 110, FREE_Y, W // 2 + 110, FREE_Y + 60], radius=30,
+                           fill=(*accent_dim, 180), outline=accent, width=2)
+    cx("完全免費", FREE_Y + 13, f_free, accent)
+
+    # Features
+    feat_y = 420
+    for feat in site["features"]:
+        draw.text((120, feat_y), "✦", font=f_feat, fill=accent)
+        draw.text((165, feat_y), feat, font=f_feat, fill=WHITE)
+        feat_y += 52
+
+    # Large accent circle decoration
+    glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    gd = ImageDraw.Draw(glow)
+    for i in range(40, 0, -1):
+        alpha = int(3 * i / 40)
+        gd.ellipse([W - 200 - i * 5, 600 - i * 5, W - 200 + i * 5, 600 + i * 5], fill=(*accent, alpha))
+    img = Image.alpha_composite(img.convert("RGBA"), glow).convert("RGB")
+    draw = ImageDraw.Draw(img)
+
+    # URL card
+    URL_Y = 870
+    draw.rounded_rectangle([80, URL_Y, W - 80, URL_Y + 70], radius=35, fill=CARD, outline=accent, width=2)
+    url_text = site["url"].replace("https://", "")
+    cx(url_text, URL_Y + 18, f_url, accent)
+
+    # Hashtags
+    tags = "#免費工具  #台股  #AI工具  #量化投資"
+    cx(tags, 975, f_tag, tuple(c // 2 for c in accent))
+
+    # Watermark
+    draw.text((W - 20, H - 20), "@ytstories0413", font=_find_font(20), fill=(60, 70, 95), anchor="rb")
+
+    # Bottom accent bar
+    for x in range(W):
+        t = x / W
+        c = tuple(int(accent[i] * t + 99 * (1 - t)) for i in range(3))
+        draw.line([(x, H - 6), (x, H)], fill=c)
+
+    out = Path(f"/tmp/promo_{site['name'].replace('/', '_')}.png")
+    img.save(str(out), "PNG")
+    print(f"[img] Promo image saved: {out}", flush=True)
+    return str(out)
 
 
 # ── Threads posting ───────────────────────────────────────────────────────────
@@ -122,7 +274,6 @@ def post_to_threads(text: str) -> bool:
         )
         context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
 
-        # Inject Chrome sessionid cookie
         for cookie in chrome_data.get("cookies", []):
             if cookie.get("name") == "sessionid":
                 context.add_cookies([cookie])
@@ -140,7 +291,6 @@ def post_to_threads(text: str) -> bool:
 
             print(f"[threads] Logged in. URL: {page.url}", flush=True)
 
-            # Open compose dialog
             opened = False
             for fragment in ["撰寫新貼文", "新串文", "compose a new post", "Type to compose"]:
                 el = page.locator(f'[aria-label*="{fragment}"]')
@@ -193,89 +343,59 @@ def post_to_threads(text: str) -> bool:
             browser.close()
 
 
-# ── Instagram posting ─────────────────────────────────────────────────────────
+# ── Instagram posting via instagrapi ─────────────────────────────────────────
 
-def post_to_instagram(text: str) -> bool:
+def post_to_instagram(site: dict) -> bool:
     session_json = os.environ.get("IG_SESSION_JSON", "")
     ig_user = os.environ.get("IG_USERNAME", "")
     ig_pass = os.environ.get("IG_PASSWORD", "")
 
-    if not session_json and not (ig_user and ig_pass):
-        print("[ig] No IG_SESSION_JSON or credentials set, skipping.", flush=True)
+    if not ig_user or not ig_pass:
+        print("[ig] IG_USERNAME / IG_PASSWORD not set, skipping.", flush=True)
         return False
 
     try:
-        from playwright.sync_api import sync_playwright
+        from instagrapi import Client
     except ImportError:
-        print("[ig] playwright not installed, skipping.", flush=True)
+        print("[ig] instagrapi not installed, skipping.", flush=True)
+        return False
+
+    # Generate promo image
+    image_path = generate_promo_image(site)
+    if not image_path or not Path(image_path).exists():
+        print("[ig] Promo image generation failed, skipping IG.", flush=True)
         return False
 
     session_file = Path("/tmp/ig_session.json")
     if session_json:
         session_file.write_text(session_json, encoding="utf-8")
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(
-            headless=True,
-            args=["--disable-blink-features=AutomationControlled", "--no-sandbox", "--disable-setuid-sandbox"],
-        )
-        ctx_opts = dict(
-            viewport={"width": 390, "height": 844},
-            user_agent=(
-                "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) "
-                "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1"
-            ),
-            locale="zh-TW",
-            is_mobile=True,
-        )
+    cl = Client()
+    cl.delay_range = [1, 3]
+
+    try:
         if session_file.exists():
-            context = browser.new_context(storage_state=str(session_file), **ctx_opts)
-        else:
-            context = browser.new_context(**ctx_opts)
-        context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
+            cl.load_settings(str(session_file))
+            print("[ig] Loaded saved session.", flush=True)
+        cl.login(ig_user, ig_pass)
+        cl.dump_settings(str(session_file))
 
-        try:
-            page = context.new_page()
-            page.goto("https://www.instagram.com/accounts/login/", wait_until="domcontentloaded", timeout=30000)
-            time.sleep(3)
+        caption = site["text"]
+        cl.photo_upload(Path(image_path), caption)
+        print("[ig] Posted image successfully!", flush=True)
+        return True
 
-            if page.locator('input[name="username"]').count() > 0 and ig_user:
-                print("[ig] Logging in...", flush=True)
-                page.locator('input[name="username"]').fill(ig_user)
-                page.locator('input[name="password"]').fill(ig_pass)
-                btn = page.locator('button:has-text("登入"), button:has-text("Log in")')
-                btn.first.click()
-                try:
-                    page.wait_for_url(lambda url: "/login" not in url, timeout=15000)
-                except Exception:
-                    pass
-                time.sleep(4)
-                context.storage_state(path=str(session_file))
-
-            if "/login" in page.url:
-                print("[ig] Not logged in, skipping.", flush=True)
-                return False
-
-            # IG Threads-style text post is not easily done via web; skip image upload
-            # and use direct compose URL
-            page.goto("https://www.instagram.com/create/style/", wait_until="domcontentloaded", timeout=15000)
-            time.sleep(2)
-            print("[ig] IG image upload requires an image file; text-only not supported on web. Skipping.", flush=True)
-            return False
-
-        finally:
-            browser.close()
+    except Exception as e:
+        print(f"[ig] Error: {e}", flush=True)
+        return False
 
 
-# ── Facebook posting ──────────────────────────────────────────────────────────
+# ── Facebook posting via Playwright session ───────────────────────────────────
 
 def post_to_facebook(text: str) -> bool:
     session_json = os.environ.get("FB_SESSION_JSON", "")
-    fb_email = os.environ.get("FB_EMAIL", "")
-    fb_pass = os.environ.get("FB_PASSWORD", "")
-
-    if not session_json and not (fb_email and fb_pass):
-        print("[fb] No FB_SESSION_JSON or credentials set, skipping.", flush=True)
+    if not session_json:
+        print("[fb] FB_SESSION_JSON not set, skipping.", flush=True)
         return False
 
     try:
@@ -285,8 +405,7 @@ def post_to_facebook(text: str) -> bool:
         return False
 
     session_file = Path("/tmp/fb_session.json")
-    if session_json:
-        session_file.write_text(session_json, encoding="utf-8")
+    session_file.write_text(session_json, encoding="utf-8")
 
     with sync_playwright() as p:
         browser = p.chromium.launch(
@@ -294,7 +413,8 @@ def post_to_facebook(text: str) -> bool:
             args=["--disable-blink-features=AutomationControlled", "--no-sandbox",
                   "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
         )
-        ctx_opts = dict(
+        context = browser.new_context(
+            storage_state=str(session_file),
             viewport={"width": 1280, "height": 900},
             user_agent=(
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -302,10 +422,6 @@ def post_to_facebook(text: str) -> bool:
             ),
             locale="zh-TW",
         )
-        if session_file.exists():
-            context = browser.new_context(storage_state=str(session_file), **ctx_opts)
-        else:
-            context = browser.new_context(**ctx_opts)
         context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
 
         try:
@@ -313,21 +429,11 @@ def post_to_facebook(text: str) -> bool:
             page.goto("https://www.facebook.com", wait_until="networkidle", timeout=30000)
             time.sleep(3)
 
-            if "login" in page.url or page.locator('#email').count() > 0:
-                if fb_email and fb_pass:
-                    print("[fb] Logging in...", flush=True)
-                    page.locator('#email').first.fill(fb_email)
-                    page.locator('#pass').first.fill(fb_pass)
-                    page.locator('[name="login"]').first.click()
-                    time.sleep(5)
-                    context.storage_state(path=str(session_file))
-                else:
-                    print("[fb] Not logged in and no credentials, skipping.", flush=True)
-                    return False
-
             if "login" in page.url or "checkpoint" in page.url:
-                print("[fb] FB requires 2FA/checkpoint, skipping.", flush=True)
+                print("[fb] Session expired or 2FA required, cannot post.", flush=True)
                 return False
+
+            print(f"[fb] Logged in. URL: {page.url}", flush=True)
 
             opened = False
             for label in ["What's on your mind?", "你在想什麼", "Create a post", "建立貼文"]:
@@ -337,7 +443,6 @@ def post_to_facebook(text: str) -> bool:
                     time.sleep(2)
                     opened = True
                     break
-
             if not opened:
                 el = page.locator('[data-pagelet="FeedComposer"] [role="button"]')
                 if el.count() > 0:
@@ -346,7 +451,7 @@ def post_to_facebook(text: str) -> bool:
                     opened = True
 
             if not opened:
-                print("[fb] Could not open composer, skipping.", flush=True)
+                print("[fb] Could not open composer.", flush=True)
                 return False
 
             text_box = page.locator('[role="dialog"] [contenteditable="true"], [role="dialog"] [role="textbox"]')
@@ -384,7 +489,7 @@ def main():
 
     results = {}
     results["threads"] = post_to_threads(site["text"])
-    results["instagram"] = post_to_instagram(site["text"])
+    results["instagram"] = post_to_instagram(site)
     results["facebook"] = post_to_facebook(site["text"])
 
     print(f"\n[promo] Results: {results}", flush=True)
