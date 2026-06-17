@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>全球市場量化投資</title>
-<meta property="og:title" content="全球市場量化投資">
-<meta property="og:description" content="免費量化工具｜ETF分析｜大飆股DNA｜全球指數回測｜蔡森策略">
+<title>全球市場量化投資 · slashman413</title>
+<meta name="description" content="免費量化工具｜ETF分析｜大飆股DNA｜台股回測｜LLM硬體計算機｜全球大事追蹤">
+<meta property="og:title" content="全球市場量化投資 · slashman413">
+<meta property="og:description" content="免費量化分析工具 · ETF追蹤 · 大飆股DNA · 台股回測 · AI工具">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5115666613619890" crossorigin="anonymous"></script>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -17,203 +19,281 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 48px 20px 64px;
+    padding: 40px 20px 64px;
   }
 
-  /* Background glow */
   body::before {
     content: '';
     position: fixed;
     top: -200px; left: 50%;
     transform: translateX(-50%);
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(99,102,241,.15) 0%, transparent 70%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(99,102,241,.12) 0%, transparent 70%);
     pointer-events: none;
+    z-index: 0;
   }
 
+  .container { width: 100%; max-width: 460px; position: relative; z-index: 1; }
+
+  /* ── Header ── */
+  .header { text-align: center; margin-bottom: 28px; }
   .avatar {
-    width: 88px; height: 88px;
+    width: 80px; height: 80px;
     border-radius: 50%;
     background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
     display: flex; align-items: center; justify-content: center;
-    font-size: 36px;
-    margin-bottom: 16px;
-    box-shadow: 0 0 32px rgba(99,102,241,.4);
+    font-size: 32px;
+    margin: 0 auto 14px;
+    box-shadow: 0 0 28px rgba(99,102,241,.4);
   }
+  .header h1 { font-size: 20px; font-weight: 700; letter-spacing: .4px; margin-bottom: 6px; }
+  .header p  { font-size: 13px; color: #7878a0; line-height: 1.6; }
 
-  h1 {
-    font-size: 22px; font-weight: 700;
-    letter-spacing: .5px;
-    margin-bottom: 8px;
-  }
-
-  .bio {
-    font-size: 13.5px; color: #9090b0;
-    text-align: center;
-    max-width: 280px;
-    line-height: 1.6;
-    margin-bottom: 36px;
-  }
-
-  .section-label {
-    font-size: 15px; font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #5555777;
-    margin-bottom: 12px;
-    align-self: center; text-align: center;
-    max-width: 420px;
-    width: 100%;
-  }
-
-  .links {
+  /* ── Tabs ── */
+  .tabs {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-    max-width: 420px;
-    margin-bottom: 32px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 14px;
+    padding: 4px;
+    margin-bottom: 20px;
+    gap: 4px;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 9px 0;
+    border: none; border-radius: 10px;
+    background: transparent;
+    color: #6060888;
+    font-size: 13.5px; font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .tab-btn.active {
+    background: rgba(99,102,241,.25);
+    color: #c7c7f0;
+    box-shadow: 0 0 12px rgba(99,102,241,.2);
+  }
+  .tab-btn:not(.active):hover { color: #a0a0c8; background: rgba(255,255,255,.04); }
+
+  /* ── Tab panels ── */
+  .tab-panel { display: none; flex-direction: column; gap: 10px; }
+  .tab-panel.active { display: flex; }
+
+  /* ── Section label ── */
+  .section-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #44446a;
+    margin: 8px 0 4px 4px;
   }
 
+  /* ── Link cards ── */
   .link-card {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
     background: rgba(255,255,255,.04);
     border: 1px solid rgba(255,255,255,.08);
-    border-radius: 16px;
-    padding: 18px 20px;
+    border-radius: 14px;
+    padding: 16px 18px;
     text-decoration: none;
     color: inherit;
     transition: all .2s ease;
     position: relative;
     overflow: hidden;
   }
-
   .link-card::before {
     content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--c1), var(--c2));
     opacity: 0;
     transition: opacity .2s;
   }
+  .link-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.16); }
+  .link-card:hover::before { opacity: .07; }
 
-  .link-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.18); }
-  .link-card:hover::before { opacity: .06; }
+  .link-icon { font-size: 26px; min-width: 36px; text-align: center; position: relative; z-index: 1; }
+  .link-text { flex: 1; position: relative; z-index: 1; }
+  .link-title { font-size: 14.5px; font-weight: 600; margin-bottom: 3px; }
+  .link-desc  { font-size: 11.5px; color: #6868988; line-height: 1.45; }
+  .link-arrow { position: relative; z-index: 1; color: #404060; font-size: 18px; transition: transform .2s; }
+  .link-card:hover .link-arrow { transform: translateX(3px); color: #8888b0; }
 
-  .link-icon {
-    font-size: 28px;
-    min-width: 40px; text-align: center;
-    position: relative; z-index: 1;
-  }
+  /* accent colours */
+  .c-etf  { --c1:#6366f1; --c2:#8b5cf6; }
+  .c-dna  { --c1:#10b981; --c2:#06b6d4; }
+  .c-back { --c1:#f59e0b; --c2:#ef4444; }
+  .c-glob { --c1:#06b6d4; --c2:#3b82f6; }
+  .c-llm  { --c1:#8b5cf6; --c2:#ec4899; }
+  .c-tool { --c1:#f59e0b; --c2:#10b981; }
 
-  .link-text { position: relative; z-index: 1; flex: 1; }
-  .link-title { font-size: 15px; font-weight: 600; margin-bottom: 3px; }
-  .link-desc { font-size: 12px; color: #7070a0; line-height: 1.4; }
-
-  .link-arrow {
-    position: relative; z-index: 1;
-    color: #4444664; font-size: 18px;
-    transition: transform .2s;
-  }
-  .link-card:hover .link-arrow { transform: translateX(3px); color: #9090c0; }
-
-  /* Card accent colours */
-  .card-etf    { --accent-start: #6366f1; --accent-end: #8b5cf6; }
-  .card-dna    { --accent-start: #10b981; --accent-end: #06b6d4; }
-  .card-back   { --accent-start: #f59e0b; --accent-end: #ef4444; }
-
+  /* ── Badges ── */
   .badge {
     display: inline-block;
-    font-size: 10px; font-weight: 700;
-    letter-spacing: .5px;
-    padding: 2px 7px;
-    border-radius: 99px;
-    margin-left: 6px;
-    vertical-align: middle;
+    font-size: 9.5px; font-weight: 700; letter-spacing: .4px;
+    padding: 2px 6px; border-radius: 99px;
+    margin-left: 5px; vertical-align: middle;
   }
-  .badge-free { background: rgba(16,185,129,.2); color: #10b981; }
-  .badge-pro  { background: rgba(245,158,11,.2); color: #f59e0b; }
+  .b-free { background: rgba(16,185,129,.18); color: #10b981; }
+  .b-new  { background: rgba(139,92,246,.25);  color: #a78bfa; }
+  .b-ai   { background: rgba(236,72,153,.2);   color: #f472b6; }
 
-  /* Social row */
-  .socials {
-    display: flex; gap: 14px;
-    margin-top: 8px;
+  /* ── Tool detail box ── */
+  .tool-detail {
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 12px;
+    color: #6060888;
+    line-height: 1.7;
+    margin-top: -4px;
   }
+  .tool-detail strong { color: #9090c0; }
 
+  /* ── Social ── */
+  .socials { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
   .social-btn {
-    display: flex; align-items: center; gap: 7px;
-    padding: 9px 18px;
-    border-radius: 99px;
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border-radius: 99px;
     border: 1px solid rgba(255,255,255,.1);
     background: rgba(255,255,255,.04);
-    text-decoration: none;
-    color: #9090b0;
-    font-size: 13px;
-    transition: all .2s;
+    text-decoration: none; color: #7878a8;
+    font-size: 12.5px; transition: all .2s;
   }
-  .social-btn:hover { color: #e8e8f0; border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.08); }
-  .social-icon { font-size: 16px; }
+  .social-btn:hover { color: #e8e8f0; border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.08); }
 
-  .footer {
-    margin-top: 48px;
-    font-size: 11px; color: #444460;
-    text-align: center;
+  /* ── Ad slot ── */
+  .ad-slot {
+    width: 100%; min-height: 80px;
+    background: rgba(255,255,255,.02);
+    border: 1px dashed rgba(255,255,255,.07);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: #303048;
+    margin: 6px 0;
   }
+
+  .footer { margin-top: 36px; font-size: 11px; color: #383852; text-align: center; }
 </style>
 </head>
 <body>
+<div class="container">
 
-<div class="avatar">📊</div>
-<h1>全球市場量化投資</h1>
-<p class="bio">免費量化分析工具<br>ETF追蹤 · 大飆股DNA · 全球指數回測</p>
+  <!-- Header -->
+  <div class="header">
+    <div class="avatar">📊</div>
+    <h1>全球市場量化投資</h1>
+    <p>免費量化分析工具 · ETF追蹤 · 大飆股DNA<br>台股回測 · AI工具 · 全球大事追蹤</p>
+  </div>
 
-<div class="section-label">免費工具</div>
-<div class="links">
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('quant', this)">📈 量化投資</button>
+    <button class="tab-btn" onclick="switchTab('tools', this)">🛠️ 工具網站</button>
+  </div>
 
-  <a class="link-card card-etf" href="https://slashman413.github.io/tw-etf-dashboard/dashboard.html" target="_blank">
-    <div class="link-icon">🎯</div>
-    <div class="link-text">
-      <div class="link-title">ETF 分析 Dashboard <span class="badge badge-free">免費</span></div>
-      <div class="link-desc">0050／0056／00878 等 62 支成分股｜財務、技術、估值三維分析｜每日自動更新</div>
+  <!-- Tab 1: 量化投資 -->
+  <div id="panel-quant" class="tab-panel active">
+
+    <div class="section-label">台股分析</div>
+
+    <a class="link-card c-etf" href="https://slashman413.github.io/tw-etf-dashboard/dashboard.html" target="_blank">
+      <div class="link-icon">🎯</div>
+      <div class="link-text">
+        <div class="link-title">ETF 分析 Dashboard <span class="badge b-free">免費</span></div>
+        <div class="link-desc">0050／0056／00878 等 ETF｜財務・技術・估值三維分析｜每日自動更新</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <a class="link-card c-dna" href="https://slashman413.github.io/twse-surge-stocks-dna/" target="_blank">
+      <div class="link-icon">🧬</div>
+      <div class="link-text">
+        <div class="link-title">大飆股 DNA 量化篩選 <span class="badge b-free">免費</span></div>
+        <div class="link-desc">趨勢拉回 20MA＋RSI 進出場策略｜2004–2026 年歷史回測驗證</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <a class="link-card c-back" href="https://slashman413.github.io/twse-backtests/" target="_blank">
+      <div class="link-icon">📈</div>
+      <div class="link-text">
+        <div class="link-title">台股回測儀表板 <span class="badge b-free">免費</span></div>
+        <div class="link-desc">K線突破、MACD、ADX、W%R 四大指標｜每年獨立資金模擬</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <div class="section-label">全球追蹤</div>
+
+    <a class="link-card c-glob" href="https://slashman413.github.io/global-events-tracker/" target="_blank">
+      <div class="link-icon">🌍</div>
+      <div class="link-text">
+        <div class="link-title">全球大事 3D 地球儀 <span class="badge b-free">免費</span></div>
+        <div class="link-desc">互動式 3D 地球 · 每日 60 筆全球重大新聞 · 六大洲即時追蹤</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <!-- Ad -->
+    <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-5115666613619890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+
+    <div class="section-label">社群</div>
+    <div class="socials">
+      <a class="social-btn" href="https://www.instagram.com/ytstories0413/" target="_blank">📸 Instagram</a>
+      <a class="social-btn" href="https://www.threads.com/@ytstories0413" target="_blank">🧵 Threads</a>
     </div>
-    <div class="link-arrow">›</div>
-  </a>
 
-  <a class="link-card card-dna" href="https://slashman413.github.io/twse-surge-stocks-dna/" target="_blank">
-    <div class="link-icon">🧬</div>
-    <div class="link-text">
-      <div class="link-title">大飆股 DNA 量化篩選 <span class="badge badge-free">免費</span></div>
-      <div class="link-desc">趨勢拉回 20MA＋RSI 進出場策略｜2004–2026 年歷史回測驗證</div>
+  </div>
+
+  <!-- Tab 2: 工具網站 -->
+  <div id="panel-tools" class="tab-panel">
+
+    <div class="section-label">AI 工具</div>
+
+    <a class="link-card c-llm" href="https://slashman413.github.io/llm-calc/" target="_blank">
+      <div class="link-icon">🖥️</div>
+      <div class="link-text">
+        <div class="link-title">LLM VRAM 計算機 <span class="badge b-new">新</span> <span class="badge b-ai">AI</span></div>
+        <div class="link-desc">估算本地 AI 模型所需 VRAM/RAM｜支援 GGUF、AWQ、FP16｜7B 到 405B 全覆蓋</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <div class="tool-detail">
+      <strong>功能亮點：</strong><br>
+      · 支援 7 種量化格式：FP16、Q8_0、Q6_K、Q5_K_M、Q4_K_M、Q3_K_M、AWQ<br>
+      · Context Window 滑桿（2K–128K）即時計算 KV Cache<br>
+      · 比對 Apple M系列、NVIDIA RTX/A100、AMD RX/MI300X、CPU RAM<br>
+      · 完全免費，無需登入，客戶端運算
     </div>
-    <div class="link-arrow">›</div>
-  </a>
 
-  <a class="link-card card-back" href="https://slashman413.github.io/twse-backtests/" target="_blank">
-    <div class="link-icon">📈</div>
-    <div class="link-text">
-      <div class="link-title">台股回測儀表板 <span class="badge badge-free">免費</span></div>
-      <div class="link-desc">K線突破、MACD、ADX、W%R 四大指標｜每年獨立資金模擬，不美化績效</div>
+    <!-- Ad -->
+    <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-5115666613619890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+
+    <div class="section-label">更多工具（即將推出）</div>
+    <div style="text-align:center; padding:24px 0; color:#404060; font-size:13px;">
+      🚧 &nbsp;更多免費工具開發中...
     </div>
-    <div class="link-arrow">›</div>
-  </a>
 
+  </div>
 
-
+  <div class="footer">© 2026 Wayne · 本站資訊僅供參考，非投資建議</div>
 </div>
 
-<div class="section-label">社群</div>
-<div class="socials">
-  <a class="social-btn" href="https://www.instagram.com/ytstories0413/" target="_blank">
-    <span class="social-icon">📸</span> Instagram
-  </a>
-  <a class="social-btn" href="https://www.threads.com/@ytstories0413" target="_blank">
-    <span class="social-icon">🧵</span> Threads
-  </a>
-</div>
-
-<div class="footer">© 2026 Wayne · 本站資訊僅供參考，非投資建議</div>
-
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + id).classList.add('active');
+  }
+  // Push AdSense
+  try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+  try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+</script>
 </body>
 </html>
