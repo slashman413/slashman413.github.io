@@ -9,7 +9,7 @@ on:
 jobs:
   post-promo:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - name: Checkout
@@ -20,16 +20,20 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Playwright
-        run: |
-          pip install playwright
-          playwright install chromium --with-deps
+      - name: Install system fonts (CJK support for promo images)
+        run: sudo apt-get install -y fonts-noto-cjk
+
+      - name: Install Python dependencies
+        run: pip install playwright instagrapi pillow
+
+      - name: Install Playwright browser
+        run: playwright install chromium --with-deps
 
       - name: Run social promo
         env:
           THREADS_CHROME_SESSION: ${{ secrets.THREADS_CHROME_SESSION }}
           IG_SESSION_JSON: ${{ secrets.IG_SESSION_JSON }}
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+          IG_PASSWORD: ${{ secrets.IG_PASSWORD }}
           FB_SESSION_JSON: ${{ secrets.FB_SESSION_JSON }}
-          FB_EMAIL: ${{ secrets.FB_EMAIL }}
-          FB_PASSWORD: ${{ secrets.FB_PASSWORD }}
         run: python social_promo.py
