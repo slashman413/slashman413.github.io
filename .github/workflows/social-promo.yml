@@ -1,0 +1,35 @@
+name: Social Media Promo
+
+on:
+  schedule:
+    # Tue/Thu/Sat at 08:00 UTC = 16:00 Taiwan (UTC+8)
+    - cron: '0 8 * * 2,4,6'
+  workflow_dispatch:
+
+jobs:
+  post-promo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          playwright install chromium --with-deps
+
+      - name: Run social promo
+        env:
+          THREADS_CHROME_SESSION: ${{ secrets.THREADS_CHROME_SESSION }}
+          IG_SESSION_JSON: ${{ secrets.IG_SESSION_JSON }}
+          FB_SESSION_JSON: ${{ secrets.FB_SESSION_JSON }}
+          FB_EMAIL: ${{ secrets.FB_EMAIL }}
+          FB_PASSWORD: ${{ secrets.FB_PASSWORD }}
+        run: python social_promo.py
