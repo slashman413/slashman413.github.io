@@ -343,21 +343,18 @@ def post_to_threads(text: str) -> bool:
             browser.close()
 
 
-# ── Instagram posting via instagrapi ─────────────────────────────────────────
+# ── Instagram posting via Playwright session ──────────────────────────────────
 
 def post_to_instagram(site: dict) -> bool:
     session_json = os.environ.get("IG_SESSION_JSON", "")
-    ig_user = os.environ.get("IG_USERNAME", "")
-    ig_pass = os.environ.get("IG_PASSWORD", "")
-
-    if not ig_user or not ig_pass:
-        print("[ig] IG_USERNAME / IG_PASSWORD not set, skipping.", flush=True)
+    if not session_json:
+        print("[ig] IG_SESSION_JSON not set, skipping.", flush=True)
         return False
 
     try:
-        from instagrapi import Client
+        from playwright.sync_api import sync_playwright
     except ImportError:
-        print("[ig] instagrapi not installed, skipping.", flush=True)
+        print("[ig] playwright not installed, skipping.", flush=True)
         return False
 
     # Generate promo image
@@ -367,27 +364,91 @@ def post_to_instagram(site: dict) -> bool:
         return False
 
     session_file = Path("/tmp/ig_session.json")
-    if session_json:
-        session_file.write_text(session_json, encoding="utf-8")
+    session_file.write_text(session_json, encoding="utf-8")
 
-    cl = Client()
-    cl.delay_range = [1, 3]
+    with sync_playwright() as p:
+        browser = p.chromium.launch(
+            headless=True,
+            args=["--disable-blink-features=AutomationControlled", "--no-sandbox", "--disable-setuid-sandbox"],
+        )
+        context = browser.new_context(
+            storage_state=str(session_file),
+            viewport={"width": 390, "height": 844},
+            user_agent=(
+                "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) "
+                "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1"
+            ),
+            locale="zh-TW",
+            is_mobile=True,
+        )
+        context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
 
-    try:
-        if session_file.exists():
-            cl.load_settings(str(session_file))
-            print("[ig] Loaded saved session.", flush=True)
-        cl.login(ig_user, ig_pass)
-        cl.dump_settings(str(session_file))
+        try:
+            page = context.new_page()
+            page.goto("https://www.instagram.com/", wait_until="domcontentloaded", timeout=30000)
+            time.sleep(3)
 
-        caption = site["text"]
-        cl.photo_upload(Path(image_path), caption)
-        print("[ig] Posted image successfully!", flush=True)
-        return True
+            if "/login" in page.url or "/accounts/login" in page.url:
+                print("[ig] Session expired, cannot post.", flush=True)
+                return False
 
-    except Exception as e:
-        print(f"[ig] Error: {e}", flush=True)
-        return False
+            print(f"[ig] Logged in. URL: {page.url}", flush=True)
+
+            # Click New Post button or navigate directly
+            clicked = False
+            for sel in ['[aria-label="New post"]', 'svg[aria-label="New post"]', '[aria-label="建立"]']:
+                el = page.locator(sel)
+                if el.count() > 0:
+                    el.first.click()
+                    clicked = True
+                    time.sleep(2)
+                    break
+            if not clicked:
+                page.goto("https://www.instagram.com/create/style/", wait_until="domcontentloaded", timeout=15000)
+                time.sleep(2)
+
+            # Upload image file
+            file_input = page.locator('input[type="file"]')
+            file_input.wait_for(timeout=10000)
+            file_input.set_input_files(str(Path(image_path).resolve()))
+            time.sleep(4)
+
+            # Navigate through crop → filter → caption steps
+            for _step in ["crop", "filter"]:
+                for btn_text in ["Next", "下一步"]:
+                    btn = page.locator(f'button:has-text("{btn_text}"), [role="button"]:has-text("{btn_text}")')
+                    if btn.count() > 0:
+                        btn.first.click()
+                        time.sleep(2)
+                        break
+
+            # Fill caption
+            caption_box = page.locator(
+                '[aria-label*="caption"], [aria-label*="說明文字"], '
+                '[aria-label*="Write a caption"], textarea, [contenteditable="true"]'
+            )
+            if caption_box.count() > 0:
+                caption_box.first.click()
+                caption_box.first.fill(site["text"])
+                time.sleep(1)
+
+            # Share
+            for btn_text in ["Share", "分享"]:
+                btn = page.locator(f'button:has-text("{btn_text}"), [role="button"]:has-text("{btn_text}")')
+                if btn.count() > 0:
+                    btn.last.click()
+                    time.sleep(6)
+                    break
+
+            print("[ig] Posted image successfully!", flush=True)
+            return True
+
+        except Exception as e:
+            print(f"[ig] Error: {e}", flush=True)
+            return False
+
+        finally:
+            browser.close()
 
 
 # ── Facebook posting via Playwright session ───────────────────────────────────
