@@ -24,7 +24,7 @@ jobs:
         run: sudo apt-get install -y fonts-noto-cjk
 
       - name: Install Python dependencies
-        run: pip install playwright instagrapi pillow
+        run: pip install playwright pillow
 
       - name: Install Playwright browser
         run: playwright install chromium --with-deps
@@ -33,7 +33,5 @@ jobs:
         env:
           THREADS_CHROME_SESSION: ${{ secrets.THREADS_CHROME_SESSION }}
           IG_SESSION_JSON: ${{ secrets.IG_SESSION_JSON }}
-          IG_USERNAME: ${{ secrets.IG_USERNAME }}
-          IG_PASSWORD: ${{ secrets.IG_PASSWORD }}
           FB_SESSION_JSON: ${{ secrets.FB_SESSION_JSON }}
         run: python social_promo.py
