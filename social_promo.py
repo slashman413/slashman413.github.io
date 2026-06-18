@@ -468,7 +468,9 @@ def post_to_instagram(site: dict) -> bool:
             )
             if caption_box.count() > 0:
                 caption_box.first.click()
-                caption_box.first.fill(site["text"])
+                # IG feed captions can't have clickable links -> direct users to the bio link
+                ig_caption = site["text"] + "\n\n🔗 連結點不了？完整工具總覽都在個人簡介連結 👆"
+                caption_box.first.fill(ig_caption)
                 time.sleep(1)
 
             # Share
@@ -587,6 +589,11 @@ def main():
     slot = os.environ.get("PROMO_SLOT", "auto")
     print(f"[promo] Slot={slot} | posting {len(sites)} site(s): {[s['name'] for s in sites]}", flush=True)
 
+    # Optional platform filter for isolated testing, e.g. PROMO_PLATFORMS=instagram
+    only = {p for p in os.environ.get("PROMO_PLATFORMS", "").lower().replace(" ", "").split(",") if p}
+    if only:
+        print(f"[promo] platform filter: {sorted(only)}", flush=True)
+
     totals = {"threads": 0, "instagram": 0, "facebook": 0}
     posted_any = False
     for site in sites:
@@ -595,6 +602,8 @@ def main():
         for plat, fn in (("threads", lambda: post_to_threads(site["text"])),
                          ("instagram", lambda: post_to_instagram(site)),
                          ("facebook", lambda: post_to_facebook(site["text"]))):
+            if only and plat not in only:
+                continue
             try:
                 results[plat] = fn()
             except Exception as e:
