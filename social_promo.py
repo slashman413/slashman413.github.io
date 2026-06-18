@@ -283,7 +283,7 @@ def post_to_threads(text: str) -> bool:
         try:
             page = context.new_page()
             # Navigate to threads.com (matches .threads.com cookie domain)
-            page.goto("https://www.threads.com", wait_until="networkidle", timeout=30000)
+            page.goto("https://www.threads.com", wait_until="domcontentloaded", timeout=30000)
             time.sleep(3)
 
             if "login" in page.url.lower():
@@ -409,7 +409,7 @@ def post_to_instagram(site: dict) -> bool:
                 time.sleep(2)
 
             # Upload image file
-            file_input = page.locator('input[type="file"]')
+            file_input = page.locator('input[type="file"]').first
             file_input.wait_for(timeout=10000)
             file_input.set_input_files(str(Path(image_path).resolve()))
             time.sleep(4)
@@ -488,7 +488,7 @@ def post_to_facebook(text: str) -> bool:
 
         try:
             page = context.new_page()
-            page.goto("https://www.facebook.com", wait_until="networkidle", timeout=30000)
+            page.goto("https://www.facebook.com", wait_until="domcontentloaded", timeout=30000)
             time.sleep(3)
 
             if "login" in page.url or "checkpoint" in page.url:
