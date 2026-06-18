@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-Social media promo poster - runs via GitHub Actions on Tue/Thu/Sat.
-Promotes the 5 websites by rotating through them each posting day.
+Social media promo poster - runs via GitHub Actions twice daily.
+PROMO_SLOT=am promotes sites 1-3 (morning); PROMO_SLOT=pm promotes sites 4-6 (afternoon).
+Each selected site is posted to Threads + Instagram + Facebook.
 
 Required GitHub Secrets:
   THREADS_CHROME_SESSION  - full JSON from threads_chrome_session.json
@@ -10,7 +11,8 @@ Required GitHub Secrets:
   IG_PASSWORD             - Instagram password
   FB_SESSION_JSON         - full JSON from fb_pw_session.json (from capture_sessions.py --fb)
 """
-import os, sys, json, time, datetime, platform
+import os
+import re, sys, json, time, datetime, platform
 from pathlib import Path
 
 # ── Site rotation ─────────────────────────────────────────────────────────────
@@ -101,16 +103,40 @@ SITES = [
         "subtitle": "本地 AI 需要多少 VRAM？馬上算",
         "features": ["支援 7B 到 405B 全規格模型", "GGUF / AWQ / FP16 量化對比", "主流顯卡相容性一覽"],
     },
+    {
+        "name": "量化投資工具箱",
+        "url": "https://slashman413.github.io/",
+        "color": (79, 70, 229),
+        "icon": "🚀",
+        "text": (
+            "🚀 全球市場量化投資工具箱，全部免費！\n\n"
+            "一站直達所有投資與分析工具\n"
+            "✦ 台股 ETF・大飆股 DNA・策略回測\n"
+            "✦ 全球事件 3D 地球儀・LLM VRAM 計算機\n"
+            "✦ 每日自動更新・無需註冊\n\n"
+            "👉 https://slashman413.github.io/\n\n"
+            "#量化投資 #台股 #ETF #免費工具 #投資理財"
+        ),
+        "subtitle": "一站直達所有免費投資工具",
+        "features": ["台股 ETF / 大飆股 DNA / 回測", "全球事件 3D・LLM 計算機", "每日自動更新 · 無需註冊"],
+    },
 ]
 
 
-def get_site_for_today() -> dict:
-    today = datetime.date.today()
-    week_num = today.isocalendar()[1]
-    day = today.isoweekday()  # 2=Tue, 4=Thu, 6=Sat
-    slot = {2: 0, 4: 1, 6: 2}.get(day, 0)
-    index = (week_num * 3 + slot) % len(SITES)
-    return SITES[index]
+# Morning slot promotes sites 1-3, afternoon slot promotes sites 4-6 (by name, order-stable).
+AM_NAMES = ["量化投資工具箱", "LLM VRAM計算機", "ETF分析Dashboard"]
+PM_NAMES = ["大飆股DNA量化篩選", "台股回測儀表板", "全球大事3D追蹤"]
+
+
+def get_sites_for_slot() -> list:
+    """Return the 3 sites for the current slot. PROMO_SLOT=am|pm (set by the workflow);
+    if unset, infer from UTC hour (morning run vs afternoon run)."""
+    slot = os.environ.get("PROMO_SLOT", "").lower().strip()
+    if slot not in ("am", "pm"):
+        slot = "am" if datetime.datetime.now(datetime.timezone.utc).hour < 5 else "pm"
+    names = AM_NAMES if slot == "am" else PM_NAMES
+    by_name = {s["name"]: s for s in SITES}
+    return [by_name[n] for n in names if n in by_name]
 
 
 # ── Promo image generation ────────────────────────────────────────────────────
@@ -293,7 +319,8 @@ def post_to_threads(text: str) -> bool:
             print(f"[threads] Logged in. URL: {page.url}", flush=True)
 
             opened = False
-            for fragment in ["撰寫新貼文", "新串文", "compose a new post", "Type to compose"]:
+            for fragment in ["撰寫新貼文", "新串文", "開始串文", "compose a new post",
+                             "Type to compose", "建立", "Create", "What's new", "有什麼新鮮事"]:
                 el = page.locator(f'[aria-label*="{fragment}"]')
                 if el.count() > 0:
                     el.first.click()
@@ -308,7 +335,7 @@ def post_to_threads(text: str) -> bool:
                             break
 
             if not opened:
-                for btn_txt in ["New thread", "新串文"]:
+                for btn_txt in ["New thread", "新串文", "開始串文", "建立", "Create"]:
                     el = page.locator(f'[role="button"]:has-text("{btn_txt}")')
                     if el.count() > 0:
                         el.first.click()
@@ -318,6 +345,17 @@ def post_to_threads(text: str) -> bool:
                             break
                         except Exception:
                             pass
+
+            # Last resort: click the feed composer prompt ("有什麼新鮮事？" / "What's new?")
+            if not opened:
+                try:
+                    prompt = page.get_by_text(re.compile(r"有什麼新鮮事|What's new", re.I))
+                    if prompt.count() > 0:
+                        prompt.first.click()
+                        page.locator('[contenteditable="true"]').wait_for(timeout=5000)
+                        opened = True
+                except Exception:
+                    pass
 
             if not opened:
                 print("[threads] Could not find compose button.", flush=True)
@@ -408,9 +446,9 @@ def post_to_instagram(site: dict) -> bool:
                 page.goto("https://www.instagram.com/create/style/", wait_until="domcontentloaded", timeout=15000)
                 time.sleep(2)
 
-            # Upload image file
+            # Upload image file (IG's file input is hidden -> wait for "attached", not "visible")
             file_input = page.locator('input[type="file"]').first
-            file_input.wait_for(timeout=10000)
+            file_input.wait_for(state="attached", timeout=15000)
             file_input.set_input_files(str(Path(image_path).resolve()))
             time.sleep(4)
 
@@ -545,21 +583,32 @@ def post_to_facebook(text: str) -> bool:
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
-    site = get_site_for_today()
-    print(f"[promo] Site: {site['name']}", flush=True)
-    print(f"[promo] URL: {site['url']}", flush=True)
+    sites = get_sites_for_slot()
+    slot = os.environ.get("PROMO_SLOT", "auto")
+    print(f"[promo] Slot={slot} | posting {len(sites)} site(s): {[s['name'] for s in sites]}", flush=True)
 
-    results = {}
-    results["threads"] = post_to_threads(site["text"])
-    results["instagram"] = post_to_instagram(site)
-    results["facebook"] = post_to_facebook(site["text"])
+    totals = {"threads": 0, "instagram": 0, "facebook": 0}
+    posted_any = False
+    for site in sites:
+        print(f"\n[promo] ===== {site['name']} ({site['url']}) =====", flush=True)
+        results = {}
+        for plat, fn in (("threads", lambda: post_to_threads(site["text"])),
+                         ("instagram", lambda: post_to_instagram(site)),
+                         ("facebook", lambda: post_to_facebook(site["text"]))):
+            try:
+                results[plat] = fn()
+            except Exception as e:
+                print(f"[{plat}] crashed: {e}", flush=True)
+                results[plat] = False
+            if results[plat]:
+                totals[plat] += 1
+                posted_any = True
+        print(f"[promo] {site['name']} → {results}", flush=True)
 
-    print(f"\n[promo] Results: {results}", flush=True)
-    ok = sum(1 for v in results.values() if v)
-    if ok == 0:
+    print(f"\n[promo] DONE. Posted across {len(sites)} site(s): {totals}", flush=True)
+    if not posted_any:
         print("[promo] WARNING: No posts were made. Check secrets.", flush=True)
         sys.exit(1)
-    print(f"[promo] Posted to {ok}/{len(results)} platforms.", flush=True)
 
 
 if __name__ == "__main__":
