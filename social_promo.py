@@ -412,13 +412,14 @@ def post_to_instagram(site: dict) -> bool:
         )
         context = browser.new_context(
             storage_state=str(session_file),
-            viewport={"width": 390, "height": 844},
+            # DESKTOP context: IG mobile-web "+" defaults to Stories; desktop "+" creates a square FEED post
+            viewport={"width": 1280, "height": 900},
             user_agent=(
-                "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) "
-                "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1"
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
             ),
             locale="zh-TW",
-            is_mobile=True,
+            is_mobile=False,
         )
         context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
 
