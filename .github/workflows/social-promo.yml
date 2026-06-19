@@ -13,6 +13,10 @@ on:
         options:
           - am
           - pm
+      platforms:
+        description: 'Platforms (comma-separated: facebook,instagram,threads). Empty = all'
+        default: ''
+        type: string
 
 jobs:
   post-promo:
@@ -43,4 +47,5 @@ jobs:
           IG_SESSION_JSON: ${{ secrets.IG_SESSION_JSON }}
           FB_SESSION_JSON: ${{ secrets.FB_SESSION_JSON }}
           PROMO_SLOT: ${{ github.event.inputs.slot || (github.event.schedule == '11 2 * * *' && 'am' || 'pm') }}
+          PROMO_PLATFORMS: ${{ github.event.inputs.platforms }}
         run: python social_promo.py
