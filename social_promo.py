@@ -585,8 +585,50 @@ def post_to_facebook(text: str) -> bool:
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
+def latest_youtube_item():
+    """D11: fetch the channel's latest public video from the keyless RSS feed and return a
+    SITES-compatible dict so it gets cross-posted to Threads/IG/FB alongside the tool sites."""
+    import urllib.request as _u, re as _re, html as _h
+    CHANNEL = "UCvd4nL04uE7lFqkKtzsOwLg"  # Gentle Soul
+    try:
+        req = _u.Request(f"https://www.youtube.com/feeds/videos.xml?channel_id={CHANNEL}",
+                         headers={"User-Agent": "Mozilla/5.0"})
+        xml = _u.urlopen(req, timeout=20).read().decode("utf-8", "ignore")
+    except Exception as e:
+        print(f"[promo] youtube RSS failed: {e}", flush=True)
+        return None
+    m = _re.search(r"<entry>(.*?)</entry>", xml, _re.S)
+    if not m:
+        return None
+    entry = m.group(1)
+    vid = _re.search(r"<yt:videoId>(.*?)</yt:videoId>", entry)
+    title = _re.search(r"<title>(.*?)</title>", entry)
+    if not (vid and title):
+        return None
+    vid = vid.group(1)
+    title = _h.unescape(title.group(1)).strip()
+    url = f"https://youtu.be/{vid}"
+    low = title.lower()
+    music = any(k in low for k in ("ambient", "sleep", "study", "relax", "dreamscape", "calm", "lofi"))
+    tags = "#ambient #音樂 #放鬆 #助眠 #專注 #lofi #sleepmusic" if music else "#AI #科技 #知識 #教學 #生產力"
+    line = "🎧 戴上耳機放鬆一下" if music else "✦ 每日新知，一支看懂"
+    text = f"🎬 新影片上線！\n\n{title}\n\n{line}\n👉 {url}\n\n{tags}"
+    return {
+        "name": "YouTube 新片",
+        "url": url,
+        "color": (236, 72, 153),
+        "icon": "🎬",
+        "text": text,
+        "subtitle": title[:40],
+        "features": ["每日自動更新影片", "Gentle Soul 頻道", "訂閱看更多"],
+    }
+
+
 def main():
     sites = get_sites_for_slot()
+    _yt = latest_youtube_item()
+    if _yt:
+        sites = list(sites) + [_yt]
     slot = os.environ.get("PROMO_SLOT", "auto")
     print(f"[promo] Slot={slot} | posting {len(sites)} site(s): {[s['name'] for s in sites]}", flush=True)
 
