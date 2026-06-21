@@ -49,3 +49,13 @@ jobs:
           PROMO_SLOT: ${{ github.event.inputs.slot || (github.event.schedule == '11 2 * * *' && 'am' || 'pm') }}
           PROMO_PLATFORMS: ${{ github.event.inputs.platforms }}
         run: python social_promo.py
+
+      - name: Notify Discord on failure
+        if: failure()
+        env:
+          WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          if [ -n "$WEBHOOK" ]; then
+            curl -s -H "Content-Type: application/json" \
+              -d "{\"content\":\"🔴 social-promo（社群自動轉發）失敗！log：${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" "$WEBHOOK"
+          fi
