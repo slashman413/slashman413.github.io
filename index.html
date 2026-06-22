@@ -347,13 +347,16 @@
     try {
       const r = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ access_key: W3KEY, email: em, subject: 'New newsletter subscriber', from_name: 'AI Toolkit Newsletter' }) });
       const d = await r.json();
-      if (d.success) { msg.style.color = '#10b981'; msg.textContent = en ? 'Subscribed! Thank you 🎉' : '訂閱成功！感謝你 🎉'; document.getElementById('subForm').reset(); }
+      if (d.success) { msg.style.color = '#10b981'; msg.textContent = en ? 'Subscribed! Thank you 🎉' : '訂閱成功！感謝你 🎉'; document.getElementById('subForm').reset(); if(typeof gtag==='function')gtag('event','newsletter_subscribe'); }
       else { msg.style.color = '#f87171'; msg.textContent = en ? 'Failed, please try again' : '失敗，請再試一次'; }
     } catch (err) { msg.style.color = '#f87171'; msg.textContent = en ? 'Error, please try again' : '發生錯誤，請再試一次'; }
   });
 
+  document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a');if(!a||!a.href||typeof gtag!=='function')return;var u=a.href;if(u.indexOf('amazon.')>-1)gtag('event','affiliate_click',{link_url:u});else if(u.indexOf('ko-fi.com')>-1)gtag('event','kofi_click',{link_url:u});else if(u.indexOf('youtu')>-1)gtag('event','youtube_click',{link_url:u});else if(u.indexOf('slashman413.github.io')>-1)gtag('event','internal_click',{link_url:u});});
   try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+  document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a');if(!a||!a.href||typeof gtag!=='function')return;var u=a.href;if(u.indexOf('amazon.')>-1)gtag('event','affiliate_click',{link_url:u});else if(u.indexOf('ko-fi.com')>-1)gtag('event','kofi_click',{link_url:u});else if(u.indexOf('youtu')>-1)gtag('event','youtube_click',{link_url:u});else if(u.indexOf('slashman413.github.io')>-1)gtag('event','internal_click',{link_url:u});});
   try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+  document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a');if(!a||!a.href||typeof gtag!=='function')return;var u=a.href;if(u.indexOf('amazon.')>-1)gtag('event','affiliate_click',{link_url:u});else if(u.indexOf('ko-fi.com')>-1)gtag('event','kofi_click',{link_url:u});else if(u.indexOf('youtu')>-1)gtag('event','youtube_click',{link_url:u});else if(u.indexOf('slashman413.github.io')>-1)gtag('event','internal_click',{link_url:u});});
   try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
 </script>
 </body>
