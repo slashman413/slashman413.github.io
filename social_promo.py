@@ -41,7 +41,7 @@ SITES = [
         "text": (
             "🧬 Looking for the next breakout stock but don't know where to start?\n"
             "A free quant screener for Taiwan stocks, backtested over 20 years (2004–2026).\n\n"
-            "🧬 想抓下一檔飆股，卻不知從何找起？\n用 20 年數據幫你篩出潛力股，完全免費 👇\n\n"
+            "🧬 想抓下一檔飆股，卻不知從何找起？\n用 20 年數據幫你篩出潛力股，免費 👇\n\n"
             "👉 https://slashman413.github.io/twse-surge-stocks-dna/\n\n"
             "#StockScreener #QuantTrading #台股 #飆股 #量化投資 #技術分析 #選股 #免費工具"
         ),
