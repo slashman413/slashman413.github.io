@@ -188,6 +188,21 @@ def _find_font(size, bold=False):
     return ImageFont.load_default()
 
 
+# English text for promo IMAGES (caption stays bilingual; image cards render English).
+EN_CARD = {
+    "ETF分析Dashboard": {"name": "Taiwan ETF Analysis", "subtitle": "0050 / 0056 / 00878 deep-dive", "features": ["Fundamentals: EPS / ROE / yield", "Technicals: RSI / MACD / K-line", "Whole-market scan, daily"]},
+    "大飆股DNA量化篩選": {"name": "Surge Stock DNA Screener", "subtitle": "Find the next breakout stock", "features": ["20MA pullback + RSI strategy", "Backtested 2004-2026", "Daily whole-market scan"]},
+    "台股回測儀表板": {"name": "Taiwan Stock Backtester", "subtitle": "Validate strategies on real data", "features": ["K-line breakout / MACD / ADX", "Williams %R signals", "Yearly capital simulation"]},
+    "全球大事3D追蹤": {"name": "Global Events 3D Globe", "subtitle": "Track world events in 3D", "features": ["60+ daily global headlines", "All six continents", "Interactive 3D globe"]},
+    "LLM VRAM計算機": {"name": "LLM VRAM Calculator", "subtitle": "How much VRAM for local AI?", "features": ["Models from 7B to 405B", "GGUF / AWQ / FP16 compare", "GPU compatibility list"]},
+    "量化投資工具箱": {"name": "Free AI & Finance Toolkit", "subtitle": "All free tools in one place", "features": ["TW stocks / DNA / backtest", "3D events, LLM calculator", "Daily updates, no signup"]},
+    "Token 成本計算機": {"name": "Token Cost Calculator", "subtitle": "Count tokens, compare API pricing", "features": ["Instant token counting", "10+ model price compare", "Runs locally"]},
+    "AI 出圖尺寸計算機": {"name": "AI Image Size Calculator", "subtitle": "Ratios for Midjourney / SD / SDXL", "features": ["Common aspect ratios", "Snaps to 64 multiples", "Free, runs locally"]},
+    "AI Prompt 範本庫": {"name": "AI Prompt Library", "subtitle": "Ready-to-use prompt templates", "features": ["Category + search", "One-click copy", "Always adding more"]},
+    "YouTube 新片": {"name": "New Video Out Now", "features": ["New video daily", "Gentle Soul channel", "Subscribe for more"]},
+}
+
+
 def generate_promo_image(site: dict) -> str:
     """Generate a 1080x1080 promo card. Returns absolute path to PNG."""
     try:
@@ -239,8 +254,8 @@ def generate_promo_image(site: dict) -> str:
         w = draw.textlength(text, font=fnt)
         draw.text(((W - w) // 2, y), text, font=fnt, fill=fill)
 
-    cx(site["name"], 195, f_title, WHITE)
-    cx(site["subtitle"], 260, f_sub, GRAY)
+    cx(EN_CARD.get(site["name"], {}).get("name", site["name"]), 195, f_title, WHITE)
+    cx(EN_CARD.get(site["name"], {}).get("subtitle", site["subtitle"]), 260, f_sub, GRAY)
 
     # Divider
     draw.line([(120, 305), (W - 120, 305)], fill=BORDER, width=1)
@@ -253,7 +268,7 @@ def generate_promo_image(site: dict) -> str:
 
     # Features
     feat_y = 420
-    for feat in site["features"]:
+    for feat in EN_CARD.get(site["name"], {}).get("features", site["features"]):
         draw.text((120, feat_y), "✦", font=f_feat, fill=accent)
         draw.text((165, feat_y), feat, font=f_feat, fill=WHITE)
         feat_y += 52
