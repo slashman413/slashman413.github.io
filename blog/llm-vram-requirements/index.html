@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖥️</text></svg>">
+<title>How Much VRAM Do You Need to Run a Local LLM? (2026 Guide)</title>
+<meta name="description" content="A practical 2026 guide to LLM VRAM requirements: how much GPU memory you need to run 7B, 13B, 70B and 405B models in GGUF, AWQ and FP16 — with a free calculator.">
+<meta name="keywords" content="llm vram requirements, how much vram to run llm, llama 70b vram, gguf vram, run local llm gpu, ollama vram">
+<meta property="og:title" content="How Much VRAM Do You Need to Run a Local LLM? (2026 Guide)">
+<meta property="og:description" content="How much GPU memory you need for 7B–405B models in GGUF, AWQ & FP16 — with a free calculator.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://slashman413.github.io/llm-calc/og.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://slashman413.github.io/llm-calc/og.png">
+<link rel="canonical" href="https://slashman413.github.io/blog/llm-vram-requirements/">
+<meta name="google-site-verification" content="jV8Xt5l-peRpLknp7xKYpvN8N5tCAkMctq0D-3RVyzk">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5115666613619890" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How Much VRAM Do You Need to Run a Local LLM? (2026 Guide)","author":{"@type":"Person","name":"slashman413"},"datePublished":"2026-06-22","image":"https://slashman413.github.io/llm-calc/og.png","mainEntityOfPage":"https://slashman413.github.io/blog/llm-vram-requirements/"}</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#dcdce8;line-height:1.75;padding:36px 18px 64px}
+  .wrap{max-width:720px;margin:0 auto}
+  h1{font-size:30px;font-weight:800;line-height:1.25;margin-bottom:8px;color:#f0f0f8}
+  .meta{color:#6868a0;font-size:13px;margin-bottom:22px}
+  h2{font-size:21px;font-weight:700;margin:30px 0 10px;color:#c7c7f0}
+  p{margin-bottom:14px;font-size:15.5px}
+  a{color:#a5b4fc}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th,td{border:1px solid rgba(255,255,255,.1);padding:9px 11px;text-align:left}
+  th{background:rgba(99,102,241,.15);color:#c7c7f0}
+  .cta{display:block;background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(139,92,246,.15));border:1px solid rgba(99,102,241,.35);border-radius:14px;padding:18px;margin:24px 0;text-decoration:none;color:inherit}
+  .cta b{color:#a5b4fc;font-size:16px}
+  .ad-slot{width:100%;min-height:90px;background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.07);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#303048;margin:22px 0}
+  .footer{margin-top:36px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);font-size:12.5px;color:#55557a;line-height:1.9}.footer a{color:#8888c0;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>How Much VRAM Do You Need to Run a Local LLM? (2026 Guide)</h1>
+  <div class="meta">Updated June 2026 · ~5 min read</div>
+
+  <p>Running a large language model on your own machine is mostly a question of <strong>memory</strong>. If the model's weights (plus a little overhead) fit in your GPU's VRAM, it runs fast. If they don't, you either offload to slower system RAM or can't run it at all. This guide gives you practical numbers, and a <a href="https://slashman413.github.io/llm-calc/">free VRAM calculator</a> to check any model instantly.</p>
+
+  <h2>The quick formula</h2>
+  <p>VRAM needed ≈ <strong>(number of parameters) × (bytes per parameter)</strong> + a context/overhead buffer. Bytes per parameter depend on the quantization:</p>
+  <table>
+    <tr><th>Precision</th><th>Bytes / param</th><th>Notes</th></tr>
+    <tr><td>FP16 / BF16</td><td>2.0</td><td>Full quality, largest</td></tr>
+    <tr><td>8-bit (Q8)</td><td>~1.0</td><td>Near-lossless</td></tr>
+    <tr><td>4-bit (Q4, AWQ, GGUF Q4_K_M)</td><td>~0.5</td><td>Best size/quality trade-off</td></tr>
+  </table>
+
+  <h2>Rough VRAM by model size (4-bit)</h2>
+  <table>
+    <tr><th>Model</th><th>4-bit VRAM</th><th>Fits on</th></tr>
+    <tr><td>7B</td><td>~5–6 GB</td><td>RTX 3060 / most laptops</td></tr>
+    <tr><td>13B</td><td>~9–10 GB</td><td>RTX 3080 / 4070</td></tr>
+    <tr><td>34B</td><td>~22 GB</td><td>RTX 3090 / 4090</td></tr>
+    <tr><td>70B</td><td>~42–48 GB</td><td>2× 24 GB or an A100</td></tr>
+    <tr><td>405B</td><td>~230 GB</td><td>Multi-GPU server</td></tr>
+  </table>
+  <p>Add headroom for context length: a long 32K-token context can add several GB on top of the weights.</p>
+
+  <a class="cta" href="https://slashman413.github.io/llm-calc/"><b>🖥️ Check any model in 1 second →</b><br>Free LLM VRAM Calculator — pick a model, quantization & context and get an exact estimate.</a>
+
+  <h2>Tips to fit a bigger model</h2>
+  <p>1. <strong>Quantize</strong> — moving from FP16 to 4-bit roughly quarters the memory with minimal quality loss for most uses. 2. <strong>Use GGUF with CPU offload</strong> (llama.cpp / Ollama) to split layers between GPU and RAM. 3. <strong>Shorten the context window</strong> if you're memory-bound. 4. <strong>Pick the right format</strong> — AWQ and GGUF Q4_K_M are popular sweet spots.</p>
+
+  <div class="ad-slot">廣告 Ad</div>
+
+  <h2>FAQ</h2>
+  <p><strong>Can I run a 70B model on a 24 GB card?</strong> Not fully in VRAM at 4-bit (it needs ~42 GB), but you can with CPU offload — it'll just be slower.</p>
+  <p><strong>Does context length matter?</strong> Yes — the KV cache grows with context and model size, so long prompts need extra memory.</p>
+
+  <div class="footer">
+    🧰 More: <a href="https://slashman413.github.io/llm-calc/">LLM VRAM Calculator</a> · <a href="https://slashman413.github.io/token-cost-calculator/">Token Cost Calculator</a> · <a href="https://slashman413.github.io/tools/">All free tools</a><br>
+    <a href="https://slashman413.github.io/">← AI工具人 Home</a> · ☕ <a href="https://ko-fi.com/ytstories0413">Support on Ko-fi</a>
+  </div>
+</div>
+<script>try{(adsbygoogle=window.adsbygoogle||[]).push({})}catch(e){}</script>
+</body>
+</html>
