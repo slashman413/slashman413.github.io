@@ -153,7 +153,7 @@ def get_sites_for_slot() -> list:
     names = AM_NAMES if slot == "am" else PM_NAMES
     by_name = {s["name"]: s for s in SITES}
     result = [by_name[n] for n in names if n in by_name]
-    if slot == "am":
+    if slot in ("am", "pm"):
         import random
         pool = [by_name[n] for n in AI_TOOL_NAMES if n in by_name and n not in names]
         if pool:
@@ -291,6 +291,17 @@ def generate_promo_image(site: dict) -> str:
     # Hashtags
     tags = "#FreeTools  #AITools  #Investing  #NoSignup"
     cx(tags, 975, f_tag, tuple(c // 2 for c in accent))
+
+    # QR code (scan to open) — bottom-left
+    try:
+        import urllib.request as _ur
+        from io import BytesIO as _BIO
+        _qrb = _ur.urlopen("https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=6&data=" + _ur.quote(site["url"], safe=""), timeout=20).read()
+        _qri = Image.open(_BIO(_qrb)).convert("RGB").resize((120, 120))
+        img.paste(_qri, (45, 935))
+        draw.text((105, 1066), "Scan", font=_find_font(18), fill=(120, 130, 160), anchor="mm")
+    except Exception as _qe:
+        print(f"[img] qr failed: {_qe}", flush=True)
 
     # Watermark
     draw.text((W - 20, H - 20), "@ytstories0413", font=_find_font(20), fill=(60, 70, 95), anchor="rb")
