@@ -46,6 +46,7 @@ jobs:
           THREADS_CHROME_SESSION: ${{ secrets.THREADS_CHROME_SESSION }}
           IG_SESSION_JSON: ${{ secrets.IG_SESSION_JSON }}
           FB_SESSION_JSON: ${{ secrets.FB_SESSION_JSON }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           PROMO_SLOT: ${{ github.event.inputs.slot || (github.event.schedule == '11 2 * * *' && 'am' || 'pm') }}
           PROMO_PLATFORMS: ${{ github.event.inputs.platforms }}
         run: python social_promo.py
