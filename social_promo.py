@@ -646,44 +646,69 @@ def latest_youtube_item():
     }
 
 
+def deliver_to_discord(site) -> bool:
+    """Generate the promo card + caption and post them to the Discord webhook (multipart)."""
+    wh = os.environ.get("DISCORD_WEBHOOK")
+    if not wh:
+        print("[discord] no DISCORD_WEBHOOK set", flush=True)
+        return False
+    import urllib.request
+    caption = site.get("text", "")
+    img = ""
+    try:
+        img = generate_promo_image(site)
+    except Exception as e:
+        print(f"[discord] image gen failed: {e}", flush=True)
+    boundary = "----promo" + str(int(time.time() * 1000))
+    pre = ("--" + boundary + "\r\nContent-Disposition: form-data; name=\"payload_json\"\r\n"
+           "Content-Type: application/json\r\n\r\n" + json.dumps({"content": caption[:1900]}) + "\r\n")
+    body = pre.encode("utf-8")
+    if img and os.path.exists(img):
+        with open(img, "rb") as f:
+            data = f.read()
+        body += ("--" + boundary + "\r\nContent-Disposition: form-data; name=\"files[0]\"; "
+                 "filename=\"promo.png\"\r\nContent-Type: image/png\r\n\r\n").encode("utf-8") + data + b"\r\n"
+    body += ("--" + boundary + "--\r\n").encode("utf-8")
+    req = urllib.request.Request(wh, data=body, headers={
+        "Content-Type": "multipart/form-data; boundary=" + boundary,
+        "User-Agent": "Mozilla/5.0 (compatible; sm413-promo)",
+    })
+    try:
+        urllib.request.urlopen(req, timeout=40)
+        print(f"[discord] delivered: {site['name']}", flush=True)
+        return True
+    except Exception as e:
+        print(f"[discord] failed for {site['name']}: {e}", flush=True)
+        return False
+
+
 def main():
     sites = get_sites_for_slot()
     _yt = latest_youtube_item()
     if _yt:
         sites = list(sites) + [_yt]
     slot = os.environ.get("PROMO_SLOT", "auto")
-    print(f"[promo] Slot={slot} | posting {len(sites)} site(s): {[s['name'] for s in sites]}", flush=True)
-
-    # Optional platform filter for isolated testing, e.g. PROMO_PLATFORMS=instagram
-    only = {p for p in os.environ.get("PROMO_PLATFORMS", "").lower().replace(" ", "").split(",") if p}
-    if only:
-        print(f"[promo] platform filter: {sorted(only)}", flush=True)
-
-    totals = {"threads": 0, "instagram": 0, "facebook": 0}
-    posted_any = False
+    print(f"[promo] Slot={slot} | delivering {len(sites)} item(s) to Discord: {[s['name'] for s in sites]}", flush=True)
+    wh = os.environ.get("DISCORD_WEBHOOK")
+    if wh:
+        try:
+            import urllib.request
+            hdr = f"\U0001F4E3 今日社群推廣素材（{len(sites)} 則）— 存圖 + 複製文案發 IG，Meta 會自動同步 FB + Threads \U0001F447"
+            req = urllib.request.Request(wh, data=json.dumps({"content": hdr}).encode("utf-8"),
+                headers={"Content-Type": "application/json", "User-Agent": "Mozilla/5.0 (compatible; sm413-promo)"})
+            urllib.request.urlopen(req, timeout=20)
+        except Exception as e:
+            print(f"[discord] header failed: {e}", flush=True)
+    ok = 0
     for site in sites:
-        print(f"\n[promo] ===== {site['name']} ({site['url']}) =====", flush=True)
-        results = {}
-        for plat, fn in (("threads", lambda: post_to_threads(site["text"])),
-                         ("instagram", lambda: post_to_instagram(site)),
-                         ("facebook", lambda: post_to_facebook(site["text"]))):
-            if only and plat not in only:
-                continue
-            try:
-                results[plat] = fn()
-            except Exception as e:
-                print(f"[{plat}] crashed: {e}", flush=True)
-                results[plat] = False
-            if results[plat]:
-                totals[plat] += 1
-                posted_any = True
-        print(f"[promo] {site['name']} → {results}", flush=True)
-
-    print(f"\n[promo] DONE. Posted across {len(sites)} site(s): {totals}", flush=True)
-    if not posted_any:
-        print("[promo] WARNING: No posts were made. Check secrets.", flush=True)
+        print(f"\n[promo] ===== {site['name']} =====", flush=True)
+        if deliver_to_discord(site):
+            ok += 1
+        time.sleep(1)
+    print(f"\n[promo] DONE. Delivered {ok}/{len(sites)} item(s) to Discord.", flush=True)
+    if ok == 0:
+        print("[promo] WARNING: nothing delivered. Check DISCORD_WEBHOOK.", flush=True)
         sys.exit(1)
-
 
 if __name__ == "__main__":
     main()
