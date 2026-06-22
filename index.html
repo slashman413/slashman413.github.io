@@ -236,6 +236,16 @@
     </div>
   </div>
 
+  <div class="social-section" style="margin-top:24px;padding-top:18px;">
+    <div class="section-label" style="text-align:center; margin-bottom:8px;" data-i18n="news_label">📧 訂閱電子報</div>
+    <p style="text-align:center;font-size:12px;color:#8888b0;margin-bottom:10px" data-i18n="news_sub">新工具與每日精選直接寄到信箱（不寄垃圾信，隨時可退訂）</p>
+    <form id="subForm" style="display:flex;gap:8px;max-width:380px;margin:0 auto">
+      <input id="subEmail" type="email" required placeholder="you@example.com" style="flex:1;background:#12121a;border:1px solid rgba(255,255,255,.12);border-radius:10px;color:#e8e8f0;padding:10px;font-size:13px">
+      <button type="submit" style="padding:10px 18px;border:none;border-radius:10px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-weight:700;font-size:13px;cursor:pointer" data-i18n="news_btn">訂閱</button>
+    </form>
+    <div id="subMsg" style="text-align:center;font-size:12px;margin-top:8px;min-height:16px;color:#a5b4fc"></div>
+  </div>
+
   <div class="footer">
     <span data-i18n="copyright">© 2026 Wayne · 本站資訊僅供參考，非投資建議</span><br>
     <a href="https://slashman413.github.io/terms.html" data-i18n="terms">服務說明</a> ·
@@ -297,6 +307,9 @@
     aff3_t:   ["Co-Intelligence（AI 暢銷書）", "Co-Intelligence (AI Bestseller)"],
     aff3_d:   ["紐時暢銷 · 從零搞懂如何與 AI 協作", "NYT bestseller · how to work with AI"],
     aff_disc: ["本區為 Amazon 聯盟連結，透過連結購買我們可能獲得回饋，不影響你的價格。", "As an Amazon Associate we earn from qualifying purchases — at no extra cost to you."],
+    news_label:["📧 訂閱電子報", "📧 SUBSCRIBE"],
+    news_sub:["新工具與每日精選直接寄到信箱（不寄垃圾信，隨時可退訂）", "New tools & daily picks to your inbox (no spam, unsubscribe anytime)"],
+    news_btn:["訂閱", "Subscribe"],
     b_free:   ["免費", "Free"],
     b_new:    ["新", "New"]
   };
@@ -314,6 +327,24 @@
     setLang((localStorage.getItem('site_lang') || 'zh') === 'en' ? 'zh' : 'en');
   }
   setLang(localStorage.getItem('site_lang') || 'zh');
+
+  // Newsletter subscribe (Web3Forms — free, no backend). Swap W3KEY with the access key to activate.
+  const W3KEY = "YOUR_WEB3FORMS_KEY";
+  document.getElementById('subForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const em = document.getElementById('subEmail').value;
+    const msg = document.getElementById('subMsg');
+    const en = (localStorage.getItem('site_lang') === 'en');
+    if (W3KEY === 'YOUR_WEB3FORMS_KEY') { msg.style.color = '#a5b4fc'; msg.textContent = en ? 'Newsletter opening soon — stay tuned!' : '電子報即將開放，敬請期待！'; return; }
+    msg.style.color = '#a5b4fc'; msg.textContent = '...';
+    try {
+      const r = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ access_key: W3KEY, email: em, subject: 'New newsletter subscriber', from_name: 'AI Toolkit Newsletter' }) });
+      const d = await r.json();
+      if (d.success) { msg.style.color = '#10b981'; msg.textContent = en ? 'Subscribed! Thank you 🎉' : '訂閱成功！感謝你 🎉'; document.getElementById('subForm').reset(); }
+      else { msg.style.color = '#f87171'; msg.textContent = en ? 'Failed, please try again' : '失敗，請再試一次'; }
+    } catch (err) { msg.style.color = '#f87171'; msg.textContent = en ? 'Error, please try again' : '發生錯誤，請再試一次'; }
+  });
+
   try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
   try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
   try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
