@@ -108,12 +108,40 @@ SITES = [
         "subtitle": "一站直達所有免費投資工具",
         "features": ["台股 ETF / 大飆股 DNA / 回測", "全球事件 3D・LLM 計算機", "每日自動更新 · 無需註冊"],
     },
+    {
+        "name": "Token 成本計算機",
+        "url": "https://slashman413.github.io/token-cost-calculator/",
+        "color": (139, 92, 246),
+        "icon": "🧮",
+        "text": "🧮 Free Token Cost Calculator\nCount tokens & compare GPT / Claude / Gemini API pricing instantly — runs in your browser, nothing uploaded.\n\n🧮 Token 成本計算機：算 token、比較各家 API 費用，免費 👇\n\n👉 https://slashman413.github.io/token-cost-calculator/\n☕ Support: https://ko-fi.com/ytstories0413\n#AI #LLM #GPT #Claude #FreeTools",
+        "subtitle": "算 token・比較 GPT/Claude/Gemini API 費用",
+        "features": ["即時計算 token 數", "10+ 模型價格對比", "本機運算不上傳"],
+    },
+    {
+        "name": "AI 出圖尺寸計算機",
+        "url": "https://slashman413.github.io/ai-image-size-calculator/",
+        "color": (236, 72, 153),
+        "icon": "🖼️",
+        "text": "🖼️ AI Image Size Calculator\nFind the perfect resolution & aspect ratio for Midjourney, Stable Diffusion & SDXL — free.\n\n🖼️ AI 出圖尺寸計算機：Midjourney／SD／SDXL 最佳長寬比，免費 👇\n\n👉 https://slashman413.github.io/ai-image-size-calculator/\n☕ Support: https://ko-fi.com/ytstories0413\n#AIart #Midjourney #StableDiffusion #FreeTools",
+        "subtitle": "Midjourney/SD/SDXL 長寬比與解析度",
+        "features": ["常用長寬比一鍵帶入", "對齊 64 倍數避免破圖", "免費・本機運算"],
+    },
+    {
+        "name": "AI Prompt 範本庫",
+        "url": "https://slashman413.github.io/ai-prompt-library/",
+        "color": (16, 185, 129),
+        "icon": "📝",
+        "text": "📝 AI Prompt Library\nHigh-quality, ready-to-use prompt templates for ChatGPT, Claude & Gemini — copy & go, free.\n\n📝 AI Prompt 範本庫：高品質提示詞範本一鍵複製，免費 👇\n\n👉 https://slashman413.github.io/ai-prompt-library/\n☕ Support: https://ko-fi.com/ytstories0413\n#AI #ChatGPT #Prompt #FreeTools",
+        "subtitle": "高品質提示詞範本・一鍵複製",
+        "features": ["分類 + 搜尋", "一鍵複製", "持續新增範本"],
+    },
 ]
 
 
 # Morning slot promotes sites 1-3, afternoon slot promotes sites 4-6 (by name, order-stable).
 AM_NAMES = ["量化投資工具箱", "LLM VRAM計算機", "ETF分析Dashboard"]
 PM_NAMES = ["大飆股DNA量化篩選", "台股回測儀表板", "全球大事3D追蹤"]
+AI_TOOL_NAMES = ["Token 成本計算機", "AI 出圖尺寸計算機", "AI Prompt 範本庫"]  # one appended at random to the AM slot daily
 
 
 def get_sites_for_slot() -> list:
@@ -124,7 +152,13 @@ def get_sites_for_slot() -> list:
         slot = "am" if datetime.datetime.now(datetime.timezone.utc).hour < 5 else "pm"
     names = AM_NAMES if slot == "am" else PM_NAMES
     by_name = {s["name"]: s for s in SITES}
-    return [by_name[n] for n in names if n in by_name]
+    result = [by_name[n] for n in names if n in by_name]
+    if slot == "am":
+        import random
+        pool = [by_name[n] for n in AI_TOOL_NAMES if n in by_name and n not in names]
+        if pool:
+            result.append(random.choice(pool))  # daily random AI-tool promo
+    return result
 
 
 # ── Promo image generation ────────────────────────────────────────────────────
