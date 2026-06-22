@@ -24,13 +24,11 @@ SITES = [
         "color": (99, 102, 241),
         "icon": "📊",
         "text": (
+            "📊 Still guessing which Taiwan ETF to buy?\n"
+            "Free analysis of 0050 / 0056 / 00878 — fundamentals, technicals & a daily whole-market scan.\n\n"
             "📊 還在憑感覺買 0050、00878？\n免費幫你一次看懂每檔 ETF 的財務+技術面 👇\n\n"
-            "追蹤 0050・0056・00878・00713 等主流 ETF\n"
-            "✦ 財務面：EPS、ROE、殖利率深度分析\n"
-            "✦ 技術面：RSI、MACD、K 線即時圖表\n"
-            "✦ 全市場掃描・每日自動更新\n\n"
             "👉 https://slashman413.github.io/tw-etf-dashboard/dashboard.html\n\n"
-            "#台股 #ETF #00878 #0050 #存股 #被動收入 #投資理財 #理財 #免費工具"
+            "#TaiwanStocks #ETF #Investing #台股 #ETF #00878 #0050 #存股 #被動收入 #免費工具"
         ),
         "subtitle": "追蹤 0050・0056・00878 等主流 ETF",
         "features": ["財務面：EPS / ROE / 殖利率", "技術面：RSI / MACD / K 線", "全市場掃描 · 每日自動更新"],
@@ -41,13 +39,11 @@ SITES = [
         "color": (16, 185, 129),
         "icon": "🧬",
         "text": (
+            "🧬 Looking for the next breakout stock but don't know where to start?\n"
+            "A free quant screener for Taiwan stocks, backtested over 20 years (2004–2026).\n\n"
             "🧬 想抓下一檔飆股，卻不知從何找起？\n用 20 年數據幫你篩出潛力股，完全免費 👇\n\n"
-            "用數據找出下一檔潛力飆股\n"
-            "✦ 趨勢拉回 20MA + RSI 進出場策略\n"
-            "✦ 2004–2026 年歷史回測驗證\n"
-            "✦ 每日掃描台股全市場・即時 K 線分析\n\n"
             "👉 https://slashman413.github.io/twse-surge-stocks-dna/\n\n"
-            "#台股 #飆股 #量化投資 #技術分析 #選股 #當沖 #波段 #免費工具"
+            "#StockScreener #QuantTrading #台股 #飆股 #量化投資 #技術分析 #選股 #免費工具"
         ),
         "subtitle": "用數據找出下一檔潛力飆股",
         "features": ["趨勢拉回 20MA + RSI 策略", "2004–2026 年歷史回測驗證", "每日掃描台股全市場"],
@@ -58,13 +54,11 @@ SITES = [
         "color": (245, 158, 11),
         "icon": "📈",
         "text": (
+            "📈 Does your trading strategy actually make money?\n"
+            "Backtest it on real historical Taiwan-stock data — K-line breakout, MACD, ADX & more. Free.\n\n"
             "📈 你的存股／當沖策略，真的會賺嗎？\n用歷史數據一鍵回測驗證給你看，免費 👇\n\n"
-            "歷史資料驗證你的投資策略\n"
-            "✦ K 線突破・MACD 動能・ADX 趨勢強度\n"
-            "✦ Williams %R 超買超賣訊號\n"
-            "✦ 每年獨立資金模擬・績效一目了然\n\n"
             "👉 https://slashman413.github.io/twse-backtests/\n\n"
-            "#台股 #回測 #量化交易 #技術分析 #程式交易 #投資策略 #免費工具"
+            "#Backtesting #TradingStrategy #台股 #回測 #量化交易 #程式交易 #免費工具"
         ),
         "subtitle": "歷史資料驗證你的投資策略",
         "features": ["K 線突破 / MACD / ADX 趨勢", "Williams %R 超買超賣訊號", "每年獨立資金模擬"],
@@ -75,13 +69,11 @@ SITES = [
         "color": (6, 182, 212),
         "icon": "🌍",
         "text": (
+            "🌍 Get the whole world's news in 30 seconds.\n"
+            "An interactive 3D globe with 60+ major headlines daily across all six continents. Free.\n\n"
             "🌍 30 秒看懂今天全世界發生了什麼事\n互動 3D 地球儀・每日 60+ 重大新聞，免費 👇\n\n"
-            "互動式地球追蹤全球重大事件\n"
-            "✦ 每日 60+ 筆全球新聞・六大洲覆蓋\n"
-            "✦ 3D 視覺化・一眼看懂世界局勢\n"
-            "✦ 地緣政治・經濟・自然災害即時更新\n\n"
             "👉 https://slashman413.github.io/global-events-tracker/\n\n"
-            "#全球局勢 #國際新聞 #地緣政治 #時事 #國際關係 #免費工具"
+            "#WorldNews #Geopolitics #台股 #全球局勢 #國際新聞 #時事 #免費工具"
         ),
         "subtitle": "互動式地球追蹤全球重大事件",
         "features": ["每日 60+ 筆全球新聞", "六大洲即時覆蓋", "3D 視覺化地球儀"],
@@ -92,11 +84,9 @@ SITES = [
         "color": (139, 92, 246),
         "icon": "🖥",
         "text": (
-            "🖥️ 想在自己電腦跑 AI，又怕顯卡跑不動？\n一秒算出你的卡能跑多大的模型，免費 👇\n\n"
-            "跑本地 AI 需要多少記憶體？馬上算出來\n"
-            "✦ 支援 7B 到 405B 全規格模型\n"
-            "✦ GGUF・AWQ・FP16 量化格式即時對比\n"
-            "✦ RTX 4090、M3 Max 等主流硬體一覽\n\n"
+            "🖥️ Want to run AI locally but worried your GPU can't handle it?\n"
+            "Instantly calculate the VRAM you need for any model, 7B to 405B. Free.\n\n"
+            "🖥️ 想在自己電腦跑 AI 又怕顯卡跑不動？\n一秒算出你的卡能跑多大的模型，免費 👇\n\n"
             "👉 https://slashman413.github.io/llm-calc/\n\n"
             "#LocalLLM #AI #VRAM #Ollama #LLM #人工智慧 #免費工具"
         ),
@@ -109,13 +99,11 @@ SITES = [
         "color": (79, 70, 229),
         "icon": "🚀",
         "text": (
+            "🚀 10+ free investing & AI tools in one place.\n"
+            "Taiwan-stock analysis, screeners, backtesting, AI calculators — all free, no signup.\n\n"
             "🚀 10+ 個免費投資 & AI 工具，一站全包！\n台股分析・選股・回測・AI 計算機…通通免費 👇\n\n"
-            "一站直達所有投資與分析工具\n"
-            "✦ 台股 ETF・大飆股 DNA・策略回測\n"
-            "✦ 全球事件 3D 地球儀・LLM VRAM 計算機\n"
-            "✦ 每日自動更新・無需註冊\n\n"
             "👉 https://slashman413.github.io/\n\n"
-            "#量化投資 #台股 #ETF #理財工具 #投資理財 #免費工具 #被動收入"
+            "#FreeTools #Investing #AI #量化投資 #台股 #ETF #理財工具 #免費工具"
         ),
         "subtitle": "一站直達所有免費投資工具",
         "features": ["台股 ETF / 大飆股 DNA / 回測", "全球事件 3D・LLM 計算機", "每日自動更新 · 無需註冊"],
