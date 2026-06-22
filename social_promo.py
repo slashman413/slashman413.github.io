@@ -248,7 +248,7 @@ def generate_promo_image(site: dict) -> str:
     f_feat  = _find_font(26)
     f_url   = _find_font(27, bold=True)
     f_tag   = _find_font(22)
-    f_free  = _find_font(34, bold=True)
+    f_free  = _find_font(30, bold=True)
 
     def cx(text, y, fnt, fill):
         w = draw.textlength(text, font=fnt)
@@ -262,9 +262,9 @@ def generate_promo_image(site: dict) -> str:
 
     # FREE badge
     FREE_Y = 325
-    draw.rounded_rectangle([W // 2 - 110, FREE_Y, W // 2 + 110, FREE_Y + 60], radius=30,
+    draw.rounded_rectangle([W // 2 - 215, FREE_Y, W // 2 + 215, FREE_Y + 60], radius=30,
                            fill=(*accent_dim, 180), outline=accent, width=2)
-    cx("完全免費", FREE_Y + 13, f_free, accent)
+    cx("FREE ONLINE TOOL", FREE_Y + 13, f_free, accent)
 
     # Features
     feat_y = 420
@@ -289,7 +289,7 @@ def generate_promo_image(site: dict) -> str:
     cx(url_text, URL_Y + 18, f_url, accent)
 
     # Hashtags
-    tags = "#免費工具  #台股  #AI工具  #量化投資"
+    tags = "#FreeTools  #AITools  #Investing  #NoSignup"
     cx(tags, 975, f_tag, tuple(c // 2 for c in accent))
 
     # Watermark
