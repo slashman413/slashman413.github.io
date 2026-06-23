@@ -125,6 +125,12 @@
   </div>
 
   <div id="panel-tools" class="tab-panel">
+    <input id="toolSearch" type="text" placeholder="🔍 搜尋工具 · Search tools..." oninput="filterTools(this.value)" autocomplete="off" style="width:100%;padding:11px 14px;margin-bottom:12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#e8e8f0;font-size:14px;outline:none">
+    <a class="link-card c-llm" href="https://slashman413.github.io/popular/" target="_blank" data-keep="1">
+      <div class="link-icon">🏆</div>
+      <div class="link-text"><div class="link-title">熱門工具榜 · Popular</div><div class="link-desc">看大家最常用哪些工具（即時排名）· live ranking</div></div>
+      <div class="link-arrow">›</div>
+    </a>
     <div class="section-label" data-i18n="sec_ai">AI 工具</div>
     <a class="link-card c-llm" href="https://slashman413.github.io/llm-calc/" target="_blank">
       <div class="link-icon">🖥️</div>
@@ -438,5 +444,19 @@
   try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
 </script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+<script>
+function filterTools(q){
+  q=(q||'').toLowerCase().trim();
+  document.querySelectorAll('#panel-tools .link-card').forEach(function(c){
+    if(c.getAttribute('data-keep')){ c.style.display=''; return; }
+    c.style.display = (!q || c.textContent.toLowerCase().indexOf(q)>-1) ? '' : 'none';
+  });
+  document.querySelectorAll('#panel-tools .section-label').forEach(function(lbl){
+    var any=false, n=lbl.nextElementSibling;
+    while(n && !(n.classList&&n.classList.contains('section-label'))){ if(n.classList&&n.classList.contains('link-card') && n.style.display!=='none'){ any=true; break; } n=n.nextElementSibling; }
+    lbl.style.display = (q && !any) ? 'none' : '';
+  });
+}
+</script>
 </body>
 </html>
