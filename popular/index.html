@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏆</text></svg>">
+<title>Most Popular Free Tools — Live Leaderboard | 熱門工具榜</title>
+<meta name="description" content="Live leaderboard of the most-used free online tools on AI工具人 — ranked by real visitor counts.">
+<link rel="canonical" href="https://slashman413.github.io/popular/">
+<meta name="robots" content="index, follow">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#e8e8f0;padding:36px 16px 64px}
+  .wrap{max-width:600px;margin:0 auto}
+  h1{font-size:26px;font-weight:800;margin-bottom:4px;background:linear-gradient(135deg,#fbbf24,#f472b6,#a5b4fc);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .lead{color:#7878a0;font-size:13px;margin-bottom:22px}
+  .row{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px;margin-bottom:9px;text-decoration:none;color:inherit;transition:.2s;position:relative;overflow:hidden}
+  .row:hover{transform:translateY(-2px);border-color:rgba(99,102,241,.4)}
+  .row .bar{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,rgba(99,102,241,.18),transparent);z-index:0}
+  .rank{font-size:17px;font-weight:800;min-width:30px;text-align:center;color:#fbbf24;z-index:1}
+  .ico{font-size:22px;z-index:1}
+  .nm{flex:1;font-size:14.5px;font-weight:600;z-index:1}
+  .vw{font-size:13px;color:#a5b4fc;font-weight:700;z-index:1}.vw span{color:#686898;font-weight:400;font-size:11px}
+  .top1 .rank{color:#fbbf24}.top2 .rank{color:#cbd5e1}.top3 .rank{color:#d97706}
+  .foot{margin-top:24px;text-align:center;font-size:12px;color:#55557a;line-height:1.9}.foot a{color:#8888c0;text-decoration:none}
+  .upd{text-align:center;color:#44446a;font-size:11px;margin-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🏆 Most Popular Tools</h1>
+  <p class="lead">Live ranking of our free tools by real visitor count · 依真實瀏覽人次即時排名</p>
+  <div id="board"><p style="color:#55557a;text-align:center;padding:30px">Loading live counts…</p></div>
+  <div class="upd" id="upd"></div>
+  <div class="foot"><a href="https://slashman413.github.io/tools/">🧰 Browse all tools</a> · <a href="https://slashman413.github.io/">← AI工具人 Home</a></div>
+</div>
+<script>
+  const TOOLS=[
+    ["portal","🤖","AI工具人 Home","https://slashman413.github.io/"],
+    ["llmcalc","🖥️","LLM VRAM Calculator","https://slashman413.github.io/llm-calc/"],
+    ["tokencalc","🧮","Token Cost Calculator","https://slashman413.github.io/token-cost-calculator/"],
+    ["imageratio","🖼️","AI Image Size Calculator","https://slashman413.github.io/ai-image-size-calculator/"],
+    ["prompts","📝","AI Prompt Library","https://slashman413.github.io/ai-prompt-library/"],
+    ["pomodoro","🍅","Pomodoro Focus Timer","https://slashman413.github.io/pomodoro-focus-timer/"],
+    ["devtools","🛠️","JSON & Regex Dev Tools","https://slashman413.github.io/json-regex-devtools/"],
+    ["pwgen","🔐","Password Generator","https://slashman413.github.io/password-generator/"],
+    ["wordcount","🔤","Word & Character Counter","https://slashman413.github.io/word-counter/"],
+    ["qrgen","🔳","QR Code Generator","https://slashman413.github.io/qr-code-generator/"],
+    ["unitconv","📐","Unit Converter","https://slashman413.github.io/unit-converter/"],
+    ["imgcompress","🗜️","Image Compressor","https://slashman413.github.io/image-compressor/"],
+    ["calc","🧮","Calculators","https://slashman413.github.io/calculators/"],
+    ["devkit","🧑‍💻","Developer Tools","https://slashman413.github.io/dev-tools/"],
+    ["colortools","🎨","Color Tools","https://slashman413.github.io/color-tools/"],
+    ["pdftools","📄","PDF Tools","https://slashman413.github.io/pdf-tools/"],
+    ["compound","📈","Compound Calculator","https://slashman413.github.io/compound-calculator/"],
+    ["etf","📊","Taiwan ETF Analysis","https://slashman413.github.io/tw-etf-dashboard/dashboard.html"],
+    ["dna","🧬","Surge Stock DNA","https://slashman413.github.io/twse-surge-stocks-dna/"],
+    ["backtest","📉","Taiwan Stock Backtester","https://slashman413.github.io/twse-backtests/"],
+    ["global","🌍","Global Events 3D Globe","https://slashman413.github.io/global-events-tracker/"]
+  ];
+  async function getCount(key){
+    try{ const r=await fetch("https://abacus.jasoncameron.dev/get/sm413-"+key+"/views"); if(!r.ok)return 0; const d=await r.json(); return Number(d.value)||0; }
+    catch(e){ return 0; }
+  }
+  (async()=>{
+    const results=await Promise.all(TOOLS.map(async t=>({t,c:await getCount(t[0])})));
+    results.sort((a,b)=>b.c-a.c);
+    const max=Math.max(1,results[0].c);
+    const board=document.getElementById("board"); board.innerHTML="";
+    results.forEach((r,i)=>{
+      const [key,ico,nm,url]=r.t;
+      const a=document.createElement("a"); a.href=url; a.className="row"+(i<3?" top"+(i+1):"");
+      a.innerHTML='<div class="bar" style="width:'+(r.c/max*100)+'%"></div>'+
+        '<div class="rank">'+(i===0?"🥇":i===1?"🥈":i===2?"🥉":"#"+(i+1))+'</div>'+
+        '<div class="ico">'+ico+'</div><div class="nm">'+nm+'</div>'+
+        '<div class="vw">'+r.c.toLocaleString()+' <span>views</span></div>';
+      board.appendChild(a);
+    });
+    document.getElementById("upd").textContent="Updated "+new Date().toLocaleString();
+  })();
+  document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a');if(a&&a.href&&typeof gtag==='function'&&a.href.indexOf('slashman413.github.io')>-1)gtag('event','internal_click',{link_url:a.href});});
+</script>
+</body>
+</html>
