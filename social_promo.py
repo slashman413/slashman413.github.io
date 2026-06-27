@@ -135,6 +135,114 @@ SITES = [
         "subtitle": "高品質提示詞範本・一鍵複製",
         "features": ["分類 + 搜尋", "一鍵複製", "持續新增範本"],
     },
+    {
+        "name": "密碼產生器",
+        "url": "https://slashman413.github.io/password-generator/",
+        "color": (244, 63, 94),
+        "icon": "🔐",
+        "text": "🔐 Free Strong Password Generator\nCustom length & symbols, crypto-grade randomness — runs locally, nothing uploaded.\n\n🔐 免費強密碼產生器：自訂長度字元、即時產生、本機運算不上傳 👇\n\n👉 https://slashman413.github.io/password-generator/\n☕ Support: https://ko-fi.com/ytstories0413\n#Password #Security #Privacy #免費工具 #資安",
+        "subtitle": "自訂長度字元・即時產生安全密碼",
+        "features": ["加密級亂數產生", "本機運算不上傳", "即時強度檢測"],
+    },
+    {
+        "name": "字數統計工具",
+        "url": "https://slashman413.github.io/word-counter/",
+        "color": (59, 130, 246),
+        "icon": "✍️",
+        "text": "✍️ Free Word & Character Counter\nWords, characters, sentences & reading time — instant, in your browser.\n\n✍️ 免費字數統計：字數・字元・句數・閱讀時間，即時本機運算 👇\n\n👉 https://slashman413.github.io/word-counter/\n☕ Support: https://ko-fi.com/ytstories0413\n#Writing #WordCount #免費工具 #寫作",
+        "subtitle": "字數・字元・句數・閱讀時間",
+        "features": ["即時統計字數字元", "估算閱讀時間", "本機運算不上傳"],
+    },
+    {
+        "name": "複利計算機",
+        "url": "https://slashman413.github.io/compound-calculator/",
+        "color": (245, 158, 11),
+        "icon": "💹",
+        "text": "💹 Free Compound Interest Calculator\nSee how your money grows with a live growth chart — supports 5 languages.\n\n💹 免費複利計算機：本利和成長圖、定期定額試算，支援 5 種語言 👇\n\n👉 https://slashman413.github.io/compound-calculator/\n#CompoundInterest #Investing #理財 #複利 #免費工具",
+        "subtitle": "複利成長試算＋圖表",
+        "features": ["本利和成長圖", "定期定額試算", "支援 5 種語言"],
+    },
+    {
+        "name": "單位換算工具",
+        "url": "https://slashman413.github.io/unit-converter/",
+        "color": (20, 184, 166),
+        "icon": "📐",
+        "text": "📐 Free Unit Converter\nLength, weight, temperature, area, speed & more — instant, runs locally.\n\n📐 免費單位換算：長度・重量・溫度・面積・速度，即時換算 👇\n\n👉 https://slashman413.github.io/unit-converter/\n#UnitConverter #免費工具 #生活工具",
+        "subtitle": "長度・重量・溫度・面積・速度",
+        "features": ["多類單位即時換算", "常用單位齊全", "免費・本機運算"],
+    },
+    {
+        "name": "番茄鐘專注計時器",
+        "url": "https://slashman413.github.io/pomodoro-focus-timer/",
+        "color": (249, 115, 22),
+        "icon": "⏲️",
+        "text": "⏲️ Free Pomodoro Focus Timer\nBeat procrastination with work/break cycles — right in your browser.\n\n⏲️ 免費番茄鐘：工作／休息循環、桌面提醒，戰勝拖延 👇\n\n👉 https://slashman413.github.io/pomodoro-focus-timer/\n#Pomodoro #Productivity #Focus #免費工具 #生產力",
+        "subtitle": "番茄工作法・專注／休息循環",
+        "features": ["可自訂工作/休息時間", "桌面通知提醒", "免費・免安裝"],
+    },
+    {
+        "name": "JSON・Regex 工具",
+        "url": "https://slashman413.github.io/json-regex-devtools/",
+        "color": (99, 102, 241),
+        "icon": "🧰",
+        "text": "🧰 Free JSON + Regex Tools\nFormat/validate JSON & test regex live — runs in your browser.\n\n🧰 免費 JSON 格式化＋Regex 即時測試，本機運算 👇\n\n👉 https://slashman413.github.io/json-regex-devtools/\n#JSON #Regex #DevTools #免費工具 #工程師",
+        "subtitle": "JSON 格式化 + Regex 即時測試",
+        "features": ["JSON 美化/驗證", "Regex 即時比對", "本機運算不上傳"],
+    },
+    {
+        "name": "開發者工具箱",
+        "url": "https://slashman413.github.io/dev-tools/",
+        "color": (34, 197, 94),
+        "icon": "🛠️",
+        "text": "🛠️ Free Developer Tools\nBase64, URL, JWT, UUID, timestamp, SHA-256 — one toolbox, runs locally.\n\n🛠️ 免費開發者工具箱：Base64・JWT・UUID・SHA-256，一站搞定 👇\n\n👉 https://slashman413.github.io/dev-tools/\n#WebDev #DevTools #Programming #免費工具 #工程師",
+        "subtitle": "Base64・JWT・UUID・SHA-256…",
+        "features": ["編解碼一次到位", "JWT/UUID/雜湊", "本機運算不上傳"],
+    },
+    {
+        "name": "配色工具",
+        "url": "https://slashman413.github.io/color-tools/",
+        "color": (236, 72, 153),
+        "icon": "🎨",
+        "text": "🎨 Free Color Tools for Designers\nPicker, HEX/RGB/HSL converter, palette & CSS gradient generator.\n\n🎨 免費配色工具：取色器・色碼轉換・調色盤・CSS 漸層 👇\n\n👉 https://slashman413.github.io/color-tools/\n#Design #ColorPalette #CSS #免費工具 #設計",
+        "subtitle": "取色・轉換・調色盤・CSS 漸層",
+        "features": ["HEX/RGB/HSL 互轉", "調色盤產生", "CSS 漸層輸出"],
+    },
+    {
+        "name": "QR Code 產生器",
+        "url": "https://slashman413.github.io/qr-code-generator/",
+        "color": (234, 179, 8),
+        "icon": "🔳",
+        "text": "🔳 Free QR Code Generator\nLinks, text, Wi-Fi & more → instant QR you can download. No signup.\n\n🔳 免費 QR Code 產生器：網址・文字・Wi-Fi 一秒轉，可下載 👇\n\n👉 https://slashman413.github.io/qr-code-generator/\n#QRCode #免費工具 #行銷工具",
+        "subtitle": "網址・文字・Wi-Fi 轉 QR Code",
+        "features": ["即時產生 QR", "可下載 PNG", "免費・免註冊"],
+    },
+    {
+        "name": "圖片壓縮工具",
+        "url": "https://slashman413.github.io/image-compressor/",
+        "color": (14, 165, 233),
+        "icon": "🖼️",
+        "text": "🖼️ Free Image Compressor\nShrink & resize images in your browser — files never uploaded.\n\n🖼️ 免費圖片壓縮：瀏覽器內壓縮／縮放，檔案不上傳保護隱私 👇\n\n👉 https://slashman413.github.io/image-compressor/\n#ImageCompression #WebPerf #免費工具 #隱私",
+        "subtitle": "瀏覽器內壓縮・縮放圖片",
+        "features": ["不上傳・保護隱私", "壓縮 + 縮放", "支援 JPG/PNG/WebP"],
+    },
+    {
+        "name": "PDF 工具",
+        "url": "https://slashman413.github.io/pdf-tools/",
+        "color": (239, 68, 68),
+        "icon": "📄",
+        "text": "📄 Free PDF Tools\nImages → PDF & merge PDFs, all in your browser — files never uploaded.\n\n📄 免費 PDF 工具：圖片轉 PDF、合併 PDF，本機處理不上傳 👇\n\n👉 https://slashman413.github.io/pdf-tools/\n#PDF #免費工具 #文件 #隱私",
+        "subtitle": "圖片轉 PDF・合併 PDF",
+        "features": ["圖片轉 PDF", "合併多份 PDF", "本機處理不上傳"],
+    },
+    {
+        "name": "多功能計算機",
+        "url": "https://slashman413.github.io/calculators/",
+        "color": (168, 85, 247),
+        "icon": "🧮",
+        "text": "🧮 Free Everyday Calculators\nBMI, loan, percentage, age, tip — all in one, no signup.\n\n🧮 免費多功能計算機：BMI・貸款・百分比・年齡・小費，一站算到好 👇\n\n👉 https://slashman413.github.io/calculators/\n#Calculator #免費工具 #生活工具",
+        "subtitle": "BMI・貸款・百分比・年齡・小費",
+        "features": ["分頁式多種計算", "即時結果", "免費・免註冊"],
+    },
 ]
 
 
@@ -145,20 +253,11 @@ AI_TOOL_NAMES = ["Token 成本計算機", "AI 出圖尺寸計算機", "AI Prompt
 
 
 def get_sites_for_slot() -> list:
-    """Return the 3 sites for the current slot. PROMO_SLOT=am|pm (set by the workflow);
-    if unset, infer from UTC hour (morning run vs afternoon run)."""
-    slot = os.environ.get("PROMO_SLOT", "").lower().strip()
-    if slot not in ("am", "pm"):
-        slot = "am" if datetime.datetime.now(datetime.timezone.utc).hour < 5 else "pm"
-    names = AM_NAMES if slot == "am" else PM_NAMES
-    by_name = {s["name"]: s for s in SITES}
-    result = [by_name[n] for n in names if n in by_name]
-    if slot in ("am", "pm"):
-        import random
-        pool = [by_name[n] for n in AI_TOOL_NAMES if n in by_name and n not in names]
-        if pool:
-            result.append(random.choice(pool))  # daily random AI-tool promo
-    return result
+    """Pick 5 RANDOM sites to promote this run, so the daily promo is never the same
+    set two days running. PROMO_SLOT (am/pm) is still accepted by the workflow but no
+    longer fixes which sites go out — each run samples fresh from the full SITES pool."""
+    import random
+    return random.sample(SITES, min(5, len(SITES)))
 
 
 # ── Promo image generation ────────────────────────────────────────────────────
@@ -200,6 +299,18 @@ EN_CARD = {
     "AI 出圖尺寸計算機": {"name": "AI Image Size Calculator", "subtitle": "Ratios for Midjourney / SD / SDXL", "features": ["Common aspect ratios", "Snaps to 64 multiples", "Free, runs locally"]},
     "AI Prompt 範本庫": {"name": "AI Prompt Library", "subtitle": "Ready-to-use prompt templates", "features": ["Category + search", "One-click copy", "Always adding more"]},
     "YouTube 新片": {"name": "New Video Out Now", "features": ["New video daily", "Gentle Soul channel", "Subscribe for more"]},
+    "密碼產生器": {"name": "Password Generator", "subtitle": "Strong random passwords, instantly", "features": ["Crypto-grade randomness", "Runs locally, no upload", "Live strength meter"]},
+    "字數統計工具": {"name": "Word Counter", "subtitle": "Words, characters, reading time", "features": ["Live word/char count", "Reading-time estimate", "Runs locally"]},
+    "複利計算機": {"name": "Compound Interest Calculator", "subtitle": "See your money grow", "features": ["Growth chart", "Recurring contributions", "5 languages"]},
+    "單位換算工具": {"name": "Unit Converter", "subtitle": "Length, weight, temp, area…", "features": ["Instant conversion", "All common units", "Runs locally"]},
+    "番茄鐘專注計時器": {"name": "Pomodoro Focus Timer", "subtitle": "Work/break focus cycles", "features": ["Custom work/break", "Desktop notifications", "Free, no install"]},
+    "JSON・Regex 工具": {"name": "JSON & Regex Tools", "subtitle": "Format JSON, test regex live", "features": ["JSON beautify/validate", "Live regex matching", "Runs locally"]},
+    "開發者工具箱": {"name": "Developer Tools", "subtitle": "Base64, JWT, UUID, SHA-256…", "features": ["Encode/decode suite", "JWT/UUID/hash", "Runs locally"]},
+    "配色工具": {"name": "Color Tools", "subtitle": "Picker, converter, palette, gradient", "features": ["HEX/RGB/HSL convert", "Palette generator", "CSS gradient export"]},
+    "QR Code 產生器": {"name": "QR Code Generator", "subtitle": "Links, text, Wi-Fi to QR", "features": ["Instant QR", "Download PNG", "Free, no signup"]},
+    "圖片壓縮工具": {"name": "Image Compressor", "subtitle": "Compress & resize in-browser", "features": ["No upload, private", "Compress + resize", "JPG/PNG/WebP"]},
+    "PDF 工具": {"name": "PDF Tools", "subtitle": "Images to PDF, merge PDFs", "features": ["Images to PDF", "Merge PDFs", "Local, no upload"]},
+    "多功能計算機": {"name": "Everyday Calculators", "subtitle": "BMI, loan, %, age, tip", "features": ["Tabbed multi-calculator", "Instant results", "Free, no signup"]},
 }
 
 
