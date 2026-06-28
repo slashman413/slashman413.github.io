@@ -10,13 +10,13 @@
 <meta property="og:title" content="How Much VRAM Do You Need to Run a Local LLM? (2026 Guide)">
 <meta property="og:description" content="How much GPU memory you need for 7B–405B models in GGUF, AWQ & FP16 — with a free calculator.">
 <meta property="og:type" content="article">
-<meta property="og:image" content="https://slashman413.github.io/llm-calc/og.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://slashman413.github.io/llm-calc/og.png">
-<link rel="canonical" href="https://slashman413.github.io/blog/llm-vram-requirements/">
+<meta property="og:image" content="https://slashmantools.us/llm-calc/og.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://slashmantools.us/llm-calc/og.png">
+<link rel="canonical" href="https://slashmantools.us/blog/llm-vram-requirements/">
 <meta name="google-site-verification" content="jV8Xt5l-peRpLknp7xKYpvN8N5tCAkMctq0D-3RVyzk">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7217603696203672" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How Much VRAM Do You Need to Run a Local LLM? (2026 Guide)","author":{"@type":"Person","name":"slashman413"},"datePublished":"2026-06-22","image":"https://slashman413.github.io/llm-calc/og.png","mainEntityOfPage":"https://slashman413.github.io/blog/llm-vram-requirements/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How Much VRAM Do You Need to Run a Local LLM? (2026 Guide)","author":{"@type":"Person","name":"slashman413"},"datePublished":"2026-06-22","image":"https://slashmantools.us/llm-calc/og.png","mainEntityOfPage":"https://slashmantools.us/blog/llm-vram-requirements/"}</script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#dcdce8;line-height:1.75;padding:36px 18px 64px}
@@ -40,7 +40,7 @@
   <h1>How Much VRAM Do You Need to Run a Local LLM? (2026 Guide)</h1>
   <div class="meta">Updated June 2026 · ~5 min read</div>
 
-  <p>Running a large language model on your own machine is mostly a question of <strong>memory</strong>. If the model's weights (plus a little overhead) fit in your GPU's VRAM, it runs fast. If they don't, you either offload to slower system RAM or can't run it at all. This guide gives you practical numbers, and a <a href="https://slashman413.github.io/llm-calc/">free VRAM calculator</a> to check any model instantly.</p>
+  <p>Running a large language model on your own machine is mostly a question of <strong>memory</strong>. If the model's weights (plus a little overhead) fit in your GPU's VRAM, it runs fast. If they don't, you either offload to slower system RAM or can't run it at all. This guide gives you practical numbers, and a <a href="https://slashmantools.us/llm-calc/">free VRAM calculator</a> to check any model instantly.</p>
 
   <h2>The quick formula</h2>
   <p>VRAM needed ≈ <strong>(number of parameters) × (bytes per parameter)</strong> + a context/overhead buffer. Bytes per parameter depend on the quantization:</p>
@@ -62,7 +62,7 @@
   </table>
   <p>Add headroom for context length: a long 32K-token context can add several GB on top of the weights.</p>
 
-  <a class="cta" href="https://slashman413.github.io/llm-calc/"><b>🖥️ Check any model in 1 second →</b><br>Free LLM VRAM Calculator — pick a model, quantization & context and get an exact estimate.</a>
+  <a class="cta" href="https://slashmantools.us/llm-calc/"><b>🖥️ Check any model in 1 second →</b><br>Free LLM VRAM Calculator — pick a model, quantization & context and get an exact estimate.</a>
 
   <h2>Tips to fit a bigger model</h2>
   <p>1. <strong>Quantize</strong> — moving from FP16 to 4-bit roughly quarters the memory with minimal quality loss for most uses. 2. <strong>Use GGUF with CPU offload</strong> (llama.cpp / Ollama) to split layers between GPU and RAM. 3. <strong>Shorten the context window</strong> if you're memory-bound. 4. <strong>Pick the right format</strong> — AWQ and GGUF Q4_K_M are popular sweet spots.</p>
@@ -74,8 +74,8 @@
   <p><strong>Does context length matter?</strong> Yes — the KV cache grows with context and model size, so long prompts need extra memory.</p>
 
   <div class="footer">
-    🧰 More: <a href="https://slashman413.github.io/llm-calc/">LLM VRAM Calculator</a> · <a href="https://slashman413.github.io/token-cost-calculator/">Token Cost Calculator</a> · <a href="https://slashman413.github.io/tools/">All free tools</a><br>
-    <a href="https://slashman413.github.io/">← AI工具人 Home</a> · ☕ <a href="https://ko-fi.com/ytstories0413">Support on Ko-fi</a>
+    🧰 More: <a href="https://slashmantools.us/llm-calc/">LLM VRAM Calculator</a> · <a href="https://slashmantools.us/token-cost-calculator/">Token Cost Calculator</a> · <a href="https://slashmantools.us/tools/">All free tools</a><br>
+    <a href="https://slashmantools.us/">← AI工具人 Home</a> · ☕ <a href="https://ko-fi.com/ytstories0413">Support on Ko-fi</a>
   </div>
 </div>
 <script>try{(adsbygoogle=window.adsbygoogle||[]).push({})}catch(e){}</script>
