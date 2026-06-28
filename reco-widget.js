@@ -1,7 +1,7 @@
 /*! reco-widget.js — shared Amazon affiliate recommendation widget for all slashman413 sites.
  *  Single source of truth: edit ONLY this file to change products/behaviour everywhere.
  *  Usage on any page:  <div class="reco-widget" data-cat="finance"></div>
- *                      <script src="https://slashman413.github.io/reco-widget.js" defer></script>
+ *                      <script src="https://slashmantools.us/reco-widget.js" defer></script>
  *  Categories: ai | security | writing | finance | dev | design | productivity | media | utility
  */
 (function () {
