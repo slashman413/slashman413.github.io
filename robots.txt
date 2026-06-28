@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://slashman413.github.io/sitemap.xml
+Sitemap: https://slashmantools.us/sitemap.xml
