@@ -1,0 +1,46 @@
+name: Marketing Agents Team
+
+on:
+  schedule:
+    - cron: "0 1 * * 1"   # Mondays 01:00 UTC = 09:00 Taiwan — weekly market-fit report
+  workflow_dispatch: {}
+
+concurrency:
+  group: marketing-agents
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install --quiet anthropic requests pytrends
+
+      - name: Run marketing agents pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: python marketing_agents.py
+
+      - name: Commit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add marketing/
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(marketing): weekly market-fit report ($(date -u +%F))
+
+          author: claude-code"
+            git push
+          fi
