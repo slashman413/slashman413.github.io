@@ -9,20 +9,20 @@ _資料驅動自動產生（無需 AI）· 2026-06-29（第 27 週）_
 
 | 工具 | 瀏覽數 | 搜尋熱度 | 趨勢 | 需求 | 曝光 | 判讀 |
 |------|------:|--------:|:--:|:--:|:--:|------|
-| [本地 LLM VRAM 計算器](https://slashmantools.us/llm-calc/) | 22 | 1.7 | ↑ | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
-| [QR Code 產生器](https://slashmantools.us/qr-code-generator/) | 21 | 76.7 | ↓ | High | High | ✅ 需求強、表現亮眼 → 維持曝光 |
-| [單位換算器](https://slashmantools.us/unit-converter/) | 17 | 3.3 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
-| [圖片壓縮器](https://slashmantools.us/image-compressor/) | 16 | 6.0 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
-| [強密碼產生器](https://slashmantools.us/password-generator/) | 15 | 19.3 | → | Med | High | ✅ 受眾已找到 → 維持 |
-| [字數計算器](https://slashmantools.us/word-counter/) | 15 | 19.7 | ↓ | Med | High | ✅ 受眾已找到 → 維持 |
-| [複利計算器](https://slashmantools.us/compound-calculator/) | 14 | 14.6 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
+| [本地 LLM VRAM 計算器](https://slashmantools.us/llm-calc/) | 22 | 2.8 | ↑ | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
+| [QR Code 產生器](https://slashmantools.us/qr-code-generator/) | 21 | 76.9 | ↓ | High | High | ✅ 需求強、表現亮眼 → 維持曝光 |
+| [單位換算器](https://slashmantools.us/unit-converter/) | 17 | 3.2 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
+| [圖片壓縮器](https://slashmantools.us/image-compressor/) | 16 | 5.9 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
+| [強密碼產生器](https://slashmantools.us/password-generator/) | 15 | 18.5 | → | Med | High | ✅ 受眾已找到 → 維持 |
+| [字數計算器](https://slashmantools.us/word-counter/) | 15 | 18.8 | ↓ | Med | High | ✅ 受眾已找到 → 維持 |
+| [複利計算器](https://slashmantools.us/compound-calculator/) | 14 | 14.0 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
 | [AI 提示詞庫](https://slashmantools.us/ai-prompt-library/) | 10 | 7.1 | → | Low | Med | 🔎 小眾但有人用 → 維持 |
 | [Token 成本計算器](https://slashmantools.us/token-cost-calculator/) | 9 | 0.0 | → | Low | Med | 🔎 小眾但有人用 → 維持 |
 | [JSON & Regex 開發工具](https://slashmantools.us/json-regex-devtools/) | 7 | 0.0 | → | Low | Med | 🔎 小眾但有人用 → 維持 |
-| [計算器合集](https://slashmantools.us/calculators/) | 5 | 76.0 | ↓ | High | Med | 📈 強需求、成長中 → 加碼推廣 |
+| [計算器合集](https://slashmantools.us/calculators/) | 5 | 73.1 | ↓ | High | Med | 📈 強需求、成長中 → 加碼推廣 |
 | [開發工具合集](https://slashmantools.us/dev-tools/) | 3 | 1.8 | → | Low | Low | 🔎 小眾 → 綁在合集頁帶流量 |
-| [PDF 工具](https://slashmantools.us/pdf-tools/) | 3 | 52.4 | ↓ | High | Low | 🔥 強需求、曝光不足 → 最佳推廣機會 |
-| [AI 圖片尺寸計算器](https://slashmantools.us/ai-image-size-calculator/) | 3 | 0.9 | → | Low | Low | 🔎 小眾 → 綁在合集頁帶流量 |
+| [PDF 工具](https://slashmantools.us/pdf-tools/) | 3 | 52.0 | ↓ | High | Low | 🔥 強需求、曝光不足 → 最佳推廣機會 |
+| [AI 圖片尺寸計算器](https://slashmantools.us/ai-image-size-calculator/) | 3 | 0.7 | → | Low | Low | 🔎 小眾 → 綁在合集頁帶流量 |
 | [配色工具](https://slashmantools.us/color-tools/) | 2 | 0.0 | → | Low | Low | 🔎 小眾 → 綁在合集頁帶流量 |
 | [番茄鐘專注計時器](https://slashmantools.us/pomodoro-focus-timer/) | 1 | 12.7 | → | Low | Low | 🔎 小眾 → 綁在合集頁帶流量 |
 
