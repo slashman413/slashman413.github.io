@@ -1,4 +1,4 @@
-name: Marketing Agents Team
+name: Marketing Report (keyless)
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch: {}
 
 concurrency:
-  group: marketing-agents
+  group: marketing-report
   cancel-in-progress: false
 
 permissions:
@@ -22,14 +22,13 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install deps
-        run: pip install --quiet anthropic requests pytrends
+      - name: Install deps (no AI / no API key)
+        run: pip install --quiet pytrends requests
 
-      - name: Run marketing agents pipeline
+      - name: Build market-fit report
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        run: python marketing_agents.py
+        run: python build_marketing.py
 
       - name: Commit report
         run: |
