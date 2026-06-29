@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<title>市場契合度與推廣分析 | AI工具人</title>
+<meta name="description" content="slashmantools.us 工具的市場需求分析與自動推廣文案，由行銷 Agents 團隊每週自動生成。">
+<link rel="canonical" href="https://slashmantools.us/marketing/">
+<meta name="robots" content="noindex">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans TC',sans-serif;background:#0a0a0f;color:#dcdce8;padding:40px 18px 64px;line-height:1.7}
+.wrap{max-width:820px;margin:0 auto}
+#md h1{font-size:26px;font-weight:800;color:#f0f0f8;margin:0 0 8px}
+#md h2{font-size:20px;font-weight:700;color:#c7c7f0;margin:34px 0 12px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.1)}
+#md h3{font-size:16px;font-weight:700;color:#a9a9e0;margin:22px 0 8px}
+#md p{margin:10px 0;color:#cfcfe0}
+#md em{color:#7878a0}
+#md a{color:#8888c0;text-decoration:none}#md a:hover{text-decoration:underline}
+#md blockquote{border-left:3px solid #6366f1;padding:6px 14px;margin:12px 0;background:rgba(99,102,241,.07);color:#b8b8d8;border-radius:0 8px 8px 0}
+#md ul{margin:10px 0 10px 22px}#md li{margin:4px 0}
+#md hr{border:none;border-top:1px solid rgba(255,255,255,.08);margin:26px 0}
+#md table{border-collapse:collapse;width:100%;margin:14px 0;font-size:13.5px;display:block;overflow-x:auto}
+#md th,#md td{border:1px solid rgba(255,255,255,.1);padding:7px 10px;text-align:left}
+#md th{background:rgba(255,255,255,.05);color:#c7c7f0}
+#md code{background:rgba(255,255,255,.08);padding:1px 6px;border-radius:5px;font-size:13px}
+.footer{margin-top:40px;font-size:12.5px;color:#55557a}.footer a{color:#8888c0;text-decoration:none}
+.loading{color:#7878a0;padding:40px 0}
+</style></head>
+<body><div class="wrap">
+<div id="md"><p class="loading">載入分析報告中…</p></div>
+<div class="footer"><a href="https://slashmantools.us/tools/">🧰 所有免費工具</a> · <a href="https://slashmantools.us/">← AI工具人 首頁</a> · <a href="latest.md">原始 Markdown</a></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+fetch('latest.md?v='+Date.now()).then(r=>{if(!r.ok)throw 0;return r.text()})
+ .then(t=>{document.getElementById('md').innerHTML=marked.parse(t)})
+ .catch(()=>{document.getElementById('md').innerHTML='<p class="loading">報告尚未生成。每週一自動更新，或手動觸發 GitHub Action。</p>'});
+</script>
+<script src="https://slashmantools.us/kofi-widget.js" defer></script>
+</body></html>
