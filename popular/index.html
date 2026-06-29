@@ -44,9 +44,10 @@ const I18N={"title": {"en": "Most Popular Tools", "zh": "最受歡迎的工具",
 let LANG=localStorage.getItem("site_lang");if(!(I18N.title&&I18N.title[LANG]))LANG=(navigator.language||"en").slice(0,2);if(!(I18N.title&&I18N.title[LANG]))LANG="en";
 function setLang(l){if(!(I18N.title&&I18N.title[l]))l="en";LANG=l;document.querySelectorAll("[data-i18n]").forEach(function(el){var t=I18N[el.getAttribute("data-i18n")];if(t&&t[l]!=null){if(el.id==="board")return;el.textContent=(el.tagName==="H1"?"🏆 ":el.getAttribute("data-i18n")==="browse"?"🧰 ":"")+t[l];}});document.documentElement.lang=l==="zh"?"zh-Hant":l;document.documentElement.dir=_RTL.indexOf(l)>-1?"rtl":"ltr";var s=document.getElementById("langSel");if(s)s.value=l;try{localStorage.setItem("site_lang",l)}catch(e){}render();}
 window.setLang=setLang;
-async function getCount(key){try{const r=await fetch("https://abacus.jasoncameron.dev/get/sm413-"+key+"/views?_="+Date.now(),{cache:"no-store"});if(!r.ok)return 0;const d=await r.json();return Number(d.value)||0;}catch(e){return 0;}}
+const _sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function getCount(key){for(let a=0;a<3;a++){try{const r=await fetch("https://abacus.jasoncameron.dev/get/sm413-"+key+"/views?_="+Date.now(),{cache:"no-store"});if(r.ok){const d=await r.json();return Number(d.value)||0;}}catch(e){}await _sleep(400);}return null;}
 let _data=null;
-async function load(){_data=await Promise.all(TOOLS.map(async t=>({t,c:await getCount(t[0])})));_data.sort((a,b)=>b.c-a.c);render();}
+async function load(){_data=[];for(const t of TOOLS){const c=await getCount(t[0]);_data.push({t,c:(c==null?0:c)});await _sleep(120);}_data.sort((a,b)=>b.c-a.c);render();}
 function render(){if(!_data)return;const max=Math.max(1,_data[0].c);const board=document.getElementById("board");board.innerHTML="";
   _data.forEach((r,i)=>{const[key,ico,nm,url]=r.t;const a=document.createElement("a");a.href=url;a.className="row";
    a.innerHTML='<div class="bar" style="width:'+(r.c/max*100)+'%"></div><div class="rank">'+(i===0?"🥇":i===1?"🥈":i===2?"🥉":"#"+(i+1))+'</div><div class="ico">'+ico+'</div><div class="nm">'+nm+'</div><div class="vw">'+r.c.toLocaleString()+' <span>'+(I18N.views[LANG]||"views")+'</span></div>';
