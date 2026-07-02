@@ -18,6 +18,10 @@ on:
         default: ''
         type: string
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   post-promo:
     runs-on: ubuntu-latest
@@ -54,3 +58,14 @@ jobs:
             curl -s -H "Content-Type: application/json" \
               -d "{\"content\":\"🔴 social-promo（社群自動轉發）失敗！log：${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" "$WEBHOOK"
           fi
+
+  notify-failure:
+    needs: [post-promo]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord failure alert
+        run: >-
+          curl -sf -H "Content-Type: application/json"
+          -d '{"content": "\ud83d\udd34 ${{ github.repository }} \u2014 ${{ github.workflow }} \u6392\u7a0b\u5931\u6557 \u00b7 ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}'
+          "${{ secrets.DISCORD_WEBHOOK }}" || true
