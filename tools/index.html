@@ -13,11 +13,11 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',sans-serif;background:#0a0a0f;color:#e8e8f0;line-height:1.6;padding:34px 18px 64px}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans','Noto Sans TC','Noto Sans SC',sans-serif;background:#0a0a0f;color:#e8e8f0;line-height:1.6;padding:34px 18px 64px}
   .wrap{max-width:860px;margin:0 auto}
   .top{display:flex;align-items:flex-start;gap:10px}
   h1{font-size:30px;font-weight:800;margin-bottom:8px;flex:1;background:linear-gradient(135deg,#a5b4fc,#f0abfc,#67e8f9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  
+  #langSel{padding:7px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:#16161f;color:#c7c7f0;font-size:13px;font-weight:600;cursor:pointer}
   .lead{color:#9a9ac0;font-size:15px;margin-bottom:26px}
   h2{font-size:18px;font-weight:700;margin:26px 0 12px;color:#c7c7f0;border-left:3px solid #6366f1;padding-left:10px}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
@@ -26,48 +26,125 @@
   .card .t{font-size:15px;font-weight:700;margin-bottom:4px}.card .d{font-size:12.5px;color:#7878a0;line-height:1.5}
   .ad-slot{width:100%;min-height:90px;background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.07);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#303048;margin:26px 0}
   .footer{margin-top:34px;text-align:center;font-size:12px;color:#55557a;line-height:1.9}.footer a{color:#8888c0;text-decoration:none}
-  
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1 style="font-size:30px;font-weight:800;margin-bottom:8px;background:linear-gradient(135deg,#a5b4fc,#f0abfc,#67e8f9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Free Online Tools</h1>
-  <p class="lead">A growing collection of 100% free AI, finance and productivity tools — no signup, no install, everything runs right in your browser.</p>
-  <h2>AI Tools</h2>
+  <div class="top">
+    <h1 data-i18n="h1">Free Online Tools</h1>
+    <select id="langSel" onchange="setLang(this.value)" aria-label="Language"><option value="en">EN</option><option value="zh-Hant">繁</option><option value="zh-Hans">简</option></select>
+  </div>
+  <p class="lead" data-i18n="lead">A growing collection of 100% free AI, finance and productivity tools — no signup, no install, everything runs right in your browser.</p>
+  <h2 data-i18n="sec_ai">AI Tools</h2>
   <div class="grid">
-      <a class="card" href="https://slashmantools.us/llm-calc/"><div class="t">LLM VRAM Calculator</div><div class="d">Estimate VRAM/RAM to run local LLMs (7B–405B), GGUF/AWQ/FP16.</div></a>
-      <a class="card" href="https://slashmantools.us/token-cost-calculator/"><div class="t">Token Cost Calculator</div><div class="d">Count tokens and compare GPT / Claude / Gemini API pricing.</div></a>
-      <a class="card" href="https://slashmantools.us/ai-image-size-calculator/"><div class="t">AI Image Size Calculator</div><div class="d">Best resolution & aspect ratio for Midjourney, SD & SDXL.</div></a>
-      <a class="card" href="https://slashmantools.us/ai-prompt-library/"><div class="t">AI Prompt Library</div><div class="d">Ready-to-use prompt templates — copy & paste into any AI.</div></a>
+      <a class="card" href="https://slashmantools.us/llm-calc/"><div class="t" data-i18n="llm_t">LLM VRAM Calculator</div><div class="d" data-i18n="llm_d">Estimate VRAM/RAM to run local LLMs (7B–405B), GGUF/AWQ/FP16.</div></a>
+      <a class="card" href="https://slashmantools.us/token-cost-calculator/"><div class="t" data-i18n="tok_t">Token Cost Calculator</div><div class="d" data-i18n="tok_d">Count tokens and compare GPT / Claude / Gemini API pricing.</div></a>
+      <a class="card" href="https://slashmantools.us/ai-image-size-calculator/"><div class="t" data-i18n="img_t">AI Image Size Calculator</div><div class="d" data-i18n="img_d">Best resolution & aspect ratio for Midjourney, SD & SDXL.</div></a>
+      <a class="card" href="https://slashmantools.us/ai-prompt-library/"><div class="t" data-i18n="prm_t">AI Prompt Library</div><div class="d" data-i18n="prm_d">Ready-to-use prompt templates — copy & paste into any AI.</div></a>
     </div>
-  <h2>Productivity & Developer Tools</h2>
+  <h2 data-i18n="sec_prod">Productivity & Developer Tools</h2>
   <div class="grid">
-      <a class="card" href="https://slashmantools.us/pomodoro-focus-timer/"><div class="t">Pomodoro Focus Timer</div><div class="d">Pomodoro timer with built-in white/pink/brown noise & rain.</div></a>
-      <a class="card" href="https://slashmantools.us/json-regex-devtools/"><div class="t">JSON & Regex Dev Tools</div><div class="d">Format/validate JSON and test regular expressions locally.</div></a>
-      <a class="card" href="https://slashmantools.us/dev-tools/"><div class="t">Developer Tools</div><div class="d">Base64, URL encode, JWT decoder, UUID, timestamp, hash.</div></a>
-      <a class="card" href="https://slashmantools.us/password-generator/"><div class="t">Password Generator</div><div class="d">Generate strong, secure random passwords — nothing uploaded.</div></a>
-      <a class="card" href="https://slashmantools.us/word-counter/"><div class="t">Word & Character Counter</div><div class="d">Count words, characters, lines, paragraphs and reading time.</div></a>
-      <a class="card" href="https://slashmantools.us/qr-code-generator/"><div class="t">QR Code Generator</div><div class="d">Turn any URL or text into a downloadable QR code, free.</div></a>
-      <a class="card" href="https://slashmantools.us/unit-converter/"><div class="t">Unit Converter</div><div class="d">Convert length, weight, temperature, speed and data size.</div></a>
-      <a class="card" href="https://slashmantools.us/image-compressor/"><div class="t">Image Compressor & Resizer</div><div class="d">Compress & resize JPG/PNG/WebP in your browser — no upload.</div></a>
-      <a class="card" href="https://slashmantools.us/color-tools/"><div class="t">Color Tools</div><div class="d">Color picker, HEX-RGB, palette & CSS gradient generator.</div></a>
+      <a class="card" href="https://slashmantools.us/pomodoro-focus-timer/"><div class="t" data-i18n="pom_t">Pomodoro Focus Timer</div><div class="d" data-i18n="pom_d">Pomodoro timer with built-in white/pink/brown noise & rain.</div></a>
+      <a class="card" href="https://slashmantools.us/json-regex-devtools/"><div class="t" data-i18n="json_t">JSON & Regex Dev Tools</div><div class="d" data-i18n="json_d">Format/validate JSON and test regular expressions locally.</div></a>
+      <a class="card" href="https://slashmantools.us/dev-tools/"><div class="t" data-i18n="dev_t">Developer Tools</div><div class="d" data-i18n="dev_d">Base64, URL encode, JWT decoder, UUID, timestamp, hash.</div></a>
+      <a class="card" href="https://slashmantools.us/password-generator/"><div class="t" data-i18n="pw_t">Password Generator</div><div class="d" data-i18n="pw_d">Generate strong, secure random passwords — nothing uploaded.</div></a>
+      <a class="card" href="https://slashmantools.us/word-counter/"><div class="t" data-i18n="wc_t">Word & Character Counter</div><div class="d" data-i18n="wc_d">Count words, characters, lines, paragraphs and reading time.</div></a>
+      <a class="card" href="https://slashmantools.us/qr-code-generator/"><div class="t" data-i18n="qr_t">QR Code Generator</div><div class="d" data-i18n="qr_d">Turn any URL or text into a downloadable QR code, free.</div></a>
+      <a class="card" href="https://slashmantools.us/unit-converter/"><div class="t" data-i18n="uc_t">Unit Converter</div><div class="d" data-i18n="uc_d">Convert length, weight, temperature, speed and data size.</div></a>
+      <a class="card" href="https://slashmantools.us/image-compressor/"><div class="t" data-i18n="ic_t">Image Compressor & Resizer</div><div class="d" data-i18n="ic_d">Compress & resize JPG/PNG/WebP in your browser — no upload.</div></a>
+      <a class="card" href="https://slashmantools.us/color-tools/"><div class="t" data-i18n="col_t">Color Tools</div><div class="d" data-i18n="col_d">Color picker, HEX-RGB, palette & CSS gradient generator.</div></a>
     </div>
-  <h2>Finance & Market Tools</h2>
+  <h2 data-i18n="sec_fin">Finance & Market Tools</h2>
   <div class="grid">
-      <a class="card" href="https://slashmantools.us/compound-calculator/"><div class="t">Compound Interest Calculator</div><div class="d">Project recurring-investment growth for ETFs & retirement.</div></a>
-      <a class="card" href="https://slashmantools.us/calculators/"><div class="t">Everyday Calculators</div><div class="d">BMI, percentage, loan/mortgage, age & tip calculators.</div></a>
-      <a class="card" href="https://slashmantools.us/pdf-tools/"><div class="t">PDF Tools</div><div class="d">Images to PDF & merge PDFs in your browser — no upload.</div></a>
-      <a class="card" href="https://slashmantools.us/macro-dashboard/dashboard.html"><div class="t">Macro Economy Dashboard</div><div class="d">Daily-updated macroeconomic indicators dashboard.</div></a>
-      <a class="card" href="https://slashmantools.us/tw-etf-dashboard/dashboard.html"><div class="t">Taiwan ETF Analysis</div><div class="d">Deep-dive analysis of 0050/0056/00878 — daily updated.</div></a>
-      <a class="card" href="https://slashmantools.us/twse-surge-stocks-dna/"><div class="t">Surge Stock DNA Screener</div><div class="d">Quant screener for Taiwan stocks, backtested over 20 years.</div></a>
-      <a class="card" href="https://slashmantools.us/twse-backtests/"><div class="t">Taiwan Stock Backtester</div><div class="d">Validate trading strategies on real historical data.</div></a>
-      <a class="card" href="https://slashmantools.us/global-events-tracker/"><div class="t">Global Events 3D Globe</div><div class="d">Track 60+ major world headlines daily on a 3D globe.</div></a>
+      <a class="card" href="https://slashmantools.us/compound-calculator/"><div class="t" data-i18n="cmp_t">Compound Interest Calculator</div><div class="d" data-i18n="cmp_d">Project recurring-investment growth for ETFs & retirement.</div></a>
+      <a class="card" href="https://slashmantools.us/calculators/"><div class="t" data-i18n="calc_t">Everyday Calculators</div><div class="d" data-i18n="calc_d">BMI, percentage, loan/mortgage, age & tip calculators.</div></a>
+      <a class="card" href="https://slashmantools.us/pdf-tools/"><div class="t" data-i18n="pdf_t">PDF Tools</div><div class="d" data-i18n="pdf_d">Images to PDF & merge PDFs in your browser — no upload.</div></a>
+      <a class="card" href="https://slashmantools.us/macro-dashboard/dashboard.html"><div class="t" data-i18n="mac_t">Macro Economy Dashboard</div><div class="d" data-i18n="mac_d">Daily-updated macroeconomic indicators dashboard.</div></a>
+      <a class="card" href="https://slashmantools.us/tw-etf-dashboard/dashboard.html"><div class="t" data-i18n="etf_t">Taiwan ETF Analysis</div><div class="d" data-i18n="etf_d">Deep-dive analysis of 0050/0056/00878 — daily updated.</div></a>
+      <a class="card" href="https://slashmantools.us/twse-surge-stocks-dna/"><div class="t" data-i18n="dna_t">Surge Stock DNA Screener</div><div class="d" data-i18n="dna_d">Quant screener for Taiwan stocks, backtested over 20 years.</div></a>
+      <a class="card" href="https://slashmantools.us/twse-backtests/"><div class="t" data-i18n="bt_t">Taiwan Stock Backtester</div><div class="d" data-i18n="bt_d">Validate trading strategies on real historical data.</div></a>
+      <a class="card" href="https://slashmantools.us/global-events-tracker/"><div class="t" data-i18n="glb_t">Global Events 3D Globe</div><div class="d" data-i18n="glb_d">Track 60+ major world headlines daily on a 3D globe.</div></a>
     </div>
   <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-7217603696203672" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <div class="footer"><span>All tools are free and ad-supported.</span> ☕ <a href="https://ko-fi.com/ytstories0413" target="_blank" rel="noopener">Support on Ko-fi</a><br>
-  <a href="https://slashmantools.us/">Home</a> · <a href="https://slashmantools.us/terms.html">Terms</a> · <a href="https://slashmantools.us/privacy.html">Privacy</a></div>
+  <div class="footer"><span data-i18n="foot_free">All tools are free and ad-supported.</span> ☕ <a href="https://ko-fi.com/ytstories0413" target="_blank" rel="noopener" data-i18n="foot_kofi">Support on Ko-fi</a><br>
+  <a href="https://slashmantools.us/" data-i18n="foot_home">Home</a> · <a href="https://slashmantools.us/terms.html" data-i18n="foot_terms">Terms</a> · <a href="https://slashmantools.us/privacy.html" data-i18n="foot_privacy">Privacy</a></div>
 </div>
 
-  <script src="https://slashmantools.us/kofi-widget.js" defer></script>
+<script>
+const I18N = {
+  h1:{en:"Free Online Tools","zh-Hant":"免費線上工具","zh-Hans":"免费在线工具"},
+  lead:{en:"A growing collection of 100% free AI, finance and productivity tools — no signup, no install, everything runs right in your browser.","zh-Hant":"持續擴充的 100% 免費 AI、理財與效率工具——免註冊、免安裝，全部在你的瀏覽器執行。","zh-Hans":"持续扩充的 100% 免费 AI、理财与效率工具——免注册、免安装，全部在你的浏览器运行。"},
+  sec_ai:{en:"AI Tools","zh-Hant":"AI 工具","zh-Hans":"AI 工具"},
+  sec_prod:{en:"Productivity & Developer Tools","zh-Hant":"效率與開發工具","zh-Hans":"效率与开发工具"},
+  sec_fin:{en:"Finance & Market Tools","zh-Hant":"理財與市場工具","zh-Hans":"理财与市场工具"},
+  llm_t:{en:"LLM VRAM Calculator","zh-Hant":"LLM VRAM 計算機","zh-Hans":"LLM VRAM 计算器"},
+  llm_d:{en:"Estimate VRAM/RAM to run local LLMs (7B–405B), GGUF/AWQ/FP16.","zh-Hant":"估算執行本地 LLM（7B–405B）所需的 VRAM/RAM，支援 GGUF/AWQ/FP16。","zh-Hans":"估算运行本地 LLM（7B–405B）所需的 VRAM/RAM，支持 GGUF/AWQ/FP16。"},
+  tok_t:{en:"Token Cost Calculator","zh-Hant":"Token 成本計算機","zh-Hans":"Token 成本计算器"},
+  tok_d:{en:"Count tokens and compare GPT / Claude / Gemini API pricing.","zh-Hant":"計算 token 數並比較 GPT／Claude／Gemini API 價格。","zh-Hans":"计算 token 数并比较 GPT／Claude／Gemini API 价格。"},
+  img_t:{en:"AI Image Size Calculator","zh-Hant":"AI 出圖尺寸計算機","zh-Hans":"AI 出图尺寸计算器"},
+  img_d:{en:"Best resolution & aspect ratio for Midjourney, SD & SDXL.","zh-Hant":"Midjourney、SD、SDXL 的最佳解析度與長寬比。","zh-Hans":"Midjourney、SD、SDXL 的最佳分辨率与宽高比。"},
+  prm_t:{en:"AI Prompt Library","zh-Hant":"AI 提示詞範本庫","zh-Hans":"AI 提示词模板库"},
+  prm_d:{en:"Ready-to-use prompt templates — copy & paste into any AI.","zh-Hant":"可直接使用的提示詞範本——複製貼上到任何 AI。","zh-Hans":"可直接使用的提示词模板——复制粘贴到任何 AI。"},
+  pom_t:{en:"Pomodoro Focus Timer","zh-Hant":"番茄鐘專注計時器","zh-Hans":"番茄钟专注计时器"},
+  pom_d:{en:"Pomodoro timer with built-in white/pink/brown noise & rain.","zh-Hant":"內建白／粉／棕噪音與雨聲的番茄鐘。","zh-Hans":"内建白／粉／棕噪音与雨声的番茄钟。"},
+  json_t:{en:"JSON & Regex Dev Tools","zh-Hant":"JSON 與 Regex 開發工具","zh-Hans":"JSON 与 Regex 开发工具"},
+  json_d:{en:"Format/validate JSON and test regular expressions locally.","zh-Hant":"在本機格式化／驗證 JSON 並測試正規表達式。","zh-Hans":"在本地格式化／验证 JSON 并测试正则表达式。"},
+  dev_t:{en:"Developer Tools","zh-Hant":"開發者工具","zh-Hans":"开发者工具"},
+  dev_d:{en:"Base64, URL encode, JWT decoder, UUID, timestamp, hash.","zh-Hant":"Base64、URL 編碼、JWT 解碼、UUID、時間戳、雜湊。","zh-Hans":"Base64、URL 编码、JWT 解码、UUID、时间戳、哈希。"},
+  pw_t:{en:"Password Generator","zh-Hant":"密碼產生器","zh-Hans":"密码生成器"},
+  pw_d:{en:"Generate strong, secure random passwords — nothing uploaded.","zh-Hant":"產生高強度隨機密碼——完全不上傳。","zh-Hans":"生成高强度随机密码——完全不上传。"},
+  wc_t:{en:"Word & Character Counter","zh-Hant":"字數與字元計算器","zh-Hans":"字数与字符计数器"},
+  wc_d:{en:"Count words, characters, lines, paragraphs and reading time.","zh-Hant":"統計字數、字元、行數、段落與閱讀時間。","zh-Hans":"统计字数、字符、行数、段落与阅读时间。"},
+  qr_t:{en:"QR Code Generator","zh-Hant":"QR Code 產生器","zh-Hans":"QR 码生成器"},
+  qr_d:{en:"Turn any URL or text into a downloadable QR code, free.","zh-Hant":"將任何網址或文字轉成可下載的 QR Code，免費。","zh-Hans":"将任何网址或文字转成可下载的 QR 码，免费。"},
+  uc_t:{en:"Unit Converter","zh-Hant":"單位換算器","zh-Hans":"单位换算器"},
+  uc_d:{en:"Convert length, weight, temperature, speed and data size.","zh-Hant":"換算長度、重量、溫度、速度與資料大小。","zh-Hans":"换算长度、重量、温度、速度与数据大小。"},
+  ic_t:{en:"Image Compressor & Resizer","zh-Hant":"圖片壓縮與縮放","zh-Hans":"图片压缩与缩放"},
+  ic_d:{en:"Compress & resize JPG/PNG/WebP in your browser — no upload.","zh-Hant":"在瀏覽器壓縮／縮放 JPG/PNG/WebP——不上傳。","zh-Hans":"在浏览器压缩／缩放 JPG/PNG/WebP——不上传。"},
+  col_t:{en:"Color Tools","zh-Hant":"色彩工具","zh-Hans":"颜色工具"},
+  col_d:{en:"Color picker, HEX-RGB, palette & CSS gradient generator.","zh-Hant":"選色器、HEX-RGB、調色盤與 CSS 漸層產生器。","zh-Hans":"取色器、HEX-RGB、调色板与 CSS 渐变生成器。"},
+  cmp_t:{en:"Compound Interest Calculator","zh-Hant":"複利計算機","zh-Hans":"复利计算器"},
+  cmp_d:{en:"Project recurring-investment growth for ETFs & retirement.","zh-Hant":"試算 ETF 與退休定期定額投資的複利成長。","zh-Hans":"试算 ETF 与退休定期定额投资的复利增长。"},
+  calc_t:{en:"Everyday Calculators","zh-Hant":"日常計算機","zh-Hans":"日常计算器"},
+  calc_d:{en:"BMI, percentage, loan/mortgage, age & tip calculators.","zh-Hant":"BMI、百分比、貸款／房貸、年齡與小費計算機。","zh-Hans":"BMI、百分比、贷款／房贷、年龄与小费计算器。"},
+  pdf_t:{en:"PDF Tools","zh-Hant":"PDF 工具","zh-Hans":"PDF 工具"},
+  pdf_d:{en:"Images to PDF & merge PDFs in your browser — no upload.","zh-Hant":"在瀏覽器將圖片轉 PDF、合併 PDF——不上傳。","zh-Hans":"在浏览器将图片转 PDF、合并 PDF——不上传。"},
+  mac_t:{en:"Macro Economy Dashboard","zh-Hant":"總體經濟儀表板","zh-Hans":"宏观经济仪表板"},
+  mac_d:{en:"Daily-updated macroeconomic indicators dashboard.","zh-Hant":"每日更新的總體經濟指標儀表板。","zh-Hans":"每日更新的宏观经济指标仪表板。"},
+  etf_t:{en:"Taiwan ETF Analysis","zh-Hant":"台灣 ETF 分析","zh-Hans":"台湾 ETF 分析"},
+  etf_d:{en:"Deep-dive analysis of 0050/0056/00878 — daily updated.","zh-Hant":"0050／0056／00878 深度分析——每日更新。","zh-Hans":"0050／0056／00878 深度分析——每日更新。"},
+  dna_t:{en:"Surge Stock DNA Screener","zh-Hant":"大飆股 DNA 篩選器","zh-Hans":"大飙股 DNA 筛选器"},
+  dna_d:{en:"Quant screener for Taiwan stocks, backtested over 20 years.","zh-Hant":"台股量化篩選器，經 20 年歷史回測。","zh-Hans":"台股量化筛选器，经 20 年历史回测。"},
+  bt_t:{en:"Taiwan Stock Backtester","zh-Hant":"台股回測器","zh-Hans":"台股回测器"},
+  bt_d:{en:"Validate trading strategies on real historical data.","zh-Hant":"用真實歷史資料驗證交易策略。","zh-Hans":"用真实历史数据验证交易策略。"},
+  glb_t:{en:"Global Events 3D Globe","zh-Hant":"全球大事 3D 地球儀","zh-Hans":"全球大事 3D 地球仪"},
+  glb_d:{en:"Track 60+ major world headlines daily on a 3D globe.","zh-Hant":"在 3D 地球儀上每日追蹤 60+ 全球重大新聞。","zh-Hans":"在 3D 地球仪上每日追踪 60+ 全球重大新闻。"},
+  foot_free:{en:"All tools are free and ad-supported.","zh-Hant":"所有工具皆免費，由廣告支持。","zh-Hans":"所有工具皆免费，由广告支持。"},
+  foot_kofi:{en:"Support on Ko-fi","zh-Hant":"在 Ko-fi 支持我們","zh-Hans":"在 Ko-fi 支持我们"},
+  foot_home:{en:"Home","zh-Hant":"首頁","zh-Hans":"首页"},
+  foot_terms:{en:"Terms","zh-Hant":"服務條款","zh-Hans":"服务条款"},
+  foot_privacy:{en:"Privacy","zh-Hant":"隱私權","zh-Hans":"隐私"}
+};
+function setLang(l){
+  if(!(I18N.h1 && I18N.h1[l])) l="en";
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    var t=I18N[el.getAttribute("data-i18n")];
+    if(t && t[l]!=null) el.textContent=t[l];
+  });
+  document.documentElement.lang = (l==="en")?"en":l;
+  var s=document.getElementById("langSel"); if(s) s.value=l;
+  try{ localStorage.setItem("site_lang",l) }catch(e){}
+}
+var LANG=null;
+try{ LANG=localStorage.getItem("site_lang") }catch(e){}
+if(LANG==="zh") LANG="zh-Hant";   // portal stores "zh"; treat as Traditional here
+if(!(I18N.h1 && I18N.h1[LANG])){
+  var nav=(navigator.language||"en").toLowerCase();
+  if(nav.indexOf("zh")===0){ LANG=(nav.indexOf("cn")>-1||nav.indexOf("hans")>-1||nav.indexOf("sg")>-1)?"zh-Hans":"zh-Hant"; }
+  else LANG="en";
+}
+setLang(LANG);
+</script>
+<script src="https://slashmantools.us/kofi-widget.js" defer></script>
 </body>
 </html>
