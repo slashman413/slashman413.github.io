@@ -94,6 +94,21 @@ SITES = [
         "features": ["依近 3 月報酬率排名", "點卡片看前 10 大成分股", "串接即時數據 · 每日更新"],
     },
     {
+        "name": "ETF 成分股財報分析",
+        "url": "https://slashmantools.us/etf-financial-analyzer/",
+        "color": (13, 148, 136),
+        "icon": "🔬",
+        "text": (
+            "🔬 An ETF is only as healthy as the companies inside it.\n"
+            "Auto-pulls every holding and scores its financials (EPS, ROE, growth) — US & Taiwan ETFs. Free.\n\n"
+            "🔬 ETF 好不好，看它裝了哪些公司才準\n自動抓出每檔成分股、逐一分析財報體質並評分，美股台股都支援，免費 👇\n\n"
+            "👉 https://slashmantools.us/etf-financial-analyzer/\n\n"
+            "#ETF #財報分析 #台股 #美股 #Investing"
+        ),
+        "subtitle": "拆解 ETF 成分股的財報體質並評分",
+        "features": ["自動抓取 ETF 全成分股", "EPS / ROE / 成長性評分", "美股 + 台股 ETF 皆支援"],
+    },
+    {
         "name": "LLM VRAM計算機",
         "url": "https://slashmantools.us/llm-calc/",
         "color": (139, 92, 246),
