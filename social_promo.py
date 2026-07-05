@@ -813,19 +813,20 @@ def latest_youtube_item():
     }
 
 
-def deliver_to_discord(site) -> bool:
-    """Generate the promo card + caption and post them to the Discord webhook (multipart)."""
+def deliver_to_discord(site, img: str = "") -> bool:
+    """Post the promo card + caption to the Discord webhook (multipart).
+    Pass a pre-generated image path via `img` to avoid rendering twice."""
     wh = os.environ.get("DISCORD_WEBHOOK")
     if not wh:
         print("[discord] no DISCORD_WEBHOOK set", flush=True)
         return False
     import urllib.request
     caption = site.get("text", "")
-    img = ""
-    try:
-        img = generate_promo_image(site)
-    except Exception as e:
-        print(f"[discord] image gen failed: {e}", flush=True)
+    if not img:
+        try:
+            img = generate_promo_image(site)
+        except Exception as e:
+            print(f"[discord] image gen failed: {e}", flush=True)
     boundary = "----promo" + str(int(time.time() * 1000))
     pre = ("--" + boundary + "\r\nContent-Disposition: form-data; name=\"payload_json\"\r\n"
            "Content-Type: application/json\r\n\r\n" + json.dumps({"content": caption[:1900]}) + "\r\n")
@@ -849,32 +850,199 @@ def deliver_to_discord(site) -> bool:
         return False
 
 
+# ── Official Meta API auto-posting (opt-in, ban-safe) ─────────────────────────
+# DORMANT by default. Enable by setting META_AUTOPOST=1 plus the platform tokens
+# below as GitHub Secrets. Uses the SANCTIONED Graph / Threads APIs (NOT browser
+# session replay), so it does not risk account bans. Setup: docs/meta_autopost_setup.md
+#   Facebook Page : FB_PAGE_ID,      FB_PAGE_TOKEN
+#   Instagram     : IG_USER_ID,      IG_GRAPH_TOKEN   (needs a public image URL)
+#   Threads       : THREADS_USER_ID, THREADS_TOKEN
+GRAPH_API = "https://graph.facebook.com/v21.0"
+THREADS_API = "https://graph.threads.net/v1.0"
+REPO_RAW_BASE = "https://raw.githubusercontent.com/slashman413/slashman413.github.io/main"
+
+
+def _slug(name: str) -> str:
+    # Append a stable hash so CJK-heavy names (which strip to near-empty ASCII)
+    # still get unique, collision-free image filenames.
+    import re, hashlib
+    base = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-") or "promo"
+    h = hashlib.sha1(name.encode("utf-8")).hexdigest()[:8]
+    return f"{base}-{h}"
+
+
+def _host_images_via_git(prepared: list) -> dict:
+    """Commit each promo PNG into promo_images/ in one commit so IG/Threads can
+    fetch it by public URL. Returns {site_name: raw_url}. Best-effort."""
+    import shutil, subprocess
+    repo = Path(__file__).parent
+    dest_dir = repo / "promo_images"
+    dest_dir.mkdir(exist_ok=True)
+    urls = {}
+    staged = False
+    for site, img in prepared:
+        if not (img and os.path.exists(img)):
+            continue
+        slug = _slug(site["name"])
+        shutil.copyfile(img, dest_dir / f"{slug}.png")
+        urls[site["name"]] = f"{REPO_RAW_BASE}/promo_images/{slug}.png"
+        staged = True
+    if not staged:
+        return {}
+    try:
+        subprocess.run(["git", "-C", str(repo), "add", "promo_images"], check=True)
+        subprocess.run(["git", "-C", str(repo), "commit", "-m", "auto: promo images for Meta autopost"], check=True)
+        subprocess.run(["git", "-C", str(repo), "pull", "--rebase"], check=True)
+        subprocess.run(["git", "-C", str(repo), "push"], check=True)
+    except Exception as e:
+        print(f"[meta] image hosting failed, IG/Threads image posts will be skipped: {e}", flush=True)
+        return {}
+    return urls
+
+
+def post_to_facebook_api(site) -> bool:
+    """Post a photo + caption to a Facebook Page via the Graph API (file upload)."""
+    token, page_id = os.environ.get("FB_PAGE_TOKEN"), os.environ.get("FB_PAGE_ID")
+    if not (token and page_id):
+        return False
+    img = site.get("_img")
+    if not (img and os.path.exists(img)):
+        print("[fb] no image to post", flush=True)
+        return False
+    try:
+        import requests
+        with open(img, "rb") as f:
+            r = requests.post(f"{GRAPH_API}/{page_id}/photos",
+                              data={"caption": site["text"], "access_token": token},
+                              files={"source": f}, timeout=90)
+        ok = r.status_code == 200 and "id" in r.json()
+        print(f"[fb] {'posted' if ok else 'FAILED'}: {site['name']} ({r.status_code})", flush=True)
+        return ok
+    except Exception as e:
+        print(f"[fb] error: {e}", flush=True)
+        return False
+
+
+def post_to_instagram_api(site) -> bool:
+    """Publish an image + caption to Instagram via the Content Publishing API
+    (2-step container → publish). Requires a public image URL."""
+    token, ig_id = os.environ.get("IG_GRAPH_TOKEN"), os.environ.get("IG_USER_ID")
+    url = site.get("_img_url")
+    if not (token and ig_id and url):
+        return False
+    try:
+        import requests
+        c = requests.post(f"{GRAPH_API}/{ig_id}/media",
+                          data={"image_url": url, "caption": site["text"], "access_token": token},
+                          timeout=90).json()
+        cid = c.get("id")
+        if not cid:
+            print(f"[ig] container failed: {c}", flush=True)
+            return False
+        p = requests.post(f"{GRAPH_API}/{ig_id}/media_publish",
+                          data={"creation_id": cid, "access_token": token}, timeout=90).json()
+        ok = "id" in p
+        print(f"[ig] {'posted' if ok else 'FAILED'}: {site['name']}", flush=True)
+        return ok
+    except Exception as e:
+        print(f"[ig] error: {e}", flush=True)
+        return False
+
+
+def post_to_threads_api(site) -> bool:
+    """Publish to Threads via the official Threads API (2-step). Uses an image
+    post when a public URL is available, else a text-only post."""
+    token, tid = os.environ.get("THREADS_TOKEN"), os.environ.get("THREADS_USER_ID")
+    if not (token and tid):
+        return False
+    url = site.get("_img_url")
+    try:
+        import requests
+        if url:
+            params = {"media_type": "IMAGE", "image_url": url, "text": site["text"], "access_token": token}
+        else:
+            params = {"media_type": "TEXT", "text": site["text"], "access_token": token}
+        c = requests.post(f"{THREADS_API}/{tid}/threads", data=params, timeout=90).json()
+        cid = c.get("id")
+        if not cid:
+            print(f"[threads] container failed: {c}", flush=True)
+            return False
+        time.sleep(3)  # Threads recommends a short delay before publishing
+        p = requests.post(f"{THREADS_API}/{tid}/threads_publish",
+                          data={"creation_id": cid, "access_token": token}, timeout=90).json()
+        ok = "id" in p
+        print(f"[threads] {'posted' if ok else 'FAILED'}: {site['name']}", flush=True)
+        return ok
+    except Exception as e:
+        print(f"[threads] error: {e}", flush=True)
+        return False
+
+
+def autopost_to_meta(site) -> int:
+    """Post one site to every Meta platform that has credentials. Returns count posted."""
+    allow = os.environ.get("PROMO_PLATFORMS", "").strip()
+    allowed = {p.strip() for p in allow.split(",") if p.strip()} if allow else {"facebook", "instagram", "threads"}
+    posted = 0
+    if "facebook" in allowed and post_to_facebook_api(site):
+        posted += 1
+    if "instagram" in allowed and post_to_instagram_api(site):
+        posted += 1
+    if "threads" in allowed and post_to_threads_api(site):
+        posted += 1
+    return posted
+
+
 def main():
     sites = get_sites_for_slot()
     _yt = latest_youtube_item()
     if _yt:
         sites = list(sites) + [_yt]
     slot = os.environ.get("PROMO_SLOT", "auto")
-    print(f"[promo] Slot={slot} | delivering {len(sites)} item(s) to Discord: {[s['name'] for s in sites]}", flush=True)
+    autopost = os.environ.get("META_AUTOPOST") == "1"
+    mode = "AUTO-POST (official API) + Discord" if autopost else "Discord delivery (manual)"
+    print(f"[promo] Slot={slot} | mode={mode} | {len(sites)} item(s): {[s['name'] for s in sites]}", flush=True)
+
+    # Render each card once; reuse for Discord + Meta.
+    prepared = []
+    for site in sites:
+        img = ""
+        try:
+            img = generate_promo_image(site)
+        except Exception as e:
+            print(f"[promo] image gen failed for {site['name']}: {e}", flush=True)
+        site["_img"] = img
+        prepared.append((site, img))
+
+    # Host images publicly (IG/Threads need a URL) only when auto-posting.
+    if autopost:
+        url_map = _host_images_via_git(prepared)
+        for site, _ in prepared:
+            site["_img_url"] = url_map.get(site["name"])
+
     wh = os.environ.get("DISCORD_WEBHOOK")
     if wh:
         try:
             import urllib.request
-            hdr = f"\U0001F4E3 今日社群推廣素材（{len(sites)} 則）— 存圖 + 複製文案發 IG，Meta 會自動同步 FB + Threads \U0001F447"
+            tail = "已自動發佈至 FB / IG / Threads ✅" if autopost else "存圖 + 複製文案發 IG，Meta 會自動同步 FB + Threads 👇"
+            hdr = f"\U0001F4E3 今日社群推廣素材（{len(sites)} 則）— {tail}"
             req = urllib.request.Request(wh, data=json.dumps({"content": hdr}).encode("utf-8"),
                 headers={"Content-Type": "application/json", "User-Agent": "Mozilla/5.0 (compatible; sm413-promo)"})
             urllib.request.urlopen(req, timeout=20)
         except Exception as e:
             print(f"[discord] header failed: {e}", flush=True)
+
     ok = 0
-    for site in sites:
+    meta_posts = 0
+    for site, img in prepared:
         print(f"\n[promo] ===== {site['name']} =====", flush=True)
-        if deliver_to_discord(site):
+        if autopost:
+            meta_posts += autopost_to_meta(site)
+        if deliver_to_discord(site, img):
             ok += 1
         time.sleep(1)
-    print(f"\n[promo] DONE. Delivered {ok}/{len(sites)} item(s) to Discord.", flush=True)
-    if ok == 0:
-        print("[promo] WARNING: nothing delivered. Check DISCORD_WEBHOOK.", flush=True)
+    print(f"\n[promo] DONE. Discord {ok}/{len(sites)}" + (f" | Meta posts: {meta_posts}" if autopost else ""), flush=True)
+    if ok == 0 and meta_posts == 0:
+        print("[promo] WARNING: nothing delivered.", flush=True)
         sys.exit(1)
 
 if __name__ == "__main__":

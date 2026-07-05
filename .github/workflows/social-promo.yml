@@ -22,6 +22,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
+permissions:
+  contents: write   # needed to publish promo images for IG/Threads auto-post
+
 jobs:
   post-promo:
     runs-on: ubuntu-latest
@@ -40,13 +43,26 @@ jobs:
         run: sudo apt-get install -y fonts-noto-cjk
 
       - name: Install Python dependencies
-        run: pip install pillow
+        run: pip install pillow requests
+
+      - name: Configure git (for hosting promo images)
+        run: |
+          git config user.name "Massor"
+          git config user.email "slashman413@gmail.com"
 
       - name: Run social promo
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           PROMO_SLOT: ${{ github.event.inputs.slot || (github.event.schedule == '11 2 * * *' && 'am' || 'pm') }}
           PROMO_PLATFORMS: ${{ github.event.inputs.platforms }}
+          # ── Meta auto-post (dormant until these secrets are set) ──
+          META_AUTOPOST: ${{ secrets.META_AUTOPOST }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_GRAPH_TOKEN: ${{ secrets.IG_GRAPH_TOKEN }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
         run: python social_promo.py
 
       - name: Notify Discord on failure
