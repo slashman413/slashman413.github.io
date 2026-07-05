@@ -24,11 +24,11 @@ SITES = [
         "color": (99, 102, 241),
         "icon": "📊",
         "text": (
-            "📊 Still guessing which Taiwan ETF to buy?\n"
-            "Free analysis of 0050 / 0056 / 00878 — fundamentals, technicals & a daily whole-market scan.\n\n"
-            "📊 還在憑感覺買 0050、00878？\n免費幫你一次看懂每檔 ETF 的財務+技術面 👇\n\n"
+            "📊 0050 vs 0056 vs 00878 — which one actually fits you?\n"
+            "Compare fundamentals + technicals side by side, refreshed daily from a whole-market scan. Free.\n\n"
+            "📊 0050、0056、00878 到底買哪檔？\n財務面＋技術面並排比一比，每日自動更新，免費 👇\n\n"
             "👉 https://slashmantools.us/tw-etf-dashboard/dashboard.html\n\n"
-            "#TaiwanStocks #ETF #Investing #台股 #ETF #00878 #0050 #存股 #被動收入 #免費工具"
+            "#台股 #ETF #存股 #被動收入 #Investing"
         ),
         "subtitle": "追蹤 0050・0056・00878 等主流 ETF",
         "features": ["財務面：EPS / ROE / 殖利率", "技術面：RSI / MACD / K 線", "全市場掃描 · 每日自動更新"],
@@ -39,11 +39,11 @@ SITES = [
         "color": (16, 185, 129),
         "icon": "🧬",
         "text": (
-            "🧬 Looking for the next breakout stock but don't know where to start?\n"
-            "A free quant screener for Taiwan stocks, backtested over 20 years (2004–2026).\n\n"
-            "🧬 想抓下一檔飆股，卻不知從何找起？\n用 20 年數據幫你篩出潛力股，免費 👇\n\n"
+            "🧬 What do past breakout stocks have in common? I turned it into a screener.\n"
+            "Trend pullback + 20MA + RSI, backtested 2004–2026, scanning all of Taiwan daily. Free.\n\n"
+            "🧬 飆股都有共同特徵，我把它變成一套篩選器\n20 年回測驗證，每日掃描台股全市場，免費 👇\n\n"
             "👉 https://slashmantools.us/twse-surge-stocks-dna/\n\n"
-            "#StockScreener #QuantTrading #台股 #飆股 #量化投資 #技術分析 #選股 #免費工具"
+            "#台股 #飆股 #量化投資 #選股 #StockScreener"
         ),
         "subtitle": "用數據找出下一檔潛力飆股",
         "features": ["趨勢拉回 20MA + RSI 策略", "2004–2026 年歷史回測驗證", "每日掃描台股全市場"],
@@ -54,11 +54,11 @@ SITES = [
         "color": (245, 158, 11),
         "icon": "📈",
         "text": (
-            "📈 Does your trading strategy actually make money?\n"
-            "Backtest it on real historical Taiwan-stock data — K-line breakout, MACD, ADX & more. Free.\n\n"
-            "📈 你的存股／當沖策略，真的會賺嗎？\n用歷史數據一鍵回測驗證給你看，免費 👇\n\n"
+            "📈 \"Buy the dip\" sounds smart — but does it beat buy-and-hold?\n"
+            "Backtest strategies on real Taiwan-stock history: K-line breakout, MACD, ADX & more. Free.\n\n"
+            "📈 「逢低加碼」聽起來很聰明，但真的贏過買進持有嗎？\n用歷史數據一鍵回測驗證，免費 👇\n\n"
             "👉 https://slashmantools.us/twse-backtests/\n\n"
-            "#Backtesting #TradingStrategy #台股 #回測 #量化交易 #程式交易 #免費工具"
+            "#台股 #回測 #量化交易 #程式交易 #Backtesting"
         ),
         "subtitle": "歷史資料驗證你的投資策略",
         "features": ["K 線突破 / MACD / ADX 趨勢", "Williams %R 超買超賣訊號", "每年獨立資金模擬"],
@@ -69,11 +69,11 @@ SITES = [
         "color": (6, 182, 212),
         "icon": "🌍",
         "text": (
-            "🌍 Get the whole world's news in 30 seconds.\n"
-            "An interactive 3D globe with 60+ major headlines daily across all six continents. Free.\n\n"
-            "🌍 30 秒看懂今天全世界發生了什麼事\n互動 3D 地球儀・每日 60+ 重大新聞，免費 👇\n\n"
+            "🌍 Doomscrolling the news? Spin the globe instead.\n"
+            "An interactive 3D Earth with 60+ major headlines a day across all six continents. Free.\n\n"
+            "🌍 與其滑一堆負面新聞，不如轉動地球看重點\n互動 3D 地球儀・每日 60+ 全球大事，免費 👇\n\n"
             "👉 https://slashmantools.us/global-events-tracker/\n\n"
-            "#WorldNews #Geopolitics #台股 #全球局勢 #國際新聞 #時事 #免費工具"
+            "#國際新聞 #全球局勢 #時事 #WorldNews #Geopolitics"
         ),
         "subtitle": "互動式地球追蹤全球重大事件",
         "features": ["每日 60+ 筆全球新聞", "六大洲即時覆蓋", "3D 視覺化地球儀"],
@@ -84,11 +84,11 @@ SITES = [
         "color": (139, 92, 246),
         "icon": "🖥",
         "text": (
-            "🖥️ Want to run AI locally but worried your GPU can't handle it?\n"
-            "Instantly calculate the VRAM you need for any model, 7B to 405B. Free.\n\n"
-            "🖥️ 想在自己電腦跑 AI 又怕顯卡跑不動？\n一秒算出你的卡能跑多大的模型，免費 👇\n\n"
+            "🖥️ Before you buy that GPU for local AI — will it even run the model?\n"
+            "Check the VRAM you need for any model 7B–405B (GGUF / AWQ / FP16) in one second. Free.\n\n"
+            "🖥️ 想加顯卡跑本地 AI？先確認跑不跑得動\n一秒算出你的卡能跑多大的模型，免費 👇\n\n"
             "👉 https://slashmantools.us/llm-calc/\n\n"
-            "#LocalLLM #AI #VRAM #Ollama #LLM #人工智慧 #免費工具"
+            "#LocalLLM #Ollama #VRAM #AI #人工智慧"
         ),
         "subtitle": "本地 AI 需要多少 VRAM？馬上算",
         "features": ["支援 7B 到 405B 全規格模型", "GGUF / AWQ / FP16 量化對比", "主流顯卡相容性一覽"],
@@ -99,11 +99,11 @@ SITES = [
         "color": (79, 70, 229),
         "icon": "🚀",
         "text": (
-            "🚀 10+ free investing & AI tools in one place.\n"
-            "Taiwan-stock analysis, screeners, backtesting, AI calculators — all free, no signup.\n\n"
-            "🚀 10+ 個免費投資 & AI 工具，一站全包！\n台股分析・選股・回測・AI 計算機…通通免費 👇\n\n"
+            "🚀 Bookmark one link, get 10+ free investing & AI tools.\n"
+            "Taiwan-stock analysis, screeners, backtesting, AI calculators — no signup, no paywall.\n\n"
+            "🚀 存一個連結，10+ 免費投資 & AI 工具一次擁有\n台股分析・選股・回測・AI 計算機，免註冊 👇\n\n"
             "👉 https://slashmantools.us/\n\n"
-            "#FreeTools #Investing #AI #量化投資 #台股 #ETF #理財工具 #免費工具"
+            "#台股 #量化投資 #理財工具 #AI #FreeTools"
         ),
         "subtitle": "一站直達所有免費投資工具",
         "features": ["台股 ETF / 大飆股 DNA / 回測", "全球事件 3D・LLM 計算機", "每日自動更新 · 無需註冊"],
@@ -113,7 +113,7 @@ SITES = [
         "url": "https://slashmantools.us/token-cost-calculator/",
         "color": (139, 92, 246),
         "icon": "🧮",
-        "text": "🧮 Free Token Cost Calculator\nCount tokens & compare GPT / Claude / Gemini API pricing instantly — runs in your browser, nothing uploaded.\n\n🧮 Token 成本計算機：算 token、比較各家 API 費用，免費 👇\n\n👉 https://slashmantools.us/token-cost-calculator/\n☕ Support: https://ko-fi.com/ytstories0413\n#AI #LLM #GPT #Claude #FreeTools",
+        "text": "🧮 That API bill adds up fast — know the cost before you hit send.\nCount tokens & compare GPT / Claude / Gemini pricing instantly, in your browser. Free.\n\n🧮 API 帳單越滾越大？送出前先算清楚\n即時算 token、比較各家 API 費用，免費 👇\n\n👉 https://slashmantools.us/token-cost-calculator/\n☕ Support: https://ko-fi.com/ytstories0413\n#AI #LLM #GPT #Claude",
         "subtitle": "算 token・比較 GPT/Claude/Gemini API 費用",
         "features": ["即時計算 token 數", "10+ 模型價格對比", "本機運算不上傳"],
     },
@@ -122,7 +122,7 @@ SITES = [
         "url": "https://slashmantools.us/ai-image-size-calculator/",
         "color": (236, 72, 153),
         "icon": "🖼️",
-        "text": "🖼️ AI Image Size Calculator\nFind the perfect resolution & aspect ratio for Midjourney, Stable Diffusion & SDXL — free.\n\n🖼️ AI 出圖尺寸計算機：Midjourney／SD／SDXL 最佳長寬比，免費 👇\n\n👉 https://slashmantools.us/ai-image-size-calculator/\n☕ Support: https://ko-fi.com/ytstories0413\n#AIart #Midjourney #StableDiffusion #FreeTools",
+        "text": "🖼️ Stop guessing aspect ratios that come out stretched.\nGet the perfect resolution for Midjourney, Stable Diffusion & SDXL (aligned to 64). Free.\n\n🖼️ 別再猜長寬比、猜到出圖變形\nMidjourney／SD／SDXL 最佳解析度一鍵帶入，免費 👇\n\n👉 https://slashmantools.us/ai-image-size-calculator/\n☕ Support: https://ko-fi.com/ytstories0413\n#AIart #Midjourney #StableDiffusion #SDXL",
         "subtitle": "Midjourney/SD/SDXL 長寬比與解析度",
         "features": ["常用長寬比一鍵帶入", "對齊 64 倍數避免破圖", "免費・本機運算"],
     },
@@ -131,7 +131,7 @@ SITES = [
         "url": "https://slashmantools.us/ai-prompt-library/",
         "color": (16, 185, 129),
         "icon": "📝",
-        "text": "📝 AI Prompt Library\nHigh-quality, ready-to-use prompt templates for ChatGPT, Claude & Gemini — copy & go, free.\n\n📝 AI Prompt 範本庫：高品質提示詞範本一鍵複製，免費 👇\n\n👉 https://slashmantools.us/ai-prompt-library/\n☕ Support: https://ko-fi.com/ytstories0413\n#AI #ChatGPT #Prompt #FreeTools",
+        "text": "📝 Bad prompt in, bad answer out. Start from ones that work.\nHigh-quality, ready-to-use prompt templates for ChatGPT, Claude & Gemini — copy & go. Free.\n\n📝 提示詞寫不好，AI 就答不好\n高品質提示詞範本一鍵複製，直接套用，免費 👇\n\n👉 https://slashmantools.us/ai-prompt-library/\n☕ Support: https://ko-fi.com/ytstories0413\n#AI #ChatGPT #Claude #Prompt",
         "subtitle": "高品質提示詞範本・一鍵複製",
         "features": ["分類 + 搜尋", "一鍵複製", "持續新增範本"],
     },
@@ -140,7 +140,7 @@ SITES = [
         "url": "https://slashmantools.us/password-generator/",
         "color": (244, 63, 94),
         "icon": "🔐",
-        "text": "🔐 Free Strong Password Generator\nCustom length & symbols, crypto-grade randomness — runs locally, nothing uploaded.\n\n🔐 免費強密碼產生器：自訂長度字元、即時產生、本機運算不上傳 👇\n\n👉 https://slashmantools.us/password-generator/\n☕ Support: https://ko-fi.com/ytstories0413\n#Password #Security #Privacy #免費工具 #資安",
+        "text": "🔐 Still reusing the same password everywhere? Fix that in 2 seconds.\nCrypto-grade random passwords, custom length & symbols — generated locally, never uploaded.\n\n🔐 還在到處用同一組密碼？2 秒換掉它\n加密級亂數、自訂長度字元，本機產生不上傳 👇\n\n👉 https://slashmantools.us/password-generator/\n☕ Support: https://ko-fi.com/ytstories0413\n#資安 #Security #Privacy #密碼",
         "subtitle": "自訂長度字元・即時產生安全密碼",
         "features": ["加密級亂數產生", "本機運算不上傳", "即時強度檢測"],
     },
@@ -149,7 +149,7 @@ SITES = [
         "url": "https://slashmantools.us/word-counter/",
         "color": (59, 130, 246),
         "icon": "✍️",
-        "text": "✍️ Free Word & Character Counter\nWords, characters, sentences & reading time — instant, in your browser.\n\n✍️ 免費字數統計：字數・字元・句數・閱讀時間，即時本機運算 👇\n\n👉 https://slashmantools.us/word-counter/\n☕ Support: https://ko-fi.com/ytstories0413\n#Writing #WordCount #免費工具 #寫作",
+        "text": "✍️ Essay limit? Post caption? Know your count before you paste.\nWords, characters, sentences & reading time — instant, right in your browser. Free.\n\n✍️ 報告字數限制？貼文長度？貼上前先數清楚\n字數・字元・句數・閱讀時間即時統計，免費 👇\n\n👉 https://slashmantools.us/word-counter/\n☕ Support: https://ko-fi.com/ytstories0413\n#寫作 #Writing #WordCount",
         "subtitle": "字數・字元・句數・閱讀時間",
         "features": ["即時統計字數字元", "估算閱讀時間", "本機運算不上傳"],
     },
@@ -158,7 +158,7 @@ SITES = [
         "url": "https://slashmantools.us/compound-calculator/",
         "color": (245, 158, 11),
         "icon": "💹",
-        "text": "💹 Free Compound Interest Calculator\nSee how your money grows with a live growth chart — supports 5 languages.\n\n💹 免費複利計算機：本利和成長圖、定期定額試算，支援 5 種語言 👇\n\n👉 https://slashmantools.us/compound-calculator/\n#CompoundInterest #Investing #理財 #複利 #免費工具",
+        "text": "💹 $100/month for 20 years = how much? The answer will surprise you.\nSee your money grow on a live chart — supports lump-sum + monthly investing. Free.\n\n💹 每月存 5,000、存 20 年會變多少？答案會嚇到你\n本利和成長圖＋定期定額試算，免費 👇\n\n👉 https://slashmantools.us/compound-calculator/\n#理財 #複利 #存錢 #Investing",
         "subtitle": "複利成長試算＋圖表",
         "features": ["本利和成長圖", "定期定額試算", "支援 5 種語言"],
     },
@@ -167,7 +167,7 @@ SITES = [
         "url": "https://slashmantools.us/unit-converter/",
         "color": (20, 184, 166),
         "icon": "📐",
-        "text": "📐 Free Unit Converter\nLength, weight, temperature, area, speed & more — instant, runs locally.\n\n📐 免費單位換算：長度・重量・溫度・面積・速度，即時換算 👇\n\n👉 https://slashmantools.us/unit-converter/\n#UnitConverter #免費工具 #生活工具",
+        "text": "📐 Recipe in cups, oven in °F, package in inches? Convert it all in one place.\nLength, weight, temperature, area, speed & more — instant, runs locally. Free.\n\n📐 食譜用杯、烤箱用華氏、尺寸用英吋？一個工具全搞定\n長度・重量・溫度・面積・速度即時換算，免費 👇\n\n👉 https://slashmantools.us/unit-converter/\n#單位換算 #生活工具 #UnitConverter",
         "subtitle": "長度・重量・溫度・面積・速度",
         "features": ["多類單位即時換算", "常用單位齊全", "免費・本機運算"],
     },
@@ -176,7 +176,7 @@ SITES = [
         "url": "https://slashmantools.us/pomodoro-focus-timer/",
         "color": (249, 115, 22),
         "icon": "⏲️",
-        "text": "⏲️ Free Pomodoro Focus Timer\nBeat procrastination with work/break cycles — right in your browser.\n\n⏲️ 免費番茄鐘：工作／休息循環、桌面提醒，戰勝拖延 👇\n\n👉 https://slashmantools.us/pomodoro-focus-timer/\n#Pomodoro #Productivity #Focus #免費工具 #生產力",
+        "text": "⏲️ Can't start the task you've been avoiding? Try just 25 minutes.\nA browser Pomodoro timer with work/break cycles + desktop alerts. No install. Free.\n\n⏲️ 那件一直拖的事，先做 25 分鐘就好\n番茄鐘工作／休息循環＋桌面提醒，免安裝，免費 👇\n\n👉 https://slashmantools.us/pomodoro-focus-timer/\n#番茄鐘 #生產力 #專注 #Productivity",
         "subtitle": "番茄工作法・專注／休息循環",
         "features": ["可自訂工作/休息時間", "桌面通知提醒", "免費・免安裝"],
     },
@@ -185,7 +185,7 @@ SITES = [
         "url": "https://slashmantools.us/json-regex-devtools/",
         "color": (99, 102, 241),
         "icon": "🧰",
-        "text": "🧰 Free JSON + Regex Tools\nFormat/validate JSON & test regex live — runs in your browser.\n\n🧰 免費 JSON 格式化＋Regex 即時測試，本機運算 👇\n\n👉 https://slashmantools.us/json-regex-devtools/\n#JSON #Regex #DevTools #免費工具 #工程師",
+        "text": "🧰 Debugging a broken API response or a regex that won't match? Two tabs, one page.\nFormat/validate JSON & test regex live — in your browser, nothing leaves your machine.\n\n🧰 在對付壞掉的 JSON、或兜不出來的 Regex？一頁搞定\nJSON 格式化＋Regex 即時測試，本機運算 👇\n\n👉 https://slashmantools.us/json-regex-devtools/\n#工程師 #DevTools #JSON #Regex",
         "subtitle": "JSON 格式化 + Regex 即時測試",
         "features": ["JSON 美化/驗證", "Regex 即時比對", "本機運算不上傳"],
     },
@@ -194,7 +194,7 @@ SITES = [
         "url": "https://slashmantools.us/dev-tools/",
         "color": (34, 197, 94),
         "icon": "🛠️",
-        "text": "🛠️ Free Developer Tools\nBase64, URL, JWT, UUID, timestamp, SHA-256 — one toolbox, runs locally.\n\n🛠️ 免費開發者工具箱：Base64・JWT・UUID・SHA-256，一站搞定 👇\n\n👉 https://slashmantools.us/dev-tools/\n#WebDev #DevTools #Programming #免費工具 #工程師",
+        "text": "🛠️ Stop pasting your JWT into a random sketchy site to decode it.\nBase64, URL, JWT, UUID, timestamp, SHA-256 — one toolbox, all runs locally. Free.\n\n🛠️ 別再把 JWT 貼到來路不明的網站解碼了\nBase64・JWT・UUID・SHA-256 一站搞定，本機運算 👇\n\n👉 https://slashmantools.us/dev-tools/\n#工程師 #DevTools #WebDev #Programming",
         "subtitle": "Base64・JWT・UUID・SHA-256…",
         "features": ["編解碼一次到位", "JWT/UUID/雜湊", "本機運算不上傳"],
     },
@@ -203,7 +203,7 @@ SITES = [
         "url": "https://slashmantools.us/color-tools/",
         "color": (236, 72, 153),
         "icon": "🎨",
-        "text": "🎨 Free Color Tools for Designers\nPicker, HEX/RGB/HSL converter, palette & CSS gradient generator.\n\n🎨 免費配色工具：取色器・色碼轉換・調色盤・CSS 漸層 👇\n\n👉 https://slashmantools.us/color-tools/\n#Design #ColorPalette #CSS #免費工具 #設計",
+        "text": "🎨 Found a color you love but need the HEX? Grab it and build a palette.\nPicker, HEX/RGB/HSL converter, palette maker & CSS gradient generator — free.\n\n🎨 看到喜歡的顏色卻不知道色碼？取色、轉換、配一整組\n取色器・色碼轉換・調色盤・CSS 漸層，免費 👇\n\n👉 https://slashmantools.us/color-tools/\n#設計 #配色 #CSS #Design",
         "subtitle": "取色・轉換・調色盤・CSS 漸層",
         "features": ["HEX/RGB/HSL 互轉", "調色盤產生", "CSS 漸層輸出"],
     },
@@ -212,7 +212,7 @@ SITES = [
         "url": "https://slashmantools.us/qr-code-generator/",
         "color": (234, 179, 8),
         "icon": "🔳",
-        "text": "🔳 Free QR Code Generator\nLinks, text, Wi-Fi & more → instant QR you can download. No signup.\n\n🔳 免費 QR Code 產生器：網址・文字・Wi-Fi 一秒轉，可下載 👇\n\n👉 https://slashmantools.us/qr-code-generator/\n#QRCode #免費工具 #行銷工具",
+        "text": "🔳 Tired of reading out the Wi-Fi password to every guest? Make a QR code.\nLinks, text, Wi-Fi & more → instant downloadable QR. No signup. Free.\n\n🔳 每個客人都要問一次 Wi-Fi 密碼？做成 QR 貼牆上\n網址・文字・Wi-Fi 一秒轉，可下載，免費 👇\n\n👉 https://slashmantools.us/qr-code-generator/\n#QRCode #行銷工具 #生活工具",
         "subtitle": "網址・文字・Wi-Fi 轉 QR Code",
         "features": ["即時產生 QR", "可下載 PNG", "免費・免註冊"],
     },
@@ -221,7 +221,7 @@ SITES = [
         "url": "https://slashmantools.us/image-compressor/",
         "color": (14, 165, 233),
         "icon": "🖼️",
-        "text": "🖼️ Free Image Compressor\nShrink & resize images in your browser — files never uploaded.\n\n🖼️ 免費圖片壓縮：瀏覽器內壓縮／縮放，檔案不上傳保護隱私 👇\n\n👉 https://slashmantools.us/image-compressor/\n#ImageCompression #WebPerf #免費工具 #隱私",
+        "text": "🖼️ \"File too large to upload.\" Shrink it without uploading it anywhere.\nCompress & resize images right in your browser — files never leave your device.\n\n🖼️ 「檔案太大無法上傳」？在本機壓好再傳\n瀏覽器內壓縮／縮放，檔案不上傳保護隱私，免費 👇\n\n👉 https://slashmantools.us/image-compressor/\n#隱私 #圖片壓縮 #ImageCompression",
         "subtitle": "瀏覽器內壓縮・縮放圖片",
         "features": ["不上傳・保護隱私", "壓縮 + 縮放", "支援 JPG/PNG/WebP"],
     },
@@ -230,7 +230,7 @@ SITES = [
         "url": "https://slashmantools.us/pdf-tools/",
         "color": (239, 68, 68),
         "icon": "📄",
-        "text": "📄 Free PDF Tools\nImages → PDF & merge PDFs, all in your browser — files never uploaded.\n\n📄 免費 PDF 工具：圖片轉 PDF、合併 PDF，本機處理不上傳 👇\n\n👉 https://slashmantools.us/pdf-tools/\n#PDF #免費工具 #文件 #隱私",
+        "text": "📄 Need to combine scans into one PDF — without uploading private docs?\nImages → PDF & merge PDFs, all in your browser. Files never leave your device.\n\n📄 要把好幾張掃描檔併成一份 PDF、又不想上傳隱私文件？\n圖片轉 PDF、合併 PDF，本機處理不上傳，免費 👇\n\n👉 https://slashmantools.us/pdf-tools/\n#隱私 #PDF #文件工具",
         "subtitle": "圖片轉 PDF・合併 PDF",
         "features": ["圖片轉 PDF", "合併多份 PDF", "本機處理不上傳"],
     },
@@ -239,7 +239,7 @@ SITES = [
         "url": "https://slashmantools.us/calculators/",
         "color": (168, 85, 247),
         "icon": "🧮",
-        "text": "🧮 Free Everyday Calculators\nBMI, loan, percentage, age, tip — all in one, no signup.\n\n🧮 免費多功能計算機：BMI・貸款・百分比・年齡・小費，一站算到好 👇\n\n👉 https://slashmantools.us/calculators/\n#Calculator #免費工具 #生活工具",
+        "text": "🧮 Splitting a bill, checking a loan, working out a discount? One page for all of it.\nBMI, loan, percentage, age, tip — everyday calculators in one place. No signup. Free.\n\n🧮 分帳、算貸款、算折扣？一頁全部算到好\nBMI・貸款・百分比・年齡・小費，免註冊，免費 👇\n\n👉 https://slashmantools.us/calculators/\n#計算機 #生活工具 #理財",
         "subtitle": "BMI・貸款・百分比・年齡・小費",
         "features": ["分頁式多種計算", "即時結果", "免費・免註冊"],
     },
