@@ -79,6 +79,21 @@ SITES = [
         "features": ["每日 60+ 筆全球新聞", "六大洲即時覆蓋", "3D 視覺化地球儀"],
     },
     {
+        "name": "總經產業熱度儀表板",
+        "url": "https://slashmantools.us/macro-dashboard/",
+        "color": (220, 38, 38),
+        "icon": "🔥",
+        "text": (
+            "🔥 Which sector is hot right now — and which is quietly rolling over?\n"
+            "14 industry ETFs ranked by 3-month return, click any card for its top-10 holdings. Free.\n\n"
+            "🔥 現在資金往哪個產業跑？哪個又在默默走弱？\n14 大產業 ETF 依近 3 月報酬排名，點卡片看前 10 大成分股，免費 👇\n\n"
+            "👉 https://slashmantools.us/macro-dashboard/\n\n"
+            "#台股 #產業輪動 #ETF #總經 #Investing"
+        ),
+        "subtitle": "14 大產業 ETF 熱度即時排名",
+        "features": ["依近 3 月報酬率排名", "點卡片看前 10 大成分股", "串接即時數據 · 每日更新"],
+    },
+    {
         "name": "LLM VRAM計算機",
         "url": "https://slashmantools.us/llm-calc/",
         "color": (139, 92, 246),
