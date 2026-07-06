@@ -49,6 +49,22 @@ SITES = [
         "features": ["趨勢拉回 20MA + RSI 策略", "2004–2026 年歷史回測驗證", "每日掃描台股全市場"],
     },
     {
+        # Paid conversion page — natural upgrade from the free 大飆股DNA screener.
+        "name": "TWSE Premium 量化訊號",
+        "url": "https://slashmantools.us/hermes-twse-premium/",
+        "color": (220, 38, 38),
+        "icon": "📊",
+        "text": (
+            "📊 Serious about trading Taiwan stocks? Get the signals before the market moves.\n"
+            "Daily quant scans, email alerts on breakout setups, backtested strategies. $49/mo.\n\n"
+            "📊 認真做台股？訊號在市場之前送到你信箱\n每日量化掃描＋Email 通知，$49/月 👇\n\n"
+            "👉 https://slashmantools.us/hermes-twse-premium/\n\n"
+            "#台股 #量化 #選股 #Investing #TaiwanStocks"
+        ),
+        "subtitle": "每日訊號 · Email 通知 · $49/月",
+        "features": ["每日量化訊號 Email 通知", "回測驗證的進場策略", "免費版可先試用一週"],
+    },
+    {
         "name": "台股回測儀表板",
         "url": "https://slashmantools.us/twse-backtests/",
         "color": (245, 158, 11),
