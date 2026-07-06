@@ -871,6 +871,13 @@ def _slug(name: str) -> str:
     return f"{base}-{h}"
 
 
+def _meta_mode() -> str:
+    """'live' (=1) actually posts; 'dry' runs the whole pipeline but simulates
+    the API calls (no tokens needed) so you can validate wiring safely; else 'off'."""
+    v = (os.environ.get("META_AUTOPOST") or "").strip().lower()
+    return "live" if v in ("1", "live", "true") else ("dry" if v == "dry" else "off")
+
+
 def _host_images_via_git(prepared: list) -> dict:
     """Commit each promo PNG into promo_images/ in one commit so IG/Threads can
     fetch it by public URL. Returns {site_name: raw_url}. Best-effort."""
@@ -889,6 +896,9 @@ def _host_images_via_git(prepared: list) -> dict:
         staged = True
     if not staged:
         return {}
+    if _meta_mode() == "dry":
+        print(f"[meta:dry] would host {len(urls)} promo image(s) via git → raw URLs", flush=True)
+        return urls
     try:
         subprocess.run(["git", "-C", str(repo), "add", "promo_images"], check=True)
         subprocess.run(["git", "-C", str(repo), "commit", "-m", "auto: promo images for Meta autopost"], check=True)
@@ -902,6 +912,9 @@ def _host_images_via_git(prepared: list) -> dict:
 
 def post_to_facebook_api(site) -> bool:
     """Post a photo + caption to a Facebook Page via the Graph API (file upload)."""
+    if _meta_mode() == "dry":
+        print(f"[fb:dry] POST {GRAPH_API}/<page>/photos  file={bool(site.get('_img'))}  caption={site['text'][:40]!r}…", flush=True)
+        return True
     token, page_id = os.environ.get("FB_PAGE_TOKEN"), os.environ.get("FB_PAGE_ID")
     if not (token and page_id):
         return False
@@ -926,6 +939,9 @@ def post_to_facebook_api(site) -> bool:
 def post_to_instagram_api(site) -> bool:
     """Publish an image + caption to Instagram via the Content Publishing API
     (2-step container → publish). Requires a public image URL."""
+    if _meta_mode() == "dry":
+        print(f"[ig:dry] container→publish  image_url={site.get('_img_url')}  caption={site['text'][:40]!r}…", flush=True)
+        return True
     token, ig_id = os.environ.get("IG_GRAPH_TOKEN"), os.environ.get("IG_USER_ID")
     url = site.get("_img_url")
     if not (token and ig_id and url):
@@ -952,6 +968,10 @@ def post_to_instagram_api(site) -> bool:
 def post_to_threads_api(site) -> bool:
     """Publish to Threads via the official Threads API (2-step). Uses an image
     post when a public URL is available, else a text-only post."""
+    if _meta_mode() == "dry":
+        kind = "IMAGE" if site.get("_img_url") else "TEXT"
+        print(f"[threads:dry] {kind} post  url={site.get('_img_url')}  text={site['text'][:40]!r}…", flush=True)
+        return True
     token, tid = os.environ.get("THREADS_TOKEN"), os.environ.get("THREADS_USER_ID")
     if not (token and tid):
         return False
@@ -998,8 +1018,11 @@ def main():
     if _yt:
         sites = list(sites) + [_yt]
     slot = os.environ.get("PROMO_SLOT", "auto")
-    autopost = os.environ.get("META_AUTOPOST") == "1"
-    mode = "AUTO-POST (official API) + Discord" if autopost else "Discord delivery (manual)"
+    meta_mode = _meta_mode()
+    autopost = meta_mode != "off"
+    mode = {"live": "AUTO-POST (official API) + Discord",
+            "dry": "DRY-RUN (simulated API) + Discord",
+            "off": "Discord delivery (manual)"}[meta_mode]
     print(f"[promo] Slot={slot} | mode={mode} | {len(sites)} item(s): {[s['name'] for s in sites]}", flush=True)
 
     # Render each card once; reuse for Discord + Meta.
@@ -1023,7 +1046,9 @@ def main():
     if wh:
         try:
             import urllib.request
-            tail = "已自動發佈至 FB / IG / Threads ✅" if autopost else "存圖 + 複製文案發 IG，Meta 會自動同步 FB + Threads 👇"
+            tail = {"live": "已自動發佈至 FB / IG / Threads ✅",
+                    "dry": "（DRY-RUN 測試，未實際發佈）",
+                    "off": "存圖 + 複製文案發 IG，Meta 會自動同步 FB + Threads 👇"}[meta_mode]
             hdr = f"\U0001F4E3 今日社群推廣素材（{len(sites)} 則）— {tail}"
             req = urllib.request.Request(wh, data=json.dumps({"content": hdr}).encode("utf-8"),
                 headers={"Content-Type": "application/json", "User-Agent": "Mozilla/5.0 (compatible; sm413-promo)"})

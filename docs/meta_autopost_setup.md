@@ -19,6 +19,14 @@ Set repository secrets (Settings → Secrets and variables → Actions), then se
 Optional: `PROMO_PLATFORMS` (e.g. `facebook,threads`) limits which platforms post;
 empty = all three.
 
+## Test it first (recommended): dry-run
+
+Set `META_AUTOPOST=dry` and trigger the workflow manually (Actions → Social Media
+Promo → Run workflow). This runs the **whole pipeline but simulates** the API
+calls — no tokens needed, nothing is published. The Action log shows exactly what
+each platform *would* receive (`[fb:dry]`, `[ig:dry]`, `[threads:dry]`), so you can
+confirm captions/images are right before flipping `META_AUTOPOST=1` to go live.
+
 ## How it works
 
 - Each run renders one 1080×1080 promo card per selected site (same image used
