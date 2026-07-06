@@ -894,6 +894,30 @@ def _meta_mode() -> str:
     return "live" if v in ("1", "live", "true") else ("dry" if v == "dry" else "off")
 
 
+def _notify_meta_failure(platform: str, status: int, body: str) -> None:
+    """Post a Discord alert on a live-Meta-post failure. Silent if webhook unset.
+    Only called from LIVE post paths (dry-run short-circuits earlier) so token
+    expiry surfaces immediately instead of silently stopping posts."""
+    wh = os.environ.get("DISCORD_WEBHOOK", "").strip()
+    if not wh:
+        return
+    hint = ""
+    if status == 401:
+        hint = " (token likely expired — Meta long-lived tokens last ~60d)"
+    elif status == 400 and "unsupported" in (body or "").lower():
+        hint = " (400 from Graph API — check permission scopes)"
+    msg = f"🔴 {platform} auto-post FAILED (HTTP {status}){hint}\n```{(body or '')[:300]}```"
+    try:
+        import urllib.request
+        req = urllib.request.Request(
+            wh, data=json.dumps({"content": msg[:1900]}).encode("utf-8"),
+            headers={"Content-Type": "application/json", "User-Agent": "Mozilla/5.0"},
+        )
+        urllib.request.urlopen(req, timeout=15)
+    except Exception:
+        pass  # never let notification failure break the caller
+
+
 def _host_images_via_git(prepared: list) -> dict:
     """Commit each promo PNG into promo_images/ in one commit so IG/Threads can
     fetch it by public URL. Returns {site_name: raw_url}. Best-effort."""
@@ -956,9 +980,12 @@ def post_to_facebook_api(site) -> bool:
                               files={"source": f}, timeout=90)
         ok = r.status_code == 200 and "id" in r.json()
         print(f"[fb] {'posted' if ok else 'FAILED'}: {site['name']} ({r.status_code})", flush=True)
+        if not ok:
+            _notify_meta_failure("Facebook", r.status_code, r.text)
         return ok
     except Exception as e:
         print(f"[fb] error: {e}", flush=True)
+        _notify_meta_failure("Facebook", 0, str(e))
         return False
 
 
@@ -997,9 +1024,12 @@ def post_to_instagram_api(site) -> bool:
                           data={"creation_id": cid, "access_token": token}, timeout=90).json()
         ok = "id" in p
         print(f"[ig] {'posted' if ok else 'FAILED'}: {site['name']} ({p})", flush=True)
+        if not ok:
+            _notify_meta_failure("Instagram", int(p.get("error", {}).get("code", 0)) if isinstance(p.get("error"), dict) else 0, str(p))
         return ok
     except Exception as e:
         print(f"[ig] error: {e}", flush=True)
+        _notify_meta_failure("Instagram", 0, str(e))
         return False
 
 
@@ -1041,9 +1071,12 @@ def post_to_threads_api(site) -> bool:
                           data={"creation_id": cid, "access_token": token}, timeout=90).json()
         ok = "id" in p
         print(f"[threads] {'posted' if ok else 'FAILED'}: {site['name']}", flush=True)
+        if not ok:
+            _notify_meta_failure("Threads", int(p.get("error", {}).get("code", 0)) if isinstance(p.get("error"), dict) else 0, str(p))
         return ok
     except Exception as e:
         print(f"[threads] error: {e}", flush=True)
+        _notify_meta_failure("Threads", 0, str(e))
         return False
 
 
