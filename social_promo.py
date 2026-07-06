@@ -901,6 +901,16 @@ def _host_images_via_git(prepared: list) -> dict:
         return urls
     try:
         subprocess.run(["git", "-C", str(repo), "add", "promo_images"], check=True)
+        # PIL renders are deterministic — if no image changed since last run,
+        # `git commit` would fail with "nothing to commit". Short-circuit: the
+        # images from the previous run are already at the raw URLs, so we can
+        # reuse them.
+        diff = subprocess.run(
+            ["git", "-C", str(repo), "diff", "--cached", "--quiet"],
+        )
+        if diff.returncode == 0:
+            print("[meta] promo images unchanged; reusing previously-hosted URLs.", flush=True)
+            return urls
         subprocess.run(["git", "-C", str(repo), "commit", "-m", "auto: promo images for Meta autopost"], check=True)
         subprocess.run(["git", "-C", str(repo), "pull", "--rebase"], check=True)
         subprocess.run(["git", "-C", str(repo), "push"], check=True)
