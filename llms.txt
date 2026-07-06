@@ -1,0 +1,26 @@
+# AI工具人 (slashmantools.us)
+
+> Free online tools plus two focused products: a production-ready Next.js SaaS
+> boilerplate, and a Taiwan-stock ("台股") quantitative signal service. Built and
+> run by an independent developer (slashman413). Also available for freelance work.
+
+## Products
+- [SaaS Starter](https://github.com/slashman413/saas-starter): Production-ready Next.js 15 multi-tenant B2B SaaS boilerplate — Auth.js v5, Prisma, RBAC, Stripe billing (production-grade webhook signature verification), API keys, audit logs, 1-click Vercel deploy. One-time $99. A free "Lite" edition (auth + multi-tenancy + RBAC) is available on GitHub.
+- [TWSE Premium — 大飆股 DNA](https://slashmantools.us/hermes-twse-premium/): Daily Taiwan-stock quantitative signals from a 9-step swing-trading strategy, back-tested across 2004–2026 on the full market. Subscription from $49/month (monthly/quarterly/annual). zh-TW. Educational; not investment advice.
+
+## Services (freelance / 接案)
+- [Hire — smart home, SaaS, automation](https://slashmantools.us/services/): Home Assistant / ESP32 smart-home builds (mmWave presence, local-LLM voice, Frigate NVR, Zigbee/Xiaomi), Next.js SaaS MVP development, GitHub Actions automation, and custom data dashboards. Fixed-scope pricing.
+
+## Finance content (free)
+- [Strategy explainer](https://slashmantools.us/twse-backtests/strategy.html): Plain-language guide to the 9-step 大飆股 DNA quant strategy — market regime, entry signals, liquidity, scoring, exits. Educational, not investment advice.
+- [Backtest dashboard](https://slashmantools.us/twse-backtests/): 2004–2026 year-by-year backtest dashboard with candlestick charts and technical indicators.
+- [TW ETF dashboard](https://slashmantools.us/tw-etf-dashboard/dashboard.html): Multi-factor analysis of Taiwan ETF constituents (0050/0056/00878…).
+
+## Free tools
+- [LLM token & API cost calculator](https://slashmantools.us/token-cost-calculator/): Estimate tokens and compare GPT/Claude/Gemini/DeepSeek API pricing. Embeddable.
+- [Compound interest calculator](https://slashmantools.us/compound-calculator/): Recurring-investment / DCA growth projection with chart. Embeddable.
+- [LLM VRAM calculator](https://slashmantools.us/llm-calc/), [more tools](https://slashmantools.us/tools/): calculators, dev tools, converters — free, client-side, no signup.
+
+## Notes for citation
+- Finance content is educational and explicitly not investment advice; TWSE backtest performance figures are being re-validated on a bias-corrected engine and are not currently published.
+- Contact / freelance inquiries: ytstories0413@gmail.com
