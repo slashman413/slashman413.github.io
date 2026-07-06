@@ -965,10 +965,22 @@ def post_to_instagram_api(site) -> bool:
         if not cid:
             print(f"[ig] container failed: {c}", flush=True)
             return False
+        # IG requires the container to reach status_code=FINISHED before
+        # publish. Publishing immediately returns "Media ID is not available".
+        for _ in range(15):
+            s = requests.get(f"{GRAPH_API}/{cid}",
+                             params={"fields": "status_code", "access_token": token},
+                             timeout=30).json()
+            if s.get("status_code") == "FINISHED":
+                break
+            if s.get("status_code") == "ERROR":
+                print(f"[ig] container ERROR before publish: {s}", flush=True)
+                return False
+            time.sleep(2)
         p = requests.post(f"{GRAPH_API}/{ig_id}/media_publish",
                           data={"creation_id": cid, "access_token": token}, timeout=90).json()
         ok = "id" in p
-        print(f"[ig] {'posted' if ok else 'FAILED'}: {site['name']}", flush=True)
+        print(f"[ig] {'posted' if ok else 'FAILED'}: {site['name']} ({p})", flush=True)
         return ok
     except Exception as e:
         print(f"[ig] error: {e}", flush=True)
@@ -997,7 +1009,18 @@ def post_to_threads_api(site) -> bool:
         if not cid:
             print(f"[threads] container failed: {c}", flush=True)
             return False
-        time.sleep(3)  # Threads recommends a short delay before publishing
+        # Threads recommends waiting up to ~30 s before publishing; poll status
+        # briefly so we publish as soon as the container is ready.
+        for _ in range(15):
+            time.sleep(2)
+            s = requests.get(f"{THREADS_API}/{cid}",
+                             params={"fields": "status", "access_token": token},
+                             timeout=30).json()
+            if s.get("status") == "FINISHED":
+                break
+            if s.get("status") == "ERROR":
+                print(f"[threads] container ERROR before publish: {s}", flush=True)
+                return False
         p = requests.post(f"{THREADS_API}/{tid}/threads_publish",
                           data={"creation_id": cid, "access_token": token}, timeout=90).json()
         ok = "id" in p
