@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◆</text></svg>">
+<title>SaaS Starter — Ship a Multi-Tenant B2B SaaS This Weekend | Next.js 15 Boilerplate</title>
+<meta name="description" content="Production-ready Next.js 15 SaaS boilerplate: multi-tenancy, Auth.js v5, Prisma, RBAC, Stripe billing, API keys, audit logs. One-time $99, lifetime updates. Free Lite version on GitHub.">
+<link rel="canonical" href="https://slashmantools.us/saas/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://slashmantools.us/saas/" />
+<meta property="og:title" content="SaaS Starter — Ship a Multi-Tenant B2B SaaS This Weekend" />
+<meta property="og:description" content="Auth · orgs · RBAC · billing · API keys — done. Production-ready Next.js 15 boilerplate, one-time $99." />
+<meta property="og:image" content="https://slashmantools.us/saas/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://slashmantools.us/saas/og.png" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MY95FHB8JG');
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SaaS Starter","url":"https://slashmantools.us/saas/","description":"Production-ready Next.js 15 SaaS boilerplate with multi-tenancy, Auth.js v5, Prisma, RBAC, Stripe billing, API keys, and audit logs.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"99","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://slashmaster6.gumroad.com/l/kuvajr"},"softwareVersion":"0.1.0","programmingLanguage":["TypeScript","JavaScript"]}
+</script>
+<style>
+  :root{--brand:#4f46e5;--brand-d:#4338ca;--ink:#111827;--mut:#4b5563;--faint:#9ca3af;--line:#e5e7eb;--bg:#f9fafb}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1024px;margin:0 auto;padding:0 24px}
+  a{text-decoration:none;color:inherit}
+  .btn{display:inline-block;border-radius:10px;padding:12px 28px;font-weight:700;font-size:16px;background:var(--brand);color:#fff;transition:.15s}
+  .btn:hover{background:var(--brand-d)}
+  .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{background:#f3f4f6}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+  .logo{font-size:18px;font-weight:900;color:var(--brand)}
+  nav .btn{padding:9px 18px;font-size:14px}
+  .hero{text-align:center;padding:72px 0 56px}
+  .pill{display:inline-block;background:#eef2ff;color:var(--brand);font-size:14px;font-weight:600;border-radius:999px;padding:5px 16px;margin-bottom:18px}
+  h1{font-size:clamp(38px,6vw,58px);font-weight:900;line-height:1.12;letter-spacing:-1px}
+  h1 .hl{color:var(--brand)}
+  .sub{max-width:640px;margin:24px auto 0;font-size:20px;color:var(--mut)}
+  .fine{margin-top:12px;font-size:14px;color:var(--faint)}
+  .demo{position:relative;border-radius:18px;overflow:hidden;background:#111827;border:1px solid var(--line);box-shadow:0 20px 40px rgba(0,0,0,.12);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;margin:0 0 72px}
+  .demo .play{font-size:52px}
+  .demo p{margin-top:10px;font-weight:600;font-size:18px}
+  .demo small{color:#a5b4fc;font-size:14px;margin-top:4px}
+  .band{background:var(--brand);color:#fff;padding:60px 0;text-align:center}
+  .band h2{font-size:clamp(26px,4vw,36px);font-weight:900}
+  .band p{max-width:620px;margin:14px auto 0;font-size:17px;color:#c7d2fe}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:36px}
+  @media(min-width:640px){.stats{grid-template-columns:repeat(4,1fr)}}
+  .stats .n{font-size:30px;font-weight:900}
+  .stats .l{font-size:13.5px;color:#c7d2fe;margin-top:2px}
+  section.pad{padding:72px 0}
+  h2.center{font-size:clamp(26px,4vw,36px);font-weight:900;text-align:center}
+  .lead{max-width:560px;margin:12px auto 0;text-align:center;color:var(--mut)}
+  .grid4{display:grid;gap:18px;margin-top:44px;grid-template-columns:1fr}
+  @media(min-width:640px){.grid4{grid-template-columns:1fr 1fr}}
+  @media(min-width:960px){.grid4{grid-template-columns:repeat(4,1fr)}}
+  .card{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  .tag{position:absolute;top:12px;right:12px;font-size:11px;font-weight:600;border-radius:999px;padding:2px 9px}
+  .tag.free{background:#f3f4f6;color:#6b7280}
+  .tag.paid{background:#e0e7ff;color:var(--brand)}
+  .card .ico{font-size:28px}
+  .card h3{margin-top:10px;font-size:16px;font-weight:800}
+  .card p{margin-top:4px;font-size:13.5px;color:var(--mut)}
+  .tablewrap{margin-top:40px;border:1px solid var(--line);border-radius:14px;overflow:auto;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
+  thead{background:#f3f4f6}
+  th{text-align:left;padding:12px 18px;font-weight:700;color:#374151}
+  th.c,td.c{text-align:center;width:110px}
+  td{padding:11px 18px;border-top:1px solid #f3f4f6;color:var(--mut);vertical-align:top}
+  td.mod{font-weight:600;color:#1f2937;white-space:nowrap}
+  .ok{color:#10b981;font-weight:700}.no{color:#d1d5db}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}
+  .badge{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:14px;font-weight:500;color:#374151;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .plans{display:grid;gap:22px;margin-top:44px;grid-template-columns:1fr}
+  @media(min-width:760px){.plans{grid-template-columns:1fr 1fr}}
+  .plan{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  .plan.best{border:2px solid var(--brand);position:relative}
+  .plan .kick{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--faint)}
+  .plan.best .kick{color:var(--brand)}
+  .bestbadge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--brand);color:#fff;font-size:11px;font-weight:800;border-radius:999px;padding:4px 14px}
+  .price{margin-top:10px;font-size:38px;font-weight:900}
+  .price .was{font-size:19px;color:var(--faint);text-decoration:line-through;font-weight:500;margin-left:8px}
+  .price .lp{font-size:11px;font-weight:700;background:#e0e7ff;color:var(--brand);border-radius:999px;padding:3px 9px;margin-left:8px;vertical-align:middle}
+  .plan .note{font-size:13.5px;color:var(--faint);margin-top:2px}
+  .plan ul{list-style:none;margin:20px 0;flex:1}
+  .plan li{display:flex;gap:8px;font-size:14px;color:#374151;padding:4px 0}
+  .plan li.off{color:#c3c6cd}
+  .faq{max-width:720px;margin:40px auto 0}
+  .faq .qa{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:14px}
+  .qa h3{font-size:15.5px;font-weight:800}
+  .qa p{margin-top:6px;font-size:14px;color:var(--mut)}
+  .final{background:var(--brand);color:#fff;text-align:center;padding:76px 0}
+  .final h2{font-size:clamp(28px,4.5vw,40px);font-weight:900}
+  .final p{max-width:560px;margin:16px auto 0;font-size:17px;color:#c7d2fe}
+  .final .btn{background:#fff;color:var(--brand-d);margin-top:32px}
+  .final .btn:hover{background:#eef2ff}
+  .final .fine{color:#a5b4fc}
+  footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;font-size:14px;color:var(--faint)}
+  footer .links{margin-top:8px;display:flex;gap:18px;justify-content:center}
+  footer a:hover{color:var(--brand)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <span class="logo">◆ SaaS Starter</span>
+    <div style="display:flex;gap:8px">
+      <a class="btn ghost" href="https://github.com/slashman413/saas-starter-lite" target="_blank" rel="noopener">Free Lite on GitHub</a>
+      <a class="btn buy" href="https://slashmaster6.gumroad.com/l/kuvajr?utm_source=slashmantools&utm_medium=sales-page&utm_campaign=saas-starter" target="_blank" rel="noopener">Buy now — $99</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="pill">Launch price — $99 (goes to $149 soon)</div>
+    <h1>Ship a multi-tenant B2B SaaS <span class="hl">this weekend.</span></h1>
+    <p class="sub">Stop rebuilding auth, organizations, RBAC, billing, and API keys from scratch on every project. SaaS Starter gives you a production-ready Next.js 15 foundation so you can ship your idea — not the infrastructure.</p>
+    <p style="margin-top:36px"><a class="btn buy" href="https://slashmaster6.gumroad.com/l/kuvajr?utm_source=slashmantools&utm_medium=sales-page&utm_campaign=saas-starter" target="_blank" rel="noopener">Buy on Gumroad — $99</a></p>
+    <p class="fine">One-time payment · Perpetual license · Instant download</p>
+  </section>
+
+  <div class="demo">
+    <div class="play">▶</div>
+    <p>3-min walkthrough demo</p>
+    <small>Register → org → invite member → API key → /api/v1/projects</small>
+  </div>
+</div>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Save 40–80 hours of groundwork.</h2>
+    <p>Auth, multi-tenancy, RBAC, billing hooks, API keys, and audit logs are the same on every B2B SaaS project. Stop rebuilding them. Start with SaaS Starter and spend your weekend on what makes your product unique.</p>
+    <div class="stats">
+      <div><div class="n">40–80 hrs</div><div class="l">saved on infra</div></div>
+      <div><div class="n">0 lines</div><div class="l">of auth boilerplate</div></div>
+      <div><div class="n">7 modules</div><div class="l">production-ready</div></div>
+      <div><div class="n">1 weekend</div><div class="l">to your first feature</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad"><div class="wrap">
+  <h2 class="center">Everything a B2B SaaS needs, already wired up.</h2>
+  <p class="lead">Each module is production-quality, fully typed, and designed to extend — not a toy example.</p>
+  <div class="grid4">
+    <div class="card"><span class="tag free">Free Lite</span><div class="ico">🔐</div><h3>Authentication</h3><p>Email/password + OAuth (Google) via Auth.js v5, bcrypt, JWT sessions.</p></div>
+    <div class="card"><span class="tag free">Free Lite</span><div class="ico">🏢</div><h3>Multi-tenancy</h3><p>Organizations, memberships, tenant-scoped data — all data gated by organizationId.</p></div>
+    <div class="card"><span class="tag free">Free Lite</span><div class="ico">🛡️</div><h3>RBAC</h3><p>Owner / Admin / Member roles with a central permission matrix (lib/rbac.ts).</p></div>
+    <div class="card"><span class="tag paid">Paid</span><div class="ico">💳</div><h3>Billing-ready</h3><p>Subscription model, Stripe webhook handler, and a plans UI — just add your keys.</p></div>
+    <div class="card"><span class="tag paid">Paid</span><div class="ico">🔑</div><h3>API Keys</h3><p>SHA-256-hashed keys shown once; versioned public API at /api/v1/* with key auth.</p></div>
+    <div class="card"><span class="tag paid">Paid</span><div class="ico">📝</div><h3>Audit Logs</h3><p>Every mutation records who/what/when, scoped per org. Drop-in compliance trail.</p></div>
+    <div class="card"><span class="tag paid">Paid</span><div class="ico">🚀</div><h3>1-Click Deploy</h3><p>Vercel deploy button provisions a Neon Postgres DB, runs migrations, seeds demo data.</p></div>
+    <div class="card"><span class="tag paid">Paid</span><div class="ico">🧩</div><h3>Typed API Layer</h3><p>route() wrapper, Zod validation, ok()/err() helpers — add a new module in minutes.</p></div>
+  </div>
+</div></section>
+
+<section class="pad" style="background:#fff"><div class="wrap">
+  <h2 class="center">What's included (full version)</h2>
+  <p class="lead">Not a skeleton. Every file below is implemented and tested end-to-end.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Module / File</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td class="mod">Prisma schema</td><td>User, Account, Session, Organization, Membership, Invitation, Subscription, ApiKey, Project, AuditLog</td></tr>
+      <tr><td class="mod">Auth.js config</td><td>Credentials + Google OAuth, JWT strategy, Prisma adapter</td></tr>
+      <tr><td class="mod">Middleware</td><td>Route-level session guard for /dashboard and /settings</td></tr>
+      <tr><td class="mod">Tenant isolation</td><td>lib/tenant.ts resolves { userId, organizationId, role } on every request</td></tr>
+      <tr><td class="mod">RBAC</td><td>lib/rbac.ts — can() / assertCan() + permission matrix</td></tr>
+      <tr><td class="mod">Audit log helper</td><td>lib/audit.ts — one line to record any mutation</td></tr>
+      <tr><td class="mod">API-key system</td><td>Generate, hash, prefix, verify — lib/api-auth.ts</td></tr>
+      <tr><td class="mod">Stripe webhook</td><td>Production-grade signature verification (HMAC-SHA256, constant-time, replay-protected); add your Stripe keys to go live</td></tr>
+      <tr><td class="mod">Public API</td><td>app/api/v1/projects — shows the key-auth pattern end-to-end</td></tr>
+      <tr><td class="mod">Settings UI</td><td>Members, API keys, Billing pages wired to route handlers</td></tr>
+      <tr><td class="mod">Dashboard</td><td>Overview + recent audit activity, projects CRUD module</td></tr>
+      <tr><td class="mod">Seed script</td><td>Demo org + user → owner@acme.test / password123 in one command</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section style="padding:48px 0;text-align:center"><div class="wrap">
+  <p style="font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--faint)">Built with</p>
+  <div class="badges">
+    <span class="badge">Next.js 15</span><span class="badge">TypeScript</span><span class="badge">Prisma</span><span class="badge">Auth.js v5</span><span class="badge">Tailwind CSS</span><span class="badge">PostgreSQL</span><span class="badge">Stripe (skeleton)</span><span class="badge">Zod</span>
+  </div>
+</div></section>
+
+<section class="pad"><div class="wrap">
+  <h2 class="center">Lite (free) vs Full ($99)</h2>
+  <p class="lead">Lite is everything you need to validate an idea. Full is the complete production stack — plus support and lifetime updates so you never start from scratch again.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Capability</th><th class="c">Lite — free</th><th class="c" style="color:var(--brand)">Full — $99</th></tr></thead>
+    <tbody>
+      <tr><td>Authentication (email/password + OAuth)</td><td class="c ok">✓</td><td class="c ok">✓</td></tr>
+      <tr><td>Multi-tenancy (orgs + members)</td><td class="c ok">✓</td><td class="c ok">✓</td></tr>
+      <tr><td>RBAC (Owner / Admin / Member)</td><td class="c ok">✓</td><td class="c ok">✓</td></tr>
+      <tr><td>Projects CRUD module</td><td class="c ok">✓</td><td class="c ok">✓</td></tr>
+      <tr><td>Dashboard overview</td><td class="c ok">✓</td><td class="c ok">✓</td></tr>
+      <tr><td>Stripe billing + webhook (HMAC-verified)</td><td class="c no">—</td><td class="c ok">✓</td></tr>
+      <tr><td>API keys (hashed) + versioned public API</td><td class="c no">—</td><td class="c ok">✓</td></tr>
+      <tr><td>Per-org audit logs</td><td class="c no">—</td><td class="c ok">✓</td></tr>
+      <tr><td>1-click Vercel deploy + Neon provisioning</td><td class="c no">—</td><td class="c ok">✓</td></tr>
+      <tr><td>Typed API layer (route() + Zod)</td><td class="c no">—</td><td class="c ok">✓</td></tr>
+      <tr><td>90-second setup walkthrough (Loom)</td><td class="c no">—</td><td class="c ok">✓</td></tr>
+      <tr><td>Deploy help</td><td class="c no">—</td><td class="c ok">✓</td></tr>
+      <tr><td>Priority email support</td><td class="c no">—</td><td class="c ok">✓</td></tr>
+      <tr><td>Lifetime updates</td><td class="c no">—</td><td class="c ok">✓</td></tr>
+    </tbody>
+  </table></div>
+  <p style="text-align:center;margin-top:28px"><a class="btn buy" href="https://slashmaster6.gumroad.com/l/kuvajr?utm_source=slashmantools&utm_medium=sales-page&utm_campaign=saas-starter" target="_blank" rel="noopener">Get the full version — $99</a></p>
+  <p class="fine" style="text-align:center">One-time payment · Perpetual license · Lifetime updates included</p>
+</div></section>
+
+<section class="pad" style="background:#fff" id="pricing"><div class="wrap">
+  <h2 class="center">Simple pricing. One-time payment.</h2>
+  <p class="lead">No subscriptions. No per-seat fees. Own it forever.</p>
+  <div class="plans">
+    <div class="plan">
+      <div class="kick">Free Lite</div>
+      <div class="price">$0</div>
+      <div class="note">Forever free on GitHub</div>
+      <ul>
+        <li><span class="ok">✓</span> Email/password + OAuth auth</li>
+        <li><span class="ok">✓</span> Multi-tenancy (orgs + members)</li>
+        <li><span class="ok">✓</span> RBAC (Owner / Admin / Member)</li>
+        <li><span class="ok">✓</span> Prisma schema (core models)</li>
+        <li><span class="ok">✓</span> Next.js 15 App Router</li>
+        <li class="off">✗ Billing + Stripe webhook</li>
+        <li class="off">✗ API keys + /api/v1</li>
+        <li class="off">✗ Audit logs</li>
+        <li class="off">✗ 1-click Vercel deploy</li>
+        <li class="off">✗ Typed API layer + Zod</li>
+      </ul>
+      <a class="btn ghost" style="text-align:center" href="https://github.com/slashman413/saas-starter-lite" target="_blank" rel="noopener">Get free on GitHub</a>
+    </div>
+    <div class="plan best">
+      <div class="bestbadge">BEST VALUE</div>
+      <div class="kick">Full Version</div>
+      <div class="price">$99<span class="was">$149</span><span class="lp">Launch price</span></div>
+      <div class="note">One-time · instant download</div>
+      <ul>
+        <li><span class="ok">✓</span> Everything in Free Lite</li>
+        <li><span class="ok">✓</span> Stripe billing + HMAC-verified webhook</li>
+        <li><span class="ok">✓</span> API keys (hashed) + /api/v1 public API</li>
+        <li><span class="ok">✓</span> Per-org audit log module</li>
+        <li><span class="ok">✓</span> 1-click Vercel deploy + Neon provisioning</li>
+        <li><span class="ok">✓</span> Typed route() wrapper + Zod validation</li>
+        <li><span class="ok">✓</span> 90-second setup walkthrough (Loom)</li>
+        <li><span class="ok">✓</span> Deploy help</li>
+        <li><span class="ok">✓</span> Priority email support (1 business day)</li>
+        <li><span class="ok">✓</span> Lifetime updates — free forever</li>
+      </ul>
+      <a class="btn buy" style="text-align:center" href="https://slashmaster6.gumroad.com/l/kuvajr?utm_source=slashmantools&utm_medium=sales-page&utm_campaign=saas-starter" target="_blank" rel="noopener">Buy on Gumroad — $99</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="pad"><div class="wrap">
+  <h2 class="center">Frequently asked questions</h2>
+  <div class="faq">
+    <div class="qa"><h3>What license do I get?</h3><p>A perpetual, personal-use license to build unlimited SaaS products for yourself or clients. You may not resell the boilerplate itself.</p></div>
+    <div class="qa"><h3>Which database does it support?</h3><p>PostgreSQL via Prisma. Works with Neon (free tier available), Supabase, or any managed Postgres.</p></div>
+    <div class="qa"><h3>Is Auth.js v5 production-ready?</h3><p>Auth.js v5 (NextAuth v5) is in stable beta and widely used in production. The starter pins a specific beta release and will track stable on release.</p></div>
+    <div class="qa"><h3>Do I need a Stripe account to use it?</h3><p>No. Stripe is a skeleton — the webhook handler and Subscription model are wired but the actual Stripe SDK calls are left as clear TODOs. Flip it on when ready.</p></div>
+    <div class="qa"><h3>How different is the free Lite version?</h3><p>Lite includes auth + multi-tenancy + RBAC — enough to validate an idea. Full adds billing, API keys, audit logs, 1-click deploy, the typed API layer, priority support, and lifetime updates — the complete production stack.</p></div>
+    <div class="qa"><h3>What does "lifetime updates" mean?</h3><p>Pay once, get every future update to the boilerplate at no additional charge. When new modules or Next.js major-version upgrades land, you get them free.</p></div>
+    <div class="qa"><h3>What does priority email support cover?</h3><p>Questions about setup, customisation, and deployment — answered within one business day. Lite users are welcome to open GitHub issues, but response time isn't guaranteed.</p></div>
+    <div class="qa"><h3>Will this work with Next.js 15 + React 19?</h3><p>Yes — it was built on Next.js 15 App Router with React 19 from day one. No legacy pages/ router.</p></div>
+  </div>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2>Ready to ship this weekend?</h2>
+  <p>Stop starting from zero. Get the complete production stack — billing, API keys, audit logs, deploy walkthrough, priority support, and lifetime updates — all for a single $99 payment.</p>
+  <a class="btn buy" href="https://slashmaster6.gumroad.com/l/kuvajr?utm_source=slashmantools&utm_medium=sales-page&utm_campaign=saas-starter" target="_blank" rel="noopener">Buy on Gumroad — $99</a>
+  <p class="fine">Price goes to $149 after launch week · One-time payment · Instant download</p>
+</div></section>
+
+<footer><div class="wrap">
+  <p><span style="font-weight:800;color:var(--brand)">◆ SaaS Starter</span> — a production-ready multi-tenant B2B SaaS boilerplate.</p>
+  <div class="links">
+    <a href="https://github.com/slashman413/saas-starter-lite" target="_blank" rel="noopener">Free Lite on GitHub</a>
+    <a href="#pricing">Pricing</a>
+    <a href="https://slashmantools.us/">AI工具人 Home</a>
+  </div>
+</div></footer>
+
+<script>
+  // Funnel instrumentation: fire GA4 begin_checkout on any buy-button click.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a.buy');
+    if (!a || typeof gtag !== 'function') return;
+    gtag('event', 'begin_checkout', { product: 'saas-starter', destination: a.href });
+  });
+</script>
+</body>
+</html>
