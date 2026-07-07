@@ -894,6 +894,21 @@ def _meta_mode() -> str:
     return "live" if v in ("1", "live", "true") else ("dry" if v == "dry" else "off")
 
 
+_SM_LINK = re.compile(r"(https://slashmantools\.us(?:/[^\s]*?)?)([.,;!?)）。，、]*)(?=\s|$)")
+
+
+def _sm_utm(text: str, source: str) -> str:
+    """Tag slashmantools.us links for GA (G-MY95FHB8JG) channel attribution.
+    Mirrors hermes-marketing/scripts/_utm.py. Only slashmantools links; Ko-fi/
+    other links untouched; idempotent on already-tagged links."""
+    def _add(m):
+        url, trail = m.group(1), m.group(2)
+        if "?" in url or "utm_" in url:
+            return m.group(0)
+        return f"{url}?utm_source={source}&utm_medium=social&utm_campaign=hermes{trail}"
+    return _SM_LINK.sub(_add, text)
+
+
 def _notify_meta_failure(platform: str, status: int, body: str) -> None:
     """Post a Discord alert on a live-Meta-post failure. Silent if webhook unset.
     Only called from LIVE post paths (dry-run short-circuits earlier) so token
@@ -976,7 +991,7 @@ def post_to_facebook_api(site) -> bool:
         import requests
         with open(img, "rb") as f:
             r = requests.post(f"{GRAPH_API}/{page_id}/photos",
-                              data={"caption": site["text"], "access_token": token},
+                              data={"caption": _sm_utm(site["text"], "facebook"), "access_token": token},
                               files={"source": f}, timeout=90)
         ok = r.status_code == 200 and "id" in r.json()
         print(f"[fb] {'posted' if ok else 'FAILED'}: {site['name']} ({r.status_code})", flush=True)
@@ -1002,7 +1017,7 @@ def post_to_instagram_api(site) -> bool:
     try:
         import requests
         c = requests.post(f"{GRAPH_API}/{ig_id}/media",
-                          data={"image_url": url, "caption": site["text"], "access_token": token},
+                          data={"image_url": url, "caption": _sm_utm(site["text"], "instagram"), "access_token": token},
                           timeout=90).json()
         cid = c.get("id")
         if not cid:
@@ -1047,9 +1062,9 @@ def post_to_threads_api(site) -> bool:
     try:
         import requests
         if url:
-            params = {"media_type": "IMAGE", "image_url": url, "text": site["text"], "access_token": token}
+            params = {"media_type": "IMAGE", "image_url": url, "text": _sm_utm(site["text"], "threads"), "access_token": token}
         else:
-            params = {"media_type": "TEXT", "text": site["text"], "access_token": token}
+            params = {"media_type": "TEXT", "text": _sm_utm(site["text"], "threads"), "access_token": token}
         c = requests.post(f"{THREADS_API}/{tid}/threads", data=params, timeout=90).json()
         cid = c.get("id")
         if not cid:
