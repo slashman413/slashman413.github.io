@@ -182,6 +182,22 @@ SITES = [
         "features": ["分類 + 搜尋", "一鍵複製", "持續新增範本"],
     },
     {
+        "name": "AI Bio 產生器",
+        "url": "https://slashmantools.us/bio-generator/",
+        "color": (168, 85, 247),
+        "icon": "✨",
+        "text": (
+            "✨ Blank 'Bio' field staring back at you? Generate one in seconds.\n"
+            "AI bios for Instagram, LinkedIn, X & TikTok — pick a vibe, copy, done. Free.\n\n"
+            "✨ 個人簡介欄不知道寫什麼？幾秒就生出來\n"
+            "IG／LinkedIn／X／TikTok 專用 AI 自介，選風格、一鍵複製，免費 👇\n\n"
+            "👉 https://slashmantools.us/bio-generator/\n\n"
+            "#Instagram #LinkedIn #個人品牌 #社群經營 #免費工具"
+        ),
+        "subtitle": "IG / LinkedIn / X / TikTok AI 自介產生器",
+        "features": ["多平台語氣風格", "數百組範本", "一鍵複製・免費"],
+    },
+    {
         "name": "密碼產生器",
         "url": "https://slashmantools.us/password-generator/",
         "color": (244, 63, 94),
