@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+<!-- CHECKOUT: wired to the live Gumroad product (njserv, $34) 2026-07-08.
+     Keep price in sync with the Gumroad listing — checkout is the source of truth. -->
+<title>AI 科技新聞自動化頻道系統｜全自動 YouTube 頻道 in a box</title>
+<meta name="description" content="一套全自動的台灣繁中 AI 科技新聞 YouTube 頻道系統：自動爬新聞 → AI 寫雙人對話腳本 → 免費 TTS 配音 → FFmpeg 合成影片 → 每天自動上傳。全程免費 API，跑在 GitHub Actions，不需伺服器。">
+<link rel="canonical" href="https://slashmantools.us/ai-tech-news-vid-2ppl/" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="zh_TW" />
+<meta property="og:url" content="https://slashmantools.us/ai-tech-news-vid-2ppl/" />
+<meta property="og:title" content="AI 科技新聞自動化頻道系統 — 全自動 YouTube 頻道 in a box" />
+<meta property="og:description" content="爬新聞→AI腳本→TTS配音→合成影片→自動上傳，全程免費 API + GitHub Actions。買一次，天天自動產片。" />
+<meta property="og:image" content="https://slashmantools.us/ai-tech-news-vid-2ppl/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://slashmantools.us/ai-tech-news-vid-2ppl/og.png" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MY95FHB8JG');
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"AI 科技新聞自動化頻道系統","description":"全自動台灣繁中 AI 科技新聞 YouTube 頻道系統：爬新聞、AI 腳本、TTS 配音、FFmpeg 合成、自動上傳，跑在 GitHub Actions。","brand":{"@type":"Brand","name":"AI工具人"},"offers":{"@type":"Offer","price":"34.00","priceCurrency":"USD","url":"https://slashmaster6.gumroad.com/l/njserv"}}
+</script>
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,'Segoe UI','Noto Sans TC',sans-serif;background:#0a0a0f;color:#e8e8f0;line-height:1.7;padding:24px 16px 64px}
+  .wrap{max-width:720px;margin:0 auto}
+  header{text-align:center;padding:44px 0 20px}
+  h1{font-size:2.1rem;line-height:1.25;background:linear-gradient(135deg,#3b82f6,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .sub{color:#b8b8d0;font-size:1.15rem;margin-top:16px}
+  .cta-btn{display:inline-block;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:800;font-size:1.05rem;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;margin-top:20px}
+  h2{font-size:1.35rem;margin:34px 0 12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .card{background:#161622;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px}
+  .card h3{font-size:1.05rem;color:#a5b4fc;margin-bottom:6px}
+  .card p{color:#9a9ac0;font-size:.95rem}
+  .flow{background:#12121a;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px;margin-top:12px;color:#c2c2d4}
+  .flow li{margin:6px 0}
+  .price{font-size:2.4rem;font-weight:900;color:#22c55e}
+  .final{text-align:center;background:#12121a;border:1px solid rgba(59,130,246,.3);border-radius:16px;padding:32px;margin:30px 0}
+  .note{font-size:12px;color:#55557a;margin-top:10px}
+  footer{margin-top:36px;text-align:center;font-size:12px;color:#55557a}
+  footer a{color:#8888c0;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>每天自動生出一支 AI 科技新聞影片<br>——你只要顧著漲訂閱</h1>
+    <p class="sub">一套完整的台灣繁中 <b>AI 新聞 YouTube 頻道系統</b>：自動爬新聞、AI 寫雙人對話腳本、免費 TTS 配音、FFmpeg 合成影片、每天自動上傳。全程免費 API、跑在 GitHub Actions，<b>不用自備伺服器</b>。</p>
+    <a class="cta-btn" id="buy" href="https://slashmaster6.gumroad.com/l/njserv?utm_source=landing&utm_medium=web&utm_campaign=ai-tech-news" target="_blank" rel="noopener">🚀 取得這套系統</a>
+  </header>
+
+  <h2>你買到的是一條完整產線</h2>
+  <div class="flow">
+    <ol style="padding-left:20px">
+      <li><b>爬新聞</b> — 自動抓 iThome / TechOrange / Inside 等科技媒體</li>
+      <li><b>寫腳本</b> — DeepSeek 生成「主持 + 專家」雙人對話</li>
+      <li><b>配音</b> — Edge TTS 免費雙聲道語音（台灣腔）</li>
+      <li><b>做畫面</b> — Pillow 投影片 + FFmpeg Ken Burns 動畫</li>
+      <li><b>合成 + 上傳</b> — FFmpeg 合片 → YouTube Data API 自動發布</li>
+      <li><b>排程</b> — GitHub Actions 每天自動跑，零維運</li>
+    </ol>
+  </div>
+
+  <h2>為什麼值得</h2>
+  <div class="grid">
+    <div class="card"><h3>💸 0 元成本</h3><p>全程免費 API（DeepSeek 免費額度、Edge TTS、免費素材），跑在免費的 GitHub Actions。</p></div>
+    <div class="card"><h3>🙈 無需露臉</h3><p>Faceless 頻道，不用出鏡、不用配音、不用剪片。</p></div>
+    <div class="card"><h3>🧩 一次設定</h3><p>接好 API 金鑰與 YouTube 授權，之後每天自動產片、自動上傳。</p></div>
+    <div class="card"><h3>🇹🇼 台灣繁中</h3><p>雙人對話腳本 + 台灣腔配音，貼近在地觀眾。</p></div>
+  </div>
+
+  <div class="final">
+    <div class="price">$34</div>
+    <p style="color:#b8b8d0;margin:6px 0 4px">一次付清 · 完整程式碼 + 設定教學 · 永久使用</p>
+    <a class="cta-btn" id="buy2" href="https://slashmaster6.gumroad.com/l/njserv?utm_source=landing&utm_medium=web&utm_campaign=ai-tech-news" target="_blank" rel="noopener">🚀 立即取得</a>
+    <p class="note">內容為自動化系統原始碼與教學；上傳前請確認各新聞來源與素材授權。</p>
+  </div>
+
+  <h2 style="font-size:1.1rem">常見問題</h2>
+  <details style="background:#161622;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;margin:8px 0"><summary style="cursor:pointer;font-weight:600">需要程式基礎嗎？</summary><p style="color:#9a9ac0;margin-top:8px">會操作 GitHub 與貼上 API 金鑰即可，附逐步設定教學。</p></details>
+  <details style="background:#161622;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;margin:8px 0"><summary style="cursor:pointer;font-weight:600">真的免費運行嗎？</summary><p style="color:#9a9ac0;margin-top:8px">使用免費 API 額度與 GitHub Actions 免費分鐘數；超量才需付費，一般每日一支影片在免費範圍內。</p></details>
+
+  <footer>
+    <a href="https://slashmantools.us/">← AI工具人首頁</a> · <a href="https://www.youtube.com/@GentleSoul666" target="_blank" rel="noopener">範例頻道</a>
+  </footer>
+</div>
+<script>
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('#buy,#buy2'); if(!a||typeof gtag!=='function')return;
+    gtag('event','begin_checkout',{product:'ai-tech-news-channel'});
+  });
+</script>
+</body>
+</html>
