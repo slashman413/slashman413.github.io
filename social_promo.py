@@ -65,6 +65,22 @@ SITES = [
         "features": ["每日量化訊號 Email 通知", "回測驗證的進場策略", "免費版可先試用一週"],
     },
     {
+        # Paid product — one-time $34, launched 2026-07-08.
+        "name": "AI 科技新聞頻道系統",
+        "url": "https://slashmantools.us/ai-tech-news-vid-2ppl/",
+        "color": (14, 165, 233),
+        "icon": "📺",
+        "text": (
+            "📺 A YouTube channel that runs itself — really.\n"
+            "Scrapes tech news → AI writes a 2-host dialogue → free TTS voices → FFmpeg video → auto-uploads daily. Runs on GitHub Actions, no server. $34 once.\n\n"
+            "📺 一個會自己跑的 YouTube 頻道\n自動爬科技新聞 → AI 雙人對話腳本 → 免費 TTS 配音 → 合成影片 → 每天自動上傳。跑在 GitHub Actions，免伺服器，$34 一次買斷 👇\n\n"
+            "👉 https://slashmantools.us/ai-tech-news-vid-2ppl/\n\n"
+            "#YouTube #AI #自動化 #SideHustle #ContentCreation"
+        ),
+        "subtitle": "全自動 AI 科技新聞 YouTube 頻道 · $34 買斷",
+        "features": ["爬新聞→腳本→配音→影片→上傳 全自動", "跑在 GitHub Actions・免伺服器", "$34 一次買斷・含完整原始碼"],
+    },
+    {
         "name": "台股回測儀表板",
         "url": "https://slashmantools.us/twse-backtests/",
         "color": (245, 158, 11),
