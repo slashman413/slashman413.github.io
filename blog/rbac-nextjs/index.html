@@ -38,7 +38,7 @@
 <body>
 <div class="wrap">
   <h1>RBAC in Next.js: Role-Based Access Control That Scales</h1>
-  <div class="meta">Updated July 2026 · ~6 min read · Next.js 15 App Router</div>
+  <div class="meta">Updated July 2026 · ~6 min read · Next.js 16 App Router</div>
 
   <p>Every app starts with <code>if (user.role === "admin")</code> sprinkled through the code. It works — until you add a third role, a new action, or an edge case, and now the checks disagree with each other and a member can hit an endpoint they shouldn't. This guide shows a role-based access control (RBAC) setup for Next.js that stays correct as you grow: one permission matrix, enforced on the server.</p>
 
@@ -105,7 +105,7 @@ return (
     <li><strong>Mixing authz with tenancy</strong> — RBAC answers "can this role do X"; tenancy answers "within which org". You need both (see the multi-tenancy guide).</li>
   </ul>
 
-  <a class="cta buy" href="https://slashmantools.us/saas/?utm_source=blog&utm_medium=article&utm_campaign=rbac"><b>🛠 Want RBAC + multi-tenancy already wired? SaaS Starter →</b><br>A production Next.js 15 boilerplate with this exact permission matrix, tenant-scoped queries, signature-verified Stripe billing, API keys, and audit logs. Free Lite on GitHub; full version one-time $99.</a>
+  <a class="cta buy" href="https://slashmantools.us/saas/?utm_source=blog&utm_medium=article&utm_campaign=rbac"><b>🛠 Want RBAC + multi-tenancy already wired? SaaS Starter →</b><br>A production Next.js 16 boilerplate with this exact permission matrix, tenant-scoped queries, signature-verified Stripe billing, API keys, and audit logs. Free Lite on GitHub; full version one-time $99.</a>
 
   <h2>Takeaways</h2>
   <ol>

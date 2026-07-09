@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬆️</text></svg>">
+<title>Upgrading a Next.js SaaS from 15 to 16 (2026): What Actually Breaks</title>
+<meta name="description" content="A practical Next.js 15 → 16 upgrade guide from a real SaaS migration: the async Request APIs breaking change, middleware.js → proxy.js, the Turbopack config move, the codemod, and the stale-generated-client gotcha that causes phantom TypeScript errors.">
+<meta name="keywords" content="next.js 16 upgrade, migrate next.js 15 to 16, next.js 16 breaking changes, async request apis next.js, cookies headers await next.js, middleware to proxy, next.js codemod, next.js 16 migration guide">
+<meta property="og:title" content="Upgrading a Next.js SaaS from 15 to 16: What Actually Breaks">
+<meta property="og:description" content="The async Request APIs breaking change, middleware→proxy, the Turbopack config move, the codemod, and the stale-client gotcha — from a real migration.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://slashmantools.us/saas/og.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://slashmantools.us/saas/og.png">
+<link rel="canonical" href="https://slashmantools.us/blog/nextjs-16-upgrade-guide/">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7217603696203672" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Upgrading a Next.js SaaS from 15 to 16: What Actually Breaks","author":{"@type":"Person","name":"slashman413"},"datePublished":"2026-07-10","image":"https://slashmantools.us/saas/og.png","mainEntityOfPage":"https://slashmantools.us/blog/nextjs-16-upgrade-guide/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the Next.js 15 to 16 upgrade hard?","acceptedAnswer":{"@type":"Answer","text":"For most apps it is moderate. The codemod (npx @next/codemod@canary upgrade latest) handles the mechanical parts. The one change that touches real code is that Request APIs — cookies, headers, draftMode, params, searchParams — are now async-only and must be awaited; version 15 allowed synchronous access, version 16 removed it."}},{"@type":"Question","name":"What is the biggest breaking change in Next.js 16?","acceptedAnswer":{"@type":"Answer","text":"The full removal of synchronous access to dynamic Request APIs. In Next.js 16 you must await cookies(), headers(), draftMode(), params and searchParams (or unwrap them with React.use() in components). A codemod, next-async-request-api, migrates most call sites automatically."}},{"@type":"Question","name":"Why do I get TypeScript errors after upgrading Next.js?","acceptedAnswer":{"@type":"Answer","text":"Often the errors are not from Next.js at all but from stale generated code. After a major bump, regenerate your Prisma client (npx prisma generate) and any other codegen, then re-run the type check — phantom type errors usually disappear once the generated types match the new dependency versions."}}]}</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#dcdce8;line-height:1.75;padding:36px 18px 64px}
+  .wrap{max-width:720px;margin:0 auto}
+  h1{font-size:30px;font-weight:800;line-height:1.25;margin-bottom:8px;color:#f0f0f8}
+  .meta{color:#6868a0;font-size:13px;margin-bottom:22px}
+  h2{font-size:21px;font-weight:700;margin:30px 0 10px;color:#c7c7f0}
+  p{margin-bottom:14px;font-size:15.5px}
+  ul,ol{margin:0 0 14px 22px}li{margin-bottom:6px}
+  a{color:#a5b4fc}
+  pre{background:#12121a;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px;overflow-x:auto;margin:14px 0;font-size:13px;line-height:1.6}
+  code{font-family:ui-monospace,Menlo,monospace}
+  p code,li code{background:rgba(255,255,255,.07);padding:1px 5px;border-radius:5px;font-size:13.5px}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th,td{border:1px solid rgba(255,255,255,.1);padding:9px 11px;text-align:left}
+  th{background:rgba(99,102,241,.18);color:#c7d2fe}
+  .cta{display:block;background:linear-gradient(135deg,rgba(99,102,241,.16),rgba(34,197,94,.12));border:1px solid rgba(99,102,241,.35);border-radius:14px;padding:18px;margin:24px 0;text-decoration:none;color:inherit}
+  .cta b{color:#a5b4fc;font-size:16px}
+  .warn{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:14.5px}
+  .footer{margin-top:36px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);font-size:12.5px;color:#55557a;line-height:1.9}.footer a{color:#8888c0;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Upgrading a Next.js SaaS from 15 to 16: What Actually Breaks</h1>
+  <div class="meta">Updated July 2026 · ~6 min read</div>
+
+  <p>Next.js 16 is a smaller jump than 14→15, but it does remove things that version 15 only <em>deprecated</em>. This is a field guide from upgrading a real multi-tenant SaaS (Next.js 15.5 → 16.2): what the codemod handles for you, the one breaking change that touches actual application code, and a generated-code gotcha that sends people chasing TypeScript errors that were never Next.js's fault.</p>
+
+  <h2>Step 0: run the codemod</h2>
+  <p>Don't hand-edit what a tool can do. The official upgrade codemod bumps your dependencies and applies most mechanical migrations:</p>
+  <pre><code>npx @next/codemod@canary upgrade latest</code></pre>
+  <p>It will update <code>next</code>, <code>react</code>, and <code>react-dom</code>, and offer to run the individual transforms below. Commit first so the diff is reviewable.</p>
+
+  <h2>Breaking change #1: Request APIs are now async-only</h2>
+  <p>This is the one that matters. Next.js 15 let you call <code>cookies()</code>, <code>headers()</code>, <code>draftMode()</code>, and read <code>params</code> / <code>searchParams</code> synchronously (with a warning). <strong>Next.js 16 removes synchronous access entirely</strong> — these are now async and must be awaited (or unwrapped with <code>React.use()</code> in Client Components).</p>
+  <pre><code>// Next.js 15 (worked, with a deprecation warning)
+const token = cookies().get('token')
+
+// Next.js 16 — await it
+const token = (await cookies()).get('token')
+
+// In a Server Component page, params/searchParams are Promises too:
+export default async function Page({ params }) {
+  const { slug } = await params
+}</code></pre>
+  <p>There's a codemod for this specifically — it rewrites most call sites for you:</p>
+  <pre><code>npx @next/codemod@canary next-async-request-api .</code></pre>
+  <div class="warn">⚠️ For multi-tenant SaaS this touches your hottest path: anywhere you resolve the session/tenant from <code>cookies()</code> or <code>headers()</code> now needs <code>await</code>. Grep for <code>cookies(</code> and <code>headers(</code> after the codemod and eyeball each one — the transform is good but a missed site fails at runtime, not build.</div>
+
+  <h2>Breaking change #2: <code>middleware.js</code> → <code>proxy.js</code></h2>
+  <p>The middleware file convention was renamed. If you have a root <code>middleware.ts</code> (auth gate, redirects), rename it — again, there's a codemod:</p>
+  <pre><code>npx @next/codemod@canary middleware-to-proxy .</code></pre>
+
+  <h2>Config change: Turbopack moved to the top level</h2>
+  <p>Turbopack config graduated out of <code>experimental</code>. Move it in <code>next.config.ts</code>:</p>
+  <pre><code>// before (15)            →  after (16)
+// experimental: {           turbopack: {
+//   turbopack: { ... }        ...
+// }                        }</code></pre>
+
+  <h2>The gotcha nobody warns you about: stale generated code</h2>
+  <p>After the upgrade our type check lit up with errors that <em>looked</em> like Next.js or React type regressions. They weren't. They were a <strong>stale Prisma client</strong> — the generated types in <code>node_modules/.prisma</code> predated the dependency bump. The fix is boring and total:</p>
+  <pre><code>npx prisma generate      # regenerate the DB client
+# ...and any other codegen you run (GraphQL, tRPC, i18n, etc.)
+npx tsc --noEmit         # now the phantom errors are gone</code></pre>
+  <p>Rule of thumb after any major framework bump: <strong>regenerate before you debug.</strong> More than half of "the upgrade broke my types" reports are stale codegen, not the framework.</p>
+
+  <h2>Verify, in order</h2>
+  <ol>
+    <li><code>npx tsc --noEmit</code> — types clean (after regenerating codegen).</li>
+    <li><code>next build</code> — the real gate; confirm every route still compiles.</li>
+    <li>Smoke-test the auth/tenant flow — because the async Request API change hits it hardest and can fail at runtime, not build.</li>
+  </ol>
+
+  <a class="cta buy" href="https://slashmantools.us/saas/?utm_source=blog&utm_medium=article&utm_campaign=nextjs-16-upgrade"><b>🛠 Start on Next.js 16, not behind it — SaaS Starter →</b><br>A production-ready Next.js 16 boilerplate: org-scoped multi-tenancy, RBAC, signature-verified Stripe billing, hashed API keys, and audit logs — already on the async Request APIs. Free Lite on GitHub; full version one-time $99.</a>
+
+  <h2>Should you upgrade now?</h2>
+  <p>Yes, if you're actively building — the async Request API change only gets more expensive to defer as your codebase grows, and buyers of dev tooling notice a stale major version. If you're mid-launch and frozen, do it right after. The codemod plus a regenerate-and-rebuild pass is usually an afternoon, not a week.</p>
+
+  <h2>Recap</h2>
+  <ol>
+    <li>Run <code>@next/codemod upgrade latest</code>; commit first.</li>
+    <li><code>await</code> all Request APIs (<code>cookies</code>/<code>headers</code>/<code>draftMode</code>/<code>params</code>/<code>searchParams</code>) — use the <code>next-async-request-api</code> codemod, then eyeball auth/tenant call sites.</li>
+    <li>Rename <code>middleware</code> → <code>proxy</code>; move Turbopack config top-level.</li>
+    <li>Regenerate Prisma/other codegen <em>before</em> debugging type errors.</li>
+    <li><code>tsc --noEmit</code> → <code>next build</code> → smoke-test auth.</li>
+  </ol>
+
+  <div class="footer">
+    <a href="https://slashmantools.us/saas/">SaaS Starter</a> ·
+    <a href="https://github.com/slashman413/saas-starter-lite">Free Lite on GitHub</a> ·
+    <a href="https://slashmantools.us/blog/nextjs-multi-tenancy/">Multi-tenancy in Next.js</a> ·
+    <a href="https://slashmantools.us/blog/rbac-nextjs/">RBAC in Next.js</a> ·
+    <a href="https://slashmantools.us/blog/verify-stripe-webhook-nextjs/">Verify Stripe webhooks</a> ·
+    <a href="https://slashmantools.us/blog/">More posts</a> ·
+    <a href="https://slashmantools.us/">AI工具人 Home</a><br>
+    Educational — verify against the official Next.js 16 upgrade guide before shipping.
+  </div>
+</div>
+<script>
+  document.addEventListener('click',function(e){var a=e.target.closest('a.buy');if(!a||typeof gtag!=='function')return;gtag('event','select_promotion',{promotion_name:'saas_starter',source:'blog_nextjs16'});});
+</script>
+<script>try{(adsbygoogle=window.adsbygoogle||[]).push({})}catch(e){}</script>
+</body>
+</html>

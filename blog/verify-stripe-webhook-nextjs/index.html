@@ -38,9 +38,9 @@
 <body>
 <div class="wrap">
   <h1>Verify a Stripe Webhook in Next.js — the Secure Way</h1>
-  <div class="meta">Updated July 2026 · ~6 min read · Next.js 15 App Router</div>
+  <div class="meta">Updated July 2026 · ~6 min read · Next.js 16 App Router</div>
 
-  <p>A webhook endpoint that doesn't verify signatures will happily accept a <em>forged</em> "payment succeeded" event — and hand out paid access for free. Verifying the <code>stripe-signature</code> header is not optional. Here's how to do it correctly in a Next.js 15 App Router route handler, with the two gotchas (raw body + runtime) that trip most people up.</p>
+  <p>A webhook endpoint that doesn't verify signatures will happily accept a <em>forged</em> "payment succeeded" event — and hand out paid access for free. Verifying the <code>stripe-signature</code> header is not optional. Here's how to do it correctly in a Next.js 16 App Router route handler, with the two gotchas (raw body + runtime) that trip most people up.</p>
 
   <h2>The two things Next.js gets in your way about</h2>
   <ul>
@@ -108,7 +108,7 @@ export async function POST(req: Request) {
     <li><strong>Edge runtime</strong> — <code>node:crypto</code> isn't available; force <code>runtime = "nodejs"</code>.</li>
   </ul>
 
-  <a class="cta buy" href="https://slashmantools.us/saas/?utm_source=blog&utm_medium=article&utm_campaign=stripe-webhook"><b>🛠 Want this already wired up? SaaS Starter →</b><br>A production Next.js 15 boilerplate that ships this exact signature-verified webhook (HMAC-SHA256, constant-time, replay-protected), plus multi-tenancy, RBAC, API keys, and audit logs. Free Lite on GitHub; full version one-time $99.</a>
+  <a class="cta buy" href="https://slashmantools.us/saas/?utm_source=blog&utm_medium=article&utm_campaign=stripe-webhook"><b>🛠 Want this already wired up? SaaS Starter →</b><br>A production Next.js 16 boilerplate that ships this exact signature-verified webhook (HMAC-SHA256, constant-time, replay-protected), plus multi-tenancy, RBAC, API keys, and audit logs. Free Lite on GitHub; full version one-time $99.</a>
 
   <h2>Testing locally</h2>
   <p>Use the Stripe CLI: <code>stripe listen --forward-to localhost:3000/api/billing/webhook</code>. It prints a signing secret (<code>whsec_...</code>) — set that as <code>STRIPE_WEBHOOK_SECRET</code> in dev, then <code>stripe trigger customer.subscription.updated</code> to fire a real, correctly-signed test event.</p>

@@ -43,7 +43,7 @@
   <h1>Multi-Tenancy in Next.js: Scope Every Query the Safe Way</h1>
   <div class="meta">Updated July 2026 · ~7 min read</div>
 
-  <p>Multi-tenancy is the part of B2B SaaS that quietly keeps founders up at night. Get it wrong and one customer sees another customer's data — the kind of bug that ends a company. This guide covers the pragmatic pattern for building multi-tenant apps in <strong>Next.js 15 + Prisma + Auth.js</strong>: shared database, row-level isolation, and a discipline that makes leaks structurally hard.</p>
+  <p>Multi-tenancy is the part of B2B SaaS that quietly keeps founders up at night. Get it wrong and one customer sees another customer's data — the kind of bug that ends a company. This guide covers the pragmatic pattern for building multi-tenant apps in <strong>Next.js 16 + Prisma + Auth.js</strong>: shared database, row-level isolation, and a discipline that makes leaks structurally hard.</p>
 
   <h2>What "multi-tenant" actually means</h2>
   <p>A tenant is a customer <em>organization</em>. The common, cost-effective model is a <strong>single shared database</strong> where every business row carries an <code>organizationId</code>, and every query filters by it. (Separate DB-per-tenant exists but is operationally heavy; most SaaS starts shared.) The whole game is: <strong>no query ever runs without the tenant filter.</strong></p>
@@ -121,7 +121,7 @@ export function assertCan(role: string, action: string) {
   <h2>Build it yourself, or start from a done version</h2>
   <p>You can absolutely build all of this — it's a good exercise and the pattern above is the core of it. But wiring auth, org/membership models, the tenant resolver, RBAC, billing hooks, API keys, and audit logs cleanly takes most people 40–80 hours before they write a single feature.</p>
 
-  <a class="cta buy" href="https://slashmantools.us/saas/?utm_source=blog&utm_medium=article&utm_campaign=nextjs-multi-tenancy"><b>🛠 Skip the plumbing — SaaS Starter →</b><br>A production-ready Next.js 15 boilerplate with exactly this multi-tenancy pattern, RBAC, signature-verified Stripe billing, hashed API keys, and audit logs. Free Lite version on GitHub; full version one-time $99.</a>
+  <a class="cta buy" href="https://slashmantools.us/saas/?utm_source=blog&utm_medium=article&utm_campaign=nextjs-multi-tenancy"><b>🛠 Skip the plumbing — SaaS Starter →</b><br>A production-ready Next.js 16 boilerplate with exactly this multi-tenancy pattern, RBAC, signature-verified Stripe billing, hashed API keys, and audit logs. Free Lite version on GitHub; full version one-time $99.</a>
 
   <h2>Takeaways</h2>
   <ol>
