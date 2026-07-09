@@ -124,10 +124,14 @@
     <p class="fine">One-time payment · Perpetual license · Instant download</p>
   </section>
 
-  <div class="demo">
-    <div class="play">▶</div>
-    <p>3-min walkthrough demo</p>
-    <small>Register → org → invite member → API key → /api/v1/projects</small>
+  <div class="demo" style="aspect-ratio:auto;padding:26px 22px;align-items:stretch;justify-content:flex-start;text-align:left">
+    <p style="font-weight:800;font-size:18px;color:#fff">Don't take our word for it — run the free Lite in ~2 minutes</p>
+    <p style="color:#a5b4fc;font-size:13.5px;margin:4px 0 14px">The Lite repo is the <b>real code</b> (auth · multi-tenancy · RBAC), not a slide deck. Clone it and log in to a working dashboard:</p>
+    <pre style="margin:0;font-family:ui-monospace,monospace;font-size:12.5px;color:#c7d2fe;background:#0b1020;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;line-height:1.85;overflow:auto;white-space:pre">git clone https://github.com/slashman413/saas-starter-lite
+npm install
+npm run db:push      # point DATABASE_URL at any Postgres (Neon = free tier)
+npm run dev          # register an account → you're in a multi-tenant dashboard</pre>
+    <p style="color:#9aa4c0;font-size:13px;margin-top:14px">Like what you see? The full version adds billing, API keys, audit logs &amp; 1-click deploy — <a href="#pricing" style="color:#a5b4fc;font-weight:600">see what's included ↓</a></p>
   </div>
 </div>
 
