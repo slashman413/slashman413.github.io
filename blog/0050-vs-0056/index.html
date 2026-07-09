@@ -16,7 +16,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"0050 vs 0056 怎麼選？配息、報酬與回測數據的差異","inLanguage":"zh-Hant","author":{"@type":"Person","name":"slashman413"},"datePublished":"2026-07-09","image":"https://slashmantools.us/twse-backtests/og.png","mainEntityOfPage":"https://slashmantools.us/blog/0050-vs-0056/"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"0050 和 0056 可以同時買嗎？","acceptedAnswer":{"@type":"Answer","text":"可以，兩者追蹤的指數邏輯不同，同時持有等於在「市值成長」與「配息現金流」之間做比例配置。重點是想清楚兩者在你資產中扮演的角色，而不是把它們當成互相取代的選擇。"}},{"@type":"Question","name":"高股息 ETF 的殖利率是保證的嗎？","acceptedAnswer":{"@type":"Answer","text":"不是。配息來自成分股的股利與基金的收益平準金機制，金額每期不同，歷史殖利率不代表未來，實際配息以基金公司官方公告為準。"}},{"@type":"Question","name":"怎麼比較 0050 和 0056 的長期報酬？","acceptedAnswer":{"@type":"Answer","text":"要看「含息總報酬」而不是只看股價。把配息再投入後的累積報酬拿來比，才是公平的比較，可以用免費的台股回測工具驗證不同期間的結果。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"0050 和 0056 可以同時買嗎？","acceptedAnswer":{"@type":"Answer","text":"可以，兩者追蹤的指數邏輯不同，同時持有等於在「市值成長」與「配息現金流」之間做比例配置。重點是想清楚兩者在你資產中扮演的角色，而不是把它們當成互相取代的選擇。"}},{"@type":"Question","name":"高股息 ETF 的殖利率是保證的嗎？","acceptedAnswer":{"@type":"Answer","text":"不是。配息來自成分股的股利與基金的收益平準金機制，金額每期不同，歷史殖利率不代表未來，實際配息以基金公司官方公告為準。"}},{"@type":"Question","name":"怎麼比較 0050 和 0056 的長期報酬？","acceptedAnswer":{"@type":"Answer","text":"要看「含息總報酬」而不是只看股價。把配息再投入後的累積報酬拿來比，才是公平的比較，可以用含息總報酬的公開數據自行比較不同期間的結果。"}}]}</script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#dcdce8;line-height:1.75;padding:36px 18px 64px}
@@ -41,7 +41,7 @@
   <h1>0050 vs 0056 怎麼選？配息、報酬與回測數據的差異</h1>
   <div class="meta">更新於 2026 年 7 月 · 約 6 分鐘</div>
 
-  <p>「要買 0050 還是 0056？」大概是台股新手最常問的問題。網路上的答案常常淪為信仰之爭，但其實兩檔 ETF 的差異可以很理性地拆開來看：<strong>它們追蹤的指數邏輯不同、給你錢的方式不同、適合的目標也不同</strong>。這篇不背任何「現在殖利率是多少」的數字（那會過期，也可能誤導你），而是教你看懂機制，然後用<a href="https://slashmantools.us/twse-backtests/">免費台股回測儀表板</a>自己驗證數據。</p>
+  <p>「要買 0050 還是 0056？」大概是台股新手最常問的問題。網路上的答案常常淪為信仰之爭，但其實兩檔 ETF 的差異可以很理性地拆開來看：<strong>它們追蹤的指數邏輯不同、給你錢的方式不同、適合的目標也不同</strong>。這篇不背任何「現在殖利率是多少」的數字（那會過期，也可能誤導你），而是教你看懂機制，並參考公開的<a href="https://slashmantools.us/twse-backtests/">台股回測儀表板</a>方法自行比較（注意：該儀表板績效數字正在重新驗證中，別當成保證）。</p>
 
   <h2>兩檔 ETF 的本質差異：選股邏輯</h2>
   <p><strong>0050（元大台灣50）是「市值型」ETF</strong>：追蹤台灣 50 指數，成分股就是台股市值最大的約 50 家公司，按市值加權。誰變大就多買誰、誰掉出前段班就剔除——它不猜哪家公司好，只反映整個市場的大盤結構，所以走勢和台股加權指數高度連動。</p>
