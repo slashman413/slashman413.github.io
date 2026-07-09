@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
+<title>台股回測是什麼？如何用 20 年歷史數據驗證投資策略（2026 入門）</title>
+<meta name="description" content="台股回測入門：什麼是回測、為什麼多數漂亮的回測結果不可信（倖存者偏差、過度擬合、未含交易成本），以及怎麼看懂年化報酬、最大回檔、勝率等指標，附免費台股回測儀表板。">
+<meta name="keywords" content="台股回測, 回測是什麼, 投資策略 驗證, 倖存者偏差, 過度擬合, 最大回檔, 年化報酬率, 回測工具 免費">
+<meta property="og:title" content="台股回測是什麼？如何用 20 年歷史數據驗證投資策略">
+<meta property="og:description" content="什麼是回測、為什麼多數漂亮的回測不可信，以及怎麼看懂一份回測報告。">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://slashmantools.us/twse-backtests/og.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://slashmantools.us/twse-backtests/og.png">
+<link rel="canonical" href="https://slashmantools.us/blog/twse-backtesting-guide/">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7217603696203672" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"台股回測是什麼？如何用 20 年歷史數據驗證投資策略","inLanguage":"zh-Hant","author":{"@type":"Person","name":"slashman413"},"datePublished":"2026-07-09","image":"https://slashmantools.us/twse-backtests/og.png","mainEntityOfPage":"https://slashmantools.us/blog/twse-backtesting-guide/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"回測結果好，實際投資就會賺錢嗎？","acceptedAnswer":{"@type":"Answer","text":"不一定。回測只證明策略「在過去」有效，未來市場結構可能改變；而且很多漂亮的回測是過度擬合的產物——參數調到剛好符合歷史，換一段時間就失效。回測的價值在淘汰爛策略與理解風險，不在保證獲利。"}},{"@type":"Question","name":"回測至少要用多長的歷史數據？","acceptedAnswer":{"@type":"Answer","text":"越長越好，理想上要涵蓋多個完整的多空循環。20 年的台股數據會包含金融海嘯、疫情崩盤與多次多頭，能看出策略在極端環境下的表現；只用近幾年多頭數據的回測參考價值很低。"}},{"@type":"Question","name":"看回測報告最重要的指標是什麼？","acceptedAnswer":{"@type":"Answer","text":"先看最大回檔（Max Drawdown）再看年化報酬。年化報酬告訴你策略賺多少，最大回檔告訴你中途會多痛——很多人不是策略錯了，而是撐不過 -40% 的回檔就出場。同時要確認回測有沒有計入交易成本與配息。"}}]}</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#dcdce8;line-height:1.75;padding:36px 18px 64px}
+  .wrap{max-width:720px;margin:0 auto}
+  h1{font-size:30px;font-weight:800;line-height:1.25;margin-bottom:8px;color:#f0f0f8}
+  .meta{color:#6868a0;font-size:13px;margin-bottom:22px}
+  h2{font-size:21px;font-weight:700;margin:30px 0 10px;color:#c7c7f0}
+  p{margin-bottom:14px;font-size:15.5px}
+  ul,ol{margin:0 0 14px 22px}li{margin-bottom:6px}
+  a{color:#a5b4fc}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th,td{border:1px solid rgba(255,255,255,.1);padding:9px 11px;text-align:left}
+  th{background:rgba(245,158,11,.16);color:#fcd34d}
+  .cta{display:block;background:linear-gradient(135deg,rgba(245,158,11,.16),rgba(139,92,246,.14));border:1px solid rgba(245,158,11,.35);border-radius:14px;padding:18px;margin:24px 0;text-decoration:none;color:inherit}
+  .cta b{color:#fcd34d;font-size:16px}
+  .ad-slot{width:100%;min-height:90px;background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.07);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#303048;margin:22px 0}
+  .footer{margin-top:36px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);font-size:12.5px;color:#55557a;line-height:1.9}.footer a{color:#8888c0;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>台股回測是什麼？如何用 20 年歷史數據驗證投資策略</h1>
+  <div class="meta">更新於 2026 年 7 月 · 約 6 分鐘</div>
+
+  <p>有人跟你說「這個策略年化 20%」的時候，你怎麼知道是真的？答案是<strong>回測（backtesting）</strong>：把策略的規則套到歷史數據上，看它「如果過去就這樣做」會發生什麼事。回測是散戶少數能免費取得的強大工具，但它也是最容易被拿來騙人的工具——這篇教你回測是什麼、哪些陷阱會讓漂亮的數字變成幻覺、以及怎麼看懂一份回測報告。你可以邊讀邊開<a href="https://slashmantools.us/twse-backtests/">免費台股回測儀表板</a>對照真實範例。</p>
+
+  <h2>回測是什麼？</h2>
+  <p>回測就是「時光機模擬」：先把策略寫成明確規則（例如「每月第一個交易日買進、跌破 200 日均線出場」），然後用歷史價格逐日執行這些規則，記錄每筆買賣，最後統計出報酬、波動與回檔。重點有二：</p>
+  <ul>
+    <li><strong>規則必須明確到電腦能執行。</strong>「覺得會漲就買」不能回測；「收盤價站上 20 日均線就買」可以。把直覺變成規則，本身就會逼你想清楚。</li>
+    <li><strong>回測驗證的是紀律化策略在過去的表現</strong>，它不能預測未來，但能淘汰那些「連過去都賺不了錢」的想法——這已經能幫你避開大多數的坑。</li>
+  </ul>
+
+  <h2>為什麼要 20 年？因為要涵蓋完整多空循環</h2>
+  <p>只用近三、五年的多頭數據回測，幾乎所有「買進持有」類策略看起來都是天才。拉長到 20 年，台股數據會包含 2008 金融海嘯、2020 疫情崩盤、多次修正與長多頭——策略在<strong>極端環境</strong>下的表現，才是決定你能不能抱得住的關鍵。一個年化報酬普通但回檔淺的策略，實務上常勝過年化亮眼但中途腰斬的策略，因為後者多數人根本撐不完。</p>
+
+  <a class="cta" href="https://slashmantools.us/twse-backtests/"><b>🔬 免費台股回測儀表板 →</b><br>用 20 年台股歷史數據跑出的策略回測結果：年化報酬、最大回檔、資產曲線，免費看、免註冊。</a>
+
+  <h2>三個會讓回測變成幻覺的陷阱</h2>
+  <p>誠實說：<strong>大部分你在網路上看到的驚人回測數字，都至少踩了其中一個坑。</strong></p>
+  <ul>
+    <li><strong>倖存者偏差（survivorship bias）</strong>：只用「今天還存在」的股票回測，等於事先剔除了下市、變壁紙的公司。策略看起來很會選股，其實是數據替它作弊。嚴謹的回測要用包含已下市股票的完整歷史樣本。</li>
+    <li><strong>過度擬合（overfitting）</strong>：參數一直調、調到歷史績效最漂亮為止——結果策略記住的是歷史的雜訊而不是規律，換一段期間就失效。健康檢查方法：把數據切成兩段，用前段開發、後段驗證（out-of-sample）；或把參數微調 ±20%，如果績效崩掉，代表策略很脆弱。</li>
+    <li><strong>忽略交易成本與現實摩擦</strong>：台股有手續費與證交稅，交易越頻繁吃越多；還有滑價（實際成交價比訊號價差）與流動性問題。高週轉策略在「零成本回測」和真實世界的差距可能大到反轉結論。也別忘了確認報酬有沒有<strong>含息</strong>——不含配息的台股長期回測會嚴重低估買進持有的表現。</li>
+  </ul>
+
+  <div class="ad-slot">廣告 Ad</div>
+
+  <h2>怎麼讀一份回測報告？</h2>
+  <table>
+    <tr><th>指標</th><th>意義</th><th>看的重點</th></tr>
+    <tr><td>年化報酬（CAGR）</td><td>換算成每年複利的報酬率</td><td>和「買進持有大盤」比，沒贏就不值得複雜化</td></tr>
+    <tr><td>最大回檔（Max Drawdown）</td><td>資產從高點掉下來最深的幅度</td><td>問自己：真的遇到 -40% 你撐得住嗎？</td></tr>
+    <tr><td>夏普比率（Sharpe）</td><td>每承擔一單位波動換到多少報酬</td><td>比較不同策略「性價比」用</td></tr>
+    <tr><td>勝率與交易次數</td><td>賺錢交易佔比、樣本大小</td><td>交易次數太少的回測，統計上沒有意義</td></tr>
+  </table>
+  <p>順序建議：先看最大回檔（能不能活著），再看年化報酬（值不值得做），最後看交易次數（樣本夠不夠）。任何報告如果不揭露回測期間、是否含息、是否含交易成本，直接扣分。</p>
+
+  <h2>下一步：自己動手驗證</h2>
+  <p>觀念有了，最快的進步方式是看真實的回測報告怎麼呈現。<a href="https://slashmantools.us/twse-backtests/">台股回測儀表板</a>免費提供用 20 年歷史數據跑出的多種策略結果；如果你的策略涉及 ETF，可搭配 <a href="https://slashmantools.us/tw-etf-dashboard/dashboard.html">台股 ETF 儀表板</a>看即時市況；想把回測出來的年化報酬換算成長期資產成長，丟進<a href="https://slashmantools.us/compound-calculator/">複利計算機</a>就有直覺的曲線。需要更深入的策略數據與進階功能的讀者，可以參考 <a href="https://slashmantools.us/hermes-twse-premium/">TWSE Premium 進階訂閱</a>。</p>
+
+  <h2>常見問題 FAQ</h2>
+  <p><strong>回測結果好，實際投資就會賺錢嗎？</strong>不一定。回測只證明策略在過去有效，且很多漂亮數字是過度擬合的產物。回測的價值在淘汰爛策略與理解風險，不在保證獲利。</p>
+  <p><strong>回測至少要用多長的數據？</strong>越長越好，理想上涵蓋多個多空循環；20 年台股數據包含金融海嘯與疫情崩盤，只用近幾年多頭數據的回測參考價值很低。</p>
+  <p><strong>最重要的指標是什麼？</strong>先看最大回檔再看年化報酬——很多人不是策略錯，而是撐不過回檔就出場。並確認有無計入交易成本與配息。</p>
+
+  <p style="font-size:13px;color:#7878a0">本文為教育性內容，非投資建議；歷史回測結果不代表未來績效，實際投資請自行評估風險。</p>
+
+  <div class="footer">
+    🧰 更多：<a href="https://slashmantools.us/twse-backtests/">台股回測儀表板</a> · <a href="https://slashmantools.us/tw-etf-dashboard/dashboard.html">台股 ETF 儀表板</a> · <a href="https://slashmantools.us/compound-calculator/">複利計算機</a> · <a href="https://slashmantools.us/tools/">所有免費工具</a><br>
+    <a href="https://slashmantools.us/">← AI工具人 Home</a> · ☕ <a href="https://ko-fi.com/ytstories0413">Support on Ko-fi</a>
+  </div>
+</div>
+<script>try{(adsbygoogle=window.adsbygoogle||[]).push({})}catch(e){}</script>
+  <script src="https://slashmantools.us/kofi-widget.js" defer></script>
+</body>
+</html>
