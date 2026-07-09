@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>">
+<title>UTM Builder — campaign URL generator for GA4 &amp; analytics (free)</title>
+<meta name="description" content="Free UTM builder / campaign URL generator. Add utm_source, utm_medium, utm_campaign, utm_term and utm_content to any link for GA4 and analytics tracking. One-click channel presets, copy button, in-browser only.">
+<meta name="keywords" content="utm builder, campaign url builder, utm link generator, utm parameters, ga4 utm, utm tag generator, google analytics campaign url">
+<meta property="og:title" content="UTM Builder — campaign URL generator, free">
+<meta property="og:description" content="Tag any link with UTM parameters for GA4/analytics. Channel presets, live preview, copy button. In-browser, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slashmantools.us/utm-builder/">
+<meta property="og:image" content="https://slashmantools.us/utm-builder/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://slashmantools.us/utm-builder/og.png">
+<link rel="canonical" href="https://slashmantools.us/utm-builder/">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7217603696203672" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"UTM Builder","applicationCategory":"BusinessApplication","operatingSystem":"Any (browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://slashmantools.us/utm-builder/","description":"Build campaign URLs with UTM parameters for GA4 and analytics tracking."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are UTM parameters?","acceptedAnswer":{"@type":"Answer","text":"UTM parameters are tags added to a URL (utm_source, utm_medium, utm_campaign, utm_term, utm_content) that tell analytics tools like GA4 where a visitor came from."}},{"@type":"Question","name":"Which UTM parameters are required?","acceptedAnswer":{"@type":"Answer","text":"utm_source, utm_medium and utm_campaign are the three core parameters. utm_term and utm_content are optional."}}]}</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0f;color:#dcdce8;line-height:1.65;padding:32px 16px 64px}
+  .wrap{max-width:760px;margin:0 auto}
+  h1{font-size:26px;font-weight:800;line-height:1.25;margin-bottom:6px;color:#f0f0f8}
+  .sub{color:#7a7ab0;font-size:14px;margin-bottom:24px}
+  .card{background:#12121a;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px;margin:16px 0}
+  .fld{margin-bottom:14px}
+  label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#8888c0;margin-bottom:5px}
+  label .req{color:#f0a0a0}label .opt{color:#55557a;text-transform:none;letter-spacing:0}
+  input{width:100%;font-size:15px;background:#0a0a12;border:1px solid rgba(255,255,255,.14);border-radius:9px;color:#e2e8f0;padding:11px 12px}
+  input:focus{outline:none;border-color:rgba(99,102,241,.6)}
+  input.bad{border-color:#f87171}
+  .presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+  .presets button{background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.3);color:#c7d2fe;border-radius:20px;padding:7px 13px;font-size:13px;cursor:pointer}
+  .presets button:hover{background:rgba(99,102,241,.28)}
+  .out{margin-top:4px}
+  #result{width:100%;font-family:ui-monospace,monospace;font-size:14px;background:#0a0a14;border:1px solid rgba(34,197,94,.4);border-radius:10px;color:#86efac;padding:13px;word-break:break-all;min-height:54px;white-space:pre-wrap}
+  .rowbtns{display:flex;gap:10px;margin-top:10px}
+  .rowbtns button{flex:1;font-size:14px;font-weight:700;border-radius:9px;padding:11px;cursor:pointer;border:1px solid rgba(99,102,241,.35)}
+  #copy{background:linear-gradient(135deg,#22c55e,#16a34a);border:0;color:#04240f}
+  #reset{background:transparent;color:#93c5fd}
+  .err{color:#fca5a5;font-size:13px;margin-top:8px}
+  h2{font-size:19px;color:#c7c7f0;margin:28px 0 10px}
+  p{margin:10px 0;font-size:15px}
+  code{background:#1a1a26;padding:1px 6px;border-radius:5px;font-family:ui-monospace,monospace;color:#a5b4fc}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+  th,td{border:1px solid rgba(255,255,255,.1);padding:8px 10px;text-align:left}
+  th{background:rgba(59,130,246,.16);color:#bfd4fe}
+  .footer{margin-top:36px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:12.5px;color:#55557a;line-height:1.9}
+  .footer a{color:#8888c0;text-decoration:none}
+  a{color:#a5b4fc}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>UTM Campaign URL Builder</h1>
+  <div class="sub">Tag any link so GA4 / analytics can tell you where visitors came from. Fill in the fields — the tracked URL builds live. Runs in your browser; nothing is stored.</div>
+
+  <div class="card">
+    <div class="presets" id="presets"></div>
+    <div class="fld"><label>Website URL <span class="req">*</span></label><input id="base" placeholder="https://example.com/page" spellcheck="false"></div>
+    <div class="fld"><label>Campaign source <span class="req">*</span> <span class="opt">(utm_source — e.g. hackernews, reddit, bluesky)</span></label><input id="source" spellcheck="false"></div>
+    <div class="fld"><label>Campaign medium <span class="req">*</span> <span class="opt">(utm_medium — e.g. social, referral, email, cpc)</span></label><input id="medium" spellcheck="false"></div>
+    <div class="fld"><label>Campaign name <span class="req">*</span> <span class="opt">(utm_campaign — e.g. launch_2026)</span></label><input id="campaign" spellcheck="false"></div>
+    <div class="fld"><label>Campaign term <span class="opt">(utm_term — optional, paid keywords)</span></label><input id="term" spellcheck="false"></div>
+    <div class="fld"><label>Campaign content <span class="opt">(utm_content — optional, A/B variant)</span></label><input id="content" spellcheck="false"></div>
+    <div class="out">
+      <label>Your tracked URL</label>
+      <div id="result"></div>
+      <div class="err" id="err"></div>
+      <div class="rowbtns"><button id="copy">📋 Copy URL</button><button id="reset">Reset</button></div>
+    </div>
+  </div>
+
+  <h2>The five UTM parameters</h2>
+  <table>
+    <tr><th>Parameter</th><th>Required?</th><th>Example</th></tr>
+    <tr><td><code>utm_source</code></td><td>Yes</td><td>hackernews, reddit, bluesky, newsletter</td></tr>
+    <tr><td><code>utm_medium</code></td><td>Yes</td><td>social, referral, email, cpc</td></tr>
+    <tr><td><code>utm_campaign</code></td><td>Yes</td><td>launch_2026, spring_sale</td></tr>
+    <tr><td><code>utm_term</code></td><td>Optional</td><td>paid-search keyword</td></tr>
+    <tr><td><code>utm_content</code></td><td>Optional</td><td>hero_cta vs footer_cta (A/B)</td></tr>
+  </table>
+  <p><strong>Tip:</strong> keep values lowercase and consistent — GA4 treats <code>Reddit</code> and <code>reddit</code> as two different sources, which fragments your reports.</p>
+
+  <div class="footer">
+    <a href="https://slashmantools.us/tools/">← All free tools</a> ·
+    <a href="https://slashmantools.us/">Home</a><br>
+    UTM parameters are the Google Analytics standard for campaign tracking. This tool builds the URL locally; no link or data leaves your browser.
+  </div>
+</div>
+
+<script>
+"use strict";
+const el=id=>document.getElementById(id);
+const F={base:el("base"),source:el("source"),medium:el("medium"),campaign:el("campaign"),term:el("term"),content:el("content")};
+const resEl=el("result"),errEl=el("err");
+
+function build(){
+  const base=F.base.value.trim();
+  errEl.textContent="";F.base.classList.remove("bad");
+  if(!base){resEl.textContent="";return;}
+  let u;
+  try{u=new URL(base.match(/^https?:\/\//)?base:"https://"+base);}
+  catch(e){F.base.classList.add("bad");errEl.textContent="⚠ That doesn't look like a valid URL.";resEl.textContent="";return;}
+  const map=[["utm_source",F.source.value.trim()],["utm_medium",F.medium.value.trim()],["utm_campaign",F.campaign.value.trim()],["utm_term",F.term.value.trim()],["utm_content",F.content.value.trim()]];
+  // Set params via URLSearchParams so encoding is always correct.
+  map.forEach(([k,v])=>{u.searchParams.delete(k);if(v)u.searchParams.set(k,v);});
+  resEl.textContent=u.toString();
+  const missing=["source","medium","campaign"].filter(k=>!F[k].value.trim());
+  if(missing.length)errEl.textContent="ℹ Add "+missing.map(m=>"utm_"+m).join(", ")+" for a complete campaign URL.";
+}
+Object.values(F).forEach(inp=>inp.addEventListener("input",build));
+
+el("copy").addEventListener("click",async()=>{
+  const txt=resEl.textContent;if(!txt)return;
+  try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement("textarea");t.value=txt;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();
+  }
+  const b=el("copy"),old=b.textContent;b.textContent="✓ Copied!";setTimeout(()=>b.textContent=old,1400);
+  if(typeof gtag==="function")gtag("event","copy_utm_url");
+});
+el("reset").addEventListener("click",()=>{Object.values(F).forEach(i=>{i.value="";i.classList.remove("bad");});resEl.textContent="";errEl.textContent="";});
+
+const PRESETS=[
+  ["Hacker News",{source:"hackernews",medium:"social",campaign:"launch"}],
+  ["Product Hunt",{source:"producthunt",medium:"social",campaign:"launch"}],
+  ["Reddit",{source:"reddit",medium:"social",campaign:"launch"}],
+  ["Bluesky",{source:"bluesky",medium:"social",campaign:"launch"}],
+  ["X / Twitter",{source:"twitter",medium:"social",campaign:"launch"}],
+  ["LinkedIn",{source:"linkedin",medium:"social",campaign:"launch"}],
+  ["Newsletter",{source:"newsletter",medium:"email",campaign:"launch"}],
+];
+const pc=el("presets");
+PRESETS.forEach(([label,vals])=>{const b=document.createElement("button");b.textContent=label;b.onclick=()=>{F.source.value=vals.source;F.medium.value=vals.medium;if(!F.campaign.value.trim())F.campaign.value=vals.campaign;build();if(typeof gtag==="function")gtag("event","select_content",{content_type:"utm_preset",item_id:vals.source});};pc.appendChild(b);});
+build();
+</script>
+</body>
+</html>
