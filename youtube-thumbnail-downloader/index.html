@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖼️</text></svg>">
+<title>YouTube Thumbnail Downloader — grab HD thumbnails (maxres, HQ) free</title>
+<meta name="description" content="Free YouTube thumbnail downloader. Paste any YouTube video, Shorts, or youtu.be link and download the full-resolution (maxres 1280×720), HQ, SD, and MQ thumbnail images. No signup, works in your browser.">
+<meta name="keywords" content="youtube thumbnail downloader, download youtube thumbnail, youtube thumbnail grabber, maxresdefault, hd thumbnail, youtube shorts thumbnail, get youtube thumbnail image">
+<meta property="og:title" content="YouTube Thumbnail Downloader — HD, free, no signup">
+<meta property="og:description" content="Paste a YouTube / Shorts / youtu.be link → download the maxres, HQ, SD and MQ thumbnails instantly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slashmantools.us/youtube-thumbnail-downloader/">
+<meta property="og:image" content="https://slashmantools.us/youtube-thumbnail-downloader/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://slashmantools.us/youtube-thumbnail-downloader/og.png">
+<link rel="canonical" href="https://slashmantools.us/youtube-thumbnail-downloader/">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7217603696203672" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Thumbnail Downloader","applicationCategory":"MultimediaApplication","operatingSystem":"Any (browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://slashmantools.us/youtube-thumbnail-downloader/","description":"Download YouTube video and Shorts thumbnails in maxres, HQ, SD and MQ resolutions."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I download a YouTube thumbnail?","acceptedAnswer":{"@type":"Answer","text":"Paste the video URL into the box. This tool extracts the video ID and gives you direct download links to every available thumbnail resolution."}},{"@type":"Question","name":"What is the highest resolution YouTube thumbnail?","acceptedAnswer":{"@type":"Answer","text":"maxresdefault.jpg at 1280×720. It is only available if the uploader provided a HD thumbnail; otherwise use hqdefault (480×360), which always exists."}},{"@type":"Question","name":"Does it work for YouTube Shorts?","acceptedAnswer":{"@type":"Answer","text":"Yes. Shorts share the same thumbnail system, so a youtube.com/shorts/ link works too."}}]}</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0f;color:#dcdce8;line-height:1.65;padding:32px 16px 64px}
+  .wrap{max-width:820px;margin:0 auto}
+  h1{font-size:26px;font-weight:800;line-height:1.25;margin-bottom:6px;color:#f0f0f8}
+  .sub{color:#7a7ab0;font-size:14px;margin-bottom:24px}
+  .card{background:#12121a;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px;margin:16px 0}
+  label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#8888c0;margin-bottom:8px}
+  .row{display:flex;gap:10px;flex-wrap:wrap}
+  #url{flex:1;min-width:220px;font-size:16px;background:#0a0a12;border:1px solid rgba(99,102,241,.4);border-radius:10px;color:#e2e8f0;padding:13px 14px}
+  #url.bad{border-color:#f87171}
+  #go{background:linear-gradient(135deg,#6366f1,#4f46e5);border:0;color:#fff;font-size:16px;font-weight:700;border-radius:10px;padding:13px 24px;cursor:pointer}
+  #go:hover{filter:brightness(1.1)}
+  .err{color:#fca5a5;font-size:14px;margin-top:10px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-top:6px}
+  .thumb{background:#0d0d16;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden}
+  .thumb img{width:100%;display:block;background:#000;aspect-ratio:16/9;object-fit:cover}
+  .thumb .meta{padding:10px 12px}
+  .thumb .res{font-weight:700;color:#e2e8f0;font-size:14px}
+  .thumb .dim{color:#6868a0;font-size:12px;margin-bottom:8px}
+  .thumb .acts{display:flex;gap:8px}
+  .thumb a,.thumb button{flex:1;text-align:center;font-size:13px;padding:8px 6px;border-radius:8px;cursor:pointer;text-decoration:none;border:1px solid rgba(99,102,241,.35)}
+  .thumb .dl{background:rgba(99,102,241,.2);color:#c7d2fe;border:0}
+  .thumb .open{background:transparent;color:#93c5fd}
+  .unavail{opacity:.4}
+  h2{font-size:19px;color:#c7c7f0;margin:28px 0 10px}
+  p{margin:10px 0;font-size:15px}
+  code{background:#1a1a26;padding:1px 6px;border-radius:5px;font-family:ui-monospace,monospace;color:#a5b4fc}
+  .cta{display:block;background:linear-gradient(135deg,rgba(239,68,68,.14),rgba(59,130,246,.12));border:1px solid rgba(239,68,68,.3);border-radius:14px;padding:16px 18px;margin:26px 0;text-decoration:none;color:inherit}
+  .cta b{color:#fca5a5;font-size:16px}
+  .footer{margin-top:36px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:12.5px;color:#55557a;line-height:1.9}
+  .footer a{color:#8888c0;text-decoration:none}
+  a{color:#a5b4fc}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>YouTube Thumbnail Downloader</h1>
+  <div class="sub">Paste any YouTube video, Shorts, or <code>youtu.be</code> link — get every thumbnail resolution to preview and download. Runs in your browser; nothing is uploaded.</div>
+
+  <div class="card">
+    <label for="url">YouTube link or video ID</label>
+    <div class="row">
+      <input id="url" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" spellcheck="false" autocomplete="off">
+      <button id="go">Get thumbnails</button>
+    </div>
+    <div class="err" id="err"></div>
+  </div>
+
+  <div class="grid" id="out"></div>
+
+  <h2>Which resolution should I use?</h2>
+  <table style="width:100%;border-collapse:collapse;font-size:14px">
+    <tr><th style="border:1px solid rgba(255,255,255,.1);padding:8px 10px;text-align:left;background:rgba(59,130,246,.16);color:#bfd4fe">File</th><th style="border:1px solid rgba(255,255,255,.1);padding:8px 10px;text-align:left;background:rgba(59,130,246,.16);color:#bfd4fe">Size</th><th style="border:1px solid rgba(255,255,255,.1);padding:8px 10px;text-align:left;background:rgba(59,130,246,.16);color:#bfd4fe">Notes</th></tr>
+    <tr><td style="border:1px solid rgba(255,255,255,.1);padding:8px 10px"><code>maxresdefault</code></td><td style="border:1px solid rgba(255,255,255,.1);padding:8px 10px">1280×720</td><td style="border:1px solid rgba(255,255,255,.1);padding:8px 10px">Highest quality — only if the uploader supplied HD</td></tr>
+    <tr><td style="border:1px solid rgba(255,255,255,.1);padding:8px 10px"><code>sddefault</code></td><td style="border:1px solid rgba(255,255,255,.1);padding:8px 10px">640×480</td><td style="border:1px solid rgba(255,255,255,.1);padding:8px 10px">Standard definition</td></tr>
+    <tr><td style="border:1px solid rgba(255,255,255,.1);padding:8px 10px"><code>hqdefault</code></td><td style="border:1px solid rgba(255,255,255,.1);padding:8px 10px">480×360</td><td style="border:1px solid rgba(255,255,255,.1);padding:8px 10px"><b>Always available</b> — safe fallback</td></tr>
+    <tr><td style="border:1px solid rgba(255,255,255,.1);padding:8px 10px"><code>mqdefault</code></td><td style="border:1px solid rgba(255,255,255,.1);padding:8px 10px">320×180</td><td style="border:1px solid rgba(255,255,255,.1);padding:8px 10px">Medium</td></tr>
+  </table>
+  <p>Tip: only download thumbnails you have the right to use. Thumbnails are the creator's copyrighted work — fine for personal reference, review, or fair-use commentary; not for re-uploading as your own.</p>
+
+  <a class="cta buy" href="https://slashmantools.us/ai-tech-news-vid-2ppl/?utm_source=yt-thumb-tool&utm_medium=tool&utm_campaign=youtube_thumbnail">
+    <b>▶️ Building your own channel?</b><br>
+    Skip the grind — I run a faceless YouTube channel that scrapes news → writes an AI script → voices it → renders the video → auto-uploads daily, all on free GitHub Actions. Complete system, $34 one-time.
+  </a>
+
+  <div class="footer">
+    <a href="https://slashmantools.us/tools/">← All free tools</a> ·
+    <a href="https://slashmantools.us/blog/automated-youtube-github-actions/">How to automate a YouTube channel</a> ·
+    <a href="https://slashmantools.us/">Home</a><br>
+    Not affiliated with YouTube/Google. Thumbnails are served directly by YouTube's public image CDN.
+  </div>
+</div>
+
+<script>
+"use strict";
+const el=id=>document.getElementById(id);
+const urlEl=el("url"),errEl=el("err"),outEl=el("out");
+
+function extractId(input){
+  input=input.trim();
+  if(/^[A-Za-z0-9_-]{11}$/.test(input))return input;         // bare ID
+  let m;
+  const pats=[
+    /[?&]v=([A-Za-z0-9_-]{11})/,                              // watch?v=
+    /youtu\.be\/([A-Za-z0-9_-]{11})/,                         // youtu.be/
+    /\/shorts\/([A-Za-z0-9_-]{11})/,                          // /shorts/
+    /\/embed\/([A-Za-z0-9_-]{11})/,                           // /embed/
+    /\/live\/([A-Za-z0-9_-]{11})/,                            // /live/
+    /\/v\/([A-Za-z0-9_-]{11})/,                               // /v/
+  ];
+  for(const p of pats){m=input.match(p);if(m)return m[1];}
+  return null;
+}
+
+const RES=[
+  {key:"maxresdefault",dim:"1280×720"},
+  {key:"sddefault",dim:"640×480"},
+  {key:"hqdefault",dim:"480×360"},
+  {key:"mqdefault",dim:"320×180"},
+];
+
+async function download(url,name,btn){
+  const old=btn.textContent;btn.textContent="…";
+  try{
+    const r=await fetch(url,{mode:"cors"});
+    if(!r.ok)throw 0;
+    const blob=await r.blob();
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);a.download=name;
+    document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+    if(typeof gtag==="function")gtag("event","file_download",{file_name:name});
+  }catch(e){
+    // CDN may block cross-origin fetch — fall back to opening the image.
+    window.open(url,"_blank","noopener");
+  }
+  btn.textContent=old;
+}
+
+function render(id){
+  outEl.innerHTML="";
+  RES.forEach(r=>{
+    const url=`https://i.ytimg.com/vi/${id}/${r.key}.jpg`;
+    const card=document.createElement("div");card.className="thumb";
+    card.innerHTML=`
+      <img loading="lazy" alt="${r.key} thumbnail" src="${url}"
+           onerror="this.closest('.thumb').classList.add('unavail');this.closest('.thumb').querySelector('.res').innerHTML+=' — not available';">
+      <div class="meta">
+        <div class="res">${r.key}</div>
+        <div class="dim">${r.dim}</div>
+        <div class="acts">
+          <button class="dl">Download</button>
+          <a class="open" href="${url}" target="_blank" rel="noopener">Open</a>
+        </div>
+      </div>`;
+    card.querySelector(".dl").addEventListener("click",()=>download(url,`${id}-${r.key}.jpg`,card.querySelector(".dl")));
+    outEl.appendChild(card);
+  });
+}
+
+function go(){
+  const id=extractId(urlEl.value);
+  if(!id){urlEl.classList.add("bad");errEl.textContent="⚠ Couldn't find a video ID. Paste a full YouTube/Shorts/youtu.be link or the 11-character ID.";outEl.innerHTML="";return;}
+  urlEl.classList.remove("bad");errEl.textContent="";
+  render(id);
+  if(typeof gtag==="function")gtag("event","generate_lead",{tool:"yt_thumbnail",item_id:id});
+}
+el("go").addEventListener("click",go);
+urlEl.addEventListener("keydown",e=>{if(e.key==="Enter")go();});
+</script>
+</body>
+</html>
