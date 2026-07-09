@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+<title>RBAC in Next.js: Role-Based Access Control That Scales (2026)</title>
+<meta name="description" content="How to implement role-based access control (RBAC) in Next.js: a central permission matrix, enforcing on the server (route handlers + server actions), gating UI, and the mistakes that create privilege-escalation holes — with real TypeScript code.">
+<meta name="keywords" content="rbac next.js, role based access control next.js, next.js permissions, next.js authorization, server action authorization, permission matrix typescript, auth.js roles">
+<meta property="og:title" content="RBAC in Next.js: Role-Based Access Control That Scales">
+<meta property="og:description" content="A central permission matrix, server-side enforcement on route handlers + server actions, UI gating, and the escalation mistakes to avoid.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://slashmantools.us/saas/og.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://slashmantools.us/saas/og.png">
+<link rel="canonical" href="https://slashmantools.us/blog/rbac-nextjs/">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7217603696203672" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"RBAC in Next.js: Role-Based Access Control That Scales","author":{"@type":"Person","name":"slashman413"},"datePublished":"2026-07-08","image":"https://slashmantools.us/saas/og.png","mainEntityOfPage":"https://slashmantools.us/blog/rbac-nextjs/"}</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#dcdce8;line-height:1.75;padding:36px 18px 64px}
+  .wrap{max-width:720px;margin:0 auto}
+  h1{font-size:30px;font-weight:800;line-height:1.25;margin-bottom:8px;color:#f0f0f8}
+  .meta{color:#6868a0;font-size:13px;margin-bottom:22px}
+  h2{font-size:21px;font-weight:700;margin:30px 0 10px;color:#c7c7f0}
+  p{margin-bottom:14px;font-size:15.5px}
+  ul,ol{margin:0 0 14px 22px}li{margin-bottom:6px}
+  a{color:#a5b4fc}
+  pre{background:#12121a;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px;overflow-x:auto;margin:14px 0;font-size:13px;line-height:1.6}
+  code{font-family:ui-monospace,Menlo,monospace}
+  p code,li code{background:rgba(255,255,255,.07);padding:1px 5px;border-radius:5px;font-size:13.5px}
+  .cta{display:block;background:linear-gradient(135deg,rgba(99,102,241,.16),rgba(34,197,94,.12));border:1px solid rgba(99,102,241,.35);border-radius:14px;padding:18px;margin:24px 0;text-decoration:none;color:inherit}
+  .cta b{color:#a5b4fc;font-size:16px}
+  .warn{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:14.5px}
+  .footer{margin-top:36px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);font-size:12.5px;color:#55557a;line-height:1.9}.footer a{color:#8888c0;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>RBAC in Next.js: Role-Based Access Control That Scales</h1>
+  <div class="meta">Updated July 2026 · ~6 min read · Next.js 15 App Router</div>
+
+  <p>Every app starts with <code>if (user.role === "admin")</code> sprinkled through the code. It works — until you add a third role, a new action, or an edge case, and now the checks disagree with each other and a member can hit an endpoint they shouldn't. This guide shows a role-based access control (RBAC) setup for Next.js that stays correct as you grow: one permission matrix, enforced on the server.</p>
+
+  <h2>Model permissions, not roles</h2>
+  <p>The scaling trick is to check <em>permissions</em> (<code>project:delete</code>), not roles (<code>admin</code>), at the call site — and map roles → permissions in exactly one place. Add a role or shift a capability, and you edit one table instead of hunting through handlers:</p>
+  <pre><code>// lib/rbac.ts
+export type Role = "OWNER" | "ADMIN" | "MEMBER";
+
+const PERMISSIONS: Record&lt;Role, string[]&gt; = {
+  OWNER:  ["project:*", "member:*", "billing:*"],
+  ADMIN:  ["project:*", "member:invite", "member:read"],
+  MEMBER: ["project:read", "member:read"],
+};
+
+export class ForbiddenError extends Error {}
+
+export function can(role: Role, action: string): boolean {
+  return (PERMISSIONS[role] ?? []).some(
+    p => p === action || (p.endsWith(":*") && action.startsWith(p.slice(0, -1))),
+  );
+}
+
+export function assertCan(role: Role, action: string): void {
+  if (!can(role, action)) throw new ForbiddenError(`${role} cannot ${action}`);
+}</code></pre>
+
+  <h2>Enforce on the server — always</h2>
+  <p>Authorization lives on the server. A route handler or server action must re-check on every call; never rely on the UI having hidden a button.</p>
+  <pre><code>// app/api/projects/[id]/route.ts
+import { requireMembership } from "@/lib/tenant";  // resolves { role, organizationId }
+import { assertCan, ForbiddenError } from "@/lib/rbac";
+
+export async function DELETE(_req: Request, { params }: { params: { id: string } }) {
+  try {
+    const { role, organizationId } = await requireMembership();
+    assertCan(role, "project:delete");
+    await prisma.project.delete({ where: { id: params.id, organizationId } });
+    return Response.json({ ok: true });
+  } catch (e) {
+    if (e instanceof ForbiddenError) return new Response(e.message, { status: 403 });
+    throw e;
+  }
+}</code></pre>
+  <p>Server Actions are just as reachable as API routes — put the same <code>assertCan()</code> at the top of every one that mutates data.</p>
+
+  <div class="warn">⚠️ Hiding a button in the UI is <strong>not</strong> authorization — it's convenience. Anyone can call the endpoint directly. The server check is the real gate; the UI check just avoids showing dead-ends.</div>
+
+  <h2>Gate the UI with the same source of truth</h2>
+  <p>Use the identical <code>can()</code> in the UI so what a user sees matches what the server allows:</p>
+  <pre><code>const { role } = await requireMembership();
+return (
+  &lt;&gt;
+    &lt;ProjectList /&gt;
+    {can(role, "project:delete") && &lt;DeleteButton /&gt;}
+  &lt;/&gt;
+);</code></pre>
+
+  <h2>Mistakes that create escalation holes</h2>
+  <ul>
+    <li><strong>UI-only checks</strong> — the classic. Always enforce server-side too.</li>
+    <li><strong>Scattered role literals</strong> — <code>role === "admin"</code> everywhere drifts out of sync. Centralize in the matrix.</li>
+    <li><strong>Forgetting Server Actions</strong> — they're public endpoints; authorize them like routes.</li>
+    <li><strong>Role from the client</strong> — resolve the role from the session/membership server-side, never from a request field.</li>
+    <li><strong>Mixing authz with tenancy</strong> — RBAC answers "can this role do X"; tenancy answers "within which org". You need both (see the multi-tenancy guide).</li>
+  </ul>
+
+  <a class="cta buy" href="https://slashmantools.us/saas/?utm_source=blog&utm_medium=article&utm_campaign=rbac"><b>🛠 Want RBAC + multi-tenancy already wired? SaaS Starter →</b><br>A production Next.js 15 boilerplate with this exact permission matrix, tenant-scoped queries, signature-verified Stripe billing, API keys, and audit logs. Free Lite on GitHub; full version one-time $99.</a>
+
+  <h2>Takeaways</h2>
+  <ol>
+    <li>Check permissions, not roles, at the call site.</li>
+    <li>Map roles → permissions in one matrix; edit one place to change access.</li>
+    <li>Enforce on every route handler AND server action — server is the gate.</li>
+    <li>Gate the UI with the same <code>can()</code> for UX, never as security.</li>
+  </ol>
+
+  <div class="footer">
+    <a href="https://slashmantools.us/saas/">SaaS Starter</a> ·
+    <a href="https://slashmantools.us/blog/nextjs-multi-tenancy/">Multi-tenancy guide</a> ·
+    <a href="https://slashmantools.us/blog/verify-stripe-webhook-nextjs/">Stripe webhook guide</a> ·
+    <a href="https://slashmantools.us/blog/">More posts</a><br>
+    Educational — review security-critical code against your own threat model before shipping.
+  </div>
+</div>
+<script>
+  document.addEventListener('click',function(e){var a=e.target.closest('a.buy');if(!a||typeof gtag!=='function')return;gtag('event','select_promotion',{promotion_name:'saas_starter',source:'blog_rbac'});});
+</script>
+</body>
+</html>
