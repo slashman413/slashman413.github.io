@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏰</text></svg>">
+<title>Cron Expression Generator &amp; Explainer — build &amp; decode crontab schedules (free)</title>
+<meta name="description" content="Free cron expression generator and explainer. Type a crontab schedule to see it in plain English plus the next run times, or build one with presets (every 5 minutes, hourly, daily at 8am). No signup.">
+<meta name="keywords" content="cron expression generator, crontab generator, cron explainer, cron every 5 minutes, cron daily, cron syntax, cron schedule, github actions cron, cron next run time">
+<meta property="og:title" content="Cron Expression Generator & Explainer — free, no signup">
+<meta property="og:description" content="Build or decode any cron schedule: plain-English description + the next run times, instantly. Presets for every-5-minutes, hourly, daily, weekly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slashmantools.us/cron-expression-generator/">
+<meta property="og:image" content="https://slashmantools.us/cron-expression-generator/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://slashmantools.us/cron-expression-generator/og.png">
+<link rel="canonical" href="https://slashmantools.us/cron-expression-generator/">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7217603696203672" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Cron Expression Generator & Explainer","applicationCategory":"DeveloperApplication","operatingSystem":"Any (browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://slashmantools.us/cron-expression-generator/","description":"Build or decode cron/crontab expressions: plain-English description plus next run times."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I write a cron expression for every 5 minutes?","acceptedAnswer":{"@type":"Answer","text":"Use */5 * * * * — the */5 in the minute field means 'every 5th minute'."}},{"@type":"Question","name":"What does 0 8 * * * mean?","acceptedAnswer":{"@type":"Answer","text":"It runs once a day at 08:00 (8:00 AM): minute 0, hour 8, every day of month, every month, every day of week."}},{"@type":"Question","name":"What are the five cron fields?","acceptedAnswer":{"@type":"Answer","text":"minute (0-59), hour (0-23), day of month (1-31), month (1-12), day of week (0-6, Sunday=0)."}}]}</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0f;color:#dcdce8;line-height:1.65;padding:32px 16px 64px}
+  .wrap{max-width:760px;margin:0 auto}
+  h1{font-size:26px;font-weight:800;line-height:1.25;margin-bottom:6px;color:#f0f0f8}
+  .sub{color:#7a7ab0;font-size:14px;margin-bottom:24px}
+  .card{background:#12121a;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px;margin:16px 0}
+  label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#8888c0;margin-bottom:6px}
+  #expr{width:100%;font-family:'SF Mono',ui-monospace,Menlo,Consolas,monospace;font-size:22px;letter-spacing:2px;text-align:center;background:#0a0a12;border:1px solid rgba(99,102,241,.4);border-radius:10px;color:#a5b4fc;padding:14px 10px}
+  #expr.bad{border-color:#f87171;color:#fca5a5}
+  .desc{font-size:18px;color:#e2e8f0;margin-top:14px;text-align:center;min-height:26px}
+  .desc b{color:#93c5fd}
+  .err{color:#fca5a5;font-size:14px;text-align:center;margin-top:10px}
+  .fields{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}
+  .fields input{width:100%;font-family:ui-monospace,monospace;font-size:15px;text-align:center;background:#0a0a12;border:1px solid rgba(255,255,255,.14);border-radius:8px;color:#dcdce8;padding:9px 4px}
+  .fields .fl{font-size:10px;color:#6868a0;text-align:center;margin-top:4px;text-transform:none;letter-spacing:0}
+  .presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .presets button{background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.3);color:#c7d2fe;border-radius:20px;padding:7px 13px;font-size:13px;cursor:pointer;transition:.15s}
+  .presets button:hover{background:rgba(99,102,241,.28)}
+  .runs{list-style:none;margin-top:10px}
+  .runs li{font-family:ui-monospace,monospace;font-size:14px;color:#b9c0e8;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+  .runs li span{color:#6868a0;margin-left:8px;font-family:inherit}
+  h2{font-size:19px;color:#c7c7f0;margin:28px 0 10px}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+  th,td{border:1px solid rgba(255,255,255,.1);padding:8px 10px;text-align:left}
+  th{background:rgba(59,130,246,.16);color:#bfd4fe}
+  code{background:#1a1a26;padding:1px 6px;border-radius:5px;font-family:ui-monospace,monospace;color:#a5b4fc}
+  p{margin:10px 0;font-size:15px}
+  .cta{display:block;background:linear-gradient(135deg,rgba(59,130,246,.16),rgba(34,197,94,.12));border:1px solid rgba(59,130,246,.35);border-radius:14px;padding:16px 18px;margin:26px 0;text-decoration:none;color:inherit}
+  .cta b{color:#93c5fd;font-size:16px}
+  .footer{margin-top:36px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:12.5px;color:#55557a;line-height:1.9}
+  .footer a{color:#8888c0;text-decoration:none}
+  a{color:#a5b4fc}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Cron Expression Generator &amp; Explainer</h1>
+  <div class="sub">Type a schedule to decode it, or tap a preset. Plain English + the next run times — instantly, in your browser. No signup.</div>
+
+  <div class="card">
+    <label for="expr">Cron expression <span style="text-transform:none;color:#55557a">(minute hour day-of-month month day-of-week)</span></label>
+    <input id="expr" value="*/5 * * * *" spellcheck="false" autocomplete="off" aria-label="cron expression">
+    <div class="fields" id="fields">
+      <div><input data-i="0" value="*/5"><div class="fl">minute<br>0-59</div></div>
+      <div><input data-i="1" value="*"><div class="fl">hour<br>0-23</div></div>
+      <div><input data-i="2" value="*"><div class="fl">day (month)<br>1-31</div></div>
+      <div><input data-i="3" value="*"><div class="fl">month<br>1-12</div></div>
+      <div><input data-i="4" value="*"><div class="fl">day (week)<br>0-6</div></div>
+    </div>
+    <div class="desc" id="desc"></div>
+    <div class="err" id="err"></div>
+    <div class="presets" id="presets"></div>
+  </div>
+
+  <div class="card">
+    <label>Next 5 run times <span style="text-transform:none;color:#55557a" id="tz"></span></label>
+    <ul class="runs" id="runs"></ul>
+  </div>
+
+  <a class="cta buy" href="https://slashmantools.us/ai-tech-news-vid-2ppl/?utm_source=cron-tool&utm_medium=tool&utm_campaign=cron_generator">
+    <b>⚙️ Have a cron schedule but nothing to run on it?</b><br>
+    I run 20+ automations on free GitHub Actions cron — including a faceless YouTube channel that scrapes news → AI script → voice → video → auto-uploads daily. Grab the complete system, $34 one-time, no server.
+  </a>
+
+  <h2>Cron syntax in 30 seconds</h2>
+  <table>
+    <tr><th>Field</th><th>Values</th><th>Special</th></tr>
+    <tr><td>Minute</td><td>0–59</td><td rowspan="5"><code>*</code> any · <code>*/n</code> every n · <code>a-b</code> range · <code>a,b,c</code> list</td></tr>
+    <tr><td>Hour</td><td>0–23</td></tr>
+    <tr><td>Day of month</td><td>1–31</td></tr>
+    <tr><td>Month</td><td>1–12 (or JAN–DEC)</td></tr>
+    <tr><td>Day of week</td><td>0–6 (Sun=0, or SUN–SAT)</td></tr>
+  </table>
+
+  <h2>Common examples</h2>
+  <table>
+    <tr><th>Expression</th><th>Meaning</th></tr>
+    <tr><td><code>*/5 * * * *</code></td><td>Every 5 minutes</td></tr>
+    <tr><td><code>0 * * * *</code></td><td>Every hour, on the hour</td></tr>
+    <tr><td><code>0 8 * * *</code></td><td>Every day at 08:00</td></tr>
+    <tr><td><code>0 8,20 * * *</code></td><td>Every day at 08:00 and 20:00</td></tr>
+    <tr><td><code>0 9 * * 1-5</code></td><td>09:00 on weekdays (Mon–Fri)</td></tr>
+    <tr><td><code>30 3 1 * *</code></td><td>03:30 on the 1st of every month</td></tr>
+    <tr><td><code>@daily</code></td><td>Once a day at midnight (shorthand)</td></tr>
+  </table>
+  <p><strong>Note:</strong> most cron systems (including GitHub Actions) run in <strong>UTC</strong>. The next-run times above are shown in <em>your local timezone</em> for convenience — mind the offset when you paste into a server crontab.</p>
+
+  <div class="footer">
+    <a href="https://slashmantools.us/tools/">← All free tools</a> ·
+    <a href="https://slashmantools.us/blog/automated-youtube-github-actions/">Automate a YouTube channel with GitHub Actions cron</a> ·
+    <a href="https://slashmantools.us/">Home</a><br>
+    Runs entirely in your browser — nothing is sent to a server. Supports standard 5-field cron and the @yearly/@monthly/@weekly/@daily/@hourly macros.
+  </div>
+</div>
+
+<script>
+"use strict";
+const MACROS={"@yearly":"0 0 1 1 *","@annually":"0 0 1 1 *","@monthly":"0 0 1 * *","@weekly":"0 0 * * 0","@daily":"0 0 * * *","@midnight":"0 0 * * *","@hourly":"0 * * * *"};
+const MONTHS={jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+const DOW={sun:0,mon:1,tue:2,wed:3,thu:4,fri:5,sat:6};
+const DOW_NAME=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const MON_NAME=["","January","February","March","April","May","June","July","August","September","October","November","December"];
+const BOUNDS=[[0,59],[0,23],[1,31],[1,12],[0,6]];
+
+function parseField(raw,idx){
+  const [lo,hi]=BOUNDS[idx];
+  const norm=s=>{s=s.toLowerCase();if(idx===3&&MONTHS[s]!=null)return MONTHS[s];if(idx===4&&DOW[s]!=null)return DOW[s];if(!/^\d+$/.test(s))throw new Error(`"${s}" is not valid in this field`);return parseInt(s,10);};
+  const set=new Set();
+  for(const part of raw.split(",")){
+    let step=1,body=part;
+    const sl=part.split("/");
+    if(sl.length===2){body=sl[0];step=parseInt(sl[1],10);if(!(step>=1))throw new Error(`bad step "/${sl[1]}"`);}
+    else if(sl.length>2)throw new Error(`too many "/" in "${part}"`);
+    let start,end;
+    if(body==="*"){start=lo;end=hi;}
+    else if(body.includes("-")){const [a,b]=body.split("-");start=norm(a);end=norm(b);}
+    else{start=norm(body);end=(sl.length===2)?hi:start;}
+    if(idx===4&&start===7)start=0; if(idx===4&&end===7)end=0; // allow 7 = Sunday
+    if(start<lo||end>hi||start>end)throw new Error(`"${part}" out of range ${lo}-${hi}`);
+    for(let v=start;v<=end;v+=step)set.add(v%(idx===4?7:1e9));
+  }
+  return set;
+}
+function parse(expr){
+  expr=expr.trim().replace(/\s+/g," ");
+  if(MACROS[expr.toLowerCase()])expr=MACROS[expr.toLowerCase()];
+  const f=expr.split(" ");
+  if(f.length!==5)throw new Error(`expected 5 fields, got ${f.length}`);
+  return f.map((p,i)=>parseField(p,i));
+}
+function listPhrase(set,size,fmt){
+  const arr=[...set].sort((a,b)=>a-b);
+  if(arr.length===size)return null; // "every"
+  return arr.map(fmt).join(", ");
+}
+function describe(sets){
+  const [min,hr,dom,mon,dow]=sets;
+  // time part
+  let time;
+  const fullMin=min.size===60, fullHr=hr.size===24;
+  if(fullMin&&fullHr)time="every minute";
+  else if(min.size===1&&hr.size===1){const m=[...min][0],h=[...hr][0];time=`at ${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}`;}
+  else if(fullHr&&min.size>1&&isStep(min)){time=`every ${step(min)} minutes`;}
+  else{
+    const mp=min.size===60?"every minute":`at minute ${[...min].sort((a,b)=>a-b).join(", ")}`;
+    const hp=hr.size===24?"past every hour":`past hour ${[...hr].sort((a,b)=>a-b).join(", ")}`;
+    time=`${mp} ${hp}`;
+  }
+  // day part
+  const domFull=dom.size===31, dowFull=dow.size===7;
+  let day="";
+  const domP=domFull?null:`on day-of-month ${[...dom].sort((a,b)=>a-b).join(", ")}`;
+  const dowP=dowFull?null:`on ${[...dow].sort((a,b)=>a-b).map(d=>DOW_NAME[d]).join(", ")}`;
+  if(domP&&dowP)day=`, ${domP} and ${dowP}`;
+  else if(domP)day=`, ${domP}`;
+  else if(dowP)day=`, ${dowP}`;
+  const monP=mon.size===12?"":`, in ${[...mon].sort((a,b)=>a-b).map(m=>MON_NAME[m]).join(", ")}`;
+  return `Runs <b>${time}</b>${day}${monP}.`;
+}
+function isStep(set){const a=[...set].sort((x,y)=>x-y);if(a.length<2)return false;const d=a[1]-a[0];for(let i=1;i<a.length;i++)if(a[i]-a[i-1]!==d)return false;return a[0]===0;}
+function step(set){const a=[...set].sort((x,y)=>x-y);return a[1]-a[0];}
+
+function nextRuns(sets,from,n){
+  const [min,hr,dom,mon,dow]=sets;
+  const out=[];const d=new Date(from.getTime());d.setSeconds(0,0);d.setMinutes(d.getMinutes()+1);
+  let guard=0;const cap=525600*2; // up to ~2 years of minutes
+  while(out.length<n&&guard++<cap){
+    if(min.has(d.getMinutes())&&hr.has(d.getHours())&&mon.has(d.getMonth()+1)){
+      const domOk=dom.has(d.getDate()), dowOk=dow.has(d.getDay());
+      // cron rule: if BOTH dom and dow are restricted, match if EITHER matches
+      const domR=dom.size!==31, dowR=dow.size!==7;
+      const dayOk=(domR&&dowR)?(domOk||dowOk):(domOk&&dowOk);
+      if(dayOk)out.push(new Date(d.getTime()));
+    }
+    d.setMinutes(d.getMinutes()+1);
+  }
+  return out;
+}
+
+const el=id=>document.getElementById(id);
+const exprEl=el("expr"),descEl=el("desc"),errEl=el("err"),runsEl=el("runs");
+const fieldInputs=[...document.querySelectorAll("#fields input")];
+el("tz").textContent="("+Intl.DateTimeFormat().resolvedOptions().timeZone+", your local time)";
+
+function render(fromExpr){
+  const raw=exprEl.value;
+  try{
+    const sets=parse(raw);
+    exprEl.classList.remove("bad");errEl.textContent="";
+    descEl.innerHTML=describe(sets);
+    // sync field boxes (only when driven by the expression box or presets)
+    if(fromExpr){const parts=(MACROS[raw.trim().toLowerCase()]||raw.trim().replace(/\s+/g," ")).split(" ");if(parts.length===5)fieldInputs.forEach((inp,i)=>inp.value=parts[i]);}
+    const runs=nextRuns(sets,new Date(),5);
+    runsEl.innerHTML=runs.length?runs.map(r=>{
+      const opt={weekday:"short",year:"numeric",month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"};
+      return `<li>${r.toLocaleString(undefined,opt)}<span>${rel(r)}</span></li>`;
+    }).join(""):"<li>No upcoming run in the next ~2 years (impossible date combination?)</li>";
+  }catch(e){
+    exprEl.classList.add("bad");descEl.innerHTML="";errEl.textContent="⚠ "+e.message;runsEl.innerHTML="";
+  }
+}
+function rel(d){const s=(d-Date.now())/1000;if(s<3600)return `in ${Math.round(s/60)} min`;if(s<86400)return `in ${Math.round(s/3600)} h`;return `in ${Math.round(s/86400)} d`;}
+
+exprEl.addEventListener("input",()=>render(true));
+fieldInputs.forEach(inp=>inp.addEventListener("input",()=>{exprEl.value=fieldInputs.map(i=>i.value.trim()||"*").join(" ");render(false);}));
+
+const PRESETS=[["Every minute","* * * * *"],["Every 5 min","*/5 * * * *"],["Every 15 min","*/15 * * * *"],["Hourly","0 * * * *"],["Daily 8am","0 8 * * *"],["Twice daily","0 8,20 * * *"],["Weekdays 9am","0 9 * * 1-5"],["Weekly (Sun)","0 0 * * 0"],["Monthly 1st","0 0 1 * *"]];
+const pc=el("presets");
+PRESETS.forEach(([label,ex])=>{const b=document.createElement("button");b.textContent=label;b.onclick=()=>{exprEl.value=ex;render(true);if(typeof gtag==="function")gtag("event","select_content",{content_type:"cron_preset",item_id:ex});};pc.appendChild(b);});
+
+render(true);
+</script>
+</body>
+</html>

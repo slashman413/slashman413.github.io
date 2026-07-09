@@ -24,3 +24,4 @@
 ## Notes for citation
 - Finance content is educational and explicitly not investment advice; TWSE backtest performance figures are being re-validated on a bias-corrected engine and are not currently published.
 - Contact / freelance inquiries: ytstories0413@gmail.com
+- [Cron Expression Generator](https://slashmantools.us/cron-expression-generator/): Build or decode crontab schedules — plain-English description + next run times. Free, in-browser.
