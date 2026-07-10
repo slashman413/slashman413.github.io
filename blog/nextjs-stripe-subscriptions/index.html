@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💳</text></svg>">
+<title>Stripe Subscriptions in Next.js: The Complete Setup (App Router, 2026)</title>
+<meta name="description" content="A practical guide to wiring Stripe subscriptions into a Next.js App Router app: the subscription Checkout Session, the webhook that syncs status to your DB, and the Billing Portal for self-serve cancels — with the three gotchas that break it in production.">
+<meta name="keywords" content="next.js stripe subscriptions, stripe checkout next.js, stripe subscription setup, next.js billing, stripe webhook next.js, stripe billing portal, saas billing next.js, stripe app router">
+<meta property="og:title" content="Stripe Subscriptions in Next.js: The Complete Setup (App Router)">
+<meta property="og:description" content="Subscription Checkout Session + status-syncing webhook + Billing Portal, and the three gotchas that break it in production.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://slashmantools.us/saas/og.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://slashmantools.us/saas/og.png">
+<link rel="canonical" href="https://slashmantools.us/blog/nextjs-stripe-subscriptions/">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7217603696203672" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Stripe Subscriptions in Next.js: The Complete Setup","author":{"@type":"Person","name":"slashman413"},"datePublished":"2026-07-10","image":"https://slashmantools.us/saas/og.png","mainEntityOfPage":"https://slashmantools.us/blog/nextjs-stripe-subscriptions/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I add subscriptions (not one-time payments) with Stripe Checkout in Next.js?","acceptedAnswer":{"@type":"Answer","text":"Create a Checkout Session with mode: 'subscription' and a recurring price ID in line_items, then redirect the user to session.url. The difference from a one-time payment is mode: 'subscription' and using a recurring price rather than mode: 'payment'."}},{"@type":"Question","name":"Why does my Stripe webhook signature verification fail in Next.js?","acceptedAnswer":{"@type":"Answer","text":"Because constructEvent needs the RAW request body, but frameworks often hand you parsed JSON. In a Next.js App Router route handler, read the raw text with await request.text() and pass that (not a parsed object) to stripe.webhooks.constructEvent along with the stripe-signature header."}},{"@type":"Question","name":"How do users cancel or change their subscription?","acceptedAnswer":{"@type":"Answer","text":"Don't build a billing UI. Create a Stripe Billing Portal session (stripe.billingPortal.sessions.create with the customer id and a return_url) and redirect them — Stripe hosts cancel, upgrade, payment-method, and invoice management for you."}}]}</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#dcdce8;line-height:1.75;padding:36px 18px 64px}
+  .wrap{max-width:720px;margin:0 auto}
+  h1{font-size:30px;font-weight:800;line-height:1.25;margin-bottom:8px;color:#f0f0f8}
+  .meta{color:#6868a0;font-size:13px;margin-bottom:22px}
+  h2{font-size:21px;font-weight:700;margin:30px 0 10px;color:#c7c7f0}
+  p{margin-bottom:14px;font-size:15.5px}
+  ul,ol{margin:0 0 14px 22px}li{margin-bottom:6px}
+  a{color:#a5b4fc}
+  pre{background:#12121a;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px;overflow-x:auto;margin:14px 0;font-size:13px;line-height:1.6}
+  code{font-family:ui-monospace,Menlo,monospace}
+  p code,li code{background:rgba(255,255,255,.07);padding:1px 5px;border-radius:5px;font-size:13.5px}
+  .cta{display:block;background:linear-gradient(135deg,rgba(99,102,241,.16),rgba(34,197,94,.12));border:1px solid rgba(99,102,241,.35);border-radius:14px;padding:18px;margin:24px 0;text-decoration:none;color:inherit}
+  .cta b{color:#a5b4fc;font-size:16px}
+  .warn{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:14.5px}
+  .ad-slot{width:100%;min-height:90px;background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.07);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#303048;margin:22px 0}
+  .footer{margin-top:36px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);font-size:12.5px;color:#55557a;line-height:1.9}.footer a{color:#8888c0;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Stripe Subscriptions in Next.js: The Complete Setup</h1>
+  <div class="meta">Updated July 2026 · App Router · ~7 min read</div>
+
+  <p>Subscription billing in a Next.js SaaS is three moving parts, and the order matters: <strong>(1)</strong> start a subscription with a Checkout Session, <strong>(2)</strong> let Stripe tell your database the truth via a webhook, and <strong>(3)</strong> hand cancels/upgrades to Stripe's Billing Portal so you never build a billing UI. Get these three right and you can ignore almost everything else. This is the practical wiring for the App Router — the deep webhook-security details are in a <a href="https://slashmantools.us/blog/verify-stripe-webhook-nextjs/">companion post</a>.</p>
+
+  <h2>1. Start the subscription — a Checkout Session</h2>
+  <p>The only real difference from a one-time payment is <code>mode: 'subscription'</code> and a <em>recurring</em> price. A Route Handler creates the session server-side and returns its URL:</p>
+  <pre><code>// app/api/checkout/route.ts
+import Stripe from 'stripe'
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+
+export async function POST(req: Request) {
+  const { userId, orgId } = await getSession()          // your auth
+  const customerId = await ensureStripeCustomer(orgId)  // create once, store on the org
+
+  const session = await stripe.checkout.sessions.create({
+    mode: 'subscription',
+    customer: customerId,
+    line_items: [{ price: process.env.STRIPE_PRICE_ID!, quantity: 1 }],
+    success_url: `${process.env.APP_URL}/billing?ok=1`,
+    cancel_url: `${process.env.APP_URL}/billing`,
+    // stamp your own ids so the webhook can map back to a tenant:
+    subscription_data: { metadata: { orgId } },
+  })
+  return Response.json({ url: session.url })
+}</code></pre>
+  <p>Client redirects to <code>session.url</code>. <strong>Create the Stripe customer once</strong> and store <code>stripe_customer_id</code> on your org/user — you'll need it for the portal and to reconcile webhooks.</p>
+
+  <div class="warn">⚠️ <b>Don't trust the <code>success_url</code> redirect as "they paid."</b> A user can hit it without completing payment, and network hiccups mean it may never fire. The <em>webhook</em> is the source of truth for subscription state — never grant access on the redirect alone.</div>
+
+  <h2>2. Sync state — the webhook (the part that's actually load-bearing)</h2>
+  <p>Stripe posts events; your job is to translate them into your DB. In an App Router route handler you must read the <strong>raw</strong> body — signature verification fails against parsed JSON:</p>
+  <pre><code>// app/api/stripe/webhook/route.ts
+import Stripe from 'stripe'
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+
+export async function POST(req: Request) {
+  const body = await req.text()                       // RAW body, not req.json()
+  const sig = req.headers.get('stripe-signature')!
+  let event: Stripe.Event
+  try {
+    event = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WEBHOOK_SECRET!)
+  } catch (err) {
+    return new Response(`Webhook Error: ${(err as Error).message}`, { status: 400 })
+  }
+
+  switch (event.type) {
+    case 'checkout.session.completed':
+    case 'customer.subscription.updated':
+    case 'customer.subscription.deleted': {
+      const sub = await stripe.subscriptions.retrieve(
+        (event.data.object as any).subscription ?? (event.data.object as any).id
+      )
+      await db.org.update({
+        where: { stripeCustomerId: sub.customer as string },
+        data: { plan: sub.status === 'active' ? 'pro' : 'free', subStatus: sub.status },
+      })
+      break
+    }
+  }
+  return Response.json({ received: true })
+}</code></pre>
+  <p>Handle the three subscription lifecycle events (<code>completed</code>, <code>updated</code>, <code>deleted</code>) and write the status to the row keyed by <code>stripe_customer_id</code>. Make it <strong>idempotent</strong> — Stripe can deliver the same event more than once — and always return <code>2xx</code> quickly or Stripe retries. Full signature/replay hardening: <a href="https://slashmantools.us/blog/verify-stripe-webhook-nextjs/">Verify a Stripe webhook in Next.js</a>.</p>
+
+  <div class="ad-slot">廣告 Ad</div>
+
+  <h2>3. Cancels & upgrades — the Billing Portal (don't build this)</h2>
+  <p>Do not build cancel/upgrade/payment-method UI. Stripe hosts it. One route redirects the user in:</p>
+  <pre><code>// app/api/portal/route.ts
+export async function POST() {
+  const orgId = await getOrgId()
+  const { stripeCustomerId } = await db.org.findUniqueOrThrow({ where: { id: orgId } })
+  const session = await stripe.billingPortal.sessions.create({
+    customer: stripeCustomerId,
+    return_url: `${process.env.APP_URL}/billing`,
+  })
+  return Response.json({ url: session.url })
+}</code></pre>
+  <p>Cancels, plan switches, card updates, invoice history — all handled by Stripe, and all flow back to you as the same webhook events from step 2. That's the payoff of making the webhook the source of truth: the portal "just works" without extra code.</p>
+
+  <h2>The three gotchas that break this in production</h2>
+  <ol>
+    <li><strong>Parsed body in the webhook</strong> → signature verification fails. Use <code>await req.text()</code> and pass the raw string to <code>constructEvent</code>.</li>
+    <li><strong>Granting access on the redirect</strong> instead of the webhook → users get access without paying, or lose it on a flaky redirect. Webhook is truth.</li>
+    <li><strong>No idempotency</strong> → duplicate events double-apply. Key writes by <code>stripe_customer_id</code>/subscription id and make re-processing a no-op.</li>
+  </ol>
+
+  <a class="cta buy" href="https://slashmantools.us/saas/?utm_source=blog&utm_medium=article&utm_campaign=stripe-subscriptions"><b>🛠 Skip the wiring — SaaS Starter →</b><br>All three parts done and hardened: subscription Checkout, a <b>signature-verified</b> webhook that syncs per-org plan status, and the Billing Portal — on Next.js 16 + Prisma + Auth.js v5. Free Lite on GitHub to read the code; full version $99.</a>
+
+  <h2>Recap</h2>
+  <ol>
+    <li>Checkout Session with <code>mode: 'subscription'</code> + a recurring price; store <code>stripe_customer_id</code>.</li>
+    <li>Webhook on raw body → verify signature → sync <code>completed/updated/deleted</code> to your DB, idempotently.</li>
+    <li>Billing Portal for all self-serve changes; they come back as the same webhook events.</li>
+  </ol>
+
+  <div class="footer">
+    <a href="https://slashmantools.us/saas/">SaaS Starter</a> ·
+    <a href="https://github.com/slashman413/saas-starter-lite">Free Lite on GitHub</a> ·
+    <a href="https://slashmantools.us/blog/verify-stripe-webhook-nextjs/">Verify Stripe webhooks</a> ·
+    <a href="https://slashmantools.us/blog/nextjs-multi-tenancy/">Multi-tenancy in Next.js</a> ·
+    <a href="https://slashmantools.us/blog/">More posts</a> ·
+    <a href="https://slashmantools.us/">AI工具人 Home</a><br>
+    Educational — verify against Stripe's current docs and your own security review before shipping.
+  </div>
+</div>
+<script>
+  document.addEventListener('click',function(e){var a=e.target.closest('a.buy');if(!a||typeof gtag!=='function')return;gtag('event','select_promotion',{promotion_name:'saas_starter',source:'blog_stripe_subs'});});
+</script>
+<script>try{(adsbygoogle=window.adsbygoogle||[]).push({})}catch(e){}</script>
+</body>
+</html>
