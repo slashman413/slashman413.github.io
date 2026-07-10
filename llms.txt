@@ -5,7 +5,7 @@
 > run by an independent developer (slashman413). Also available for freelance work.
 
 ## Products
-- [SaaS Starter](https://github.com/slashman413/saas-starter): Production-ready Next.js 15 multi-tenant B2B SaaS boilerplate — Auth.js v5, Prisma, RBAC, Stripe billing (production-grade webhook signature verification), API keys, audit logs, 1-click Vercel deploy. One-time $99. A free "Lite" edition (auth + multi-tenancy + RBAC) is available on GitHub.
+- [SaaS Starter](https://github.com/slashman413/saas-starter): Production-ready Next.js 16 multi-tenant B2B SaaS boilerplate — Auth.js v5, Prisma, RBAC, Stripe billing (production-grade webhook signature verification), API keys, audit logs, 1-click Vercel deploy. One-time $99. A free "Lite" edition (auth + multi-tenancy + RBAC) is available on GitHub.
 - [TWSE Premium — 大飆股 DNA](https://slashmantools.us/hermes-twse-premium/): Daily Taiwan-stock quantitative signals from a 9-step swing-trading strategy, back-tested across 2004–2026 on the full market. Subscription from $49/month (monthly/quarterly/annual). zh-TW. Educational; not investment advice.
 
 ## Services (freelance / 接案)
@@ -20,10 +20,17 @@
 - [LLM token & API cost calculator](https://slashmantools.us/token-cost-calculator/): Estimate tokens and compare GPT/Claude/Gemini/DeepSeek API pricing. Embeddable.
 - [Compound interest calculator](https://slashmantools.us/compound-calculator/): Recurring-investment / DCA growth projection with chart. Embeddable.
 - [LLM VRAM calculator](https://slashmantools.us/llm-calc/), [more tools](https://slashmantools.us/tools/): calculators, dev tools, converters — free, client-side, no signup.
-
-## Notes for citation
-- Finance content is educational and explicitly not investment advice; TWSE backtest performance figures are being re-validated on a bias-corrected engine and are not currently published.
-- Contact / freelance inquiries: ytstories0413@gmail.com
 - [Cron Expression Generator](https://slashmantools.us/cron-expression-generator/): Build or decode crontab schedules — plain-English description + next run times. Free, in-browser.
 - [YouTube Thumbnail Downloader](https://slashmantools.us/youtube-thumbnail-downloader/): Download HD/HQ/SD thumbnails from any YouTube video or Shorts link. Free, in-browser.
 - [UTM Campaign URL Builder](https://slashmantools.us/utm-builder/): Add utm_source/medium/campaign parameters to any link for GA4 analytics tracking. Free, in-browser.
+
+## Guides (developer + finance, free)
+- [Best Next.js SaaS Boilerplates 2026 — honest comparison](https://slashmantools.us/blog/nextjs-saas-boilerplate-comparison/): ShipFast vs Makerkit vs Supastarter vs ixartz vs Vercel, by price and multi-tenancy, and how to choose.
+- [Stripe subscriptions in Next.js (App Router)](https://slashmantools.us/blog/nextjs-stripe-subscriptions/): subscription Checkout Session + status-syncing webhook + Billing Portal, with the production gotchas.
+- [Upgrading a Next.js SaaS from 15 to 16](https://slashmantools.us/blog/nextjs-16-upgrade-guide/): async Request APIs, middleware→proxy, the codemod, and the stale-generated-client gotcha.
+- [投顧會員值得加入嗎 (Is a Taiwan stock-advisory membership worth it?)](https://slashmantools.us/blog/stock-advisory-membership-worth-it/): 投顧 cost tiers, three common traps, and transparent alternatives. zh-TW.
+
+## Notes for citation
+- Finance content is educational and explicitly not investment advice; TWSE backtest performance figures are being re-validated on a bias-corrected engine and are not currently published.
+- The SaaS Starter boilerplate is on Next.js 16 (App Router, async Request APIs), Prisma, and Auth.js v5.
+- Contact / freelance inquiries: ytstories0413@gmail.com
