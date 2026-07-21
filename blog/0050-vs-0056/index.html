@@ -15,7 +15,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7217603696203672" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"0050 vs 0056 怎麼選？配息、報酬與回測數據的差異","inLanguage":"zh-Hant","author":{"@type":"Person","name":"slashman413"},"datePublished":"2026-07-09","image":"https://slashmantools.us/twse-backtests/og.png","mainEntityOfPage":"https://slashmantools.us/blog/0050-vs-0056/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"0050 vs 0056 怎麼選？配息、報酬與回測數據的差異","inLanguage":"zh-Hant","author":{"@type":"Person","name":"slashman413"},"datePublished":"2026-07-09","dateModified":"2026-07-20","image":"https://slashmantools.us/twse-backtests/og.png","mainEntityOfPage":"https://slashmantools.us/blog/0050-vs-0056/"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"0050 和 0056 可以同時買嗎？","acceptedAnswer":{"@type":"Answer","text":"可以，兩者追蹤的指數邏輯不同，同時持有等於在「市值成長」與「配息現金流」之間做比例配置。重點是想清楚兩者在你資產中扮演的角色，而不是把它們當成互相取代的選擇。"}},{"@type":"Question","name":"高股息 ETF 的殖利率是保證的嗎？","acceptedAnswer":{"@type":"Answer","text":"不是。配息來自成分股的股利與基金的收益平準金機制，金額每期不同，歷史殖利率不代表未來，實際配息以基金公司官方公告為準。"}},{"@type":"Question","name":"怎麼比較 0050 和 0056 的長期報酬？","acceptedAnswer":{"@type":"Answer","text":"要看「含息總報酬」而不是只看股價。把配息再投入後的累積報酬拿來比，才是公平的比較，可以用含息總報酬的公開數據自行比較不同期間的結果。"}}]}</script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
@@ -42,6 +42,15 @@
   <div class="meta">更新於 2026 年 7 月 · 約 6 分鐘</div>
 
   <p>「要買 0050 還是 0056？」大概是台股新手最常問的問題。網路上的答案常常淪為信仰之爭，但其實兩檔 ETF 的差異可以很理性地拆開來看：<strong>它們追蹤的指數邏輯不同、給你錢的方式不同、適合的目標也不同</strong>。這篇不背任何「現在殖利率是多少」的數字（那會過期，也可能誤導你），而是教你看懂機制，並參考公開的<a href="https://slashmantools.us/twse-backtests/">台股回測儀表板</a>方法自行比較（注意：該儀表板績效數字正在重新驗證中，別當成保證）。</p>
+  <p>先給你一個心理準備：這兩檔沒有「絕對比較好」的答案。它們是為不同目的設計的工具，就像十字起子和一字起子——問「哪支比較好」沒有意義，要問「你手上這顆螺絲是哪一種」。看完這篇，你要能回答的不是「該買哪一檔」，而是「以我現在的人生階段與需求，這兩檔各自扮演什麼角色」。</p>
+
+  <h2>先搞懂 0050 與 0056 的全名與定位</h2>
+  <p>很多人買了好幾年還講不清楚自己買的是什麼。用一句話定位：</p>
+  <ul>
+    <li><strong>0050（元大台灣50）</strong>：追蹤「臺灣50指數」，成分是台股市值最大的約 50 家上市公司。你買的是「整個台股的核心大盤」。</li>
+    <li><strong>0056（元大高股息）</strong>：追蹤「臺灣高股息指數」，從較大型的股票中挑出<strong>預測</strong>未來一年現金股利殖利率較高的一籃子公司。你買的是「一組被預期會多配息的股票」。</li>
+  </ul>
+  <p>兩者都是被動追蹤指數的 ETF，都由元大投信發行，都在台股掛牌可以像股票一樣買賣。真正的分岔點在於它們追蹤的「指數規則」完全不同，這決定了後面所有的差異。</p>
 
   <h2>兩檔 ETF 的本質差異：選股邏輯</h2>
   <p><strong>0050（元大台灣50）是「市值型」ETF</strong>：追蹤台灣 50 指數，成分股就是台股市值最大的約 50 家公司，按市值加權。誰變大就多買誰、誰掉出前段班就剔除——它不猜哪家公司好，只反映整個市場的大盤結構，所以走勢和台股加權指數高度連動。</p>
@@ -59,6 +68,13 @@
   <p><strong>配息是把基金淨值的一部分發還給你，不是憑空多出來的錢。</strong>除息當天股價會同步下調，你的總資產不變。所以「殖利率高」不等於「賺得多」——真正該比的是<strong>含息總報酬</strong>：股價變化＋配息再投入之後的累積結果。</p>
   <p>歷史上多數長期區間裡，市值型 ETF 的含息總報酬傾向高於高股息型，因為高股息選股會系統性地避開「不太配息但成長快」的公司；但這不是鐵律，不同起訖時間點結果會不一樣，這正是你需要自己跑回測的原因。</p>
 
+  <h3>用一個假想數字看懂「除息不是天上掉錢」</h3>
+  <p>假設你持有某檔 ETF，除息前每股淨值 40 元，這次每股配息 2 元。除息當天理論上淨值會調整為 38 元，你另外拿到現金 2 元。你的總資產：<strong>除息前 = 40 元；除息後 = 38 元股票 + 2 元現金 = 40 元</strong>。完全一樣。這就是為什麼「配息 5% 聽起來很爽」但它本身不創造報酬——真正創造報酬的是那 38 元後續能不能漲回去（填息），以及你把那 2 元拿去做了什麼。如果你把配息花掉，長期複利就少了這一塊；如果再投入，那和不配息、把錢留在淨值裡的效果就接近了（但中間多了一次課稅與再投入的摩擦）。</p>
+
+  <h2>常被忽略的成本面：內扣費用與稅</h2>
+  <p>選 ETF 不能只看報酬，長期下來「內扣費用率」（經理費＋保管費等）會直接從淨值裡扣掉，是每年都在發生的隱形成本。兩檔的費用率會隨時間調整，<strong>實際數字請以公開說明書與基金公司官方揭露為準</strong>，這裡的重點是觀念：費用率哪怕差 0.2%，放大到 20 年複利也是一筆可觀的金額。</p>
+  <p>稅務面也值得注意：配息屬於股利所得，單筆配息達一定金額會被扣繳<strong>二代健保補充保費</strong>，年度股利也要併入綜合所得稅（或選擇分開計稅）。高股息 ETF 配得多，這方面的稅務摩擦通常也比較明顯——這對高所得級距的人特別有感。</p>
+
   <a class="cta" href="https://slashmantools.us/twse-backtests/"><b>📊 免費台股回測儀表板 →</b><br>用真實歷史數據比較不同策略與標的的含息報酬、最大回檔，自己驗證、不用聽別人說。</a>
 
   <h2>那到底該選哪一個？</h2>
@@ -75,11 +91,15 @@
   <p>比較 0050 和 0056 最誠實的方法是看長期回測：同一段期間、同樣把配息再投入，比較累積報酬與最大回檔。你可以在<a href="https://slashmantools.us/twse-backtests/">台股回測儀表板</a>免費查看用 20 年歷史數據跑出的策略結果，搭配 <a href="https://slashmantools.us/tw-etf-dashboard/dashboard.html">台股 ETF 即時儀表板</a>查目前的成分與市況。想估算「配息再投入 20 年會變多少」，可以用<a href="https://slashmantools.us/compound-calculator/">複利計算機</a>輸入自己的假設試算。若你需要更深入的策略比較與進階數據，也可以參考 <a href="https://slashmantools.us/hermes-twse-premium/">TWSE Premium 進階訂閱</a>。</p>
 
   <h2>常見問題 FAQ</h2>
-  <p><strong>0050 和 0056 可以同時買嗎？</strong>可以。兩者指數邏輯不同，同時持有等於在「市值成長」與「配息現金流」之間做比例配置，重點是想清楚各自的角色。</p>
-  <p><strong>高股息 ETF 的殖利率是保證的嗎？</strong>不是。配息金額每期不同，歷史殖利率不代表未來，實際配息與頻率請以基金公司官方公告為準。</p>
+  <p><strong>0050 和 0056 可以同時買嗎？</strong>可以。兩者指數邏輯不同，同時持有等於在「市值成長」與「配息現金流」之間做比例配置，重點是想清楚各自的角色，而不是把它們當成互相取代的選擇。</p>
+  <p><strong>高股息 ETF 的殖利率是保證的嗎？</strong>不是。配息來自成分股的股利與基金的收益平準金機制，金額每期不同，歷史殖利率不代表未來，實際配息與頻率請以基金公司官方公告為準。</p>
   <p><strong>怎麼比較兩者的長期報酬？</strong>看「含息總報酬」而不是只看股價，把配息再投入後的累積報酬拿來比才公平——用回測工具跑不同期間最直觀。</p>
+  <p><strong>0056 一定比 0050「安全」嗎？</strong>不一定。「配息穩定」與「價格波動小」是兩件事。高股息選股在特定產業循環裡也可能大幅回檔；波動高低要看實際的最大回檔數據，不能只憑「有配息」就假設它比較抗跌。</p>
+  <p><strong>那市面上其他高股息 ETF（如 00878、00919）呢？</strong>本文以 0050／0056 當作「市值型 vs 高股息型」的代表來講機制。其他高股息 ETF 的選股規則、配息頻率（季配、月配）與成分都不同，比較時請回到同一套原則：看含息總報酬、看最大回檔、看內扣費用，並以各基金官方揭露為準。</p>
 
-  <p style="font-size:13px;color:#7878a0">本文為教育性內容，非投資建議；所有歷史數據不代表未來績效，投資前請自行研究並以官方公告為準。</p>
+  <p style="font-size:13px;color:#7878a0">本文為教育資訊，非投資建議；所有歷史數據不代表未來績效，個別 ETF 的配息、費用與成分請以基金公司官方公告與公開說明書為準，投資前請自行研究並評估自身風險承受度。</p>
+
+  <div style="margin-top:32px;padding:16px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;font-size:13.5px;color:#9898b8;line-height:1.7"><strong style="color:#c7c7f0">關於作者</strong><br>由 <a href="https://slashmantools.us/about.html">slashman413</a> 撰寫 — <a href="https://slashmantools.us/">AI工具人 (slashmantools.us)</a> 免費工具站的作者，專注於 AI、開發工具與個人理財的實務教學。<a href="https://slashmantools.us/about.html">更多關於我們 →</a></div>
 
   <div class="footer">
     🧰 更多：<a href="https://slashmantools.us/twse-backtests/">台股回測儀表板</a> · <a href="https://slashmantools.us/tw-etf-dashboard/dashboard.html">台股 ETF 儀表板</a> · <a href="https://slashmantools.us/compound-calculator/">複利計算機</a> · <a href="https://slashmantools.us/tools/">所有免費工具</a><br>

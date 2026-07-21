@@ -15,7 +15,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7217603696203672" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Stripe Subscriptions in Next.js: The Complete Setup","author":{"@type":"Person","name":"slashman413"},"datePublished":"2026-07-10","image":"https://slashmantools.us/saas/og.png","mainEntityOfPage":"https://slashmantools.us/blog/nextjs-stripe-subscriptions/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Stripe Subscriptions in Next.js: The Complete Setup","author":{"@type":"Person","name":"slashman413"},"datePublished":"2026-07-10","dateModified":"2026-07-20","image":"https://slashmantools.us/saas/og.png","mainEntityOfPage":"https://slashmantools.us/blog/nextjs-stripe-subscriptions/"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I add subscriptions (not one-time payments) with Stripe Checkout in Next.js?","acceptedAnswer":{"@type":"Answer","text":"Create a Checkout Session with mode: 'subscription' and a recurring price ID in line_items, then redirect the user to session.url. The difference from a one-time payment is mode: 'subscription' and using a recurring price rather than mode: 'payment'."}},{"@type":"Question","name":"Why does my Stripe webhook signature verification fail in Next.js?","acceptedAnswer":{"@type":"Answer","text":"Because constructEvent needs the RAW request body, but frameworks often hand you parsed JSON. In a Next.js App Router route handler, read the raw text with await request.text() and pass that (not a parsed object) to stripe.webhooks.constructEvent along with the stripe-signature header."}},{"@type":"Question","name":"How do users cancel or change their subscription?","acceptedAnswer":{"@type":"Answer","text":"Don't build a billing UI. Create a Stripe Billing Portal session (stripe.billingPortal.sessions.create with the customer id and a return_url) and redirect them — Stripe hosts cancel, upgrade, payment-method, and invoice management for you."}}]}</script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
@@ -134,6 +134,13 @@ export async function POST() {
     <li>Webhook on raw body → verify signature → sync <code>completed/updated/deleted</code> to your DB, idempotently.</li>
     <li>Billing Portal for all self-serve changes; they come back as the same webhook events.</li>
   </ol>
+
+  <h2>FAQ</h2>
+  <p><strong>How do I add subscriptions (not one-time payments) with Stripe Checkout?</strong> Create a Checkout Session with <code>mode: 'subscription'</code> and a recurring price ID in <code>line_items</code>, then redirect to <code>session.url</code>. The only real difference from a one-time payment is the subscription mode and a recurring price.</p>
+  <p><strong>Why does my webhook signature verification fail?</strong> Because <code>constructEvent</code> needs the RAW request body, but frameworks often hand you parsed JSON. In an App Router route handler, read the raw text with <code>await req.text()</code> and pass that (not a parsed object) to <code>constructEvent</code>.</p>
+  <p><strong>How do users cancel or change their subscription?</strong> Don't build a billing UI. Create a Stripe Billing Portal session and redirect them — Stripe hosts cancel, upgrade, payment-method, and invoice management, and every change flows back as the same webhook events.</p>
+
+  <div style="margin-top:32px;padding:16px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;font-size:13.5px;color:#9898b8;line-height:1.7"><strong style="color:#c7c7f0">About the author</strong><br>Published by <a href="https://slashmantools.us/about.html">slashman413</a> — maker of the free, privacy-first web tools at <a href="https://slashmantools.us/">AI工具人 (slashmantools.us)</a>, writing hands-on guides on AI, developer tooling and personal finance. <a href="https://slashmantools.us/about.html">More about us →</a></div>
 
   <div class="footer">
     <a href="https://slashmantools.us/saas/">SaaS Starter</a> ·
