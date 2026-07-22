@@ -66,4 +66,4 @@ slug: "twse-backtesting-guide"
 
   <p style="font-size:13px;color:#7878a0">本文為教育資訊，非投資建議；歷史回測結果不代表未來績效，任何回測都可能因資料誤差或假設不同而失真，實際投資請自行評估風險。</p>
 
-  <div style="margin-top:32px;padding:16px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;font-size:13.5px;color:#9898b8;line-height:1.7"><strong style="color:#c7c7f0">關於作者</strong><br>由 <a href="https://slashmantools.us/about.html">slashman413</a> 撰寫 — <a href="https://slashmantools.us/">AI工具人 (slashmantools.us)</a> 免費工具站的作者，專注於 AI、開發工具與個人理財的實務教學。<a href="https://slashmantools.us/about.html">更多關於我們 →</a></div>
+  <div style="margin-top:32px;padding:16px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;font-size:13.5px;color:#9898b8;line-height:1.7"><strong style="color:#c7c7f0">關於作者</strong><br>由 <a href="https://slashmantools.us/about.html">slashman413</a> 撰寫 — <a href="https://slashmantools.us/">intelligent agents (slashmantools.us)</a> 免費工具站的作者，專注於 AI、開發工具與個人理財的實務教學。<a href="https://slashmantools.us/about.html">更多關於我們 →</a></div>

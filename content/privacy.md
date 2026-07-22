@@ -8,7 +8,7 @@ lastmod: 2026-07-20
 
 <p class="muted">Last updated: 2026-06-28</p>
 
-<p>This site (<a href="https://slashmantools.us/">slashmantools.us</a>, "AI Toolkit", "we", "us")
+<p>This site (<a href="https://slashmantools.us/">slashmantools.us</a>, "intelligent agents", "we", "us")
 is a collection of free, browser-based online tools, calculators and data dashboards. This Privacy Policy
 explains what information is involved when you use the site.</p>
 

@@ -1,4 +1,4 @@
-# AI工具人 (slashmantools.us)
+# intelligent agents (slashmantools.us)
 
 > Free online tools plus two focused products: a production-ready Next.js SaaS
 > boilerplate, and a Taiwan-stock ("台股") quantitative signal service. Built and

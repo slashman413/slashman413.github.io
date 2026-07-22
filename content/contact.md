@@ -1,14 +1,14 @@
 ---
 title: "Contact"
-description: "Contact AI Toolkit — feedback, bug reports, tool suggestions and business enquiries."
+description: "Contact intelligent agents — feedback, bug reports, tool suggestions and business enquiries."
 date: 2026-07-01
 lastmod: 2026-07-20
 ---
 <nav><a href="/">Home</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></nav>
 
 
-<p>AI Toolkit (<a href="https://slashmantools.us/">slashmantools.us</a>) is run by one person under the
-handle <strong>slashman413 / 「AI工具人」</strong>. Have feedback, found a bug, want to suggest a new tool,
+<p>intelligent agents (<a href="https://slashmantools.us/">slashmantools.us</a>) is run by one person under the
+handle <strong>slashman413 / 「intelligent agents」</strong>. Have feedback, found a bug, want to suggest a new tool,
 or have a business enquiry? I'd love to hear from you — email is the best and fastest way to reach me.</p>
 
 <div class="card">

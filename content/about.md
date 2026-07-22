@@ -1,15 +1,15 @@
 ---
 title: "About"
-description: "About AI Toolkit — a growing collection of free, privacy-friendly, browser-based tools, calculators, AI helpers and finance dashboards."
+description: "About intelligent agents — a growing collection of free, privacy-friendly, browser-based tools, calculators, AI helpers and finance dashboards."
 date: 2026-07-01
 lastmod: 2026-07-20
 ---
 <nav><a href="/">Home</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></nav>
 
 
-<p><strong>AI Toolkit</strong> (<a href="https://slashmantools.us/">slashmantools.us</a>) is an independent,
+<p><strong>intelligent agents</strong> (<a href="https://slashmantools.us/">slashmantools.us</a>) is an independent,
 one-person project run under the handle <strong>slashman413</strong> — also known as
-<strong>「AI工具人」</strong>. It is built and maintained by a single developer who works in software and
+<strong>「intelligent agents」</strong>. It is built and maintained by a single developer who works in software and
 enjoys automating tedious tasks. The site combines two things I use every day: a growing collection of
 <strong>free, fast, privacy-first web tools</strong>, and a small library of <strong>practical, hands-on
 guides</strong> on AI, development, and personal finance.</p>

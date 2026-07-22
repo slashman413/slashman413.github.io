@@ -82,4 +82,4 @@ slug: "automated-youtube-github-actions"
     <li>cron 用 UTC、除錯時快取 LLM 回應、新聞務必改寫，是三個最省心的習慣。</li>
   </ol>
 
-  <div style="margin-top:32px;padding:16px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;font-size:13.5px;color:#9898b8;line-height:1.7"><strong style="color:#c7c7f0">關於作者</strong><br>由 <a href="https://slashmantools.us/about.html">slashman413</a> 撰寫 — <a href="https://slashmantools.us/">AI工具人 (slashmantools.us)</a> 免費工具站的作者，專注於 AI、開發工具與個人理財的實務教學。<a href="https://slashmantools.us/about.html">更多關於我們 →</a></div>
+  <div style="margin-top:32px;padding:16px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;font-size:13.5px;color:#9898b8;line-height:1.7"><strong style="color:#c7c7f0">關於作者</strong><br>由 <a href="https://slashmantools.us/about.html">slashman413</a> 撰寫 — <a href="https://slashmantools.us/">intelligent agents (slashmantools.us)</a> 免費工具站的作者，專注於 AI、開發工具與個人理財的實務教學。<a href="https://slashmantools.us/about.html">更多關於我們 →</a></div>
