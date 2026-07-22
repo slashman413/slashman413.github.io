@@ -1,0 +1,13 @@
+{{ define "main" }}
+<article>
+  <h1>{{ .Title }}</h1>
+  <div class="dateline">Updated {{ .Lastmod.Format "January 2, 2006" }}{{ if gt .ReadingTime 0 }} · ~{{ .ReadingTime }} min read{{ end }}</div>
+  {{ .Content }}
+  {{ if not (or (in .Content "About the author") (in .Content "關於作者")) }}
+  <div style="margin-top:32px;padding:16px 18px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;font-size:13.5px;color:#9898b8;line-height:1.7">
+    <strong style="color:#c7c7f0">About the author</strong><br>
+    Published by <a href="/about/">slashman413</a> — writing practical, evergreen guides on money, productivity, developer tooling and the web. <a href="/about/">More about this site →</a>
+  </div>
+  {{ end }}
+</article>
+{{ end }}

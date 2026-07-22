@@ -1,0 +1,73 @@
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{{ $isHome := .IsHome }}
+{{ $title := cond $isHome site.Title (printf "%s — %s" .Title site.Title) }}
+<title>{{ $title }}</title>
+{{ $desc := or .Description .Summary site.Params.description }}
+<meta name="description" content="{{ $desc | plainify | truncate 160 }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="icon" href="/icon-192.png">
+<link rel="manifest" href="/manifest.json">
+<!-- Open Graph -->
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:title" content="{{ if $isHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ $desc | plainify | truncate 160 }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ "og.png" | absURL }}">
+<meta name="twitter:card" content="summary_large_image">
+{{ if .IsPage }}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":{{ .Title }},"author":{"@type":"Person","name":{{ site.Params.author }}},"datePublished":{{ .Date.Format "2006-01-02" }},"dateModified":{{ .Lastmod.Format "2006-01-02" }},"mainEntityOfPage":{{ .Permalink }}}</script>
+{{ end }}
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.Params.gaId }}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','{{ site.Params.gaId }}');</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.Params.adsenseClient }}" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--panel:#101018;--text:#dcdce8;--muted:#7878a0;--accent:#a5b4fc;--border:rgba(255,255,255,.08)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.layout{display:flex;min-height:100vh}
+.sidebar{width:230px;flex:0 0 230px;background:var(--panel);border-right:1px solid var(--border);padding:26px 20px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.brand{font-size:19px;font-weight:800;color:#f0f0f8;margin-bottom:4px;display:block}
+.brand:hover{text-decoration:none}
+.brand-tag{font-size:12px;color:var(--muted);margin-bottom:22px;display:block;line-height:1.5}
+.nav a{display:block;padding:9px 12px;border-radius:9px;color:#c7c7f0;font-size:14.5px;font-weight:600;margin-bottom:3px}
+.nav a:hover{background:rgba(99,102,241,.10);text-decoration:none}
+.nav a.active{background:rgba(99,102,241,.16);color:#fff}
+.sidebar .side-foot{margin-top:26px;padding-top:18px;border-top:1px solid var(--border);font-size:12px;color:#55557a;line-height:1.8}
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.content{max-width:760px;width:100%;margin:0 auto;padding:44px 26px 30px;flex:1}
+h1{font-size:30px;font-weight:800;line-height:1.25;color:#f0f0f8;margin-bottom:8px}
+h2{font-size:22px;font-weight:700;color:#c7c7f0;margin:32px 0 10px}
+h3{font-size:18px;font-weight:700;color:#c7c7f0;margin:22px 0 8px}
+p{margin-bottom:14px}ul,ol{margin:0 0 14px 22px}li{margin-bottom:6px}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left}th{background:rgba(255,255,255,.04);color:#c7c7f0}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:5px;font-size:.9em}
+pre{background:#0d0d16;border:1px solid var(--border);border-radius:10px;padding:14px;overflow-x:auto;margin:0 0 16px}
+.dateline{color:var(--muted);font-size:13px;margin-bottom:24px}
+.postlist{list-style:none;margin:22px 0 0}
+.postlist li{margin-bottom:14px}
+.card{display:block;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.card:hover{border-color:rgba(99,102,241,.4);background:rgba(99,102,241,.08);text-decoration:none}
+.card .t{font-size:16px;font-weight:700;color:#c7c7f0;margin-bottom:4px}
+.card .d{font-size:13.5px;color:var(--muted)}
+.card .m{font-size:12px;color:#55557a;margin-top:6px}
+.footer{border-top:1px solid var(--border);padding:20px 26px;font-size:12.5px;color:#55557a;max-width:760px;width:100%;margin:0 auto}
+.footer a{color:#8888c0}
+.navbar{display:none}
+@media(max-width:768px){
+  .layout{flex-direction:column}
+  .sidebar{position:static;width:auto;height:auto;flex:none;display:none;border-right:none;border-bottom:1px solid var(--border)}
+  #navtoggle:checked ~ .layout .sidebar{display:block}
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:9}
+  .navbar label{cursor:pointer;color:var(--accent);font-size:22px}
+  .content{padding:26px 18px}
+}
+</style>
+</head>

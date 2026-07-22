@@ -1,0 +1,15 @@
+<aside class="sidebar">
+  <a class="brand" href="/">{{ site.Title }}</a>
+  <span class="brand-tag">{{ site.Params.tagline }}</span>
+  <nav class="nav">
+    {{ $cur := .RelPermalink }}
+    {{ range site.Menus.main }}
+      {{ $active := or (eq $cur .URL) (and (ne .URL "/") (hasPrefix $cur .URL)) }}
+      <a href="{{ .URL }}"{{ if $active }} class="active"{{ end }}>{{ .Name }}</a>
+    {{ end }}
+  </nav>
+  <div class="side-foot">
+    &copy; {{ now.Year }} {{ site.Title }}<br>
+    <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a>
+  </div>
+</aside>

@@ -1,0 +1,71 @@
+---
+title: "Privacy Policy"
+description: "Privacy Policy for the free online tools at slashmantools.us — how we handle cookies, advertising (Google AdSense), analytics and affiliate links."
+date: 2026-07-01
+lastmod: 2026-07-20
+---
+<nav><a href="/">Home</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></nav>
+
+<p class="muted">Last updated: 2026-06-28</p>
+
+<p>This site (<a href="https://slashmantools.us/">slashmantools.us</a>, "AI Toolkit", "we", "us")
+is a collection of free, browser-based online tools, calculators and data dashboards. This Privacy Policy
+explains what information is involved when you use the site.</p>
+
+<h2>1. Information You Enter Into the Tools Stays in Your Browser</h2>
+<p>Our tools (password generator, word counter, image compressor, calculators, developer utilities, etc.)
+run entirely in your browser (client-side). Any text, numbers, files or images you put into a tool are
+processed locally on your device and are <strong>not uploaded to or stored on our servers</strong>. We do
+not require an account and we do not ask for personal information to use the tools.</p>
+
+<h2>2. Cookies and Local Storage</h2>
+<p>We use cookies and your browser's local storage for: remembering your language preference, basic site
+functionality, anonymous usage analytics, and serving advertising (see below). You can control or delete
+cookies through your browser settings.</p>
+
+<h2>3. Analytics</h2>
+<p>We use Google Analytics to understand aggregate, anonymous usage (e.g. which tools are visited). This
+helps us improve the site. Google Analytics may set cookies; see
+<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+
+<h2>4. Advertising (Google AdSense &amp; Third Parties)</h2>
+<ul>
+  <li>We use <strong>Google AdSense</strong> to display ads. Third-party vendors, including Google, use
+      cookies to serve ads based on your prior visits to this and other websites.</li>
+  <li>Google, as a third-party vendor, uses cookies — including the <strong>DART cookie</strong> — to serve
+      ads based on your visits to this site and others on the internet. You may opt out of the DART cookie
+      and personalized advertising by visiting
+      <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google Ads Settings</a>. You
+      can also review Google's
+      <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">advertising policies and how it uses cookies in advertising</a>.</li>
+  <li>Third-party vendors and ad networks may also serve ads. You can opt out of many of them at
+      <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">aboutads.info/choices</a> and
+      <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener">youronlinechoices.eu</a>.</li>
+  <li>For more on how Google uses data from sites that use its services, see
+      <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google partner sites policy</a>.</li>
+</ul>
+
+<h2>5. Affiliate Links</h2>
+<p>Some pages contain affiliate links, including the Amazon Associates Program. As an Amazon Associate we
+earn from qualifying purchases. If you click an affiliate link and make a purchase, we may receive a small
+commission at <strong>no extra cost to you</strong>. This does not influence the tools we build.</p>
+
+<h2>6. Third-Party Services</h2>
+<p>Depending on the tool, the site may use third-party services such as Google (AdSense, Analytics),
+Amazon (affiliate links), an anonymous view-counter, and image-generation/QR services for specific tools.
+Your interaction with those services is governed by their own privacy policies.</p>
+
+<h2>7. Children's Privacy</h2>
+<p>The site is not directed to children under 13 and we do not knowingly collect personal data from them.</p>
+
+<h2>8. Your Choices</h2>
+<p>You can disable cookies in your browser, opt out of personalized ads via the links in Section 4, and
+use browser privacy/ad-control tools. The tools remain usable without providing any personal data.</p>
+
+<h2>9. Changes</h2>
+<p>We may update this policy; the "Last updated" date above reflects the latest revision.</p>
+
+<h2>10. Contact</h2>
+<p>Questions about this policy: <a href="mailto:ytstories0413@gmail.com">ytstories0413@gmail.com</a></p>
+
+<p class="muted"><a href="/">Home</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="terms.html">Terms of Service</a></p>

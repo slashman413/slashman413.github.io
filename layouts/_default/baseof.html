@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ partial "head.html" . }}
+<body>
+<input type="checkbox" id="navtoggle" hidden>
+<div class="navbar"><a class="brand" href="/">{{ site.Title }}</a><label for="navtoggle">☰</label></div>
+<div class="layout">
+  {{ partial "sidebar.html" . }}
+  <main class="main">
+    <div class="content">
+      {{ block "main" . }}{{ end }}
+    </div>
+    {{ partial "footer.html" . }}
+  </main>
+</div>
+</body>
+</html>
