@@ -6,6 +6,8 @@
 <title>{{ $title }}</title>
 {{ $desc := or .Description .Summary site.Params.description }}
 <meta name="description" content="{{ $desc | plainify | truncate 160 }}">
+{{ $noindex := or (eq .Section "news") .Params.noindex }}
+{{ if $noindex }}<meta name="robots" content="noindex, nofollow">{{ end }}
 <link rel="canonical" href="{{ .Permalink }}">
 <meta name="theme-color" content="#0a0a0f">
 <link rel="icon" href="/icon-192.png">
@@ -24,8 +26,10 @@
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.Params.gaId }}"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','{{ site.Params.gaId }}');</script>
-<!-- Google AdSense -->
+<!-- Google AdSense (suppressed on noindex/news pages to respect AdSense policy until approved) -->
+{{ if not $noindex }}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.Params.adsenseClient }}" crossorigin="anonymous"></script>
+{{ end }}
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#0a0a0f;--panel:#101018;--text:#dcdce8;--muted:#7878a0;--accent:#a5b4fc;--border:rgba(255,255,255,.08)}

@@ -2,6 +2,8 @@ baseURL = "https://slashmantools.us/"
 languageCode = "en"
 title = "Slashman Guides"
 enableRobotsTXT = false
+# No taxonomy pages — /tags/ and /categories/ would be thin/empty (AdSense-unfriendly).
+disableKinds = ["taxonomy", "term"]
 
 [markup]
   [markup.goldmark]

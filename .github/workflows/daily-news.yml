@@ -1,0 +1,75 @@
+name: Daily tech-news article
+
+# Generates one reinterpreted tech-news article/day into /news/ (noindex, ad-free,
+# not in sitemap until AdSense is approved), then builds + deploys.
+# Requires repo secret: GEMINI_API_KEY  (Settings → Secrets and variables → Actions).
+on:
+  schedule:
+    - cron: "17 9 * * *"   # 09:17 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.128.0
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate today's article
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/generate_news.py "$(date -u +%F)"
+
+      - name: Commit new article
+        run: |
+          git config user.name "slashman-news-bot"
+          git config user.email "slashman413@gmail.com"
+          git add content/news/
+          if git diff --staged --quiet; then
+            echo "No new article to commit."
+          else
+            git commit -m "news: auto-published tech-news article $(date -u +%F)"
+            git push
+          fi
+
+      - name: Install Hugo
+        run: |
+          wget -O hugo.deb "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i hugo.deb
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Build
+        run: hugo --gc --minify --baseURL "https://slashmantools.us/"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    needs: publish
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
