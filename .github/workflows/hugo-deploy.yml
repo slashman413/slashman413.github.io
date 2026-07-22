@@ -32,6 +32,8 @@ jobs:
           sudo dpkg -i hugo.deb
       - uses: actions/configure-pages@v5
         id: pages
+        with:
+          enablement: true
       - name: Build
         run: hugo --gc --minify --baseURL "https://slashmantools.us/"
       - uses: actions/upload-pages-artifact@v3
