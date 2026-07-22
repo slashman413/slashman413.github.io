@@ -12,7 +12,7 @@ handle <strong>slashman413 / 「AI工具人」</strong>. Have feedback, found a 
 or have a business enquiry? I'd love to hear from you — email is the best and fastest way to reach me.</p>
 
 <div class="card">
-  <p><strong>Email:</strong> <a href="mailto:ytstories0413@gmail.com">ytstories0413@gmail.com</a></p>
+  <p><strong>Email:</strong> <a href="mailto:slashman413@gmail.com">slashman413@gmail.com</a></p>
   <p class="muted">I read every message and typically reply within a few business days. For bug reports,
   including the tool name and your browser helps me reproduce the issue faster.</p>
 </div>

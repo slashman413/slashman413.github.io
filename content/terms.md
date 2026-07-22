@@ -45,6 +45,6 @@ on its outputs.</p>
 <p>We may update these Terms from time to time. Continued use after changes constitutes acceptance.</p>
 
 <h2>8. Contact</h2>
-<p>Questions about these Terms: <a href="mailto:ytstories0413@gmail.com">ytstories0413@gmail.com</a></p>
+<p>Questions about these Terms: <a href="mailto:slashman413@gmail.com">slashman413@gmail.com</a></p>
 
 <p class="muted"><a href="/">Home</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy Policy</a></p>

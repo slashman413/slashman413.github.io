@@ -59,6 +59,6 @@ thank you!</p>
 <h2>Contact</h2>
 <p>Feedback, bug reports, corrections, or suggestions for new tools are always welcome. Please
 <a href="contact.html">get in touch</a> or email
-<a href="mailto:ytstories0413@gmail.com">ytstories0413@gmail.com</a> — I read every message.</p>
+<a href="mailto:slashman413@gmail.com">slashman413@gmail.com</a> — I read every message.</p>
 
 <p class="muted"><a href="/">Home</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>

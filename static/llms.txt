@@ -33,4 +33,4 @@
 ## Notes for citation
 - Finance content is educational and explicitly not investment advice; TWSE backtest performance figures are being re-validated on a bias-corrected engine and are not currently published.
 - The SaaS Starter boilerplate is on Next.js 16 (App Router, async Request APIs), Prisma, and Auth.js v5.
-- Contact / freelance inquiries: ytstories0413@gmail.com
+- Contact / freelance inquiries: slashman413@gmail.com

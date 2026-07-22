@@ -66,6 +66,6 @@ use browser privacy/ad-control tools. The tools remain usable without providing 
 <p>We may update this policy; the "Last updated" date above reflects the latest revision.</p>
 
 <h2>10. Contact</h2>
-<p>Questions about this policy: <a href="mailto:ytstories0413@gmail.com">ytstories0413@gmail.com</a></p>
+<p>Questions about this policy: <a href="mailto:slashman413@gmail.com">slashman413@gmail.com</a></p>
 
 <p class="muted"><a href="/">Home</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="terms.html">Terms of Service</a></p>
