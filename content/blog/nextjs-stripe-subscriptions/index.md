@@ -2,7 +2,7 @@
 title: "Stripe Subscriptions in Next.js: The Complete Setup (App Router, 2026)"
 description: "A practical guide to wiring Stripe subscriptions into a Next.js App Router app: the subscription Checkout Session, the webhook that syncs status to your DB, and the Billing Portal for self-serve cancels — with the three gotchas that break it in production."
 date: 2026-07-10
-lastmod: 2026-07-20
+lastmod: 2026-07-10
 slug: "nextjs-stripe-subscriptions"
 ---
 <p>Subscription billing in a Next.js SaaS is three moving parts, and the order matters: <strong>(1)</strong> start a subscription with a Checkout Session, <strong>(2)</strong> let Stripe tell your database the truth via a webhook, and <strong>(3)</strong> hand cancels/upgrades to Stripe's Billing Portal so you never build a billing UI. Get these three right and you can ignore almost everything else. This is the practical wiring for the App Router — the deep webhook-security details are in a <a href="https://slashmantools.us/blog/verify-stripe-webhook-nextjs/">companion post</a>.</p>

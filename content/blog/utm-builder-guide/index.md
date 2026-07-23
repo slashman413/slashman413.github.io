@@ -1,8 +1,8 @@
 ---
 title: "UTM Parameters Explained: How to Track Campaigns the Right Way"
 description: "What UTM parameters are, what each one (source, medium, campaign, term, content) does, naming conventions, common mistakes, and how they show up in GA4 — plus a free UTM builder."
-date: 2026-07-20
-lastmod: 2026-07-20
+date: 2026-07-18
+lastmod: 2026-07-18
 slug: "utm-builder-guide"
 ---
 <p>You post the same link on Instagram, in a newsletter and in a paid ad. A week later analytics says you got 400 visitors — but where did they actually come from? Without a way to tag each link, you can't tell. That's exactly the problem <strong>UTM parameters</strong> solve. They're small bits of text you bolt onto the end of a URL so your analytics tool can attribute every visit to the specific campaign, channel and creative that produced it.</p>

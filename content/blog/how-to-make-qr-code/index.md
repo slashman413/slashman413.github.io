@@ -1,8 +1,8 @@
 ---
 title: "How to Make a QR Code for Free (Links, Wi-Fi & More)"
 description: "How to create a QR code for free in seconds — for URLs, text and Wi-Fi — whether QR codes expire, and tips for printing. With a free no-signup QR generator."
-date: 2026-06-28
-lastmod: 2026-07-20
+date: 2026-06-04
+lastmod: 2026-06-04
 slug: "how-to-make-qr-code"
 ---
 <p>QR codes are everywhere — restaurant menus, event posters, product packaging, business cards, payment terminals — because they instantly bridge the physical and digital world. A person points a camera, and a second later they're on your website or connected to your Wi-Fi. The best part: making one is completely free and takes about ten seconds. This guide walks through exactly how to create one, explains the technical bits that actually matter (error correction, static vs. dynamic, sizing for print), and answers the questions people ask most often. If you just want to get started, our <a href="https://slashmantools.us/qr-code-generator/">free QR code generator</a> needs no sign-up and downloads instantly.</p>

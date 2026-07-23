@@ -2,11 +2,11 @@
 <h1>{{ .Title }}</h1>
 {{ with .Content }}<div class="dateline"></div>{{ . }}{{ end }}
 <ul class="postlist">
-  {{ range .Pages.ByLastmod.Reverse }}
+  {{ range .Pages.ByDate.Reverse }}
   <li><a class="card" href="{{ .RelPermalink }}">
     <div class="t">{{ .Title }}</div>
     <div class="d">{{ .Description | plainify | truncate 160 }}</div>
-    <div class="m">{{ .Lastmod.Format "Jan 2, 2006" }}</div>
+    <div class="m">{{ .Date.Format "Jan 2, 2006" }}</div>
   </a></li>
   {{ end }}
 </ul>

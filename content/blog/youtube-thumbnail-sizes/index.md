@@ -1,8 +1,8 @@
 ---
 title: "YouTube Thumbnail Size & Best Practices (2026)"
 description: "The correct YouTube thumbnail size (1280x720), 16:9 aspect ratio, file format and size limits, plus design tips for mobile legibility and A/B testing that lift click-through."
-date: 2026-07-20
-lastmod: 2026-07-20
+date: 2026-07-21
+lastmod: 2026-07-21
 slug: "youtube-thumbnail-sizes"
 ---
 <p>The thumbnail is the single most important image on your channel. It's the first thing a viewer sees, it decides whether they click, and click-through rate feeds directly into how much YouTube promotes your video. Yet a lot of creators upload a blurry, wrongly-sized frame and wonder why nobody clicks. This guide covers the exact dimensions to export, the format and size limits to respect, and the design habits that separate a thumbnail people scroll past from one they can't ignore.</p>

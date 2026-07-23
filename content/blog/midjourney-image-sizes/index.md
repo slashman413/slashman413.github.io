@@ -1,8 +1,8 @@
 ---
 title: "Best Image Sizes & Aspect Ratios for Midjourney, Stable Diffusion & SDXL (2026)"
 description: "The right resolutions and aspect ratios for Midjourney, Stable Diffusion and SDXL — native sizes, common ratios, why multiples of 64 matter, and a free size calculator."
-date: 2026-06-28
-lastmod: 2026-07-20
+date: 2026-06-06
+lastmod: 2026-06-06
 slug: "midjourney-image-sizes"
 ---
 <p>Generating AI art at the wrong dimensions is the single most common reason images come out wrong — stretched faces, awkward crops, duplicated limbs, and compute wasted on a picture you'll delete. The fix is almost always to pick a size the model was actually trained to produce. This guide covers the native resolutions and the best aspect ratios for Midjourney, Stable Diffusion 1.5 and SDXL, explains the "multiples of 64" rule that trips people up, and points you at our <a href="https://slashmantools.us/ai-image-size-calculator/">free AI image size calculator</a> for ready-to-paste dimensions in any ratio.</p>

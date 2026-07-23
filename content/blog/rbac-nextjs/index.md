@@ -1,8 +1,8 @@
 ---
 title: "RBAC in Next.js: Role-Based Access Control That Scales (2026)"
 description: "How to implement role-based access control (RBAC) in Next.js: a central permission matrix, enforcing on the server (route handlers + server actions), gating UI, and the mistakes that create privilege-escalation holes — with real TypeScript code."
-date: 2026-07-08
-lastmod: 2026-07-20
+date: 2026-06-22
+lastmod: 2026-06-22
 slug: "rbac-nextjs"
 ---
 <p>Every app starts with <code>if (user.role === "admin")</code> sprinkled through the code. It works — until you add a third role, a new action, or an edge case, and now the checks disagree with each other and a member can hit an endpoint they shouldn't. This guide shows a role-based access control (RBAC) setup for Next.js that stays correct as you grow: one permission matrix, enforced on the server.</p>

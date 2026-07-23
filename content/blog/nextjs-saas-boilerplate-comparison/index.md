@@ -1,8 +1,8 @@
 ---
 title: "Best Next.js SaaS Boilerplates in 2026: An Honest Comparison (Price + Multi-Tenancy)"
 description: "A straight comparison of Next.js SaaS boilerplates in 2026 — ShipFast, Makerkit, Supastarter, ixartz, Vercel — by price and multi-tenancy, plus how to pick. Written by the maker of one of them, with the trade-offs stated honestly."
-date: 2026-07-10
-lastmod: 2026-07-20
+date: 2026-07-08
+lastmod: 2026-07-16
 slug: "nextjs-saas-boilerplate-comparison"
 ---
 <div class="disc">👋 <strong>Disclosure:</strong> I build one of the kits below (SaaS Starter). I've tried to keep this fair — where a competitor is the better pick for your situation, I say so. Prices change and discounts come and go; <strong>verify current numbers on each vendor's site before buying.</strong></div>

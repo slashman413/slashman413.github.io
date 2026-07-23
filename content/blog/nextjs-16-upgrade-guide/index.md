@@ -1,8 +1,8 @@
 ---
 title: "Upgrading a Next.js SaaS from 15 to 16 (2026): What Actually Breaks"
 description: "A practical Next.js 15 → 16 upgrade guide from a real SaaS migration: the async Request APIs breaking change, middleware.js → proxy.js, the Turbopack config move, the codemod, and the stale-generated-client gotcha that causes phantom TypeScript errors."
-date: 2026-07-10
-lastmod: 2026-07-20
+date: 2026-07-05
+lastmod: 2026-07-18
 slug: "nextjs-16-upgrade-guide"
 ---
 <p>Next.js 16 is a smaller jump than 14→15, but it does remove things that version 15 only <em>deprecated</em>. This is a field guide from upgrading a real multi-tenant SaaS (Next.js 15.5 → 16.2): what the codemod handles for you, the one breaking change that touches actual application code, and a generated-code gotcha that sends people chasing TypeScript errors that were never Next.js's fault.</p>

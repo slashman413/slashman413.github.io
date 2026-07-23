@@ -1,8 +1,8 @@
 ---
 title: "How to Compress Images Without Losing Quality (2026 Guide)"
 description: "Lossy vs lossless, JPG vs PNG vs WebP, and how to shrink images without visible quality loss — privately in your browser with a free image compressor."
-date: 2026-06-28
-lastmod: 2026-07-20
+date: 2026-06-01
+lastmod: 2026-06-01
 slug: "compress-images-without-losing-quality"
 ---
 <p>Big image files slow down websites, eat storage, drain mobile data and get rejected by upload limits. The good news is that you can usually cut file size by <strong>50–80% with no visible quality loss</strong> — once you understand a few basics about how compression works and which format to reach for. This guide covers lossy vs. lossless, a practical format decision table, concrete target file sizes for common jobs, the exact order of steps that gives the biggest wins, and why doing it in your browser is faster and more private. When you're ready, our <a href="https://slashmantools.us/image-compressor/">free image compressor</a> does all of this locally — your files never get uploaded to a server.</p>

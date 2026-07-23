@@ -1,8 +1,8 @@
 ---
 title: "Cron Expressions Explained: A Practical Guide with Examples"
 description: "Understand the 5-field cron syntax, common schedules, the special characters (* / , - ?), timezone and overlap gotchas, plus examples for Linux crontab and GitHub Actions."
-date: 2026-07-20
-lastmod: 2026-07-20
+date: 2026-07-16
+lastmod: 2026-07-16
 slug: "cron-expression-guide"
 ---
 <p>Cron is the scheduler that has quietly run the world's servers for decades, and its little strings of numbers and asterisks now show up everywhere — Linux boxes, GitHub Actions workflows, Kubernetes CronJobs, cloud schedulers. Once you can read a line like <code>0 9 * * 1-5</code> at a glance ("9am every weekday"), the whole thing stops being intimidating. This guide breaks down the syntax field by field, gives you a table of schedules you'll actually reuse, and covers the gotchas that cause jobs to fire at the wrong time — or never.</p>

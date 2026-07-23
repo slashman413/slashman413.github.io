@@ -1,8 +1,8 @@
 ---
 title: "How to Create a Strong Password in 2026 (and Mistakes to Avoid)"
 description: "What actually makes a password strong in 2026: why length beats complexity, the entropy math, common mistakes, passphrases, and a free local password generator."
-date: 2026-06-28
-lastmod: 2026-07-20
+date: 2026-06-11
+lastmod: 2026-07-10
 slug: "strong-password-guide"
 ---
 <p>Most accounts are still lost to weak or reused passwords — not to sophisticated hacking. Attackers rarely "break" a good password; they reuse credentials leaked in a previous breach, guess predictable ones, or trick you into typing it somewhere fake. The good news is that a genuinely strong password is simple to make once you understand what "strong" actually means, and the modern best practice is easier to live with than the old "change it every 90 days" advice ever was. This guide explains the fundamentals in plain terms — including the entropy math that makes it click — and you can create one instantly with our <a href="https://slashmantools.us/password-generator/">free password generator</a>, which runs entirely in your browser and never transmits what it creates.</p>

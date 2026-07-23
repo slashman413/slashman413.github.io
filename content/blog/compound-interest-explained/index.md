@@ -1,8 +1,8 @@
 ---
 title: "Compound Interest Explained: How Your Money Really Grows (2026)"
 description: "Compound interest explained simply: the formula, why starting early matters so much, the Rule of 72, and a worked example — with a free compound interest calculator."
-date: 2026-06-28
-lastmod: 2026-07-20
+date: 2026-05-29
+lastmod: 2026-05-29
 slug: "compound-interest-explained"
 ---
 <p>Albert Einstein supposedly called compound interest the eighth wonder of the world. Whether or not he actually said it, the underlying math is genuinely powerful — and understanding it well is arguably the single most useful thing you can do as a saver or investor. The good news is that it isn't complicated. Once the core idea clicks, you'll see it everywhere: in your savings account, your mortgage, your credit-card balance, and your retirement fund. This guide walks through it slowly, with worked numbers you can check, and you can model your own scenario with our <a href="https://slashmantools.us/compound-calculator/">free compound interest calculator</a> as you read.</p>

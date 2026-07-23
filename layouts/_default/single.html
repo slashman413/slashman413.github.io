@@ -1,7 +1,7 @@
 {{ define "main" }}
 <article>
   <h1>{{ .Title }}</h1>
-  <div class="dateline">Updated {{ .Lastmod.Format "January 2, 2006" }}{{ if gt .ReadingTime 0 }} · ~{{ .ReadingTime }} min read{{ end }}</div>
+  <div class="dateline">{{ if .Lastmod.After .Date }}Updated {{ .Lastmod.Format "January 2, 2006" }} · Published {{ .Date.Format "January 2, 2006" }}{{ else }}Published {{ .Date.Format "January 2, 2006" }}{{ end }}{{ if gt .ReadingTime 0 }} · ~{{ .ReadingTime }} min read{{ end }}</div>
   {{ .Content }}
   {{ if not (or (in .Content "About the author") (in .Content "關於作者")) }}
   <div style="margin-top:32px;padding:16px 18px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;font-size:13.5px;color:#9898b8;line-height:1.7">

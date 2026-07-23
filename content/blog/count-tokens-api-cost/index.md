@@ -1,8 +1,8 @@
 ---
 title: "How Many Tokens Is My Text? (And How to Estimate API Cost)"
 description: "What an LLM token is, a quick way to estimate how many tokens your prompt uses, and how to calculate GPT, Claude & Gemini API cost — with a free token & cost calculator."
-date: 2026-06-22
-lastmod: 2026-07-20
+date: 2026-05-24
+lastmod: 2026-07-15
 slug: "count-tokens-api-cost"
 ---
 <p>If you're building anything on top of the OpenAI, Anthropic or Google APIs, your bill isn't measured in words, characters or requests — it's measured in <strong>tokens</strong>. Every prompt you send and every response you get back is chopped into these little chunks, counted, and billed. Understanding how tokens work is the single most useful thing you can do to predict your monthly cost, avoid blowing through a model's context window, and stop overpaying for capacity you don't need. Here's the practical version, with worked numbers and a <a href="https://slashmantools.us/token-cost-calculator/">free token &amp; cost calculator</a> you can use as you read.</p>

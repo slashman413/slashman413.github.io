@@ -1,8 +1,8 @@
 ---
 title: "Word Count Guide: How Long Should Your Essay, Post or Meta Description Be? (2026)"
 description: "Ideal word counts for essays, blog posts, meta descriptions, tweets and more — plus reading-time math and a free private word counter that runs in your browser."
-date: 2026-06-28
-lastmod: 2026-07-20
+date: 2026-06-14
+lastmod: 2026-06-14
 slug: "word-count-guide"
 ---
 <p>"How many words should this be?" is one of the most common questions in writing — and it comes up for essays, blog posts, meta descriptions, product pages and social posts alike. The honest answer is "as many as the job needs, and no more," but that's not very useful when you're staring at a submission box with a hard limit. So this guide gives you practical target ranges for the formats people write most, the reading-time math behind them, why some limits count words while others count characters, and how to edit toward a target without padding. If you want to check your draft as you go, our <a href="https://slashmantools.us/word-counter/">free word counter</a> updates live as you type — and it runs entirely in your browser, so your text is never uploaded.</p>

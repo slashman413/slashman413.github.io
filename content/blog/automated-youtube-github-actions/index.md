@@ -1,8 +1,8 @@
 ---
 title: "用 GitHub Actions 打造全自動 YouTube 頻道（免費、免伺服器）2026"
 description: "如何用免費 API + GitHub Actions 打造一個每天自動產片、自動上傳的 faceless YouTube 頻道：爬新聞 → AI 寫腳本 → TTS 配音 → FFmpeg 合成 → 自動發布。完整架構與免費工具，附一鍵套用的現成系統。"
-date: 2026-07-08
-lastmod: 2026-07-20
+date: 2026-06-17
+lastmod: 2026-06-17
 slug: "automated-youtube-github-actions"
 ---
 <p>「faceless（無人露臉）頻道」聽起來很夢幻，但多數教學不是要你買貴桑桑的工具，就是還要租一台雲端主機每個月燒錢。我自己實際跑了半年後發現：整條產線其實可以<strong>完全免費</strong>、<strong>不用自己的機器</strong>——全部跑在 GitHub Actions 的免費額度上，每天固定時間自動抓題材、寫稿、配音、合成、上傳一支影片，然後你去睡覺。這篇把我踩過的坑和完整架構一次攤開給你看，讓你少走幾個週末的冤枉路。</p>

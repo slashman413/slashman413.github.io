@@ -1,8 +1,8 @@
 ---
 title: "Multi-Tenancy in Next.js: Scope Every Query the Safe Way (2026)"
 description: "How to build multi-tenant SaaS in Next.js without leaking one customer's data to another: the organization-scoping pattern, a central tenant resolver, RBAC, and the mistakes to avoid — with real Prisma + Auth.js code."
-date: 2026-07-08
-lastmod: 2026-07-20
+date: 2026-06-19
+lastmod: 2026-06-19
 slug: "nextjs-multi-tenancy"
 ---
 <p>Multi-tenancy is the part of B2B SaaS that quietly keeps founders up at night. Get it wrong and one customer sees another customer's data — the kind of bug that ends a company. This guide covers the pragmatic pattern for building multi-tenant apps in <strong>Next.js 16 + Prisma + Auth.js</strong>: shared database, row-level isolation, and a discipline that makes leaks structurally hard.</p>

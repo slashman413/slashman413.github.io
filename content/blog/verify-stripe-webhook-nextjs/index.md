@@ -1,8 +1,8 @@
 ---
 title: "Verify a Stripe Webhook in Next.js"
 description: "How to verify Stripe webhook signatures in a Next.js App Router route handler: read the raw body, check the stripe-signature HMAC-SHA256, reject replays, and fail closed — with copy-paste code and the mistakes that let forged events through."
-date: 2026-07-08
-lastmod: 2026-07-20
+date: 2026-06-25
+lastmod: 2026-06-25
 slug: "verify-stripe-webhook-nextjs"
 ---
 <p>A webhook endpoint that doesn't verify signatures will happily accept a <em>forged</em> "payment succeeded" event — and hand out paid access for free. Verifying the <code>stripe-signature</code> header is not optional. Here's how to do it correctly in a Next.js 16 App Router route handler, with the two gotchas (raw body + runtime) that trip most people up.</p>

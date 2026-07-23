@@ -1,8 +1,8 @@
 ---
 title: "The Pomodoro Technique: A Simple Guide to Beating Procrastination (2026)"
 description: "What the Pomodoro Technique is, why it works, and how to use it step by step to focus and beat procrastination — with a free online Pomodoro timer."
-date: 2026-06-28
-lastmod: 2026-07-20
+date: 2026-06-09
+lastmod: 2026-06-09
 slug: "pomodoro-technique-guide"
 ---
 <p>The Pomodoro Technique is one of the simplest and most durable time-management methods ever invented — and it needs nothing more than a timer. No app subscription, no productivity system to learn, no expensive planner. It has survived since the late 1980s precisely because it targets the real reason we procrastinate: not laziness, but the discomfort of <em>starting</em>. This guide explains what the technique is, why it works, how to run it step by step, and how to adapt it to your own attention span. You can start a session right now with our <a href="https://slashmantools.us/pomodoro-focus-timer/">free Pomodoro focus timer</a> as you read.</p>

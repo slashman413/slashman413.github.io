@@ -1,8 +1,8 @@
 ---
 title: "How Much VRAM Do You Need to Run a Local LLM? (2026 Guide)"
 description: "A practical 2026 guide to LLM VRAM requirements: how much GPU memory you need to run 7B, 13B, 70B and 405B models in GGUF, AWQ and FP16 — with a free calculator."
-date: 2026-06-22
-lastmod: 2026-07-20
+date: 2026-05-27
+lastmod: 2026-07-12
 slug: "llm-vram-requirements"
 ---
 <p>Running a large language model on your own machine comes down to one thing above all else: <strong>memory</strong>. If the model's weights, plus its context cache and a little overhead, fit inside your GPU's VRAM, it runs fast and entirely on the card. If they don't, you either spill part of the model into much slower system RAM or you can't load it at all. This guide gives you practical numbers for every common model size and quantization, the math behind them, and a <a href="https://slashmantools.us/llm-calc/">free VRAM calculator</a> to check any specific model instantly.</p>
