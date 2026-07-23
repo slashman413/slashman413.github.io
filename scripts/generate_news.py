@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Daily tech-news writer for /news/.
 
-Fetches recent tech-news headlines from public RSS feeds, asks Gemini to write an
+Fetches recent tech-news headlines from public RSS feeds, asks DeepSeek to write an
 ORIGINAL, transformative analysis piece (not a copy) with source attribution, and
 writes it as a Hugo page bundle under content/news/.
 
