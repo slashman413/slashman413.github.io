@@ -97,19 +97,23 @@ def deepseek(prompt, key):
         "model": model,
         "messages": [{"role": "user", "content": prompt}],
         "temperature": 0.7,
-        "max_tokens": 2048,
+        "max_tokens": 8192,
         "stream": False,
+        "response_format": {"type": "json_object"},
     }).encode()
     headers = {**UA, "Content-Type": "application/json", "Authorization": f"Bearer {key}"}
     req = urllib.request.Request(DEEPSEEK_BASE, data=body, headers=headers)
     try:
-        with urllib.request.urlopen(req, timeout=120) as r:
+        with urllib.request.urlopen(req, timeout=180) as r:
             d = json.loads(r.read())
     except urllib.error.HTTPError as e:
         detail = e.read().decode("utf-8", "replace")[:800]
         raise RuntimeError(f"DeepSeek HTTP {e.code}: {detail}")
-    msg = d["choices"][0]["message"]
-    return msg.get("content") or msg.get("reasoning_content") or ""
+    ch = d["choices"][0]
+    content = (ch["message"].get("content") or "").strip()
+    if not content:
+        raise RuntimeError("empty content (finish_reason=%s)" % ch.get("finish_reason"))
+    return content
 
 
 def build_prompt(headlines, avoid):
@@ -123,7 +127,7 @@ Today's tech headlines:
 Do not repeat the angle of these already-published pieces:
 {avoid_s}
 
-Return STRICT JSON only (no markdown fences), with keys:
+Return a single strict json object only (no markdown fences), with keys:
   "title": a specific, non-clickbait headline (<= 70 chars),
   "description": a 1-sentence meta description (<= 160 chars),
   "slug": short kebab-case slug (<= 6 words),
