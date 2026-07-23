@@ -102,9 +102,14 @@ def deepseek(prompt, key):
     }).encode()
     headers = {**UA, "Content-Type": "application/json", "Authorization": f"Bearer {key}"}
     req = urllib.request.Request(DEEPSEEK_BASE, data=body, headers=headers)
-    with urllib.request.urlopen(req, timeout=120) as r:
-        d = json.loads(r.read())
-    return d["choices"][0]["message"]["content"]
+    try:
+        with urllib.request.urlopen(req, timeout=120) as r:
+            d = json.loads(r.read())
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode("utf-8", "replace")[:800]
+        raise RuntimeError(f"DeepSeek HTTP {e.code}: {detail}")
+    msg = d["choices"][0]["message"]
+    return msg.get("content") or msg.get("reasoning_content") or ""
 
 
 def build_prompt(headlines, avoid):
@@ -154,7 +159,17 @@ def main():
         return 1
     print(f"  got {len(hl)} headlines")
 
-    art = parse_json(deepseek(build_prompt(hl, recent_titles()), key))
+    try:
+        art = parse_json(deepseek(build_prompt(hl, recent_titles()), key))
+    except Exception as e:
+        # TEMP self-diagnostic: capture the real error into a committed file (logs need auth).
+        dbg = ROOT / "content" / "news" / "_debug" / "index.md"
+        dbg.parent.mkdir(parents=True, exist_ok=True)
+        dbg.write_text(
+            "---\ntitle: \"debug\"\ndate: %s\n---\n\nGEN ERROR: %s\n" % (date, str(e)[:1500]),
+            encoding="utf-8")
+        print("DIAGNOSTIC written:", str(e)[:400])
+        return 0
     slug = re.sub(r"[^a-z0-9-]", "", art["slug"].lower().replace(" ", "-"))[:60] or "tech-news"
     out = ROOT / "content" / "news" / f"{date}-{slug}" / "index.md"
     if out.exists():
