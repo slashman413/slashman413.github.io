@@ -136,8 +136,10 @@ def main():
         return 2
     key = os.environ.get("GEMINI_API_KEY")
     if not key:
-        print("ERROR: GEMINI_API_KEY not set", file=sys.stderr)
-        return 2
+        # Not an error: the feature is simply dormant until a key is provided.
+        # Exit 0 so scheduled/dispatch runs stay green and produce no article.
+        print("GEMINI_API_KEY not set — skipping (no article generated).")
+        return 0
 
     print("Fetching headlines...")
     hl = collect_headlines()

@@ -4,8 +4,10 @@ name: Daily tech-news article
 # not in sitemap until AdSense is approved), then builds + deploys.
 # Requires repo secret: GEMINI_API_KEY  (Settings → Secrets and variables → Actions).
 on:
-  schedule:
-    - cron: "17 9 * * *"   # 09:17 UTC daily
+  # Daily schedule is PARKED until the GEMINI_API_KEY secret is added.
+  # To activate the daily writer: add the secret, then uncomment the two lines below.
+  # schedule:
+  #   - cron: "17 9 * * *"   # 09:17 UTC daily
   workflow_dispatch:
 
 permissions:
