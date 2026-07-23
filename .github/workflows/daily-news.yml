@@ -2,9 +2,10 @@ name: Daily tech-news article
 
 # Generates one reinterpreted tech-news article/day into /news/ (noindex, ad-free,
 # not in sitemap until AdSense is approved), then builds + deploys.
-# Requires repo secret: GEMINI_API_KEY  (Settings → Secrets and variables → Actions).
+# Requires repo secret: DEEPSEEK_API_KEY  (Settings → Secrets and variables → Actions).
+# Model: deepseek-v4-flash (override with repo variable/secret DEEPSEEK_MODEL).
 on:
-  # Daily schedule is PARKED until the GEMINI_API_KEY secret is added.
+  # Daily schedule is PARKED until the DEEPSEEK_API_KEY secret is added.
   # To activate the daily writer: add the secret, then uncomment the two lines below.
   # schedule:
   #   - cron: "17 9 * * *"   # 09:17 UTC daily
@@ -35,7 +36,8 @@ jobs:
 
       - name: Generate today's article
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_MODEL: ${{ vars.DEEPSEEK_MODEL }}
         run: python scripts/generate_news.py "$(date -u +%F)"
 
       - name: Commit new article

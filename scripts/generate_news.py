@@ -6,8 +6,9 @@ ORIGINAL, transformative analysis piece (not a copy) with source attribution, an
 writes it as a Hugo page bundle under content/news/.
 
 Env:
-  GEMINI_API_KEY   (required in CI)
-  NEWS_DATE        (optional, YYYY-MM-DD; default = today UTC via arg)
+  DEEPSEEK_API_KEY   (required in CI)
+  DEEPSEEK_MODEL     (optional; default "deepseek-v4-flash")
+  NEWS_DATE          (optional, YYYY-MM-DD; default = today UTC via arg)
 
 The /news/ section is noindex + no-ads + sitemap-excluded by the theme, so this
 content does not affect the AdSense review until that guard is removed.
@@ -21,8 +22,9 @@ FEEDS = [
     "https://feeds.arstechnica.com/arstechnica/index",
     "https://hnrss.org/frontpage",
 ]
-UA = {"User-Agent": "Mozilla/5.0 (SlashmanGuides news bot)"}
-MODEL = "gemini-2.0-flash"
+UA = {"User-Agent": "Mozilla/5.0 (IntellectualGuides news bot)"}
+DEEPSEEK_BASE = "https://api.deepseek.com/chat/completions"
+DEFAULT_MODEL = "deepseek-v4-flash"
 
 
 def fetch(url, timeout=20):
@@ -89,22 +91,26 @@ def recent_titles(n=10):
     return out[-n:]
 
 
-def gemini(prompt, key):
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={key}"
+def deepseek(prompt, key):
+    model = os.environ.get("DEEPSEEK_MODEL") or DEFAULT_MODEL
     body = json.dumps({
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {"temperature": 0.7, "maxOutputTokens": 2048},
+        "model": model,
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0.7,
+        "max_tokens": 2048,
+        "stream": False,
     }).encode()
-    req = urllib.request.Request(url, data=body, headers={**UA, "Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=90) as r:
+    headers = {**UA, "Content-Type": "application/json", "Authorization": f"Bearer {key}"}
+    req = urllib.request.Request(DEEPSEEK_BASE, data=body, headers=headers)
+    with urllib.request.urlopen(req, timeout=120) as r:
         d = json.loads(r.read())
-    return d["candidates"][0]["content"]["parts"][0]["text"]
+    return d["choices"][0]["message"]["content"]
 
 
 def build_prompt(headlines, avoid):
     hl = "\n".join(f"- {h['title']} ({h['link']})" + (f" — {h['summary']}" if h['summary'] else "") for h in headlines)
     avoid_s = "\n".join(f"- {t}" for t in avoid) or "(none yet)"
-    return f"""You are a technology writer for "Slashman Guides". Using the real headlines below as raw material, write ONE original, transformative analysis article (do NOT copy or closely paraphrase any single source — synthesize across them and add your own clear explanation and context). Neutral, sober, informative tone. ~650-850 words.
+    return f"""You are a technology writer for "Intellectual Guides". Using the real headlines below as raw material, write ONE original, transformative analysis article (do NOT copy or closely paraphrase any single source — synthesize across them and add your own clear explanation and context). Neutral, sober, informative tone. ~650-850 words.
 
 Today's tech headlines:
 {hl}
@@ -134,11 +140,11 @@ def main():
     if not date:
         print("ERROR: pass a date (YYYY-MM-DD) as arg or NEWS_DATE env", file=sys.stderr)
         return 2
-    key = os.environ.get("GEMINI_API_KEY")
+    key = os.environ.get("DEEPSEEK_API_KEY")
     if not key:
         # Not an error: the feature is simply dormant until a key is provided.
         # Exit 0 so scheduled/dispatch runs stay green and produce no article.
-        print("GEMINI_API_KEY not set — skipping (no article generated).")
+        print("DEEPSEEK_API_KEY not set — skipping (no article generated).")
         return 0
 
     print("Fetching headlines...")
@@ -148,7 +154,7 @@ def main():
         return 1
     print(f"  got {len(hl)} headlines")
 
-    art = parse_json(gemini(build_prompt(hl, recent_titles()), key))
+    art = parse_json(deepseek(build_prompt(hl, recent_titles()), key))
     slug = re.sub(r"[^a-z0-9-]", "", art["slug"].lower().replace(" ", "-"))[:60] or "tech-news"
     out = ROOT / "content" / "news" / f"{date}-{slug}" / "index.md"
     if out.exists():
