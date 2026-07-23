@@ -163,17 +163,7 @@ def main():
         return 1
     print(f"  got {len(hl)} headlines")
 
-    try:
-        art = parse_json(deepseek(build_prompt(hl, recent_titles()), key))
-    except Exception as e:
-        # TEMP self-diagnostic: capture the real error into a committed file (logs need auth).
-        dbg = ROOT / "content" / "news" / "_debug" / "index.md"
-        dbg.parent.mkdir(parents=True, exist_ok=True)
-        dbg.write_text(
-            "---\ntitle: \"debug\"\ndate: %s\n---\n\nGEN ERROR: %s\n" % (date, str(e)[:1500]),
-            encoding="utf-8")
-        print("DIAGNOSTIC written:", str(e)[:400])
-        return 0
+    art = parse_json(deepseek(build_prompt(hl, recent_titles()), key))
     slug = re.sub(r"[^a-z0-9-]", "", art["slug"].lower().replace(" ", "-"))[:60] or "tech-news"
     out = ROOT / "content" / "news" / f"{date}-{slug}" / "index.md"
     if out.exists():

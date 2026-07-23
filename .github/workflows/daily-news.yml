@@ -8,8 +8,6 @@ on:
   schedule:
     - cron: "17 9 * * *"   # 09:17 UTC daily
   workflow_dispatch:
-  push:                    # TEMP: one-off verification trigger (remove after test)
-    branches: [main]
 
 permissions:
   contents: write
