@@ -5,10 +5,8 @@ name: Daily tech-news article
 # Requires repo secret: DEEPSEEK_API_KEY  (Settings → Secrets and variables → Actions).
 # Model: deepseek-v4-flash (override with repo variable/secret DEEPSEEK_MODEL).
 on:
-  # Daily schedule is PARKED until the DEEPSEEK_API_KEY secret is added.
-  # To activate the daily writer: add the secret, then uncomment the two lines below.
-  # schedule:
-  #   - cron: "17 9 * * *"   # 09:17 UTC daily
+  schedule:
+    - cron: "17 9 * * *"   # 09:17 UTC daily
   workflow_dispatch:
 
 permissions:
