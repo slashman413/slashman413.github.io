@@ -3,8 +3,9 @@ name: Deploy Hugo site to Pages
 # STAGED: does not take effect until (a) this branch is merged to the Pages
 # branch AND (b) repo Settings → Pages → Source is set to "GitHub Actions".
 on:
-  push:
-    branches: [main]
+  # push temporarily disabled during daily-news one-off test (restored right after)
+  # push:
+  #   branches: [main]
   workflow_dispatch:
 
 permissions:
