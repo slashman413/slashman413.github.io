@@ -164,8 +164,9 @@ def main():
     print(f"  got {len(hl)} headlines")
 
     art = parse_json(deepseek(build_prompt(hl, recent_titles()), key))
-    slug = re.sub(r"[^a-z0-9-]", "", art["slug"].lower().replace(" ", "-"))[:60] or "tech-news"
-    out = ROOT / "content" / "news" / f"{date}-{slug}" / "index.md"
+    topic = re.sub(r"[^a-z0-9-]", "", art["slug"].lower().replace(" ", "-"))[:60] or "tech-news"
+    slug = f"{date}-{topic}"   # dated slug => unique URL, matches directory name
+    out = ROOT / "content" / "news" / slug / "index.md"
     if out.exists():
         print(f"already exists: {out}")
         return 0

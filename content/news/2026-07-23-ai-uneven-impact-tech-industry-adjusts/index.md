@@ -3,7 +3,7 @@ title: "AI's Uneven Impact: From Banking to Mainframes, the Tech Industry Adjust
 description: "As AI reshapes corporate budgets, cybersecurity, and regulation, the tech sector faces both boon and backlash."
 date: 2026-07-23
 lastmod: 2026-07-23
-slug: "ai-uneven-impact-tech-industry-adjusts"
+slug: "2026-07-23-ai-uneven-impact-tech-industry-adjusts"
 tags: [tech-news]
 ---
 
