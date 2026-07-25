@@ -1,28 +1,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-{{ $isHome := .IsHome }}
-{{ $title := cond $isHome site.Title (printf "%s — %s" .Title site.Title) }}
-<title>{{ $title }}</title>
-{{ $desc := or .Description .Summary site.Params.description }}
-<meta name="description" content="{{ $desc | plainify | truncate 160 }}">
 {{ $noindex := or (eq .Section "news") .Params.noindex }}
-{{ if $noindex }}<meta name="robots" content="noindex, nofollow">{{ end }}
-<link rel="canonical" href="{{ .Permalink }}">
-<meta name="theme-color" content="#0a0a0f">
-<link rel="icon" href="/icon-192.png">
-<link rel="manifest" href="/manifest.json">
-<!-- Open Graph -->
-<meta property="og:site_name" content="{{ site.Title }}">
-<meta property="og:title" content="{{ if $isHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
-<meta property="og:description" content="{{ $desc | plainify | truncate 160 }}">
-<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-<meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:image" content="{{ "og.png" | absURL }}">
-<meta name="twitter:card" content="summary_large_image">
-{{ if .IsPage }}
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":{{ .Title }},"author":{"@type":"Person","name":{{ site.Params.author }}},"datePublished":{{ .Date.Format "2006-01-02" }},"dateModified":{{ .Lastmod.Format "2006-01-02" }},"mainEntityOfPage":{{ .Permalink }}}</script>
-{{ end }}
+{{ partial "meta.html" . }}
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.Params.gaId }}"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','{{ site.Params.gaId }}');</script>

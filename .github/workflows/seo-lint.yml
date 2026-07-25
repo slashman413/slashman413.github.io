@@ -1,0 +1,80 @@
+name: SEO & Build Check
+
+# Non-deploying CI gate. Builds the site and runs basic SEO assertions on the
+# generated HTML. Runs on PRs and on pushes to main (alongside, not instead of,
+# hugo-deploy.yml which owns the actual Pages deploy).
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  seo-check:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.157.0
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Hugo CLI (extended)
+        run: |
+          wget -O hugo.deb "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i hugo.deb
+          hugo version
+
+      - name: Build (fail on WARNING)
+        run: hugo --gc --minify --baseURL "https://slashmantools.us/" --logLevel warn --panicOnWarning
+
+      - name: SEO assertions
+        run: |
+          set -uo pipefail
+          fail=0
+          err()  { echo "::error::$1"; fail=1; }
+          warn() { echo "::warning::$1"; }
+
+          echo "→ robots.txt present"
+          test -f public/robots.txt  || err "public/robots.txt missing"
+          echo "→ sitemap.xml present"
+          test -f public/sitemap.xml || err "public/sitemap.xml missing"
+
+          # Core SEO is a hard gate for every real, Hugo-rendered page.
+          # Skips: 404, alias/redirect stubs, and standalone static HTML tool
+          # pages (shipped from static/, they manage their own <head>).
+          real=0; static=0; stub=0
+          echo "→ core SEO (title / description / canonical) on rendered pages"
+          while IFS= read -r f; do
+            if grep -qi 'http-equiv=.\?refresh' "$f"; then stub=$((stub+1)); continue; fi
+            # A Hugo-rendered page carries the shared shell (.sidebar); static
+            # tool pages do not — lint only what our templates control.
+            if ! grep -q 'class=.\?sidebar' "$f"; then
+              static=$((static+1))
+              grep -q 'hreflang' "$f" || warn "static page lacks hreflang (own <head>, advisory): $f"
+              continue
+            fi
+            real=$((real+1))
+            grep -q "<title>" "$f"                   || err "no <title> in $f"
+            grep -q '<meta name=.\?description' "$f"  || err "no meta description in $f"
+            grep -q '<link rel=.\?canonical' "$f"     || err "no canonical in $f"
+            grep -q 'hreflang' "$f"                    || err "no hreflang in $f"
+          done < <(find public -name '*.html' ! -name '404.html')
+
+          echo "→ news pages must be noindex (AdSense policy)"
+          while IFS= read -r f; do
+            grep -q 'name=.\?robots.*noindex' "$f" || err "news page not noindex: $f"
+          done < <(find public/news -name '*.html' 2>/dev/null | grep -v '/news/index.html' || true)
+
+          echo "Rendered pages checked: $real | static pages (advisory): $static | redirect stubs skipped: $stub"
+          if [ "$fail" -ne 0 ]; then echo "SEO check FAILED"; exit 1; fi
+          echo "SEO check PASSED"
