@@ -9,5 +9,41 @@
     Published by <a href="/about/">slashman413</a> — writing practical, evergreen guides on money, productivity, developer tooling and the web. <a href="/about/">More about this site →</a>
   </div>
   {{ end }}
+
+  <!-- Lead Magnet CTA — Mautic inline form -->
+  <div id="form-container" style="margin-top:32px;padding:24px 20px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-radius:12px;text-align:center">
+    <p style="font-size:16px;font-weight:800;color:#f0f0f8;margin-bottom:6px">🎁 Free AI Productivity Toolkit</p>
+    <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px">50+ curated prompts + tools comparison + workflow templates. Download free, sent to your inbox.</p>
+    <div style="max-width:380px;margin:0 auto">
+      <form id="mauticform_landingpageleadmagnet"
+            class="mauticform_wrapper"
+            autocomplete="false"
+            role="form"
+            method="post"
+            data-lead-form
+            data-source="landing-page-lead-magnet"
+            data-success="#success-msg"
+            style="display:flex;flex-direction:column;gap:8px">
+        <input type="text"
+               name="mauticform[firstname]"
+               id="mauticform_input_landingpageleadmagnet_firstname"
+               placeholder="Your first name"
+               required
+               style="padding:10px 12px;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;color:#f0f0f8;font-size:14px;outline:none">
+        <input type="email"
+               name="mauticform[email]"
+               id="mauticform_input_landingpageleadmagnet_email"
+               placeholder="you@example.com"
+               required
+               style="padding:10px 12px;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;color:#f0f0f8;font-size:14px;outline:none">
+        <input type="hidden" name="mauticform[formId]" value="13">
+        <input type="hidden" name="mauticform[formName]" value="landingpageleadmagnet">
+        <input type="hidden" name="tags" value="landing-page-lead-magnet">
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button type="submit" style="padding:10px 24px;background:var(--accent2,#a5b4fc);color:#0a0a0f;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer">Get the Free Toolkit →</button>
+      </form>
+      <p id="success-msg" style="display:none;font-size:14px;color:#34d399;margin-top:8px">✅ Check your inbox — the toolkit is on its way!</p>
+    </div>
+  </div>
 </article>
 {{ end }}

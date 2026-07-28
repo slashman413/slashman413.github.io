@@ -19,6 +19,8 @@ disableKinds = ["taxonomy", "term"]
   author = "slashman413"
   adsenseClient = "ca-pub-7217603696203672"
   gaId = "G-MY95FHB8JG"
+  # Custom lead-capture webhook endpoint (Cloudflare Worker — see /webhook/).
+  leadEndpoint = "https://leads.slashmantools.us/subscribe"
 
 [menu]
   [[menu.main]]

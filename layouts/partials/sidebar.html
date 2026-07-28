@@ -8,6 +8,48 @@
       <a href="{{ .URL }}"{{ if $active }} class="active"{{ end }}>{{ .Name }}</a>
     {{ end }}
   </nav>
+
+  <!-- Newsletter Widget — Mautic form -->
+  <div class="sidebar-widget" style="margin-top:20px;padding:16px 0;border-top:1px solid var(--border)">
+    <p style="font-size:12px;font-weight:700;color:#c7c7f0;margin-bottom:8px">📬 Get AI Tools Weekly</p>
+    <p style="font-size:11.5px;color:var(--muted);margin-bottom:10px;line-height:1.5">Practical AI guides, free tools, and digital product tips delivered to your inbox.</p>
+
+    <form id="mauticform_sidebarsubscribe"
+          class="mauticform_wrapper"
+          autocomplete="false"
+          role="form"
+          method="post"
+          action="/.netlify/functions/lead-capture"
+          data-lead-form
+          data-source="sidebar-subscribe"
+          data-success-text="✅ Subscribed! Check your inbox."
+          style="display:flex;flex-direction:column;gap:6px">
+      <!-- Mautic-compatible fields -->
+      <input type="email"
+             name="mauticform[email]"
+             id="mauticform_input_sidebarsubscribe_email"
+             placeholder="you@example.com"
+             required
+             style="padding:8px 10px;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;color:#f0f0f8;font-size:13px;outline:none">
+      <input type="text"
+             name="mauticform[firstname]"
+             id="mauticform_input_sidebarsubscribe_firstname"
+             placeholder="First name (optional)"
+             style="padding:6px 10px;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;color:#f0f0f8;font-size:12px;outline:none">
+
+      <!-- Mautic hidden fields -->
+      <input type="hidden" name="mauticform[formId]" value="11">
+      <input type="hidden" name="mauticform[formName]" value="sidebarsubscribe">
+      <input type="hidden" name="tags" value="sidebar-subscribe">
+
+      <!-- Honeypot -->
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
+      <button type="submit" style="padding:8px 10px;background:var(--accent2,#a5b4fc);color:#0a0a0f;border:none;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer">Subscribe</button>
+    </form>
+    <p style="font-size:10px;color:#555;margin-top:6px">Free. Unsubscribe anytime.</p>
+  </div>
+
   <div class="side-foot">
     &copy; {{ now.Year }} {{ site.Title }}<br>
     <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a>

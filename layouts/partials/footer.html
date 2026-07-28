@@ -1,4 +1,32 @@
 <footer class="footer">
   <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/tools/">Tools</a>
+
+  <!-- Footer Newsletter -->
+  <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--border)">
+    <p style="font-size:12.5px;color:var(--muted,#7878a0);margin-bottom:8px"><strong style="color:#c7c7f0">📬 Stay Updated</strong> — Practical AI guides, tools &amp; product tips.</p>
+    <form id="mauticform_footersubscribe"
+          class="mauticform_wrapper"
+          autocomplete="false"
+          role="form"
+          method="post"
+          action="/.netlify/functions/lead-capture"
+          data-lead-form
+          data-source="footer-subscribe"
+          data-success-text="✅ Subscribed!"
+          style="display:flex;gap:6px;max-width:400px;margin:0 auto">
+      <input type="email"
+             name="mauticform[email]"
+             id="mauticform_input_footersubscribe_email"
+             placeholder="you@example.com"
+             required
+             style="flex:1;padding:8px 10px;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;color:#f0f0f8;font-size:13px;outline:none">
+      <input type="hidden" name="mauticform[formId]" value="12">
+      <input type="hidden" name="mauticform[formName]" value="footersubscribe">
+      <input type="hidden" name="tags" value="footer-subscribe">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button type="submit" style="padding:8px 14px;background:var(--accent2,#a5b4fc);color:#0a0a0f;border:none;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap">Subscribe</button>
+    </form>
+  </div>
+
   <br>&copy; {{ now.Year }} {{ site.Title }}. Practical, evergreen guides.
 </footer>
