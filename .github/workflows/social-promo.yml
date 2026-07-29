@@ -63,7 +63,7 @@ jobs:
           IG_GRAPH_TOKEN: ${{ secrets.IG_GRAPH_TOKEN }}
           THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
           THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
-        run: python social_promo.py
+        run: python scripts/social_promo.py
 
       - name: Notify Discord on failure
         if: failure()
