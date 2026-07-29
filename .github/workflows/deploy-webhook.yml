@@ -1,0 +1,38 @@
+name: Deploy Lead-Capture Webhook
+
+# Deploys the Cloudflare Worker in /webhook/ whenever its source changes.
+# One-time setup required (see webhook/README.md):
+#   - Add repo secret CLOUDFLARE_API_TOKEN  (Workers Scripts: Edit)
+#   - Add repo secret CLOUDFLARE_ACCOUNT_ID
+#   - Create the KV namespace and paste its id into webhook/wrangler.toml
+#   - Set runtime secrets once via `wrangler secret put` (not in CI)
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "webhook/**"
+      - ".github/workflows/deploy-webhook.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: webhook
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Deploy Worker
+        run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

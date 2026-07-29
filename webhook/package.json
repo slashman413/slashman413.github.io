@@ -1,0 +1,16 @@
+{
+  "name": "slashman-lead-capture",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Custom webhook for slashmantools.us email lead capture (Cloudflare Worker)",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "leads:list": "wrangler kv key list --binding=LEADS"
+  },
+  "devDependencies": {
+    "wrangler": "^3.90.0"
+  }
+}

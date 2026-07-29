@@ -1,0 +1,32 @@
+# Cloudflare Worker config for the Slashman Tools lead-capture webhook.
+# Deploy: `npm install && npx wrangler deploy` (from this directory).
+# See README.md for one-time setup (KV namespace, secrets, custom domain).
+
+name = "lead-capture"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+
+# --- Storage: KV namespace for captured leads + rate-limit counters --------
+# Create with:  npx wrangler kv namespace create LEADS
+# then paste the returned id below.
+[[kv_namespaces]]
+binding = "LEADS"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# --- Custom domain route (recommended) -------------------------------------
+# Serve the Worker at https://leads.slashmantools.us so the forms post to a
+# first-party domain (better deliverability + no ad-blocker false positives).
+# Requires slashmantools.us to be on Cloudflare DNS. Uncomment + set zone_name.
+#
+# [[routes]]
+# pattern = "leads.slashmantools.us/*"
+# custom_domain = true
+
+# --- Non-secret vars -------------------------------------------------------
+# Secrets (RESEND_API_KEY, FORWARD_SECRET, MAUTIC_FORWARD_TOKEN) must be set via
+# `npx wrangler secret put NAME` — never commit them here.
+[vars]
+FROM_EMAIL = "Slashman Tools <hello@slashmantools.us>"
+REPLY_TO = "hello@slashmantools.us"
+DOWNLOAD_URL = "https://slashmantools.us/toolkit/"
+# FORWARD_URL = "https://your-n8n-or-make-webhook.example/lead"   # optional
