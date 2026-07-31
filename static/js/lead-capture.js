@@ -20,7 +20,10 @@
 (function () {
   "use strict";
 
-  var DEFAULT_ENDPOINT = "http://100.80.243.33:8081/subscribe";
+  // STOP-GAP endpoint: web3forms (client-side, HTTPS, public). The old default
+  // http://100.80.243.33:8081/subscribe was a Tailscale-private IP → unreachable
+  // from the public web, mixed-content-blocked on HTTPS, and 404 on Mautic.
+  var DEFAULT_ENDPOINT = "https://api.web3forms.com/submit";
 
   function endpointFor(form) {
     if (window.LEAD_ENDPOINT) return window.LEAD_ENDPOINT;
@@ -105,6 +108,16 @@
       source: source,
       website: fd.get("website") || "", // honeypot
     };
+    // Providers that require an access key + email metadata (e.g. web3forms).
+    // window.LEAD_ACCESS_KEY is injected from Hugo params (see head.html). When
+    // the endpoint flips back to the self-owned Worker / Mautic proxy, just drop
+    // the key param and these extra fields are ignored.
+    if (window.LEAD_ACCESS_KEY) {
+      body.access_key = window.LEAD_ACCESS_KEY;
+      body.subject = "New slashmantools lead — " + source;
+      body.from_name = "slashmantools.us";
+      body.botcheck = ""; // web3forms honeypot (empty = human)
+    }
 
     fetch(endpointFor(form), {
       method: "POST",
@@ -117,7 +130,8 @@
         });
       })
       .then(function (data) {
-        if (data && data.ok) {
+        // .ok = self-owned Worker/Mautic proxy; .success = web3forms.
+        if (data && (data.ok || data.success)) {
           track(source);
           form.reset();
           showSuccess(form);

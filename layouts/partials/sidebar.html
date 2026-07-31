@@ -19,7 +19,7 @@
           autocomplete="false"
           role="form"
           method="post"
-          action="/.netlify/functions/lead-capture"
+          action="{{ site.Params.leadEndpoint | default "https://api.web3forms.com/submit" }}"
           data-lead-form
           data-source="sidebar-subscribe"
           data-success-text="✅ Subscribed! Check your inbox."

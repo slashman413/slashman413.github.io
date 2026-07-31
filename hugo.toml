@@ -56,8 +56,18 @@ title = "Guías Intelectuales"
   author = "slashman413"
   adsenseClient = "ca-pub-7217603696203672"
   gaId = "G-MY95FHB8JG"
-  # Custom lead-capture webhook endpoint (Cloudflare Worker — see /webhook/).
-  leadEndpoint = "http://100.80.243.33:8081/subscribe"
+  # Lead-capture endpoint. STOP-GAP (2026-08-01): pointed at web3forms
+  # (client-side, HTTPS, public). The previous value —
+  # http://100.80.243.33:8081/subscribe — was fatal three ways: a Tailscale
+  # PRIVATE IP (public visitors can't reach it), HTTP-on-HTTPS mixed content
+  # (browsers block it), and a 404 (Mautic 8081 has no /subscribe route), so
+  # every subscribe silently failed and list growth was 0. Durable fix (public
+  # HTTPS reverse-proxy to a real Mautic form) is in /webhook/RUNBOOK-mautic-ingress.md.
+  leadEndpoint = "https://api.web3forms.com/submit"
+  # web3forms access key — public by design (it ships in client-side HTML). Same
+  # key already used across the slashmantools fleet (e.g. unit-converter).
+  # Injected as window.LEAD_ACCESS_KEY; see layouts/partials/head.html.
+  leadAccessKey = "32e709fa-d67d-46e9-a1a0-1ac9ef6be251"
 
 [menu]
   [[menu.main]]

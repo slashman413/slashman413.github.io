@@ -152,8 +152,9 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
   </div>
 </div>
 
-<!-- Custom lead-capture webhook endpoint (Cloudflare Worker — see /webhook/) -->
-<script>window.LEAD_ENDPOINT="http://100.80.243.33:8081/subscribe";</script>
+<!-- Lead-capture endpoint (STOP-GAP: web3forms, client-side, HTTPS/public).
+     Was http://100.80.243.33:8081/subscribe — private IP + mixed content + 404. -->
+<script>window.LEAD_ENDPOINT="https://api.web3forms.com/submit";window.LEAD_ACCESS_KEY="32e709fa-d67d-46e9-a1a0-1ac9ef6be251";</script>
 <script src="/js/lead-capture.js" defer></script>
 <script>
 // Legacy fallback: if a user lands here with ?subscribed=1, show success.

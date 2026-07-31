@@ -4,7 +4,7 @@
   <p class="newsletter-desc">{{ .Params.subtitle | default "Weekly AI tools, guides & automation tips." }}</p>
 
   <!-- Mautic subscribe form -->
-  <form action="{{ site.Params.leadEndpoint | default "http://100.80.243.33:8081/subscribe" }}" method="POST" class="newsletter-form" id="newsletter-form">
+  <form action="{{ site.Params.leadEndpoint | default "https://api.web3forms.com/submit" }}" method="POST" class="newsletter-form" id="newsletter-form">
     <input type="hidden" name="formId" value="1" />
     <input type="hidden" name="newsletter_form" value="1" />
     <div class="form-row">
