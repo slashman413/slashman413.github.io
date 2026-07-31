@@ -62,7 +62,7 @@ npx wrangler deploy
 
 By default the Worker is reachable at
 `https://lead-capture.<your-subdomain>.workers.dev`. For best deliverability
-serve it first-party at `https://leads.slashmantools.us` — uncomment the
+serve it first-party at `http://100.80.243.33:8081` — uncomment the
 `[[routes]]` block in `wrangler.toml` (requires slashmantools.us on Cloudflare
 DNS). The forms already expect that URL.
 

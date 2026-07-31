@@ -20,7 +20,7 @@
 (function () {
   "use strict";
 
-  var DEFAULT_ENDPOINT = "https://leads.slashmantools.us/subscribe";
+  var DEFAULT_ENDPOINT = "http://100.80.243.33:8081/subscribe";
 
   function endpointFor(form) {
     if (window.LEAD_ENDPOINT) return window.LEAD_ENDPOINT;

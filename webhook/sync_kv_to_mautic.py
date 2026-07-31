@@ -206,7 +206,7 @@ def main():
     parser.add_argument("--limit", type=int, default=500, help="Max leads per fetch")
     args = parser.parse_args()
 
-    api_url = os.environ.get("LEADS_API_URL", "https://leads.slashmantools.us")
+    api_url = os.environ.get("LEADS_API_URL", "http://100.80.243.33:8081")
     forward_token = os.environ.get("MAUTIC_FORWARD_TOKEN", "")
     mautic_base = os.environ.get("MAUTIC_BASE_URL", "http://localhost:8081")
     mautic_user = os.environ.get("MAUTIC_API_USER", "")
