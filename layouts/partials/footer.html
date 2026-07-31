@@ -9,7 +9,7 @@
           autocomplete="false"
           role="form"
           method="post"
-          action="/.netlify/functions/lead-capture"
+          action="{{ site.Params.leadEndpoint | default "https://leads.slashmantools.us/subscribe" }}"
           data-lead-form
           data-source="footer-subscribe"
           data-success-text="✅ Subscribed!"
