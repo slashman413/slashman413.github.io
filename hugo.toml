@@ -1,5 +1,32 @@
 baseURL = "https://slashmantools.us/"
 languageCode = "en"
+
+[languages]
+[languages.zh-tw]
+weight = 1
+languageName = "中文 (繁體)"
+languageCode = "zh-tw"
+hrefLang = "zh-TW"
+[languages.zh-cn]
+weight = 2
+languageName = "中文 (简体)"
+languageCode = "zh-cn"
+hrefLang = "zh-CN"
+[languages.en]
+weight = 3
+languageName = "English"
+languageCode = "en"
+hrefLang = "en"
+[languages.ja]
+weight = 4
+languageName = "日本語"
+languageCode = "ja"
+hrefLang = "ja"
+[languages.es]
+weight = 5
+languageName = "Español"
+languageCode = "es"
+hrefLang = "es"
 title = "Intellectual Guides"
 enableRobotsTXT = false
 # No taxonomy pages — /tags/ and /categories/ would be thin/empty (AdSense-unfriendly).

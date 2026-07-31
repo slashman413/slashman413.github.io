@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {{ $noindex := or (eq .Section "news") .Params.noindex }}
 {{ partial "meta.html" . }}
+{{ partial "hreflang.html" . }}
 
 <!-- Plausible Analytics — Privacy-Friendly -->
 <script async src="https://plausible.io/js/pa-hbvftcuWUzpbm1U3JgkNE.js"></script>
