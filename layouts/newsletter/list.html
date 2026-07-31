@@ -1,0 +1,128 @@
+{{ define "main" }}
+<article class="newsletter-page">
+  <h1 class="newsletter-title">{{ .Title }}</h1>
+  <p class="newsletter-desc">{{ .Params.subtitle | default "Weekly AI tools, guides & automation tips." }}</p>
+
+  <!-- Mautic subscribe form -->
+  <form action="{{ site.Params.leadEndpoint | default "http://100.80.243.33:8081/subscribe" }}" method="POST" class="newsletter-form" id="newsletter-form">
+    <input type="hidden" name="formId" value="1" />
+    <input type="hidden" name="newsletter_form" value="1" />
+    <div class="form-row">
+      <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+      <button type="submit">Subscribe</button>
+    </div>
+    <p class="form-note">No spam. Unsubscribe anytime.</p>
+  </form>
+
+  <div class="newsletter-preview">
+    <h3>What you'll get</h3>
+    <ul>
+      <li>🤖 <strong>AI Tools Roundups</strong> — the best new tools, hand-tested</li>
+      <li>🔧 <strong>Step-by-Step Guides</strong> — automations you can build today</li>
+      <li>💰 <strong>Productivity Tips</strong> — from a solo founder who ships alone</li>
+      <li>📊 <strong>Market Intelligence</strong> — what's moving in the AI space</li>
+    </ul>
+  </div>
+</article>
+
+<!-- Inline CSS for newsletter page -->
+<style>
+.newsletter-page {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 80px 20px 60px;
+  text-align: center;
+}
+.newsletter-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #f0f0f8;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+.newsletter-desc {
+  font-size: 1.15rem;
+  color: #7878a0;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+.newsletter-form {
+  margin-bottom: 50px;
+}
+.form-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.form-row input[type="email"] {
+  flex: 1;
+  max-width: 320px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  color: #dcdce8;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-row input[type="email"]:focus {
+  border-color: rgba(99,102,241,0.5);
+}
+.form-row button {
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: none;
+  background: #6366f1;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.form-row button:hover {
+  background: #4f46e5;
+}
+.form-note {
+  font-size: 0.85rem;
+  color: #55557a;
+}
+.newsletter-preview {
+  text-align: left;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 28px 24px;
+}
+.newsletter-preview h3 {
+  font-size: 1.1rem;
+  color: #c7c7f0;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+.newsletter-preview ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.newsletter-preview li {
+  color: #dcdce8;
+  line-height: 1.8;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.newsletter-preview li:last-child {
+  border-bottom: none;
+}
+.newsletter-preview strong {
+  color: #a5b4fc;
+}
+
+@media (max-width: 600px) {
+  .newsletter-title { font-size: 1.8rem; }
+  .form-row { flex-direction: column; align-items: center; }
+  .form-row input[type="email"] { max-width: 100%; }
+}
+</style>
+{{ end }}
