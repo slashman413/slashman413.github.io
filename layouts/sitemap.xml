@@ -1,11 +1,26 @@
 {{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{{- /* Language-scoped sitemap: Hugo's .Data.Pages in a default-language sitemap contains
+       pages from ALL languages (and .Lang resolves to the site language for all of them),
+       so filter by URL prefix instead. Non-default languages live under /<lang>/; the
+       default language (en) lives at the root and under /en/. */ -}}
+{{- $lang := $.Language.Lang }}
+{{- $foreign := slice "zh-tw" "zh-cn" "ja" "es" }}
 {{- range .Data.Pages }}
-{{- if or (eq .Section "news") .Params.noindex (eq .Kind "taxonomy") (eq .Kind "term") (eq .Title "") }}{{ continue }}{{ end }}
+{{-   $page := . }}
+{{-   $skip := false }}
+{{-   if ne $lang "en" }}
+{{-     if not (hasPrefix $page.RelPermalink (printf "/%s/" $lang)) }}{{ $skip = true }}{{ end }}
+{{-   else }}
+{{-     range $foreign }}
+{{-       if hasPrefix $page.RelPermalink (printf "/%s/" .) }}{{ $skip = true }}{{ end }}
+{{-     end }}
+{{-   end }}
+{{-   if or $skip (eq .Section "news") .Params.noindex (eq .Kind "taxonomy") (eq .Kind "term") (eq .Title "") }}{{ continue }}{{ end }}
   <url><loc>{{ .Permalink }}</loc>{{ if not .Lastmod.IsZero }}<lastmod>{{ .Lastmod.Format "2006-01-02" }}</lastmod>{{ end }}{{ with .Sitemap.ChangeFreq }}<changefreq>{{ . }}</changefreq>{{ end }}{{ if ge .Sitemap.Priority 0.0 }}<priority>{{ .Sitemap.Priority }}</priority>{{ end }}</url>
 {{- end }}
-{{- /* static tool apps live in static/ and aren't Hugo pages — list them explicitly so they stay indexed */}}
-{{- range slice "utm-builder" "cron-expression-generator" "youtube-thumbnail-downloader" "tools" "popular" "saas" "services" }}
+{{- /* static tool apps live in static/ and aren't Hugo pages — list them explicitly so they stay indexed (default language only) */}}
+{{- if eq $lang "en" }}{{- range slice "utm-builder" "cron-expression-generator" "youtube-thumbnail-downloader" "tools" "popular" "saas" "services" }}
   <url><loc>{{ printf "https://slashmantools.us/%s/" . }}</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-{{- end }}
+{{- end }}{{- end }}
 </urlset>
