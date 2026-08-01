@@ -22,7 +22,7 @@ slug: "feishu-digital-enterprise-guide"
 <div style="background: rgba(0, 194, 199, 0.1); border: 1px solid rgba(0, 194, 199, 0.3); border-radius: 12px; padding: 1.5rem; margin: 2rem 0;">
   <h3 style="margin-top: 0; color: #00C2C7;">📦 推薦套件：飛書/Lark 團隊自動化模板套組 ($49)</h3>
   <p>內含 20 套即開即用的專業多維表格模板，涵蓋 CRM、OKR、專案管理、財務追蹤與審批流程，省去數週搭建設定時間！</p>
-  <p><a href="https://gumroad.com/l/obpgqo" target="_blank" rel="noopener" style="display: inline-block; background: #00C2C7; color: #090D16; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; text-decoration: none;">立即取得 飛書自動化模板套組 ($49) →</a></p>
+  <p><a href="https://gumroad.com/l/xohjh" target="_blank" rel="noopener" style="display: inline-block; background: #00C2C7; color: #090D16; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; text-decoration: none;">立即取得 飛書自動化模板套組 ($49) →</a></p>
 </div>
 
 <h2>3. 自動化工作流落地步驟</h2>

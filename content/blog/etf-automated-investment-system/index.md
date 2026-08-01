@@ -18,9 +18,9 @@ slug: "etf-automated-investment-system"
 </ul>
 
 <div style="background: rgba(22, 163, 74, 0.1); border: 1px solid rgba(22, 163, 74, 0.3); border-radius: 12px; padding: 1.5rem; margin: 2rem 0;">
-  <h3 style="margin-top: 0; color: #16A34A;">📊 推薦工具：ETF Command Center 智能分析儀表板 ($29)</h3>
+  <h3 style="margin-top: 0; color: #16A34A;">📊 推薦工具：ETF 智能分析儀表板 ($199)</h3>
   <p>即時監控台美熱門 ETF（0050、0056、00713、00878、006208 等），內建自動再平衡提醒、歷史回測與風險指標大綱，讓你告別手動維護表格！</p>
-  <p><a href="https://gumroad.com/l/kbxuuc" target="_blank" rel="noopener" style="display: inline-block; background: #16A34A; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; text-decoration: none;">查看 ETF Command Center 儀表板 ($29) →</a></p>
+  <p><a href="https://gumroad.com/l/etf-dashboard" target="_blank" rel="noopener" style="display: inline-block; background: #16A34A; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; text-decoration: none;">查看 ETF 智能分析儀表板 ($199) →</a></p>
 </div>
 
 <h2>結論</h2>

@@ -142,7 +142,7 @@ A purpose-built dashboard that combines Google Sheets flexibility with automated
 
 After cycling through spreadsheets, apps, and manual tracking for years, I built a dedicated dashboard that combines the flexibility of a custom tracker with automated data feeds. It covers all four pillars — allocation, performance, dividend income, and risk — updates automatically, and lives in a format you control.
 
-The **[ETF Dashboard ($29/mo or $199 lifetime)](https://slashman413.gumroad.com/l/etf-dashboard)** is exactly that: a pre-built, automated portfolio tracking dashboard that connects to public market data so you don't need to update a single cell manually. It shows you:
+The **[ETF Dashboard ($29/mo or $199 lifetime)](https://gumroad.com/l/etf-dashboard)** is exactly that: a pre-built, automated portfolio tracking dashboard that connects to public market data so you don't need to update a single cell manually. It shows you:
 
 - Real-time portfolio allocation with drift alerts
 - Performance tracking with benchmark comparison
@@ -177,7 +177,7 @@ The most dangerous thing you can do with a portfolio tracking tool is check it e
 
 **Ignoring tax efficiency.** If you track performance without accounting for taxes, you're looking at a prettier picture than reality. In taxable accounts, ETF placement matters — hold tax-efficient ETFs (broad market, low turnover) in taxable and less efficient ones (REITs, high-dividend) in tax-advantaged accounts. A good tracking system should separate accounts by tax treatment.
 
-**Overlapping ETFs.** You bought VTI and ITOT for "diversification" across two issuers, but they track essentially the same index. Or you bought QQQ and VUG and now 60% of your equity is in large-cap growth. A holdings overlap check — available in the [ETF Dashboard](https://slashman413.gumroad.com/l/etf-dashboard) — prevents this.
+**Overlapping ETFs.** You bought VTI and ITOT for "diversification" across two issuers, but they track essentially the same index. Or you bought QQQ and VUG and now 60% of your equity is in large-cap growth. A holdings overlap check — available in the [ETF Dashboard](https://gumroad.com/l/etf-dashboard) — prevents this.
 
 **Letting dividend tracking slide.** If you're building a dividend income stream, manual tracking is the first thing you abandon when life gets busy. By the time you realize you haven't tracked dividends in six months, you've lost the trend data that tells you whether your income is actually growing. Automate it.
 
@@ -199,7 +199,7 @@ The most dangerous thing you can do with a portfolio tracking tool is check it e
 
 **How often should I check my ETF portfolio?** Weekly (2-minute glance at allocation drift), monthly (10-minute allocation and dividend review), quarterly (20-minute full review with benchmark comparison and risk analysis), and annually (1-hour strategy reassessment). Daily checking is counterproductive for long-term investors.
 
-**What's the best tool for tracking ETF portfolio performance?** The best tool is the one you'll actually use consistently. Spreadsheets work if you're disciplined about updates. Portfolio tracker apps automate data collection but require sharing brokerage access. A dedicated dashboard like the [ETF Dashboard](https://slashman413.gumroad.com/l/etf-dashboard) combines automated data feeds with full control over your workspace — no account linking required, 15-minute setup, and weekly check-ins that take 2 minutes instead of an hour of manual spreadsheet work.
+**What's the best tool for tracking ETF portfolio performance?** The best tool is the one you'll actually use consistently. Spreadsheets work if you're disciplined about updates. Portfolio tracker apps automate data collection but require sharing brokerage access. A dedicated dashboard like the [ETF Dashboard](https://gumroad.com/l/etf-dashboard) combines automated data feeds with full control over your workspace — no account linking required, 15-minute setup, and weekly check-ins that take 2 minutes instead of an hour of manual spreadsheet work.
 
 **How do I track dividends from my ETF portfolio?** The most reliable method is automated dividend tracking through a dedicated tool that pulls distribution history from public sources. Manual tracking is fragile — one missed month breaks the trend data. A good dashboard will show you trailing 12-month dividend income, yield on cost, dividend growth rate, and an ex-dividend calendar all in one view.
 
@@ -208,7 +208,7 @@ The most dangerous thing you can do with a portfolio tracking tool is check it e
 <div style="background:#1a1a2e;border:1px solid #3730a3;border-radius:12px;padding:24px 20px;margin:32px 0;text-align:center">
 <p style="font-size:17px;font-weight:700;color:#e8e8f0;margin-bottom:6px">📊 Stop Tracking Your Portfolio in 5 Different Places</p>
 <p style="font-size:13.5px;color:#9898b8;margin-bottom:16px">Get the ETF Dashboard — automated allocation, performance, dividend, and risk tracking in one view. Setup in 15 minutes, check in 2 minutes a week.</p>
-<p><a href="https://slashman413.gumroad.com/l/etf-dashboard" style="display:inline-block;padding:12px 28px;background:#22c55e;color:#0a0a0f;border-radius:8px;font-weight:700;font-size:15px;text-decoration:none">Get the ETF Dashboard — $29/mo or $199 Lifetime →</a></p>
+<p><a href="https://gumroad.com/l/etf-dashboard" style="display:inline-block;padding:12px 28px;background:#22c55e;color:#0a0a0f;border-radius:8px;font-weight:700;font-size:15px;text-decoration:none">Get the ETF Dashboard — $29/mo or $199 Lifetime →</a></p>
 </div>
 
 ---

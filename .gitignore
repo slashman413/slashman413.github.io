@@ -2,3 +2,5 @@
 /resources/_gen/
 .hugo_build.lock
 __pycache__/
+node_modules/
+webhook/

@@ -21,7 +21,7 @@ slug: "ai-productivity-stack-2026"
 <div style="background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 12px; padding: 1.5rem; margin: 2rem 0;">
   <h3 style="margin-top: 0; color: #8B5CF6;">🚀 Featured Resource: The AI Prompt Library ($29)</h3>
   <p>Supercharge your daily output with 300+ battle-tested prompts across 40 categories (Marketing, Code, Research, Business Ops, and Design).</p>
-  <p><a href="https://gumroad.com/l/saxrwt" target="_blank" rel="noopener" style="display: inline-block; background: #8B5CF6; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none;">Get The AI Prompt Library on Gumroad ($29) →</a></p>
+  <p><a href="https://gumroad.com/l/diwoc" target="_blank" rel="noopener" style="display: inline-block; background: #8B5CF6; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none;">Get The AI Prompt Library on Gumroad ($29) →</a></p>
 </div>
 
 <h2>3. Building Seamless Multi-Agent Workflows</h2>
