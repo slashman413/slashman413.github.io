@@ -74,7 +74,7 @@ Building this funnel—writing the emails, crafting the sales page copy, scripti
 
 By leveraging the right AI workflows, you can build, launch, and optimize your digital product sales funnel in a fraction of the time.
 
-**[🎓 Ready to master the new era of product creation? Enroll in our comprehensive AI Course for Creators on Gumroad and learn how to build profitable digital assets from scratch!](https://gumroad.com/)**
+**[🎓 Ready to master the new era of product creation? Enroll in our comprehensive AI Course for Creators on Gumroad and learn how to build profitable digital assets from scratch!](https://gumroad.com/l/mgtpcn)**
 
 ## Conclusion
 

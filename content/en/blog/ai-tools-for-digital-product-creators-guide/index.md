@@ -50,7 +50,7 @@ However, navigating the sheer volume of AI tools and learning *how* to prompt th
 
 If you are ready to stop playing with AI and start using it to build a profitable digital product business, you need a structured system.
 
-**[🌟 Unlock your full potential as a creator. Get our comprehensive Creator's Bundle on Gumroad—including Prompt Libraries, Notion Templates, and Business Blueprints—to launch your next digital product faster than ever!](https://gumroad.com/)**
+**[🌟 Unlock your full potential as a creator. Get our comprehensive Creator's Bundle on Gumroad—including Prompt Libraries, Notion Templates, and Business Blueprints—to launch your next digital product faster than ever!](https://gumroad.com/l/diwoc)**
 
 ---
 📬 **Want more AI tips and creator tools delivered straight to your inbox?** [Subscribe to our newsletter](https://slashmantools.us/newsletter/) for actionable weekly insights on scaling your digital products!
