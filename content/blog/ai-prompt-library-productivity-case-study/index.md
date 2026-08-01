@@ -73,7 +73,7 @@ If you're using AI regularly, you absolutely need a prompt library. You can star
 
 However, engineering effective prompts takes time, testing, and a deep understanding of how LLMs work. If you want to skip the trial-and-error phase and instantly upgrade your workflow, I've packaged my entire personal system into a comprehensive resource.
 
-**[🚀 Ready to 10x your productivity? Get the Ultimate AI Prompt Library here on Gumroad and instantly access over 500+ engineered prompts!](https://gumroad.com/)**
+**[🚀 Ready to 10x your productivity? Get the Ultimate AI Prompt Library here on Gumroad and instantly access over 500+ engineered prompts!](https://gumroad.com/l/diwoc)**
 
 ## Conclusion
 

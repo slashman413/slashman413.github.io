@@ -8,7 +8,7 @@ slug: "gumroad-seller-guide-2026"
 
 <p>如果你會寫程式、做設計、寫文章或整理資料，你手上其實已經有可以賣錢的數位商品——只是還沒把它包裝上架。Gumroad 是目前獨立創業者最常用的數位商品平台，因為它幾乎沒有進入門檻：不用審核、不用月費、上架只要五分鐘。這篇文章從零開始帶你走完一間 Gumroad 商店的完整生命週期，從開店到第一筆收入。</p>
 
-<div class="disc">📌 <strong>作者備註：</strong>我不隸屬於 Gumroad，也沒有他們的 affiliate link。這篇文章基於實際經營 <a href="https://slashman413.gumroad.com/">slashman413 商店</a>的經驗與對台灣獨立創業者社群的觀察。部分建議帶有我個人的偏好，但會明確標示。</div>
+<div class="disc">📌 <strong>作者備註：</strong>我不隸屬於 Gumroad，也沒有他們的 affiliate link。這篇文章基於實際經營 <a href="https://slashmaster6.gumroad.com/">slashmaster6 商店</a>的經驗與對台灣獨立創業者社群的觀察。部分建議帶有我個人的偏好，但會明確標示。</div>
 
 <h2>為什麼選擇 Gumroad？</h2>
 
@@ -45,7 +45,7 @@ slug: "gumroad-seller-guide-2026"
 <h2>開店五步驟</h2>
 
 <h3>1. 註冊 Gumroad 帳號</h3>
-<p>前往 <a href="https://gumroad.com">gumroad.com</a>，用 Google 帳號或 Email 註冊。完成後設定你的商店名稱與個人檔案網址（例如 <code>slashman413.gumroad.com</code>）。</p>
+<p>前往 <a href="https://gumroad.com">gumroad.com</a>，用 Google 帳號或 Email 註冊。完成後設定你的商店名稱與個人檔案網址（例如 <code>slashmaster6.gumroad.com</code>）。</p>
 
 <h3>2. 設定收款方式</h3>
 <p>在 Settings → Payments 連結你的 Stripe 帳號（支援台灣 Stripe 帳戶）或 Paypal。Gumroad 會自動處理跨境交易與稅務申報（美國銷售稅、VAT 等），你不需要自己煩惱這些。</p>
@@ -160,7 +160,7 @@ slug: "gumroad-seller-guide-2026"
 
 <p>我見過太多人花好幾個月「準備」他們的 Gumroad 商店：設計完美封面、寫完整個課程、錄製專業影片——然後從未發布。現實是：你的第一個商品不會完美，第一批文案也不會是最終版本。但 Gumroad 的好處是你隨時可以更新價格、換封面、修改描述。發布一個「還不錯」的商品，比永遠不發布一個「完美」的商品好一百倍。</p>
 
-<p>如果你在尋找一些現成的靈感或工具，我在 <a href="https://slashman413.gumroad.com/">slashman413.gumroad.com</a> 上有幾個數位商品——提供給你在建立自己商店時的參考。但更重要的是：打開 Gumroad，建立你的第一個商品，然後按下發布。</p>
+<p>如果你在尋找一些現成的靈感或工具，我在 <a href="https://slashmaster6.gumroad.com/">slashmaster6.gumroad.com</a> 上有幾個數位商品——提供給你在建立自己商店時的參考。但更重要的是：打開 Gumroad，建立你的第一個商品，然後按下發布。</p>
 
 <hr>
 

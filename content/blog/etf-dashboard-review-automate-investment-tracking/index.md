@@ -55,7 +55,7 @@ While there are many SaaS apps out there that promise portfolio tracking, they o
 
 We've engineered the ultimate, automated solution built right into the tools you already use, ensuring your financial data remains private while providing institutional-grade analytics.
 
-**[📊 Stop guessing and start tracking like a pro. Get the Ultimate Automated ETF Dashboard on Gumroad and take total control of your financial future today!](https://gumroad.com/)**
+**[📊 Stop guessing and start tracking like a pro. Get the Ultimate Automated ETF Dashboard on Gumroad and take total control of your financial future today!](https://gumroad.com/l/etf-dashboard)**
 
 ## Conclusion
 

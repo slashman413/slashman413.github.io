@@ -88,7 +88,7 @@ However, if you are scaling a team, need strict data management, and want to con
 
 Ready to supercharge your team's productivity?
 
-👉 [**Get our exclusive premium Feishu Templates on Gumroad**](https://gumroad.com/slashmantools)
+👉 [**Get our exclusive premium Feishu Templates on Gumroad**](https://gumroad.com/l/xohjh)
 
 ---
 
