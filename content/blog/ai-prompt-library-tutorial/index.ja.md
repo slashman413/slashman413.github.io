@@ -16,4 +16,4 @@ Welcome to the AI Prompt Library tutorial...
 3. Run it.
 
 
-👉 [Get the Ultimate AI Prompt Library on Gumroad](https://gumroad.com/l/example)
+👉 [Get the Ultimate AI Prompt Library on Gumroad](https://gumroad.com/l/diwoc)

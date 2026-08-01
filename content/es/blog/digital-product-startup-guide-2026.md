@@ -21,7 +21,7 @@ Antes de desarrollar un producto, debes encontrar un nicho de mercado con un pro
 1. **Observa las tendencias del mercado**: Actualmente existe una gran demanda de herramientas y plantillas relacionadas con la Inteligencia Artificial.
 2. **Resuelve problemas específicos**: Por ejemplo, muchas empresas no saben cómo usar la IA de manera efectiva para mejorar su productividad.
 
-Si quieres empezar rápidamente, te recomendamos nuestra **[AI Prompt Library ($29)](https://gumroad.com/l/saxrwt)**, que incluye cientos de prompts de IA prácticos para ayudarte a dominar estas herramientas.
+Si quieres empezar rápidamente, te recomendamos nuestra **[AI Prompt Library ($29)](https://gumroad.com/l/diwoc)**, que incluye cientos de prompts de IA prácticos para ayudarte a dominar estas herramientas.
 
 ## Paso 2: Crea tu primer producto digital
 

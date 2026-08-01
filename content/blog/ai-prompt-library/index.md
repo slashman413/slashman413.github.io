@@ -66,7 +66,7 @@ At $29, it pays for itself the first time you use it to generate a high-quality 
 
 Ready to stop guessing and start engineering?
 
-👉 [**Unlock the complete AI Prompt Library on Gumroad now**](https://gumroad.com/slashmantools)
+👉 [**Unlock the complete AI Prompt Library on Gumroad now**](https://gumroad.com/l/diwoc)
 
 ---
 

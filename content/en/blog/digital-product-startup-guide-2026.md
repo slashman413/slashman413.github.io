@@ -21,7 +21,7 @@ Before developing a product, you must find a niche with a specific pain point.
 1. **Observe Market Trends**: There is currently a massive demand for AI-related tools and templates.
 2. **Solve Specific Problems**: For instance, many businesses don't know how to effectively use AI to boost productivity.
 
-If you want a quick head start, check out our **[AI Prompt Library ($29)](https://gumroad.com/l/saxrwt)**, which includes hundreds of practical AI prompts to help you master AI tools effortlessly.
+If you want a quick head start, check out our **[AI Prompt Library ($29)](https://gumroad.com/l/diwoc)**, which includes hundreds of practical AI prompts to help you master AI tools effortlessly.
 
 ## Step 2: Build Your First Digital Product
 

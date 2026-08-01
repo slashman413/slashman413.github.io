@@ -39,7 +39,7 @@ Paste your customized prompt into ChatGPT, Claude, or your AI tool of choice. Re
 
 Stop wasting time engineering prompts from scratch every single day. 
 
-👉 **[Get the Ultimate AI Prompt Library on Gumroad](https://gumroad.com/l/example)**
+👉 **[Get the Ultimate AI Prompt Library on Gumroad](https://gumroad.com/l/diwoc)**
 
 ---
 📬 **Want more AI tips and productivity hacks?** [Subscribe to our newsletter](https://slashmantools.us/newsletter/) to get weekly updates designed to help you build and scale your digital business!

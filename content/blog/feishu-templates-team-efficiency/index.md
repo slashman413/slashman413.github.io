@@ -14,7 +14,7 @@ categories: ["效率工具", "團隊管理"]
 
 <p>作為一個經營數位產品、管理跨時區團隊的創業者，我在過去一年裡試過各種協作工具——從 Trello、Notion 到 Slack、Microsoft Teams。最終我選擇了飛書（Feishu），原因很簡單：它的模板系統能讓我在一分鐘內搭建起完整的專案管理流程，而不需要花幾天時間去設定。</p>
 
-<p>這篇文章會帶你完整了解如何使用 <strong>飛書模板</strong> 將團隊效率提升 300%。我會分享實際的實戰案例、模板推薦，以及如何將 <a href="https://slashman413.gumroad.com/l/mgtpcn">我的飛書模板套裝</a> 整合到你的日常工作中。</p>
+<p>這篇文章會帶你完整了解如何使用 <strong>飛書模板</strong> 將團隊效率提升 300%。我會分享實際的實戰案例、模板推薦，以及如何將 <a href="https://gumroad.com/l/mgtpcn">我的飛書模板套裝</a> 整合到你的日常工作中。</p>
 
 <h2>什麼是飛書模板？為什麼它改變了團隊遊戲規則？</h2>
 
@@ -50,7 +50,7 @@ categories: ["效率工具", "團隊管理"]
 
 <p>有了這個模板，團隊每週的進度報告不再需要手動整理——儀表板自動更新。我的做法是每週五早上開會前，直接分享儀表板連結給所有成員。</p>
 
-<p>如果你正在尋找更完善的專案管理模板組合，我的 <a href="https://slashman413.gumroad.com/l/mgtpcn">飛書模板套裝包</a> 包含了超過 30 個經過實戰驗證的專案管理模板，涵蓋從小型團隊到跨部門協作的各種情境。</p>
+<p>如果你正在尋找更完善的專案管理模板組合，我的 <a href="https://gumroad.com/l/mgtpcn">飛書模板套裝包</a> 包含了超過 30 個經過實戰驗證的專案管理模板，涵蓋從小型團隊到跨部門協作的各種情境。</p>
 
 <h3>2. 會議紀錄模板：再也不會漏掉行動項目</h3>
 
@@ -76,7 +76,7 @@ categories: ["效率工具", "團隊管理"]
   <li><strong>月度銷售報表</strong>：自動計算轉換率、平均成交周期、月度營收</li>
 </ul>
 
-<p>使用 <a href="https://slashman413.gumroad.com/l/mgtpcn">我的飛書 CRM 模板</a> 後，我的團隊不再需要為「上個月那個客戶我們到底跟進到哪一步了」這個問題開會——所有紀錄都在資料庫中。</p>
+<p>使用 <a href="https://gumroad.com/l/mgtpcn">我的飛書 CRM 模板</a> 後，我的團隊不再需要為「上個月那個客戶我們到底跟進到哪一步了」這個問題開會——所有紀錄都在資料庫中。</p>
 
 <h3>4. 內容行銷與社媒排程模板</h3>
 
@@ -125,7 +125,7 @@ categories: ["效率工具", "團隊管理"]
 
 <p>飛書內建了上百個模板，你也可以使用第三方來源。點擊「從模板建立」即可快速導入。</p>
 
-<p>如果你希望一次性獲得經過實戰驗證的完整模板庫——我的 <a href="https://slashman413.gumroad.com/l/mgtpcn">飛書模板套裝包</a> 一次提供 30+ 個模板，涵蓋專案管理、CRM、會議紀錄、銷售漏斗、OKR 等核心場景。每個模板都經過多次團隊實戰反覆優化。</p>
+<p>如果你希望一次性獲得經過實戰驗證的完整模板庫——我的 <a href="https://gumroad.com/l/mgtpcn">飛書模板套裝包</a> 一次提供 30+ 個模板，涵蓋專案管理、CRM、會議紀錄、銷售漏斗、OKR 等核心場景。每個模板都經過多次團隊實戰反覆優化。</p>
 
 <h3>步驟三：培訓你的團隊</h3>
 
@@ -177,8 +177,8 @@ categories: ["效率工具", "團隊管理"]
 
 <div style="background:#2a2a4a;border-radius:12px;padding:24px;margin:24px 0;text-align:center">
   <p style="font-size:20px;margin-bottom:8px">🚀 想一次性獲得所有經過實戰驗證的飛書模板？</p>
-  <p style="margin-bottom:16px">我的 <strong>飛書模板套裝包</strong> 包含 30+ 個高頻場景模板，從專案管理到 CRM 應有盡有。<a href="https://slashman413.gumroad.com/l/mgtpcn">點此查看完整模板清單</a>，立刻提升你的 team efficiency。</p>
-  <a href="https://slashman413.gumroad.com/l/mgtpcn" style="background:#0066FF;color:white;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:bold;display:inline-block">📦 獲取飛書模板套裝包</a>
+  <p style="margin-bottom:16px">我的 <strong>飛書模板套裝包</strong> 包含 30+ 個高頻場景模板，從專案管理到 CRM 應有盡有。<a href="https://gumroad.com/l/mgtpcn">點此查看完整模板清單</a>，立刻提升你的 team efficiency。</p>
+  <a href="https://gumroad.com/l/mgtpcn" style="background:#0066FF;color:white;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:bold;display:inline-block">📦 獲取飛書模板套裝包</a>
 </div>
 
 <h2>結語</h2>
@@ -187,7 +187,7 @@ categories: ["效率工具", "團隊管理"]
 
 <p>你不需要花幾個星期設定一個完美的系統。套用一個模板、讓團隊開始使用、然後根據反饋持續微調——這就是我的方法。</p>
 
-<p>如果你在管理團隊時遇到效率瓶頸，我的 <a href="https://slashman413.gumroad.com/l/mgtpcn">飛書模板套裝</a> 是一個值得嘗試的起點。30 多個模板涵蓋了大部分日常場景——套用它們，你至少能省下幾週的摸索時間。</p>
+<p>如果你在管理團隊時遇到效率瓶頸，我的 <a href="https://gumroad.com/l/mgtpcn">飛書模板套裝</a> 是一個值得嘗試的起點。30 多個模板涵蓋了大部分日常場景——套用它們，你至少能省下幾週的摸索時間。</p>
 
 <p>現在就去試第一個模板吧。你的團隊效率，從一次模板套用開始。</p>
 

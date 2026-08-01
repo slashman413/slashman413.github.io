@@ -61,7 +61,7 @@ Choosing the best tool depends entirely on your investment style:
 
 Ready to take control of your financial future with the ultimate visual tracking experience?
 
-👉 [**Get the ultimate ETF Dashboard on Gumroad today**](https://gumroad.com/slashmantools)
+👉 [**Get the ultimate ETF Dashboard on Gumroad today**](https://gumroad.com/l/etf-dashboard)
 
 ---
 
