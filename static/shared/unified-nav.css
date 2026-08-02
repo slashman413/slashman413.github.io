@@ -1,0 +1,266 @@
+/* ============================================================================
+   Slashman Tools — Unified Cross-Tool Navigation Bar
+   ============================================================================
+   File    : unified-nav.css
+   Version : 1.0.0 (brand strategy Phase 1, 2026-08-02)
+   Author  : ArchitectUX (@slashman413 design division)
+
+   Drop-in nav styles. Every rule is scoped under .sn-nav / .sn-* so it can be
+   injected into ANY tool page without clashing with the page's own styles.
+   Depends on the tokens from design-system.css (--sn-*); if you do NOT load
+   design-system.css, the nav still works because this file re-declares the
+   few tokens the nav actually needs at the top (marked "nav-local").
+
+   Pair with unified-nav.js which renders the <nav> from a config object.
+   ========================================================================== */
+
+/* --- nav-local token fallbacks (used only if design-system.css is absent) --- */
+:root {
+  --sn-primary: #6366f1;
+  --sn-primary-400: #818cf8;
+  --sn-accent: #a5b4fc;
+  --sn-bg: #0a0a0f;
+  --sn-surface: #101018;
+  --sn-surface-2: #16161f;
+  --sn-surface-3: #1d1d29;
+  --sn-border: rgba(255, 255, 255, 0.08);
+  --sn-border-strong: rgba(255, 255, 255, 0.14);
+  --sn-text: #e8e8f0;
+  --sn-text-2: #c7c7f0;
+  --sn-text-muted: #7878a0;
+  --sn-text-faint: #55557a;
+  --sn-nav-height: 60px;
+  --sn-transition: 0.18s ease;
+  --sn-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+                  "Noto Sans TC", "Noto Sans SC", "PingFang TC", "PingFang SC",
+                  "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
+}
+[data-theme="light"] {
+  --sn-primary: #6366f1;
+  --sn-primary-400: #818cf8;
+  --sn-accent: #4f46e5;
+  --sn-bg: #f6f7fb;
+  --sn-surface: #ffffff;
+  --sn-surface-2: #f0f1f7;
+  --sn-surface-3: #e6e8f2;
+  --sn-border: rgba(15, 17, 32, 0.10);
+  --sn-border-strong: rgba(15, 17, 32, 0.18);
+  --sn-text: #171a24;
+  --sn-text-2: #23263a;
+  --sn-text-muted: #5a5f75;
+  --sn-text-faint: #8a8fa8;
+}
+
+/* --- The bar --- */
+.sn-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: color-mix(in srgb, var(--sn-surface) 88%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--sn-border);
+  font-family: var(--sn-font-sans);
+}
+/* Fallback when color-mix() is unsupported (older browsers) */
+@supports not (background: color-mix(in srgb, red 50%, transparent)) {
+  .sn-nav { background: var(--sn-surface); }
+}
+
+.sn-nav-inner {
+  max-width: var(--sn-container-xl, 1280px);
+  margin: 0 auto;
+  height: var(--sn-nav-height);
+  padding: 0 var(--sn-space-4, 16px);
+  display: flex;
+  align-items: center;
+  gap: var(--sn-space-4, 16px);
+}
+
+/* --- Brand --- */
+.sn-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--sn-text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.sn-brand:hover { text-decoration: none; color: var(--sn-text); }
+.sn-brand__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--sn-brand-gradient, linear-gradient(135deg, #a5b4fc, #f0abfc, #67e8f9));
+  font-size: 16px;
+  flex: 0 0 auto;
+}
+.sn-brand__text { background: var(--sn-brand-gradient, linear-gradient(135deg, #a5b4fc, #f0abfc, #67e8f9)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* --- Desktop links --- */
+.sn-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: var(--sn-space-2, 8px);
+  flex: 1;
+  min-width: 0;
+}
+.sn-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 13px;
+  border-radius: 9px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--sn-text-2);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--sn-transition), color var(--sn-transition);
+}
+.sn-link:hover { background: rgba(99, 102, 241, 0.12); color: var(--sn-text); text-decoration: none; }
+.sn-link.sn-active {
+  background: rgba(99, 102, 241, 0.18);
+  color: var(--sn-accent);
+  box-shadow: inset 0 -2px 0 var(--sn-primary);
+}
+
+/* --- Right-side actions --- */
+.sn-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+/* Language switcher */
+.sn-lang {
+  display: inline-flex;
+  align-items: center;
+  background: var(--sn-surface-2);
+  border: 1px solid var(--sn-border-strong);
+  border-radius: var(--sn-radius-full, 999px);
+  padding: 3px;
+}
+.sn-lang-btn {
+  border: none;
+  background: transparent;
+  color: var(--sn-text-faint);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 6px 9px;
+  border-radius: var(--sn-radius-full, 999px);
+  cursor: pointer;
+  transition: background-color var(--sn-transition), color var(--sn-transition);
+}
+.sn-lang-btn:hover { color: var(--sn-text); }
+.sn-lang-btn[aria-pressed="true"] {
+  background: var(--sn-primary);
+  color: #fff;
+}
+
+/* Theme toggle (cycles dark → light → system) */
+.sn-theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--sn-border-strong);
+  border-radius: var(--sn-radius-full, 999px);
+  background: var(--sn-surface-2);
+  color: var(--sn-text-2);
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color var(--sn-transition), border-color var(--sn-transition);
+}
+.sn-theme:hover { background: var(--sn-surface-3); border-color: var(--sn-primary-400); }
+.sn-theme:focus-visible, .sn-lang-btn:focus-visible, .sn-burger:focus-visible {
+  outline: 2px solid var(--sn-primary-400);
+  outline-offset: 2px;
+}
+
+/* Ko-fi support button */
+.sn-kofi {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--sn-radius-full, 999px);
+  background: var(--sn-brand-gradient, linear-gradient(135deg, #a5b4fc, #f0abfc, #67e8f9));
+  color: #0a0a0f;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: filter var(--sn-transition), transform var(--sn-transition);
+}
+.sn-kofi:hover { filter: brightness(1.1); transform: translateY(-1px); text-decoration: none; color: #0a0a0f; }
+
+/* Hamburger (mobile only) */
+.sn-burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--sn-border-strong);
+  border-radius: 9px;
+  background: var(--sn-surface-2);
+  color: var(--sn-text);
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* --- Mobile slide-down panel --- */
+.sn-panel {
+  display: none;
+  flex-direction: column;
+  border-top: 1px solid var(--sn-border);
+  background: var(--sn-surface);
+  padding: var(--sn-space-2, 8px) var(--sn-space-4, 16px) var(--sn-space-4, 16px);
+}
+.sn-nav[data-open="true"] .sn-panel { display: flex; }
+.sn-panel .sn-link { padding: 12px 10px; font-size: 15px; border-bottom: 1px solid var(--sn-border); border-radius: 8px; }
+.sn-panel .sn-link:last-of-type { border-bottom: none; }
+.sn-panel-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.sn-panel .sn-kofi { flex: 1; justify-content: center; }
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .sn-links { display: none; }
+  .sn-burger { display: inline-flex; }
+  .sn-lang .sn-lang-btn { padding: 6px 8px; font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  .sn-brand__text { display: none; }        /* icon-only brand on tiny screens */
+  .sn-kofi span { display: none; }          /* ☕ only */
+  .sn-kofi { padding: 8px 11px; }
+  .sn-lang { padding: 2px; }
+  .sn-lang-btn { padding: 5px 7px; }
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .sn-nav, .sn-panel { transition: none; }
+}
+
+/* --- Light-theme adjustments that need a touch more contrast --- */
+[data-theme="light"] .sn-kofi { color: #171a24; }
+[data-theme="light"] .sn-kofi:hover { color: #171a24; }

@@ -1,0 +1,397 @@
+/* ============================================================================
+   Slashman Tools — Unified Design System
+   ============================================================================
+   File    : design-system.css
+   Version : 1.0.0 (brand strategy Phase 1, 2026-08-02)
+   Author  : ArchitectUX (@slashman413 design division)
+   License : MIT — free to use across all slashman413 tool repos.
+
+   WHY THIS FILE EXISTS
+   --------------------
+   slashmantools.us is ~16–25 isolated static tools + a Hugo blog + link-in-bio
+   pages, each with its own inline <style>. This file is the single source of
+   truth for the brand's design language (formalized from the tokens the site
+   already uses: #0a0a0f background, indigo #6366f1/#a5b4fc accents, the
+   indigo→fuchsia→cyan gradient). It is designed to be DROPPED INTO ANY PAGE
+   WITHOUT BREAKING IT:
+
+   * Every token is namespaced `--sn-*` — never collides with a page's own
+     `--bg`, `--accent`, etc.
+   * Every component class is prefixed `sn-` — never collides with `.card`,
+     `.nav`, `.grid` etc. already used on tool pages.
+   * Dark theme is the DEFAULT (:root) to match the brand. Light theme is
+     opt-in via <html data-theme="light">.
+
+   HOW TO USE
+   ----------
+   <link rel="stylesheet" href="https://slashmantools.us/shared/design-system.css">
+   Or copy this file into your repo. Then use the tokens in your page styles:
+   .my-thing { background: var(--sn-bg); color: var(--sn-text); }
+
+   The theme state is managed by unified-nav.js (or your own script):
+   document.documentElement.setAttribute("data-theme","light") | "dark"
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   1. DESIGN TOKENS — dark theme (brand default)
+   ------------------------------------------------------------------------- */
+:root {
+  /* --- Brand colors (from existing site; DO NOT change) --- */
+  --sn-primary: #6366f1;            /* indigo-500: primary actions, links     */
+  --sn-primary-400: #818cf8;        /* indigo-400: hover state                */
+  --sn-primary-600: #4f46e5;        /* indigo-600: pressed / active           */
+  --sn-accent: #a5b4fc;             /* periwinkle: highlights, brand accents  */
+  --sn-brand-gradient: linear-gradient(135deg, #a5b4fc 0%, #f0abfc 50%, #67e8f9 100%);
+                                    /* the signature Slashman gradient        */
+
+  /* --- Semantic surfaces (dark) --- */
+  --sn-bg: #0a0a0f;                 /* page background (deep space)           */
+  --sn-bg-soft: #0d0d16;            /* code blocks, wells                     */
+  --sn-surface: #101018;            /* nav, sidebar, cards' fill              */
+  --sn-surface-2: #16161f;          /* elevated: dropdowns, modals, inputs    */
+  --sn-surface-3: #1d1d29;          /* hover fills on raised surfaces         */
+  --sn-border: rgba(255, 255, 255, 0.08);
+  --sn-border-strong: rgba(255, 255, 255, 0.14);
+
+  /* --- Text (dark) --- */
+  --sn-text: #e8e8f0;               /* primary text                           */
+  --sn-text-2: #c7c7f0;             /* headings secondary                     */
+  --sn-text-muted: #7878a0;         /* secondary text                         */
+  --sn-text-faint: #55557a;         /* tertiary text, meta                    */
+
+  /* --- Feedback --- */
+  --sn-success: #34d399;
+  --sn-warning: #fbbf24;
+  --sn-danger: #f87171;
+  --sn-info: #67e8f9;
+
+  /* --- Typography scale (fluid on mobile via clamp in .sn-container use) --- */
+  --sn-text-xs: 0.75rem;    /* 12px  — meta, badges       */
+  --sn-text-sm: 0.875rem;   /* 14px  — secondary          */
+  --sn-text-base: 1rem;     /* 16px  — body               */
+  --sn-text-lg: 1.125rem;   /* 18px  — lead               */
+  --sn-text-xl: 1.25rem;    /* 20px  — subheadings        */
+  --sn-text-2xl: 1.5rem;    /* 24px  — section headings   */
+  --sn-text-3xl: 1.875rem;  /* 30px  — page titles        */
+  --sn-text-4xl: 2.375rem;  /* 38px  — hero               */
+
+  --sn-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+                  "Noto Sans TC", "Noto Sans SC", "PingFang TC", "PingFang SC",
+                  "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
+  --sn-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+                  Consolas, "Liberation Mono", monospace;
+
+  /* --- Spacing (4px grid) --- */
+  --sn-space-1: 0.25rem;   /*  4px */
+  --sn-space-2: 0.5rem;    /*  8px */
+  --sn-space-3: 0.75rem;   /* 12px */
+  --sn-space-4: 1rem;      /* 16px */
+  --sn-space-6: 1.5rem;    /* 24px */
+  --sn-space-8: 2rem;      /* 32px */
+  --sn-space-12: 3rem;     /* 48px */
+  --sn-space-16: 4rem;     /* 64px */
+
+  /* --- Radii --- */
+  --sn-radius-sm: 6px;
+  --sn-radius: 10px;
+  --sn-radius-lg: 14px;
+  --sn-radius-xl: 20px;
+  --sn-radius-full: 999px;
+
+  /* --- Shadows (dark) --- */
+  --sn-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --sn-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  --sn-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --sn-glow: 0 0 0 1px rgba(99, 102, 241, 0.35), 0 4px 20px rgba(99, 102, 241, 0.22);
+
+  /* --- Layout --- */
+  --sn-container-sm: 640px;
+  --sn-container-md: 768px;
+  --sn-container-lg: 1024px;
+  --sn-container-xl: 1280px;
+  --sn-nav-height: 60px;
+  --sn-transition: 0.18s ease;
+}
+
+/* ---------------------------------------------------------------------------
+   2. LIGHT THEME — opt-in via <html data-theme="light">
+   ------------------------------------------------------------------------- */
+[data-theme="light"] {
+  --sn-bg: #f6f7fb;
+  --sn-bg-soft: #eef0f7;
+  --sn-surface: #ffffff;
+  --sn-surface-2: #f0f1f7;
+  --sn-surface-3: #e6e8f2;
+  --sn-border: rgba(15, 17, 32, 0.10);
+  --sn-border-strong: rgba(15, 17, 32, 0.18);
+
+  --sn-text: #171a24;
+  --sn-text-2: #23263a;
+  --sn-text-muted: #5a5f75;
+  --sn-text-faint: #8a8fa8;
+
+  --sn-shadow-sm: 0 1px 2px rgba(15, 17, 32, 0.06);
+  --sn-shadow: 0 4px 14px rgba(15, 17, 32, 0.08);
+  --sn-shadow-lg: 0 12px 32px rgba(15, 17, 32, 0.12);
+  --sn-glow: 0 0 0 1px rgba(99, 102, 241, 0.25), 0 4px 20px rgba(99, 102, 241, 0.15);
+}
+
+/* System-preference fallback: only applies when the page sets NO data-theme.
+   (The nav's theme manager normally resolves "system" to an explicit
+   data-theme, so this mostly matters for pages that use tokens without the
+   nav script.) */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]):not([data-theme="light"]) {
+    --sn-bg: #f6f7fb;
+    --sn-bg-soft: #eef0f7;
+    --sn-surface: #ffffff;
+    --sn-surface-2: #f0f1f7;
+    --sn-surface-3: #e6e8f2;
+    --sn-border: rgba(15, 17, 32, 0.10);
+    --sn-border-strong: rgba(15, 17, 32, 0.18);
+    --sn-text: #171a24;
+    --sn-text-2: #23263a;
+    --sn-text-muted: #5a5f75;
+    --sn-text-faint: #8a8fa8;
+    --sn-shadow-sm: 0 1px 2px rgba(15, 17, 32, 0.06);
+    --sn-shadow: 0 4px 14px rgba(15, 17, 32, 0.08);
+    --sn-shadow-lg: 0 12px 32px rgba(15, 17, 32, 0.12);
+    --sn-glow: 0 0 0 1px rgba(99, 102, 241, 0.25), 0 4px 20px rgba(99, 102, 241, 0.15);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   3. BASE — apply the system to pages that opt in (body gets it; tools that
+   keep their own inline styles can skip this and use tokens directly).
+   ------------------------------------------------------------------------- */
+.sn-body {
+  font-family: var(--sn-font-sans);
+  background-color: var(--sn-bg);
+  color: var(--sn-text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ---------------------------------------------------------------------------
+   4. LAYOUT COMPONENTS
+   ------------------------------------------------------------------------- */
+.sn-container {
+  width: 100%;
+  max-width: var(--sn-container-lg);
+  margin: 0 auto;
+  padding: 0 var(--sn-space-4);
+}
+.sn-container--sm { max-width: var(--sn-container-sm); }
+.sn-container--md { max-width: var(--sn-container-md); }
+.sn-container--xl { max-width: var(--sn-container-xl); }
+
+.sn-section { padding: var(--sn-space-12) 0; }
+.sn-section--tight { padding: var(--sn-space-6) 0; }
+
+.sn-grid {
+  display: grid;
+  gap: var(--sn-space-4);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 560px)  { .sn-grid--2 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 860px)  { .sn-grid--3 { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1100px) { .sn-grid--4 { grid-template-columns: repeat(4, 1fr); } }
+.sn-grid--auto { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+
+/* ---------------------------------------------------------------------------
+   5. TYPOGRAPHY
+   ------------------------------------------------------------------------- */
+.sn-h1 {
+  font-size: var(--sn-text-3xl);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sn-space-3);
+}
+.sn-h2 {
+  font-size: var(--sn-text-2xl);
+  font-weight: 700;
+  line-height: 1.3;
+  margin: var(--sn-space-8) 0 var(--sn-space-3);
+}
+.sn-h3 {
+  font-size: var(--sn-text-xl);
+  font-weight: 700;
+  margin: var(--sn-space-6) 0 var(--sn-space-2);
+}
+.sn-lead { font-size: var(--sn-text-lg); color: var(--sn-text-muted); }
+.sn-muted { color: var(--sn-text-muted); }
+.sn-meta { font-size: var(--sn-text-sm); color: var(--sn-text-faint); }
+.sn-gradient-text {
+  background: var(--sn-brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.sn-mono { font-family: var(--sn-font-mono); font-size: 0.92em; }
+
+/* ---------------------------------------------------------------------------
+   6. COMPONENTS
+   ------------------------------------------------------------------------- */
+
+/* --- Buttons --- */
+.sn-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sn-space-2);
+  padding: 10px 18px;
+  border-radius: var(--sn-radius);
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-size: var(--sn-text-sm);
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--sn-transition), border-color var(--sn-transition),
+              color var(--sn-transition), transform var(--sn-transition);
+}
+.sn-btn:focus-visible {
+  outline: 2px solid var(--sn-primary-400);
+  outline-offset: 2px;
+}
+.sn-btn:active { transform: translateY(1px); }
+
+.sn-btn--primary { background: var(--sn-primary); color: #fff; }
+.sn-btn--primary:hover { background: var(--sn-primary-400); }
+
+.sn-btn--gradient {
+  background: var(--sn-brand-gradient);
+  color: #0a0a0f;
+}
+.sn-btn--gradient:hover { filter: brightness(1.08); }
+
+.sn-btn--ghost {
+  background: transparent;
+  color: var(--sn-text-2);
+  border-color: var(--sn-border-strong);
+}
+.sn-btn--ghost:hover { background: var(--sn-surface-2); }
+
+/* --- Cards --- */
+.sn-card {
+  background: var(--sn-surface);
+  border: 1px solid var(--sn-border);
+  border-radius: var(--sn-radius-lg);
+  padding: var(--sn-space-6);
+  transition: border-color var(--sn-transition), transform var(--sn-transition),
+              box-shadow var(--sn-transition);
+}
+a.sn-card { display: block; color: inherit; text-decoration: none; }
+a.sn-card:hover {
+  border-color: rgba(99, 102, 241, 0.45);
+  transform: translateY(-2px);
+  box-shadow: var(--sn-glow);
+}
+.sn-card__title { font-size: var(--sn-text-base); font-weight: 700; margin-bottom: var(--sn-space-2); }
+.sn-card__desc { font-size: var(--sn-text-sm); color: var(--sn-text-muted); line-height: 1.55; }
+.sn-card__meta { font-size: var(--sn-text-xs); color: var(--sn-text-faint); margin-top: var(--sn-space-3); }
+
+/* --- Badges / chips --- */
+.sn-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--sn-radius-full);
+  font-size: var(--sn-text-xs);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: rgba(99, 102, 241, 0.14);
+  color: var(--sn-accent);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+.sn-badge--success { background: rgba(52, 211, 153, 0.12); color: var(--sn-success); border-color: rgba(52, 211, 153, 0.3); }
+.sn-badge--warn    { background: rgba(251, 191, 36, 0.12);  color: var(--sn-warning); border-color: rgba(251, 191, 36, 0.3); }
+
+/* --- Trust badge (brand promise: 本機運算・資料不上傳) --- */
+.sn-trust {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sn-space-2);
+  padding: 8px 14px;
+  border-radius: var(--sn-radius-full);
+  border: 1px dashed var(--sn-border-strong);
+  background: var(--sn-surface);
+  color: var(--sn-text-muted);
+  font-size: var(--sn-text-sm);
+  font-weight: 600;
+}
+.sn-trust::before { content: "🔒"; }
+
+/* --- Inputs --- */
+.sn-input {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--sn-surface-2);
+  border: 1px solid var(--sn-border-strong);
+  border-radius: var(--sn-radius);
+  color: var(--sn-text);
+  font-family: inherit;
+  font-size: var(--sn-text-sm);
+  outline: none;
+  transition: border-color var(--sn-transition), box-shadow var(--sn-transition);
+}
+.sn-input:focus {
+  border-color: var(--sn-primary-400);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
+}
+.sn-input::placeholder { color: var(--sn-text-faint); }
+
+/* --- Misc --- */
+.sn-divider { border: none; border-top: 1px solid var(--sn-border); margin: var(--sn-space-8) 0; }
+.sn-code {
+  font-family: var(--sn-font-mono);
+  font-size: 0.9em;
+  background: var(--sn-bg-soft);
+  border: 1px solid var(--sn-border);
+  border-radius: var(--sn-radius-sm);
+  padding: 2px 6px;
+}
+.sn-pre {
+  background: var(--sn-bg-soft);
+  border: 1px solid var(--sn-border);
+  border-radius: var(--sn-radius);
+  padding: var(--sn-space-4);
+  overflow-x: auto;
+  font-family: var(--sn-font-mono);
+  font-size: var(--sn-text-sm);
+  line-height: 1.6;
+}
+.sn-kbd {
+  font-family: var(--sn-font-mono);
+  font-size: 0.8em;
+  background: var(--sn-surface-2);
+  border: 1px solid var(--sn-border-strong);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  padding: 1px 6px;
+}
+
+/* --- Skip link (a11y) --- */
+.sn-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  background: var(--sn-primary);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 0 0 var(--sn-radius) 0;
+  font-size: var(--sn-text-sm);
+  font-weight: 700;
+}
+.sn-skip:focus { left: 0; }
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .sn-body, .sn-card, .sn-btn { transition: none; }
+}
