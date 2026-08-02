@@ -66,7 +66,7 @@ AI Prompt Library 不是一份死板的 PDF；它是一個動態、可搜尋的 
 
 準備好停止盲目猜測，開始專業的提示詞工程了嗎？
 
-👉 [**立即前往 Gumroad 解鎖完整的 AI Prompt Library**](https://gumroad.com/l/diwoc)
+👉 [**立即前往 Gumroad 解鎖完整的 AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc)
 
 ---
 

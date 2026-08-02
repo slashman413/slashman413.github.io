@@ -88,7 +88,7 @@ Feishu 是為「規模化」而生的。由位元組跳動 (ByteDance) 開發，
 
 準備好大幅提升您團隊的生產力了嗎？
 
-👉 [**前往 Gumroad 獲取我們獨家的高階 Feishu Templates**](https://gumroad.com/l/xohjh)
+👉 [**前往 Gumroad 獲取我們獨家的高階 Feishu Templates**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)
 
 ---
 

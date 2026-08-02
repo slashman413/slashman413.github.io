@@ -87,7 +87,7 @@ categories: ["投資理財", "AI工具"]
 
 <p>這不是「節省時間」那麼簡單——而是讓你看得到你看不到的東西。例如：你的組合看似報酬不錯，但最大回撤達到 32%，這在市場回調時會讓你手腳發冷。儀表板的即時風險指標能讓你提早覺察。</p>
 
-<p>如果你想要一套可以直接上手的工具，我推薦看看 <a href="https://gumroad.com/l/vzalgb">ETF 自動化儀表板（ETF Dashboard）</a>。它能幫你自動追蹤多檔 ETF 的組合績效、定期定額進度、風險指標，而且設定簡單，不用寫一行程式。</p>
+<p>如果你想要一套可以直接上手的工具，我推薦看看 <a href="https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard">ETF 自動化儀表板（ETF Dashboard）</a>。它能幫你自動追蹤多檔 ETF 的組合績效、定期定額進度、風險指標，而且設定簡單，不用寫一行程式。</p>
 
 <h3>等級三：AI 加持的投資助手</h3>
 
@@ -118,7 +118,7 @@ categories: ["投資理財", "AI工具"]
   <tr><td>BND（美國債券）</td><td>BND</td><td>10%</td><td>$2,000</td></tr>
 </table>
 
-<p>用 <a href="https://gumroad.com/l/vzalgb">ETF 儀表板</a>，你只需要在這張表格的基礎上，輸入每檔 ETF 的代號、目標權重、每月投入金額。儀表板會自動為你：</p>
+<p>用 <a href="https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard">ETF 儀表板</a>，你只需要在這張表格的基礎上，輸入每檔 ETF 的代號、目標權重、每月投入金額。儀表板會自動為你：</p>
 
 <ul>
   <li>計算每個月應該投入的每一檔 ETF 股數（對照當前價格）</li>
@@ -206,7 +206,7 @@ categories: ["投資理財", "AI工具"]
   <tr><td>台灣市場支援</td><td>✅ 0050/0056/0062</td><td>—</td><td>—</td></tr>
 </table>
 
-<p>如果你想要一個<strong>台灣市場支援完整、設定簡單、內建定期定額功能</strong>的儀表板，<a href="https://gumroad.com/l/vzalgb">ETF Dashboard</a> 是一個不錯的選擇。它支援台灣市場主流 ETF（0050、0056、0062 等），也能同時追蹤美股、港股、日股市場，而且價格只要每月 $29 或終生一次付 $199——少喝幾杯咖啡的钱，換一個 24 小時運作的投資助手。</p>
+<p>如果你想要一個<strong>台灣市場支援完整、設定簡單、內建定期定額功能</strong>的儀表板，<a href="https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard">ETF Dashboard</a> 是一個不錯的選擇。它支援台灣市場主流 ETF（0050、0056、0062 等），也能同時追蹤美股、港股、日股市場，而且價格只要每月 $29 或終生一次付 $199——少喝幾杯咖啡的钱，換一個 24 小時運作的投資助手。</p>
 
 <p>如果你對 <a href="https://slashmantools.us/blog/etf-portfolio-tracking-guide/">ETF 組合追蹤</a> 有更深入的問題，或是想了解如何設定定期定額 ETF 的具體流程，可以參考相關文章，裡面有更詳細的操作步驟。</p>
 
@@ -229,7 +229,7 @@ categories: ["投資理財", "AI工具"]
   <h3 style="margin:0 0 12px 0">📊 準備好自動化你的 ETF 投資了嗎？</h3>
   <p style="margin:0 0 20px 0;font-size:15px;line-height:1.6;color:#cccccc">
     使用 <strong>ETF Dashboard</strong> 自動追蹤你的組合績效、定期定額進度、風險指標。台灣市場 ETF 完整支援，設定只需 5 分鐘。<br>
-    <a href="https://gumroad.com/l/vzalgb" style="color:#7faaff;text-decoration:underline;font-weight:bold">立即探索 ETF 儀表板 →</a>
+    <a href="https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard" style="color:#7faaff;text-decoration:underline;font-weight:bold">立即探索 ETF 儀表板 →</a>
   </p>
   <p style="margin:0;font-size:13px;color:#8888aa">💰 方案從每月 $29 美金起，或一次付清 $199 美金享終身使用</p>
 </div>

@@ -17,7 +17,7 @@ But the businesses winning with AI in 2026 aren't asking ChatGPT basic questions
 
 This guide gives you 50 prompts — organized by business function — that you can copy, paste, and start using today. Each one is designed for a specific business need and includes the exact wording that produces the best results.
 
-> **Want these ready-made?** Our [AI Prompt Library](https://gumroad.com/l/diwoc) includes 500+ prompts across every business category, pre-tested and organized.
+> **Want these ready-made?** Our [AI Prompt Library](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc) includes 500+ prompts across every business category, pre-tested and organized.
 
 ---
 
@@ -1094,7 +1094,7 @@ Make it specific and actionable, not generic advice.
 
 These 50 prompts cover the major areas of running a business, but they're just a starting point. The businesses that win with AI are the ones that build custom prompt systems for their specific workflows.
 
-**If you want 500+ pre-built, tested prompts organized by business function, check out our [AI Prompt Library](https://gumroad.com/l/diwoc).** It includes everything in this article plus content marketing automation, financial analysis, team management, and much more — all in a format you can search and use immediately.
+**If you want 500+ pre-built, tested prompts organized by business function, check out our [AI Prompt Library](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc).** It includes everything in this article plus content marketing automation, financial analysis, team management, and much more — all in a format you can search and use immediately.
 
 ---
 
@@ -1111,5 +1111,5 @@ These 50 prompts cover the major areas of running a business, but they're just a
 <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:20px;margin:24px 0;">
 <h3 style="margin-top:0;">🎯 Ready to Supercharge Your Business?</h3>
 <p>Don't want to write your own prompts? <strong>Our AI Prompt Library</strong> gives you <strong>500+ battle-tested prompts</strong> organized by business category — ready to copy, paste, and scale.</p>
-<p><a href="https://gumroad.com/l/diwoc" style="background:#22c55e;color:white;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:bold;">Get the AI Prompt Library — $29</a></p>
+<p><a href="https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc" style="background:#22c55e;color:white;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:bold;">Get the AI Prompt Library — $29</a></p>
 </div>

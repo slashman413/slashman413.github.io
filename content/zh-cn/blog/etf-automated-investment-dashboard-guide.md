@@ -38,7 +38,7 @@ draft: false
 
 然而，对于大多数投资者来说，直接使用现成的专业工具是更具成本效益的选择。
 
-这正是我们极力推荐您尝试 **[ETF Dashboard](https://gumroad.com/l/vzalgb)** 的原因。
+这正是我们极力推荐您尝试 **[ETF Dashboard](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)** 的原因。
 
 ## 隆重介绍：ETF Dashboard 
 
@@ -55,7 +55,7 @@ draft: false
 
 不再让繁琐的数据分析占用您的时间。现在就点击下方链接，开始您的自动化投资之旅！
 
-👉 **[立即获取 ETF Dashboard - 每月只需 $29，或选择 $199 终身买断方案！](https://gumroad.com/l/vzalgb)**
+👉 **[立即获取 ETF Dashboard - 每月只需 $29，或选择 $199 终身买断方案！](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)**
 
 ## 结论
 

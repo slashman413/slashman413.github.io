@@ -30,6 +30,8 @@ Instead of vague prompts like "write a blog post about dogs," the prompts here u
 
 **Early Verdict**: The UX and organization alone justify the first $10 of the price tag. It saves you from digging through chaotic bookmarks.
 
+👉 [**Browse the AI Prompt Library on Gumroad ($29)**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc)
+
 ## Day 11-20: Stress Testing in Real Workflows
 
 During the second phase of my 30-day test, I applied the **best AI prompts** from the library to real client work.
@@ -58,6 +60,8 @@ By analyzing the syntax and structure of the top-performing prompts, I started w
 - **Requires Notion**: To get the best experience, you need to use Notion (though exports are available).
 - **Overwhelming at first**: With hundreds of prompts, you need to spend time filtering to find what you need.
 
+👉 [**Get instant access to the full AI Prompt Library ($29)**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc)
+
 ## The Final Verdict: Is It Worth $29?
 
 Absolutely. If you use generative AI for your work, time is your most valuable asset. During my 30-day test, the **AI Prompt Library** saved me an estimated 15 hours of trial-and-error prompting and heavy editing. 
@@ -66,7 +70,7 @@ At $29, it pays for itself the first time you use it to generate a high-quality 
 
 Ready to stop guessing and start engineering?
 
-👉 [**Unlock the complete AI Prompt Library on Gumroad now**](https://gumroad.com/l/diwoc)
+👉 [**Unlock the complete AI Prompt Library on Gumroad now**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc)
 
 ---
 

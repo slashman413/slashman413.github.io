@@ -21,20 +21,20 @@ Before developing a product, you must find a niche with a specific pain point.
 1. **Observe Market Trends**: There is currently a massive demand for AI-related tools and templates.
 2. **Solve Specific Problems**: For instance, many businesses don't know how to effectively use AI to boost productivity.
 
-If you want a quick head start, check out our **[AI Prompt Library ($29)](https://gumroad.com/l/diwoc)**, which includes hundreds of practical AI prompts to help you master AI tools effortlessly.
+If you want a quick head start, check out our **[AI Prompt Library ($29)](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc)**, which includes hundreds of practical AI prompts to help you master AI tools effortlessly.
 
 ## Step 2: Build Your First Digital Product
 
 For beginners, starting with templates or toolkits is the easiest route.
-- **Template Products**: If you are highly skilled at certain productivity tools, create specialized templates. For example, team collaboration is a huge pain point for companies. You can check out these **[Feishu Templates ($49)](https://gumroad.com/l/mgtpcn)**, which offer tailored Feishu management templates that can boost a team's efficiency by 300%.
-- **Knowledge-Based Products**: If you have in-depth expertise in a certain field, consider creating an online course. If you want to dive deep into leveraging AI for entrepreneurship, we highly recommend this **[AI Course ($99)](https://gumroad.com/l/xohjh)**. From basics to advanced techniques, it teaches you step-by-step how to build an AI-driven automated income system.
+- **Template Products**: If you are highly skilled at certain productivity tools, create specialized templates. For example, team collaboration is a huge pain point for companies. You can check out these **[Feishu Templates ($49)](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)**, which offer tailored Feishu management templates that can boost a team's efficiency by 300%.
+- **Knowledge-Based Products**: If you have in-depth expertise in a certain field, consider creating an online course. If you want to dive deep into leveraging AI for entrepreneurship, we highly recommend this **[AI Course ($99)](https://slashmaster6.gumroad.com/l/vzalgb?utm_source=blog&utm_medium=seo&utm_campaign=vzalgb)**. From basics to advanced techniques, it teaches you step-by-step how to build an AI-driven automated income system.
 
 ## Step 3: Systematic Marketing and Automated Sales
 
 Once you have a product, the next step is selling it.
 - **SEO and Content Marketing**: Write high-quality blog posts to attract organic traffic.
 - **Build a Sales Funnel**: Offer a free trial or mini eBook in exchange for emails.
-- **Financial Management**: Entrepreneurs must be sensitive to numbers. You can use this **[ETF Dashboard ($29/mo or $199/lifetime)](https://gumroad.com/l/vzalgb)** to track your investments and asset allocation, ensuring your passive income grows steadily.
+- **Financial Management**: Entrepreneurs must be sensitive to numbers. You can use this **[ETF Dashboard ($29/mo or $199/lifetime)](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)** to track your investments and asset allocation, ensuring your passive income grows steadily.
 
 ## Conclusion and Call to Action (CTA)
 

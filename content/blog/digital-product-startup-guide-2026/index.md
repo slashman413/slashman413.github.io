@@ -21,20 +21,20 @@ draft: false
 1. **觀察市場趨勢**：目前 AI 相關的工具與模板需求極大。
 2. **解決具體問題**：例如，許多企業不知道如何有效使用 AI 提升效率。
 
-如果你想快速入門，可以參考我們的 **[AI Prompt Library ($29)](https://gumroad.com/l/diwoc)**，裡面包含了數百個實用的 AI 提示詞，幫助你快速掌握 AI 工具的使用方法。
+如果你想快速入門，可以參考我們的 **[AI Prompt Library ($29)](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc)**，裡面包含了數百個實用的 AI 提示詞，幫助你快速掌握 AI 工具的使用方法。
 
 ## 第二步：打造你的第一款數位產品
 
 對於初學者來說，從模板或工具包開始是最容易的。
-- **模板產品**：如果你擅長使用某些生產力工具，你可以製作專屬的模板。例如，團隊協作與管理是許多企業的痛點。你可以參考這款 **[Feishu Templates ($49)](https://gumroad.com/l/mgtpcn)**，它提供了一系列為企業量身打造的飛書（Feishu）管理模板，幫助團隊提升 300% 的效率。
-- **知識型產品**：如果你在某個領域有深入的專業知識，可以考慮製作線上課程。如果你想深入學習如何利用 AI 創業，強烈推薦這門 **[AI Course ($99)](https://gumroad.com/l/xohjh)**，從基礎到進階，手把手教你如何打造 AI 驅動的自動化變現系統。
+- **模板產品**：如果你擅長使用某些生產力工具，你可以製作專屬的模板。例如，團隊協作與管理是許多企業的痛點。你可以參考這款 **[Feishu Templates ($49)](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)**，它提供了一系列為企業量身打造的飛書（Feishu）管理模板，幫助團隊提升 300% 的效率。
+- **知識型產品**：如果你在某個領域有深入的專業知識，可以考慮製作線上課程。如果你想深入學習如何利用 AI 創業，強烈推薦這門 **[AI Course ($99)](https://slashmaster6.gumroad.com/l/vzalgb?utm_source=blog&utm_medium=seo&utm_campaign=vzalgb)**，從基礎到進階，手把手教你如何打造 AI 驅動的自動化變現系統。
 
 ## 第三步：系統化營銷與自動化銷售
 
 有了產品，接下來就是如何賣出去。
 - **SEO 與內容行銷**：撰寫高質量的部落格文章，吸引自然流量。
 - **建立銷售漏斗**：提供免費的試用版或小型電子書，獲取客戶的 Email。
-- **財務管理與數據追蹤**：創業必須對數字敏感。你可以使用這款 **[ETF Dashboard ($29/mo or $199/lifetime)](https://gumroad.com/l/vzalgb)** 來追蹤你的投資與資產配置，確保你的被動收入能夠穩定增長。
+- **財務管理與數據追蹤**：創業必須對數字敏感。你可以使用這款 **[ETF Dashboard ($29/mo or $199/lifetime)](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)** 來追蹤你的投資與資產配置，確保你的被動收入能夠穩定增長。
 
 ## 結語與行動呼籲 (CTA)
 

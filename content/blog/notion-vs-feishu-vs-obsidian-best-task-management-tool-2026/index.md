@@ -48,7 +48,7 @@ Feishu (known as Lark globally) is an enterprise collaboration platform develope
 ### Supercharge Your Feishu Workflow
 If you've decided Feishu is the right platform for your business, setting up the perfect Base (Bitable) from scratch can be time-consuming. We've designed professional, ready-to-use templates specifically for modern workflows.
 
-**[📈 Streamline your operations today! Grab our Premium Feishu Templates on Gumroad and transform your team's productivity instantly.](https://gumroad.com/l/xohjh)**
+**[📈 Streamline your operations today! Grab our Premium Feishu Templates on Gumroad and transform your team's productivity instantly.](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)**
 
 ## 3. Obsidian: The Local-First Knowledge Graph
 

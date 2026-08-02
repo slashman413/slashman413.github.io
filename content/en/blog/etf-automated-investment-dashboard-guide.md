@@ -38,7 +38,7 @@ Building a powerful AI dashboard requires a certain technical background, includ
 
 However, for most investors, directly using an off-the-shelf professional tool is a much more cost-effective choice.
 
-This is exactly why we highly recommend you try the **[ETF Dashboard](https://gumroad.com/l/vzalgb)**.
+This is exactly why we highly recommend you try the **[ETF Dashboard](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)**.
 
 ## Introducing: ETF Dashboard
 
@@ -55,7 +55,7 @@ To let you immediately enjoy the convenience of AI automated investing, we have 
 
 Stop letting tedious data analysis take up your time. Click the link below right now and begin your automated investing journey!
 
-👉 **[Get the ETF Dashboard Now - Only $29/month, or choose the $199 Lifetime plan!](https://gumroad.com/l/vzalgb)**
+👉 **[Get the ETF Dashboard Now - Only $29/month, or choose the $199 Lifetime plan!](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)**
 
 ## Conclusion
 

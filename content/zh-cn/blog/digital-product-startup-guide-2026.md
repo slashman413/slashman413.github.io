@@ -21,20 +21,20 @@ draft: false
 1. **观察市场趋势**：目前 AI 相关的工具与模板需求极大。
 2. **解决具体问题**：例如，许多企业不知道如何有效使用 AI 提升效率。
 
-如果你想快速入门，可以参考我们的 **[AI Prompt Library ($29)](https://gumroad.com/l/diwoc)**，里面包含了数百个实用的 AI 提示词，帮助你快速掌握 AI 工具的使用方法。
+如果你想快速入门，可以参考我们的 **[AI Prompt Library ($29)](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc)**，里面包含了数百个实用的 AI 提示词，帮助你快速掌握 AI 工具的使用方法。
 
 ## 第二步：打造你的第一款数字产品
 
 对于初学者来说，从模板或工具包开始是最容易的。
-- **模板产品**：如果你擅长使用某些生产力工具，你可以制作专属的模板。例如，团队协作与管理是许多企业的痛点。你可以参考这款 **[Feishu Templates ($49)](https://gumroad.com/l/mgtpcn)**，它提供了一系列为企业量身打造的飞书（Feishu）管理模板，帮助团队提升 300% 的效率。
-- **知识型产品**：如果你在某个领域有深入的专业知识，可以考虑制作在线课程。如果你想深入学习如何利用 AI 创业，强烈推荐这门 **[AI Course ($99)](https://gumroad.com/l/xohjh)**，从基础到进阶，手把手教你如何打造 AI 驱动的自动化变现系统。
+- **模板产品**：如果你擅长使用某些生产力工具，你可以制作专属的模板。例如，团队协作与管理是许多企业的痛点。你可以参考这款 **[Feishu Templates ($49)](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)**，它提供了一系列为企业量身打造的飞书（Feishu）管理模板，帮助团队提升 300% 的效率。
+- **知识型产品**：如果你在某个领域有深入的专业知识，可以考虑制作在线课程。如果你想深入学习如何利用 AI 创业，强烈推荐这门 **[AI Course ($99)](https://slashmaster6.gumroad.com/l/vzalgb?utm_source=blog&utm_medium=seo&utm_campaign=vzalgb)**，从基础到进阶，手把手教你如何打造 AI 驱动的自动化变现系统。
 
 ## 第三步：系统化营销与自动化销售
 
 有了产品，接下来就是如何卖出去。
 - **SEO 与内容营销**：撰写高质量的博客文章，吸引自然流量。
 - **建立销售漏斗**：提供免费的试用版或小型电子书，获取客户的 Email。
-- **财务管理与数据追踪**：创业必须对数字敏感。你可以使用这款 **[ETF Dashboard ($29/mo or $199/lifetime)](https://gumroad.com/l/vzalgb)** 来追踪你的投资与资产配置，确保你的被动收入能够稳定增长。
+- **财务管理与数据追踪**：创业必须对数字敏感。你可以使用这款 **[ETF Dashboard ($29/mo or $199/lifetime)](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)** 来追踪你的投资与资产配置，确保你的被动收入能够稳定增长。
 
 ## 结语与行动呼吁 (CTA)
 

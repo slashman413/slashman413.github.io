@@ -18,7 +18,7 @@ slug: "ai-course-learning-roadmap-2026"
 <div style="background: rgba(255, 122, 69, 0.1); border: 1px solid rgba(255, 122, 69, 0.3); border-radius: 12px; padding: 1.5rem; margin: 2rem 0;">
   <h3 style="margin-top: 0; color: #FF7A45;">🎓 推薦課程：Ship With AI — 4 小時自動化實戰課程 ($99)</h3>
   <p>專為職場專業人士與創業者設計的精華實戰課！4 小時帶你親手實作 5 大 AI 系統，附贈價值 $29 的 AI Prompt Library 與 30 天無條件退費保證。</p>
-  <p><a href="https://gumroad.com/l/mgtpcn" target="_blank" rel="noopener" style="display: inline-block; background: #FF7A45; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; text-decoration: none;">立即報名 Ship With AI 課程 ($99) →</a></p>
+  <p><a href="https://slashmaster6.gumroad.com/l/mgtpcn?utm_source=blog&utm_medium=seo&utm_campaign=mgtpcn" target="_blank" rel="noopener" style="display: inline-block; background: #FF7A45; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; text-decoration: none;">立即報名 Ship With AI 課程 ($99) →</a></p>
 </div>
 
 <h2>2. 掌握跨模型思維框架</h2>

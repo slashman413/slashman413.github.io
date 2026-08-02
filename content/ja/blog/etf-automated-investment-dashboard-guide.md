@@ -38,7 +38,7 @@ draft: false
 
 しかし、ほとんどの投資家にとって、既存の専門的なツールを直接使用する方がはるかに費用対効果の高い選択です。
 
-だからこそ、**[ETF Dashboard](https://gumroad.com/l/vzalgb)** をお試しいただくことを強くお勧めします。
+だからこそ、**[ETF Dashboard](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)** をお試しいただくことを強くお勧めします。
 
 ## ご紹介：ETF Dashboard
 
@@ -55,7 +55,7 @@ AI自動化投資の利便性をすぐに享受していただくために、プ
 
 面倒なデータ分析に時間を奪われるのはもうやめましょう。今すぐ下のリンクをクリックして、自動化投資の旅を始めましょう！
 
-👉 **[今すぐ ETF Dashboard を入手 - 月額わずか $29、または $199 のライフタイムプランをお選びください！](https://gumroad.com/l/vzalgb)**
+👉 **[今すぐ ETF Dashboard を入手 - 月額わずか $29、または $199 のライフタイムプランをお選びください！](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)**
 
 ## 結論
 

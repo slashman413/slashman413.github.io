@@ -43,6 +43,8 @@ A high-converting lead magnet is:
 
 **Example:** If you sell a premium course on AI automation, your lead magnet could be "5 ChatGPT Prompts to Automate Your Email Inbox."
 
+> **Shortcut:** The **[Ship With AI course ($99)](https://slashmaster6.gumroad.com/l/mgtpcn?utm_source=blog&utm_medium=seo&utm_campaign=mgtpcn)** walks you through building, launching, and automating a real digital product — the exact funnel this guide describes — in 4 hours.
+
 ## Stage 3: The Automated Email Sequence (The Conversion Machine)
 
 This is where the magic happens. Once a user subscribes, they should enter an automated email sequence designed to build trust and eventually pitch your core product.
@@ -72,9 +74,9 @@ To reach your revenue goals faster, you must optimize the checkout process.
 
 Building this funnel—writing the emails, crafting the sales page copy, scripting the ads—used to take weeks of copywriting effort. Today, AI has completely changed the game. 
 
-By leveraging the right AI workflows, you can build, launch, and optimize your digital product sales funnel in a fraction of the time.
+By leveraging the right AI workflows, you can build, launch, and optimize your digital product sales funnel in a fraction of the time. The **[Ship With AI course](https://slashmaster6.gumroad.com/l/mgtpcn?utm_source=blog&utm_medium=seo&utm_campaign=mgtpcn)** is a 4-hour, no-code program that teaches exactly these workflows — from product idea to automated launch.
 
-**[🎓 Ready to master the new era of product creation? Enroll in our comprehensive AI Course for Creators on Gumroad and learn how to build profitable digital assets from scratch!](https://gumroad.com/l/mgtpcn)**
+**[🎓 Ready to master the new era of product creation? Enroll in our comprehensive AI Course for Creators on Gumroad and learn how to build profitable digital assets from scratch!](https://slashmaster6.gumroad.com/l/mgtpcn?utm_source=blog&utm_medium=seo&utm_campaign=mgtpcn)**
 
 ## Conclusion
 

@@ -38,7 +38,7 @@ Construir un potente panel de inteligencia artificial requiere ciertos conocimie
 
 Sin embargo, para la mayoría de los inversores, utilizar directamente una herramienta profesional lista para usar es una opción mucho más rentable.
 
-Esta es exactamente la razón por la que te recomendamos encarecidamente que pruebes el **[ETF Dashboard](https://gumroad.com/l/vzalgb)**.
+Esta es exactamente la razón por la que te recomendamos encarecidamente que pruebes el **[ETF Dashboard](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)**.
 
 ## Presentamos: ETF Dashboard
 
@@ -55,7 +55,7 @@ Para permitirte disfrutar inmediatamente de la conveniencia de la inversión aut
 
 Deja de permitir que el tedioso análisis de datos consuma tu tiempo. ¡Haz clic en el enlace de abajo ahora mismo y comienza tu viaje de inversión automatizada!
 
-👉 **[Obtén el ETF Dashboard Ahora - ¡Solo $29/mes, o elige el plan de por vida de $199!](https://gumroad.com/l/vzalgb)**
+👉 **[Obtén el ETF Dashboard Ahora - ¡Solo $29/mes, o elige el plan de por vida de $199!](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)**
 
 ## Conclusión
 

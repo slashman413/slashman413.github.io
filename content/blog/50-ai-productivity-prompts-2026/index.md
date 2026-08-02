@@ -9,7 +9,7 @@ draft: false
 
 在這篇完整的指南中，我們為您整理了 **2026 年必知的 50 個 AI 提效提示詞**。這些提示詞被精心分類為不同的工作場景，幫助您在幾秒鐘內完成過去需要數小時才能完成的任務。
 
-如果您想更進一步，獲得超過 5000+ 種專業場景的高級提示詞庫，強烈建議您獲取我們的 **[AI Prompt Library（僅需 $29）](https://gumroad.com/l/diwoc)**，讓您的生產力呈現指數級增長！
+如果您想更進一步，獲得超過 5000+ 種專業場景的高級提示詞庫，強烈建議您獲取我們的 **[AI Prompt Library（僅需 $29）](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc)**，讓您的生產力呈現指數級增長！
 
 ---
 
@@ -185,14 +185,14 @@ draft: false
 
 掌握這些提示詞只是一個開始。如果你想要真正在 2026 年的 AI 浪潮中脫穎而出，不再每天為了構思完美的指令而苦惱，你需要一個系統化的工具庫。
 
-🔥 **隆重推薦：[AI Prompt Library](https://gumroad.com/l/diwoc)** 🔥
+🔥 **隆重推薦：[AI Prompt Library](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc)** 🔥
 
 只需 **$29**，您將獲得：
 - **5000+ 個精心測試的專業提示詞**（涵蓋行銷、開發、設計、管理等百種場景）。
 - **即插即用**的模板，一鍵複製貼上。
 - **定期更新**，確保提示詞適應最新的 AI 模型（GPT-5, Claude 3.5 等）。
 
-不要讓工具限制了你的潛力。**[點擊這裡立即獲取 AI Prompt Library](https://gumroad.com/l/diwoc)**，讓你的工作效率翻倍，把省下來的時間留給真正重要的事情！
+不要讓工具限制了你的潛力。**[點擊這裡立即獲取 AI Prompt Library](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc)**，讓你的工作效率翻倍，把省下來的時間留給真正重要的事情！
 
 ---
 *這篇文章幫助到你了嗎？歡迎分享給你的同事和朋友，一起成為 2026 年的高效工作者！*

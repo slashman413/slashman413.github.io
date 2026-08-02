@@ -61,7 +61,7 @@ Stashvisor 定位為高階的 All-in-One 財富追蹤器。它嚴重依賴自動
 
 準備好透過終極的視覺化追蹤體驗來掌控您的財務未來了嗎？
 
-👉 [**立即前往 Gumroad 獲取最強大的 ETF Dashboard**](https://gumroad.com/l/etf-dashboard)
+👉 [**立即前往 Gumroad 獲取最強大的 ETF Dashboard**](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)
 
 ---
 
