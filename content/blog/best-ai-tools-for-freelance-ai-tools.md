@@ -1,17 +1,17 @@
 ---
-title: "2026 年最佳 AI 工具：online-business 指南"
-description: "2026 年最佳 AI 工具推薦，幫助你 online-business，提高效率並降低成本。"
+title: "2026 年最佳 AI 工具：freelance-ai-tools 指南"
+description: "2026 年最佳 AI 工具推薦，幫助你 freelance-ai-tools，提高效率並降低成本。"
 date: 2026-08-03
-slug: best-ai-tools-for-online-business
-tags: [ai, online_business, tools]
+slug: best-ai-tools-for-freelance-ai-tools
+tags: [ai, freelance_ai_tools, tools]
 ---
 
-# 2026 年最佳 AI 工具：online-business
+# 2026 年最佳 AI 工具：freelance-ai-tools
 
 ## 工具推薦
 
 ### 1. AI Prompt 庫 (9)
-300+ 提示詞模板，適用於所有 online-business 場景。
+300+ 提示詞模板，適用於所有 freelance-ai-tools 場景。
 👉 [了解更多](/blog/ai-prompt-library/)
 
 ### 2. Cowork Pro (9)
