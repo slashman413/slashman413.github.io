@@ -1,0 +1,17 @@
+<!-- Related Products CTA -->
+{{ if .IsPage }}
+<div style="margin-top:24px;padding:20px;background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.2);border-radius:12px">
+  <h3 style="color:#c7c7f0;margin-bottom:12px;font-size:16px">🎁 Recommended Tools</h3>
+  <ul style="list-style:none;padding:0;margin:0">
+    {{ range slice (dict "title" "AI Prompt Library" "url" "/blog/ai-prompt-library/" "price" "$29")
+                  (dict "title" "ETF Dashboard" "url" "/blog/etf-dashboard/" "price" "$199")
+                  (dict "title" "Cowork Pro" "url" "/blog/cowork-pro/" "price" "$99") }}
+    <li style="margin-bottom:8px">
+      <a href="{{ .url }}" style="color:#a5b4fc;text-decoration:none;font-weight:600">
+        {{ .title }} — {{ .price }} →
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}
