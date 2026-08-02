@@ -47,6 +47,7 @@ jobs:
             echo "No new article to commit."
           else
             git commit -m "news: auto-published tech-news article $(date -u +%F)"
+            git pull --rebase origin main || true
             git push
           fi
 
