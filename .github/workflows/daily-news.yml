@@ -47,8 +47,24 @@ jobs:
             echo "No new article to commit."
           else
             git commit -m "news: auto-published tech-news article $(date -u +%F)"
-            git pull --rebase origin main || true
-            git push
+            # Resilient push: another commit can land on main between our checkout
+            # and push (this is what rejected run #16 with "! [rejected] (fetch
+            # first)"). Rebase-then-push, retrying to close the TOCTOU window; abort
+            # a conflicted rebase instead of silently pushing a broken tree.
+            for attempt in 1 2 3 4 5; do
+              if git push; then
+                echo "Pushed on attempt ${attempt}."
+                break
+              fi
+              if [ "${attempt}" -eq 5 ]; then
+                echo "::error::git push failed after ${attempt} attempts."
+                exit 1
+              fi
+              echo "Push rejected (attempt ${attempt}); rebasing on latest main..."
+              git fetch origin main
+              git rebase origin/main || { git rebase --abort; echo "::error::rebase conflict on main"; exit 1; }
+              sleep $((attempt * 2))
+            done
           fi
 
       - name: Install Hugo
