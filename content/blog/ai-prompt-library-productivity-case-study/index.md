@@ -1,6 +1,7 @@
 ---
 title: "How an AI Prompt Library Boosted My Productivity 10x (Case Study)"
 description: "Discover how implementing a structured AI prompt library can 10x your productivity. A real-world case study on optimizing workflows with prompt engineering."
+slug: ai-prompt-library-productivity-case-study
 date: 2026-07-29T06:00:00Z
 draft: false
 tags: ["AI", "Productivity", "Prompt Engineering"]

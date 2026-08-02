@@ -1,6 +1,7 @@
 ---
 title: "ETF Dashboard Review: Automate Your Investment Tracking"
 description: "Stop using messy spreadsheets. Discover how an automated ETF Dashboard can revolutionize your investment tracking, portfolio balancing, and dividend analysis."
+slug: etf-dashboard-review-automate-investment-tracking
 date: 2026-07-29T06:00:00Z
 draft: false
 tags: ["ETF", "Investing", "Dashboard", "Personal Finance", "Automation"]

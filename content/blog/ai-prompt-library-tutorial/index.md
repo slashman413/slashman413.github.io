@@ -1,6 +1,7 @@
 ---
 title: "AI Prompt Library 完整使用教學：如何利用提示詞提升 10 倍生產力"
 date: 2026-07-29T16:21:34+08:00
+slug: ai-prompt-library-tutorial
 description: "Learn how to use AI Prompt Library to automate your workflow. 學習如何使用 AI 提示詞庫自動化工作流。"
 draft: false
 ---

@@ -1,6 +1,7 @@
 ---
 title: "ETF 儀表板投資策略：2026 最新回測數據與應用"
 date: 2026-07-29T16:21:34+08:00
+slug: etf-dashboard-strategy
 description: "用 ETF 儀表板打造 2026 ETF 投資策略：回測框架、資產配置規則、再平衡節奏與風險追蹤，把投資變成一套可驗證的系統。"
 draft: false
 schema: "Article"

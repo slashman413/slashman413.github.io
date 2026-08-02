@@ -1,6 +1,7 @@
 ---
 title: "ETF 自動化投資：AI 儀表板實作指南"
 date: 2026-07-29T14:57:11+08:00
+slug: etf-automated-investment-dashboard-guide
 description: "在這篇指南中，我們將深入探討 ETF 自動化投資的優勢，並教您如何透過 AI 儀表板優化您的投資組合。立即了解如何節省時間並提升投資回報。"
 draft: false
 ---

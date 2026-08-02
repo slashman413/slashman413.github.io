@@ -1,6 +1,7 @@
 ---
 title: "AI Course 學員成功案例解析：從零到一的高轉換率秘訣"
 date: 2026-07-29T16:21:34+08:00
+slug: ai-course-case-study
 description: "Real stories from our AI Course students who achieved massive success."
 draft: false
 ---

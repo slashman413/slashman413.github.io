@@ -1,6 +1,7 @@
 ---
 title: "增強型 CTA 模板 — 提高轉化率"
 noindex: true
+slug: enhanced-cta-templates
 ---
 # 增強型 CTA 模板
 

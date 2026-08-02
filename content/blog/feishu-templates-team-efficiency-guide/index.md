@@ -1,6 +1,7 @@
 ---
 title: "如何用飛書模板提升 300% 團隊效率"
 date: 2026-07-29T14:57:11+08:00
+slug: feishu-templates-team-efficiency-guide
 description: "探索如何利用強大的飛書模板 (Feishu Templates) 徹底改變您的團隊協作模式。這篇完整的指南將教您如何透過標準化流程與自動化工具，將團隊效率提升高達 300%。"
 draft: false
 ---

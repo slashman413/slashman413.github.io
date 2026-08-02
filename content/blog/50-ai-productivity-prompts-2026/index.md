@@ -1,6 +1,7 @@
 ---
 title: "2026 年必知的 50 個 AI 提效提示詞"
 date: 2026-07-29T14:57:11+08:00
+slug: 50-ai-productivity-prompts-2026
 description: "探索 2026 年最具革命性的 50 個 AI 提示詞，全面提升你的工作效率。並了解如何透過 AI Prompt Library 進一步解鎖生產力。"
 draft: false
 ---

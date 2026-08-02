@@ -1,6 +1,7 @@
 ---
 title: "AI 課程完整評測：值得學嗎？"
 date: "2026-07-29T14:57:11+08:00"
+slug: ai-course-review-2026
 description: "這是一篇關於最新的 Gumroad AI 課程完整評測。探討其內容、優缺點以及是否值得你花 99 美元投資學習。"
 draft: false
 ---

@@ -1,6 +1,7 @@
 ---
 title: "AI Tools for Digital Product Creators: Complete Guide"
 description: "Discover the best AI tools for digital product creators in 2026. Learn how to automate ideation, content generation, and marketing for your business."
+slug: ai-tools-for-digital-product-creators-guide
 date: 2026-07-29T06:00:00Z
 draft: false
 tags: ["AI Tools", "Digital Products", "Creator Economy", "Automation"]

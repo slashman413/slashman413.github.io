@@ -1,6 +1,7 @@
 ---
 title: "社會證明整合方案 — 建立信任提高轉化"
 noindex: true
+slug: social-proof-integration
 ---
 # 社會證明整合方案
 

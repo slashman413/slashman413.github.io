@@ -1,6 +1,7 @@
 ---
 title: "From $0 to $10K/mo: Digital Product Sales Funnel Blueprint"
 description: "Learn the exact digital product sales funnel blueprint to scale from $0 to $10K/mo. Master traffic generation, lead capture, and automated conversions."
+slug: digital-product-sales-funnel-blueprint
 date: 2026-07-29T06:00:00Z
 draft: false
 tags: ["Sales Funnel", "Digital Products", "Online Business", "Marketing"]

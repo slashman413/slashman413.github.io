@@ -1,6 +1,7 @@
 ---
 title: "電子郵件行銷序列模板 — 7 天轉化漏斗"
 description: "7 天 welcome sequence 模板：如何通過自動化電子郵件引導新訂閱者成為付費客戶。"
+slug: email-sequence-templates
 noindex: true
 ---
 # 電子郵件行銷序列模板

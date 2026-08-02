@@ -1,6 +1,7 @@
 ---
 title: "Notion vs Feishu vs Obsidian: Best Task Management Tool 2026"
 description: "Comparing Notion, Feishu, and Obsidian for task management in 2026. Discover which tool fits your workflow and how to optimize it with templates."
+slug: notion-vs-feishu-vs-obsidian-best-task-management-tool-2026
 date: 2026-07-29T06:00:00Z
 draft: false
 tags: ["Task Management", "Notion", "Feishu", "Obsidian", "Productivity"]
