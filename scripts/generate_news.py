@@ -13,7 +13,7 @@ Env:
 The /news/ section is noindex + no-ads + sitemap-excluded by the theme, so this
 content does not affect the AdSense review until that guard is removed.
 """
-import os, re, sys, json, urllib.request, urllib.error, xml.etree.ElementTree as ET, pathlib, datetime
+import os, re, sys, json, time, urllib.request, urllib.error, xml.etree.ElementTree as ET, pathlib, datetime
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 FEEDS = [
@@ -91,7 +91,7 @@ def recent_titles(n=10):
     return out[-n:]
 
 
-def deepseek(prompt, key):
+def deepseek(prompt, key, retries=3):
     model = os.environ.get("DEEPSEEK_MODEL") or DEFAULT_MODEL
     body = json.dumps({
         "model": model,
@@ -102,18 +102,37 @@ def deepseek(prompt, key):
         "response_format": {"type": "json_object"},
     }).encode()
     headers = {**UA, "Content-Type": "application/json", "Authorization": f"Bearer {key}"}
-    req = urllib.request.Request(DEEPSEEK_BASE, data=body, headers=headers)
-    try:
-        with urllib.request.urlopen(req, timeout=180) as r:
-            d = json.loads(r.read())
-    except urllib.error.HTTPError as e:
-        detail = e.read().decode("utf-8", "replace")[:800]
-        raise RuntimeError(f"DeepSeek HTTP {e.code}: {detail}")
-    ch = d["choices"][0]
-    content = (ch["message"].get("content") or "").strip()
-    if not content:
-        raise RuntimeError("empty content (finish_reason=%s)" % ch.get("finish_reason"))
-    return content
+    last_err = None
+    for attempt in range(1, retries + 1):
+        req = urllib.request.Request(DEEPSEEK_BASE, data=body, headers=headers)
+        try:
+            with urllib.request.urlopen(req, timeout=180) as r:
+                d = json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            detail = e.read().decode("utf-8", "replace")[:800]
+            last_err = RuntimeError(f"DeepSeek HTTP {e.code}: {detail}")
+            # Retry only transient statuses (rate limit / server errors).
+            if e.code not in (429, 500, 502, 503, 504):
+                raise last_err
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as e:
+            last_err = RuntimeError(f"DeepSeek request failed: {e!r}")
+        else:
+            ch = d["choices"][0]
+            content = (ch["message"].get("content") or "").strip()
+            finish = ch.get("finish_reason")
+            if not content:
+                last_err = RuntimeError(f"empty content (finish_reason={finish})")
+            elif finish == "length":
+                # Truncated => the JSON object is incomplete. This is exactly the
+                # failure that broke run 30696496068 (parse_json got a '{' with no
+                # matching '}'). Retrying often returns a complete object.
+                last_err = RuntimeError("response truncated (finish_reason=length)")
+            else:
+                return content
+        if attempt < retries:
+            print(f"  DeepSeek attempt {attempt}/{retries} failed: {last_err}; retrying...", file=sys.stderr)
+            time.sleep(2 * attempt)
+    raise last_err
 
 
 def build_prompt(headlines, avoid):
@@ -139,8 +158,22 @@ def parse_json(text):
     t = text.strip()
     t = re.sub(r"^```(json)?", "", t).strip()
     t = re.sub(r"```$", "", t).strip()
+    # Fast path: a clean JSON object (the json_object response format should give
+    # us this directly).
+    try:
+        return json.loads(t)
+    except json.JSONDecodeError:
+        pass
+    # Fallback: extract the outermost {...} span. Guard against a missing '{' or
+    # '}' (start == -1, or end <= start) which previously produced an empty slice
+    # and the opaque "Expecting value: line 1 column 1" error.
     start = t.find("{")
     end = t.rfind("}")
+    if start == -1 or end <= start:
+        raise ValueError(
+            "DeepSeek response contained no complete JSON object "
+            f"(len={len(text)}): {text[:300]!r}"
+        )
     return json.loads(t[start:end + 1])
 
 
@@ -159,11 +192,26 @@ def main():
     print("Fetching headlines...")
     hl = collect_headlines()
     if not hl:
-        print("ERROR: no headlines fetched", file=sys.stderr)
-        return 1
+        # Best-effort feature: a transient feed outage must not fail the daily
+        # build + deploy. Skip today's article and stay green.
+        print("WARNING: no headlines fetched — skipping today's article.", file=sys.stderr)
+        return 0
     print(f"  got {len(hl)} headlines")
 
-    art = parse_json(deepseek(build_prompt(hl, recent_titles()), key))
+    try:
+        art = parse_json(deepseek(build_prompt(hl, recent_titles()), key))
+        for k in ("title", "description", "slug", "body_md"):
+            if not art.get(k):
+                raise ValueError(f"DeepSeek response missing required key: {k!r}")
+    except Exception as e:
+        # Article generation is best-effort. A DeepSeek outage, rate limit, or a
+        # malformed/truncated response must NOT block the Hugo build + Pages
+        # deploy — that step failing is what took down run 30696496068 (the deploy
+        # job was skipped and the site never updated). Log loudly and exit 0 so
+        # the rest of the pipeline still runs; no article gets committed today.
+        print(f"WARNING: article generation failed, skipping today's article: {e}", file=sys.stderr)
+        return 0
+
     topic = re.sub(r"[^a-z0-9-]", "", art["slug"].lower().replace(" ", "-"))[:60] or "tech-news"
     slug = f"{date}-{topic}"   # dated slug => unique URL, matches directory name
     out = ROOT / "content" / "news" / slug / "index.md"
