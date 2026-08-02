@@ -1,0 +1,32 @@
+{{ define "main" }}
+<article class="newsletter-page">
+  <h1 class="newsletter-title">{{ .Title }}</h1>
+  <p class="newsletter-desc">{{ .Params.subtitle | default "Weekly AI tools, guides & automation tips." }}</p>
+
+  <!-- Mautic subscribe form -->
+  <form action="{{ site.Params.leadEndpoint | default "https://leads.slashmantools.us/subscribe" }}" method="POST" class="newsletter-form" id="newsletter-form">
+    <input type="hidden" name="formId" value="1" />
+    <input type="hidden" name="newsletter_form" value="1" />
+    <div class="form-row">
+      <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+      <button type="submit">Subscribe</button>
+    </div>
+    <p class="form-note">No spam. Unsubscribe anytime.</p>
+  </form>
+
+  <div id="newsletter-success" style="display:none;">
+    <h2>✅ You're in!</h2>
+    <p>Check your inbox for a confirmation email.</p>
+  </div>
+
+  <div class="newsletter-preview">
+    <h3>What you'll get</h3>
+    <ul>
+      <li>🤖 <strong>AI Tools Roundups</strong> — the best new tools, hand-tested</li>
+      <li>🔧 <strong>Step-by-Step Guides</strong> — automations you can build today</li>
+      <li>💰 <strong>Productivity Tips</strong> — from a solo founder who ships alone</li>
+      <li>📊 <strong>Market Intelligence</strong> — what's moving in the AI space</li>
+    </ul>
+  </div>
+</article>
+{{ end }}

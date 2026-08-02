@@ -1,0 +1,52 @@
+{
+  "ai-prompt-library": {
+    "title": "AI Prompt 庫 - 300+ 高質量提示詞，10 倍提升你的 AI 使用效率",
+    "description": "AI Prompt 庫包含 300+ 經過實戰驗證的提示詞模板，適用於 ChatGPT、Claude、Gemini 等大語言模型。涵蓋行銷、程式開發、寫作、商業分析等場景，提高你的 AI 使用效率。",
+    "url": "https://slashmaster6.gumroad.com/l/diwoc"
+  },
+  "etf-dashboard": {
+    "title": "ETF 儀表板 - 台股 ETF 投資分析工具，即時數據與技術分析",
+    "description": "ETF 儀表板提供台灣 ETF 即時數據、技術分析、資產配置建議和回測功能。適合存股族、台股散戶和投資理財愛好者，助你做出更明智的投資決策。",
+    "url": "https://slashmaster6.gumroad.com/l/etf-dashboard"
+  },
+  "cowork-pro": {
+    "title": "Cowork Pro - AI 多智能體編排框架，從單一 Dashboard 驅動所有 AI 工作流",
+    "description": "Cowork Pro 是功能強大的多智能體 AI 編排框架，提供 MCP 服務器、Web 儀表板和自動化工具。一站式管理 Claude、Gemini、GPT 等 AI 模型，自動分派任務、監控執行、收集結果。",
+    "url": "https://slashmaster6.gumroad.com/l/xfhfps"
+  },
+  "feishu-templates": {
+    "title": "飛書模板市集 - 中文世界第一套專業的飛書/釘釘工作模板",
+    "description": "飛書模板市集包含 20+ 套專業工作模板，適用於飛書和釘釘平台。涵蓋專案管理、客戶關係、數據分析、團隊協作等場景，幫助團隊提升 300% 效率。",
+    "url": "https://slashmaster6.gumroad.com/l/xohjh"
+  },
+  "ai-course": {
+    "title": "繁體中文 AI 實戰課程 - 4 單元 17 堂，從零到進階的 AI 應用教學",
+    "description": "繁體中文 AI 實戰課程完整教學，涵蓋 4 大單元 17 堂課，從 AI 基礎概念到進階應用實作。適合完全零基礎的學習者，教你掌握 ChatGPT、Claude 等 AI 工具。",
+    "url": "https://slashmaster6.gumroad.com/l/vzalgb"
+  },
+  "ship-with-ai": {
+    "title": "Ship With AI - 4 小時課程，快速掌握 AI 自動化實作",
+    "description": "Ship With AI 是精華版實作課程，4 小時教你掌握 AI 自動化核心技術。從零開始建立第一個 AI 自動化專案，適用於所有背景和技術程度。",
+    "url": "https://slashmaster6.gumroad.com/l/mgtpcn"
+  },
+  "dgx-spark": {
+    "title": "DGX Spark Qwen 3.6 Dual-Model LLM 部署套件",
+    "description": "DGX Spark 部署套件幫你快速在 NVIDIA DGX Spark 上部署 Qwen 3.6 雙模型。包含完整設定檔、腳本、教學文件和除錯指南。",
+    "url": "https://slashmaster6.gumroad.com/l/bppdqp"
+  },
+  "saas-starter": {
+    "title": "SAAS Starter Kit - 快速建立多租戶 SaaS 應用",
+    "description": "SAAS Starter Kit 是完整的 SaaS 應用模板，包含前端、後端、資料庫、支付整合等所有必要元件。最快 1 週上架你的 SaaS 產品。",
+    "url": "https://slashmaster6.gumroad.com/l/kuvajr"
+  },
+  "ai-dev-stack": {
+    "title": "AI Developer Stack Bundle - 完整開發工具包，從開發到部署一站式",
+    "description": "AI Developer Stack Bundle 是 AI 開發者的完整工具包，包含 Prompt 庫、開發框架、部署工具和教學資源。讓你快速開發和部署 AI 應用。",
+    "url": "https://slashmaster6.gumroad.com/l/nulyms"
+  },
+  "ai-starter": {
+    "title": "AI Starter Bundle - 入門必備組合，AI 學習與實作一步到位",
+    "description": "AI Starter Bundle 是 AI 入門者的完美起點，包含 AI 基礎課程、Prompt 庫和實戰指南。從零開始，快速掌握 AI 應用。",
+    "url": "https://slashmaster6.gumroad.com/l/lapcqb"
+  }
+}
