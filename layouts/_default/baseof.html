@@ -2,6 +2,7 @@
 <html lang="en">
 {{ partial "head.html" . }}
 <body>
+<nav id="sn-nav" aria-label="Site navigation"></nav>
 <input type="checkbox" id="navtoggle" hidden>
 <div class="navbar"><a class="brand" href="/">{{ site.Title }}</a><label for="navtoggle">☰</label></div>
 <div class="layout">
@@ -14,5 +15,6 @@
   </main>
 </div>
 {{ partial "floating-subscribe.html" . }}
+<script src="/shared/unified-nav.js" defer></script>
 </body>
 </html>
