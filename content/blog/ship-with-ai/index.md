@@ -3,7 +3,7 @@ title: "Ship With AI - 4 小時課程，快速掌握 AI 自動化實作"
 description: "Ship With AI 是精華版實作課程，4 小時教你掌握 AI 自動化核心技術。從零開始建立第一個 AI 自動化專案，適用於所有背景和技術程度。"
 date: 2026-08-02
 slug: ship-with-ai
-tags: [ai, tools, productivity, saas]
+tags: [ai, automation, course, nocode, tutorial]
 product_url: "https://slashmaster6.gumroad.com/l/mgtpcn"
 product_price: "99"
 product_brand: "Slashman Tools"

@@ -1,0 +1,69 @@
+{{ define "main" }}
+{{- /* Category pillar page — hub for one topic cluster.
+       Renders (all data-driven from data/categories.yaml + data/products.yaml):
+         1. Member products (internal-link equity to on-site landing pages)
+         2. Every article in the current language whose tags intersect the category tags
+         3. Sibling category links (hub cross-linking)
+       Content frontmatter only needs: title, description, category: <slug>. */ -}}
+{{ $categorySlug := .Params.category | default (path.Base .File.Dir) }}
+{{ $category := index (where site.Data.categories "slug" $categorySlug) 0 }}
+{{ if not $category }}{{ partial "related-products.html" . }}{{ return }}{{ end }}
+
+{{- /* member products */ -}}
+{{ $products := slice }}
+{{ range $category.products }}
+  {{ $p := index (where site.Data.products "slug" .) 0 }}
+  {{ if $p }}{{ $products = $products | append $p }}{{ end }}
+{{ end }}
+
+{{- /* articles in this language whose tags intersect category tags (exclude product landing pages) */ -}}
+{{ $categoryTags := $category.tags | default slice }}
+{{ $articles := slice }}
+{{ range where site.RegularPages "Section" "blog" }}
+  {{ if and (eq .Lang $.Lang) (not .Params.product_url) }}
+    {{ $pageTags := slice }}
+    {{ range .Params.tags | default slice }}{{ $pageTags = $pageTags | append (lower .) }}{{ end }}
+    {{ if gt (len (intersect $pageTags $categoryTags)) 0 }}{{ $articles = $articles | append . }}{{ end }}
+  {{ end }}
+{{ end }}
+
+<article>
+  <h1>{{ .Title }}</h1>
+  {{ with .Params.description }}<p class="dateline">{{ . }}</p>{{ end }}
+  {{ .Content }}
+
+  {{ if $products }}
+  <h2>📦 相關工具</h2>
+  <ul style="list-style:none;padding:0;margin:0 0 24px">
+    {{ range $products }}
+    <li style="margin-bottom:10px;padding:14px 16px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px">
+      <a href="{{ .url }}" style="color:#a5b4fc;text-decoration:none;font-weight:700">{{ .title }}{{ with .price }} — ${{ . }}{{ end }}</a>
+      {{ with .buy }}<a href="{{ . }}" rel="nofollow sponsored" style="color:#7878a0;font-size:13px;margin-left:10px">購買 ↗</a>{{ end }}
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+
+  {{ if $articles }}
+  <h2>📚 相關指南</h2>
+  <ul class="postlist">
+    {{ range $articles.ByDate.Reverse }}
+    <li><a class="card" href="{{ .RelPermalink }}">
+      <div class="t">{{ .Title }}</div>
+      {{ with .Description }}<div class="d">{{ . | plainify | truncate 140 }}</div>{{ end }}
+    </a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+
+  {{ $siblings := where site.Data.categories "slug" "!=" $categorySlug }}
+  {{ if $siblings }}
+  <h2>🔗 其他主題</h2>
+  <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px">
+    {{ range $siblings }}
+    <li><a href="/categories/{{ .slug }}/" style="display:inline-block;padding:6px 14px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:20px;color:#c7c7f0;text-decoration:none;font-size:13.5px">{{ .title }}</a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</article>
+{{ end }}

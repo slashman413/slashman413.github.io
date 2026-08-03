@@ -5,13 +5,6 @@ description: "SaaS Starter 是一套可直接上線的 Next.js 16 樣板：多�
 slug: "saas-starter-kit"
 draft: false
 schema: "ProductReview"
-tags: [saas, nextjs, development, boilerplate, ai, tools]
-product_url: "https://slashmaster6.gumroad.com/l/kuvajr"
-product_price: "99"
-product_brand: "Slashman Tools"
-product_sku: "SMT-SAS"
-product_category: "Software > Developer Tools"
-product_currency: "USD"
 ---
 
 # SaaS Starter Kit 評測 2026：一個週末把多租戶 Next.js 16 SaaS 上線
@@ -55,7 +48,7 @@ product_currency: "USD"
 
 ## 為什麼現在就要多租戶
 
-2026 年，賣單租戶部署是必輸的賽局。買家期待的是共享、可即時開通的帳號模式：註冊、建立組織、邀請同事。SaaS Starter 從第一天就把這個模型寫死——事後才補多租戶是創業公司能做的最貴重構之一（我們另外寫了一篇 **[Next.js 多租戶模式](/blog/nextjs-multi-tenancy/)**）。
+2026 年，賣單租戶部署是必輸的賽局。買家期待的是共享、可即時開通的帳號模式：註冊、建立組織、邀請同事。SaaS Starter 從第一天就把這個模型寫死——事後才補多租戶是創業公司能做的最貴重構之一（搭配 [AI 代理打造 10 產品案例研究](/blog/ai-agents-digital-business-case-study/) 一起看，理解開發者產品如何快速迭代）。
 
 ### 「無聊基礎工程」的數學
 
@@ -112,6 +105,24 @@ SaaS Starter 是少見的「尊重你時間」的樣板：小到讀得完、完�
 
 ## 相關文章
 
-- [Next.js 16 升級指南](/blog/nextjs-16-upgrade-guide/) — 這套樣板所基於的框架改了些什麼。
-- [Next.js 多租戶模式](/blog/nextjs-multi-tenancy/) — 樣板組織模型背後的架構。
-- [Gumroad 賣家指南 2026](/blog/gumroad-seller-guide-2026/) — 如何上架並銷售這樣的開發者產品。
+- [AI 代理打造 10 產品案例研究](/blog/ai-agents-digital-business-case-study/) — 用 AI 打造數位產品的完整流程。
+- [自架 LLM 完整指南](/blog/self-hosting-llm-dgx-spark-complete-guide/) — 搭配本地模型的開發環境。
+- [開發者工具主題中心](/categories/developer-tools/) — 全部開發者工具指南與產品。
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "SaaS Starter Kit",
+  "image": "https://slashmantools.us/og.png",
+  "description": "生產級 Next.js 16 SaaS 樣板：多租戶、Auth.js v5、Prisma、RBAC、Stripe 收款、API 金鑰與稽核日誌。",
+  "brand": {"@type": "Brand", "name": "Slashman Tools"},
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "99.00",
+    "availability": "https://schema.org/InStock",
+    "url": "https://slashmaster6.gumroad.com/l/kuvajr?utm_source=blog&utm_medium=seo&utm_campaign=kuvajr"
+  }
+}
+</script>

@@ -3,7 +3,7 @@ title: "AI Prompt 庫 - 300+ 高質量提示詞，10 倍提升你的 AI 使用�
 description: "AI Prompt 庫包含 300+ 經過實戰驗證的提示詞模板，適用於 ChatGPT、Claude、Gemini 等大語言模型。涵蓋行銷、程式開發、寫作、商業分析等場景，提高你的 AI 使用效率。"
 date: 2026-08-02
 slug: ai-prompt-library
-tags: [ai, tools, productivity, saas]
+tags: [ai, prompts, productivity, tools, chatgpt, claude]
 product_url: "https://slashmaster6.gumroad.com/l/diwoc"
 product_price: "29"
 product_brand: "Slashman Tools"

@@ -672,6 +672,8 @@ If you're serious about building AI automation systems, start with Cowork Pro. I
 
 **Related:**
 - [Cowork Pro](/blog/cowork-pro/) — The orchestration framework
+- [Ship With AI](/blog/ship-with-ai/) — 4-hour hands-on automation course
 - [Self-Hosting LLMs](/blog/self-hosting-llm-dgx-spark-complete-guide/) — Run models locally
 - [Content Pipeline](/blog/automated-content-pipeline-cowork-pro/) — Content automation
 - [AI Content Factory](/blog/build-ai-content-factory-technical-guide/) — Content production
+- [AI Automation Topic Hub](/categories/ai-automation/) — All automation guides & tools

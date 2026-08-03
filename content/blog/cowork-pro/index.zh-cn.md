@@ -108,6 +108,24 @@ Cowork Pro 在 Gumroad 上 **$99 一次買斷**——沒有月費、沒有按席
 
 ## 相關文章
 
-- [AI Prompt Library 深度評論：花 $29 值得嗎？](/blog/ai-prompt-library-zh-tw/) — 為你編排的代理寫更好的提示詞。
-- [獨立創業者的自架 AI](/blog/self-hosted-ai-solopreneurs/) — 在 Cowork Pro 旁邊跑你自己的模型。
-- [Gumroad 賣家指南 2026](/blog/gumroad-seller-guide-2026/) — 把自動化內容變成數位產品。
+- [AI Prompt 庫](/blog/ai-prompt-library/) — 為你編排的代理寫更好的提示詞。
+- [自架 LLM 完整指南](/blog/self-hosting-llm-dgx-spark-complete-guide/) — 在 Cowork Pro 旁邊跑你自己的模型。
+- [AI 自動化主題中心](/categories/ai-automation/) — 全部自動化指南與工具。
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Cowork Pro",
+  "image": "https://slashmantools.us/og.png",
+  "description": "多代理 AI 協調框架：MCP 伺服器、派發器、大腦註冊表、工作流，以及指揮 Claude Code、AGY、Hermes 與本地模型的網頁儀表板。",
+  "brand": {"@type": "Brand", "name": "Slashman Tools"},
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "99.00",
+    "availability": "https://schema.org/InStock",
+    "url": "https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps"
+  }
+}
+</script>

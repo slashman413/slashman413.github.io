@@ -153,9 +153,11 @@ If you're serious about this, start with one product. Build it with agents. See 
 
 ---
 
-**Want to build your own agent-powered business?**
+**Ready to build your AI-powered business?**
 - [Cowork Pro](/blog/cowork-pro/) — The orchestration framework I use
 - [AI Prompt Library](/blog/ai-prompt-library/) — Start with the basics
 - [SaaS Starter Kit](/blog/saas-starter-kit/) — For the technical implementation
+- [AI Dev Stack](/blog/ai-dev-stack/) — Complete AI tech stack
+- [AI Starter](/blog/ai-starter/) — Beginner-friendly bundle
 
 *This article is based on my actual experience running Slashman Tools. All numbers are real. All agents mentioned are currently in production use.*

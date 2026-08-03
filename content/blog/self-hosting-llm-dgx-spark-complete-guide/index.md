@@ -210,6 +210,27 @@ Use a load balancer (nginx or Traefik) to route requests to the appropriate mode
 
 The payback period for DGX Spark is approximately 2-3 months of moderate API usage.
 
+## Choosing Your Runtime on the Spark
+
+The Spark's unified memory means both serving styles work well, and the right choice depends on who is consuming the model:
+
+- **vLLM (this guide's default)** — the right choice when multiple services, agents, or teammates share the model. Continuous batching keeps throughput high under concurrent load, and the OpenAI-compatible API means any existing client connects without changes.
+- **Ollama** — the right choice for interactive, single-user experimentation. One command pulls a GGUF model and serves it; the trade-off is weaker control over batching and a tendency to stall under concurrent requests.
+- **llama.cpp server** — a solid middle ground for GGUF models on unusual hardware or when you want the reference implementation.
+
+The pragmatic pattern we run: vLLM for the production model (the one agents and apps call), Ollama alongside for prototyping new models before promoting them to the production slot. Both coexist on the Spark's memory pool without conflict, because the unified architecture lets you partition VRAM per process.
+
+## Security and Access Control
+
+A model server on your network is an endpoint — treat it like one:
+
+1. **Bind to localhost or a private interface** by default. Expose to the LAN only if your use case requires it, and never to the public internet without authentication.
+2. **Put an auth proxy in front** of the OpenAI-compatible API if it is reachable beyond localhost. A reverse proxy with a token check adds one config file and closes the biggest exposure.
+3. **Set resource limits** on the service (memory, restart policy) so a runaway generation cannot take down the host.
+4. **Log requests** — payloads and response codes — so you can audit what the model was asked to do. This matters the moment the server is shared.
+
+Security here is mostly "don't expose it" plus "know what it did." Both are cheap to implement at deployment time and expensive to retrofit after an incident.
+
 ## Production Considerations
 
 ### Monitoring
@@ -289,4 +310,7 @@ For a complete setup guide with deploy scripts and systemd configs, check out ou
 
 **Related:**
 - [Cowork Pro](/blog/cowork-pro/) — Orchestrate AI agents that call your local model
-- [Self-Hosted AI for Solopreneurs](/blog/self-hosted-ai-solopreneurs/) — Full infrastructure guide
+- [Self-Hosting LLMs on DGX Spark](/blog/self-hosting-llm-dgx-spark-complete-guide/) — Full infrastructure guide
+- [DGX Spark Deployment Kit](/blog/dgx-spark-kit/) — Deploy scripts & systemd configs
+- [AI Dev Stack](/blog/ai-dev-stack/) — Complete AI tech stack
+- [Developer Tools Topic Hub](/categories/developer-tools/) — All developer tools guides

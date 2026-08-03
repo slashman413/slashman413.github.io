@@ -1,17 +1,44 @@
 {{- /*
   related-products.html — contextual "Recommended Tools" CTA.
 
-  Picks up to 3 products from data/products.yaml, preferring those whose tags
-  overlap the current page's tags (article -> product internal linking), then
-  filling with the remaining catalogue. Excludes the current product page from
-  its own list. Titles link to the ON-SITE landing page (internal link equity);
-  a separate "Get it" links to Gumroad checkout.
+  Picks up to 3 products, in priority order:
+    pass 0: products in the SAME topic cluster as the current page
+            (cluster -> product hub linking, from data/categories.yaml)
+    pass 1: products whose tags overlap the current page's tags
+            (article -> product internal linking, case-insensitive)
+    pass 2: remaining catalogue (fills the slot so the CTA never sits empty)
+  Excludes the current product page from its own list (matched by slug).
+  Titles link to the ON-SITE landing page (internal link equity); a separate
+  "Get it" links to Gumroad checkout. Products without an on-site landing page
+  (empty `url`) link the title straight to checkout — never a dead href.
 */ -}}
 {{ if .IsPage }}
 {{ $self := .Params.slug | default (path.Base .File.Dir) }}
-{{ $pageTags := .Params.tags | default slice }}
+{{ $pageTags := slice }}
+{{ range .Params.tags | default slice }}
+  {{ range (split (lower .) " ") }}{{ $pageTags = $pageTags | append . }}{{ end }}
+{{ end }}
+
+{{- /* find current page's cluster (if any) */ -}}
+{{ $selfCluster := "" }}
+{{ range site.Data.categories }}
+  {{ if and (eq $selfCluster "") (in .products $self) }}{{ $selfCluster = .slug }}{{ end }}
+{{ end }}
+{{ $selfClusterProducts := slice }}
+{{ if $selfCluster }}
+  {{ $c := index (where site.Data.categories "slug" $selfCluster) 0 }}
+  {{ $selfClusterProducts = $c.products }}
+{{ end }}
+
 {{ $chosen := slice }}
 {{ $chosenSlugs := slice }}
+{{- /* pass 0: same-cluster products */ -}}
+{{ range $selfClusterProducts }}
+  {{ $p := index (where site.Data.products "slug" .) 0 }}
+  {{ if and $p (ne $p.slug $self) (not (in $chosenSlugs $p.slug)) (lt (len $chosen) 3) }}
+    {{ $chosen = $chosen | append $p }}{{ $chosenSlugs = $chosenSlugs | append $p.slug }}
+  {{ end }}
+{{ end }}
 {{- /* pass 1: tag-matched */ -}}
 {{ range site.Data.products }}
   {{ if and (ne .slug $self) (not (in $chosenSlugs .slug)) (gt (len (intersect (.tags | default slice) $pageTags)) 0) (lt (len $chosen) 3) }}
@@ -30,7 +57,9 @@
   <ul style="list-style:none;padding:0;margin:0">
     {{ range $chosen }}
     <li style="margin-bottom:10px">
-      <a href="{{ .url }}" style="color:#a5b4fc;text-decoration:none;font-weight:600">{{ .title }}{{ with .price }} — ${{ . }}{{ end }} →</a>
+      {{ $titleHref := .url }}
+      {{ if not $titleHref }}{{ $titleHref = .buy }}{{ end }}
+      <a href="{{ $titleHref }}"{{ if not .url }} rel="nofollow sponsored"{{ end }} style="color:#a5b4fc;text-decoration:none;font-weight:600">{{ .title }}{{ with .price }} — ${{ . }}{{ end }} →</a>
       {{ with .buy }}<a href="{{ . }}" rel="nofollow sponsored" style="color:#7878a0;font-size:13px;margin-left:8px">Get it ↗</a>{{ end }}
     </li>
     {{ end }}

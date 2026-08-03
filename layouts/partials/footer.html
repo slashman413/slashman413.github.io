@@ -1,6 +1,25 @@
 <footer class="footer">
   <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/tools/">Tools</a>
 
+  {{ if site.Data.categories }}
+  <div style="margin-top:14px;font-size:12.5px">
+    <strong style="color:#8888c0">Guides:</strong>
+    {{ range site.Data.categories }}
+      <a href="/categories/{{ .slug }}/">{{ .title }}</a> ·
+    {{ end }}
+    <a href="/categories/">All Topics</a> · <a href="/content-map/">Content Map</a>
+  </div>
+  {{ end }}
+
+  {{ if site.Data.products }}
+  <div style="margin-top:8px;font-size:12.5px">
+    <strong style="color:#8888c0">Tools:</strong>
+    {{ range site.Data.products }}
+      <a href="{{ .url | default .buy }}">{{ .title }}</a> ·
+    {{ end }}
+  </div>
+  {{ end }}
+
   <!-- Footer Newsletter -->
   <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--border)">
     <p style="font-size:12.5px;color:var(--muted,#7878a0);margin-bottom:8px"><strong style="color:#c7c7f0">📬 Stay Updated</strong> — Practical AI guides, tools &amp; product tips.</p>

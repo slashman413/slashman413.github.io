@@ -1,0 +1,80 @@
+{{- /*
+  related-articles.html — contextual "Related Articles" block.
+
+  Picks up to 4 blog articles related to the current page:
+    pass 1: same topic cluster as the current page (cluster -> article hub
+            linking, from data/categories.yaml + page slug/tags)
+    pass 2: articles whose tags overlap the current page's tags
+            (case-insensitive, word-tokenized so "AI Automation" ~ "automation")
+  Excludes:
+    - the current page itself
+    - product landing pages (they get their own related-products CTA)
+  Used on BOTH product pages (recommended reads) and articles (deeper
+  interlinking), so every page gains internal links both ways.
+*/ -}}
+{{ if .IsPage }}
+{{ $self := .RelPermalink }}
+{{ $selfSlug := .Params.slug | default (path.Base .File.Dir) }}
+{{ $pageTags := slice }}
+{{ range .Params.tags | default slice }}
+  {{ range (split (lower .) " ") }}{{ $pageTags = $pageTags | append . }}{{ end }}
+{{ end }}
+
+{{- /* find current page's cluster (if any) — by product slug or tag overlap */ -}}
+{{ $selfCluster := "" }}
+{{ range site.Data.categories }}
+  {{ if and (eq $selfCluster "") (or (in .products $selfSlug) (gt (len (intersect .tags $pageTags)) 0)) }}{{ $selfCluster = .slug }}{{ end }}
+{{ end }}
+{{ $selfClusterTags := slice }}
+{{ if $selfCluster }}
+  {{ $c := index (where site.Data.categories "slug" $selfCluster) 0 }}
+  {{ $selfClusterTags = $c.tags }}
+{{ end }}
+
+{{ $chosen := slice }}
+{{ $chosenURLs := slice }}
+{{- /* pass 1: same-cluster articles */ -}}
+{{ range where site.RegularPages "Section" "blog" }}
+  {{ if and (ne .RelPermalink $self) (not .Params.product_url) (lt (len $chosen) 4) }}
+    {{ $articleTags := slice }}
+    {{ range .Params.tags | default slice }}{{ range (split (lower .) " ") }}{{ $articleTags = $articleTags | append . }}{{ end }}{{ end }}
+    {{ if gt (len (intersect $articleTags $selfClusterTags)) 0 }}
+      {{ $chosen = $chosen | append . }}
+      {{ $chosenURLs = $chosenURLs | append .RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{- /* pass 2: tag-overlap articles */ -}}
+{{ $candidates := slice }}
+{{ range where site.RegularPages "Section" "blog" }}
+  {{ if and (ne .RelPermalink $self) (not .Params.product_url) (not (in $chosenURLs .RelPermalink)) }}
+    {{ $overlap := 0 }}
+    {{ range .Params.tags | default slice }}
+      {{ range (split (lower .) " ") }}
+        {{ if in $pageTags . }}{{ $overlap = add $overlap 1 }}{{ end }}
+      {{ end }}
+    {{ end }}
+    {{ if gt $overlap 0 }}{{ $candidates = $candidates | append (dict "page" . "overlap" $overlap) }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ $sorted := sort $candidates "overlap" "desc" }}
+{{ range $sorted }}
+  {{ if lt (len $chosen) 4 }}
+    {{ $chosen = $chosen | append .page }}
+    {{ $chosenURLs = $chosenURLs | append .page.RelPermalink }}
+  {{ end }}
+{{ end }}
+{{ if $chosen }}
+<div style="margin-top:32px;padding:20px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px">
+  <h3 style="color:#c7c7f0;margin-bottom:12px;font-size:16px">📚 Related Articles</h3>
+  <ul style="list-style:none;padding:0;margin:0">
+    {{ range $chosen }}
+    <li style="margin-bottom:10px">
+      <a href="{{ .RelPermalink }}" style="color:#a5b4fc;text-decoration:none;font-weight:600">{{ .Title }}</a>
+      {{ with .Description }}<div style="color:#7878a0;font-size:13px;margin-top:2px;line-height:1.5">{{ . | plainify | truncate 110 }}</div>{{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}
+{{ end }}

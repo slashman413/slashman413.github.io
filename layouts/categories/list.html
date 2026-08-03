@@ -1,0 +1,12 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ with .Content }}<div class="dateline"></div>{{ . }}{{ end }}
+<ul class="postlist">
+  {{ range where .Pages "Params.category" "!=" nil }}
+  <li><a class="card" href="{{ .RelPermalink }}">
+    <div class="t">{{ .Title }}</div>
+    {{ with .Params.description }}<div class="d">{{ . | plainify | truncate 140 }}</div>{{ end }}
+  </a></li>
+  {{ end }}
+</ul>
+{{ end }}

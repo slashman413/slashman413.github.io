@@ -3,7 +3,7 @@ title: "ETF 儀表板 - 台股 ETF 投資分析工具，即時數據與技術分
 description: "ETF 儀表板提供台灣 ETF 即時數據、技術分析、資產配置建議和回測功能。適合存股族、台股散戶和投資理財愛好者，助你做出更明智的投資決策。"
 date: 2026-08-02
 slug: etf-dashboard
-tags: [ai, tools, productivity, saas]
+tags: [etf, investing, finance, taiwan, stocks, dashboard]
 product_url: "https://slashmaster6.gumroad.com/l/etf-dashboard"
 product_price: "199"
 product_brand: "Slashman Tools"

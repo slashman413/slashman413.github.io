@@ -2,7 +2,7 @@
    Slashman Tools — Unified Cross-Tool Navigation Bar
    ============================================================================
    File    : unified-nav.css
-   Version : 1.0.0 (brand strategy Phase 1, 2026-08-02)
+   Version : 1.1.0 (2026-08-03: Guides dropdown styles)
    Author  : ArchitectUX (@slashman413 design division)
 
    Drop-in nav styles. Every rule is scoped under .sn-nav / .sn-* so it can be
@@ -131,6 +131,47 @@
   box-shadow: inset 0 -2px 0 var(--sn-primary);
 }
 
+/* --- Guides dropdown (items with `children`) --- */
+.sn-dd-wrap { position: relative; }
+.sn-dd-wrap > .sn-link::after {
+  content: "▾";
+  margin-left: 5px;
+  font-size: 10.5px;
+  opacity: 0.65;
+}
+.sn-dd {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding-top: 8px;            /* hover bridge — keeps the menu open while moving the mouse */
+  z-index: 1001;
+}
+.sn-dd-inner {
+  min-width: 224px;
+  background: var(--sn-surface);
+  border: 1px solid var(--sn-border-strong);
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+}
+.sn-dd-wrap:hover .sn-dd,
+.sn-dd-wrap:focus-within .sn-dd { display: block; }
+.sn-dd .sn-link {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  font-size: 14px;
+}
+.sn-dd .sn-link:hover { background: rgba(99, 102, 241, 0.12); }
+.sn-dd .sn-link.sn-active {
+  background: rgba(99, 102, 241, 0.18);
+  color: var(--sn-accent);
+  box-shadow: none;
+}
+[data-theme="light"] .sn-dd-inner { box-shadow: 0 14px 36px rgba(15, 17, 32, 0.18); }
+
 /* --- Right-side actions --- */
 .sn-actions {
   display: flex;
@@ -232,6 +273,17 @@
 .sn-nav[data-open="true"] .sn-panel { display: flex; }
 .sn-panel .sn-link { padding: 12px 10px; font-size: 15px; border-bottom: 1px solid var(--sn-border); border-radius: 8px; }
 .sn-panel .sn-link:last-of-type { border-bottom: none; }
+/* mobile panel: dropdown children inline, indented under the parent */
+.sn-panel .sn-dd { display: block; position: static; padding-top: 0; }
+.sn-panel .sn-dd-inner {
+  min-width: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0 0 0 14px;
+}
+.sn-panel .sn-dd-wrap > .sn-link::after { content: none; }
 .sn-panel-row {
   display: flex;
   align-items: center;

@@ -1,29 +1,28 @@
 ---
-title: "飛書模板市集 - 中文世界第一套專業的飛書/釘釘工作模板"
-description: "飛書模板市集包含 20+ 套專業工作模板，適用於飛書和釘釘平台。涵蓋專案管理、客戶關係、數據分析、團隊協作等場景，幫助團隊提升 300% 效率。"
+title: "飛書模板市集 - 團隊效率提升 300% 的管理模板套裝"
+description: "飛書模板市集提供企業級管理模板，涵蓋專案管理、OKR、會議紀要、客戶管理等場景。立即導入，讓團隊效率提升 300%。"
 date: 2026-08-02
 slug: feishu-templates
-tags: [ai, tools, productivity, saas]
-product_price: 49
-product_currency: "USD"
+tags: [templates, productivity, feishu, notion, project-management, teams]
 product_url: "https://slashmaster6.gumroad.com/l/xohjh"
+product_price: "49"
 product_brand: "Slashman Tools"
-product_sku: "SMT-FSH"
-product_category: "Software > Productivity"
+product_sku: "SMT-FT"
+product_category: "Software > Templates"
+product_currency: "USD"
 ---
 
 <div class="product-landing">
-  <h1>飛書模板市集 - 中文世界第一套專業的飛書/釘釘工作模板</h1>
-  <p class="lead">飛書模板市集包含 20+ 套專業工作模板，適用於飛書和釘釘平台。涵蓋專案管理、客戶關係、數據分析、團隊協作等場景，幫助團隊提升 300% 效率。</p>
+  <h1>飛書模板市集 - 團隊效率提升 300% 的管理模板套裝</h1>
+  <p class="lead">飛書模板市集提供企業級管理模板套裝，涵蓋專案管理、OKR、會議紀要、客戶管理等 20+ 場景。導入即用，省下數百小時的建置時間。</p>
   
   <div class="product-card">
     <ul class="features">
-      <li>20+ 套專業工作模板</li>
-<li>適用於飛書和釘釘平台</li>
-<li>涵蓋專案管理、CRM、數據分析等場景</li>
-<li>即拷即用，無需設定</li>
-<li>持續更新新模板</li>
-<li>附帶使用教學</li>
+      <li>20+ 企業級管理模板</li>
+<li>涵蓋專案管理、OKR、會議紀要、客戶管理</li>
+<li>與飛書原生整合，零學習成本</li>
+<li>團隊協作流程最佳化</li>
+<li>持續更新，一次購買終身使用</li>
     </ul>
     <a href="https://slashmaster6.gumroad.com/l/xohjh" target="_blank" rel="noopener" class="cta-button">
       立即購買 $49 →
@@ -33,26 +32,23 @@ product_category: "Software > Productivity"
   
 ## 為什麼需要飛書模板？
 
-飛書和釘釘是台灣和中國企業最流行的協作平台。我們的模板提供：
+團隊管理最大的時間成本在於「從零開始建流程」。飛書模板市集提供：
 
-- **即拷即用** - 無需技術背景，複製即用
-- **專業設計** - 由資深 PM 精心設計
-- **全面覆蓋** - 涵蓋各種工作場景
-- **持續更新** - 根據反饋持續優化
+- **專案管理** - 任務看板、進度追蹤、里程碑管理
+- **OKR 管理** - 目標設定、關鍵結果追蹤、週期回顧
+- **會議紀要** - 會議記錄、待辦分派、決策追蹤
+- **客戶管理** - CRM 流程、跟進提醒、成交分析
 
 ## 適用對象
 
-- 使用飛書或釘釘的團隊和企業
-- 專案經理和團隊領導
-- 想提升團隊效率的業務人員
-- 需要標準化工作流程的組織
+- 使用飛書協作的團隊
+- 想要系統化管理的創業公司
+- 專案經理和團隊主管
+- 想要提升協作效率的任何人
 
-## 功能亮點
+## 與其他工具搭配
 
-- 20+ 套精心設計的模板
-- 適用於各種工作場景
-- 即時更新最新模板
-- 完整的教學文件
+飛書模板與 [AI Prompt 庫](/blog/ai-prompt-library/) 搭配使用，可以讓 AI 自動生成會議紀要、專案報告和客戶回覆，進一步提升團隊效率。
 
 </div>
 
@@ -68,4 +64,3 @@ product_category: "Software > Productivity"
 .cta-button:hover { background: #6366f1; color: #fff; text-decoration: none; }
 h2 { color: var(--accent); margin-top: 2rem; }
 </style>
-

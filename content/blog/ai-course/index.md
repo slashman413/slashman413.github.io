@@ -3,7 +3,7 @@ title: "繁體中文 AI 實戰課程 - 4 單元 17 堂，從零到進階的 AI �
 description: "繁體中文 AI 實戰課程完整教學，涵蓋 4 大單元 17 堂課，從 AI 基礎概念到進階應用實作。適合完全零基礎的學習者，教你掌握 ChatGPT、Claude 等 AI 工具。"
 date: 2026-08-02
 slug: ai-course
-tags: [ai, tools, productivity, saas]
+tags: [ai, course, learning, tutorial, beginners]
 product_url: "https://slashmaster6.gumroad.com/l/vzalgb"
 product_brand: "Slashman Tools"
 product_sku: "SMT-AIC"

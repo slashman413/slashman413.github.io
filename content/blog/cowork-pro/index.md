@@ -3,7 +3,7 @@ title: "Cowork Pro - AI 多智能體編排框架，從單一 Dashboard 驅動所
 description: "Cowork Pro 是功能強大的多智能體 AI 編排框架，提供 MCP 服務器、Web 儀表板和自動化工具。一站式管理 Claude、Gemini、GPT 等 AI 模型，自動分派任務、監控執行、收集結果。"
 date: 2026-08-02
 slug: cowork-pro
-tags: [ai, tools, productivity, saas]
+tags: [ai, agents, automation, orchestration, mcp, saas]
 product_url: "https://slashmaster6.gumroad.com/l/xfhfps"
 product_price: "99"
 product_brand: "Slashman Tools"

@@ -1,29 +1,29 @@
 ---
-title: "AI Starter Bundle - 入門必備組合，AI 學習與實作一步到位"
-description: "AI Starter Bundle 是 AI 入門者的完美起點，包含 AI 基礎課程、Prompt 庫和實戰指南。從零開始，快速掌握 AI 應用。"
+title: "AI 入門組合 - 提示詞庫 + 教學課程，一次打包的 AI 學習套裝"
+description: "AI 入門組合整合 AI Prompt 庫與基礎教學，從提示詞到實作一次到位。最適合 AI 新手的最佳起點，快速建立 AI 使用能力。"
 date: 2026-08-02
 slug: ai-starter
-tags: [ai, tools, productivity, saas]
-product_price: 149
-product_currency: "USD"
+tags: [ai, bundle, beginners, prompts, learning]
 product_url: "https://slashmaster6.gumroad.com/l/lapcqb"
+product_price: "149"
 product_brand: "Slashman Tools"
-product_sku: "SMT-AIS"
-product_category: "Online Course"
+product_sku: "SMT-AST"
+product_category: "Software > AI Tools"
+product_currency: "USD"
 ---
 
 <div class="product-landing">
-  <h1>AI Starter Bundle - 入門必備組合，AI 學習與實作一步到位</h1>
-  <p class="lead">AI Starter Bundle 是 AI 入門者的完美起點，包含 AI 基礎課程、Prompt 庫和實戰指南。從零開始，快速掌握 AI 應用。</p>
+  <h1>AI 入門組合 - 提示詞庫 + 教學課程，一次打包的 AI 學習套裝</h1>
+  <p class="lead">AI 入門組合是為 AI 新手設計的完整學習套裝：高品質提示詞庫 + 系統化教學內容，從零開始建立 AI 使用能力，少走彎路。</p>
   
   <div class="product-card">
     <ul class="features">
-      <li>AI 基礎課程入門</li>
-<li>Prompt 庫（100+ 提示詞）</li>
-<li>實戰操作指南</li>
-<li>常見問題解答</li>
-<li>社群支援</li>
-<li>終身存取</li>
+      <li>精選高品質 AI 提示詞庫</li>
+<li>系統化的 AI 基礎教學</li>
+<li>涵蓋 ChatGPT、Claude、Gemini 等主流工具</li>
+<li>實作練習與應用案例</li>
+<li>從入門到進階的學習路徑</li>
+<li>一次購買，永久使用</li>
     </ul>
     <a href="https://slashmaster6.gumroad.com/l/lapcqb" target="_blank" rel="noopener" class="cta-button">
       立即購買 $149 →
@@ -31,29 +31,25 @@ product_category: "Online Course"
   </div>
   
   
-## AI 入门需要哪些？
+## 為什麼需要 AI 入門組合？
 
-剛接觸 AI 的人最需要的是：
+大多數 AI 新手最大的痛點是「不知道從哪裡開始」。AI 入門組合提供：
 
-- **正確基礎** - 避免錯誤的學習方法
-- **實戰技巧** - 不是理論，是可以用的技能
-- **完整工具** - 一次準備好所有需要的
-- **社群支持** - 有人可以問問題
+- **提示詞庫** - 300+ 實戰驗證的提示詞模板，立即上手
+- **系統教學** - 從 AI 原理到實作的完整學習路徑
+- **應用案例** - 行銷、寫作、程式開發等真實場景
+- **持續更新** - 跟上 AI 工具的最新發展
 
-## 套裝內容
-
-- AI 基礎課程（10 堂課）
-- Prompt 庫（100+ 提示詞）
-- 實戰操作指南
-- 常見問題集
-- 社群社群權限
-
-## 適用對象
+## 適合誰？
 
 - 完全零基礎的 AI 新手
-- 想系統化學習 AI 的從業者
-- 小企业主探索 AI 應用
-- 學生和教師
+- 想快速建立 AI 能力的職場人士
+- 想用 AI 提升工作效率的任何人
+- 尋找學習資源的學生和自學者
+
+## 與其他產品搭配
+
+想更進一步，可以搭配 [AI Prompt 庫](/blog/ai-prompt-library/) 深入提示詞工程，或參加 [繁體中文 AI 實戰課程](/blog/ai-course/) 學習完整實作。
 
 </div>
 
@@ -69,4 +65,3 @@ product_category: "Online Course"
 .cta-button:hover { background: #6366f1; color: #fff; text-decoration: none; }
 h2 { color: var(--accent); margin-top: 2rem; }
 </style>
-

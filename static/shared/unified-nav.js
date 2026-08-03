@@ -2,7 +2,7 @@
    Slashman Tools — Unified Cross-Tool Navigation Bar (engine)
    ============================================================================
    File    : unified-nav.js
-   Version : 1.0.0 (brand strategy Phase 1, 2026-08-02)
+   Version : 1.1.0 (2026-08-03: add Guides dropdown — 4 content pillars + content map)
    Author  : ArchitectUX (@slashman413 design division)
    License : MIT
 
@@ -48,7 +48,19 @@
       { href: "/tw-etf-dashboard/dashboard.html", key: "stocks",    label: { en: "TW Stocks",     "zh-Hant": "台股分析",   "zh-Hans": "台股分析" } },
       { href: "/global-events-tracker/",          key: "global",    label: { en: "Global",        "zh-Hant": "全球追蹤",   "zh-Hans": "全球追踪" } },
       { href: "/blog/",                           key: "blog",      label: { en: "Blog",          "zh-Hant": "部落格",     "zh-Hans": "博客" } },
-      { href: "/services/",                       key: "services",  label: { en: "Services",      "zh-Hant": "接案服務",   "zh-Hans": "接案服务" } }
+      { href: "/services/",                       key: "services",  label: { en: "Services",      "zh-Hant": "接案服務",   "zh-Hans": "接案服务" } },
+      {
+        href: "/categories/",
+        key: "guides",
+        label: { en: "Guides", "zh-Hant": "指南", "zh-Hans": "指南" },
+        children: [
+          { href: "/categories/ai-automation/",  key: "ai-automation",  label: { en: "AI Automation", "zh-Hant": "AI 自動化", "zh-Hans": "AI 自动化" } },
+          { href: "/categories/investment/",     key: "investment",     label: { en: "Investment",    "zh-Hant": "投資",       "zh-Hans": "投资" } },
+          { href: "/categories/developer-tools/", key: "developer-tools", label: { en: "Developer Tools", "zh-Hant": "開發者工具", "zh-Hans": "开发者工具" } },
+          { href: "/categories/productivity/",   key: "productivity",   label: { en: "Productivity",  "zh-Hant": "生產力",     "zh-Hans": "生产力" } },
+          { href: "/content-map/",               key: "content-map",    label: { en: "Content Map",   "zh-Hant": "內容地圖",   "zh-Hans": "内容地图" } }
+        ]
+      }
     ],
     langOptions: [
       { code: "en",      label: "EN" },
@@ -122,11 +134,26 @@
   /* ------------------------------------------------------------------ */
   /*  Render                                                            */
   /* ------------------------------------------------------------------ */
-  function render() {
-    var links = CONFIG.links.map(function (l) {
-      return '<a class="sn-link" data-key="' + esc(l.key) + '" href="' + esc(l.href) + '">'
+  /* Renders one link item. Items with `children` become a dropdown
+     (desktop: hover/focus reveals; mobile panel: children inlined). */
+  function renderLinks(panel) {
+    return CONFIG.links.map(function (l) {
+      var html = '<a class="sn-link" data-key="' + esc(l.key) + '" href="' + esc(l.href) + '">'
         + esc(tr(l.label)) + "</a>";
+      var kids = l.children || [];
+      if (!kids.length) return html;
+      var kidsHtml = kids.map(function (c) {
+        return '<a class="sn-link sn-link--child" data-key="' + esc(c.key) + '" href="' + esc(c.href) + '">'
+          + esc(tr(c.label)) + "</a>";
+      }).join("");
+      return '<div class="sn-dd-wrap">' + html +
+        '<div class="sn-dd"><div class="sn-dd-inner">' + kidsHtml + "</div></div></div>";
     }).join("");
+  }
+
+  function render() {
+    var links = renderLinks(false);
+    var panelLinks = renderLinks(true);
 
     var langBtns = CONFIG.langOptions.map(function (o) {
       return '<button type="button" class="sn-lang-btn" data-lang="' + esc(o.code)
@@ -151,7 +178,7 @@
           "</div>" +
         "</div>" +
         '<div class="sn-panel">' +
-          links +
+          panelLinks +
           '<div class="sn-panel-row">' +
             '<div class="sn-lang" role="group" aria-label="Language">' + langBtns + "</div>" +
             '<a class="sn-kofi" href="' + esc(CONFIG.kofi.url) + '" target="_blank" rel="noopener">☕ <span>'
@@ -192,11 +219,17 @@
   /*  Language                                                           */
   /* ------------------------------------------------------------------ */
   function applyLang() {
+    /* flat key -> config map covering top-level links AND dropdown children */
+    var cfgByKey = {};
+    CONFIG.links.forEach(function (l) {
+      cfgByKey[l.key] = l;
+      (l.children || []).forEach(function (c) { cfgByKey[c.key] = c; });
+    });
     host.querySelectorAll(".sn-brand__text").forEach(function (el) {
       el.textContent = tr(CONFIG.brand);
     });
     host.querySelectorAll(".sn-link").forEach(function (el) {
-      var cfg = CONFIG.links.find(function (l) { return l.key === el.getAttribute("data-key"); });
+      var cfg = cfgByKey[el.getAttribute("data-key")];
       if (cfg) el.textContent = tr(cfg.label);
     });
     host.querySelectorAll(".sn-kofi span").forEach(function (el) {
@@ -261,11 +294,23 @@
   /* ------------------------------------------------------------------ */
   function markActive() {
     var path = location.pathname || "/";
+    function isActive(href) {
+      return (href === "/" && path === "/") ||
+        (href !== "/" && path.indexOf(href) === 0);
+    }
     CONFIG.links.forEach(function (l) {
-      var active = (l.href === "/" && path === "/") ||
-        (l.href !== "/" && path.indexOf(l.href) === 0);
+      var kids = l.children || [];
+      var active = isActive(l.href);
+      if (!active) {
+        kids.forEach(function (c) { if (isActive(c.href)) active = true; });
+      }
       host.querySelectorAll('.sn-link[data-key="' + l.key + '"]').forEach(function (el) {
         el.classList.toggle("sn-active", active);
+      });
+      kids.forEach(function (c) {
+        host.querySelectorAll('.sn-link[data-key="' + c.key + '"]').forEach(function (el) {
+          el.classList.toggle("sn-active", isActive(c.href));
+        });
       });
     });
   }

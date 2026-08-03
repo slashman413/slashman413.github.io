@@ -1,0 +1,42 @@
+# Topic Cluster registry — single source of truth for the site's hub-and-spoke
+# architecture. Each cluster = one Pillar page (/categories/<slug>/) that hubs
+# its member products (data/products.yaml) and every article tagged with the
+# cluster's topic tags.
+#
+# The category layout (layouts/categories/single.html) renders:
+#   - member products (internal link equity → on-site landing pages)
+#   - every article in the current language whose tags intersect `tags`
+#   - sibling category links (hub cross-linking)
+#
+# `tags` are lowercase. Article tags are matched case-insensitively, so an en
+# article tagged "AI Automation" matches `automation` below.
+#
+# Four pillars (per content-architecture brief):
+#   1. AI Automation    → Cowork Pro, AI tools guides, automation series
+#   2. Investment       → ETF Dashboard, investing guides
+#   3. Developer Tools  → SaaS Starter, DGX Spark, developer tooling
+#   4. Productivity     → AI Prompt Library, productivity guides
+
+- slug: ai-automation
+  title: "AI Automation"
+  description: "Automate your business with AI agents, multi-agent orchestration, and no-code pipelines. From solo founders to full content factories."
+  products: [cowork-pro, ship-with-ai, ai-course]
+  tags: [ai, automation, agents, workflow, orchestration, mcp, cowpro, business, case-study, solopreneur, nocode, chatbot]
+
+- slug: investment
+  title: "Investment"
+  description: "Data-driven investing: ETF strategy, automated dashboards, backtesting, and portfolio tracking."
+  products: [etf-dashboard]
+  tags: [investment, etf, finance, stocks, dashboard, backtesting, taiwan, portfolio]
+
+- slug: developer-tools
+  title: "Developer Tools"
+  description: "Ship software faster: SaaS boilerplates, local LLM deployment, GPU workstations, and AI development stacks."
+  products: [saas-starter-kit, dgx-spark-kit, ai-dev-stack]
+  tags: [llm, deployment, self-hosting, dgx, vllm, gpu, saas, nextjs, development, boilerplate, nvidia, qwen, code]
+
+- slug: productivity
+  title: "Productivity"
+  description: "Work smarter with AI: prompt libraries, writing workflows, team templates, and repeatable productivity systems."
+  products: [ai-prompt-library, ai-starter, feishu-templates]
+  tags: [prompts, prompt, content, writing, templates, productivity, content-factory, marketing, seo]

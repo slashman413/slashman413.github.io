@@ -265,6 +265,17 @@ Let's go through a complete example:
 | FAQ pages | Terrible | Remove |
 | Listicles without depth | Poor | Remove |
 
+### Editorial Standards That Survive Scale
+
+The factory's quality bar has to be a written standard, not a vibe — because at 200 articles a month, no human can re-review every word. Our editorial standard has four checks, applied automatically before anything ships:
+
+1. **Depth floor** — no article ships under 1,500 words unless it is a genuinely short reference. Thin content is the fast path to "why is my traffic flat."
+2. **The uniqueness gate** — every piece must contain at least one element that cannot be machine-copied: real numbers from our own operation, a worked example, or a decision log. Generic rewrites of generic sources fail the gate.
+3. **The citation rule** — claims about products, prices, or results link to a primary source on this site. Unsupported claims are the #1 AdSense and E-E-A-T killer.
+4. **The cluster check** — before publishing, the article's primary keyword is checked against the hub map: if another page owns it, the article is retitled or merged. No cannibalization, ever.
+
+These four checks are what let the factory scale without the quality cliff — and they are the same standards that turned this site's content from a liability into the architecture documented in the [content cluster guide](/blog/automated-content-pipeline-cowork-pro/). Enforce them in the pipeline itself (as automated gates in the workflow definition) rather than in review, and the factory keeps its quality at any volume — because the gates, not the reviewers, are the bottleneck that never gets tired.
+
 ## Key Lessons
 
 ### 1. Quality > Quantity
@@ -323,5 +334,7 @@ Cowork Pro handles the routing automatically through its brain registry and disp
 
 **Related:**
 - [Cowork Pro](/blog/cowork-pro/) — Orchestrate your content factory
+- [AI Prompt Library](/blog/ai-prompt-library/) — 300+ prompts for content production
 - [Self-Hosting LLMs on DGX Spark](/blog/self-hosting-llm-dgx-spark-complete-guide/) — Run models locally
 - [Automated Content Pipeline](/blog/automated-content-pipeline-cowork-pro/) — Step-by-step guide
+- [Productivity Topic Hub](/categories/productivity/) — All productivity guides & tools

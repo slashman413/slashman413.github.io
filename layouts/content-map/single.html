@@ -1,0 +1,75 @@
+{{ define "main" }}
+{{- /* Content map — data-driven site index (data/categories.yaml + data/products.yaml).
+       Renders per-pillar product + article lists and a full article index table. */ -}}
+{{ $cats := site.Data.categories }}
+{{ $articles := where site.RegularPages "Section" "blog" }}
+{{ $deepGuides := where $articles "Params.product_url" "==" nil }}
+
+<article>
+  <h1>{{ .Title }}</h1>
+  {{ with .Params.description }}<p class="dateline">{{ . }}</p>{{ end }}
+  {{ .Content }}
+
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 28px">
+    <span style="padding:6px 14px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:20px;font-size:13px;color:#c7c7f0">{{ len $cats }} topic pillars</span>
+    <span style="padding:6px 14px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:20px;font-size:13px;color:#c7c7f0">{{ len $deepGuides }} in-depth guides</span>
+    <span style="padding:6px 14px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:20px;font-size:13px;color:#c7c7f0">{{ len site.Data.products }} tools</span>
+  </div>
+
+  {{ range $cats }}
+  {{ $catSlug := .slug }}
+  {{ $catProducts := slice }}
+  {{ range .products }}
+    {{ $p := index (where site.Data.products "slug" .) 0 }}
+    {{ if $p }}{{ $catProducts = $catProducts | append $p }}{{ end }}
+  {{ end }}
+  {{ $catTags := .tags | default slice }}
+  {{ $catArticles := slice }}
+  {{ range where $articles "Params.product_url" "==" nil }}
+    {{ $pageTags := slice }}
+    {{ range .Params.tags | default slice }}{{ $pageTags = $pageTags | append (lower .) }}{{ end }}
+    {{ if gt (len (intersect $pageTags $catTags)) 0 }}{{ $catArticles = $catArticles | append . }}{{ end }}
+  {{ end }}
+
+  <section style="margin-bottom:32px;padding:20px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px">
+    <h2 style="margin:0 0 4px"><a href="/categories/{{ $catSlug }}/" style="color:#a5b4fc;text-decoration:none">{{ .title }} →</a></h2>
+    <p style="margin:0 0 12px;font-size:13.5px;color:var(--muted,#7878a0)">{{ .description }}</p>
+    <div style="font-size:13px;margin-bottom:8px">
+      <strong style="color:#c7c7f0">Guides ({{ len $catArticles }}):</strong>
+      <ul style="margin:6px 0 0;padding-left:18px">
+        {{ range $catArticles }}
+        <li style="margin-bottom:4px"><a href="{{ .RelPermalink }}" style="color:#a5b4fc;text-decoration:none">{{ .Title }}</a> <span style="color:#7878a0">(~{{ .WordCount }} words · {{ .ReadingTime }} min)</span></li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ if $catProducts }}
+    <div style="font-size:13px">
+      <strong style="color:#c7c7f0">Tools:</strong>
+      {{ range $catProducts }}<a href="{{ .url | default .buy }}" style="color:#a5b4fc;text-decoration:none;margin-left:6px">{{ .title }}{{ with .price }} (${{ . }}){{ end }}</a> · {{ end }}
+    </div>
+    {{ end }}
+  </section>
+  {{ end }}
+
+  <h2>Full Article Index</h2>
+  <p style="font-size:13.5px;color:var(--muted,#7878a0)">Every in-depth guide on the site, newest first.</p>
+  <table style="width:100%;border-collapse:collapse;font-size:13.5px">
+    <thead>
+      <tr style="text-align:left;color:#c7c7f0;border-bottom:1px solid var(--border)">
+        <th style="padding:8px">Article</th>
+        <th style="padding:8px">Words</th>
+        <th style="padding:8px">Read</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $deepGuides.ByDate.Reverse }}
+      <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+        <td style="padding:8px"><a href="{{ .RelPermalink }}" style="color:#a5b4fc;text-decoration:none">{{ .Title }}</a></td>
+        <td style="padding:8px;color:var(--muted,#7878a0)">{{ .WordCount }}</td>
+        <td style="padding:8px;color:var(--muted,#7878a0)">{{ .ReadingTime }} min</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+</article>
+{{ end }}

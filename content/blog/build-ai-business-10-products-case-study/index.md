@@ -364,3 +364,5 @@ Don't try to build everything at once. Build one thing that works, then use the 
 - [Cowork Pro](/blog/cowork-pro/) — The orchestration framework
 - [AI Prompt Library](/blog/ai-prompt-library/) — Start with the basics
 - [SaaS Starter Kit](/blog/saas-starter-kit/) — Build your product platform
+- [AI Dev Stack](/blog/ai-dev-stack/) — Complete AI tech stack for builders
+- [AI Starter](/blog/ai-starter/) — Beginner bundle: prompts + course

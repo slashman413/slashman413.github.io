@@ -362,4 +362,6 @@ The key insight: automation doesn't replace human judgment. It amplifies it. You
 
 **Related:**
 - [Cowork Pro](/blog/cowork-pro/) — The orchestration framework powering this pipeline
+- [AI Prompt Library](/blog/ai-prompt-library/) — Prompts that drive the content engine
 - [Self-Hosting LLMs on DGX Spark](/blog/self-hosting-llm-dgx-spark-complete-guide/) — Run your models locally
+- [Productivity Topic Hub](/categories/productivity/) — All productivity guides & tools

@@ -185,6 +185,17 @@ class RebalanceStrategy(bt.Strategy):
 | Beta | Correlation to market | Market sensitivity |
 | Sortino Ratio | (Return - Rf) / Downside Dev | Downside risk-adjusted return |
 
+### The Monitoring Cadence
+
+Metrics are only useful if you look at them on a schedule. The cadence that works for individual investors:
+
+1. **Daily (automated)** — data ingestion and drift calculation run on their own; no human action needed.
+2. **Weekly (10 minutes)** — review the dashboard: alerts, drift, dividends, one decision logged.
+3. **Quarterly (30 minutes)** — execute the rebalancing rule, review satellite theses, record the outcome.
+4. **Annually (1 hour)** — full strategy review: did each holding earn its risk? Are the funds still the cheapest way to hold their markets? Update the written investment policy.
+
+The discipline that makes the cadence stick is that daily and weekly work are *automated or templated* — the human only shows up for decisions. That is the whole point of building the dashboard in the first place: the system monitors, you decide.
+
 ## AI-Assisted Investment Decisions
 
 This is where it gets interesting. AI can enhance your investment process by:
@@ -351,4 +362,5 @@ For a complete implementation, check out our [ETF Dashboard](/blog/etf-dashboard
 **Related:**
 - [ETF Dashboard](/blog/etf-dashboard/) — Our automated investment dashboard
 - [AI Prompt Library](/blog/ai-prompt-library/) — Prompts for investment analysis
+- [Investment Topic Hub](/categories/investment/) — All investing guides & tools
 - [Cowork Pro](/blog/cowork-pro/) — Automate investment workflows

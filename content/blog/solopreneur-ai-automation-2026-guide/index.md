@@ -252,5 +252,7 @@ If you can do these four things, you don't need a team. You need a good prompt a
 
 **Related:**
 - [Cowork Pro](/blog/cowork-pro/) — Your AI agent orchestrator
+- [Ship With AI](/blog/ship-with-ai/) — Learn automation hands-on in 4 hours
 - [AI-Powered Content Factory](/blog/build-ai-content-factory-technical-guide/) — Content automation
 - [Build an Automated Content Pipeline](/blog/automated-content-pipeline-cowork-pro/) — Step-by-step guide
+- [AI Automation Topic Hub](/categories/ai-automation/) — All automation guides & tools

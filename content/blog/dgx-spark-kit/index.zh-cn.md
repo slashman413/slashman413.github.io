@@ -5,13 +5,6 @@ description: "DGX Spark 部署套件把 NVIDIA GB10 變成雙模型 vLLM 伺服�
 slug: "dgx-spark-kit"
 draft: false
 schema: "ProductReview"
-tags: [ai, llm, deployment, nvidia, gpu, self-hosting]
-product_url: "https://slashmaster6.gumroad.com/l/bppdqp"
-product_price: "99"
-product_brand: "Slashman Tools"
-product_sku: "SMT-DGX"
-product_category: "Software > Developer Tools"
-product_currency: "USD"
 ---
 
 # DGX Spark 部署套件評測 2026：在 GB10 上穩定跑兩個 vLLM 模型
@@ -104,5 +97,23 @@ DGX Spark 是對的硬體；原廠軟體堆疊只是沒有誠實告訴你它的�
 ## 相關文章
 
 - [Cowork Pro 評測](/blog/cowork-pro/) — 編排跑在 Spark 上的那些代理。
-- [獨立創業者的自架 AI](/blog/self-hosted-ai-solopreneurs/) — 自己跑模型的大局觀。
-- [數位產品創業者的 AI 工具](/blog/ai-tools-for-digital-product-creators-guide/) — 讓本地模型真正派上用場。
+- [自架 LLM 完整指南](/blog/self-hosting-llm-dgx-spark-complete-guide/) — 自己跑模型的大局觀。
+- [開發者工具主題中心](/categories/developer-tools/) — 全部開發者工具指南。
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "DGX Spark LLM Deployment Kit",
+  "image": "https://slashmantools.us/og.png",
+  "description": "在 NVIDIA DGX Spark（GB10）上跑雙 vLLM 模型的實戰驗證設定模板與故障排除手冊：systemd 設定、看門狗修復、記憶體規劃、事故紀錄。",
+  "brand": {"@type": "Brand", "name": "Slashman Tools"},
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "99.00",
+    "availability": "https://schema.org/InStock",
+    "url": "https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=seo&utm_campaign=bppdqp"
+  }
+}
+</script>
