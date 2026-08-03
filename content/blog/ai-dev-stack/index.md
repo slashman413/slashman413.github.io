@@ -51,6 +51,15 @@ product_currency: "USD"
 
 想深入了解本地 LLM 部署的完整流程，推薦閱讀 [DGX Spark 自架 LLM 完整指南](/blog/self-hosting-llm-dgx-spark-complete-guide/) 與 [DGX Spark 部署套件](/blog/dgx-spark-kit/)。
 
+## 相關開發資源
+
+完整的 AI 開發工具鏈還包括：
+
+- [SaaS Starter Kit — 一個週末把多租戶 Next.js 16 SaaS 上線](/blog/saas-starter-kit/) — 生產級 SaaS 樣板
+- [How to Launch a Multi-Tenant SaaS in a Weekend](/blog/multi-tenant-saas-nextjs-guide/) — Next.js 16 實戰指南
+- [Local LLM Deployment 2026 — vLLM, Ollama, and Choosing the Right Stack](/blog/local-llm-deployment-guide-2026/) — 開發者部署選擇指南
+- [Self-Hosted AI for Solopreneurs — The Complete 2026 Guide](/blog/self-hosted-ai-solopreneurs/) — 獨立開發者自架 AI 完整指南
+
 </div>
 
 

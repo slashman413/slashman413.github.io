@@ -52,6 +52,15 @@ product_currency: "USD"
 
 想知道 AI 時代如何快速打造數位產品，見 [AI 代理打造 10 產品案例研究](/blog/ai-agents-digital-business-case-study/)。搭配 [AI 開發者工具組](/blog/ai-dev-stack/) 組成完整開發環境。
 
+## 相關開發資源
+
+完整的開發工具鏈還包括：
+
+- [DGX Spark 部署套件 - 在 GB10 上穩定跑兩個 vLLM 模型](/blog/dgx-spark-kit/) — 本地部署工具與配置
+- [Local LLM Deployment 2026 — vLLM, Ollama, and Choosing the Right Stack](/blog/local-llm-deployment-guide-2026/) — 開發者 LLM 部署指南
+- [How to Launch a Multi-Tenant SaaS in a Weekend](/blog/multi-tenant-saas-nextjs-guide/) — 實戰 SaaS 開發 Playbook
+- [Self-Hosted AI for Solopreneurs — The Complete 2026 Guide](/blog/self-hosted-ai-solopreneurs/) — 獨立開發者自架 AI
+
 </div>
 
 

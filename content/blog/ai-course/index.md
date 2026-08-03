@@ -53,6 +53,16 @@ AI 正在改變所有產業。無論你是什麼背景，掌握 AI 都能：
 - 開發者想整合 AI 到產品中
 - 企業主想探索 AI 應用可能
 
+## 相關學習資源
+
+學習 AI 的路上，這些資源可以幫你走得更遠：
+
+- [AI 入門組合 - 提示詞庫 + 教學課程](/blog/ai-starter/) — 零基礎最佳起點
+- [Ship With AI - 4 小時實作課程](/blog/ship-with-ai/) — 快速掌握 AI 自動化核心
+- [AI Prompt 庫 - 300+ 高質量提示詞](/blog/ai-prompt-library/) — 提示詞工具集
+- [How I Built a 10-Product Digital Business Using Only AI Agents](/blog/ai-agents-digital-business-case-study/) — AI 創業案例研究
+- [The Solopreneur's Guide to AI Automation in 2026](/blog/solopreneur-ai-automation-2026-guide/) — 獨立開發者自動化指南
+
 </div>
 
 

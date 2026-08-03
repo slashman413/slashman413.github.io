@@ -46,9 +46,18 @@ product_currency: "USD"
 - 專案經理和團隊主管
 - 想要提升協作效率的任何人
 
-## 與其他工具搭配
+## 與其他產品搭配
 
 飛書模板與 [AI Prompt 庫](/blog/ai-prompt-library/) 搭配使用，可以讓 AI 自動生成會議紀要、專案報告和客戶回覆，進一步提升團隊效率。
+
+## 相關 productivity 資源
+
+建立完整的 productivity 系統：
+
+- [AI 入門組合 - 提示詞庫 + 教學課程](/blog/ai-starter/) — AI 新手最佳起點
+- [AI Prompt Engineering for Productivity — A Practical Playbook](/blog/ai-prompt-engineering-productivity-guide/) — 實戰提示詞工程指南
+- [The AI Productivity Toolkit — 50+ Prompts and Workflow Templates](/blog/ai-productivity-toolkit-guide/) — 生產力工作流模板集
+- [How to Build an AI-Powered Content Factory](/blog/build-ai-content-factory-technical-guide/) — 自動化內容工廠技術指南
 
 </div>
 

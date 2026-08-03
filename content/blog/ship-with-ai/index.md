@@ -54,6 +54,16 @@ AI 自動化正在改變工作方式。課程教你：
 - 工具選擇與設定
 - 進階應用技巧
 
+## 相關 AI 資源
+
+掌握自動化後，這些指南可以帶你走得更遠：
+
+- [The Solopreneur's Guide to AI Automation in 2026](/blog/solopreneur-ai-automation-2026-guide/) — 完整獨立自動化指南
+- [How to Build an AI-Powered Content Factory](/blog/build-ai-content-factory-technical-guide/) — 自動化內容工廠實作
+- [Building an Automated Content Pipeline from Scratch](/blog/automated-content-pipeline-cowork-pro/) — 自動化內容管线
+- [The Ultimate Guide to AI Automation — Complete Framework for 2026](/blog/ultimate-ai-automation-guide-2026/) — AI 自動化完整框架
+- [Cowork Pro - AI 多智能體編排框架](/blog/cowork-pro/) — 企業級多智能體編排工具
+
 </div>
 
 

@@ -51,6 +51,14 @@ product_currency: "USD"
 
 想更進一步，可以搭配 [AI Prompt 庫](/blog/ai-prompt-library/) 深入提示詞工程，或參加 [繁體中文 AI 實戰課程](/blog/ai-course/) 學習完整實作。
 
+## 其他 productivity 產品
+
+- [AI Prompt 庫 - 300+ 高質量提示詞](/blog/ai-prompt-library/) — 立即提升 AI 使用效率
+- [繁體中文 AI 實戰課程 - 4 單元 17 堂](/blog/ai-course/) — 從零到進階系統學習
+- [AI Prompt Engineering for Productivity — A Practical Playbook](/blog/ai-prompt-engineering-productivity-guide/) — 實戰提示詞工程
+- [The AI Productivity Toolkit — 50+ Prompts and Workflow Templates](/blog/ai-productivity-toolkit-guide/) — 生產力模板集
+- [飛書模板市集 - 團隊效率提升 300%](/blog/feishu-templates/) — 團隊協作模板
+
 </div>
 
 

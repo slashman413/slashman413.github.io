@@ -1,0 +1,8 @@
+<!-- Internal link to product or article — used in articles and product pages -->
+<!-- {{< internal "slug" "display text" >}} or {{< internal "slug" "display text" product=true >}} -->
+{{- $target := (index (where site.RegularPages "Params.slug" (.Get 0)) 0) -}}
+{{- if $target -}}
+  <a href="{{ $target.RelPermalink }}"{{ if (.Get "product") }} rel="nofollow sponsored"{{ end }}>{{ if .Get 1 }}{{ .Get 1 }}{{ else }}{{ $target.Title }}{{ end }}</a>
+{{- else -}}
+  <!-- internal: no page found for slug "{{ .Get 0 }}" — manual fix needed -->
+{{- end -}}

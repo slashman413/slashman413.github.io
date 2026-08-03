@@ -15,9 +15,23 @@
     {{ $cur := .RelPermalink }}
     {{ range site.Data.categories }}
       {{ $url := printf "/categories/%s/" .slug }}
-      <a href="{{ $url }}"{{ if eq $cur $url }} class="active"{{ end }}>{{ .title }}</a>
+      <a href="{{ $url }}"{{ if eq $cur $url }} class="active"{{ end }}>
+        <span style="display:block">{{ .title }}</span>
+      </a>
     {{ end }}
     <a href="/content-map/"{{ if eq $cur "/content-map/" }} class="active"{{ end }}>Content Map</a>
+  </nav>
+  {{ end }}
+
+  <!-- Products -->
+  {{ if site.Data.products }}
+  <nav class="nav" aria-label="Products" style="margin-top:18px">
+    <div style="font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;padding:0 12px;margin-bottom:6px">Products</div>
+    {{ range site.Data.products }}
+    <a href="{{ .url | default .buy }}"{{ if .url }}{{ else }} rel="nofollow sponsored"{{ end }} style="font-size:12.5px">
+      {{ .title }}{{ with .price }} <span style="color:var(--muted)">$</span>{{ end }}
+    </a>
+    {{ end }}
   </nav>
   {{ end }}
 

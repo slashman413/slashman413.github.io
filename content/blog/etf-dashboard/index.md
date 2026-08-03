@@ -53,6 +53,16 @@ product_currency: "USD"
 - 自訂儀表板與警報
 - 匯出報表功能
 
+## 相關投資資源
+
+建立完整的投資系統，還需要這些實戰指南：
+
+- [ETF Investment Strategy 2026 — How to Build a Data-Driven Portfolio](/blog/etf-investment-strategy-2026/)
+- [The Complete Guide to ETF Automated Investment — Build Your Own Dashboard](/blog/complete-etf-automated-investment-guide/)
+- [Automated Investment Dashboards — Track Your Portfolio in Real Time](/blog/automated-investment-dashboard-guide/)
+- [SaaS Starter Kit — 一個週末把多租戶 Next.js 16 SaaS 上線](/blog/saas-starter-kit/)（自建投資工具）
+- [The Solopreneur's Guide to AI Automation in 2026](/blog/solopreneur-ai-automation-2026-guide/)（自動化投資流程）
+
 </div>
 
 

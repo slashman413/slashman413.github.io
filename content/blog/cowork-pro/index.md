@@ -54,6 +54,17 @@ product_currency: "USD"
 - 自動化工作流引擎
 - 完整的 API 文件
 
+## 相關實戰指南
+
+想深入了解 AI 自動化與智能體編排的實作方法？以下指南可以帶你從零到完整部署：
+
+- [The Ultimate Guide to AI Automation — Complete Framework for 2026](/blog/ultimate-ai-automation-guide-2026/)
+- [The Solopreneur's Guide to AI Automation in 2026](/blog/solopreneur-ai-automation-2026-guide/)
+- [Building an Automated Content Pipeline from Scratch](/blog/automated-content-pipeline-cowork-pro/)
+- [How to Build an AI-Powered Content Factory](/blog/build-ai-content-factory-technical-guide/)
+- [How I Built a 10-Product Digital Business Using Only AI Agents](/blog/ai-agents-digital-business-case-study/)
+- [Building an AI-Powered Business — From Zero to 10 Products](/blog/build-ai-business-10-products-case-study/)
+
 </div>
 
 

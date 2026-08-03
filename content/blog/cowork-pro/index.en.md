@@ -3,6 +3,7 @@ title: "Cowork Pro Review 2026: Orchestrate AI Agents from One Dashboard"
 date: "2026-08-02T08:00:00+08:00"
 description: "Cowork Pro is a multi-agent AI orchestration framework with an MCP server and web dashboard. See how it dispatches tasks across Claude, Gemini and local models from one pane of glass."
 slug: "cowork-pro"
+tags: [ai, agents, automation, orchestration, mcp, saas, cowpro]
 draft: false
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/xfhfps"
