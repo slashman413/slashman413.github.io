@@ -7,6 +7,13 @@ languageCode = "en"
 # language's homepage.
 title = "Intellectual Guides"
 enableRobotsTXT = false
+# Build posts whose `date` is today/future. Hugo defaults buildFuture=false and
+# SILENTLY drops future-dated content, so a post dated e.g. 2026-08-03 is excluded
+# from any deploy that runs (in UTC) before that date — producing a 404 until the
+# next day's build. This bit two posts (complete-ai-tool-stack-2026,
+# ai-trends-2026-complete-report) dated 2026-08-03 when the deploy ran on 2026-08-02.
+# Setting this true makes same-day/future-dated posts publish immediately.
+buildFuture = true
 # No taxonomy pages — /tags/ and /categories/ would be thin/empty (AdSense-unfriendly).
 disableKinds = ["taxonomy", "term"]
 
