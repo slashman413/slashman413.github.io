@@ -105,4 +105,4 @@ The DGX Spark is the right hardware; the stock software stack is just not honest
 
 - [Cowork Pro Review](/blog/cowork-pro/) — orchestrate the agents that run on your Spark.
 - [Self-Hosted AI for Solopreneurs](/blog/self-hosted-ai-solopreneurs/) — the bigger picture of running your own models.
-- [AI Tools for Digital Product Creators](/blog/ai-tools-for-digital-product-creators-guide/) — put your local models to work on real products.
+- [Local LLM Deployment 2026](/blog/local-llm-deployment-guide-2026/) — pick the right runtime stack for your product.

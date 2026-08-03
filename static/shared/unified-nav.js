@@ -50,7 +50,7 @@
       { href: "/blog/",                           key: "blog",      label: { en: "Blog",          "zh-Hant": "部落格",     "zh-Hans": "博客" } },
       { href: "/services/",                       key: "services",  label: { en: "Services",      "zh-Hant": "接案服務",   "zh-Hans": "接案服务" } },
       {
-        href: "/categories/",
+        href: "/topics/",
         key: "guides",
         label: { en: "Guides", "zh-Hant": "指南", "zh-Hans": "指南" },
         children: [

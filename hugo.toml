@@ -63,6 +63,11 @@ title = "Guías Intelectuales"
 
 [permalinks]
   blog = "/blog/:slug/"
+  # Section is named "topics" because "categories" is a reserved Hugo taxonomy
+  # name (its section _index is silently dropped). Permalinks keep the required
+  # public URLs at /categories/<slug>/ — the section index itself renders at
+  # /topics/ ("All Topics").
+  topics = "/categories/:slug/"
 
 [params]
   description = "Practical, evergreen guides on money, productivity, and the web."

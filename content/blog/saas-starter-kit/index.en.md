@@ -55,7 +55,7 @@ The kit is a complete Next.js 16 (App Router) application with TypeScript throug
 
 ## Why Multi-Tenancy Matters Now
 
-In 2026, selling single-tenant deployments is a losing race. Buyers expect a shared, instantly-provisioned account model: sign up, create an organization, invite teammates. SaaS Starter encodes that model from day one — retrofitting multi-tenancy later is one of the most expensive refactors a startup can do (we wrote about the **[Next.js multi-tenancy patterns](/blog/nextjs-multi-tenancy/)** separately).
+In 2026, selling single-tenant deployments is a losing race. Buyers expect a shared, instantly-provisioned account model: sign up, create an organization, invite teammates. SaaS Starter encodes that model from day one — retrofitting multi-tenancy later is one of the most expensive refactors a startup can do (we wrote the **[Next.js 16 multi-tenancy playbook](/blog/multi-tenant-saas-nextjs-guide/)** separately).
 
 ### The "boring plumbing" math
 
@@ -112,6 +112,5 @@ SaaS Starter is the rare boilerplate that respects your time: it is small enough
 
 ## Related Guides
 
-- [Next.js 16 Upgrade Guide](/blog/nextjs-16-upgrade-guide/) — what changed in the framework this kit is built on.
-- [Next.js Multi-Tenancy Patterns](/blog/nextjs-multi-tenancy/) — the architecture behind the kit's org model.
+- [Next.js 16 Multi-Tenancy Playbook](/blog/multi-tenant-saas-nextjs-guide/) — the framework and architecture behind the kit's org model.
 - [Gumroad Seller Guide 2026](/blog/gumroad-seller-guide-2026/) — how to launch and sell a developer product like this one.
