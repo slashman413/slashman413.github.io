@@ -5,9 +5,13 @@ description: "SaaS Starter 是一套可直接上線的 Next.js 16 樣板：多�
 slug: "saas-starter-kit"
 draft: false
 schema: "ProductReview"
-product_price: 99
+tags: [saas, nextjs, development, boilerplate, ai, tools]
+product_url: "https://slashmaster6.gumroad.com/l/kuvajr"
+product_price: "99"
+product_brand: "Slashman Tools"
+product_sku: "SMT-SAS"
+product_category: "Software > Developer Tools"
 product_currency: "USD"
-product_url: "https://gumroad.com/l/kuvajr"
 ---
 
 # SaaS Starter Kit 評測 2026：一個週末把多租戶 Next.js 16 SaaS 上線
@@ -111,21 +115,3 @@ SaaS Starter 是少見的「尊重你時間」的樣板：小到讀得完、完�
 - [Next.js 16 升級指南](/blog/nextjs-16-upgrade-guide/) — 這套樣板所基於的框架改了些什麼。
 - [Next.js 多租戶模式](/blog/nextjs-multi-tenancy/) — 樣板組織模型背後的架構。
 - [Gumroad 賣家指南 2026](/blog/gumroad-seller-guide-2026/) — 如何上架並銷售這樣的開發者產品。
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": "SaaS Starter Kit",
-  "image": "https://slashmantools.us/og.png",
-  "description": "生產級 Next.js 16 SaaS 樣板：多租戶、Auth.js v5、Prisma、RBAC、Stripe 收款、API 金鑰與稽核日誌。",
-  "brand": {"@type": "Brand", "name": "Slashman Tools"},
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "USD",
-    "price": "99.00",
-    "availability": "https://schema.org/InStock",
-    "url": "https://slashmaster6.gumroad.com/l/kuvajr?utm_source=blog&utm_medium=seo&utm_campaign=kuvajr"
-  }
-}
-</script>

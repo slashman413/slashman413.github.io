@@ -5,9 +5,13 @@ description: "The DGX Spark deployment kit turns NVIDIA GB10 into a dual-model v
 slug: "dgx-spark-kit"
 draft: false
 schema: "ProductReview"
-product_price: 99
+tags: [ai, llm, deployment, nvidia, gpu, self-hosting]
+product_url: "https://slashmaster6.gumroad.com/l/bppdqp"
+product_price: "99"
+product_brand: "Slashman Tools"
+product_sku: "SMT-DGX"
+product_category: "Software > Developer Tools"
 product_currency: "USD"
-product_url: "https://gumroad.com/l/bppdqp"
 ---
 
 # DGX Spark LLM Deployment Kit Review 2026: Run Two vLLM Models on GB10 Without the Nightmares
@@ -102,21 +106,3 @@ The DGX Spark is the right hardware; the stock software stack is just not honest
 - [Cowork Pro Review](/blog/cowork-pro/) — orchestrate the agents that run on your Spark.
 - [Self-Hosted AI for Solopreneurs](/blog/self-hosted-ai-solopreneurs/) — the bigger picture of running your own models.
 - [AI Tools for Digital Product Creators](/blog/ai-tools-for-digital-product-creators-guide/) — put your local models to work on real products.
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": "DGX Spark LLM Deployment Kit",
-  "image": "https://slashmantools.us/og.png",
-  "description": "Battle-tested configuration templates and troubleshooting playbook for running two vLLM models on NVIDIA DGX Spark (GB10): systemd units, watchdog fixes, memory planning, incident log.",
-  "brand": {"@type": "Brand", "name": "Slashman Tools"},
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "USD",
-    "price": "99.00",
-    "availability": "https://schema.org/InStock",
-    "url": "https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=seo&utm_campaign=bppdqp"
-  }
-}
-</script>

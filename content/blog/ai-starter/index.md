@@ -6,7 +6,10 @@ slug: ai-starter
 tags: [ai, tools, productivity, saas]
 product_price: 149
 product_currency: "USD"
-product_url: "https://gumroad.com/l/lapcqb"
+product_url: "https://slashmaster6.gumroad.com/l/lapcqb"
+product_brand: "Slashman Tools"
+product_sku: "SMT-AIS"
+product_category: "Online Course"
 ---
 
 <div class="product-landing">

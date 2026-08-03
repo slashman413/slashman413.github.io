@@ -1,8 +1,10 @@
 # Product registry — single source of truth for internal linking + related-products CTA.
 # `url` is the ON-SITE landing page (used for internal SEO link equity).
-# `buy` is the external Gumroad checkout. `price` is USD; leave "" when unconfirmed
-# (the CTA and Product schema omit price rather than show an invented number).
+# `buy` is the external Gumroad checkout. `price` is USD, confirmed against the
+# live slashmaster6 Gumroad catalogue (all 10 products published).
 # `tags` drive contextual article -> product matching in related-products.html.
+# `slug` MUST match the landing page's frontmatter `slug` so a product page never
+# recommends itself.
 
 - slug: ai-prompt-library
   title: AI Prompt Library
@@ -29,47 +31,47 @@
   title: Feishu Template Marketplace
   url: /blog/feishu-templates/
   buy: https://slashmaster6.gumroad.com/l/xohjh
-  price: ""
+  price: "49"
   tags: [templates, productivity, feishu, notion, project-management, teams]
 
 - slug: ai-course
   title: Traditional-Chinese AI Course
   url: /blog/ai-course/
   buy: https://slashmaster6.gumroad.com/l/vzalgb
-  price: ""
+  price: "99"
   tags: [ai, course, learning, tutorial, beginners]
 
 - slug: ship-with-ai
   title: Ship With AI
   url: /blog/ship-with-ai/
   buy: https://slashmaster6.gumroad.com/l/mgtpcn
-  price: ""
+  price: "99"
   tags: [ai, automation, course, nocode, tutorial]
 
-- slug: dgx-spark
+- slug: dgx-spark-kit
   title: DGX Spark Deployment Kit
-  url: /blog/dgx-spark/
+  url: /blog/dgx-spark-kit/
   buy: https://slashmaster6.gumroad.com/l/bppdqp
-  price: ""
+  price: "99"
   tags: [llm, deployment, nvidia, local-llm, qwen, gpu]
 
-- slug: saas-starter
+- slug: saas-starter-kit
   title: SaaS Starter Kit
-  url: /blog/saas-starter/
+  url: /blog/saas-starter-kit/
   buy: https://slashmaster6.gumroad.com/l/kuvajr
-  price: ""
+  price: "99"
   tags: [saas, nextjs, starter, development, boilerplate]
 
 - slug: ai-dev-stack
   title: AI Developer Stack Bundle
   url: /blog/ai-dev-stack/
   buy: https://slashmaster6.gumroad.com/l/nulyms
-  price: ""
+  price: "199"
   tags: [ai, development, tools, bundle, deployment]
 
 - slug: ai-starter
   title: AI Starter Bundle
   url: /blog/ai-starter/
   buy: https://slashmaster6.gumroad.com/l/lapcqb
-  price: ""
+  price: "149"
   tags: [ai, bundle, beginners, prompts, learning]

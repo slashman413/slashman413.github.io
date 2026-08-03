@@ -6,7 +6,10 @@ slug: ai-dev-stack
 tags: [ai, tools, productivity, saas]
 product_price: 199
 product_currency: "USD"
-product_url: "https://gumroad.com/l/nulyms"
+product_url: "https://slashmaster6.gumroad.com/l/nulyms"
+product_brand: "Slashman Tools"
+product_sku: "SMT-ADS"
+product_category: "Software > Developer Tools"
 ---
 
 <div class="product-landing">

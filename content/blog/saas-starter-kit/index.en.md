@@ -5,9 +5,13 @@ description: "SaaS Starter is a production-grade Next.js 16 boilerplate with mul
 slug: "saas-starter-kit"
 draft: false
 schema: "ProductReview"
-product_price: 99
+tags: [saas, nextjs, development, boilerplate, ai, tools]
+product_url: "https://slashmaster6.gumroad.com/l/kuvajr"
+product_price: "99"
+product_brand: "Slashman Tools"
+product_sku: "SMT-SAS"
+product_category: "Software > Developer Tools"
 product_currency: "USD"
-product_url: "https://gumroad.com/l/kuvajr"
 ---
 
 # SaaS Starter Kit Review 2026: Ship a Multi-Tenant Next.js 16 SaaS in a Weekend
@@ -111,21 +115,3 @@ SaaS Starter is the rare boilerplate that respects your time: it is small enough
 - [Next.js 16 Upgrade Guide](/blog/nextjs-16-upgrade-guide/) — what changed in the framework this kit is built on.
 - [Next.js Multi-Tenancy Patterns](/blog/nextjs-multi-tenancy/) — the architecture behind the kit's org model.
 - [Gumroad Seller Guide 2026](/blog/gumroad-seller-guide-2026/) — how to launch and sell a developer product like this one.
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": "SaaS Starter Kit",
-  "image": "https://slashmantools.us/og.png",
-  "description": "Production-grade Next.js 16 SaaS boilerplate with multi-tenancy, Auth.js v5, Prisma, RBAC, Stripe billing, API keys and audit logs.",
-  "brand": {"@type": "Brand", "name": "Slashman Tools"},
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "USD",
-    "price": "99.00",
-    "availability": "https://schema.org/InStock",
-    "url": "https://slashmaster6.gumroad.com/l/kuvajr?utm_source=blog&utm_medium=seo&utm_campaign=kuvajr"
-  }
-}
-</script>
