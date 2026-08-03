@@ -23,18 +23,6 @@
   </nav>
   {{ end }}
 
-  <!-- Products -->
-  {{ if site.Data.products }}
-  <nav class="nav" aria-label="Products" style="margin-top:18px">
-    <div style="font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;padding:0 12px;margin-bottom:6px">Products</div>
-    {{ range site.Data.products }}
-    <a href="{{ .url | default .buy }}"{{ if .url }}{{ else }} rel="nofollow sponsored"{{ end }} style="font-size:12.5px">
-      {{ .title }}{{ with .price }} <span style="color:var(--muted)">$</span>{{ end }}
-    </a>
-    {{ end }}
-  </nav>
-  {{ end }}
-
   <!-- Newsletter Widget — Mautic form -->
   <div class="sidebar-widget" style="margin-top:20px;padding:16px 0;border-top:1px solid var(--border)">
     <p style="font-size:12px;font-weight:700;color:#c7c7f0;margin-bottom:8px">📬 Get AI Tools Weekly</p>

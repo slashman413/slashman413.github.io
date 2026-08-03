@@ -30,8 +30,9 @@
         {{ range first 5 site.Data.products }}
         <a href="{{ .url | default .buy }}">{{ .title }}{{ with .price }} — ${{ . }}{{ end }}</a><br>
         {{ end }}
-        {{ if gt (len site.Data.products) 5 }}
-        <a href="/tools/">{{ len site.Data.products }} more tools →</a>
+        {{ $remaining := sub (len site.Data.products) 5 }}
+        {{ if gt $remaining 0 }}
+        <a href="/tools/">{{ $remaining }} more tools →</a>
         {{ end }}
       </div>
     </div>
