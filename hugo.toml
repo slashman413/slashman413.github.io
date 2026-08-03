@@ -1,5 +1,12 @@
 baseURL = "https://slashmantools.us/"
 languageCode = "en"
+# Interpret dates without an explicit offset (e.g. `date: 2026-08-03`) in Taiwan
+# time, matching where content is authored. GitHub Actions builds in UTC (8h
+# behind); without this, a post dated "today" in Taipei is still "the future" to
+# the UTC runner, and Hugo (buildFuture=false by default) silently drops it from
+# the rendered site AND sitemap.xml. That's why deploys before 00:00 UTC shipped
+# a sitemap missing every same-day post. Asia/Taipei aligns the two clocks.
+timeZone = "Asia/Taipei"
 # Global site title. Inherited by any language that doesn't override `title`
 # below; each language sets its own localized title. Templates read this via
 # `site.Title` for <title>, og:title, and og:site_name — leaving it unset (the
