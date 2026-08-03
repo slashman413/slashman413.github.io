@@ -24,7 +24,7 @@ product_currency: "USD"
 <li>附帶練習專案和解答</li>
 <li>終身課程存取權限</li>
     </ul>
-    <a href="https://slashmaster6.gumroad.com/l/vzalgb" target="_blank" rel="noopener" class="cta-button">
+    <a href="https://slashmaster6.gumroad.com/l/vzalgb?utm_source=slashmantools&utm_medium=product-page&utm_campaign=ai-course" target="_blank" rel="noopener" class="cta-button">
       立即購買 $99 →
     </a>
   </div>

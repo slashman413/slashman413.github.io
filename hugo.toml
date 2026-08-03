@@ -88,11 +88,14 @@ title = "Guías Intelectuales"
   # (browsers block it), and a 404 (Mautic 8081 has no /subscribe route), so
   # every subscribe silently failed and list growth was 0. Durable fix (public
   # HTTPS reverse-proxy to a real Mautic form) is in /webhook/RUNBOOK-mautic-ingress.md.
-  leadEndpoint = "https://api.web3forms.com/submit"
-  # web3forms access key — public by design (it ships in client-side HTML). Same
-  # key already used across the slashmantools fleet (e.g. unit-converter).
-  # Injected as window.LEAD_ACCESS_KEY; see layouts/partials/head.html.
-  leadAccessKey = "32e709fa-d67d-46e9-a1a0-1ac9ef6be251"
+  # leadEndpoint — self-owned Cloudflare Worker (2026-08-03): form → Worker →
+  # KV → sync_kv_to_mautic.py cron → Mautic API. Live at api.slashmantools.us
+  # (custom domain attached to the lead-capture Worker; leads.* was taken by a
+  # pre-existing tunnel CNAME). See /webhook/RUNBOOK-mautic-ingress.md.
+  leadEndpoint = "https://api.slashmantools.us/subscribe"
+  # web3forms access key no longer needed — the Worker returns {ok:true} and
+  # lead-capture.js reads data.ok. Kept empty so window.LEAD_ACCESS_KEY is unset.
+  leadAccessKey = ""
 
 [menu]
   [[menu.main]]

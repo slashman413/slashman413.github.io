@@ -25,7 +25,7 @@ product_currency: "USD"
 <li>附帶專案原始碼</li>
 <li>社群支持和更新</li>
     </ul>
-    <a href="https://slashmaster6.gumroad.com/l/mgtpcn" target="_blank" rel="noopener" class="cta-button">
+    <a href="https://slashmaster6.gumroad.com/l/mgtpcn?utm_source=slashmantools&utm_medium=product-page&utm_campaign=ship-with-ai" target="_blank" rel="noopener" class="cta-button">
       立即購買 $99 →
     </a>
   </div>

@@ -24,7 +24,7 @@ product_currency: "USD"
 <li>每日持續更新，增加新提示詞</li>
 <li>附帶使用教學和實戰案例</li>
     </ul>
-    <a href="https://slashmaster6.gumroad.com/l/diwoc" target="_blank" rel="noopener" class="cta-button">
+    <a href="https://slashmaster6.gumroad.com/l/diwoc?utm_source=slashmantools&utm_medium=product-page&utm_campaign=ai-prompt-library" target="_blank" rel="noopener" class="cta-button">
       立即購買 $29 →
     </a>
   </div>

@@ -25,7 +25,7 @@ product_currency: "USD"
 <li>真實故障排除手冊</li>
 <li>終身更新與社群支援</li>
     </ul>
-    <a href="https://slashmaster6.gumroad.com/l/nulyms" target="_blank" rel="noopener" class="cta-button">
+    <a href="https://slashmaster6.gumroad.com/l/nulyms?utm_source=slashmantools&utm_medium=product-page&utm_campaign=ai-dev-stack" target="_blank" rel="noopener" class="cta-button">
       立即購買 $199 →
     </a>
   </div>

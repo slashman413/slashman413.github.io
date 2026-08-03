@@ -25,7 +25,7 @@ product_currency: "USD"
 <li>任務追蹤與結果匯報</li>
 <li>API 可擴展設計</li>
     </ul>
-    <a href="https://slashmaster6.gumroad.com/l/xfhfps" target="_blank" rel="noopener" class="cta-button">
+    <a href="https://slashmaster6.gumroad.com/l/xfhfps?utm_source=slashmantools&utm_medium=product-page&utm_campaign=cowork-pro" target="_blank" rel="noopener" class="cta-button">
       立即購買 $99 →
     </a>
   </div>

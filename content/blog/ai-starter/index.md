@@ -25,7 +25,7 @@ product_currency: "USD"
 <li>從入門到進階的學習路徑</li>
 <li>一次購買，永久使用</li>
     </ul>
-    <a href="https://slashmaster6.gumroad.com/l/lapcqb" target="_blank" rel="noopener" class="cta-button">
+    <a href="https://slashmaster6.gumroad.com/l/lapcqb?utm_source=slashmantools&utm_medium=product-page&utm_campaign=ai-starter" target="_blank" rel="noopener" class="cta-button">
       立即購買 $149 →
     </a>
   </div>

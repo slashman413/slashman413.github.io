@@ -24,7 +24,7 @@ product_currency: "USD"
 <li>歷史回測功能</li>
 <li>每日/每週自動更新</li>
     </ul>
-    <a href="https://slashmaster6.gumroad.com/l/etf-dashboard" target="_blank" rel="noopener" class="cta-button">
+    <a href="https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=slashmantools&utm_medium=product-page&utm_campaign=etf-dashboard" target="_blank" rel="noopener" class="cta-button">
       立即購買 $199 →
     </a>
   </div>

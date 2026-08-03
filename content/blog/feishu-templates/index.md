@@ -24,7 +24,7 @@ product_currency: "USD"
 <li>團隊協作流程最佳化</li>
 <li>持續更新，一次購買終身使用</li>
     </ul>
-    <a href="https://slashmaster6.gumroad.com/l/xohjh" target="_blank" rel="noopener" class="cta-button">
+    <a href="https://slashmaster6.gumroad.com/l/xohjh?utm_source=slashmantools&utm_medium=product-page&utm_campaign=feishu-templates" target="_blank" rel="noopener" class="cta-button">
       立即購買 $49 →
     </a>
   </div>

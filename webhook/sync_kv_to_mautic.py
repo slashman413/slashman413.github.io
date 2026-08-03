@@ -107,7 +107,10 @@ def fetch_leads(api_url: str, token: str, since: str = "", limit: int = 500) -> 
     if since:
         params += f"&since={urlparse.quote(since)}"
     url = f"{api_url.rstrip('/')}/leads?{params}"
-    req = urlrequest.Request(url)
+    req = urlrequest.Request(url, headers={
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+        "Accept": "application/json",
+    })
     try:
         with urlrequest.urlopen(req, timeout=30) as resp:
             data = json.loads(resp.read().decode())
@@ -162,6 +165,11 @@ def sync_once(mautic: MauticAPI, api_url: str, forward_token: str, state: dict, 
         # Add source as a tag
         if source and source not in tags:
             tags.append(f"source-{source}")
+
+        # Every new subscriber enters the 7-Day Welcome campaign (segment 26 is
+        # filtered on the welcome-7day tag; campaign "Slashman 7-Day Welcome").
+        if "welcome-7day" not in tags:
+            tags.append("welcome-7day")
 
         try:
             existing = mautic.find_contact_by_email(email)
