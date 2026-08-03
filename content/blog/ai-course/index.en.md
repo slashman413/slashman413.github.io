@@ -4,6 +4,11 @@ description: "AI Prompt Library includes 300+ proven prompt templates for ChatGP
 date: 2026-08-02
 slug: ai-course
 tags: [ai, prompt, productivity]
+product_url: "https://slashmaster6.gumroad.com/l/vzalgb"
+product_brand: "Slashman Tools"
+product_sku: "SMT-AIC"
+product_category: "Online Course"
+product_currency: "USD"
 ---
 
 # AI Prompt Library

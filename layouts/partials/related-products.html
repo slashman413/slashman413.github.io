@@ -1,17 +1,40 @@
-<!-- Related Products CTA -->
+{{- /*
+  related-products.html — contextual "Recommended Tools" CTA.
+
+  Picks up to 3 products from data/products.yaml, preferring those whose tags
+  overlap the current page's tags (article -> product internal linking), then
+  filling with the remaining catalogue. Excludes the current product page from
+  its own list. Titles link to the ON-SITE landing page (internal link equity);
+  a separate "Get it" links to Gumroad checkout.
+*/ -}}
 {{ if .IsPage }}
+{{ $self := .Params.slug | default (path.Base .File.Dir) }}
+{{ $pageTags := .Params.tags | default slice }}
+{{ $chosen := slice }}
+{{ $chosenSlugs := slice }}
+{{- /* pass 1: tag-matched */ -}}
+{{ range site.Data.products }}
+  {{ if and (ne .slug $self) (not (in $chosenSlugs .slug)) (gt (len (intersect (.tags | default slice) $pageTags)) 0) (lt (len $chosen) 3) }}
+    {{ $chosen = $chosen | append . }}{{ $chosenSlugs = $chosenSlugs | append .slug }}
+  {{ end }}
+{{ end }}
+{{- /* pass 2: fill from remaining catalogue */ -}}
+{{ range site.Data.products }}
+  {{ if and (ne .slug $self) (not (in $chosenSlugs .slug)) (lt (len $chosen) 3) }}
+    {{ $chosen = $chosen | append . }}{{ $chosenSlugs = $chosenSlugs | append .slug }}
+  {{ end }}
+{{ end }}
+{{ if $chosen }}
 <div style="margin-top:24px;padding:20px;background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.2);border-radius:12px">
   <h3 style="color:#c7c7f0;margin-bottom:12px;font-size:16px">🎁 Recommended Tools</h3>
   <ul style="list-style:none;padding:0;margin:0">
-    {{ range slice (dict "title" "AI Prompt Library" "url" "/blog/ai-prompt-library/" "price" "$29")
-                  (dict "title" "ETF Dashboard" "url" "/blog/etf-dashboard/" "price" "$199")
-                  (dict "title" "Cowork Pro" "url" "/blog/cowork-pro/" "price" "$99") }}
-    <li style="margin-bottom:8px">
-      <a href="{{ .url }}" style="color:#a5b4fc;text-decoration:none;font-weight:600">
-        {{ .title }} — {{ .price }} →
-      </a>
+    {{ range $chosen }}
+    <li style="margin-bottom:10px">
+      <a href="{{ .url }}" style="color:#a5b4fc;text-decoration:none;font-weight:600">{{ .title }}{{ with .price }} — ${{ . }}{{ end }} →</a>
+      {{ with .buy }}<a href="{{ . }}" rel="nofollow sponsored" style="color:#7878a0;font-size:13px;margin-left:8px">Get it ↗</a>{{ end }}
     </li>
     {{ end }}
   </ul>
 </div>
+{{ end }}
 {{ end }}

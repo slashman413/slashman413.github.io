@@ -4,6 +4,12 @@ description: "AI Prompt 庫包含 300+ 經過實戰驗證的提示詞模板，�
 date: 2026-08-02
 slug: ai-prompt-library
 tags: [ai, tools, productivity, saas]
+product_url: "https://slashmaster6.gumroad.com/l/diwoc"
+product_price: "29"
+product_brand: "Slashman Tools"
+product_sku: "SMT-APL"
+product_category: "Software > AI Tools"
+product_currency: "USD"
 ---
 
 <div class="product-landing">

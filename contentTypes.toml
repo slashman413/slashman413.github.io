@@ -1,0 +1,5 @@
+[[contentTypes]]
+  displayName = "Blog"
+  section = "blog"
+  pagesContentType = "blog"
+  resourcesContentType = "resource"

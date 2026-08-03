@@ -4,6 +4,11 @@ description: "Ship With AI 是精華版實作課程，4 小時教你掌握 AI �
 date: 2026-08-02
 slug: ship-with-ai
 tags: [ai, tools, productivity, saas]
+product_url: "https://slashmaster6.gumroad.com/l/mgtpcn"
+product_brand: "Slashman Tools"
+product_sku: "SMT-SWA"
+product_category: "Online Course"
+product_currency: "USD"
 ---
 
 <div class="product-landing">

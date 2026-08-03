@@ -4,6 +4,12 @@ description: "ETF 儀表板提供台灣 ETF 即時數據、技術分析、資產
 date: 2026-08-02
 slug: etf-dashboard
 tags: [ai, tools, productivity, saas]
+product_url: "https://slashmaster6.gumroad.com/l/etf-dashboard"
+product_price: "199"
+product_brand: "Slashman Tools"
+product_sku: "SMT-ETF"
+product_category: "Software > Finance"
+product_currency: "USD"
 ---
 
 <div class="product-landing">

@@ -68,6 +68,12 @@ title = "Guías Intelectuales"
   description = "Practical, evergreen guides on money, productivity, and the web."
   tagline = "Practical, evergreen guides on money, productivity, and the web."
   author = "slashman413"
+  # Google Search Console verification. Paste the token from the HTML-tag
+  # verification method (the content="..." value of the google-site-verification
+  # meta tag GSC gives you). Empty = tag suppressed. See seo-optimized deliverable.
+  googleSiteVerification = ""
+  # Twitter/X handle (with @) for twitter:site / twitter:creator card attribution.
+  twitterHandle = ""
   adsenseClient = "ca-pub-7217603696203672"
   gaId = "G-MY95FHB8JG"
   # Lead-capture endpoint. STOP-GAP (2026-08-01): pointed at web3forms

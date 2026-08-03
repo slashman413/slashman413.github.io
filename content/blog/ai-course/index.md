@@ -4,6 +4,11 @@ description: "繁體中文 AI 實戰課程完整教學，涵蓋 4 大單元 17 �
 date: 2026-08-02
 slug: ai-course
 tags: [ai, tools, productivity, saas]
+product_url: "https://slashmaster6.gumroad.com/l/vzalgb"
+product_brand: "Slashman Tools"
+product_sku: "SMT-AIC"
+product_category: "Online Course"
+product_currency: "USD"
 ---
 
 <div class="product-landing">

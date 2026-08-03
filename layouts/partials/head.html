@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {{ $noindex := or (eq .Section "news") .Params.noindex }}
 {{ partial "meta.html" . }}
-{{ partial "hreflang.html" . }}
+{{/* hreflang is emitted inside meta.html — do not duplicate it here */}}
 
 <!-- Slashman Unified Navigation -->
 <link rel="stylesheet" href="/shared/unified-nav.css">

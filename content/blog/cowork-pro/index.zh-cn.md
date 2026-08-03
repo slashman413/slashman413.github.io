@@ -5,6 +5,12 @@ description: "Cowork Pro 是一套多代理 AI 協調框架，內建 MCP 伺服�
 slug: "cowork-pro"
 draft: false
 schema: "ProductReview"
+product_url: "https://slashmaster6.gumroad.com/l/xfhfps"
+product_price: "99"
+product_brand: "Slashman Tools"
+product_sku: "SMT-CWP"
+product_category: "Software > AI Tools"
+product_currency: "USD"
 ---
 
 # Cowork Pro 評測 2026：一個儀表板指揮所有 AI 代理

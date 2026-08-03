@@ -4,6 +4,12 @@ description: "Cowork Pro 是功能強大的多智能體 AI 編排框架，提供
 date: 2026-08-02
 slug: cowork-pro
 tags: [ai, tools, productivity, saas]
+product_url: "https://slashmaster6.gumroad.com/l/xfhfps"
+product_price: "99"
+product_brand: "Slashman Tools"
+product_sku: "SMT-CWP"
+product_category: "Software > AI Tools"
+product_currency: "USD"
 ---
 
 <div class="product-landing">

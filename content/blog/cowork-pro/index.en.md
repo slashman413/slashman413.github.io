@@ -5,6 +5,12 @@ description: "Cowork Pro is a multi-agent AI orchestration framework with an MCP
 slug: "cowork-pro"
 draft: false
 schema: "ProductReview"
+product_url: "https://slashmaster6.gumroad.com/l/xfhfps"
+product_price: "99"
+product_brand: "Slashman Tools"
+product_sku: "SMT-CWP"
+product_category: "Software > AI Tools"
+product_currency: "USD"
 ---
 
 # Cowork Pro Review 2026: Orchestrate AI Agents from One Dashboard

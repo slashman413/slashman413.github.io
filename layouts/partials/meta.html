@@ -1,41 +1,108 @@
 {{- /*
-  meta.html — SEO + social meta block.
+  meta.html — SEO + social meta + structured data (JSON-LD).
+
+  Emits: title, description, robots, canonical, Google Search Console
+  verification, Open Graph, Twitter Card, and schema.org JSON-LD
+  (Product on product landing pages, Article on posts, BreadcrumbList,
+  plus WebSite + Organization on the home page).
+
+  hreflang is emitted here (once). head.html must NOT also call it.
 */ -}}
 {{ $isHome := .IsHome }}
 {{ $title := cond $isHome site.Title (printf "%s — %s" .Title site.Title) }}
 <title>{{ $title }}</title>
 {{ $desc := or .Description .Summary site.Params.description }}
-<meta name="description" content="{{ $desc | plainify | truncate 160 }}">
+{{ $desc = $desc | plainify | truncate 160 }}
+<meta name="description" content="{{ $desc }}">
 {{ $noindex := or (eq .Section "news") .Params.noindex }}
-{{ if $noindex }}<meta name="robots" content="noindex, nofollow">{{ end }}
+{{ if $noindex }}<meta name="robots" content="noindex, nofollow">{{ else }}<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">{{ end }}
 <link rel="canonical" href="{{ .Permalink }}">
+{{ with site.Params.googleSiteVerification }}<meta name="google-site-verification" content="{{ . }}">{{ end }}
 {{ partial "hreflang.html" . }}
 <meta name="theme-color" content="#0a0a0f">
 <link rel="icon" href="/icon-192.png">
 <link rel="manifest" href="/manifest.json">
+
+{{- /* Page-specific social image: page-bundle og.png > site-root og.png */ -}}
+{{ $ogimg := "og.png" | absURL }}
+{{ with .Resources.GetMatch "og.png" }}{{ $ogimg = .Permalink }}{{ end }}
+{{ $socialTitle := cond $isHome site.Title .Title }}
+
 <!-- Open Graph -->
 <meta property="og:site_name" content="{{ site.Title }}">
-<meta property="og:title" content="{{ if $isHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
-<meta property="og:description" content="{{ $desc | plainify | truncate 160 }}">
+<meta property="og:title" content="{{ $socialTitle }}">
+<meta property="og:description" content="{{ $desc }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:image" content="{{ "og.png" | absURL }}">
+<meta property="og:image" content="{{ $ogimg }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="{{ replace (site.LanguageCode | default "en") "-" "_" }}">
+{{ if .IsPage }}<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
+
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<!-- Product Schema for product landing pages -->
+<meta name="twitter:title" content="{{ $socialTitle }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $ogimg }}">
+{{ with site.Params.twitterHandle }}<meta name="twitter:site" content="{{ . }}">
+<meta name="twitter:creator" content="{{ . }}">{{ end }}
+
+{{- /* ---------- Structured data (JSON-LD) ---------- */ -}}
+{{ if $isHome }}
+{{ $org := dict "@type" "Organization" "name" site.Title "url" site.BaseURL "logo" ("icon-192.png" | absURL) }}
+{{ $website := dict "@context" "https://schema.org" "@type" "WebSite" "name" site.Title "url" site.BaseURL "description" site.Params.description "inLanguage" (site.LanguageCode | default "en") "publisher" $org }}
+<script type="application/ld+json">{{ $website | jsonify | safeJS }}</script>
+<script type="application/ld+json">{{ (merge $org (dict "@context" "https://schema.org")) | jsonify | safeJS }}</script>
+{{ end }}
+
 {{ if and .IsPage .Params.product_url }}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": {{ .Title | htmlEscape | safeJS }},
-  "description": {{ .Description | htmlEscape | safeJS }},
-  "image": {{ "og.png" | absURL | safeHTML }},
-  "offers": {
-    "@type": "Offer",
-    "price": {{ .Params.product_price }},
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock"
-  }
-}
-</script>
+{{- /* Product landing page */ -}}
+{{ $offers := dict
+    "@type" "Offer"
+    "url" .Params.product_url
+    "priceCurrency" (.Params.product_currency | default "USD")
+    "availability" "https://schema.org/InStock"
+    "seller" (dict "@type" "Organization" "name" site.Title) }}
+{{ with .Params.product_price }}
+  {{ $offers = merge $offers (dict "price" (printf "%v" .) "priceValidUntil" (printf "%d-12-31" (add now.Year 1))) }}
+{{ end }}
+{{ $product := dict
+    "@context" "https://schema.org"
+    "@type" "Product"
+    "name" .Title
+    "description" $desc
+    "image" $ogimg
+    "url" .Permalink
+    "brand" (dict "@type" "Brand" "name" (.Params.product_brand | default site.Title))
+    "offers" $offers }}
+{{ with .Params.product_sku }}{{ $product = merge $product (dict "sku" .) }}{{ end }}
+{{ with .Params.product_category }}{{ $product = merge $product (dict "category" .) }}{{ end }}
+<script type="application/ld+json">{{ $product | jsonify | safeJS }}</script>
+{{ else if and .IsPage (ne .Section "news") }}
+{{- /* Regular article */ -}}
+{{ $article := dict
+    "@context" "https://schema.org"
+    "@type" "Article"
+    "headline" (.Title | truncate 110)
+    "description" $desc
+    "image" $ogimg
+    "datePublished" (.Date.Format "2006-01-02")
+    "dateModified" (.Lastmod.Format "2006-01-02")
+    "url" .Permalink
+    "mainEntityOfPage" .Permalink
+    "inLanguage" (site.LanguageCode | default "en")
+    "author" (dict "@type" "Person" "name" (site.Params.author | default "slashman413") "url" (absURL "/about/"))
+    "publisher" (dict "@type" "Organization" "name" site.Title "logo" (dict "@type" "ImageObject" "url" ("icon-192.png" | absURL))) }}
+<script type="application/ld+json">{{ $article | jsonify | safeJS }}</script>
+{{ end }}
+
+{{ if and .IsPage (ne .Section "news") }}
+{{- /* Breadcrumb trail */ -}}
+{{ $crumbs := slice (dict "@type" "ListItem" "position" 1 "name" "Home" "item" site.BaseURL) }}
+{{ with .Section }}{{ $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 2 "name" (title .) "item" (printf "%s%s/" $.Site.BaseURL .)) }}{{ end }}
+{{ $crumbs = $crumbs | append (dict "@type" "ListItem" "position" (add (len $crumbs) 1) "name" .Title "item" .Permalink) }}
+{{ $bc := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $crumbs }}
+<script type="application/ld+json">{{ $bc | jsonify | safeJS }}</script>
 {{ end }}
