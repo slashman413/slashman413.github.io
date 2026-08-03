@@ -5,6 +5,9 @@ description: "DGX Spark 部署套件把 NVIDIA GB10 變成雙模型 vLLM 伺服�
 slug: "dgx-spark-kit"
 draft: false
 schema: "ProductReview"
+product_price: 99
+product_currency: "USD"
+product_url: "https://gumroad.com/l/bppdqp"
 ---
 
 # DGX Spark 部署套件評測 2026：在 GB10 上穩定跑兩個 vLLM 模型

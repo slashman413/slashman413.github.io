@@ -5,6 +5,9 @@ description: "SaaS Starter 是一套可直接上線的 Next.js 16 樣板：多�
 slug: "saas-starter-kit"
 draft: false
 schema: "ProductReview"
+product_price: 99
+product_currency: "USD"
+product_url: "https://gumroad.com/l/kuvajr"
 ---
 
 # SaaS Starter Kit 評測 2026：一個週末把多租戶 Next.js 16 SaaS 上線
