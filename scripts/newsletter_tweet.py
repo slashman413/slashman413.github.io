@@ -37,7 +37,7 @@ NEWSLETTER_URL = os.environ.get(
 TEMPLATE = (
     "📬 Subscribe for weekly AI tips\n\n"
     "One practical AI & automation guide a week — tools, workflows and "
-    "digital-product lessons from a solo founder who ships alone.\n\n"
+    "lessons from a solo founder.\n\n"
     "Free forever. No spam.\n\n"
     "{url}"
 )
@@ -87,6 +87,9 @@ def main() -> int:
     text = TEMPLATE.format(url=NEWSLETTER_URL)
     if args.issue:
         text = f"📬 {args.issue} is out!\n\n" + text
+    if len(text) > 280:
+        print(f"❌ Tweet is {len(text)} chars (max 280) — shorten TEMPLATE/issue label", file=sys.stderr)
+        return 2
     post_tweet(text, dry_run=args.dry_run)
     return 0
 

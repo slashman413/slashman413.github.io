@@ -20,7 +20,7 @@ Any future card/creator attribution must use @KWC59125740 (already set in
 📬 Subscribe for weekly AI tips
 
 One practical AI & automation guide a week — tools, workflows and
-digital-product lessons from a solo founder who ships alone.
+lessons from a solo founder.
 
 Free forever. No spam.
 
@@ -33,7 +33,7 @@ With issue label (`--issue "Issue 12"`):
 📬 Issue 12 is out!
 
 One practical AI & automation guide a week — tools, workflows and
-digital-product lessons from a solo founder who ships alone.
+lessons from a solo founder.
 
 Free forever. No spam.
 
