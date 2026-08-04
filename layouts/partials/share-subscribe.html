@@ -1,0 +1,44 @@
+{{- /*
+  share-subscribe.html — "Share this article + Subscribe" block.
+
+  Rendered at the bottom of every article. Gives readers one-tap social share
+  (Twitter/X, LinkedIn, Reddit) and a direct path into the newsletter funnel,
+  with UTM parameters so the social → newsletter journey is attributable in
+  Plausible/GA and in the lead records stored by the lead-capture Worker.
+
+  UTM scheme (single source of truth — keep in sync with scripts/newsletter_tweet.py):
+    utm_source   = social platform (x / linkedin / reddit / blog)
+    utm_medium   = share | article-footer | social
+    utm_campaign = newsletter
+    utm_content  = <article slug>
+*/ -}}
+{{ $shareUrl := .Permalink }}
+{{ $shareText := printf "%s" .Title | truncate 90 }}
+{{ $utm := printf "utm_source=%s&utm_medium=article-footer&utm_campaign=newsletter&utm_content=%s" "blog" .File.ContentBaseName }}
+{{ $newsletterUrl := printf "%s?%s" (site.Params.newsletterUrl | default "/newsletter/") $utm }}
+
+<div class="share-subscribe" style="margin-top:36px;padding:24px 20px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px">
+  <p style="font-size:15px;font-weight:800;color:#f0f0f8;margin-bottom:4px">Share this article</p>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Found it useful? Pass it on — it helps a solo founder keep writing.</p>
+
+  {{ $via := "" }}
+  {{ with site.Params.twitterHandle }}{{ $via = strings.TrimPrefix "@" . }}{{ end }}
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px">
+    <a href="https://twitter.com/intent/tweet?text={{ $shareText | urlquery }}&url={{ $shareUrl }}{{ if $via }}&via={{ $via }}{{ end }}"
+       target="_blank" rel="noopener"
+       style="display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:999px;background:#1d9bf0;color:#fff;font-size:13.5px;font-weight:700;text-decoration:none">𝕏&nbsp;Post on X</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $shareUrl }}"
+       target="_blank" rel="noopener"
+       style="display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:999px;background:#0a66c2;color:#fff;font-size:13.5px;font-weight:700;text-decoration:none">in&nbsp;Share on LinkedIn</a>
+    <a href="https://www.reddit.com/submit?url={{ $shareUrl }}&title={{ $shareText | urlquery }}"
+       target="_blank" rel="noopener"
+       style="display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:999px;background:#ff4500;color:#fff;font-size:13.5px;font-weight:700;text-decoration:none">🔗&nbsp;Post on Reddit</a>
+  </div>
+
+  <div style="padding-top:16px;border-top:1px solid var(--border)">
+    <p style="font-size:14.5px;font-weight:800;color:#f0f0f8;margin-bottom:4px">📬 Subscribe for weekly AI tips</p>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:12px">One practical AI/automation guide a week. Free forever, no spam, unsubscribe anytime.</p>
+    <a href="{{ $newsletterUrl }}"
+       style="display:inline-block;padding:10px 22px;border-radius:999px;background:#a5b4fc;color:#0a0a0f;font-size:14px;font-weight:800;text-decoration:none">Subscribe to the newsletter →</a>
+  </div>
+</div>

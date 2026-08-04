@@ -115,6 +115,15 @@ export default {
     const source = String(payload.source || "unknown").trim().slice(0, 80);
     // A/B test cell the lead converted on (set by cta-ab.js, e.g. "leadmagnet:b2").
     const variant = String(payload.variant || "").trim().slice(0, 60);
+    // Social traffic attribution (set by lead-capture.js from the landing URL).
+    const utm = {
+      utm_source: String(payload.utm_source || "").trim().slice(0, 120),
+      utm_medium: String(payload.utm_medium || "").trim().slice(0, 120),
+      utm_campaign: String(payload.utm_campaign || "").trim().slice(0, 120),
+      utm_content: String(payload.utm_content || "").trim().slice(0, 120),
+      utm_term: String(payload.utm_term || "").trim().slice(0, 120),
+    };
+    const referrer = String(payload.referrer || request.headers.get("Referer") || "").trim().slice(0, 500);
     const ip = request.headers.get("CF-Connecting-IP") || "0.0.0.0";
 
     // --- Rate limit by IP --------------------------------------------------
@@ -138,6 +147,8 @@ export default {
       tags,
       source,
       variant,
+      ...utm,
+      referrer,
       ip,
       country: request.cf?.country || "",
       user_agent: request.headers.get("User-Agent") || "",

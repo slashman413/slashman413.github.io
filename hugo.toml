@@ -78,7 +78,12 @@ title = "Guías Intelectuales"
   # meta tag GSC gives you). Empty = tag suppressed. See seo-optimized deliverable.
   googleSiteVerification = ""
   # Twitter/X handle (with @) for twitter:site / twitter:creator card attribution.
-  twitterHandle = ""
+  # NOTE: @digitalProductTW is SUSPENDED (per ~/.priv/twitter-api-config.sh notes);
+  # the live, API-writable account is @KWC59125740 — point cards at the live one.
+  twitterHandle = "@KWC59125740"
+  # Canonical newsletter URL — single source of truth for all social CTAs
+  # (share-subscribe.html, scripts/newsletter_tweet.py, YouTube/IG descriptions).
+  newsletterUrl = "https://slashmantools.us/newsletter/"
   adsenseClient = "ca-pub-7217603696203672"
   gaId = "G-MY95FHB8JG"
   # Lead-capture endpoint. STOP-GAP (2026-08-01): pointed at web3forms
