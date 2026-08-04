@@ -34,21 +34,60 @@
     return DEFAULT_ENDPOINT;
   }
 
-  function track(source, variant) {
+  function track(source, variant, utm) {
     try {
       var props = { source: source || "lead-capture" };
       if (variant) props.variant = variant;
+      if (utm) {
+        Object.keys(utm).forEach(function (k) {
+          if (utm[k]) props[k] = utm[k];
+        });
+      }
       if (typeof window.gtag === "function") {
         window.gtag("event", "generate_lead", {
           event_category: "lead_magnet",
           event_label: source || "lead-capture",
           variant: variant || "",
+          ...(utm || {}),
         });
       }
       if (typeof window.plausible === "function") {
         window.plausible("Lead", { props: props });
       }
     } catch (_) {}
+  }
+
+  // --- Social traffic attribution -----------------------------------------
+  // Reads utm_* params (from social share links / bios / video descriptions),
+  // plus the HTTP referrer, and persists them in sessionStorage so they survive
+  // a page navigation between the landing page and the newsletter page. They
+  // are attached to every lead payload and analytics event.
+  var UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+
+  function readUtm() {
+    var out = {};
+    try {
+      var q = new URLSearchParams(window.location.search);
+      UTM_KEYS.forEach(function (k) {
+        var v = q.get(k);
+        if (v) out[k] = v.slice(0, 120);
+      });
+      // Persist across pages within the session (e.g. article → /newsletter/).
+      var saved = sessionStorage.getItem("lead_utm");
+      if (!out.utm_source && saved) {
+        try { out = JSON.parse(saved); } catch (_) {}
+      }
+      if (out.utm_source) sessionStorage.setItem("lead_utm", JSON.stringify(out));
+    } catch (_) {}
+    return out;
+  }
+
+  function readReferrer() {
+    try {
+      return document.referrer || "";
+    } catch (_) {
+      return "";
+    }
   }
 
   function setStatus(form, msg, kind) {
@@ -105,6 +144,7 @@
     var first_name = fd.get("mauticform[firstname]") || fd.get("fields[FIRST_NAME]") || fd.get("first_name") || "";
     var tags = fd.get("mauticform[tags]") || fd.get("tags") || "";
     var variant = fd.get("variant") || "";
+    var utm = readUtm();
     var body = {
       email: email,
       first_name: first_name,
@@ -112,7 +152,11 @@
       source: source,
       variant: variant,
       website: fd.get("website") || "", // honeypot
+      referrer: readReferrer(),
     };
+    UTM_KEYS.forEach(function (k) {
+      if (utm[k]) body[k] = utm[k];
+    });
     // Providers that require an access key + email metadata (e.g. web3forms).
     // window.LEAD_ACCESS_KEY is injected from Hugo params (see head.html). When
     // the endpoint flips back to the self-owned Worker / Mautic proxy, just drop
@@ -137,7 +181,7 @@
       .then(function (data) {
         // .ok = self-owned Worker/Mautic proxy; .success = web3forms.
         if (data && (data.ok || data.success)) {
-          track(source, variant);
+          track(source, variant, utm);
           form.reset();
           showSuccess(form);
         } else {

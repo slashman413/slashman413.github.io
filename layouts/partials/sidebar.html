@@ -61,12 +61,30 @@
               data-ab-placement="sidebar"
               data-ab-text-a="Subscribe"
               data-ab-text-b="Get Weekly AI Guides — Free"
+              data-ab-text-c="Join Now — It's Free"
               data-ab-color-a="#a5b4fc"
-              data-ab-color-b="#a5b4fc"
+              data-ab-color-b="#f59e0b"
+              data-ab-color-c="#10b981"
               style="padding:9px 12px;background:#a5b4fc;color:#0a0a0f;border:none;border-radius:8px;font-weight:700;font-size:12.5px;cursor:pointer">Subscribe</button>
       <p data-lead-status role="status" aria-live="polite" style="font-size:11px;margin-top:2px;min-height:14px"></p>
     </form>
     <p style="font-size:10px;color:#555;margin-top:6px">Free forever · No spam · Unsubscribe anytime</p>
+  </div>
+
+  <!-- Latest Newsletter Issues — auto-populates as issues are published -->
+  <div class="sidebar-widget" style="margin-top:16px;padding:16px 0;border-top:1px solid var(--border)">
+    <p style="font-size:12px;font-weight:700;color:#c7c7f0;margin-bottom:8px">📰 Latest Newsletter Issues</p>
+    {{ $issues := where .Site.RegularPages "Section" "newsletter" }}
+    {{ if $issues }}
+    <ul style="list-style:none;padding:0;margin:0;font-size:12.5px;line-height:1.75">
+      {{ range first 3 $issues.ByDate.Reverse }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title | truncate 60 }}</a></li>
+      {{ end }}
+    </ul>
+    <p style="font-size:10px;color:#555;margin-top:6px"><a href="/newsletter/">View all issues →</a></p>
+    {{ else }}
+    <p style="font-size:11.5px;color:var(--muted);line-height:1.55">Issue #1 lands this month — practical AI tools &amp; automation walkthroughs. <a href="/newsletter/">See what's coming →</a></p>
+    {{ end }}
   </div>
 
   <div class="side-foot">
