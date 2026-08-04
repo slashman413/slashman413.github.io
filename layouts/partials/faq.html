@@ -1,0 +1,18 @@
+{{- /*
+  faq.html — renders a visible FAQ section from frontmatter `faq` (list of
+  {q, a}). Kept on-page because FAQPage JSON-LD (emitted in meta.html from the
+  same data) must match visible content per Google structured-data policy.
+*/ -}}
+{{- if .Params.faq -}}
+{{- $heading := "Frequently Asked Questions" -}}
+{{- if eq .Language.Lang "zh-tw" }}{{ $heading = "常見問題" }}{{ else if eq .Language.Lang "zh-cn" }}{{ $heading = "常见问题" }}{{ else if eq .Language.Lang "ja" }}{{ $heading = "よくある質問" }}{{ else if eq .Language.Lang "es" }}{{ $heading = "Preguntas frecuentes" }}{{ end -}}
+<section class="faq" style="margin-top:32px">
+  <h2>{{ $heading }}</h2>
+  {{ range .Params.faq }}
+  <details style="margin-bottom:10px;padding:14px 16px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px">
+    <summary style="cursor:pointer;font-weight:700;color:#c7c7f0">{{ .q }}</summary>
+    <p style="margin-top:10px;color:var(--muted);line-height:1.7">{{ .a | markdownify }}</p>
+  </details>
+  {{ end }}
+</section>
+{{- end -}}

@@ -125,9 +125,16 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
       <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <input type="text" name="fields[FIRST_NAME]" placeholder="First name (optional)" autocomplete="given-name">
       <input type="email" name="email" placeholder="Your email address" required autocomplete="email">
-      <button type="submit">Get Toolkit</button>
+      <button type="submit"
+              data-ab-test="leadmagnet"
+              data-ab-placement="toolkit"
+              data-ab-text-a="Get Toolkit"
+              data-ab-text-b="Send Me the Toolkit →"
+              data-ab-color-a="#a5b4fc"
+              data-ab-color-b="#34d399">Get Toolkit</button>
     </form>
     <p class="form-note">No spam. Unsubscribe anytime. We respect your privacy.</p>
+    <p class="form-note"><strong style="color:#a5b4fc">Sent instantly</strong> — the download link lands in your inbox the moment you hit the button.</p>
     </div>
 
     <!-- Success message (shown after form submit via JS or server redirect) -->

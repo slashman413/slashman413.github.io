@@ -161,6 +161,14 @@ def sync_once(mautic: MauticAPI, api_url: str, forward_token: str, state: dict, 
         first_name = lead.get("first_name", "")
         tags = [t.strip() for t in lead.get("tags", "").split(",") if t.strip()]
         source = lead.get("source", "web-form").strip()
+        # A/B test cell (cta-ab.js → Worker lead.variant, e.g. "leadmagnet:b2").
+        # Tagged so conversion-per-cell is queryable in Mautic without any
+        # dashboard work: search contacts by tag "variant-leadmagnet-b2".
+        variant = lead.get("variant", "").strip()
+        if variant:
+            vtag = "variant-" + "".join(c if c.isalnum() or c in "_-" else "-" for c in variant)
+            if vtag not in tags:
+                tags.append(vtag)
 
         # Add source as a tag
         if source and source not in tags:

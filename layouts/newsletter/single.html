@@ -3,16 +3,28 @@
   <h1 class="newsletter-title">{{ .Title }}</h1>
   <p class="newsletter-desc">{{ .Params.subtitle | default "Weekly AI tools, guides & automation tips." }}</p>
 
-  <!-- Mautic subscribe form -->
-  <form action="{{ site.Params.leadEndpoint | default "https://api.web3forms.com/submit" }}" method="POST" class="newsletter-form" id="newsletter-form" data-lead-form data-source="newsletter-page" data-success-text="✅ Subscribed! Check your inbox.">
-    <input type="hidden" name="formId" value="1" />
-    <input type="hidden" name="newsletter_form" value="1" />
-    <div class="form-row">
-      <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" />
-      <button type="submit">Subscribe</button>
-    </div>
-    <p class="form-note">No spam. Unsubscribe anytime.</p>
-  </form>
+  <!-- Email capture form -->
+  <div id="form-container">
+    <form action="{{ site.Params.leadEndpoint | default "https://api.slashmantools.us/subscribe" }}" method="POST" class="newsletter-form" id="newsletter-form" data-lead-form data-source="newsletter-page" data-success="#newsletter-success">
+      <div class="form-row">
+        <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required inputmode="email" autocomplete="email" />
+        <button type="submit"
+                data-ab-test="newsletter"
+                data-ab-placement="newsletter-page"
+                data-ab-text-a="Subscribe"
+                data-ab-text-b="Get Weekly AI Guides — Free"
+                data-ab-color-a="#a5b4fc"
+                data-ab-color-b="#a5b4fc">Subscribe</button>
+      </div>
+      <p data-lead-status role="status" aria-live="polite" style="font-size:0.85rem;margin-top:8px;min-height:16px"></p>
+      <p class="form-note">Free forever · No spam · Unsubscribe anytime</p>
+    </form>
+  </div>
+
+  <div id="newsletter-success" style="display:none;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.3);border-radius:16px;padding:28px 24px;margin-bottom:50px">
+    <h2 style="color:#34d399">✅ You're in!</h2>
+    <p style="color:#dcdce8;margin-top:8px">Check your inbox for a confirmation email — and the free AI Productivity Toolkit is on its way.</p>
+  </div>
 
   <div class="newsletter-preview">
     <h3>What you'll get</h3>
@@ -21,6 +33,7 @@
       <li>🔧 <strong>Step-by-Step Guides</strong> — automations you can build today</li>
       <li>💰 <strong>Productivity Tips</strong> — from a solo founder who ships alone</li>
       <li>📊 <strong>Market Intelligence</strong> — what's moving in the AI space</li>
+      <li>🎁 <strong>Free AI Productivity Toolkit</strong> — 50+ prompts, templates &amp; comparisons, on signup</li>
     </ul>
   </div>
 </article>

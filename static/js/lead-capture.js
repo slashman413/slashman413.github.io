@@ -34,16 +34,19 @@
     return DEFAULT_ENDPOINT;
   }
 
-  function track(source) {
+  function track(source, variant) {
     try {
+      var props = { source: source || "lead-capture" };
+      if (variant) props.variant = variant;
       if (typeof window.gtag === "function") {
         window.gtag("event", "generate_lead", {
           event_category: "lead_magnet",
           event_label: source || "lead-capture",
+          variant: variant || "",
         });
       }
       if (typeof window.plausible === "function") {
-        window.plausible("Lead", { props: { source: source || "unknown" } });
+        window.plausible("Lead", { props: props });
       }
     } catch (_) {}
   }
@@ -101,11 +104,13 @@
     // Try Mautic-form field names first, then standard field names
     var first_name = fd.get("mauticform[firstname]") || fd.get("fields[FIRST_NAME]") || fd.get("first_name") || "";
     var tags = fd.get("mauticform[tags]") || fd.get("tags") || "";
+    var variant = fd.get("variant") || "";
     var body = {
       email: email,
       first_name: first_name,
       tags: tags,
       source: source,
+      variant: variant,
       website: fd.get("website") || "", // honeypot
     };
     // Providers that require an access key + email metadata (e.g. web3forms).
@@ -132,7 +137,7 @@
       .then(function (data) {
         // .ok = self-owned Worker/Mautic proxy; .success = web3forms.
         if (data && (data.ok || data.success)) {
-          track(source);
+          track(source, variant);
           form.reset();
           showSuccess(form);
         } else {

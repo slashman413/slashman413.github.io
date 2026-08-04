@@ -5,7 +5,12 @@
 
 <h2>Latest articles</h2>
 <ul class="postlist">
-  {{ range first 12 (where site.RegularPages "Section" "blog").ByDate.Reverse }}
+  {{- /* .Site.RegularPages returns the default-language pages even from a
+         zh-tw/zh-cn template (Hugo 0.157 behavior) — resolve the current
+         language's site explicitly so each homepage lists its own articles. */ -}}
+  {{ $langSite := .Site }}
+  {{ range .Sites }}{{ if eq .Language.Lang $.Lang }}{{ $langSite = . }}{{ end }}{{ end }}
+  {{ range first 12 (where $langSite.RegularPages "Section" "blog").ByDate.Reverse }}
   <li><a class="card" href="{{ .RelPermalink }}">
     <div class="t">{{ .Title }}</div>
     <div class="d">{{ .Description | plainify | truncate 150 }}</div>
@@ -15,4 +20,61 @@
 </ul>
 
 <p style="margin-top:24px"><a href="/blog/">All articles →</a> &nbsp; <a href="/tools/">Browse free tools →</a></p>
+
+<!-- Homepage Lead-Magnet CTA -->
+<div style="margin-top:32px;padding:24px 20px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-radius:12px;text-align:center">
+  <h2 style="font-size:17px;font-weight:800;color:#f0f0f8;margin:0 0 6px">🎁 Free AI Productivity Toolkit</h2>
+  <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px">50+ curated AI prompts, a tools comparison sheet and workflow templates — free, sent to your inbox instantly.</p>
+  <div style="max-width:380px;margin:0 auto">
+    <form id="mauticform_homeleadmagnet"
+          class="mauticform_wrapper"
+          autocomplete="false"
+          role="form"
+          method="post"
+          action="{{ site.Params.leadEndpoint | default "https://api.slashmantools.us/subscribe" }}"
+          data-lead-form
+          data-source="homepage-lead-magnet"
+          data-success="#home-success"
+          style="display:flex;flex-direction:column;gap:8px">
+      <input type="email"
+             name="mauticform[email]"
+             id="mauticform_input_homeleadmagnet_email"
+             placeholder="you@example.com"
+             aria-label="Email address"
+             required
+             inputmode="email"
+             autocomplete="email"
+             style="padding:10px 12px;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;color:#f0f0f8;font-size:14px;outline:none">
+      <input type="hidden" name="mauticform[formId]" value="14">
+      <input type="hidden" name="mauticform[formName]" value="homeleadmagnet">
+      <input type="hidden" name="tags" value="homepage-lead-magnet">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button type="submit"
+              data-ab-test="leadmagnet"
+              data-ab-placement="homepage"
+              data-ab-text-a="Get the Free Toolkit →"
+              data-ab-text-b="Yes, Send Me the Toolkit →"
+              data-ab-color-a="#a5b4fc"
+              data-ab-color-b="#34d399"
+              style="padding:11px 24px;background:#a5b4fc;color:#0a0a0f;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer">Get the Free Toolkit →</button>
+      <p data-lead-status role="status" aria-live="polite" style="font-size:12px;margin-top:2px;min-height:16px"></p>
+    </form>
+    <p id="home-success" style="display:none;font-size:14px;color:#34d399;margin-top:8px">✅ Check your inbox — the toolkit is on its way!</p>
+    <p style="font-size:11px;color:#55557a;margin-top:8px">Free forever · No spam · Unsubscribe anytime · Sent instantly</p>
+  </div>
+</div>
+
+<h2 style="margin-top:32px">Product Tools</h2>
+<ul class="postlist">
+  {{ $lang := .Language.Lang }}
+  {{ range site.Data.products }}
+  {{- /* zh-tw/zh-cn have translated product pages; ja/es do not, so keep EN URLs there */ -}}
+  {{- $url := .url -}}
+  {{- if or (eq $lang "zh-tw") (eq $lang "zh-cn") }}{{ $url = printf "/%s%s" $lang .url }}{{ end }}
+  <li><a class="card" href="{{ $url }}">
+    <div class="t">{{ .title }}</div>
+    <div class="d">From ${{ .price }} — on-site review &amp; hands-on guide{{ with .tags }} · {{ delimit (first 3 .) ", " }}{{ end }}</div>
+  </a></li>
+  {{ end }}
+</ul>
 {{ end }}

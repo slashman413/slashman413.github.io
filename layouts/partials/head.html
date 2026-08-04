@@ -19,6 +19,8 @@
 <!-- Lead-capture endpoint + client (see /webhook/) -->
 <script>window.LEAD_ENDPOINT={{ site.Params.leadEndpoint }};window.LEAD_ACCESS_KEY={{ site.Params.leadAccessKey }};</script>
 <script src="/js/lead-capture.js" defer></script>
+<!-- CTA A/B testing (see static/js/cta-ab.js) -->
+<script src="/js/cta-ab.js" defer></script>
 <!-- Google AdSense (suppressed on noindex/news pages to respect AdSense policy until approved) -->
 {{ if not $noindex }}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.Params.adsenseClient }}" crossorigin="anonymous"></script>

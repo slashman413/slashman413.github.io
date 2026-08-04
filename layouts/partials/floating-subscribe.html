@@ -1,10 +1,10 @@
 <!-- Floating Subscribe Button -->
-<a href="#mauticform_footersubscribe" class="floating-subscribe" title="Subscribe to Newsletter">
+<a href="#mauticform_footersubscribe" class="floating-subscribe" title="Join the newsletter — free">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
     <polyline points="22,6 12,13 2,6"></polyline>
   </svg>
-  <span>Subscribe</span>
+  <span>Join Free</span>
 </a>
 <style>
 .floating-subscribe {
@@ -33,6 +33,18 @@
   transform: translateY(-2px);
   text-decoration: none;
   color: #fff;
+}
+/* Gentle attention pulse for the first 5s after load (below the fold → draws the eye) */
+@keyframes floating-subscribe-pulse {
+  0%   { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); }
+  50%  { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 0 0 6px rgba(99, 102, 241, 0.25); }
+  100% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); }
+}
+.floating-subscribe {
+  animation: floating-subscribe-pulse 1.6s ease-in-out 3;
+}
+@media (prefers-reduced-motion: reduce) {
+  .floating-subscribe { animation: none; }
 }
 @media (max-width: 768px) {
   .floating-subscribe {

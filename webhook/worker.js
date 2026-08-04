@@ -113,6 +113,8 @@ export default {
       .slice(0, 80);
     const tags = String(payload.tags || "").trim().slice(0, 200);
     const source = String(payload.source || "unknown").trim().slice(0, 80);
+    // A/B test cell the lead converted on (set by cta-ab.js, e.g. "leadmagnet:b2").
+    const variant = String(payload.variant || "").trim().slice(0, 60);
     const ip = request.headers.get("CF-Connecting-IP") || "0.0.0.0";
 
     // --- Rate limit by IP --------------------------------------------------
@@ -135,6 +137,7 @@ export default {
       first_name: firstName,
       tags,
       source,
+      variant,
       ip,
       country: request.cf?.country || "",
       user_agent: request.headers.get("User-Agent") || "",
