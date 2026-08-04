@@ -3,6 +3,13 @@ title: "2026 年你必須知道的 50 個 AI 提示詞"
 date: 2026-07-29T14:57:11+08:00
 description: "探索 2026 年最革新的 50 個 AI 提示詞，大幅提升你的效率。學習如何透過 AI 提示詞庫進一步解鎖你的潛力。"
 draft: false
+# Explicit slug: without it Hugo derives a percent-encoded Chinese title slug
+# (/zh-tw/blog/2026-年你必須知道的-50-個-ai-提示詞/). Match the other languages.
+slug: "50-ai-productivity-prompts-you-must-know-in-2026"
+tags: [prompts, productivity, ai, writing, chatgpt]
+# URL-encoded form — Hugo drops raw non-ASCII alias paths, and prepends the
+# language prefix itself, so the alias must NOT include /zh-tw/.
+aliases: ["/blog/2026-%E5%B9%B4%E4%BD%A0%E5%BF%85%E9%A0%88%E7%9F%A5%E9%81%93%E7%9A%84-50-%E5%80%8B-ai-%E6%8F%90%E7%A4%BA%E8%A9%9E/"]
 ---
 
 我們正穿梭於 2026 年的人工智慧（AI）浪潮中，AI 已不再是科技產業的流行詞；它已深度整合進我們的日常工作與生活。無論你是行銷人員、軟體工程師、高階主管或自由工作者，掌握正確的「提示詞」是解鎖 AI 真正潛力的關鍵。

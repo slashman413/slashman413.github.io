@@ -121,6 +121,10 @@ title = "Guías Intelectuales"
     url = "/blog/"
     weight = 20
   [[menu.main]]
+    name = "Products"
+    url = "/products/"
+    weight = 30
+  [[menu.main]]
     name = "About"
     url = "/about/"
     weight = 40

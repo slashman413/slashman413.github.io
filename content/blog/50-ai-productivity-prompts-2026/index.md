@@ -3,6 +3,8 @@ title: "50 AI Productivity Prompts You Must Know in 2026"
 date: 2026-07-29T14:57:11+08:00
 description: "Discover the 50 most revolutionary AI prompts for 2026 to boost your productivity. Learn how to further unlock your potential with the AI Prompt Library."
 draft: false
+slug: "50-ai-productivity-prompts-you-must-know-in-2026"
+tags: [prompts, productivity, ai, writing, chatgpt, claude]
 ---
 
 As we navigate through 2026, Artificial Intelligence (AI) is no longer just a buzzword in the tech industry; it has deeply integrated into our daily work and lives. Whether you are a marketer, software engineer, executive, or freelancer, mastering the right "Prompts" is the key to unlocking AI's true potential.

@@ -1,0 +1,32 @@
+{{ define "main" }}
+{{- /* products/list.html — catalogue hub for the Slashman Tools product line.
+       Data-driven from data/products.yaml; every card links to the ON-SITE
+       landing page (/blog/<slug>/, canonical product page with Product JSON-LD
+       and review content) for internal link equity, plus the Gumroad checkout.
+       Per-product content pages are deliberately NOT created — they would
+       duplicate the canonical /blog/<slug>/ landing pages. */ -}}
+<h1>{{ .Title }}</h1>
+{{ with .Content }}<div class="dateline"></div>{{ . }}{{ end }}
+{{ $lang := .Language.Lang }}
+{{ $products := site.Data.products }}
+{{ if $products }}
+<ul style="list-style:none;padding:0;margin:22px 0 0">
+  {{ range $products }}
+  {{- $landing := .url }}
+  {{- /* zh-tw/zh-cn have translated landing pages; ja/es do not, keep EN URLs */ -}}
+  {{- if and (or (eq $lang "zh-tw") (eq $lang "zh-cn")) .url }}{{ $landing = printf "/%s%s" $lang .url }}{{ end }}
+  <li style="margin-bottom:16px;padding:18px 20px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+      <a href="{{ $landing }}" style="color:#a5b4fc;text-decoration:none;font-weight:700;font-size:16.5px">{{ .title }}</a>
+      {{ with .price }}<span style="color:#34d399;font-weight:700;font-size:15px">${{ . }}</span>{{ end }}
+    </div>
+    {{ with .tags }}<div style="margin-top:8px;color:#7878a0;font-size:12.5px">{{ delimit . " · " }}</div>{{ end }}
+    <div style="margin-top:12px;display:flex;gap:12px;font-size:13.5px">
+      {{ if $landing }}<a href="{{ $landing }}" style="color:#c7c7f0;font-weight:600">Read the full review →</a>{{ end }}
+      {{ with .buy }}<a href="{{ . }}" rel="nofollow sponsored" style="color:#7878a0">Get it on Gumroad ↗</a>{{ end }}
+    </div>
+  </li>
+  {{ end }}
+</ul>
+{{ end }}
+{{ end }}

@@ -4,6 +4,7 @@ date: 2026-07-29T14:57:11+08:00
 description: "En esta guía, profundizamos en las ventajas de la inversión automatizada en ETF y te enseñamos cómo optimizar tu cartera utilizando un panel de inteligencia artificial. Aprende cómo ahorrar tiempo y aumentar tus retornos hoy."
 draft: false
 slug: "automated-etf-investing-ai-dashboard-implementation-guide"
+tags: [etf, investment, dashboard, automation, finance, portfolio]
 ---
 
 # Inversión Automatizada en ETF: Guía de Implementación de Dashboard con IA

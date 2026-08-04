@@ -3,6 +3,10 @@ title: "Automated ETF Investing: AI Dashboard Implementation Guide"
 date: 2026-07-29T14:57:11+08:00
 description: "In this guide, we dive deep into the advantages of automated ETF investing and teach you how to optimize your portfolio using an AI dashboard. Learn how to save time and boost your returns today."
 draft: false
+# Freeze the title-derived slug explicitly (matches the es variant) so URL stays
+# stable regardless of title edits.
+slug: "automated-etf-investing-ai-dashboard-implementation-guide"
+tags: [etf, investment, dashboard, automation, finance, portfolio]
 ---
 
 # Automated ETF Investing: AI Dashboard Implementation Guide

@@ -4,7 +4,7 @@ date: "2026-07-29T14:57:11+08:00"
 description: "針對最新的 Gumroad AI 課程所做的完整評測。我們深入剖析課程內容、優缺點，以及它是否真的值得你花 $99 投資。"
 draft: false
 slug: "ai-course-review-2026"
-tags: ["AI Course", "Education", "Review"]
+tags: [ai, course, education, review, learning]
 categories: ["Reviews"]
 ---
 

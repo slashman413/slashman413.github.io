@@ -3,6 +3,14 @@ title: "The Ultimate Guide to Digital Product Startups in 2026: From $0 to $5000
 date: 2026-07-29T14:57:11+08:00
 description: "A comprehensive guide designed for 2026 to help you find your niche, create passive income, and leverage AI tools and systems to reach $5,000 per month."
 draft: false
+# Explicit slug — the title contains a "/" ("$5000/Month") which, when Hugo
+# falls back to a title-derived slug, produces a broken /month/ path segment
+# (https://slashmantools.us/blog/the-ultimate-guide-to-digital-product-startups-in-2026-from-0-to-5000/month/).
+# Matches the es variant so both languages share a clean, consistent URL.
+slug: "the-ultimate-guide-to-digital-product-startups-in-2026-from-0-to-5000"
+tags: [digital-products, business, solopreneur, ai, passive-income, entrepreneurship]
+# Old broken title-derived URL — keep serving a redirect instead of a 404.
+aliases: ["/blog/the-ultimate-guide-to-digital-product-startups-in-2026-from-0-to-5000/month/"]
 ---
 
 # The Ultimate Guide to Digital Product Startups in 2026: From $0 to $5000/Month

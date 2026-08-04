@@ -3,7 +3,7 @@
 # its member products (data/products.yaml) and every article tagged with the
 # cluster's topic tags.
 #
-# The category layout (layouts/categories/single.html) renders:
+# The category layout (layouts/topics/single.html) renders:
 #   - member products (internal link equity → on-site landing pages)
 #   - every article in the current language whose tags intersect `tags`
 #   - sibling category links (hub cross-linking)

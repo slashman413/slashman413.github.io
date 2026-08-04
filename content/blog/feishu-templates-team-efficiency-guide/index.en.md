@@ -3,6 +3,10 @@ title: "How to Increase Team Efficiency by 300% with Feishu Templates"
 date: 2026-07-29T14:57:11+08:00
 description: "Discover how to revolutionize your team's collaboration using powerful Feishu Templates. This comprehensive guide shows you how to boost efficiency by up to 300% through standardized workflows and automation."
 draft: false
+# Freeze the title-derived slug explicitly (matches the es variant) so URL stays
+# stable regardless of title edits. zh-tw keeps its own shorter slug.
+slug: "how-to-increase-team-efficiency-by-300-with-feishu-templates"
+tags: [templates, feishu, productivity, teams, project-management]
 ---
 
 In today's fast-paced business environment, team efficiency is the key to corporate success. However, many teams are still bogged down by tedious daily tasks, chaotic project management, and ineffective communication. If you find your team constantly wasting time searching for files, checking on progress, or re-creating the same spreadsheets from scratch, then you need to know about "Feishu" (also known as Lark) and its most powerful secret weapon: **Feishu Templates**.

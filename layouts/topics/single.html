@@ -22,7 +22,11 @@
 {{ range where site.RegularPages "Section" "blog" }}
   {{ if and (eq .Lang $.Lang) (not .Params.product_url) }}
     {{ $pageTags := slice }}
-    {{ range .Params.tags | default slice }}{{ $pageTags = $pageTags | append (lower .) }}{{ end }}
+    {{- /* split multi-word tags ("AI Course" → ai, course) so they match single-word
+           cluster tags in data/categories.yaml — same normalization as related-products.html */ -}}
+    {{ range .Params.tags | default slice }}
+      {{ range (split (lower .) " ") }}{{ $pageTags = $pageTags | append . }}{{ end }}
+    {{ end }}
     {{ if gt (len (intersect $pageTags $categoryTags)) 0 }}{{ $articles = $articles | append . }}{{ end }}
   {{ end }}
 {{ end }}
@@ -36,8 +40,12 @@
   <h2>📦 相關工具</h2>
   <ul style="list-style:none;padding:0;margin:0 0 24px">
     {{ range $products }}
+    {{- /* zh-tw/zh-cn have translated product landing pages; ja/es do not, keep EN URLs */ -}}
+    {{- $lang := $.Language.Lang }}
+    {{- $landing := .url }}
+    {{- if and (or (eq $lang "zh-tw") (eq $lang "zh-cn")) .url }}{{ $landing = printf "/%s%s" $lang .url }}{{ end }}
     <li style="margin-bottom:10px;padding:14px 16px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px">
-      <a href="{{ .url }}" style="color:#a5b4fc;text-decoration:none;font-weight:700">{{ .title }}{{ with .price }} — ${{ . }}{{ end }}</a>
+      <a href="{{ $landing }}" style="color:#a5b4fc;text-decoration:none;font-weight:700">{{ .title }}{{ with .price }} — ${{ . }}{{ end }}</a>
       {{ with .buy }}<a href="{{ . }}" rel="nofollow sponsored" style="color:#7878a0;font-size:13px;margin-left:10px">購買 ↗</a>{{ end }}
     </li>
     {{ end }}

@@ -4,7 +4,7 @@ date: "2026-07-29T14:57:11+08:00"
 description: "A comprehensive review of the latest Gumroad AI Course. We explore the content, pros and cons, and whether it's truly worth your $99 investment."
 draft: false
 slug: "ai-course-review-2026"
-tags: ["AI Course", "Education", "Review"]
+tags: [ai, course, education, review, learning]
 categories: ["Reviews"]
 ---
 

@@ -5,8 +5,11 @@
     <div>
       <strong style="color:#8888c0;font-size:12px;letter-spacing:.08em;text-transform:uppercase">Topic Clusters</strong>
       <div style="margin-top:8px;font-size:13.5px;line-height:1.9">
+        {{- /* zh-tw has translated pillar pages; other languages use the EN hubs */ -}}
         {{ range site.Data.categories }}
-        <a href="/categories/{{ .slug }}/">{{ .title }}</a><br>
+        {{- $url := printf "/categories/%s/" .slug }}
+        {{- if eq $.Language.Lang "zh-tw" }}{{ $url = printf "/zh-tw/categories/%s/" .slug }}{{ end }}
+        <a href="{{ $url }}">{{ .title }}</a><br>
         {{ end }}
       </div>
     </div>

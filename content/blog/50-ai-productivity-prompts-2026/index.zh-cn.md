@@ -4,6 +4,7 @@ date: 2026-07-29T14:57:11+08:00
 description: "探索 2026 年最具革命性的 50 个 AI 提示词，全面提升你的工作效率。并了解如何通过 AI Prompt Library 进一步解锁生产力。"
 draft: false
 slug: "50-ai-productivity-prompts-you-must-know-in-2026"
+tags: [prompts, productivity, ai, writing, chatgpt]
 ---
 
 进入 2026 年，人工智能 (AI) 已经不再只是科技圈的专利，它已经深深融入我们的日常工作与生活之中。无论你是营销人员、软件工程师、企业高管还是自由职业者，掌握正确的“提示词（Prompt）”是解锁 AI 真正潜力的关键。
