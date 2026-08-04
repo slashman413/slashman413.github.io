@@ -208,16 +208,38 @@
     }
   }
 
+  function bindForm(form) {
+    if (form.dataset.leadBound) return; // never double-bind
+    form.dataset.leadBound = "1";
+    form.addEventListener("submit", handleSubmit);
+  }
+
   function init() {
     var forms = document.querySelectorAll("[data-lead-form]");
-    for (var i = 0; i < forms.length; i++) {
-      forms[i].addEventListener("submit", handleSubmit);
-    }
+    for (var i = 0; i < forms.length; i++) bindForm(forms[i]);
   }
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
+  }
+
+  // Bind forms injected after load (e.g. the mid-article CTA added by
+  // cta-ab.js, or future dynamic blocks) without re-binding existing ones.
+  if (window.MutationObserver) {
+    var mo = new MutationObserver(function (mutations) {
+      for (var m = 0; m < mutations.length; m++) {
+        var added = mutations[m].addedNodes;
+        for (var n = 0; n < added.length; n++) {
+          var node = added[n];
+          if (!node || node.nodeType !== 1) continue;
+          if (node.matches && node.matches("[data-lead-form]")) bindForm(node);
+          var nested = node.querySelectorAll ? node.querySelectorAll("[data-lead-form]") : [];
+          for (var q = 0; q < nested.length; q++) bindForm(nested[q]);
+        }
+      }
+    });
+    mo.observe(document.documentElement, { childList: true, subtree: true });
   }
 })();
