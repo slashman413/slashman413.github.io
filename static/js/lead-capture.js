@@ -242,8 +242,9 @@
     // window.LEAD_ACCESS_KEY is injected from Hugo params (see head.html). When
     // the endpoint flips back to the self-owned Worker / Mautic proxy, just drop
     // the key param and these extra fields are ignored.
-    if (window.LEAD_ACCESS_KEY) {
-      body.access_key = window.LEAD_ACCESS_KEY;
+    var accessKey = window.LEAD_ACCESS_KEY || fd.get("access_key") || "32e709fa-d67d-46e9-a1a0-1ac9ef6be251";
+    if (accessKey) {
+      body.access_key = accessKey;
       body.subject = "New slashmantools lead — " + source;
       body.from_name = "slashmantools.us";
       body.botcheck = ""; // web3forms honeypot (empty = human)

@@ -109,7 +109,7 @@ title = "Guías Intelectuales"
   leadEndpoint = "https://api.slashmantools.us/subscribe"
   # web3forms access key no longer needed — the Worker returns {ok:true} and
   # lead-capture.js reads data.ok. Kept empty so window.LEAD_ACCESS_KEY is unset.
-  leadAccessKey = ""
+  leadAccessKey = "32e709fa-d67d-46e9-a1a0-1ac9ef6be251"
 
 [menu]
   [[menu.main]]

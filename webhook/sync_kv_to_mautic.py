@@ -179,6 +179,12 @@ def sync_once(mautic: MauticAPI, api_url: str, forward_token: str, state: dict, 
         if "welcome-7day" not in tags:
             tags.append("welcome-7day")
 
+        # Also enter the weekly newsletter broadcast list (segment 21 filters on
+        # the "newsletter" tag; email 16 "Newsletter Issue 1" goes out every
+        # Tuesday 09:00 via mautic:broadcasts:send --id=16).
+        if "newsletter" not in tags:
+            tags.append("newsletter")
+
         try:
             existing = mautic.find_contact_by_email(email)
             if existing:
