@@ -1,7 +1,7 @@
 ---
 title: "Traditional-Chinese AI Course Review 2026: 4 Units, 17 Lessons from Zero to Applied AI"
 date: "2026-08-02T08:00:00+08:00"
-description: "The Traditional-Chinese AI Course teaches AI from zero to applied: 4 units, 17 lessons covering ChatGPT, Claude and Gemini, with practice projects and lifetime access. Hands-on review of the $99 course."
+description: "Traditional-Chinese AI Course review: 4 units, 17 lessons from zero to applied AI — ChatGPT, Claude and Gemini, practice projects and lifetime access. $99."
 slug: "ai-course"
 draft: false
 schema: "ProductReview"
@@ -12,11 +12,24 @@ product_brand: "Slashman Tools"
 product_sku: "SMT-AIC"
 product_category: "Online Course"
 product_currency: "USD"
+seo_title: 'Traditional-Chinese AI Course: From Zero to Applied AI'
+keywords: ['traditional chinese ai course', 'ai course review', 'learn chatgpt', 'ai for beginners', 'chinese ai course']
+faq:
+  - q: 'What does the course cover?'
+    a: 'Four units and 17 lessons take you from AI fundamentals to applied use of ChatGPT, Claude and Gemini, with practice projects and lifetime access.'
+  - q: 'Do I need a programming background?'
+    a: 'No — the course starts from zero and is designed for complete beginners, with step-by-step lessons in Traditional Chinese.'
+  - q: 'Is the course in Traditional Chinese?'
+    a: 'Yes — the entire course is taught in Traditional Chinese (繁體中文), which is rare for quality AI education and ideal for Taiwanese and Hong Kong learners.'
+  - q: 'What do I get for $99?'
+    a: '17 recorded lessons across 4 units, practice projects, lifetime access, and updates as AI tools evolve.'
+sitemap:
+  priority: 0.9
+  changefreq: monthly
 ---
 
 # Traditional-Chinese AI Course Review 2026: 4 Units, 17 Lessons from Zero to Applied AI
 
-**SEO Keywords**: AI 課程, 繁體中文 AI 教學, ChatGPT 教學, Claude 教學, AI 實作課程, AI course Traditional Chinese, 從零學 AI
 
 Most AI content in Chinese is either a 5-minute hype video or a machine-translated English course that never quite lands. The **Traditional-Chinese AI Course** was built to fill that gap: a structured, practice-first curriculum in traditional Chinese that takes a complete beginner to building real AI workflows. Here is our hands-on review of the **$99** course.
 

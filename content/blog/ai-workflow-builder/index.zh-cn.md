@@ -1,7 +1,7 @@
 ---
 title: "AI Workflow Builder 評測 2026：一句提示詞，生成經過驗證的多 Agent AI 工作流"
 date: "2026-08-03T08:00:00+08:00"
-description: "AI Workflow Builder 把一句自然語言提示變成經過驗證、有依賴檢查的多 Agent AI 工作流。互動式 Grill-Me 規格迴圈、DAG 設計器、pre-flight 驗證器與 Python 程式碼產生器。深入評測這款 $99 開發者工具。"
+description: "AI Workflow Builder 把一句自然語言提示變成經過驗證、有依賴檢查的多 Agent AI 工作流：Grill-Me 規格迴圈、DAG 設計器、pre-flight 驗證器。$99 開發者工具評測。"
 slug: "ai-workflow-builder"
 draft: false
 schema: "Product"
@@ -11,6 +11,9 @@ product_brand: "Slashman Tools"
 product_sku: "SMT-AWB"
 product_category: "Software > AI Tools"
 product_currency: "USD"
+sitemap:
+  priority: 0.8
+  changefreq: monthly
 ---
 
 # AI Workflow Builder 評測 2026：一句提示詞，生成經過驗證的多 Agent AI 工作流

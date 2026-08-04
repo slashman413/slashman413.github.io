@@ -16,10 +16,16 @@
 
   {{ partial "share-subscribe.html" . }}
 
-  <!-- Lead Magnet CTA — inline email capture -->
+  <!-- Lead Magnet CTA — inline email capture (product pages get product-focused copy) -->
+  {{ $isProduct := .Params.product_url }}
   <div id="form-container" style="margin-top:32px;padding:24px 20px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-radius:12px;text-align:center">
+    {{ if $isProduct }}
+    <p style="font-size:16px;font-weight:800;color:#f0f0f8;margin-bottom:6px">📬 Free Weekly AI Product Guides</p>
+    <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px">New tools, templates and automation walkthroughs — plus hands-on updates on the Slashman Tools catalogue. One email a week, zero fluff.</p>
+    {{ else }}
     <p style="font-size:16px;font-weight:800;color:#f0f0f8;margin-bottom:6px">🎁 Free AI Productivity Toolkit</p>
     <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px">50+ curated prompts + tools comparison + workflow templates. Free download — sent to your inbox instantly.</p>
+    {{ end }}
     <div style="max-width:380px;margin:0 auto">
       <form id="mauticform_landingpageleadmagnet"
             class="mauticform_wrapper"
@@ -57,6 +63,7 @@
                 data-ab-text-b="Yes, Send Me the Toolkit →"
                 data-ab-color-a="#a5b4fc"
                 data-ab-color-b="#34d399"
+                data-ab-color-c="#f59e0b"
                 style="padding:11px 24px;background:#a5b4fc;color:#0a0a0f;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer">Get the Free Toolkit →</button>
         <p data-lead-status role="status" aria-live="polite" style="font-size:12px;margin-top:2px;min-height:16px"></p>
       </form>

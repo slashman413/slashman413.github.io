@@ -1,7 +1,7 @@
 ---
 title: "Ship With AI Review 2026: A 4-Hour Course to Your First AI Automation Project"
 date: "2026-08-02T08:00:00+08:00"
-description: "Ship With AI is a focused 4-hour practical course that takes you from zero to your first working AI automation project — no coding background required. Hands-on review of the $99 course."
+description: "Ship With AI review: a 4-hour practical course from zero to your first working AI automation project — no coding background required. $99."
 slug: "ship-with-ai"
 draft: false
 schema: "ProductReview"
@@ -12,11 +12,24 @@ product_brand: "Slashman Tools"
 product_sku: "SMT-SWA"
 product_category: "Online Course"
 product_currency: "USD"
+seo_title: 'Ship With AI Review: Build Your First AI Automation'
+keywords: ['ai automation course', 'nocode automation', 'build ai automation', 'ai automation for beginners', 'workflow automation']
+faq:
+  - q: 'What will I build in 4 hours?'
+    a: 'A complete, working AI automation project — the course walks you through choosing a workflow, wiring AI tools together and shipping it end to end.'
+  - q: 'Do I need coding experience?'
+    a: 'No — the course is deliberately no-code friendly and designed for marketers, operators and founders, not just developers.'
+  - q: 'What tools are covered?'
+    a: 'Practical AI automation stacks — LLM APIs, no-code glue and automation platforms — that you can adapt to your own business.'
+  - q: 'Is Ship With AI a course or a tool?'
+    a: 'A course — four focused hours of video lessons plus templates you can reuse for your own automation projects.'
+sitemap:
+  priority: 0.9
+  changefreq: monthly
 ---
 
 # Ship With AI Review 2026: A 4-Hour Course to Your First AI Automation Project
 
-**SEO Keywords**: AI automation course, Ship With AI, AI 自動化課程, no-code AI automation, build AI automation project, AI workflow course, 4-hour AI course
 
 Most AI courses teach you how to *talk* to AI. **Ship With AI** is built to get you to the finish line instead: in four focused hours, you go from zero to a working AI automation project — the kind that saves you time every single day. Here is our hands-on review of the **$99** course.
 

@@ -1,4 +1,10 @@
 baseURL = "https://slashmantools.us/"
+# The site's primary market language is English: EN content lives at the root
+# URLs (/blog/<slug>/), other languages under /<lang>/ subdirectories. This must
+# be explicit — Hugo defaults to the first [languages] entry by weight (zh-tw),
+# which silently put zh-tw at root, emptied the zh-tw sitemap, and forced EN
+# into /en/ (duplicate content). See seo-optimization deliverable.
+defaultContentLanguage = "en"
 languageCode = "en"
 # Interpret dates without an explicit offset (e.g. `date: 2026-08-03`) in Taiwan
 # time, matching where content is authored. GitHub Actions builds in UTC (8h
@@ -76,7 +82,10 @@ title = "Guías Intelectuales"
   # Google Search Console verification. Paste the token from the HTML-tag
   # verification method (the content="..." value of the google-site-verification
   # meta tag GSC gives you). Empty = tag suppressed. See seo-optimized deliverable.
-  googleSiteVerification = ""
+  # Token jV8Xt5l-... is the slashmantools.us domain-property token already used by
+  # the sibling tool repos (unit-converter, compound-calculator, etc. — all deploy
+  # under https://slashmantools.us/), so it verifies this site too.
+  googleSiteVerification = "jV8Xt5l-peRpLknp7xKYpvN8N5tCAkMctq0D-3RVyzk"
   # Twitter/X handle (with @) for twitter:site / twitter:creator card attribution.
   # NOTE: @digitalProductTW is SUSPENDED (per ~/.priv/twitter-api-config.sh notes);
   # the live, API-writable account is @KWC59125740 — point cards at the live one.
@@ -111,10 +120,6 @@ title = "Guías Intelectuales"
     name = "Blog"
     url = "/blog/"
     weight = 20
-  [[menu.main]]
-    name = "News"
-    url = "/news/"
-    weight = 30
   [[menu.main]]
     name = "About"
     url = "/about/"

@@ -1,7 +1,7 @@
 ---
 title: "Cowork Pro Review 2026: Orchestrate AI Agents from One Dashboard"
 date: "2026-08-02T08:00:00+08:00"
-description: "Cowork Pro is a multi-agent AI orchestration framework with an MCP server and web dashboard. See how it dispatches tasks across Claude, Gemini and local models from one pane of glass."
+description: "Cowork Pro review: orchestrate AI agents from one dashboard — a multi-agent MCP framework dispatching tasks across Claude, Gemini and local models."
 slug: "cowork-pro"
 tags: [ai, agents, automation, orchestration, mcp, saas, cowpro]
 draft: false
@@ -12,11 +12,24 @@ product_brand: "Slashman Tools"
 product_sku: "SMT-CWP"
 product_category: "Software > AI Tools"
 product_currency: "USD"
+seo_title: 'Cowork Pro: Orchestrate AI Agents From One Dashboard'
+keywords: ['ai agent orchestration', 'mcp server', 'multi-agent framework', 'ai agent dashboard', 'task automation']
+faq:
+  - q: 'What is Cowork Pro?'
+    a: 'Cowork Pro is a multi-agent AI orchestration framework with a built-in MCP server and web dashboard, letting you dispatch tasks to Claude, Gemini, local models and other agents from one pane of glass.'
+  - q: 'What is an MCP server?'
+    a: 'MCP (Model Context Protocol) is an open standard that lets AI agents talk to tools and to each other. Cowork Pro ships an MCP server so agents can coordinate tasks and share results.'
+  - q: 'Which models and agents are supported?'
+    a: 'Claude Code, Antigravity (AGY), Hermes, and any local or remote model that exposes an API — you can mix cloud and local agents in the same workflow.'
+  - q: 'Do I need to write code?'
+    a: 'No — tasks are files and the dashboard handles dispatch, monitoring and result collection, though power users can extend it with their own agents.'
+sitemap:
+  priority: 0.9
+  changefreq: monthly
 ---
 
 # Cowork Pro Review 2026: Orchestrate AI Agents from One Dashboard
 
-**SEO Keywords**: AI agent orchestration, multi-agent AI framework, MCP server, AI task management, Claude Code orchestration, AI agents dashboard, Cowork Pro
 
 Running one AI agent is easy. Running ten — across different models, machines, and tools — is where most automation projects die. You end up with scattered terminals, half-finished tasks, and no single view of what your AI army is actually doing.
 

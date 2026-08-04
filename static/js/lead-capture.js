@@ -109,8 +109,89 @@
     if (target) {
       if (container) container.style.display = "none";
       target.style.display = "block";
+      target.style.animation = "sl-success-pop .4s ease-out";
+      ensureAnimStyles();
     } else {
       setStatus(form, form.getAttribute("data-success-text") || "✅ You're in! Check your inbox.", "success");
+    }
+    launchConfetti();
+  }
+
+  /* ---- Success animations (dependency-free, ES5) ---------------------- */
+
+  function ensureAnimStyles() {
+    if (document.getElementById("sl-success-anim-css")) return;
+    var style = document.createElement("style");
+    style.id = "sl-success-anim-css";
+    style.textContent =
+      "@keyframes sl-success-pop{0%{transform:scale(.86);opacity:0}60%{transform:scale(1.04);opacity:1}100%{transform:scale(1);opacity:1}}";
+    document.head.appendChild(style);
+  }
+
+  // Tiny canvas-free confetti burst on successful signup. Respects
+  // prefers-reduced-motion; never blocks or steals pointer events.
+  function launchConfetti() {
+    try {
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var colors = ["#a5b4fc", "#f59e0b", "#10b981", "#34d399", "#6366f1", "#f0f0f8"];
+      var holder = document.createElement("div");
+      holder.setAttribute("aria-hidden", "true");
+      holder.style.cssText =
+        "position:fixed;inset:0;pointer-events:none;z-index:2147483000;overflow:hidden";
+      document.body.appendChild(holder);
+      var parts = [];
+      var count = 90;
+      for (var i = 0; i < count; i++) {
+        var el = document.createElement("div");
+        var w = 5 + Math.random() * 7;
+        var h = w * (0.6 + Math.random() * 0.8);
+        el.style.cssText =
+          "position:absolute;left:0;top:0;width:" +
+          w.toFixed(1) +
+          "px;height:" +
+          h.toFixed(1) +
+          "px;background:" +
+          colors[(Math.random() * colors.length) | 0] +
+          ";border-radius:" +
+          (Math.random() > 0.5 ? "50%" : "2px") +
+          ";opacity:" +
+          (0.75 + Math.random() * 0.25).toFixed(2);
+        holder.appendChild(el);
+        parts.push({
+          el: el,
+          x: Math.random() * window.innerWidth,
+          y: -20 - Math.random() * window.innerHeight * 0.2,
+          vx: (Math.random() - 0.5) * 140,
+          vy: 50 + Math.random() * 160,
+          rot: Math.random() * 360,
+          vr: (Math.random() - 0.5) * 360,
+        });
+      }
+      var last = null;
+      function frame(ts) {
+        if (last === null) last = ts;
+        var dt = Math.min(0.05, (ts - last) / 1000);
+        last = ts;
+        var alive = false;
+        for (var k = 0; k < parts.length; k++) {
+          var p = parts[k];
+          p.vy += 260 * dt; // gravity (px/s²)
+          p.x += p.vx * dt;
+          p.y += p.vy * dt;
+          p.rot += p.vr * dt;
+          if (p.y < window.innerHeight + 60) alive = true;
+          p.el.style.transform =
+            "translate(" + p.x.toFixed(1) + "px," + p.y.toFixed(1) + "px) rotate(" + p.rot.toFixed(1) + "deg)";
+        }
+        if (alive) {
+          window.requestAnimationFrame(frame);
+        } else if (holder.parentNode) {
+          holder.parentNode.removeChild(holder);
+        }
+      }
+      window.requestAnimationFrame(frame);
+    } catch (_) {
+      // Confetti is decorative — never let it break the success path.
     }
   }
 

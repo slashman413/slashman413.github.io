@@ -34,11 +34,6 @@
     "description": "DGX Spark 部署套件幫你快速在 NVIDIA DGX Spark 上部署 Qwen 3.6 雙模型。包含完整設定檔、腳本、教學文件和除錯指南。",
     "url": "https://slashmaster6.gumroad.com/l/bppdqp"
   },
-  "saas-starter": {
-    "title": "SAAS Starter Kit - 快速建立多租戶 SaaS 應用",
-    "description": "SAAS Starter Kit 是完整的 SaaS 應用模板，包含前端、後端、資料庫、支付整合等所有必要元件。最快 1 週上架你的 SaaS 產品。",
-    "url": "https://slashmaster6.gumroad.com/l/kuvajr"
-  },
   "ai-dev-stack": {
     "title": "AI Developer Stack Bundle - 完整開發工具包，從開發到部署一站式",
     "description": "AI Developer Stack Bundle 是 AI 開發者的完整工具包，包含 Prompt 庫、開發框架、部署工具和教學資源。讓你快速開發和部署 AI 應用。",
@@ -48,5 +43,10 @@
     "title": "AI Starter Bundle - 入門必備組合，AI 學習與實作一步到位",
     "description": "AI Starter Bundle 是 AI 入門者的完美起點，包含 AI 基礎課程、Prompt 庫和實戰指南。從零開始，快速掌握 AI 應用。",
     "url": "https://slashmaster6.gumroad.com/l/lapcqb"
+  },
+  "ai-workflow-builder": {
+    "title": "AI Workflow Builder - 一句提示詞，產生驗證過的多 Agent AI 工作流",
+    "description": "AI Workflow Builder 是面向開發者的 AI 多 Agent 系統建構工具：輸入自然語言提示 → Grill-Me 互動規格 → 驗證過的 AI 工作流 DAG → Python 編碼。自架部署、MIT 授權，一次購買永久使用。",
+    "url": "https://slashmaster6.gumroad.com/l/amwkf"
   }
 }

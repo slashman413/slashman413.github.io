@@ -9,12 +9,12 @@
   hreflang is emitted here (once). head.html must NOT also call it.
 */ -}}
 {{ $isHome := .IsHome }}
-{{ $title := cond $isHome site.Title (printf "%s — %s" .Title site.Title) }}
+{{ $title := cond $isHome site.Title (or .Params.seo_title (printf "%s — %s" .Title site.Title)) }}
 <title>{{ $title }}</title>
 {{ $desc := or .Description .Summary site.Params.description }}
 {{ $desc = $desc | plainify | truncate 160 }}
 <meta name="description" content="{{ $desc }}">
-{{ $noindex := or (eq .Section "news") .Params.noindex }}
+{{ $noindex := or (eq .Section "news") .Params.noindex (in (slice "ja" "es") .Language.Lang) }}
 {{ if $noindex }}<meta name="robots" content="noindex, nofollow">{{ else }}<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">{{ end }}
 <link rel="canonical" href="{{ .Permalink }}">
 {{ with site.Params.googleSiteVerification }}<meta name="google-site-verification" content="{{ . }}">{{ end }}
@@ -83,6 +83,7 @@
     "offers" $offers }}
 {{ with .Params.product_sku }}{{ $product = merge $product (dict "sku" .) }}{{ end }}
 {{ with .Params.product_category }}{{ $product = merge $product (dict "category" .) }}{{ end }}
+{{ with .Params.keywords }}{{ $product = merge $product (dict "keywords" .) }}{{ end }}
 <script type="application/ld+json">{{ $product | jsonify | safeJS }}</script>
 {{ else if and .IsPage (ne .Section "news") }}
 {{- /* Regular article */ -}}
@@ -99,7 +100,20 @@
     "inLanguage" (site.LanguageCode | default "en")
     "author" (dict "@type" "Person" "name" (site.Params.author | default "slashman413") "url" (absURL "/about/"))
     "publisher" (dict "@type" "Organization" "name" site.Title "logo" (dict "@type" "ImageObject" "url" ("icon-192.png" | absURL))) }}
+{{ with .Params.keywords }}{{ $article = merge $article (dict "keywords" .) }}{{ end }}
 <script type="application/ld+json">{{ $article | jsonify | safeJS }}</script>
+{{ end }}
+
+{{ if and .IsPage .Params.faq }}
+{{- /* FAQPage schema — driven by frontmatter `faq` (list of {q, a}); the same
+       Q&A pairs are rendered visibly by partials/faq.html so schema matches
+       on-page content (Google structured-data policy). */ -}}
+{{ $faqs := slice }}
+{{ range .Params.faq }}
+  {{ $faqs = $faqs | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) }}
+{{ end }}
+{{ $faq := dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $faqs }}
+<script type="application/ld+json">{{ $faq | jsonify | safeJS }}</script>
 {{ end }}
 
 {{ if and .IsPage (ne .Section "news") }}

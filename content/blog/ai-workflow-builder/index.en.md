@@ -1,7 +1,7 @@
 ---
 title: "AI Workflow Builder Review 2026: Prompts to Validated Multi-Agent Workflows"
 date: "2026-08-03T08:00:00+08:00"
-description: "AI Workflow Builder turns one natural-language prompt into a validated, dependency-checked multi-agent AI workflow. Interactive Grill-Me spec loop, DAG designer, pre-flight validator and Python code generator. Here's a deep practical review of the $99 developer tool."
+description: "AI Workflow Builder review: turn one natural-language prompt into a validated multi-agent AI workflow — Grill-Me spec loop, DAG designer and pre-flight validator. $99."
 slug: "ai-workflow-builder"
 tags: [ai, agents, workflow, automation, grill-me, dag, developer-tools]
 draft: false
@@ -12,6 +12,9 @@ product_brand: "Slashman Tools"
 product_sku: "SMT-AWB"
 product_category: "Software > AI Tools"
 product_currency: "USD"
+sitemap:
+  priority: 0.9
+  changefreq: monthly
 ---
 
 # AI Workflow Builder Review 2026: Prompts to Validated Multi-Agent Workflows

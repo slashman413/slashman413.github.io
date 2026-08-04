@@ -11,11 +11,13 @@ product_brand: "Slashman Tools"
 product_sku: "SMT-CWP"
 product_category: "Software > AI Tools"
 product_currency: "USD"
+keywords: ["AI 代理協調", "多代理 AI 框架", "MCP 伺服器", "AI 任務管理", "Claude Code 編排", "AI 代理儀表板"]
+sitemap:
+  priority: 0.8
+  changefreq: monthly
 ---
 
 # Cowork Pro 評測 2026：一個儀表板指揮所有 AI 代理
-
-**SEO Keywords**: AI 代理協調, 多代理 AI 框架, MCP 伺服器, AI 任務管理, Claude Code 編排, AI 代理儀表板, Cowork Pro
 
 跑一個 AI 代理很簡單；跑十個——橫跨不同模型、不同機器、不同工具——多數自動化專案就是死在這裡。你最後會得到散落的終端機視窗、做一半的任務，以及對「你的 AI 大軍到底在幹嘛」完全沒有概念。
 
@@ -112,20 +114,4 @@ Cowork Pro 在 Gumroad 上 **$99 一次買斷**——沒有月費、沒有按席
 - [自架 LLM 完整指南](/blog/self-hosting-llm-dgx-spark-complete-guide/) — 在 Cowork Pro 旁邊跑你自己的模型。
 - [AI 自動化主題中心](/categories/ai-automation/) — 全部自動化指南與工具。
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": "Cowork Pro",
-  "image": "https://slashmantools.us/og.png",
-  "description": "多代理 AI 協調框架：MCP 伺服器、派發器、大腦註冊表、工作流，以及指揮 Claude Code、AGY、Hermes 與本地模型的網頁儀表板。",
-  "brand": {"@type": "Brand", "name": "Slashman Tools"},
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "USD",
-    "price": "99.00",
-    "availability": "https://schema.org/InStock",
-    "url": "https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps"
-  }
-}
-</script>
+

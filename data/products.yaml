@@ -55,13 +55,6 @@
   price: "99"
   tags: [llm, deployment, nvidia, local-llm, qwen, gpu]
 
-- slug: saas-starter-kit
-  title: SaaS Starter Kit
-  url: /blog/saas-starter-kit/
-  buy: https://slashmaster6.gumroad.com/l/kuvajr?utm_source=slashmantools&utm_medium=related-products&utm_campaign=saas-starter-kit
-  price: "99"
-  tags: [saas, nextjs, starter, development, boilerplate]
-
 - slug: ai-dev-stack
   title: AI Developer Stack Bundle
   url: /blog/ai-dev-stack/
@@ -75,3 +68,17 @@
   buy: https://slashmaster6.gumroad.com/l/lapcqb?utm_source=slashmantools&utm_medium=related-products&utm_campaign=ai-starter
   price: "149"
   tags: [ai, bundle, beginners, prompts, learning]
+
+- slug: saas-starter-kit
+  title: SaaS Starter Kit
+  url: /blog/saas-starter-kit/
+  buy: https://slashmaster6.gumroad.com/l/kuvajr?utm_source=slashmantools&utm_medium=related-products&utm_campaign=saas-starter-kit
+  price: "99"
+  tags: [saas, nextjs, development, boilerplate, b2b, stripe]
+
+- slug: ai-workflow-builder
+  title: AI Workflow Builder
+  url: /blog/ai-workflow-builder/
+  buy: https://slashmaster6.gumroad.com/l/amwkf?utm_source=slashmantools&utm_medium=related-products&utm_campaign=ai-workflow-builder
+  price: "99"
+  tags: [ai, agents, workflow, automation, grill-me, dag, developer-tools]
