@@ -89,7 +89,7 @@ AI couldn't tell us what to build — only where to look. The final product deci
 
 **Time invested:** 2 days (mostly review time, not generation time)
 
-### Product 2: Cowork Pro ($99)
+### Product 2: Cowork Pro ($59)
 
 **Why this product:**
 - Solves a real pain point we experience daily
@@ -229,11 +229,10 @@ Research → Writing → Review → Deploy
 | Product | Price | Margin | Monthly Revenue |
 |---------|-------|--------|-----------------|
 | AI Prompt Library | $29 | 95% | $200+ |
-| Cowork Pro | $99 | 95% | $800+ |
-| SaaS Starter Kit | $99 | 90% | $400+ |
-| ETF Dashboard | $199 | 90% | $300+ |
-| DGX Spark Kit | $99 | 95% | $200+ |
-| AI Course | $99 | 90% | $150+ |
+| Cowork Pro | $59 | 95% | $800+ |
+| ETF Dashboard | $29 | 90% | $300+ |
+| DGX Spark Kit | $49 | 95% | $200+ |
+| AI Course | $69 | 90% | $150+ |
 | Others | $29-199 | 90%+ | $500+ |
 | **Total** | | | **$2,550+** |
 
@@ -328,7 +327,7 @@ If you want to build a similar business:
 
 | Tool | Purpose | Cost |
 |------|---------|------|
-| [Cowork Pro](/blog/cowork-pro/) | AI agent orchestration | $99 (one-time) |
+| [Cowork Pro](/blog/cowork-pro/) | AI agent orchestration | $59 (one-time) |
 | Hugo | Static site generator | Free |
 | GitHub Actions | CI/CD deployment | Free |
 | Gumroad | Digital product sales | 10% fee |
@@ -363,6 +362,5 @@ Don't try to build everything at once. Build one thing that works, then use the 
 **Ready to build your AI-powered business?**
 - [Cowork Pro](/blog/cowork-pro/) — The orchestration framework
 - [AI Prompt Library](/blog/ai-prompt-library/) — Start with the basics
-- [SaaS Starter Kit](/blog/saas-starter-kit/) — Build your product platform
 - [AI Dev Stack](/blog/ai-dev-stack/) — Complete AI tech stack for builders
 - [AI Starter](/blog/ai-starter/) — Beginner bundle: prompts + course

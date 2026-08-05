@@ -21,9 +21,9 @@ sitemap:
 
 跑一個 AI 代理很簡單；跑十個——橫跨不同模型、不同機器、不同工具——多數自動化專案就是死在這裡。你最後會得到散落的終端機視窗、做一半的任務，以及對「你的 AI 大軍到底在幹嘛」完全沒有概念。
 
-**Cowork Pro** 正是為了解決這個問題而生。它是一套基於檔案系統的 **MCP 伺服器** 加上網頁儀表板，讓你可以從單一視窗協調來自多個平台的 AI 代理——Claude Code、Antigravity (AGY)、Hermes，以及任何本地或遠端模型。以下是我對它的功能、適合對象，以及 2026 年這 $99 到底值不值得的深入評測。
+**Cowork Pro** 正是為了解決這個問題而生。它是一套基於檔案系統的 **MCP 伺服器** 加上網頁儀表板，讓你可以從單一視窗協調來自多個平台的 AI 代理——Claude Code、Antigravity (AGY)、Hermes，以及任何本地或遠端模型。以下是我對它的功能、適合對象，以及 2026 年這 $59 到底值不值得的深入評測。
 
-👉 [**立即在 Gumroad 購買 Cowork Pro（$99）**](https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps)
+👉 [**立即在 Gumroad 購買 Cowork Pro（$59）**](https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps)
 
 ## 什麼是 Cowork Pro？
 
@@ -73,7 +73,7 @@ COWORK_URL=http://<host>:6868 HOST=<you> node cowork/deploy/remote-brain-client.
 
 即時 CPU/GPU/記憶體/溫度指標、任務與名冊計數器、派發器目前鏈路、活動訊息流。無頭伺服器上你開瀏覽器看儀表板；桌機上就釘一個分頁。
 
-👉 [**開始編排——購買 Cowork Pro（$99）**](https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps)
+👉 [**開始編排——購買 Cowork Pro（$59）**](https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps)
 
 ## Cowork Pro 適合誰？
 
@@ -96,7 +96,7 @@ COWORK_URL=http://<host>:6868 HOST=<you> node cowork/deploy/remote-brain-client.
 
 ## 價格與價值
 
-Cowork Pro 在 Gumroad 上 **$99 一次買斷**——沒有月費、沒有按席位計費。相比每人每月 $30–50 的 SaaS 編排工具，這套件認真自動化兩個月就回本。你拿到的還包含框架原始碼、部署腳本與 join-as-a-brain 用戶端，永遠不會被鎖死。
+Cowork Pro 在 Gumroad 上 **$59 一次買斷**——沒有月費、沒有按席位計費。相比每人每月 $30–50 的 SaaS 編排工具，這套件認真自動化兩個月就回本。你拿到的還包含框架原始碼、部署腳本與 join-as-a-brain 用戶端，永遠不會被鎖死。
 
 ## 結論
 
@@ -104,7 +104,7 @@ Cowork Pro 在 Gumroad 上 **$99 一次買斷**——沒有月費、沒有按席
 
 **評語**：只要你固定跑 3 個以上的 AI 代理，就值得買。花一個週末設定好，週一起你的代理就是從佇列接任務，而不是從你的收件匣。
 
-👉 [**在 Gumroad 購買 Cowork Pro——$99 一次買斷**](https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps)
+👉 [**在 Gumroad 購買 Cowork Pro——$59 一次買斷**](https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps)
 
 ---
 

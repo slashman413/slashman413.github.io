@@ -18,7 +18,7 @@ faq:
     a: '不需要。課程完全從零開始，專為零基礎學習者設計，全程繁體中文講解。'
   - q: '課程是繁體中文嗎？'
     a: '是的，全課程以繁體中文授課——這在優質 AI 教育內容中很少見，特別適合台灣與香港學習者。'
-  - q: '$99 包含什麼？'
+  - q: '$69 包含什麼？'
     a: '4 單元 17 堂錄影課程、練習專案、終身觀看權限，以及 AI 工具演進後的內容更新。'
 product_price: '99'
 sitemap:
@@ -40,7 +40,7 @@ sitemap:
 <li>終身課程存取權限</li>
     </ul>
     <a href="https://slashmaster6.gumroad.com/l/vzalgb?utm_source=slashmantools&utm_medium=product-page&utm_campaign=ai-course" target="_blank" rel="noopener" class="cta-button">
-      立即購買 $99 →
+      立即購買 $69 →
     </a>
   </div>
   

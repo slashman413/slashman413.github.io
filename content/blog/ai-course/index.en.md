@@ -1,7 +1,7 @@
 ---
 title: "Traditional-Chinese AI Course Review 2026: 4 Units, 17 Lessons from Zero to Applied AI"
 date: "2026-08-02T08:00:00+08:00"
-description: "Traditional-Chinese AI Course review: 4 units, 17 lessons from zero to applied AI — ChatGPT, Claude and Gemini, practice projects and lifetime access. $99."
+description: "Traditional-Chinese AI Course review: 4 units, 17 lessons from zero to applied AI — ChatGPT, Claude and Gemini, practice projects and lifetime access. $69."
 slug: "ai-course"
 draft: false
 schema: "ProductReview"
@@ -21,7 +21,7 @@ faq:
     a: 'No — the course starts from zero and is designed for complete beginners, with step-by-step lessons in Traditional Chinese.'
   - q: 'Is the course in Traditional Chinese?'
     a: 'Yes — the entire course is taught in Traditional Chinese (繁體中文), which is rare for quality AI education and ideal for Taiwanese and Hong Kong learners.'
-  - q: 'What do I get for $99?'
+  - q: 'What do I get for $69?'
     a: '17 recorded lessons across 4 units, practice projects, lifetime access, and updates as AI tools evolve.'
 sitemap:
   priority: 0.9
@@ -31,9 +31,9 @@ sitemap:
 # Traditional-Chinese AI Course Review 2026: 4 Units, 17 Lessons from Zero to Applied AI
 
 
-Most AI content in Chinese is either a 5-minute hype video or a machine-translated English course that never quite lands. The **Traditional-Chinese AI Course** was built to fill that gap: a structured, practice-first curriculum in traditional Chinese that takes a complete beginner to building real AI workflows. Here is our hands-on review of the **$99** course.
+Most AI content in Chinese is either a 5-minute hype video or a machine-translated English course that never quite lands. The **Traditional-Chinese AI Course** was built to fill that gap: a structured, practice-first curriculum in traditional Chinese that takes a complete beginner to building real AI workflows. Here is our hands-on review of the **$69** course.
 
-👉 [**Get the AI Course on Gumroad ($99)**](https://slashmaster6.gumroad.com/l/vzalgb?utm_source=blog&utm_medium=seo&utm_campaign=vzalgb)
+👉 [**Get the AI Course on Gumroad ($69)**](https://slashmaster6.gumroad.com/l/vzalgb?utm_source=blog&utm_medium=seo&utm_campaign=vzalgb)
 
 ## Course Structure: 4 Units, 17 Lessons
 
@@ -60,8 +60,8 @@ The course is deliberately sequenced so every lesson builds on the previous one:
 
 ## The Verdict
 
-At **$99**, this is a well-priced on-ramp for traditional-Chinese speakers who want more than scattered YouTube tutorials. The 4-unit structure — fundamentals → tools → projects → business — is the right path for turning AI from a curiosity into a working skill, and the lifetime access makes it a one-time purchase rather than a subscription.
+At **$69**, this is a well-priced on-ramp for traditional-Chinese speakers who want more than scattered YouTube tutorials. The 4-unit structure — fundamentals → tools → projects → business — is the right path for turning AI from a curiosity into a working skill, and the lifetime access makes it a one-time purchase rather than a subscription.
 
-👉 [**Get the AI Course on Gumroad ($99)**](https://slashmaster6.gumroad.com/l/vzalgb?utm_source=blog&utm_medium=seo&utm_campaign=vzalgb)
+👉 [**Get the AI Course on Gumroad ($69)**](https://slashmaster6.gumroad.com/l/vzalgb?utm_source=blog&utm_medium=seo&utm_campaign=vzalgb)
 
 *Want to practice what you learn? Pair the course with the [AI Prompt Library](/blog/ai-prompt-library/) for 300+ ready-to-use prompts.*

@@ -40,7 +40,7 @@ sitemap:
 <li>一次購買，永久使用</li>
     </ul>
     <a href="https://slashmaster6.gumroad.com/l/lapcqb?utm_source=slashmantools&utm_medium=product-page&utm_campaign=ai-starter" target="_blank" rel="noopener" class="cta-button">
-      立即購買 $149 →
+      立即購買 $49 →
     </a>
   </div>
   

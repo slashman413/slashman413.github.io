@@ -74,7 +74,6 @@ AI Workflow Builder 補上這個缺口：**一句白話文提示進去，驗證�
 
 - [Cowork Pro：AI 多智能體編排框架](https://slashmantools.us/blog/cowork-pro/) — 任務派發與編排的另一種選擇
 - [Ship With AI：4 小時學會自動化真實工作](https://slashmantools.us/blog/ship-with-ai/) — 無程式碼入門
-- [SaaS Starter Kit：多租戶 SaaS 開發套件](https://slashmantools.us/blog/saas-starter-kit/) — 把 AI 工作流包成產品
 - [Ultimate AI Automation Guide 2026](https://slashmantools.us/blog/ultimate-ai-automation-guide-2026/) — 自動化總覽
 
 👉 [**立即在 Gumroad 購買 AI Workflow Builder（$99）**](https://slashmaster6.gumroad.com/l/amwkf?utm_source=blog&utm_medium=seo&utm_campaign=aiwb)

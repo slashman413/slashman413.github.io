@@ -1,7 +1,7 @@
 ---
 title: "ETF Dashboard Review 2026: Taiwan ETF Analytics with Real-Time Data, Technical Indicators & Backtesting"
 date: "2026-08-02T08:00:00+08:00"
-description: "Taiwan ETF Dashboard review: real-time quotes, technical analysis (MA/RSI/MACD), asset allocation and strategy backtesting in one $199 tool."
+description: "Taiwan ETF Dashboard review: real-time quotes, technical analysis (MA/RSI/MACD), asset allocation and strategy backtesting in one $29 tool."
 slug: "etf-dashboard"
 draft: false
 schema: "ProductReview"
@@ -31,9 +31,9 @@ sitemap:
 # ETF Dashboard Review 2026: Taiwan ETF Analytics with Real-Time Data, Technical Indicators & Backtesting
 
 
-Taiwan's ETF market has exploded over the past few years — dividend ETFs, sector ETFs, and US-listed trackers now dominate retail portfolios. But the tools most investors use are still fragmented: quotes in one app, technical charts in another, and backtesting on a spreadsheet you built yourself. **ETF Dashboard** is a single analytics workspace built for exactly this problem. Here is our hands-on review of the **$199** tool.
+Taiwan's ETF market has exploded over the past few years — dividend ETFs, sector ETFs, and US-listed trackers now dominate retail portfolios. But the tools most investors use are still fragmented: quotes in one app, technical charts in another, and backtesting on a spreadsheet you built yourself. **ETF Dashboard** is a single analytics workspace built for exactly this problem. Here is our hands-on review of the **$29** tool.
 
-👉 [**Get ETF Dashboard on Gumroad ($199)**](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)
+👉 [**Get ETF Dashboard on Gumroad ($29)**](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)
 
 ## What Is ETF Dashboard?
 
@@ -71,8 +71,8 @@ Build your own watchlist views, set price/indicator alerts, and export reports w
 
 ## The Verdict
 
-At **$199**, ETF Dashboard prices itself as a professional tool, and that is what it is: a Taiwan ETF analytics hub that replaces the quote-app + charting-site + spreadsheet stack. If you actively manage Taiwan ETFs or are building a systematic dividend portfolio in 2026, the time it saves on data collection and indicator math pays for itself quickly.
+At **$29**, ETF Dashboard prices itself as a professional tool, and that is what it is: a Taiwan ETF analytics hub that replaces the quote-app + charting-site + spreadsheet stack. If you actively manage Taiwan ETFs or are building a systematic dividend portfolio in 2026, the time it saves on data collection and indicator math pays for itself quickly.
 
-👉 [**Get ETF Dashboard on Gumroad ($199)**](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)
+👉 [**Get ETF Dashboard on Gumroad ($29)**](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)
 
 *Interested in the wider Slashman Tools catalogue? See [AI Prompt Library](/blog/ai-prompt-library/) for productivity prompts or [Cowork Pro](/blog/cowork-pro/) for AI agent orchestration.*

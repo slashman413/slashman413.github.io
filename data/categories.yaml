@@ -32,7 +32,7 @@
 - slug: developer-tools
   title: "Developer Tools"
   description: "Ship software faster: SaaS boilerplates, local LLM deployment, GPU workstations, and AI development stacks."
-  products: [saas-starter-kit, dgx-spark-kit, ai-dev-stack]
+  products: [dgx-spark-kit, ai-dev-stack]
   tags: [llm, deployment, self-hosting, dgx, vllm, gpu, saas, nextjs, development, boilerplate, nvidia, qwen, code]
 
 - slug: productivity

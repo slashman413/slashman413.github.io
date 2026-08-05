@@ -172,7 +172,7 @@ python3 scripts/test_pipeline.py
 
 ### 下一步要做什麼
 
-1. **[取得 Ship With AI**](https://slashmaster6.gumroad.com/l/mgtpcn?utm_source=blog&utm_medium=article&utm_campaign=one-person-news-business-ai-agents-mgtpcn) — $99 一次性付款
+1. **[取得 Ship With AI**](https://slashmaster6.gumroad.com/l/mgtpcn?utm_source=blog&utm_medium=article&utm_campaign=one-person-news-business-ai-agents-mgtpcn) — $39 一次性付款
 2. **[瀏覽我們的相關指南](/blog/ultimate-ai-automation-guide-2026/) — 完整框架與教學
 3. **[加入我們的社群](https://github.com/slashman413) — 獲得支援並分享你的經驗
 

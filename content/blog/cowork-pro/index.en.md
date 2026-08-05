@@ -33,9 +33,9 @@ sitemap:
 
 Running one AI agent is easy. Running ten — across different models, machines, and tools — is where most automation projects die. You end up with scattered terminals, half-finished tasks, and no single view of what your AI army is actually doing.
 
-**Cowork Pro** solves exactly that. It is a filesystem-based **MCP server** plus a web dashboard that lets you coordinate AI agents from multiple platforms — Claude Code, Antigravity (AGY), Hermes, and any local or remote model — through a single pane of glass. Here is a deep, practical review of what it does, who it is for, and whether the $99 price is worth it in 2026.
+**Cowork Pro** solves exactly that. It is a filesystem-based **MCP server** plus a web dashboard that lets you coordinate AI agents from multiple platforms — Claude Code, Antigravity (AGY), Hermes, and any local or remote model — through a single pane of glass. Here is a deep, practical review of what it does, who it is for, and whether the $59 price is worth it in 2026.
 
-👉 [**Get Cowork Pro on Gumroad now ($99)**](https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps)
+👉 [**Get Cowork Pro on Gumroad now ($59)**](https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps)
 
 ## What Is Cowork Pro?
 
@@ -85,7 +85,7 @@ Workflows define ordered steps with dependencies — the orchestrator splits a b
 
 Live CPU/GPU/memory/temperature metrics, open-task and roster counters, the dispatcher's current chain, and an activity feed. On a headless box you run the dashboard in a browser; on a desktop you keep it in a pinned tab.
 
-👉 [**Start orchestrating — buy Cowork Pro ($99)**](https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps)
+👉 [**Start orchestrating — buy Cowork Pro ($59)**](https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps)
 
 ## Who Is Cowork Pro For?
 
@@ -108,7 +108,7 @@ It is *not* for someone who wants a hosted SaaS — this is a self-hosted kit, w
 
 ## Pricing and Value
 
-Cowork Pro is **$99 one-time** on Gumroad — no subscription, no per-seat fee. Compare that with per-seat SaaS orchestration tools that cost $30–50 per user per month; the kit pays for itself in the first two months of serious automation. You also get the framework source, the deploy scripts, and the join-as-a-brain client, so you are never locked in.
+Cowork Pro is **$59 one-time** on Gumroad — no subscription, no per-seat fee. Compare that with per-seat SaaS orchestration tools that cost $30–50 per user per month; the kit pays for itself in the first two months of serious automation. You also get the framework source, the deploy scripts, and the join-as-a-brain client, so you are never locked in.
 
 ## Bottom Line
 
@@ -116,7 +116,7 @@ If you have outgrown single-agent workflows, Cowork Pro is the missing control p
 
 **Verdict**: worth it for anyone running 3+ AI agents on a regular basis. Set it up over a weekend, and by Monday your agents are taking tasks from a queue instead of from your inbox.
 
-👉 [**Buy Cowork Pro on Gumroad — $99 one-time**](https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps)
+👉 [**Buy Cowork Pro on Gumroad — $59 one-time**](https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps)
 
 ---
 

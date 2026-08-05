@@ -143,7 +143,6 @@ A multi-tenant SaaS in a weekend is achievable when the architecture is decided 
 Make the structural choices on Friday night, write the tenant-isolation tests before the features, and deploy something real on Sunday. The second weekend is for polish — the first is for proof.
 
 **Related:**
-- [SaaS Starter Kit](/blog/saas-starter-kit/) — The Next.js 16 multi-tenant boilerplate this playbook is based on
 - [Self-Hosting LLMs on DGX Spark](/blog/self-hosting-llm-dgx-spark-complete-guide/) — Add local inference to your stack
 - [AI Dev Stack](/blog/ai-dev-stack/) — The complete AI development toolchain
 - [Developer Tools Topic Hub](/categories/developer-tools/) — All developer tools guides

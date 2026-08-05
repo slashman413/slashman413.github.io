@@ -1,7 +1,7 @@
 ---
 title: "DGX Spark 部署套件評測 2026：在 GB10 上穩定跑兩個 vLLM 模型"
 date: "2026-08-02T08:20:00+08:00"
-description: "DGX Spark 部署套件把 NVIDIA GB10 變成雙模型 vLLM 伺服器。實戰驗證的 systemd 設定、看門狗修復、記憶體規劃與真實故障排除手冊——只要 $99。"
+description: "DGX Spark 部署套件把 NVIDIA GB10 變成雙模型 vLLM 伺服器。實戰驗證的 systemd 設定、看門狗修復、記憶體規劃與真實故障排除手冊——只要 $49。"
 slug: "dgx-spark-kit"
 draft: false
 schema: "ProductReview"
@@ -27,9 +27,9 @@ NVIDIA DGX Spark（GB10）是這十年最令人興奮的本地 AI 硬體——12
 - **開機同時載入兩個模型**，記憶體回收峰值高到觸發 OOM
 - **三重啟動衝突**（cron + systemd + Docker）讓模型載入兩次、留下殭屍容器
 
-**DGX Spark 部署套件**就是別人已經替你付過學費的劇本。它打包了在 DGX Spark 上跑雙 vLLM 模型的實戰驗證設定模板與真實故障紀錄（DGX OS 7.4/7.5、driver 580.x、CUDA 13.0、vLLM v0.25.0）——包含你在別處都查不到的失敗修法。以下是我對這 **$99** 套件的實測。
+**DGX Spark 部署套件**就是別人已經替你付過學費的劇本。它打包了在 DGX Spark 上跑雙 vLLM 模型的實戰驗證設定模板與真實故障紀錄（DGX OS 7.4/7.5、driver 580.x、CUDA 13.0、vLLM v0.25.0）——包含你在別處都查不到的失敗修法。以下是我對這 **$49** 套件的實測。
 
-👉 [**立即在 Gumroad 購買 DGX Spark 套件（$99）**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=seo&utm_campaign=bppdqp)
+👉 [**立即在 Gumroad 購買 DGX Spark 套件（$49）**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=seo&utm_campaign=bppdqp)
 
 ## 你拿到什麼
 
@@ -90,7 +90,7 @@ configs/
 
 ## 價格與價值
 
-Gumroad 上 **$99 一次買斷**。對比開發者一個週末的時間成本（$400–1,000 以上的可計費工時，或單純「機器就是不穩」的沮喪），這套件包含設定檔、事故手冊、ARM64 就緒的 Firecrawl 加碼——而且和 **[Cowork Pro](/blog/cowork-pro/)** 編排框架剛好組成完整的自架 AI 技術棧。
+Gumroad 上 **$49 一次買斷**。對比開發者一個週末的時間成本（$400–1,000 以上的可計費工時，或單純「機器就是不穩」的沮喪），這套件包含設定檔、事故手冊、ARM64 就緒的 Firecrawl 加碼——而且和 **[Cowork Pro](/blog/cowork-pro/)** 編排框架剛好組成完整的自架 AI 技術棧。
 
 ## 結論
 
@@ -98,7 +98,7 @@ DGX Spark 是對的硬體；原廠軟體堆疊只是沒有誠實告訴你它的�
 
 **評語**：如果你有一台 Spark 而且要跑一個以上的模型，下次重啟前就買。凌晨 2 點機器順利起來、而不是繼續重啟的時候，你會感謝自己。
 
-👉 [**在 Gumroad 購買 DGX Spark 套件——$99 一次買斷**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=seo&utm_campaign=bppdqp)
+👉 [**在 Gumroad 購買 DGX Spark 套件——$49 一次買斷**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=seo&utm_campaign=bppdqp)
 
 ---
 

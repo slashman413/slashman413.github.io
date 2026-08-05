@@ -17,64 +17,57 @@
   title: ETF Dashboard
   url: /blog/etf-dashboard/
   buy: https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=slashmantools&utm_medium=related-products&utm_campaign=etf-dashboard
-  price: "199"
+  price: "29"
   tags: [etf, investing, finance, taiwan, stocks, dashboard]
 
 - slug: cowork-pro
   title: Cowork Pro
   url: /blog/cowork-pro/
   buy: https://slashmaster6.gumroad.com/l/xfhfps?utm_source=slashmantools&utm_medium=related-products&utm_campaign=cowork-pro
-  price: "99"
+  price: "59"
   tags: [ai, agents, automation, orchestration, mcp, saas]
 
 - slug: feishu-templates
   title: Feishu Template Marketplace
   url: /blog/feishu-templates/
   buy: https://slashmaster6.gumroad.com/l/xohjh?utm_source=slashmantools&utm_medium=related-products&utm_campaign=feishu-templates
-  price: "49"
+  price: "19"
   tags: [templates, productivity, feishu, notion, project-management, teams]
 
 - slug: ai-course
   title: Traditional-Chinese AI Course
   url: /blog/ai-course/
   buy: https://slashmaster6.gumroad.com/l/vzalgb?utm_source=slashmantools&utm_medium=related-products&utm_campaign=ai-course
-  price: "99"
+  price: "69"
   tags: [ai, course, learning, tutorial, beginners]
 
 - slug: ship-with-ai
   title: Ship With AI
   url: /blog/ship-with-ai/
   buy: https://slashmaster6.gumroad.com/l/mgtpcn?utm_source=slashmantools&utm_medium=related-products&utm_campaign=ship-with-ai
-  price: "99"
+  price: "39"
   tags: [ai, automation, course, nocode, tutorial]
 
 - slug: dgx-spark-kit
   title: DGX Spark Deployment Kit
   url: /blog/dgx-spark-kit/
   buy: https://slashmaster6.gumroad.com/l/bppdqp?utm_source=slashmantools&utm_medium=related-products&utm_campaign=dgx-spark-kit
-  price: "99"
+  price: "49"
   tags: [llm, deployment, nvidia, local-llm, qwen, gpu]
 
 - slug: ai-dev-stack
   title: AI Developer Stack Bundle
   url: /blog/ai-dev-stack/
   buy: https://slashmaster6.gumroad.com/l/nulyms?utm_source=slashmantools&utm_medium=related-products&utm_campaign=ai-dev-stack
-  price: "199"
+  price: "79"
   tags: [ai, development, tools, bundle, deployment]
 
 - slug: ai-starter
   title: AI Starter Bundle
   url: /blog/ai-starter/
   buy: https://slashmaster6.gumroad.com/l/lapcqb?utm_source=slashmantools&utm_medium=related-products&utm_campaign=ai-starter
-  price: "149"
+  price: "49"
   tags: [ai, bundle, beginners, prompts, learning]
-
-- slug: saas-starter-kit
-  title: SaaS Starter Kit
-  url: /blog/saas-starter-kit/
-  buy: https://slashmaster6.gumroad.com/l/kuvajr?utm_source=slashmantools&utm_medium=related-products&utm_campaign=saas-starter-kit
-  price: "99"
-  tags: [saas, nextjs, development, boilerplate, b2b, stripe]
 
 - slug: ai-workflow-builder
   title: AI Workflow Builder

@@ -28,15 +28,15 @@ Si quieres empezar rápidamente, te recomendamos nuestra **[AI Prompt Library ($
 ## Paso 2: Crea tu primer producto digital
 
 Para los principiantes, comenzar con plantillas o kits de herramientas es lo más fácil.
-- **Productos basados en plantillas**: Si eres experto en ciertas herramientas de productividad, puedes crear plantillas especializadas. Por ejemplo, la colaboración en equipo es un gran desafío para muchas empresas. Puedes revisar estos **[Feishu Templates ($49)](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)**, que ofrecen una serie de plantillas de gestión adaptadas para mejorar la eficiencia del equipo en un 300%.
-- **Productos basados en conocimiento**: Si tienes un conocimiento profundo en un campo específico, considera crear un curso en línea. Si deseas aprender a utilizar la IA para el emprendimiento, te recomendamos encarecidamente este **[AI Course ($99)](https://slashmaster6.gumroad.com/l/vzalgb?utm_source=blog&utm_medium=seo&utm_campaign=vzalgb)**. Desde niveles básicos hasta avanzados, te enseña paso a paso cómo construir un sistema automatizado de ingresos impulsado por IA.
+- **Productos basados en plantillas**: Si eres experto en ciertas herramientas de productividad, puedes crear plantillas especializadas. Por ejemplo, la colaboración en equipo es un gran desafío para muchas empresas. Puedes revisar estos **[Feishu Templates ($19)](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)**, que ofrecen una serie de plantillas de gestión adaptadas para mejorar la eficiencia del equipo en un 300%.
+- **Productos basados en conocimiento**: Si tienes un conocimiento profundo en un campo específico, considera crear un curso en línea. Si deseas aprender a utilizar la IA para el emprendimiento, te recomendamos encarecidamente este **[AI Course ($69)](https://slashmaster6.gumroad.com/l/vzalgb?utm_source=blog&utm_medium=seo&utm_campaign=vzalgb)**. Desde niveles básicos hasta avanzados, te enseña paso a paso cómo construir un sistema automatizado de ingresos impulsado por IA.
 
 ## Paso 3: Marketing sistemático y ventas automatizadas
 
 Una vez que tengas un producto, el siguiente paso es cómo venderlo.
 - **SEO y Marketing de Contenidos**: Escribe artículos de blog de alta calidad para atraer tráfico orgánico.
 - **Construye un embudo de ventas**: Ofrece una versión de prueba gratuita o un mini libro electrónico para obtener el correo electrónico de los clientes.
-- **Gestión financiera y seguimiento de datos**: Los emprendedores deben ser sensibles a los números. Puedes utilizar este **[ETF Dashboard ($29/mo or $199/lifetime)](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)** para realizar un seguimiento de tus inversiones y asignación de activos, asegurando que tus ingresos pasivos crezcan de manera estable.
+- **Gestión financiera y seguimiento de datos**: Los emprendedores deben ser sensibles a los números. Puedes utilizar este **[ETF Dashboard ($29)](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)** para realizar un seguimiento de tus inversiones y asignación de activos, asegurando que tus ingresos pasivos crezcan de manera estable.
 
 ## Conclusión y Llamado a la Acción (CTA)
 

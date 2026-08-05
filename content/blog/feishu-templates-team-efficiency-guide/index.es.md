@@ -57,7 +57,7 @@ Para los equipos de marketing, la planificación de contenidos es crucial. Utili
 
 Si bien puede dedicar tiempo a investigar y crear plantillas usted mismo, esto generalmente requiere decenas o incluso cientos de horas de prueba y optimización. Para los equipos que desean aumentar "inmediatamente" la eficiencia, comprar plantillas diseñadas directamente por expertos es la opción con mayor retorno de inversión (ROI).
 
-Si desea lograr un cambio inmediato en su equipo, le recomendamos encarecidamente estas **[Feishu Templates ($49)](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)**.
+Si desea lograr un cambio inmediato en su equipo, le recomendamos encarecidamente estas **[Feishu Templates ($19)](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)**.
 
 Este paquete de plantillas de alta calidad está diseñado específicamente para equipos modernos e incluye:
 - 🚀 **Sistema de gestión de proyectos todo en uno**: Cubre perfectamente cada paso desde la planificación hasta la entrega.
@@ -71,4 +71,4 @@ Por solo $49, puede ahorrarse cientos de horas de tiempo de configuración y obt
 
 Mejorar la eficiencia del equipo no requiere obligar a los empleados a trabajar horas extras, sino brindarles mejores herramientas y métodos. Las plantillas de Feishu pueden duplicar fácilmente la eficiencia de su equipo al eliminar el trabajo repetitivo, establecer procesos estandarizados y promover la transparencia de la información.
 
-No dejes que el tedioso trabajo administrativo te detenga. ¡Comience a implementar las plantillas de Feishu ahora, combínelas con **[Feishu Templates ($49)](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)** y experimente la máxima emoción de un aumento de eficiencia del 300%!
+No dejes que el tedioso trabajo administrativo te detenga. ¡Comience a implementar las plantillas de Feishu ahora, combínelas con **[Feishu Templates ($19)](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)** y experimente la máxima emoción de un aumento de eficiencia del 300%!

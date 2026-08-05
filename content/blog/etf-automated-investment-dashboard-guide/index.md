@@ -59,7 +59,7 @@ To let you immediately enjoy the convenience of AI automated investing, we have 
 
 Stop letting tedious data analysis take up your time. Click the link below right now and begin your automated investing journey!
 
-👉 **[Get the ETF Dashboard Now - Only $29/month, or choose the $199 Lifetime plan!](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)**
+👉 **[Get the ETF Dashboard Now - Only $29!](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)**
 
 ## Conclusion
 

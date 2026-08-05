@@ -25,7 +25,7 @@ Every successful digital product answers a question the buyer already has. The f
 | Tools & apps | "How do I get this result?" | A dashboard, a generator |
 | Guides & reports | "How do I decide this?" | A strategy guide with data |
 
-The selection filter that matters most is not "what do I want to make" but **"what have I already solved for myself?"** A product built from your own workflow — the exact templates, scripts, or processes you use — is faster to make, more authentic to sell, and defensible against imitators. The AI Prompt Library and the SaaS Starter Kit on this site are both exactly that: internal tools turned into products.
+The selection filter that matters most is not "what do I want to make" but **"what have I already solved for myself?"** A product built from your own workflow — the exact templates, scripts, or processes you use — is faster to make, more authentic to sell, and defensible against imitators. The AI Prompt Library on this site is exactly that: an internal tool turned into a product.
 
 ### The Validation Rule
 

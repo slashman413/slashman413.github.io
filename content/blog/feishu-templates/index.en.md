@@ -31,9 +31,9 @@ sitemap:
 # Feishu Template Marketplace Review 2026: 20+ Professional Templates for Feishu & DingTalk Teams
 
 
-Feishu (Lark) and DingTalk are the collaboration platforms of choice for most teams in Taiwan and China — but a blank workspace is not a system. The **Feishu Template Marketplace** is a pack of 20+ professionally designed, copy-paste-ready templates that turn a raw Feishu/DingTalk account into an organized operation. Here is our hands-on review of the **$49** pack.
+Feishu (Lark) and DingTalk are the collaboration platforms of choice for most teams in Taiwan and China — but a blank workspace is not a system. The **Feishu Template Marketplace** is a pack of 20+ professionally designed, copy-paste-ready templates that turn a raw Feishu/DingTalk account into an organized operation. Here is our hands-on review of the **$19** pack.
 
-👉 [**Get the Feishu Template Marketplace on Gumroad ($49)**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)
+👉 [**Get the Feishu Template Marketplace on Gumroad ($19)**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)
 
 ## What's Inside
 
@@ -64,6 +64,6 @@ Every template is designed by an experienced PM and ships with usage instruction
 
 At **$49**, the Feishu Template Marketplace is the fastest way to take a Feishu or DingTalk workspace from empty to organized. If your team has been "getting by" with ad-hoc docs and scattered sheets, the 20+ structured templates — and the workflows they encode — are worth far more than the price.
 
-👉 [**Get the Feishu Template Marketplace on Gumroad ($49)**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)
+👉 [**Get the Feishu Template Marketplace on Gumroad ($19)**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)
 
-*Looking for more ways to systematize your work? See the [SaaS Starter Kit](/blog/saas-starter-kit/) for productized workflows, or [Cowork Pro](/blog/cowork-pro/) for AI agent orchestration.*
+*Looking for more ways to systematize your work? See [Cowork Pro](/blog/cowork-pro/) for AI agent orchestration.*

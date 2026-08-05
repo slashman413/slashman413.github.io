@@ -14,7 +14,7 @@ Most "build a business with AI" articles are fluff. They tell you AI can do ever
 
 **Key metrics after 6 months:**
 - 10 published digital products on Gumroad
-- $99–$199 price range
+- $19–$99 price range
 - ~200 blog articles supporting products
 - Zero paid ads
 - Revenue driven by organic SEO and Twitter content
@@ -57,7 +57,7 @@ This was our first product. The process took 3 days:
 
 **Lesson learned:** The quality of output depends entirely on the quality of the agent's instructions. Generic "write prompts" produces generic results. Specific "write Python automation prompts for a solopreneur running a content agency using Claude Code and GitHub Actions" produces usable content.
 
-## Product 2: Cowork Pro ($99)
+## Product 2: Cowork Pro ($59)
 
 This is our flagship product — a multi-agent orchestration framework. The development process was significantly more complex:
 
@@ -71,13 +71,13 @@ This is our flagship product — a multi-agent orchestration framework. The deve
 
 **Result:** 47 sales in first month. Revenue: $4,653.
 
-## Product 3-5: The Toolkit Bundle ($99)
+## Product 3-5: The Toolkit Bundle
 
 After analyzing what customers were buying, I created bundled offerings:
 
-- **AI Starter Bundle** ($149) — Prompt Library + SaaS Starter
-- **Developer Stack** ($199) — Cowork Pro + DGX Spark Kit
-- **Investor Bundle** ($199) — ETF Dashboard + Prompt Library
+- **AI Starter Bundle** ($49) — Prompt Library + foundation course
+- **Developer Stack** ($79) — Cowork Pro + DGX Spark Kit
+- **Investor Bundle** ($58) — ETF Dashboard + Prompt Library
 
 These bundles increased average order value from $55 to $127.
 
@@ -156,7 +156,6 @@ If you're serious about this, start with one product. Build it with agents. See 
 **Ready to build your AI-powered business?**
 - [Cowork Pro](/blog/cowork-pro/) — The orchestration framework I use
 - [AI Prompt Library](/blog/ai-prompt-library/) — Start with the basics
-- [SaaS Starter Kit](/blog/saas-starter-kit/) — For the technical implementation
 - [AI Dev Stack](/blog/ai-dev-stack/) — Complete AI tech stack
 - [AI Starter](/blog/ai-starter/) — Beginner-friendly bundle
 

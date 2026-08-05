@@ -83,11 +83,10 @@ We built our first products using the AI development pipeline:
 
 1. **AI Prompt Library** ($29) - 300+ battle-tested prompts
 
-2. **Cowork Pro** ($99) - Agent orchestration framework
+2. **Cowork Pro** ($59) - Agent orchestration framework
 
-3. **Ship With AI** ($99) - Automation course
+3. **Ship With AI** ($39) - Automation course
 
-4. **SaaS Starter Kit** ($99) - Multi-tenant SaaS template
 
 
 
@@ -105,15 +104,14 @@ Each product took 1-4 weeks to develop using our AI pipeline.
 
 | AI Prompt Library | $29 | 95% | $200+ |
 
-| Cowork Pro | $99 | 95% | $800+ |
+| Cowork Pro | $59 | 95% | $800+ |
 
-| SaaS Starter Kit | $99 | 90% | $400+ |
 
-| ETF Dashboard | $199 | 90% | $300+ |
+| ETF Dashboard | $29 | 90% | $300+ |
 
-| DGX Spark Kit | $99 | 95% | $200+ |
+| DGX Spark Kit | $49 | 95% | $200+ |
 
-| AI Course | $99 | 90% | $150+ |
+| AI Course | $69 | 90% | $150+ |
 
 | Others | $29-199 | 90%+ | $500+ |
 
@@ -224,7 +222,7 @@ The key insight from this article is simple: AI automation works when you have t
 
 ### What to do next
 
-1. **[Get AI Developer Stack**](https://slashmaster6.gumroad.com/l/nulyms?utm_source=blog&utm_medium=article&utm_campaign=zero-to-10-products-ai-agents-business-nulyms) - $199 one-time payment
+1. **[Get AI Developer Stack**](https://slashmaster6.gumroad.com/l/nulyms?utm_source=blog&utm_medium=article&utm_campaign=zero-to-10-products-ai-agents-business-nulyms) - $79 one-time payment
 2. **[Explore our related guides](/blog/ultimate-ai-automation-guide-2026/) - Full frameworks and tutorials
 3. **[Join our community](https://github.com/slashman413) - Get support and share your experience
 

@@ -19,7 +19,7 @@ faq:
     a: '兩者都有——把單獨購買的實際工具（提示詞、框架、部署設定）與串接教學打包在一起。'
   - q: '適合誰？'
     a: '正在開發 AI 產品、不想自己拼裝十種工具的開發者與技術型創業者。'
-  - q: '$199 比單買多出什麼？'
+  - q: '$79 比單買多出什麼？'
     a: '整合——各元件已預先設定可協同運作，加上最容易卡關的部署層設定。'
 sitemap:
   priority: 0.8
@@ -40,7 +40,7 @@ sitemap:
 <li>終身更新與社群支援</li>
     </ul>
     <a href="https://slashmaster6.gumroad.com/l/nulyms?utm_source=slashmantools&utm_medium=product-page&utm_campaign=ai-dev-stack" target="_blank" rel="noopener" class="cta-button">
-      立即購買 $199 →
+      立即購買 $79 →
     </a>
   </div>
   
@@ -69,7 +69,6 @@ sitemap:
 
 完整的 AI 開發工具鏈還包括：
 
-- [SaaS Starter Kit — 一個週末把多租戶 Next.js 16 SaaS 上線](/blog/saas-starter-kit/) — 生產級 SaaS 樣板
 - [How to Launch a Multi-Tenant SaaS in a Weekend](/blog/multi-tenant-saas-nextjs-guide/) — Next.js 16 實戰指南
 - [Local LLM Deployment 2026 — vLLM, Ollama, and Choosing the Right Stack](/blog/local-llm-deployment-guide-2026/) — 開發者部署選擇指南
 - [Self-Hosted AI for Solopreneurs — The Complete 2026 Guide](/blog/self-hosted-ai-solopreneurs/) — 獨立開發者自架 AI 完整指南

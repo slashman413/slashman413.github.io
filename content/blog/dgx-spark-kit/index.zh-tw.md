@@ -29,7 +29,7 @@ sitemap:
 
 <div class="product-landing">
   <h1>DGX Spark 部署套件 - 在 GB10 上穩定跑兩個 vLLM 模型</h1>
-  <p class="lead">DGX Spark 部署套件把 NVIDIA GB10 變成雙模型 vLLM 伺服器。實戰驗證的 systemd 設定、看門狗修復、記憶體規劃與真實故障排除手冊——只要 $99。</p>
+  <p class="lead">DGX Spark 部署套件把 NVIDIA GB10 變成雙模型 vLLM 伺服器。實戰驗證的 systemd 設定、看門狗修復、記憶體規劃與真實故障排除手冊——只要 $49。</p>
   
   <div class="product-card">
     <ul class="features">
@@ -41,7 +41,7 @@ sitemap:
 <li>模型部署最佳實踐</li>
     </ul>
     <a href="https://slashmaster6.gumroad.com/l/bppdqp" target="_blank" rel="noopener" class="cta-button">
-      立即購買 $99 →
+      立即購買 $49 →
     </a>
   </div>
   

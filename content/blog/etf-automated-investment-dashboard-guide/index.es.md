@@ -57,7 +57,7 @@ Para permitirte disfrutar inmediatamente de la conveniencia de la inversión aut
 
 Deja de permitir que el tedioso análisis de datos consuma tu tiempo. ¡Haz clic en el enlace de abajo ahora mismo y comienza tu viaje de inversión automatizada!
 
-👉 **[Obtén el ETF Dashboard Ahora - ¡Solo $29/mes, o elige el plan de por vida de $199!](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)**
+👉 **[Obtén el ETF Dashboard Ahora - ¡Solo $29!](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)**
 
 ## Conclusión
 

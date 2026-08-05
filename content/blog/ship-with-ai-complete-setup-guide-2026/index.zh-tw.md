@@ -43,10 +43,10 @@ This guide walks you through the exact setup I used, based on experience deployi
 
 | Tool | Purpose | Cost |
 |------|---------|------|
-| [Ship With AI Course](https://slashmaster6.gumroad.com/l/mgtpcn) | Full curriculum + scripts | $99 one-time |
+| [Ship With AI Course](https://slashmaster6.gumroad.com/l/mgtpcn) | Full curriculum + scripts | $39 one-time |
 | Docker | Container orchestration | Free |
 | GitHub | Hosting + CI/CD | Free |
-| Cowork Pro | Agent orchestration | $99 one-time |
+| Cowork Pro | Agent orchestration | $59 one-time |
 | AI Model API | Content generation | ~$10-30/mo |
 | Domain | Brand identity | ~$12/yr |
 
@@ -147,19 +147,19 @@ PRODUCTS = {
     },
     "mgtpcn": {
         "name": "Ship With AI",
-        "price": "$99",
+        "price": "$39",
         "url": "/blog/ship-with-ai/",
         "description": "Complete AI automation course"
     },
     "xfhfps": {
         "name": "Cowork Pro",
-        "price": "$99",
+        "price": "$59",
         "url": "/blog/cowork-pro/",
         "description": "AI agent orchestration framework"
     },
     "etf-dashboard": {
         "name": "ETF Dashboard",
-        "price": "$199",
+        "price": "$29",
         "url": "/blog/etf-dashboard/",
         "description": "Automated ETF portfolio analysis"
     }

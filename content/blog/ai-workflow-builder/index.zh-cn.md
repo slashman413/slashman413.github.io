@@ -116,7 +116,6 @@ Cowork Pro 負責在 Agent 平台之間**編排任務**；AI Workflow Builder �
 
 - [Cowork Pro 評測：一個儀表板指揮所有 AI 代理](/blog/cowork-pro/)
 - [Ship With AI：4 小時自動化課程](/blog/ship-with-ai/)
-- [SaaS Starter Kit：多租戶 Next.js](/blog/saas-starter-kit/)
 - [Ultimate AI Automation Guide 2026](/blog/ultimate-ai-automation-guide-2026/)
 
 👉 [**在 Gumroad 購買 AI Workflow Builder — $99**](https://slashmaster6.gumroad.com/l/amwkf?utm_source=blog&utm_medium=seo&utm_campaign=aiwb)

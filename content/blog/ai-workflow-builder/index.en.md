@@ -133,7 +133,6 @@ Then open http://localhost:5173 and type your first prompt.
 
 - [Cowork Pro Review: Orchestrate AI Agents from One Dashboard](/blog/cowork-pro/)
 - [Ship With AI: The 4-Hour Course](/blog/ship-with-ai/)
-- [SaaS Starter Kit: Multi-Tenant Next.js](/blog/saas-starter-kit/)
 - [Ultimate AI Automation Guide 2026](/blog/ultimate-ai-automation-guide-2026/)
 
 👉 [**Buy AI Workflow Builder on Gumroad — $99**](https://slashmaster6.gumroad.com/l/amwkf?utm_source=blog&utm_medium=seo&utm_campaign=aiwb)

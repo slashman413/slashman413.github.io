@@ -150,7 +150,7 @@ Running 10 products isn't as hard as it sounds. Here's why:
 | Category | Products | Avg. Development Time |
 |----------|----------|----------------------|
 | Content-based | AI Prompt Library, Guides | 3-5 days |
-| Software | Cowork Pro, SaaS Starter | 2-4 weeks |
+| Software | Cowork Pro | 2-4 weeks |
 | Data/Tools | ETF Dashboard | 1-2 weeks |
 | Education | AI Course | 1-2 weeks |
 
@@ -178,7 +178,6 @@ Here's how revenue distributes across my products:
 |---------|--------------|--------|
 | Cowork Pro | 45% | 95% |
 | ETF Dashboard | 20% | 90% |
-| SaaS Starter | 15% | 85% |
 | AI Course | 10% | 90% |
 | Others | 10% | 95% |
 
@@ -234,7 +233,6 @@ If you want to build a similar business:
 
 For the technical implementation:
 - [Cowork Pro](/blog/cowork-pro/) — Orchestrate your AI agents
-- [SaaS Starter Kit](/blog/saas-starter-kit/) — Build your product platform
 - [Self-Hosting LLMs on DGX Spark](/blog/self-hosting-llm-dgx-spark-complete-guide/) — Run models locally
 
 ## The Bottom Line
