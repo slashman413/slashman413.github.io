@@ -68,7 +68,7 @@ Designed specifically for modern teams, this high-quality template pack includes
 - 🤝 **Automated CRM & Client Follow-up**: Never let a potential opportunity slip through the cracks.
 - 📝 **Standardized Team Meeting & Weekly Report Templates**: Stop wasting time in unproductive meetings.
 
-For just $49, you can save hundreds of hours of setup time and instantly acquire an enterprise-grade management system. You aren't just buying a template; you are buying a proven, highly efficient workflow. **[Click here to get Feishu Templates now](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)**.
+For just $19, you can save hundreds of hours of setup time and instantly acquire an enterprise-grade management system. You aren't just buying a template; you are buying a proven, highly efficient workflow. **[Click here to get Feishu Templates now](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)**.
 
 ## Conclusion
 

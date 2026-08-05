@@ -93,7 +93,7 @@ $29 的价格，在你第一次用它生成高质量博文大纲、调试一段�
 
 准备好停止盲猜，开始工程化了吗？
 
-👉 **[现在在 Gumroad 解锁完整的 AI Prompt Library](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc)**
+👉 [**现在在 Gumroad 解锁完整的 AI Prompt Library（$29）**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc)
 
 ---
 📬 **喜欢这篇评测？** [订阅我们的邮件列表](https://slashmantools.us/newsletter/)，每周获取关于最新 AI 工具和效率提升工作流的诚实评测。

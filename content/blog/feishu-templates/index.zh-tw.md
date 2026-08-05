@@ -39,7 +39,7 @@ sitemap:
 <li>持續更新，一次購買終身使用</li>
     </ul>
     <a href="https://slashmaster6.gumroad.com/l/xohjh?utm_source=slashmantools&utm_medium=product-page&utm_campaign=feishu-templates" target="_blank" rel="noopener" class="cta-button">
-      立即購買 $49 →
+      立即購買 $19 →
     </a>
   </div>
   
