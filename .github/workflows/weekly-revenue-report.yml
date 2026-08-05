@@ -1,0 +1,33 @@
+name: Weekly Revenue Report
+on:
+  schedule:
+    # Every Monday 09:00 Taipei time (UTC+8)
+    - cron: '0 1 * * 1'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Generate Gumroad Revenue Report
+        env:
+          GUMROAD_TOKEN: ${{ secrets.GUMROAD_SLASHMASTER6_TOKEN }}
+          REPO_NAME: ${{ github.repository }}
+        run: python scripts/generate-gumroad-report.py
+
+      - name: Commit and push report
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "📊 Weekly revenue report $(date +'%Y-%m-%d')"
+          file_pattern: 'reports/revenue-*.md'
