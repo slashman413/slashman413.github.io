@@ -14,7 +14,7 @@
 {{ $desc := or .Description .Summary site.Params.description }}
 {{ $desc = $desc | plainify | truncate 160 }}
 <meta name="description" content="{{ $desc }}">
-{{ $noindex := or (eq .Section "news") .Params.noindex (in (slice "ja" "es") .Language.Lang) }}
+{{ $noindex := or (eq .Section "news") .Params.noindex }}
 {{ if $noindex }}<meta name="robots" content="noindex, nofollow">{{ else }}<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">{{ end }}
 <link rel="canonical" href="{{ .Permalink }}">
 {{ with site.Params.googleSiteVerification }}<meta name="google-site-verification" content="{{ . }}">{{ end }}

@@ -5,10 +5,6 @@
        so filter by URL prefix instead. Non-default languages live under /<lang>/; the
        default language (en) lives at the root and under /en/. */ -}}
 {{ $lang := $.Language.Lang }}
-{{- /* ja/es are placeholder languages (homepage only / thin translations) —
-       noindexed site-wide, so exclude them from sitemaps entirely. */ -}}
-{{- if or (eq $lang "ja") (eq $lang "es") }}
-{{- else -}}
 {{- $foreign := slice "zh-tw" "zh-cn" "ja" "es" }}
 {{- range .Data.Pages }}
 {{-   $page := . }}
@@ -27,5 +23,4 @@
 {{- if eq $lang "en" }}{{- range slice "utm-builder" "cron-expression-generator" "youtube-thumbnail-downloader" "tools" "popular" "saas" "services" }}
   <url><loc>{{ printf "https://slashmantools.us/%s/" . }}</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 {{- end }}{{- end }}
-{{- end }}
 </urlset>
