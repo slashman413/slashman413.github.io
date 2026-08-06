@@ -6,7 +6,7 @@ slug: dgx-spark-kit
 tags: [llm, deployment, nvidia, local-llm, qwen, gpu, self-hosting]
 draft: false
 product_url: "https://slashmaster6.gumroad.com/l/bppdqp"
-product_price: "99"
+product_price: "49"
 product_brand: "Slashman Tools"
 product_sku: "SMT-DSK"
 product_category: "Software > Developer Tools"

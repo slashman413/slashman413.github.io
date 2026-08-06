@@ -5,7 +5,7 @@ date: 2026-08-02
 slug: ai-dev-stack
 tags: [ai, development, tools, bundle, deployment, llm]
 product_url: "https://slashmaster6.gumroad.com/l/nulyms"
-product_price: "199"
+product_price: "79"
 product_brand: "Slashman Tools"
 product_sku: "SMT-ADS"
 product_category: "Software > Developer Tools"

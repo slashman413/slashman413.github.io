@@ -20,7 +20,7 @@ faq:
     a: '是的，全課程以繁體中文授課——這在優質 AI 教育內容中很少見，特別適合台灣與香港學習者。'
   - q: '$69 包含什麼？'
     a: '4 單元 17 堂錄影課程、練習專案、終身觀看權限，以及 AI 工具演進後的內容更新。'
-product_price: '99'
+product_price: '69'
 sitemap:
   priority: 0.8
   changefreq: monthly

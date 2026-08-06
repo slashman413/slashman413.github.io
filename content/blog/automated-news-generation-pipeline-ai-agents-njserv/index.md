@@ -210,7 +210,7 @@ The key insight from this article is simple: AI automation works when you have t
 
 ### What to do next
 
-1. **[Get 2-Person Chat News Automation**](https://slashmaster6.gumroad.com/l/njserv?utm_source=blog&utm_medium=article&utm_campaign=automated-news-generation-pipeline-ai-agents-njserv) - $99 one-time payment
+1. **[Get 2-Person Chat News Automation**](https://slashmaster6.gumroad.com/l/njserv?utm_source=blog&utm_medium=article&utm_campaign=automated-news-generation-pipeline-ai-agents-njserv) - $19 one-time payment
 2. **[Explore our related guides](/blog/ultimate-ai-automation-guide-2026/) - Full frameworks and tutorials
 3. **[Join our community](https://github.com/slashman413) - Get support and share your experience
 

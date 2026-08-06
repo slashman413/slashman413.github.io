@@ -7,7 +7,7 @@ draft: false
 schema: "ProductReview"
 tags: [templates, productivity, feishu, lark, dingtalk, project-management, teams]
 product_url: "https://slashmaster6.gumroad.com/l/xohjh"
-product_price: "49"
+product_price: "19"
 product_brand: "Slashman Tools"
 product_sku: "SMT-FSH"
 product_category: "Software > Productivity"

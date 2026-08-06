@@ -6,7 +6,7 @@ slug: "cowork-pro"
 draft: false
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/xfhfps"
-product_price: "99"
+product_price: "59"
 product_brand: "Slashman Tools"
 product_sku: "SMT-CWP"
 product_category: "Software > AI Tools"

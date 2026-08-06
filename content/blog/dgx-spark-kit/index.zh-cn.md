@@ -6,7 +6,7 @@ slug: "dgx-spark-kit"
 draft: false
 schema: "ProductReview"
 product_url: 'https://slashmaster6.gumroad.com/l/bppdqp'
-product_price: '99'
+product_price: '49'
 product_brand: 'Slashman Tools'
 product_sku: 'SMT-DSK'
 product_category: 'Software > Developer Tools'

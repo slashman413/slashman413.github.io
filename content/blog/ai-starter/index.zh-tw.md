@@ -5,7 +5,7 @@ date: 2026-08-02
 slug: ai-starter
 tags: [ai, bundle, beginners, prompts, learning]
 product_url: "https://slashmaster6.gumroad.com/l/lapcqb"
-product_price: "149"
+product_price: "49"
 product_brand: "Slashman Tools"
 product_sku: "SMT-AST"
 product_category: "Software > AI Tools"

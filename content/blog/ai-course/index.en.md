@@ -7,7 +7,7 @@ draft: false
 schema: "ProductReview"
 tags: [ai, course, learning, tutorial, beginners, chatgpt, claude]
 product_url: "https://slashmaster6.gumroad.com/l/vzalgb"
-product_price: "99"
+product_price: "69"
 product_brand: "Slashman Tools"
 product_sku: "SMT-AIC"
 product_category: "Online Course"

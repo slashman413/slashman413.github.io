@@ -5,7 +5,7 @@ date: 2026-08-02
 slug: ship-with-ai
 tags: [ai, automation, course, nocode, tutorial]
 product_url: "https://slashmaster6.gumroad.com/l/mgtpcn"
-product_price: "99"
+product_price: "39"
 product_brand: "Slashman Tools"
 product_sku: "SMT-SWA"
 product_category: "Online Course"

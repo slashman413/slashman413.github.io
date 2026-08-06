@@ -5,7 +5,7 @@ date: 2026-08-02
 slug: cowork-pro
 tags: [ai, agents, automation, orchestration, mcp, saas]
 product_url: "https://slashmaster6.gumroad.com/l/xfhfps"
-product_price: "99"
+product_price: "59"
 product_brand: "Slashman Tools"
 product_sku: "SMT-CWP"
 product_category: "Software > AI Tools"

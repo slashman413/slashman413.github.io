@@ -7,7 +7,7 @@ draft: false
 schema: "ProductReview"
 tags: [ai, bundle, beginners, prompts, learning, course]
 product_url: "https://slashmaster6.gumroad.com/l/lapcqb"
-product_price: "149"
+product_price: "49"
 product_brand: "Slashman Tools"
 product_sku: "SMT-AIS"
 product_category: "Online Course"

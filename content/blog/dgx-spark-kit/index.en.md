@@ -7,7 +7,7 @@ draft: false
 schema: "ProductReview"
 tags: [ai, llm, deployment, nvidia, gpu, self-hosting]
 product_url: "https://slashmaster6.gumroad.com/l/bppdqp"
-product_price: "99"
+product_price: "49"
 product_brand: "Slashman Tools"
 product_sku: "SMT-DGX"
 product_category: "Software > Developer Tools"
