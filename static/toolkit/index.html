@@ -120,7 +120,6 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
     -->
     <div id="form-container">
     <form class="email-form" id="signup-form" data-lead-form data-source="toolkit-landing" data-success="#success-msg" method="POST">
-      <input type="hidden" name="access_key" value="32e709fa-d67d-46e9-a1a0-1ac9ef6be251">
       <input type="hidden" name="tags" value="lead-magnet-toolkit">
       <!-- Honeypot: hidden from humans, tempting to bots -->
       <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
@@ -160,9 +159,10 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
   </div>
 </div>
 
-<!-- Lead-capture endpoint (STOP-GAP: web3forms, client-side, HTTPS/public).
-     Was http://100.80.243.33:8081/subscribe — private IP + mixed content + 404. -->
-<script>window.LEAD_ENDPOINT="https://api.web3forms.com/submit";window.LEAD_ACCESS_KEY="32e709fa-d67d-46e9-a1a0-1ac9ef6be251";</script>
+<!-- Lead-capture endpoint: self-owned Cloudflare Worker (repo: /webhook/).
+     Form data goes to the Worker (validate → rate-limit → KV → email download
+     link → forward to Mautic funnel). No third-party form provider involved. -->
+<script>window.LEAD_ENDPOINT="https://api.slashmantools.us/subscribe";</script>
 <script src="/js/lead-capture.js" defer></script>
 <script>
 // Legacy fallback: if a user lands here with ?subscribed=1, show success.
