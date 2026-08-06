@@ -11,11 +11,12 @@ Signals (both free, no key):
   - Google Trends interest via pytrends         (search demand — best-effort)
 
 Outputs:
-  - marketing/latest.md         (rendered by marketing/index.html)
-  - marketing/report-<date>.md  (archive)
+  - static/marketing/latest.md         (rendered by static/marketing/index.html,
+                                        served at /marketing/ by Hugo)
+  - static/marketing/report-<date>.md  (archive)
   - Discord ping with the URL (if DISCORD_WEBHOOK is set)
 
-Run anywhere: python build_marketing.py   (no secrets required)
+Run from the repo root: python scripts/build_marketing.py   (no secrets required)
 """
 
 import os
@@ -260,12 +261,12 @@ _資料驅動自動產生（無需 AI）· {TODAY.isoformat()}（第 {WEEK} 週�
 _每週一自動更新。資料來源：Abacus + Google Trends（皆免費公開）。_
 """
 
-    os.makedirs("marketing", exist_ok=True)
-    with open("marketing/latest.md", "w", encoding="utf-8") as f:
+    os.makedirs("static/marketing", exist_ok=True)
+    with open("static/marketing/latest.md", "w", encoding="utf-8") as f:
         f.write(report)
-    with open(f"marketing/report-{TODAY.isoformat()}.md", "w", encoding="utf-8") as f:
+    with open(f"static/marketing/report-{TODAY.isoformat()}.md", "w", encoding="utf-8") as f:
         f.write(report)
-    print(f"Wrote marketing/latest.md (+archive). Spotlight: {spot_names}")
+    print(f"Wrote static/marketing/latest.md (+archive). Spotlight: {spot_names}")
 
     webhook = os.environ.get("DISCORD_WEBHOOK")
     if webhook:
