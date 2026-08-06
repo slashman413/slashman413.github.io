@@ -1,4 +1,4 @@
-name: Meta Token Diagnostic (temp)
+name: Meta Token Diagnostic 2 (temp)
 
 on:
   workflow_dispatch:
@@ -10,25 +10,10 @@ jobs:
       - name: Diagnose FB tokens
         env:
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
-          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
           APP_ID: ${{ secrets.META_APP_ID }}
           APP_SECRET: ${{ secrets.META_APP_SECRET }}
         run: |
-          set -x
-          echo "FB_PAGE_ID len: ${#FB_PAGE_ID}  FB_PAGE_TOKEN len: ${#FB_PAGE_TOKEN}"
           API="https://graph.facebook.com/v21.0"
-          # 1. app token via client_credentials
           APPTOK=$(curl -s "$API/oauth/access_token?client_id=$APP_ID&client_secret=$APP_SECRET&grant_type=client_credentials" | python3 -c 'import sys,json;print(json.load(sys.stdin).get("access_token",""))')
-          echo "app token ok: $([ -n "$APPTOK" ] && echo yes || echo NO)"
-          # 2. debug_token on FB_PAGE_TOKEN
-          echo "--- debug_token ---"
-          curl -s "$API/debug_token?input_token=$FB_PAGE_TOKEN&access_token=$APPTOK" | python3 -m json.tool | head -40
-          # 3. test /me with the token (tells user token vs page token)
-          echo "--- /me ---"
-          curl -s -w "\nHTTP:%{http_code}\n" "$API/me?fields=id,name&access_token=$FB_PAGE_TOKEN" | head -5
-          # 4. test page endpoint exactly like social_promo does
-          echo "--- /<FB_PAGE_ID> ---"
-          curl -s -w "\nHTTP:%{http_code}\n" "$API/$FB_PAGE_ID?fields=name,id&access_token=$FB_PAGE_TOKEN" | head -5
-          # 5. does the user token in debug belong to a user with pages?
-          echo "--- /me/accounts (via FB_PAGE_TOKEN) ---"
-          curl -s -w "\nHTTP:%{http_code}\n" "$API/me/accounts?access_token=$FB_PAGE_TOKEN&fields=id,name" | head -8
+          echo "--- page public info via app token (name/ID check) ---"
+          curl -s -w "\nHTTP:%{http_code}\n" "$API/$FB_PAGE_ID?fields=name,id,is_published,category&access_token=$APPTOK" | head -6
