@@ -1,13 +1,23 @@
 name: Weekly Revenue Report
 on:
   schedule:
-    # Every Monday 09:00 Taipei time (UTC+8)
-    - cron: '0 1 * * 1'
+    # Every Monday 09:30 Taipei time (UTC+8). Offset 30 min from
+    # marketing-agents.yml (Mondays 01:00 UTC) — both workflows commit to
+    # main, and firing at the same minute makes the slower push get rejected.
+    - cron: '30 1 * * 1'
   workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-revenue-report
+  cancel-in-progress: false
 
 jobs:
   generate-report:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,8 +36,13 @@ jobs:
           REPO_NAME: ${{ github.repository }}
         run: python scripts/generate-gumroad-report.py
 
+      - name: Set report date
+        run: echo "REPORT_DATE=$(date -u +'%Y-%m-%d')" >> "$GITHUB_ENV"
+
       - name: Commit and push report
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "📊 Weekly revenue report $(date +'%Y-%m-%d')"
+          # NOTE: this input is passed to `git commit -m` verbatim — shell
+          # command substitution like $(date ...) is NOT expanded here.
+          commit_message: "📊 Weekly revenue report ${{ env.REPORT_DATE }}"
           file_pattern: 'reports/revenue-*.md'
