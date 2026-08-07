@@ -1,9 +1,19 @@
 # Runbook — Public lead ingress → Mautic (durable fix)
 
-**Status:** OPEN — blocked on Cloudflare account access + Mautic API creds (Wayne only).
+**Status: LIVE (verified 2026-08-07 by cowork task 9d9c4528).** The full funnel is
+deployed and E2E-tested: form → Worker → KV → sync cron → Mautic → 3-email drip.
 **Created:** 2026-08-01. **Re-verified:** 2026-08-01 by cowork task
 `bee7c65d` (engineering-devops-automator). Second pass corrected the recommended
 architecture (Worker+KV+sync — never exposes Mautic) and re-tested every claim.
+**2026-08-07 update:** worker deployed + auto-deployed on every push by
+`.github/workflows/deploy-webhook.yml` (repo secrets CLOUDFLARE_API_TOKEN +
+CLOUDFLARE_ACCOUNT_ID, account ckw19810413 cc5e1192..., KV namespace
+`d0e3fc70...`, custom domain `api.slashmantools.us` dashboard-attached). Sync cron
+on host every 5 min (`webhook/sync_kv_to_mautic.py`). Mautic campaign 10
+"Slashman 3-Day Drip" = Day 0 magnet (email 58) → Day 2 value (59) → Day 4
+flagship offer w/ UTM (60) → Day 5 exit tag. Magnet file:
+`static/toolkit/20-top-prompts.md` → https://slashmantools.us/toolkit/20-top-prompts.md.
+
 
 ## Why this exists
 
