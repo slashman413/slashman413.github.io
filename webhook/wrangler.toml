@@ -11,7 +11,7 @@ compatibility_date = "2024-11-01"
 # then paste the returned id below.
 [[kv_namespaces]]
 binding = "LEADS"
-id = "7e7c4a2d6c2f4dd78653e79d4f30cbee"
+id = "d0e3fc705b3e444ea952ab89f46b80f2"
 
 # --- Custom domain route (recommended) -------------------------------------
 # Serve the Worker at https://leads.slashmantools.us so the forms post to a
@@ -24,9 +24,9 @@ id = "7e7c4a2d6c2f4dd78653e79d4f30cbee"
 
 # Custom domain served at https://api.slashmantools.us (attached 2026-08-03;
 # the leads.* hostname was already taken by an existing tunnel CNAME record).
-[[routes]]
-pattern = "api.slashmantools.us"
-custom_domain = true
+# [[routes]]
+# pattern = "api.slashmantools.us"
+# custom_domain = true
 
 # --- Non-secret vars -------------------------------------------------------
 # Secrets (RESEND_API_KEY, FORWARD_SECRET, MAUTIC_FORWARD_TOKEN) must be set via

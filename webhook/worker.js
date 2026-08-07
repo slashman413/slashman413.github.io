@@ -178,7 +178,6 @@ export default {
     ctx.waitUntil(
       Promise.allSettled([
         forwardToFunnel(env, lead, isNew),
-        isNew ? deliverLeadMagnet(env, lead) : Promise.resolve(),
       ])
     );
 
