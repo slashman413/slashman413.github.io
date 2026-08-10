@@ -4,7 +4,7 @@ description: "Terms of Service for the free online tools at slashmantools.us."
 date: 2026-07-01
 lastmod: 2026-07-20
 ---
-<nav><a href="/">Home</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></nav>
+<nav><a href="/">Home</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></nav>
 
 <p class="muted">Last updated: 2026-06-28</p>
 
@@ -29,7 +29,7 @@ financial, medical, or legal advice. Always verify important results independent
 <h2>4. Advertising &amp; Affiliate Links</h2>
 <p>The site is supported by advertising (e.g. Google AdSense) and affiliate links (e.g. the Amazon
 Associates Program). As an Amazon Associate we earn from qualifying purchases. See our
-<a href="privacy.html">Privacy Policy</a> for details on cookies and advertising.</p>
+<a href="/privacy/">Privacy Policy</a> for details on cookies and advertising.</p>
 
 <h2>5. Intellectual Property</h2>
 <p>Site content and code are owned by the operator unless otherwise noted. Third-party trademarks belong to
@@ -47,4 +47,4 @@ on its outputs.</p>
 <h2>8. Contact</h2>
 <p>Questions about these Terms: <a href="mailto:slashman413@gmail.com">slashman413@gmail.com</a></p>
 
-<p class="muted"><a href="/">Home</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy Policy</a></p>
+<p class="muted"><a href="/">Home</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy Policy</a></p>

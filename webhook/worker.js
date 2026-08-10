@@ -27,7 +27,6 @@ const JSON_HEADERS = { "content-type": "application/json; charset=utf-8" };
 // Origins allowed to call this Worker from the browser.
 const ALLOWED_ORIGINS = [
   "https://slashmantools.us",
-  "https://www.slashmantools.us",
   "https://slashman413.github.io",
   "http://localhost:1313", // hugo server
   "http://127.0.0.1:1313",

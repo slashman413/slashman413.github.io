@@ -4,7 +4,7 @@ description: "About intelligent agents — a growing collection of free, privacy
 date: 2026-07-01
 lastmod: 2026-07-20
 ---
-<nav><a href="/">Home</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></nav>
+<nav><a href="/">Home</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></nav>
 
 
 <p><strong>intelligent agents</strong> (<a href="https://slashmantools.us/">slashmantools.us</a>) is an independent,
@@ -46,19 +46,19 @@ or lose.</p>
 then document what actually worked. Where numbers or prices change over time (such as API rates), the goal
 is to explain the method so you can re-check current figures yourself, rather than trusting a stale table.
 Nothing on this site is professional financial, medical, or legal advice; the finance dashboards are
-research aids, not recommendations (see the <a href="terms.html">Terms of Service</a>). When I get something
+research aids, not recommendations (see the <a href="/terms/">Terms of Service</a>). When I get something
 wrong, I'd genuinely like to hear about it so it can be fixed.</p>
 
 <h2>How the site is funded</h2>
 <p>The site is kept free with the help of advertising and affiliate links (see our
-<a href="privacy.html">Privacy Policy</a> for exactly what that involves). This funding never changes which
+<a href="/privacy/">Privacy Policy</a> for exactly what that involves). This funding never changes which
 tools I build or the results a tool produces. If a tool saved you time, you can also
 <a href="https://ko-fi.com/ytstories0413" target="_blank" rel="noopener">buy me a coffee on Ko-fi</a> —
 thank you!</p>
 
 <h2>Contact</h2>
 <p>Feedback, bug reports, corrections, or suggestions for new tools are always welcome. Please
-<a href="contact.html">get in touch</a> or email
+<a href="/contact/">get in touch</a> or email
 <a href="mailto:slashman413@gmail.com">slashman413@gmail.com</a> — I read every message.</p>
 
-<p class="muted"><a href="/">Home</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+<p class="muted"><a href="/">Home</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></p>
