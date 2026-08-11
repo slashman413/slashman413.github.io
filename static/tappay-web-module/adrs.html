@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Architecture Decision Records — tappay-web-module</title>
+  <meta name="description" content="ADR-001 unified adapters, ADR-002 universal wallet strategy, ADR-003 vanilla web components & CSS variables — the architecture decisions behind tappay-web-module." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>Architecture Decision Records</h1>
+    <p class="tagline">Why tappay-web-module is shaped the way it is — three decisions, three trade-offs.</p>
+    <nav class="tabs">
+      <a href="index.html">Docs Home</a>
+      <a href="index.html#quickstart">Quick Start</a>
+      <a href="https://github.com/slashman413/tappay-web-module">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>ADR-001 — Unified Adapter Strategy over Raw Imperative Callbacks</h2>
+      <div class="adr">
+        <p class="meta">Status: Accepted &middot; Date: 2026-08-04</p>
+        <h3>Context</h3>
+        <p>TapPay's legacy JS SDK uses disparate imperative patterns: <code>(err, result)</code> callbacks for some wallets, single <code>(result)</code> objects for others, and DOM-scraping events for credit cards. Consumers must memorize a different shape per rail.</p>
+        <h3>Decision</h3>
+        <p>Wrap every payment rail in dedicated classes (<code>CardPayment</code>, <code>GooglePayment</code>, <code>ApplePayment</code>, <code>SamsungPayment</code>, <code>WalletPayment</code>) that expose standardized ES6 Promises and <code>EventEmitter</code>-style subscriptions: <code>init()</code>, <code>renderButton()</code>, <code>getPrime()</code>.</p>
+        <h3>Consequences</h3>
+        <p><strong>Gain:</strong> type-safe error handling, async/await pipelines, deterministic state testing.</p>
+        <p><strong>Trade-off:</strong> minor object-wrapping overhead over raw <code>window</code> callback invocation.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>ADR-002 — Universal Strategy Adapter for Digital Wallets (<code>WalletPayment</code>)</h2>
+      <div class="adr">
+        <p class="meta">Status: Accepted &middot; Date: 2026-08-04</p>
+        <h3>Context</h3>
+        <p>13 regional payment methods (JKO Pay, LINE Pay, Pi Wallet, Easy Wallet, iPASS MONEY, PXPay Plus, Plus Pay, GoGo Pay, OPPay, Pay Later, AFTEE, ATM, COD) share an identical lifecycle: <code>getPrime(cb)</code> followed by server-side payment-URL redirect.</p>
+        <h3>Decision</h3>
+        <p>Implement one parameterized bounded adapter (<code>WalletPayment</code>) mapped via metadata definitions (<code>WALLET_METADATA</code>) instead of 13 redundant concrete classes.</p>
+        <h3>Consequences</h3>
+        <p><strong>Gain:</strong> massive reduction in bundle size and maintenance surface while keeping complete Taiwan &amp; Asian rail coverage.</p>
+        <p><strong>Trade-off:</strong> if TapPay introduces divergent init parameters for one specific wallet, that rail must be promoted to a standalone adapter class.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>ADR-003 — Vanilla Web Components &amp; CSS Variables vs. Framework Component Libraries</h2>
+      <div class="adr">
+        <p class="meta">Status: Accepted &middot; Date: 2026-08-04</p>
+        <h3>Context</h3>
+        <p>A modern checkout UX must work across heterogeneous consumer stacks — React, Vue, Next.js, Django, WordPress, and plain static HTML.</p>
+        <h3>Decision</h3>
+        <p>Zero-dependency native JS DOM assembly styled purely through CSS Custom Properties (<code>--tp-*</code>), avoiding Tailwind runtime requirements and framework bundlers.</p>
+        <h3>Consequences</h3>
+        <p><strong>Gain:</strong> universal compatibility, instant startup, zero production dependencies, dynamic runtime dark/light theme switching.</p>
+        <p><strong>Trade-off:</strong> UI components cannot consume application-level React/Vue context engines directly without a slim wrapper.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Trade-Off Analysis Matrix</h2>
+      <table>
+        <thead>
+          <tr><th>Design Concern</th><th>Selected Approach</th><th>Alternative</th><th>Why</th><th>Trade-Off</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SDK Dependency</td>
+            <td>Dynamic async injection via <code>loadTapPaySDK</code></td>
+            <td>Hardcoded <code>&lt;script src&gt;</code> tags</td>
+            <td>No global script-block delay; SRI integrity support</td>
+            <td>Requires async <code>await client.ready()</code></td>
+          </tr>
+          <tr>
+            <td>Error Handling</td>
+            <td>Normalized typed <code>TapPayError</code> objects</td>
+            <td>Raw SDK error codes &amp; strings</td>
+            <td>Standardized error classification, easy debugging</td>
+            <td>Hides vendor console verbosity by default</td>
+          </tr>
+          <tr>
+            <td>State Management</td>
+            <td>Event-driven observable hooks (<code>statuschange</code>)</td>
+            <td>Polling DOM states / React state coupling</td>
+            <td>Decouples DOM form rendering from domain validation</td>
+            <td>Requires explicit listener cleanup in SPAs</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    MIT License &copy; slashman413 &middot; Not affiliated with or endorsed by TapPay / Cherri Tech, Inc.
+  </footer>
+</body>
+</html>

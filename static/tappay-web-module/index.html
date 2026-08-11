@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>tappay-web-module — One SDK for all 18 TapPay payment rails</title>
+  <meta name="description" content="Zero-dependency, themeable web module wrapping the TapPay TPDirect SDK: Direct Pay credit cards, Google/Apple/Samsung Pay, LINE Pay, JKO Pay, AFTEE and 12 more Taiwan & APAC rails." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="badges">
+      <a href="https://www.npmjs.com/package/tappay-web-module"><img alt="npm" src="https://img.shields.io/npm/v/tappay-web-module" /></a>
+      <img alt="zero dependencies" src="https://img.shields.io/badge/dependencies-0-brightgreen" />
+      <img alt="MIT" src="https://img.shields.io/badge/license-MIT-blue" />
+    </div>
+    <h1>tappay-web-module</h1>
+    <p class="tagline">
+      One zero-dependency module, <span class="rail-count">18 TapPay payment rails</span>.
+      Drop-in dark/light checkout UI, or promise-based hexagonal adapters for your own UI.
+      Built for Taiwan &amp; APAC commerce.
+    </p>
+    <nav class="tabs">
+      <a href="#quickstart">Quick Start</a>
+      <a href="#rails">Supported Rails</a>
+      <a href="#low-level">Low-Level API</a>
+      <a href="adrs.html">ADRs</a>
+      <a href="https://github.com/slashman413/tappay-web-module">GitHub</a>
+      <a href="https://www.npmjs.com/package/tappay-web-module">npm</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="install">
+      <h2>Install</h2>
+      <pre><code>npm install tappay-web-module</code></pre>
+      <p>Pure ESM, <strong>zero runtime dependencies</strong>. The TapPay SDK and Google Pay scripts are injected dynamically — no manual <code>&lt;script&gt;</code> tags.</p>
+    </section>
+
+    <section id="quickstart">
+      <h2>Quick Start — Drop-In Checkout UI</h2>
+      <p>Mount the whole payment surface — secure card fields, wallet buttons, and a grid of regional payment methods — with one widget:</p>
+      <pre><code>&lt;div id="payment-widget"&gt;&lt;/div&gt;
+&lt;link rel="stylesheet" href="tappay-web-module/style.css" /&gt;
+
+&lt;script type="module"&gt;
+  import { createTapPay, Checkout } from 'tappay-web-module';
+
+  const client = createTapPay({
+    appId: 159881,                                  // TapPay public sandbox App ID
+    appKey: 'app_wh614Aq3T392m8Nu2xEP5Nc0Yq6oMfN7ky4y9GkkjZi3lFDkFC9Kb0nyDcWz',
+    serverType: 'sandbox',                          // 'production' when live
+  });
+
+  const checkout = new Checkout(client, {
+    theme: 'auto',                                  // 'light' | 'dark' | 'auto'
+    mode: 'inline',                                 // 'inline' | 'modal'
+    container: '#payment-widget',
+    amount: 1280, currency: 'TWD', title: 'Order #1024',
+    card: true,
+    googlePay: { merchantName: 'Demo Store' },
+    wallets: ['jkoPay', 'linePay', 'easyWallet', 'aftee', 'virtualAccount'],
+    onPrime: async ({ method, prime, redirect }) => {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prime, method, amount: 1280 }),
+      }).then(r =&gt; r.json());
+      if (redirect &amp;&amp; res.payment_url) redirect(res.payment_url); // wallets
+      else alert('Transaction complete! Order: ' + res.order_id);
+    },
+    onError: (err) =&gt; console.error(err.code, err.message),
+  });
+
+  checkout.mount();
+&lt;/script&gt;</code></pre>
+    </section>
+
+    <section id="rails">
+      <h2>All 18 Payment Rails</h2>
+      <table>
+        <thead><tr><th>Category</th><th>Rails</th></tr></thead>
+        <tbody>
+          <tr><td>Credit &amp; Debit Cards</td><td>Direct Pay (hosted fields / iframe / CCV prime)</td></tr>
+          <tr><td>Global Mobile Wallets</td><td>Apple Pay, Google Pay, Samsung Pay</td></tr>
+          <tr><td>Taiwan &amp; Regional Wallets</td><td>LINE Pay, JKO Pay, Easy Wallet, Pi Wallet, iPASS MONEY, PXPay Plus, Plus Pay (台灣Pay), GoGo Pay, OP Pay</td></tr>
+          <tr><td>BNPL / Financing</td><td>AFTEE 先享後付, Pay Later (Atome)</td></tr>
+          <tr><td>Bank &amp; Logistics</td><td>ATM Virtual Account, Cash on Delivery (超商取貨)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="low-level">
+      <h2>Low-Level Adapters (Bring Your Own UI)</h2>
+      <p>Every rail exposes a uniform async contract: <code>init()</code>, <code>renderButton()</code>, <code>getPrime()</code>. Card example:</p>
+      <pre><code>import { createTapPay } from 'tappay-web-module';
+
+const client = createTapPay({ appId: 159881, appKey: 'app_...', serverType: 'sandbox' });
+const card = client.card({
+  fields: { number: '#card-num', expirationDate: '#card-exp', ccv: '#card-ccv' },
+});
+card.on('statuschange', (s) =&gt; { submitBtn.disabled = !s.canGetPrime; });
+await card.mount();
+
+submitBtn.onclick = async () =&gt; {
+  const { prime } = await card.getPrime();
+  // POST prime to your backend → TapPay Pay-by-Prime
+};</code></pre>
+      <p>Regional wallets share one universal adapter — 13 rails, one class:</p>
+      <pre><code>const linePay = client.linePay('LINE Pay Express');
+const { prime } = await linePay.getPrime();
+await linePay.redirect(backendResponse.payment_url);</code></pre>
+    </section>
+
+    <section id="server">
+      <h2>Server Side — Pay-by-Prime</h2>
+      <p>Your backend exchanges the one-time <code>prime</code> for a real charge using the confidential <strong>Partner Key</strong> (never ship it to the browser):</p>
+      <pre><code>POST https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime
+x-api-key: PARTNER_KEY
+
+{ "prime": "…", "partner_key": "…", "merchant_id": "…",
+  "amount": 1280, "currency": "TWD", "details": "Order #1024",
+  "cardholder": { "phone_number": "+886…", "name": "…", "email": "…" } }</code></pre>
+      <p>See <code>examples/server.example.js</code> in the repo for a full Express reference.</p>
+    </section>
+
+    <section>
+      <h2>Architecture</h2>
+      <p>Hexagonal ports &amp; adapters: <code>src/core/</code> owns SDK lifecycle &amp; errors, <code>src/payments/</code> owns bounded adapters per rail, <code>src/ui/</code> owns the decoupled themeable checkout. Full decision history: <a href="adrs.html">Architecture Decision Records</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    MIT License &copy; slashman413 &middot; Not affiliated with or endorsed by TapPay / Cherri Tech, Inc. &middot;
+    Always consult the <a href="https://docs.tappaysdk.com/">official TapPay documentation</a> before production certification.
+  </footer>
+</body>
+</html>
