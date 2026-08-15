@@ -1,0 +1,112 @@
+name: Automated YouTube Promo Upload
+
+# Uploads a promotional Short to the slashman413 YouTube channel daily.
+# Produces upload-report.json as a GitHub Actions artifact.
+# Uses OAuth token stored as repo secret: YT_TOKEN_JSON
+
+on:
+  schedule:
+    - cron: "37 10 * * *"   # 10:37 UTC daily (18:37 Taipei)
+  workflow_dispatch:        # Manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install google-api-python-client google-auth-oauthlib google-auth-httplib2
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Decode YouTube token
+        run: |
+          # YT_TOKEN_JSON is a base64-encoded JSON string (the OAuth token file content)
+          echo "$YT_TOKEN_JSON" | base64 -d > /home/runner/slashman413_youtube_token.json
+          echo "Token decoded successfully."
+        env:
+          YT_TOKEN_JSON: ${{ secrets.YT_TOKEN_JSON }}
+
+      - name: Run upload script (dry-run)
+        id: dry-run
+        run: |
+          echo "=== DRY RUN PHASE ==="
+          python3 scripts/upload_promo.py --dry-run --report upload-report-dryrun.json
+          cat upload-report-dryrun.json
+        continue-on-error: true
+
+      - name: Dry-run result
+        run: |
+          if [[ "$(jq -r '.dry_run' upload-report-dryrun.json 2>/dev/null)" == "true" ]]; then
+            echo "Dry run: credentials OK, config valid."
+            echo "DRY_RUN_PASS=true" >> $GITHUB_ENV
+          else
+            echo "Dry run: check report for errors."
+            cat upload-report-dryrun.json
+            echo "DRY_RUN_PASS=false" >> $GITHUB_ENV
+          fi
+
+      - name: Generate test video
+        if: env.DRY_RUN_PASS == 'true'
+        id: gen-video
+        run: |
+          python3 -c "
+          import subprocess, json
+          import sys
+          sys.path.insert(0, 'scripts')
+          from upload_promo import generate_test_video, ensure_video_exists, log
+          log('Generating promotional Short...')
+          generate_test_video('promo-video.mp4')
+          log('Video ready: promo-video.mp4')
+          "
+          echo "VIDEO_READY=true" >> $GITHUB_ENV
+
+      - name: Upload video to YouTube
+        if: env.DRY_RUN_PASS == 'true' && env.VIDEO_READY == 'true'
+        id: upload
+        run: |
+          echo "=== UPLOAD PHASE ==="
+          python3 scripts/upload_promo.py \
+            --video promo-video.mp4 \
+            --report upload-report.json || {
+            echo "Upload FAILED"
+            cat upload-report.json 2>/dev/null || true
+            exit 1
+          }
+          echo "UPLOAD_SUCCESS=true" >> $GITHUB_ENV
+
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: upload-report
+          path: |
+            upload-report.json
+            upload-report-dryrun.json
+          retention-days: 14
+
+      - name: Commit report (if upload succeeded)
+        if: env.UPLOAD_SUCCESS == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add upload-report.json
+          git commit -m "chore: auto-upload report [skip ci]" || echo "No changes to commit"
+          git push || echo "Push failed (may be clean repo)"
