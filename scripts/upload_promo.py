@@ -329,7 +329,11 @@ def main():
     parser.add_argument("--config", type=str, default=str(SCRIPT_DIR / "promo-config.json"), help="Config JSON path")
     parser.add_argument("--dry-run", action="store_true", help="Preview without uploading")
     parser.add_argument("--report", type=str, default=str(SCRIPT_DIR / "upload-report.json"), help="Report output path")
+    parser.add_argument("--token", type=str, default=None, help="Path to YouTube OAuth token JSON file")
     args = parser.parse_args()
+
+    # Resolve token file: --token > env YT_TOKEN_PATH > default
+    token_file = args.token or os.environ.get("YT_TOKEN_PATH", DEFAULT_TOKEN_FILE)
 
     log("=" * 60)
     log("Slashman413 YouTube Promo Upload Script")
@@ -361,7 +365,7 @@ def main():
 
         # Verify credentials work (minimal auth check)
         try:
-            creds = load_credentials(DEFAULT_TOKEN_FILE)
+            creds = load_credentials(token_file)
             log("Credentials valid — token refresh successful.")
         except Exception as e:
             log(f"Credentials error: {e}")
@@ -379,7 +383,7 @@ def main():
 
     # 4. Build YouTube service
     log("Loading credentials...")
-    creds = load_credentials(DEFAULT_TOKEN_FILE)
+    creds = load_credentials(token_file)
     service = build("youtube", "v3", credentials=creds)
 
     # 5. Upload

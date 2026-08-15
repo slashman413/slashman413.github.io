@@ -81,6 +81,8 @@ jobs:
       - name: Upload video to YouTube
         if: env.DRY_RUN_PASS == 'true' && env.VIDEO_READY == 'true'
         id: upload
+        env:
+          YT_TOKEN_PATH: /home/runner/slashman413_youtube_token.json
         run: |
           echo "=== UPLOAD PHASE ==="
           python3 scripts/upload_promo.py \
