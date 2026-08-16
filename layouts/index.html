@@ -65,11 +65,43 @@
   </div>
 </div>
 
-<h2 style="margin-top:32px">Product Tools</h2>
-<ul class="postlist">
+<h2 style="margin-top:32px">Featured Bundles &amp; Templates</h2>
+<div class="pricing-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom: 32px;">
   {{ $lang := .Language.Lang }}
+  {{ $feishuUrl := "/blog/feishu-templates/" }}
+  {{ $promptUrl := "/blog/ai-prompt-library/" }}
+  {{ $starterUrl := "/blog/ai-starter/" }}
+  {{ if or (eq $lang "zh-tw") (eq $lang "zh-cn") }}
+    {{ $feishuUrl = printf "/%s%s" $lang $feishuUrl }}
+    {{ $promptUrl = printf "/%s%s" $lang $promptUrl }}
+    {{ $starterUrl = printf "/%s%s" $lang $starterUrl }}
+  {{ end }}
+  <a class="card" href="{{ $feishuUrl }}" style="display:flex;flex-direction:column;padding:20px;">
+    <div class="t" style="font-size:16px">Feishu (Lark) Templates</div>
+    <div class="d" style="font-size:22px; margin: 8px 0; font-weight:700; color:#f0f0f8">$29</div>
+    <div class="d" style="font-size:13px">Premium workspace templates.</div>
+  </a>
+  <a class="card" href="{{ $promptUrl }}" style="display:flex;flex-direction:column;padding:20px;">
+    <div class="t" style="font-size:16px">AI Prompt Library</div>
+    <div class="d" style="font-size:22px; margin: 8px 0; font-weight:700; color:#f0f0f8">$39</div>
+    <div class="d" style="font-size:13px">50+ curated high-leverage prompts.</div>
+  </a>
+  <a class="card" href="{{ $starterUrl }}" style="display:flex;flex-direction:column;padding:20px; border: 2px solid #a5b4fc; background:rgba(165,180,252,.05); position:relative;">
+    <div style="position:absolute; top:-10px; right:12px; background:#a5b4fc; color:#0a0a0f; font-size:11px; font-weight:800; padding:2px 8px; border-radius:10px;">BEST VALUE</div>
+    <div class="t" style="font-size:16px; color:#a5b4fc">AI Starter Bundle</div>
+    <div class="d" style="font-size:22px; margin: 8px 0; font-weight:700; color:#f0f0f8">$49 <span style="font-size:14px; text-decoration:line-through; opacity:0.6; font-weight:400">$68</span></div>
+    <div class="d" style="font-size:13px">Get everything for less than the sum of its parts ($68 value for $49).</div>
+  </a>
+  <a class="card" href="https://slashmaster6.gumroad.com/l/cygmxp" target="_blank" rel="noopener" style="display:flex;flex-direction:column;padding:20px; border: 1px solid rgba(255,215,0,0.3); background:rgba(255,215,0,0.02);">
+    <div class="t" style="font-size:16px; color:#ffd700;">Everything Bundle</div>
+    <div class="d" style="font-size:22px; margin: 8px 0; font-weight:700; color:#f0f0f8">$199</div>
+    <div class="d" style="font-size:13px">The complete lifetime access pass.</div>
+  </a>
+</div>
+
+<h2 style="margin-top:32px">All Product Tools</h2>
+<ul class="postlist">
   {{ range site.Data.products }}
-  {{- /* zh-tw/zh-cn have translated product pages; ja/es do not, so keep EN URLs there */ -}}
   {{- $url := .url -}}
   {{- if or (eq $lang "zh-tw") (eq $lang "zh-cn") }}{{ $url = printf "/%s%s" $lang .url }}{{ end }}
   <li><a class="card" href="{{ $url }}">
