@@ -6,7 +6,7 @@ name: Automated YouTube Promo Upload
 
 on:
   schedule:
-    - cron: "37 10 * * *"   # 10:37 UTC daily (18:37 Taipei)
+#   - cron: "37 10 * * *"   # 10:37 UTC daily (18:37 Taipei)
   workflow_dispatch:        # Manual trigger
 
 permissions:
