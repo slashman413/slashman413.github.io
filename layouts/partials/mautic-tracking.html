@@ -1,0 +1,28 @@
+{{ if not (eq .Site.Params.mauticTracking false) }}
+<!-- Mautic web tracking — blog analytics, clickstream, and conversion attribution.
+     Pixel + pageview via mtc.js (Mautic 6). Virtual pageviews on outbound
+     product clicks so Mautic records them as page hits (segmentable), and the
+     noscript 1x1 gif as a fallback. HTTPS — no mixed content. -->
+<script>
+(function(w,d,t,u,n,a,m){w['MauticTrackingObject']=n;w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)};a=d.createElement(t);m=d.getElementsByTagName(t)[0];a.async=1;a.src=u;m.parentNode.insertBefore(a,m)})(window,document,'script','https://leads.slashmantools.us/mtc.js','mt');
+mt('send','pageview');
+</script>
+<noscript><img src="https://leads.slashmantools.us/mtracking.gif?d=&amp;lang={{ .Site.LanguageCode | default "en" }}" style="display:none" alt="" width="1" height="1" /></noscript>
+<script>
+/* Blog → product click tracking. Fires a virtual pageview (mt('send','pageview',{url}))
+   on clicks of Gumroad / product / toolkit links so Mautic stores the hit on the
+   contact record and the Blog Visitors segment can see the path to purchase. */
+(function(){
+  function vpv(url){ try{ if(window.mt){ mt('send','pageview',{url:url}); } }catch(e){} }
+  document.addEventListener('click', function(e){
+    var el = e.target;
+    while (el && el !== document && !(el.tagName && el.tagName.toLowerCase() === 'a')) { el = el.parentNode; }
+    if (!el || !el.href) { return; }
+    var h = el.href;
+    if (h.indexOf('gumroad.com') === -1 && h.indexOf('/products/') === -1 && h.indexOf('/toolkit/') === -1) { return; }
+    var label = (el.getAttribute('data-track') || el.textContent || '').replace(/\s+/g,' ').trim().slice(0,80);
+    vpv('/blog/outbound/' + encodeURIComponent(label || 'product-link'));
+  }, true);
+})();
+</script>
+{{ end }}

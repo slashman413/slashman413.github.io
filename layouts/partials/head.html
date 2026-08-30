@@ -16,6 +16,9 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.Params.gaId }}"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','{{ site.Params.gaId }}');</script>
 
+<!-- Mautic web tracking (blog analytics + product-click attribution) -->
+{{ partial "mautic-tracking.html" . }}
+
 <!-- Lead-capture endpoint + client (see /webhook/) -->
 <script>window.LEAD_ENDPOINT={{ site.Params.leadEndpoint }};window.LEAD_ACCESS_KEY={{ site.Params.leadAccessKey }};</script>
 <script src="/js/lead-capture.js" defer></script>
