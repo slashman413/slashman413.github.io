@@ -225,6 +225,11 @@
     var first_name = fd.get("mauticform[firstname]") || fd.get("fields[FIRST_NAME]") || fd.get("first_name") || "";
     var tags = fd.get("mauticform[tags]") || fd.get("tags") || "";
     var variant = fd.get("variant") || "";
+    // Blog-context attribution: leads captured on any /blog/ page are tagged
+    // source-blog → Mautic "Blog Visitors" segment (tag id 6, segment id 45).
+    if (/\/blog\//.test(window.location.pathname)) {
+      tags = (tags ? tags + "," : "") + "source-blog";
+    }
     var utm = readUtm();
     var body = {
       email: email,
