@@ -1,5 +1,6 @@
 ---
 title: "Prompt Engineering Guide for Beginners (2026): Frameworks, Examples, and Mistakes"
+slug: "prompt-engineering-guide-beginners"
 date: 2026-09-07
 draft: false
 description: "The complete prompt engineering guide for beginners: frameworks, real examples, common mistakes, and copy-paste templates that actually work in 2026."

@@ -1,5 +1,6 @@
 ---
 title: "Best AI Tools for Small Business in 2026 (Tested, Budget-Priced)"
+slug: "best-ai-tools-small-business-2026"
 date: 2026-09-21
 draft: false
 description: "The best AI tools for small business in 2026 — tested for budget, ease of use, and real ROI. Writing, automation, support, data, and design, all under $50/month."

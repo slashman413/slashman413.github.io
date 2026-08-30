@@ -1,5 +1,6 @@
 ---
 title: "What Is Context Engineering? The New Skill After Prompt Engineering"
+slug: "what-is-context-engineering"
 date: 2026-09-16
 draft: false
 description: "Context engineering explained: giving AI models the right context at the right time. Techniques, examples, and why it's replacing prompt engineering as the key skill."

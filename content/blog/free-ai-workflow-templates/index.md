@@ -1,5 +1,6 @@
 ---
 title: "Free AI Workflow Templates: 8 Automation Blueprints You Can Copy Today"
+slug: "free-ai-workflow-templates"
 date: 2026-09-02
 draft: false
 description: "Eight free AI workflow templates you can copy and adapt today — content, research, reporting, lead follow-up, and more. Real blueprints, not theory."

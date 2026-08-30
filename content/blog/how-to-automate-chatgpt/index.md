@@ -1,5 +1,6 @@
 ---
 title: "How to Automate ChatGPT: 12 Workflows That Run Themselves"
+slug: "how-to-automate-chatgpt"
 date: 2026-09-11
 draft: false
 description: "Stop copy-pasting from ChatGPT. Twelve concrete ways to automate ChatGPT — content, research, reports, support, and more — with templates and tooling."

@@ -1,5 +1,6 @@
 ---
 title: "AI Workflow Builder: The Complete Guide to Turning Prompts into Multi-Agent Workflows"
+slug: "ai-workflow-builder-complete-guide"
 date: 2026-08-31
 draft: false
 description: "Learn how an AI workflow builder turns a plain-language prompt into a validated, production-ready multi-agent workflow. Complete 2026 guide with templates, examples, and pitfalls."

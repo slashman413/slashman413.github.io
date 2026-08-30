@@ -1,5 +1,6 @@
 ---
 title: "AI Agents for Beginners: What They Are, How They Work, and How to Build Your First One"
+slug: "ai-agents-for-beginners"
 date: 2026-09-04
 draft: false
 description: "AI agents explained for beginners: definitions, how they differ from chatbots, real use cases, and a step-by-step path to building your first agent without code."

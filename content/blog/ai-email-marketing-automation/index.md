@@ -1,5 +1,6 @@
 ---
 title: "AI Email Marketing Automation: From Signup to Sale on Autopilot"
+slug: "ai-email-marketing-automation"
 date: 2026-09-18
 draft: false
 description: "Build an AI email marketing automation pipeline: capture leads, personalize with AI, send triggered campaigns, and measure — without expensive tools."

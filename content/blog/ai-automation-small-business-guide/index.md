@@ -1,5 +1,6 @@
 ---
 title: "AI Automation for Small Business: The No-Code Guide (2026)"
+slug: "ai-automation-small-business-guide"
 date: 2026-09-14
 draft: false
 description: "How small businesses can automate operations with AI — no engineers, no code, small budget. Practical playbook with real workflows, costs, and a 30-day rollout plan."
