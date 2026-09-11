@@ -5,8 +5,12 @@ name: Automated YouTube Promo Upload
 # Requires repo secret: YT_TOKEN_JSON (base64-encoded YouTube OAuth token).
 
 on:
-  schedule:
-#   - cron: "37 10 * * *"   # 10:37 UTC daily (18:37 Taipei)
+  # schedule intentionally disabled — an empty `schedule:` key makes GitHub treat
+  # the whole workflow file as invalid ("This run likely failed because of a
+  # workflow file issue"), which produced a failed run on every push to main.
+  # Re-enable by uncommenting the cron line below.
+  # schedule:
+  #   - cron: "37 10 * * *"   # 10:37 UTC daily (18:37 Taipei)
   workflow_dispatch:        # Manual trigger
 
 permissions:
