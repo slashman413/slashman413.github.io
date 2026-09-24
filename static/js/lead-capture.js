@@ -77,6 +77,15 @@
       if (!out.utm_source && saved) {
         try { out = JSON.parse(saved); } catch (_) {}
       }
+      
+      // Auto-tag LinkedIn referrer if no UTM is present
+      var ref = document.referrer || "";
+      if (!out.utm_source && (ref.indexOf("linkedin.com") !== -1 || ref.indexOf("lnkd.in") !== -1)) {
+        out.utm_source = "linkedin";
+        out.utm_medium = "organic";
+        out.utm_campaign = "linkedin_inbound";
+      }
+
       if (out.utm_source) sessionStorage.setItem("lead_utm", JSON.stringify(out));
     } catch (_) {}
     return out;
