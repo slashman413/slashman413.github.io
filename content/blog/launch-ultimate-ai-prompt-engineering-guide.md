@@ -22,7 +22,7 @@ You'll learn:
 
 It's everything you need to stop wrestling with LLMs and start directing them.
 
-{{< product-card slug="ultimate-prompt-guide" >}}
+
 
 You can get it now on Gumroad for just $4.99. We're keeping the price accessible because we believe solid prompt engineering is a foundational skill every builder should have.
 
