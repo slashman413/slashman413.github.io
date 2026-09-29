@@ -98,6 +98,44 @@ def load_credentials(token_file: str) -> Credentials | None:
     return creds
 
 
+# ── Channel guard ───────────────────────────────────────────────────────────────
+
+def resolve_channel(service) -> dict:
+    """Return the channel the authed token actually controls.
+
+    This is the ground truth for *which brand we are about to publish to*.
+    Never trust DEFAULT_CHANNEL_ID or the config — trust channels.list(mine=true).
+    """
+    resp = service.channels().list(part="id,snippet", mine=True).execute()
+    items = resp.get("items", [])
+    if not items:
+        raise RuntimeError(
+            "channels.list(mine=true) returned no channels — token has no "
+            "usable YouTube channel; refusing to upload."
+        )
+    ch = items[0]
+    return {"id": ch["id"], "title": ch.get("snippet", {}).get("title", "")}
+
+
+def assert_channel(service, expected_channel_id: str) -> dict:
+    """HARD GUARD: abort before any upload unless the authed channel matches.
+
+    A wrong-channel token (e.g. a valid Gentle Soul token in place of a
+    slashman413 one) must NEVER be able to silently publish to the wrong brand.
+    """
+    actual = resolve_channel(service)
+    log(f"Authed channel: {actual['id']} ({actual['title']!r})")
+    if actual["id"] != expected_channel_id:
+        raise SystemExit(
+            "CHANNEL GUARD ABORT: token authenticates as "
+            f"{actual['id']} ({actual['title']!r}) but this upload requires "
+            f"{expected_channel_id}. Refusing to publish to the wrong channel. "
+            "Re-run the OAuth flow and select the correct channel, or pass "
+            "--allow-channel <id> to override intentionally."
+        )
+    return actual
+
+
 # ── Video generation ─────────────────────────────────────────────────────────
 
 def generate_test_video(video_path: str):
@@ -330,7 +368,13 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="Preview without uploading")
     parser.add_argument("--report", type=str, default=str(SCRIPT_DIR / "upload-report.json"), help="Report output path")
     parser.add_argument("--token", type=str, default=None, help="Path to YouTube OAuth token JSON file")
+    parser.add_argument("--allow-channel", type=str, default=None,
+                        help="Override the expected channel id (default: slashman413). "
+                             "Use only to intentionally publish to a different channel.")
     args = parser.parse_args()
+
+    # The channel this run is allowed to publish to. Defaults to slashman413.
+    expected_channel_id = args.allow_channel or DEFAULT_CHANNEL_ID
 
     # Resolve token file: --token > env YT_TOKEN_PATH > default
     token_file = args.token or os.environ.get("YT_TOKEN_PATH", DEFAULT_TOKEN_FILE)
@@ -363,18 +407,30 @@ def main():
         print(f"  Privacy: {config.get('privacy_status', 'public')}")
         print(f"  Video: {video_path}")
 
-        # Verify credentials work (minimal auth check)
+        # Verify credentials work AND resolve the real channel (auth check + guard preview)
+        resolved_channel = None
+        channel_ok = None
         try:
             creds = load_credentials(token_file)
             log("Credentials valid — token refresh successful.")
+            service = build("youtube", "v3", credentials=creds)
+            resolved_channel = resolve_channel(service)
+            channel_ok = resolved_channel["id"] == expected_channel_id
+            log(f"Authed channel: {resolved_channel['id']} ({resolved_channel['title']!r}) "
+                f"expected={expected_channel_id} match={channel_ok}")
+            if not channel_ok:
+                log("DRY RUN: channel guard WOULD ABORT a real upload (wrong channel).")
         except Exception as e:
-            log(f"Credentials error: {e}")
+            log(f"Credentials/channel check error: {e}")
 
         # Write report
         report = {
             "dry_run": True,
             "video_path": video_path,
             "config": config,
+            "expected_channel_id": expected_channel_id,
+            "resolved_channel": resolved_channel,
+            "channel_guard_ok": channel_ok,
             "timestamp": datetime.now(timezone.utc).isoformat() + "Z",
         }
         write_report(report, args.report)
@@ -385,6 +441,10 @@ def main():
     log("Loading credentials...")
     creds = load_credentials(token_file)
     service = build("youtube", "v3", credentials=creds)
+
+    # 4b. HARD CHANNEL GUARD — abort before any insert if the token is the wrong brand.
+    #     This is the root-cause fix for wrong-channel tokens silently publishing.
+    resolved_channel = assert_channel(service, expected_channel_id)
 
     # 5. Upload
     try:
@@ -420,7 +480,9 @@ def main():
         "video_size_bytes": video_size,
         "upload_time": upload_result["upload_time"],
         "verification": verification,
-        "channel_id": DEFAULT_CHANNEL_ID,
+        "channel_id": resolved_channel["id"],          # REAL resolved channel, not hardcoded
+        "channel_title": resolved_channel["title"],
+        "expected_channel_id": expected_channel_id,
         "status": "success",
     }
 
