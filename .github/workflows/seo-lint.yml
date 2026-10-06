@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   seo-check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       HUGO_VERSION: 0.157.0
     steps:
