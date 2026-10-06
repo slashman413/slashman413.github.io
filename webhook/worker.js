@@ -18,6 +18,8 @@
  *   POST /subscribe   → capture a lead   (JSON or form-encoded body)
  *   GET  /health      → liveness probe   ({ ok: true })
  *   GET  /leads       → export leads KV   (requires ?token=MAUTIC_FORWARD_TOKEN)
+ *   GET  /hit         → no-cookie counter pixel (?s=<site>&e=<event>), 1x1 GIF
+ *   GET  /stats       → daily counter totals   (?s=<site>&days=<n>)
  *
  * See ./README.md for the full deploy + configuration guide.
  */
@@ -36,6 +38,15 @@ const ALLOWED_ORIGINS = [
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_SECONDS = 60 * 10; // 10 minutes
 
+// Cookieless counter (/hit, /stats): site + event names are a closed charset so
+// arbitrary callers can't flood KV with junk keys; daily rows expire after 400d.
+const COUNTER_KEY_RE = /^[a-z0-9_-]{1,32}$/;
+const COUNTER_TTL_SECONDS = 60 * 60 * 24 * 400;
+const PIXEL_GIF = Uint8Array.from(
+  atob("R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"),
+  (c) => c.charCodeAt(0)
+);
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -47,6 +58,60 @@ export default {
 
     if (url.pathname === "/health") {
       return json({ ok: true, service: "lead-capture" }, 200, origin);
+    }
+
+    // --- /hit — cookieless pageview/click counter (KV: LEADS, hit:* keys) ---
+    // Stores only an aggregate daily count per site+event: no IP, no cookie,
+    // no user agent. Embedded as an <img> pixel or fired via sendBeacon.
+    if (url.pathname === "/hit") {
+      const site = url.searchParams.get("s") || "";
+      const event = url.searchParams.get("e") || "pageview";
+      if (env.LEADS && COUNTER_KEY_RE.test(site) && COUNTER_KEY_RE.test(event)) {
+        const key = `hit:${site}:${event}:${new Date().toISOString().slice(0, 10)}`;
+        ctx.waitUntil(
+          env.LEADS.get(key).then((v) =>
+            env.LEADS.put(key, String(parseInt(v || "0", 10) + 1), {
+              expirationTtl: COUNTER_TTL_SECONDS,
+            })
+          )
+        );
+      }
+      return new Response(PIXEL_GIF, {
+        status: 200,
+        headers: {
+          "content-type": "image/gif",
+          "cache-control": "no-store",
+          "access-control-allow-origin": "*",
+        },
+      });
+    }
+
+    // --- /stats — daily totals for one site, newest first -----------------
+    if (url.pathname === "/stats") {
+      const site = url.searchParams.get("s") || "";
+      if (!COUNTER_KEY_RE.test(site)) {
+        return json({ ok: false, error: "bad_site" }, 400, origin);
+      }
+      if (!env.LEADS) {
+        return json({ ok: false, error: "kv_not_configured" }, 503, origin);
+      }
+      const days = Math.min(parseInt(url.searchParams.get("days") || "30", 10) || 30, 90);
+      const cutoff = new Date(Date.now() - days * 86400000).toISOString().slice(0, 10);
+      const list = await env.LEADS.list({ prefix: `hit:${site}:` });
+      const rows = [];
+      const totals = {};
+      for (const k of list.keys) {
+        const [, , event, day] = k.name.split(":");
+        if (day < cutoff) continue;
+        const n = parseInt((await env.LEADS.get(k.name)) || "0", 10);
+        rows.push({ day, event, n });
+        totals[event] = (totals[event] || 0) + n;
+      }
+      rows.sort((a, b) => b.day.localeCompare(a.day) || a.event.localeCompare(b.event));
+      return new Response(JSON.stringify({ ok: true, site, days, totals, rows }), {
+        status: 200,
+        headers: { ...JSON_HEADERS, "access-control-allow-origin": "*", "cache-control": "no-store" },
+      });
     }
 
     // --- GET /leads — export all captured leads (requires MAUTIC_FORWARD_TOKEN) ---
