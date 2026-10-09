@@ -121,7 +121,7 @@ Most incidents blamed on an agent are route table incidents. The recurring ones:
 
 **Double execution.** Two non-terminal rules match and both fire. The task is done twice, possibly differently. Symptom: duplicate comments, duplicate tickets.
 
-**Self-triggered loops.** The agent's own output re-enters as an event. Symptom: a thread that grows without human input. The containment habits in /blog/triage-habits-for-automation-that-fails-while-you-sleep/ apply directly here.
+**Self-triggered loops.** The agent's own output re-enters as an event. Symptom: a thread that grows without human input. The containment habits in /blog/triage-automation-failures-while-you-sleep/ apply directly here.
 
 **Stale routes.** A channel gets renamed or a label is retired, the rule stops matching, and everything falls through to fallback. Nobody notices because fallback works. Symptom: an agent that has not run in weeks.
 
@@ -129,7 +129,7 @@ Most incidents blamed on an agent are route table incidents. The recurring ones:
 
 **Truncated input snapshots.** The run record keeps a hash or a clipped body, so a failure is unreproducible. Symptom: bugs that only reproduce in production.
 
-If you are still deciding where routing should live, /blog/workflow-builder-vs-a-plain-script/ covers when a workflow engine earns its overhead. Route tables sit closer to firewall rules than to business logic: declarative, ordered, reviewed in diffs, and boring on purpose.
+If you are still deciding where routing should live, /blog/workflow-builder-vs-plain-script/ covers when a workflow engine earns its overhead. Route tables sit closer to firewall rules than to business logic: declarative, ordered, reviewed in diffs, and boring on purpose.
 
 ## What to do next
 
