@@ -69,6 +69,8 @@ When moving from a simple tutorial to production, you need reliability.
 2. **Data Transformation**: Use the Code node (JavaScript) to manipulate complex JSON data between steps.
 3. **Sub-workflows**: Break massive automations into smaller, reusable sub-workflows using the Execute Workflow node.
 
+Once your AI steps start needing retries, validation and branching that no longer fit comfortably in nodes, read [n8n vs custom multi-agent workflows](/blog/n8n-vs-custom-multi-agent-workflows/) to decide whether that part should become code.
+
 ## Skip the Setup: AI Workflow Builder
 
 Building these automations from scratch can take dozens of hours of trial and error. If you want production-ready templates and comprehensive video tutorials that skip the learning curve, check out our flagship product.

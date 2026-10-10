@@ -77,6 +77,8 @@ A solo founder's content engine:
 
 Each tool does what it is best at. The AI builder never touches the CMS; n8n never judges content quality. This is exactly the pattern we run in our [automated content pipeline](/blog/automated-content-pipeline-cowork-pro/) and describe in the [4-hour business pipeline](/blog/automated-ai-business-pipeline-4-hours-mgtpcn/) case study.
 
+If you already run n8n and are wondering when the AI part should move out of nodes and into code, see [n8n vs custom multi-agent workflows](/blog/n8n-vs-custom-multi-agent-workflows/) for the signals and a migration path.
+
 ## Cost reality check (2026)
 
 - **Zapier**: free tier is a toy; serious automation lands $30-200/month. The per-task model punishes high-frequency workflows.
