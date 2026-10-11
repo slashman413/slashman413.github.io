@@ -97,7 +97,11 @@ def deepseek(prompt, key, retries=3):
         "model": model,
         "messages": [{"role": "user", "content": prompt}],
         "temperature": 0.7,
-        "max_tokens": 8192,
+        # 2026-10-11: raised 8192 -> 16384. Blog deep-dives (1400-1500 words of
+        # JSON-escaped Markdown) pushed responses past the old cap and the etf-
+        # dashboard-data-freshness topic failed 2/2 attempts with
+        # finish_reason=length. News articles (~800 words) fit comfortably.
+        "max_tokens": 16384,
         "stream": False,
         "response_format": {"type": "json_object"},
     }).encode()
