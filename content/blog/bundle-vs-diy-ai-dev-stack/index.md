@@ -31,16 +31,18 @@ A pre-wired bundle shortens the first run because the pieces are already expecte
 
 A DIY stack gives you control, but the first run is a sequence of integration tasks. You choose the prompt store, agent runtime, deployment target, and test harness. Each choice adds configuration. The work is not only writing code; it is making the layers agree on inputs, outputs, error handling, and observability.
 
-A typical bundle setup might look like:
+For example, our own [AI Developer Stack Bundle](https://slashmaster6.gumroad.com/l/nulyms) is not a hosted repo you clone. It is a single download from Gumroad, `ai-developer-stack-bundle.zip` (about 160 KB), and it unpacks to three folders:
 
-```bash
-git clone https://example.com/your-org/ai-dev-stack-bundle
-cd ai-dev-stack-bundle
-cp .env.example .env
-npm install
-npm run check
-npm run dev
+```text
+nulyms_bundle/
+├── BUNDLE-README.md     # start here: how the three parts fit together
+├── LICENSE
+├── cowork-pro/          # orchestration docs: QUICKSTART, SETUP_GUIDE, API_REFERENCE, workflows/*.json
+├── saas-starter-kit/    # Next.js + Tailwind landing-page starter with a Cloudflare Pages workflow
+└── dgx-spark-kit/       # vLLM-on-DGX-Spark setup guide, systemd/watchdog configs, deploy.sh
 ```
+
+For a first run, unzip it, read `BUNDLE-README.md`, and then work through each part's own guide. In `saas-starter-kit/` that means `pnpm install` and `pnpm dev`. For Cowork Pro, follow `cowork-pro/QUICKSTART.md`. For the DGX Spark kit, follow `dgx-spark-kit/docs/SETUP-GUIDE.md`.
 
 A DIY setup often starts the same way, but then adds separate repositories or packages for prompts, agents, and deployment. If you need a demo in a week, the bundle is usually easier. If you need a stack that matches an existing service mesh, data governance rule, or custom model router, DIY may be the only path that avoids rework.
 
