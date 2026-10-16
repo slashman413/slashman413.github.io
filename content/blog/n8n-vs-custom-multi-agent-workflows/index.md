@@ -25,7 +25,7 @@ Here's the short answer, then the long one:
 - **Use both** in most real businesses: n8n at the edges (triggers, webhooks, SaaS plumbing) and a code workflow in the middle (the agents).
 
 <div class="product-cta" style="margin:20px 0;padding:16px 18px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.25);border-radius:12px">
-<strong>🎁 Want to see what a "custom multi-agent workflow" actually looks like?</strong> The <a href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=blog&amp;utm_medium=cta-top&amp;utm_campaign=n8n-vs-custom" target="_blank" rel="noopener">free AI Workflow Builder sample</a> contains a validated DAG and the Python project generated from it. It's the "code" side of this comparison, ready to open in your editor.
+<strong>🎁 Want to see what a "custom multi-agent workflow" actually looks like?</strong> The <a href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&amp;utm_medium=blog-cta&amp;utm_campaign=n8n-vs-custom&amp;utm_content=top" target="_blank" rel="noopener">free AI Workflow Builder sample</a> contains a validated DAG and the Python project generated from it. It's the "code" side of this comparison, ready to open in your editor.
 </div>
 
 ## What we mean by each side
