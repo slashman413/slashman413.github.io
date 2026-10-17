@@ -27,13 +27,6 @@
   price: "59"
   tags: [ai, agents, automation, orchestration, mcp, saas]
 
-- slug: feishu-templates
-  title: Feishu Template Marketplace
-  url: /blog/feishu-templates/
-  buy: https://slashmaster6.gumroad.com/l/xohjh?utm_source=slashmantools&utm_medium=related-products&utm_campaign=feishu-templates
-  price: "29"
-  tags: [templates, productivity, feishu, notion, project-management, teams]
-
 - slug: ai-course
   title: Traditional-Chinese AI Course
   url: /blog/ai-course/
@@ -52,7 +45,7 @@
   title: DGX Spark Deployment Kit
   url: /blog/dgx-spark-kit/
   buy: https://slashmaster6.gumroad.com/l/bppdqp?utm_source=slashmantools&utm_medium=related-products&utm_campaign=dgx-spark-kit
-  price: "49"
+  price: "79"
   tags: [llm, deployment, nvidia, local-llm, qwen, gpu]
 
 - slug: ai-dev-stack
@@ -62,23 +55,9 @@
   price: "79"
   tags: [ai, development, tools, bundle, deployment]
 
-- slug: ai-starter
-  title: AI Starter Bundle
-  url: /blog/ai-starter/
-  buy: https://slashmaster6.gumroad.com/l/lapcqb?utm_source=slashmantools&utm_medium=related-products&utm_campaign=ai-starter
-  price: "49"
-  tags: [ai, bundle, beginners, prompts, learning]
-
 - slug: ai-workflow-builder
   title: AI Workflow Builder
   url: /blog/ai-workflow-builder/
   buy: https://slashmaster6.gumroad.com/l/amwkf?utm_source=slashmantools&utm_medium=related-products&utm_campaign=ai-workflow-builder
   price: "99"
   tags: [ai, agents, workflow, automation, grill-me, dag, developer-tools]
-
-- slug: ultimate-prompt-guide
-  title: The Ultimate AI Prompt Engineering Guide
-  url: /ultimate-prompt-guide/
-  buy: https://slashmaster6.gumroad.com/l/wememw?utm_source=slashmantools&utm_medium=related-products&utm_campaign=first-ebook
-  price: "4.99"
-  tags: [ai, prompts, guide, pdf, ebook, productivity]

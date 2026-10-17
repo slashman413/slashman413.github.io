@@ -38,5 +38,5 @@
 - slug: productivity
   title: "Productivity"
   description: "Work smarter with AI: prompt libraries, writing workflows, team templates, and repeatable productivity systems."
-  products: [ai-prompt-library, ai-starter, feishu-templates]
+  products: [ai-prompt-library]
   tags: [prompts, prompt, content, writing, templates, productivity, content-factory, marketing, seo]

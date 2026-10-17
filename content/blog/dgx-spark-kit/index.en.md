@@ -1,13 +1,13 @@
 ---
 title: "DGX Spark (GB10) Dual-Model LLM Deployment Kit: Run Two vLLM Models on GB10 Without the Nightmares"
 date: "2026-08-02T08:20:00+08:00"
-description: "DGX Spark (GB10) deployment kit: run two vLLM models on NVIDIA GB10. Battle-tested systemd units, watchdog fixes, memory planning and troubleshooting playbook — $49."
+description: "DGX Spark (GB10) deployment kit: run two vLLM models on NVIDIA GB10. Battle-tested systemd units, watchdog fixes, memory planning and troubleshooting playbook — $79."
 slug: "dgx-spark-kit"
 draft: false
 schema: "Product"
 tags: [ai, llm, deployment, nvidia, gpu, self-hosting]
 product_url: "https://slashmaster6.gumroad.com/l/bppdqp"
-product_price: "49"
+product_price: "79"
 product_brand: "Slashman Tools"
 product_sku: "SMT-DGX"
 product_category: "Software > Developer Tools"
@@ -39,9 +39,9 @@ The NVIDIA DGX Spark (GB10) is the most exciting local AI hardware of the decade
 - **Loading two models simultaneously at boot** spikes memory reclaim hard enough to trigger OOM
 - **Triple-startup conflicts** (cron + systemd + Docker) double-load models and leave zombie containers
 
-**The DGX Spark LLM Deployment Kit** is the playbook someone else already paid for. It packages battle-tested configuration templates and a real incident log for running two vLLM models on DGX Spark (DGX OS 7.4/7.5, driver 580.x, CUDA 13.0, vLLM v0.25.0) — with fixes for failure modes that aren't documented anywhere else. Here is our hands-on review of the **$49** kit.
+**The DGX Spark LLM Deployment Kit** is the playbook someone else already paid for. It packages battle-tested configuration templates and a real incident log for running two vLLM models on DGX Spark (DGX OS 7.4/7.5, driver 580.x, CUDA 13.0, vLLM v0.25.0) — with fixes for failure modes that aren't documented anywhere else. Here is exactly what the kit contains and what it costs.
 
-👉 [**Get the DGX Spark Kit on Gumroad ($49)**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=seo&utm_campaign=bppdqp)
+👉 [**Get the DGX Spark Kit on Gumroad ($79, or $49 with code GB10EARLY)**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=seo&utm_campaign=bppdqp)
 
 Free first: the [DGX Spark field notes](https://github.com/slashman413/dgx-spark-field-notes) on GitHub list 8 real GB10 failure modes, each with its exact error text and fix.
 
@@ -104,7 +104,7 @@ It is *not* for people running a single small model in a Docker one-liner, and i
 
 ## Pricing and Value
 
-**$49 one-time** on Gumroad. Compare that to one lost weekend of a developer's time ($400–1,000+ in billable hours, or simply the frustration of a box that won't stay up). The kit includes the configs, the playbook, and the ARM64-ready Firecrawl bonus — and it pairs naturally with the **[Cowork Pro](/blog/cowork-pro/)** orchestration framework for a full self-hosted AI stack.
+**$79 one-time** on Gumroad, or **$49** with code `GB10EARLY` for the first 25 buyers. If you would rather have it done for you, the **$390 Setup Sprint** (kit included) is 2 hours remote until both models are serving, or a full refund. The kit itself has a 30-day refund. Compare that to one lost weekend of a developer's time ($400–1,000+ in billable hours, or simply the frustration of a box that won't stay up). The kit includes the configs, the playbook, and the ARM64-ready Firecrawl bonus — and it pairs naturally with the **[Cowork Pro](/blog/cowork-pro/)** orchestration framework for a full self-hosted AI stack.
 
 ## Bottom Line
 
@@ -112,7 +112,7 @@ The DGX Spark is the right hardware; the stock software stack is just not honest
 
 **Verdict**: if you own a Spark and run more than one model, buy it before your next reboot. Your future self will thank you at 2 a.m. when the box comes back up instead of rebooting again.
 
-👉 [**Buy the DGX Spark Kit on Gumroad — $49 one-time**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=seo&utm_campaign=bppdqp)
+👉 [**Buy the DGX Spark Kit on Gumroad — $79 one-time, or $49 with code GB10EARLY**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=seo&utm_campaign=bppdqp)
 
 ---
 

@@ -149,7 +149,7 @@ If you stack several providers and runners behind one workflow, the routing logi
 
 ## Get DGX Spark LLM Deployment Kit
 
-[**DGX Spark LLM Deployment Kit**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=article&utm_campaign=local-gpu-vs-cloud-api-cost) — **$49**, one-time payment, instant download. See the full breakdown on the [review page](/blog/dgx-spark-kit/).
+[**DGX Spark LLM Deployment Kit**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=article&utm_campaign=local-gpu-vs-cloud-api-cost) — **$79** (or $49 with code GB10EARLY), one-time payment, instant download. See the full breakdown on the [review page](/blog/dgx-spark-kit/).
 
 ## Related reading
 

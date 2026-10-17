@@ -126,7 +126,7 @@ The rule worth writing on the wall: **rent until one fixed configuration survive
 
 ## Get DGX Spark LLM Deployment Kit
 
-[**DGX Spark LLM Deployment Kit**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=article&utm_campaign=local-inference-hardware-tradeoffs) — **$49**, one-time payment, instant download. See the full breakdown on the [review page](/blog/dgx-spark-kit/).
+[**DGX Spark LLM Deployment Kit**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=article&utm_campaign=local-inference-hardware-tradeoffs) — **$79** (or $49 with code GB10EARLY), one-time payment, instant download. See the full breakdown on the [review page](/blog/dgx-spark-kit/).
 
 ## Related reading
 
