@@ -68,6 +68,8 @@ The DGX Spark Kit provides optimized environment setups, pre-configured inferenc
 
 [**Get the DGX Spark Kit**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=article&utm_campaign=local-llm-deployment-dgx-spark-guide-2026) - Deploy local LLMs flawlessly in under 15 minutes.
 
+Free first: the [DGX Spark field notes](https://github.com/slashman413/dgx-spark-field-notes) on GitHub list 8 real GB10 failure modes, each with its exact error text and fix.
+
 ---
 
 ## Related Articles

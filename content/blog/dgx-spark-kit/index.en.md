@@ -43,6 +43,8 @@ The NVIDIA DGX Spark (GB10) is the most exciting local AI hardware of the decade
 
 👉 [**Get the DGX Spark Kit on Gumroad ($49)**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=seo&utm_campaign=bppdqp)
 
+Free first: the [DGX Spark field notes](https://github.com/slashman413/dgx-spark-field-notes) on GitHub list 8 real GB10 failure modes, each with its exact error text and fix.
+
 ## What You Get
 
 ```

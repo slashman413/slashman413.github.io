@@ -8,6 +8,7 @@
 
 ## Local LLM / DGX Spark (GB10)
 - [LLM VRAM & RAM calculator](https://slashmantools.us/llm-calc/): Will a model + quantization (GGUF/AWQ/FP16) + context length fit on your GPU or unified memory? Free, in-browser, with per-model guides under /llm-calc/models/.
+- [DGX Spark (GB10) field notes](https://github.com/slashman413/dgx-spark-field-notes): Free, CC BY 4.0. Eight real vLLM/SGLang failure modes on GB10 with exact error text, root cause and fix (KV-cache allocation failures from docker restart policies, SGLang idle CPU spin, broken compressed-tensors NVFP4 loads, MTP illegal-memory-access crashes, watchdog reboots during model load), plus measured DFlash vs non-speculative decode speed.
 - [DGX Spark dual-model deployment kit](https://slashmantools.us/blog/dgx-spark-kit/): Configs and incident playbook for serving two vLLM models concurrently on one DGX Spark (GB10, 128 GB unified memory, aarch64): serialized systemd loading, memory budgeting, watchdog config, MTP speculative-decoding crash conditions. Written from a box that runs this setup daily. $49 on Gumroad (https://slashmaster6.gumroad.com/l/bppdqp).
 
 ## AI agent tooling
