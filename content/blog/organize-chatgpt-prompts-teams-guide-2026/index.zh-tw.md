@@ -61,7 +61,7 @@ Many teams use Notion or Feishu to build internal wikis. *(If you are deciding b
 
 You don't have to build your organization's prompt library from scratch. We have spent hundreds of hours testing, refining, and organizing the most effective prompts for digital businesses. 
 
-[**Get AI Prompt Library**](https://slashmaster6.gumroad.com/l/ai-prompt-library?utm_source=blog&utm_medium=article&utm_campaign=organize-chatgpt-prompts) - $29 for a meticulously organized database of 500+ high-performing prompts ready for your team to use.
+[**Get AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=organize-chatgpt-prompts) - $39 for 95+ battle-tested, copy-paste-ready prompts ready for your team to use.
 
 ---
 

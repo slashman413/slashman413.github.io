@@ -66,7 +66,7 @@ Configuring CUDA drivers, managing dependencies, and optimizing inference speeds
 
 The DGX Spark Kit provides optimized environment setups, pre-configured inference servers, and performance tuning guides specifically designed for solo founders who want enterprise-grade local AI.
 
-[**Get the DGX Spark Kit**](https://slashmaster6.gumroad.com/l/dgx-spark?utm_source=blog&utm_medium=article&utm_campaign=local-llm-deployment-dgx-spark-guide-2026) - Deploy local LLMs flawlessly in under 15 minutes.
+[**Get the DGX Spark Kit**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=article&utm_campaign=local-llm-deployment-dgx-spark-guide-2026) - Deploy local LLMs flawlessly in under 15 minutes.
 
 ---
 
