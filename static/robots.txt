@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://slashmantools.us/sitemap.xml
+Sitemap: https://slashmantools.us/llm-calc/sitemap.xml

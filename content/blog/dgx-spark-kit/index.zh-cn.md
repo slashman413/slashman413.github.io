@@ -1,10 +1,10 @@
 ---
-title: "DGX Spark 部署套件評測 2026：在 GB10 上穩定跑兩個 vLLM 模型"
+title: "DGX Spark (GB10) 雙模型部署套件：在 GB10 上穩定跑兩個 vLLM 模型"
 date: "2026-08-02T08:20:00+08:00"
 description: "DGX Spark 部署套件把 NVIDIA GB10 變成雙模型 vLLM 伺服器。實戰驗證的 systemd 設定、看門狗修復、記憶體規劃與真實故障排除手冊——只要 $49。"
 slug: "dgx-spark-kit"
 draft: false
-schema: "ProductReview"
+schema: "Product"
 product_url: 'https://slashmaster6.gumroad.com/l/bppdqp'
 product_price: '49'
 product_brand: 'Slashman Tools'
@@ -16,7 +16,7 @@ sitemap:
   changefreq: monthly
 ---
 
-# DGX Spark 部署套件評測 2026：在 GB10 上穩定跑兩個 vLLM 模型
+# DGX Spark (GB10) 雙模型部署套件：在 GB10 上穩定跑兩個 vLLM 模型
 
 
 NVIDIA DGX Spark（GB10）是這十年最令人興奮的本地 AI 硬體——128 GB 統一記憶體、Grace Blackwell 晶片，在家就能跑真正的模型。但「記憶體夠大」不等於「真的能跑」。想在同一台 Spark 上跑兩個 vLLM 模型的人，會撞上需要好幾天才能診斷的失敗模式：
@@ -104,7 +104,7 @@ DGX Spark 是對的硬體；原廠軟體堆疊只是沒有誠實告訴你它的�
 
 ## 相關文章
 
-- [Cowork Pro 評測](/blog/cowork-pro/) — 編排跑在 Spark 上的那些代理。
+- [Cowork Pro](/blog/cowork-pro/) — 編排跑在 Spark 上的那些代理。
 - [自架 LLM 完整指南](/blog/self-hosting-llm-dgx-spark-complete-guide/) — 自己跑模型的大局觀。
 - [開發者工具主題中心](/categories/developer-tools/) — 全部開發者工具指南。
 

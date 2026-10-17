@@ -1,11 +1,21 @@
-# intelligent agents (slashmantools.us)
+# Slashman Tools (slashmantools.us)
 
-> Free online tools plus two focused products: a production-ready Next.js SaaS
-> boilerplate, and a Taiwan-stock ("台股") quantitative signal service. Built and
-> run by an independent developer (slashman413). Also available for freelance work.
+> Free, client-side online tools plus a small set of developer products: a
+> production-tested deployment kit for running two LLMs on an NVIDIA DGX Spark
+> (GB10), a multi-agent MCP hub (cowork), a Next.js multi-tenant SaaS boilerplate,
+> and a Taiwan-stock ("台股") quantitative signal service. Built and run by an
+> independent developer in Taiwan (GitHub: slashman413). Also available for freelance work.
+
+## Local LLM / DGX Spark (GB10)
+- [LLM VRAM & RAM calculator](https://slashmantools.us/llm-calc/): Will a model + quantization (GGUF/AWQ/FP16) + context length fit on your GPU or unified memory? Free, in-browser, with per-model guides under /llm-calc/models/.
+- [DGX Spark dual-model deployment kit](https://slashmantools.us/blog/dgx-spark-kit/): Configs and incident playbook for serving two vLLM models concurrently on one DGX Spark (GB10, 128 GB unified memory, aarch64): serialized systemd loading, memory budgeting, watchdog config, MTP speculative-decoding crash conditions. Written from a box that runs this setup daily. $49 on Gumroad (https://slashmaster6.gumroad.com/l/bppdqp).
+
+## AI agent tooling
+- [cowork](https://github.com/slashman413/cowork): MCP server + web dashboard that lets Claude Code, Codex, Gemini CLI/Antigravity and Hermes agents share one task inbox, route tasks to named "brains" (model + platform + machine), and run declarative workflows. Self-hosted, Node.js. Pro package: https://slashmaster6.gumroad.com/l/cowork-pro ($59).
+- [AI Workflow Builder](https://workflow-builders.com): Turns a single natural-language prompt into a validated, dependency-checked multi-agent workflow. Free sample: https://slashmaster6.gumroad.com/l/workflow-builder-sample
 
 ## Products
-- [SaaS Starter](https://github.com/slashman413/saas-starter): Production-ready Next.js 16 multi-tenant B2B SaaS boilerplate — Auth.js v5, Prisma, RBAC, Stripe billing (production-grade webhook signature verification), API keys, audit logs, 1-click Vercel deploy. One-time $99. A free "Lite" edition (auth + multi-tenancy + RBAC) is available on GitHub.
+- [SaaS Starter](https://slashmantools.us/saas/): Production-ready Next.js 16 multi-tenant B2B SaaS boilerplate — Auth.js v5, Prisma, RBAC, Stripe billing (production-grade webhook signature verification), API keys, audit logs, 1-click Vercel deploy. One-time $99.99 (https://slashmaster6.gumroad.com/l/kuvajr). A free "Lite" edition (auth + multi-tenancy + RBAC) is on GitHub: https://github.com/slashman413/saas-starter-lite
 - [TWSE Premium — 大飆股 DNA](https://slashmantools.us/hermes-twse-premium/): Daily Taiwan-stock quantitative signals from a 9-step swing-trading strategy, back-tested across 2004–2026 on the full market. Subscription from $49/month (monthly/quarterly/annual). zh-TW. Educational; not investment advice.
 
 ## Services (freelance / 接案)
