@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["prompting", "automation", "skill", "templates", "decision-making"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/diwoc"
-product_price: "29"
+product_price: "39"
 product_brand: "Slashman Tools"
 product_sku: "SMT-APL"
 product_category: "Software > AI Tools"
@@ -95,11 +95,11 @@ This manifest is not a substitute for skill. It is a reminder that a prompt is a
 2. Build a local fork of one template with your constraints. Use the folder pattern from above, and keep a changelog of what you changed and why.
 3. Add a check to the prompt. It can be a simple rule, a test, a human review step, or a second model pass. The check is what makes the prompt safe to reuse.
 4. If your decision is still split, buy the lower-cost option first and spend one hour on a course-style exercise: rewrite the template from scratch, compare the two, and note which assumptions you missed.
-5. If your split case is a blank-page problem, compare it against the AI Prompt Library ($29 USD, one-time), a curated library of ready-to-use prompts organized by writing, coding, research, and ops, delivered as copy-paste templates.
+5. If your split case is a blank-page problem, compare it against the AI Prompt Library ($39 USD, one-time), a curated library of ready-to-use prompts organized by writing, coding, research, and ops, delivered as copy-paste templates.
 
 ## Get AI Prompt Library
 
-[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=prompt-library-vs-prompt-course) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
+[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=prompt-library-vs-prompt-course) — **$39**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
 
 ## Related reading
 

@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["prompt-engineering", "tooling", "automation", "documentation"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/diwoc"
-product_price: "29"
+product_price: "39"
 product_brand: "Slashman Tools"
 product_sku: "SMT-APL"
 product_category: "Software > AI Tools"
@@ -150,11 +150,11 @@ An unmaintained pile looks like: one long document titled "Prompts," sections na
 2. Add the six metadata fields to those five entries. If you cannot fill in failure modes, run the prompt on a deliberately hard input until you can.
 3. Save the checker as `scripts/check_library.py` and wire it as a pre-commit hook.
 4. Delete every screenshot and every entry you have not used in the last quarter. Then tag the release in git so you can see the pruning happened.
-5. If an empty tree is what is blocking you, the AI Prompt Library ($29, one-time) is a curated library of ready-to-use AI prompts organised by job — writing, coding, research, ops — delivered as copy-paste templates. Import the entries matching your five tasks, then replace the generic failure modes and last-tested dates with your own, and delete the rest.
+5. If an empty tree is what is blocking you, the AI Prompt Library ($39, one-time) is a curated library of ready-to-use AI prompts organised by job — writing, coding, research, ops — delivered as copy-paste templates. Import the entries matching your five tasks, then replace the generic failure modes and last-tested dates with your own, and delete the rest.
 
 ## Get AI Prompt Library
 
-[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=prompt-library-organised-by-job) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
+[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=prompt-library-organised-by-job) — **$39**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
 
 ## Related reading
 

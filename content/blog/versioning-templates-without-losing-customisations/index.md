@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["versioning", "templates", "semver", "changelog", "release-management"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/xohjh"
-product_price: "19"
+product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-FSH"
 product_category: "Software > Productivity"
@@ -140,11 +140,11 @@ Finally, do not auto-update a copy the buyer has edited. If you must push change
 2. Create `CHANGELOG.md` at the root of the template repo using Keep a Changelog headings (Added, Changed, Deprecated, Removed, Fixed) and backfill the last two releases.
 3. Export your schema to `schemas/<version>.json` on each release, including select options, and wire the diff script above into CI so a breaking change fails the build.
 4. Write a one-page policy for your listing: what triggers MAJOR, how buyers are notified, and how long old tags stay supported.
-5. If you want to study a mature set of layouts before writing your own version contract, Feishu Template Marketplace is a $19 USD one-time pack of twenty-plus ready-made Feishu/DingTalk templates covering project tracking, OKRs, meeting notes and documentation.
+5. If you want to study a mature set of layouts before writing your own version contract, Feishu Template Marketplace is a $29 USD one-time pack of twenty-plus ready-made Feishu/DingTalk templates covering project tracking, OKRs, meeting notes and documentation.
 
 ## Get Feishu Template Marketplace
 
-[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=versioning-templates-without-losing-customisations) — **$19**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
+[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=versioning-templates-without-losing-customisations) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
 
 ## Related reading
 

@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["feishu", "templates", "automation", "permissions", "no-code"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/xohjh"
-product_price: "19"
+product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-FSH"
 product_category: "Software > Productivity"
@@ -104,11 +104,11 @@ The last one is the failure mode people find in month two, when notifications st
 1. Pick one template you already own and list its fields with the API command above. Count how many are text fields that should be links, lookups or person fields. That count is your rebuild cost, and it tells you what you actually paid for.
 2. Open the template's automation list and check each trigger for a field-specific condition. Flows that fire on any update are the ones that will double-post, double-notify, or loop.
 3. Write down the three roles you really need, then compare them to the template's permission set. If you cannot name the roles, you are not ready to buy a permission design.
-4. If you want a starting point rather than a finished system, the Feishu Template Marketplace is $19 one-time for twenty-plus ready-made Feishu and DingTalk templates covering project tracking, OKRs, meeting notes and documentation. At that price you are buying the permission and automation patterns to read, not a data model you could not build yourself.
+4. If you want a starting point rather than a finished system, the Feishu Template Marketplace is $29 one-time for twenty-plus ready-made Feishu and DingTalk templates covering project tracking, OKRs, meeting notes and documentation. At that price you are buying the permission and automation patterns to read, not a data model you could not build yourself.
 
 ## Get Feishu Template Marketplace
 
-[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=feishu-template-worth-paying-for) — **$19**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
+[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=feishu-template-worth-paying-for) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
 
 ## Related reading
 

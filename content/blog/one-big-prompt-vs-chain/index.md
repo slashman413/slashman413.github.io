@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["prompting", "pipelines", "llm", "debugging", "automation"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/diwoc"
-product_price: "29"
+product_price: "39"
 product_brand: "Slashman Tools"
 product_sku: "SMT-APL"
 product_category: "Software > AI Tools"
@@ -144,11 +144,11 @@ The middle ground that wins most often is a two-step chain: one call that turns 
 2. Write a JSON schema for the output you wish it produced. If you cannot, keep the single prompt — you are still in the exploration phase, not the pipeline phase.
 3. Split the first stage only. Add an artifact directory and a `--resume-from` flag before you split anything else.
 4. Add validation at each boundary plus a fallback that calls the old mega-prompt, so a bad split never costs you an outage.
-5. If you would rather start from prompts that already hold up than write every step from scratch, our AI Prompt Library ($29 one-time) is a curated set of copy-paste templates organised by job — writing, coding, research and ops — that you can lift directly into individual chain steps.
+5. If you would rather start from prompts that already hold up than write every step from scratch, our AI Prompt Library ($39 one-time) is a curated set of copy-paste templates organised by job — writing, coding, research and ops — that you can lift directly into individual chain steps.
 
 ## Get AI Prompt Library
 
-[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=one-big-prompt-vs-chain) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
+[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=one-big-prompt-vs-chain) — **$39**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
 
 ## Related reading
 

@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["templates", "build-vs-buy", "data-model", "automation", "feishu"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/xohjh"
-product_price: "19"
+product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-FSH"
 product_category: "Software > Productivity"
@@ -116,11 +116,11 @@ One more thing worth noticing: teams tend to outgrow one-off documents faster th
 2. Compute your effective hourly rate. Run the script above with your real numbers, then put a cost on `adapt_hours` and `build_hours`. Decide with both totals visible.
 3. Write the six-month customisation list before you choose, with at least three items. Classify each as additive or structural. Two or more structural items usually means build.
 4. Set a kill criterion. If adapting a template has not produced usable output within a defined number of days, stop adapting and rebuild. Without this, template adaptation quietly becomes a hobby.
-5. When your schema is genuinely standard, buying is usually correct. Feishu Template Marketplace is a one-time $19 purchase for twenty-plus ready-made Feishu/DingTalk templates covering project tracking, OKRs, meeting notes and documentation. That is a reasonable fit when your fields are ordinary and your process has settled, and it is not a substitute for a schema you have not figured out yet.
+5. When your schema is genuinely standard, buying is usually correct. Feishu Template Marketplace is a one-time $29 purchase for twenty-plus ready-made Feishu/DingTalk templates covering project tracking, OKRs, meeting notes and documentation. That is a reasonable fit when your fields are ordinary and your process has settled, and it is not a substitute for a schema you have not figured out yet.
 
 ## Get Feishu Template Marketplace
 
-[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=buying-template-vs-building-your-own) — **$19**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
+[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=buying-template-vs-building-your-own) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
 
 ## Related reading
 

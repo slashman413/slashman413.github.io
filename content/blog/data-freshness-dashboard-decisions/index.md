@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["data-freshness", "dashboards", "timezones", "decision-making"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/etf-dashboard"
-product_price: "199"
+product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-ETF"
 product_category: "Software > Finance"
@@ -141,11 +141,11 @@ Finally, write the decision class into the alert or automation. An alert that sa
 - Add a freshness check that compares event_time, ingest_time, and query time before any automated action.
 - Label each decision as operational, tactical, strategic, or reporting, then set max staleness per decision instead of per dashboard.
 - Use EOD data for rebalancing, tax, and backtesting; reserve intraday data for execution and alerting.
-- If you want a concrete workbench where these boundaries are visible, ETF Dashboard ($199 one-time) is a Taiwan-ETF analytics workbench that combines price and dividend data, technical indicators and backtesting in one dashboard.
+- If you want a concrete workbench where these boundaries are visible, ETF Dashboard ($29 one-time) is a Taiwan-ETF analytics workbench that combines price and dividend data, technical indicators and backtesting in one dashboard.
 
 ## Get ETF Dashboard
 
-[**ETF Dashboard**](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=article&utm_campaign=data-freshness-dashboard-decisions) — **$199**, one-time payment, instant download. See the full breakdown on the [review page](/blog/etf-dashboard/).
+[**ETF Dashboard**](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=article&utm_campaign=data-freshness-dashboard-decisions) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/etf-dashboard/).
 
 ## Related reading
 

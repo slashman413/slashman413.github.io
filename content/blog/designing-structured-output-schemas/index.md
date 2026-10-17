@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["llm", "structured-output", "json-schema", "validation", "prompting"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/diwoc"
-product_price: "29"
+product_price: "39"
 product_brand: "Slashman Tools"
 product_sku: "SMT-APL"
 product_category: "Software > AI Tools"
@@ -156,11 +156,11 @@ Keep temperature low for extraction, and use provider-side strict schema modes w
 2. Convert your top three free-text fields to enums. Write the allowed values as a literal list, and add `unknown` wherever the source may be silent about the answer.
 3. Add one complete filled example to the prompt, matching a hard input rather than an easy one, and check it against the schema.
 4. Wire in the validate-and-retry loop above with a cap of three attempts, and log the failing field path on every retry.
-5. If you would rather start from working prompt text than a blank editor, the AI Prompt Library is a $29 one-time set of copy-paste templates organised by job (writing, coding, research, ops). It supplies the prompt wording; the schema, empty-value semantics and validation loop are still yours to build.
+5. If you would rather start from working prompt text than a blank editor, the AI Prompt Library is a $39 one-time set of copy-paste templates organised by job (writing, coding, research, ops). It supplies the prompt wording; the schema, empty-value semantics and validation loop are still yours to build.
 
 ## Get AI Prompt Library
 
-[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=designing-structured-output-schemas) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
+[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=designing-structured-output-schemas) — **$39**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
 
 ## Related reading
 

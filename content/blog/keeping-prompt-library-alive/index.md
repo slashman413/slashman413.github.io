@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["prompts", "versioning", "llm-ops", "regression-testing", "maintenance"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/diwoc"
-product_price: "29"
+product_price: "39"
 product_brand: "Slashman Tools"
 product_sku: "SMT-APL"
 product_category: "Software > AI Tools"
@@ -126,11 +126,11 @@ Then delete. A prompt with no caller in the repository and no test is not an ass
 4. Run the suite against the pinned snapshot for a baseline, then against one candidate model. File the failures as rewrite tasks against the phrasing file only.
 5. Rewrite or delete the remaining prompts as you touch them. No exceptions, no keeping one "just in case".
 
-If you would rather start from working examples than a blank file, AI Prompt Library ($29, one-time) is a curated set of ready-to-use prompts organised by job, covering writing, coding, research and ops, delivered as copy-paste templates. Treat them as raw material. The intent file, the contract and the regression cases still have to be yours, because those are the parts that make a prompt survive when the model under it changes.
+If you would rather start from working examples than a blank file, AI Prompt Library ($39, one-time) is a curated set of ready-to-use prompts organised by job, covering writing, coding, research and ops, delivered as copy-paste templates. Treat them as raw material. The intent file, the contract and the regression cases still have to be yours, because those are the parts that make a prompt survive when the model under it changes.
 
 ## Get AI Prompt Library
 
-[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=keeping-prompt-library-alive) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
+[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=keeping-prompt-library-alive) — **$39**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
 
 ## Related reading
 

@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["prompts", "process", "documentation", "case-study", "governance"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/diwoc"
-product_price: "29"
+product_price: "39"
 product_brand: "Slashman Tools"
 product_sku: "SMT-APL"
 product_category: "Software > AI Tools"
@@ -138,11 +138,11 @@ Two more rules keep this from drifting. First, the library is plain files in one
 - Resolve the first duplicate by deprecating, not merging. Rename by output shape when both prompts deserve to live.
 - Set a default sunset window (90 days for scripted prompts, 30 for interactive) so removal dates are automatic instead of negotiated.
 
-If you would rather start from prompts that already state their inputs, outputs and limits than write that frontmatter yourself, the AI Prompt Library ($29 one-time) is a set of copy-paste templates grouped by job: writing, coding, research and ops. The structure described above is what we added on top of it.
+If you would rather start from prompts that already state their inputs, outputs and limits than write that frontmatter yourself, the AI Prompt Library ($39 one-time) is a set of copy-paste templates grouped by job: writing, coding, research and ops. The structure described above is what we added on top of it.
 
 ## Get AI Prompt Library
 
-[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=two-people-one-prompt-library) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
+[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=two-people-one-prompt-library) — **$39**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
 
 ## Related reading
 

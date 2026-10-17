@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["prompting", "prompt-engineering", "workflow", "ai-tools", "automation"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/diwoc"
-product_price: "29"
+product_price: "39"
 product_brand: "Slashman Tools"
 product_sku: "SMT-APL"
 product_category: "Software > AI Tools"
@@ -111,14 +111,14 @@ This does not measure quality. It catches the common failure where a new model d
 ## What to do next
 
 1. Pick one recurring task and write down what a passing output looks like, plus one example that should fail. That pair is worth more than any prompt string you can buy.
-2. For generic, high-frequency work (summarize, extract, rewrite, review), start from a curated library and edit. AI Prompt Library is a $29 one-time collection of ready-to-use prompts organised by job — writing, coding, research, ops — delivered as copy-paste templates. Treat it as coverage for the tier of work you do not want to hand-write, not as your whole system.
+2. For generic, high-frequency work (summarize, extract, rewrite, review), start from a curated library and edit. AI Prompt Library is a $39 one-time collection of ready-to-use prompts organised by job — writing, coding, research, ops — delivered as copy-paste templates. Treat it as coverage for the tier of work you do not want to hand-write, not as your whole system.
 3. If your prompts fail in ways you cannot explain, spend time on a course, but only with a real task and a real failure in hand. Otherwise put those hours into eval cases.
 4. Move anything you use weekly into a repo with frontmatter, a README index and a few eval cases. If those prompts run inside a pipeline, the surrounding workflow design matters more than the wording; [/blog/ultimate-ai-automation-guide-2026/](/blog/ultimate-ai-automation-guide-2026/) covers that layer.
 5. After every model swap, re-run the eval cases before trusting the output in production. Fix the instructions first. Adding examples is the second move, not the first.
 
 ## Get AI Prompt Library
 
-[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=prompt-library-vs-course-vs-diy) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
+[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=prompt-library-vs-course-vs-diy) — **$39**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
 
 ## Related reading
 

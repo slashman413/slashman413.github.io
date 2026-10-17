@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["feishu", "templates", "product-design", "licensing", "support"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/xohjh"
-product_price: "19"
+product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-FSH"
 product_category: "Software > Productivity"
@@ -139,11 +139,11 @@ The loop itself is boring on purpose: one inbox, a public FAQ document shipped i
 2. Write `manifest.json` and adopt MAJOR/MINOR/PATCH in a `CHANGELOG.md`. Decide what counts as a breaking change before your first buyer, not after.
 3. Draft the one-page license and a known-failures section for the FAQ. Ship automations disabled and say so in the first install step.
 4. Set the support boundary in writing: one inbox, weekly batch, defects become patches, customisation is out of scope.
-5. If you want to see what a finished bundle looks like before assembling your own, Feishu Template Marketplace is $19 one-time and ships twenty-plus ready-made Feishu/DingTalk templates covering project tracking, OKRs, meeting notes and documentation.
+5. If you want to see what a finished bundle looks like before assembling your own, Feishu Template Marketplace is $29 one-time and ships twenty-plus ready-made Feishu/DingTalk templates covering project tracking, OKRs, meeting notes and documentation.
 
 ## Get Feishu Template Marketplace
 
-[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=selling-a-feishu-template-product) — **$19**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
+[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=selling-a-feishu-template-product) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
 
 ## Related reading
 

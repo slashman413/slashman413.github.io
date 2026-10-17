@@ -1,13 +1,13 @@
 ---
 title: "Feishu Template Marketplace Review 2026: 20+ Professional Templates for Feishu & DingTalk Teams"
 date: "2026-08-02T08:00:00+08:00"
-description: "Feishu Template Marketplace review: 20+ professional templates for Feishu (Lark) and DingTalk — project management, CRM, data analysis. $19."
+description: "Feishu Template Marketplace review: 20+ professional templates for Feishu (Lark) and DingTalk — project management, CRM, data analysis. $29."
 slug: "feishu-templates"
 draft: false
 schema: "ProductReview"
 tags: [templates, productivity, feishu, lark, dingtalk, project-management, teams]
 product_url: "https://slashmaster6.gumroad.com/l/xohjh"
-product_price: "19"
+product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-FSH"
 product_category: "Software > Productivity"
@@ -31,9 +31,9 @@ sitemap:
 # Feishu Template Marketplace Review 2026: 20+ Professional Templates for Feishu & DingTalk Teams
 
 
-Feishu (Lark) and DingTalk are the collaboration platforms of choice for most teams in Taiwan and China — but a blank workspace is not a system. The **Feishu Template Marketplace** is a pack of 20+ professionally designed, copy-paste-ready templates that turn a raw Feishu/DingTalk account into an organized operation. Here is our hands-on review of the **$19** pack.
+Feishu (Lark) and DingTalk are the collaboration platforms of choice for most teams in Taiwan and China — but a blank workspace is not a system. The **Feishu Template Marketplace** is a pack of 20+ professionally designed, copy-paste-ready templates that turn a raw Feishu/DingTalk account into an organized operation. Here is our hands-on review of the **$29** pack.
 
-👉 [**Get the Feishu Template Marketplace on Gumroad ($19)**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)
+👉 [**Get the Feishu Template Marketplace on Gumroad ($29)**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)
 
 ## What's Inside
 
@@ -62,8 +62,8 @@ Every template is designed by an experienced PM and ships with usage instruction
 
 ## The Verdict
 
-At **$19**, the Feishu Template Marketplace is the fastest way to take a Feishu or DingTalk workspace from empty to organized. If your team has been "getting by" with ad-hoc docs and scattered sheets, the 20+ structured templates — and the workflows they encode — are worth far more than the price.
+At **$29**, the Feishu Template Marketplace is the fastest way to take a Feishu or DingTalk workspace from empty to organized. If your team has been "getting by" with ad-hoc docs and scattered sheets, the 20+ structured templates — and the workflows they encode — are worth far more than the price.
 
-👉 [**Get the Feishu Template Marketplace on Gumroad ($19)**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)
+👉 [**Get the Feishu Template Marketplace on Gumroad ($29)**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)
 
 *Looking for more ways to systematize your work? See [Cowork Pro](/blog/cowork-pro/) for AI agent orchestration.*

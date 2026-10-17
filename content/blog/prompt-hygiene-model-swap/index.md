@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["prompting", "llm", "automation", "context-engineering", "workflows"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/diwoc"
-product_price: "29"
+product_price: "39"
 product_brand: "Slashman Tools"
 product_sku: "SMT-APL"
 product_category: "Software > AI Tools"
@@ -134,11 +134,11 @@ Run it as `./swap-test.sh model-a model-b`. The question is not which model is b
 2. Add one machine-checkable definition of done per prompt — a schema, a required field, or a rule you can test with `jq` or `grep`.
 3. Write three hostile inputs per prompt (empty, contradictory, out-of-scope) and run them against at least two models you have access to.
 4. Delete every second and third example. If the prompt breaks, split it into two prompts instead of restoring them.
-5. If starting from a blank file is the thing stopping you, AI Prompt Library is a curated set of copy-paste prompt templates organised by job — writing, coding, research, ops — priced at $29 USD one-time; adapt them to the rules above.
+5. If starting from a blank file is the thing stopping you, AI Prompt Library is a curated set of copy-paste prompt templates organised by job — writing, coding, research, ops — priced at $39 USD one-time; adapt them to the rules above.
 
 ## Get AI Prompt Library
 
-[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=prompt-hygiene-model-swap) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
+[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=prompt-hygiene-model-swap) — **$39**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
 
 ## Related reading
 

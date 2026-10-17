@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["prompt-engineering", "prompt-library", "templates", "versioning", "ai-workflows"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/diwoc"
-product_price: "29"
+product_price: "39"
 product_brand: "Slashman Tools"
 product_sku: "SMT-APL"
 product_category: "Software > AI Tools"
@@ -134,11 +134,11 @@ The review is not a rewrite session. Its purpose is to keep the header honest, s
 - Create a `good/` directory and snapshot one prompt before you next edit it. The `snapshot.sh` script above is the whole tool.
 - Run the review listing once and mark anything stale as `needs-review` instead of leaving its status ambiguous.
 - Give each template exactly one context field. If you want a second, split the prompt into two files instead.
-- If you would rather start from working templates than build the discipline from scratch, the AI Prompt Library is a one-time $29 download of copy-paste prompts organised by job — writing, coding, research, ops — available at https://slashmaster6.gumroad.com/l/diwoc. It is a starting point; the habits above are what keep it useful.
+- If you would rather start from working templates than build the discipline from scratch, the AI Prompt Library is a one-time $39 download of copy-paste prompts organised by job — writing, coding, research, ops — available at https://slashmaster6.gumroad.com/l/diwoc. It is a starting point; the habits above are what keep it useful.
 
 ## Get AI Prompt Library
 
-[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=five-prompt-library-maintenance-habits) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
+[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=five-prompt-library-maintenance-habits) — **$39**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
 
 ## Related reading
 

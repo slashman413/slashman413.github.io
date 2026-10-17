@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["etf", "investing", "data", "analytics", "automation"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/etf-dashboard"
-product_price: "199"
+product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-ETF"
 product_category: "Software > Finance"
@@ -108,11 +108,11 @@ Currency and corporate actions are the next trap. An ETF that holds foreign asse
 - Pull data from primary sources this week: issuer holdings CSV, official NAV history, distribution file. Store the as-of date with every row.
 - Add a freshness check. A simple script that exits non-zero when a file is older than your threshold is enough. Wire it to a scheduler.
 - Compute tracking difference from total-return series, not price charts. Use rolling windows, not single days.
-- If your focus is Taiwan ETFs and you want price data, dividend data, technical indicators, and backtesting in one place, ETF Dashboard is a $199 one-time workbench. Treat it as a data source, not a decision maker.
+- If your focus is Taiwan ETFs and you want price data, dividend data, technical indicators, and backtesting in one place, ETF Dashboard is a $29 one-time workbench. Treat it as a data source, not a decision maker.
 
 ## Get ETF Dashboard
 
-[**ETF Dashboard**](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=article&utm_campaign=etf-metrics-that-change-decisions) — **$199**, one-time payment, instant download. See the full breakdown on the [review page](/blog/etf-dashboard/).
+[**ETF Dashboard**](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=article&utm_campaign=etf-metrics-that-change-decisions) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/etf-dashboard/).
 
 ## Related reading
 

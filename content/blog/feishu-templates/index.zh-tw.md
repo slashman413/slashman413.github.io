@@ -5,7 +5,7 @@ date: 2026-08-02
 slug: feishu-templates
 tags: [templates, productivity, feishu, notion, project-management, teams]
 product_url: "https://slashmaster6.gumroad.com/l/xohjh"
-product_price: "19"
+product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-FT"
 product_category: "Software > Templates"
@@ -39,7 +39,7 @@ sitemap:
 <li>持續更新，一次購買終身使用</li>
     </ul>
     <a href="https://slashmaster6.gumroad.com/l/xohjh?utm_source=slashmantools&utm_medium=product-page&utm_campaign=feishu-templates" target="_blank" rel="noopener" class="cta-button">
-      立即購買 $19 →
+      立即購買 $29 →
     </a>
   </div>
   

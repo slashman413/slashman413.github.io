@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["feishu", "automation", "audit-logs", "permissions", "rollback"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/xohjh"
-product_price: "19"
+product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-FSH"
 product_category: "Software > Productivity"
@@ -136,11 +136,11 @@ Pair the threshold with [triage habits](/blog/triage-automation-failures-while-y
 4. Add the append-only JSON log with `trace_id` and `before`/`after`, and generate the rollback file in the same run.
 5. Set one approval rule this week, a watched field or any external chat, and confirm it actually blocks.
 
-If standing up the bases your flow writes into is still ahead of you, the Feishu Template Marketplace ($19 one-time) collects twenty-plus ready-made Feishu/DingTalk templates for project tracking, OKRs, meeting notes and documentation. Starting from a template gives your manifest a stable table and field structure instead of one invented at 1 a.m.
+If standing up the bases your flow writes into is still ahead of you, the Feishu Template Marketplace ($29 one-time) collects twenty-plus ready-made Feishu/DingTalk templates for project tracking, OKRs, meeting notes and documentation. Starting from a template gives your manifest a stable table and field structure instead of one invented at 1 a.m.
 
 ## Get Feishu Template Marketplace
 
-[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=feishu-automation-guardrails-checklist) — **$19**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
+[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=feishu-automation-guardrails-checklist) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
 
 ## Related reading
 

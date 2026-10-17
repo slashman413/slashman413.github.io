@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["backtesting", "etf", "quant", "methodology", "trading"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/etf-dashboard"
-product_price: "199"
+product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-ETF"
 product_category: "Software > Finance"
@@ -165,11 +165,11 @@ Automation can help you run these checks repeatedly. You can wire data refresh a
 2. Re-run your current backtest with a forced one-bar lag and a point-in-time universe. If the results collapse, you had a lookahead or survivorship problem.
 3. Reconcile dividends and costs separately. Produce two reports: one with gross total return and one with net return after your cost config. Keep both.
 4. Reserve a final holdout period and do not touch it until you have frozen the strategy. If you look at it more than once, it is no longer a holdout.
-5. If your current setup is a spreadsheet plus scattered scripts, the ETF Dashboard is a Taiwan-ETF analytics workbench that puts price and dividend data, technical indicators and backtesting in one dashboard for $199 USD one-time. Use it only after you have a protocol; the tool will not choose your assumptions for you.
+5. If your current setup is a spreadsheet plus scattered scripts, the ETF Dashboard is a Taiwan-ETF analytics workbench that puts price and dividend data, technical indicators and backtesting in one dashboard for $29 USD one-time. Use it only after you have a protocol; the tool will not choose your assumptions for you.
 
 ## Get ETF Dashboard
 
-[**ETF Dashboard**](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=article&utm_campaign=backtesting-etf-strategy-without-self-deception) — **$199**, one-time payment, instant download. See the full breakdown on the [review page](/blog/etf-dashboard/).
+[**ETF Dashboard**](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=article&utm_campaign=backtesting-etf-strategy-without-self-deception) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/etf-dashboard/).
 
 ## Related reading
 

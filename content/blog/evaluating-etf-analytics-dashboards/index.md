@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["etf", "backtesting", "data-quality", "analytics", "taiwan"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/etf-dashboard"
-product_price: "199"
+product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-ETF"
 product_category: "Software > Finance"
@@ -126,11 +126,11 @@ Red flags: export limited to a screenshot, values that round to two decimals for
 2. Ask three questions of any vendor: name your data source, state your revision policy, and show me the dividend table with ex-dates. Vague answers are answers.
 3. Run the gap and staleness checks above against a raw CSV export, not the UI, and compare against the official trading calendar for the market you trade.
 4. Re-run one backtest twice with the same config and check that the equity curve is identical. If it is not, find out why before you trust any of it.
-5. Check the price against the maintenance cost. A one-time fee with no data subscription is a different commitment than a monthly seat. If you work with Taiwan-listed ETFs, ETF Dashboard is one example to benchmark against: a $199 one-time Taiwan-ETF analytics workbench that puts price and dividend data, technical indicators and backtesting in one dashboard. Test it with your fixture, your gap check and your export requirements, and see how it answers the questions above.
+5. Check the price against the maintenance cost. A one-time fee with no data subscription is a different commitment than a monthly seat. If you work with Taiwan-listed ETFs, ETF Dashboard is one example to benchmark against: a $29 one-time Taiwan-ETF analytics workbench that puts price and dividend data, technical indicators and backtesting in one dashboard. Test it with your fixture, your gap check and your export requirements, and see how it answers the questions above.
 
 ## Get ETF Dashboard
 
-[**ETF Dashboard**](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=article&utm_campaign=evaluating-etf-analytics-dashboards) — **$199**, one-time payment, instant download. See the full breakdown on the [review page](/blog/etf-dashboard/).
+[**ETF Dashboard**](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=article&utm_campaign=evaluating-etf-analytics-dashboards) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/etf-dashboard/).
 
 ## Related reading
 

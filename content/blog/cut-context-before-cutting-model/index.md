@@ -8,7 +8,7 @@ author: "Wayne Chang"
 tags: ["context-engineering", "llm", "prompting", "cost", "agents"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/diwoc"
-product_price: "29"
+product_price: "39"
 product_brand: "Slashman Tools"
 product_sku: "SMT-APL"
 product_category: "Software > AI Tools"
@@ -142,11 +142,11 @@ If you have done all six and quality is still short, then change the model. In t
 4. Move three persistent facts out of the prompt and into a validated state file.
 5. Reorder one prompt so stable content leads, then mark that block for caching.
 
-If you would rather start from prompts that are already scoped to a job instead of a blank page, the AI Prompt Library is a $29 one-time library of ready-to-use, copy-paste templates organised by writing, coding, research and ops. For the wider picture of where these steps fit, [the automation guide](/blog/ultimate-ai-automation-guide-2026/) is the longer read.
+If you would rather start from prompts that are already scoped to a job instead of a blank page, the AI Prompt Library is a $39 one-time library of ready-to-use, copy-paste templates organised by writing, coding, research and ops. For the wider picture of where these steps fit, [the automation guide](/blog/ultimate-ai-automation-guide-2026/) is the longer read.
 
 ## Get AI Prompt Library
 
-[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=cut-context-before-cutting-model) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
+[**AI Prompt Library**](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=article&utm_campaign=cut-context-before-cutting-model) — **$39**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-prompt-library/).
 
 ## Related reading
 
