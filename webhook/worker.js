@@ -97,15 +97,23 @@ export default {
       }
       const days = Math.min(parseInt(url.searchParams.get("days") || "30", 10) || 30, 90);
       const cutoff = new Date(Date.now() - days * 86400000).toISOString().slice(0, 10);
-      const list = await env.LEADS.list({ prefix: `hit:${site}:` });
+      const list = await env.LEADS.list({ prefix: `hit:${site}:`, limit: 1000 });
       const rows = [];
       const totals = {};
-      for (const k of list.keys) {
-        const [, , event, day] = k.name.split(":");
-        if (day < cutoff) continue;
-        const n = parseInt((await env.LEADS.get(k.name)) || "0", 10);
-        rows.push({ day, event, n });
-        totals[event] = (totals[event] || 0) + n;
+      const allKeys = list.keys.filter((k) => {
+        const [, , , day] = k.name.split(":");
+        return day >= cutoff;
+      });
+      const CHUNK = 20;
+      for (let i = 0; i < allKeys.length; i += CHUNK) {
+        const chunk = allKeys.slice(i, i + CHUNK);
+        const raws = await Promise.all(chunk.map((k) => env.LEADS.get(k.name)));
+        chunk.forEach((k, j) => {
+          const [, , event, day] = k.name.split(":");
+          const n = parseInt((raws[j]) || "0", 10);
+          rows.push({ day, event, n });
+          totals[event] = (totals[event] || 0) + n;
+        });
       }
       rows.sort((a, b) => b.day.localeCompare(a.day) || a.event.localeCompare(b.event));
       return new Response(JSON.stringify({ ok: true, site, days, totals, rows }), {
@@ -126,13 +134,27 @@ export default {
       if (!env.LEADS) {
         return json({ ok: false, error: "kv_not_configured" }, 503, origin);
       }
-      // List all lead keys and fetch each one
-      const all = await env.LEADS.list({ prefix: "lead:" });
+      // List all lead keys (paginate past 1000 if the store grows that big)
+      // and fetch the lead records in parallel chunks. Sequential per-key gets
+      // took ~60-90s at ~100 leads (2026-10-18), exceeding the sync client's
+      // timeout and silently breaking the KV→Mautic pipeline.
+      const leadKeys = [];
+      let cursor;
+      do {
+        const page = await env.LEADS.list({ prefix: "lead:", limit: 1000, ...(cursor ? { cursor } : {}) });
+        leadKeys.push(...page.keys);
+        cursor = page.listComplete ? undefined : page.cursor;
+      } while (cursor);
       const leads = [];
-      for (const key of all.keys) {
-        const raw = await env.LEADS.get(key.name);
-        if (raw) {
-          try { leads.push(JSON.parse(raw)); } catch (_) { /* skip malformed */ }
+      const CHUNK = 20;
+      for (let i = 0; i < leadKeys.length; i += CHUNK) {
+        const raws = await Promise.all(
+          leadKeys.slice(i, i + CHUNK).map((k) => env.LEADS.get(k.name))
+        );
+        for (const raw of raws) {
+          if (raw) {
+            try { leads.push(JSON.parse(raw)); } catch (_) { /* skip malformed */ }
+          }
         }
       }
       const since = url.searchParams.get("since") || "";

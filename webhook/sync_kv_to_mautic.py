@@ -122,8 +122,11 @@ def fetch_leads(api_url: str, token: str, since: str = "", limit: int = 500) -> 
         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
         "Accept": "application/json",
     })
+    # NOTE: the Worker's /leads does a KV list + one KV get per lead; with ~100
+    # leads that takes ~60-90s end to end. timeout=30 was the historical cause
+    # of the "sync forever times out" failure (see sync.log) — keep it generous.
     try:
-        with urlrequest.urlopen(req, timeout=30) as resp:
+        with urlrequest.urlopen(req, timeout=300) as resp:
             data = json.loads(resp.read().decode())
             if not data.get("ok"):
                 raise RuntimeError(f"API returned error: {data.get('error', 'unknown')}")
@@ -154,7 +157,22 @@ def save_state(state_file: str, state: dict):
 def sync_once(mautic: MauticAPI, api_url: str, forward_token: str, state: dict, limit: int = 500) -> int:
     """Sync all new leads from Worker KV to Mautic. Returns count of new contacts created."""
     since = state.get("last_sync", "")
-    leads = fetch_leads(api_url, forward_token, since=since, limit=limit)
+    # The Worker's /leads is slow (KV list + per-lead get), so transient
+    # timeouts happen. Retry 3x with backoff instead of losing the whole
+    # 5-minute sync window (historically this was the silent funnel break).
+    leads = None
+    for attempt in range(3):
+        try:
+            leads = fetch_leads(api_url, forward_token, since=since, limit=limit)
+            break
+        except Exception as e:
+            if attempt < 2:
+                wait_s = 20 * (attempt + 1)
+                print(f"  .. fetch failed (attempt {attempt+1}/3): {e} — retrying in {wait_s}s", file=sys.stderr)
+                time.sleep(wait_s)
+            else:
+                print(f"  !! fetch failed after 3 attempts: {e}", file=sys.stderr)
+                raise
     if not leads:
         return 0
 
