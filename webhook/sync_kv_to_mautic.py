@@ -79,23 +79,34 @@ class MauticAPI:
                     return c
         return None
 
-    def create_contact(self, email: str, first_name: str = "", tags: list[str] | None = None) -> dict:
-        """Create a Mautic contact."""
+    def create_contact(self, email: str, first_name: str = "", tags: list[str] | None = None,
+                       ip_address: str = "") -> dict:
+        """Create a Mautic contact.
+
+        Pass the visitor's IP (ip_address) so Mautic lead-identification can
+        merge this contact with the anonymous pixel lead of the same visitor.
+        Without the IP, a form lead and its pixel lead stay as two rows: the
+        anonymous one never acquires an email, which dilutes the email-capture
+        rate (denominator bloat).
+        """
         payload: dict[str, Any] = {
             "email": email,
             "firstname": first_name,
             "tags": tags or [],
-            "ipAddress": "",
+            "ipAddress": ip_address or "",
             "overwriteWithBlank": False,
         }
         return self._request("POST", "contacts/new", payload)["contact"]
 
-    def update_contact_tags(self, contact_id: int, add_tags: list[str]) -> dict:
-        """Add tags to an existing contact."""
-        return self._request(
-            "PATCH", f"contacts/{contact_id}/edit",
-            {"tags": add_tags, "overwriteWithBlank": False}
-        )
+    def update_contact_tags(self, contact_id: int, add_tags: list[str],
+                           ip_address: str = "") -> dict:
+        """Add tags (and backfill ipAddress) to an existing contact."""
+        payload: dict[str, Any] = {"overwriteWithBlank": False}
+        if add_tags:
+            payload["tags"] = add_tags
+        if ip_address:
+            payload["ipAddress"] = ip_address
+        return self._request("PATCH", f"contacts/{contact_id}/edit", payload)
 
 
 # ---------------------------------------------------------------------------
@@ -161,6 +172,13 @@ def sync_once(mautic: MauticAPI, api_url: str, forward_token: str, state: dict, 
         first_name = lead.get("first_name", "")
         tags = [t.strip() for t in lead.get("tags", "").split(",") if t.strip()]
         source = lead.get("source", "web-form").strip()
+        # Visitor IP from the Worker lead record. Forward it to Mautic so lead
+        # identification can merge this form lead with the anonymous pixel lead
+        # of the same visitor (prevents denominator bloat in the email-capture
+        # rate). Skip placeholder / loopback / 0.0.0.0 values.
+        ip = (lead.get("ip") or "").strip()
+        if ip in ("0.0.0.0", "::1", "127.0.0.1", "0:0:0:0:0:0:0:1"):
+            ip = ""
         # A/B test cell (cta-ab.js → Worker lead.variant, e.g. "leadmagnet:b2").
         # Tagged so conversion-per-cell is queryable in Mautic without any
         # dashboard work: search contacts by tag "variant-leadmagnet-b2".
@@ -190,11 +208,10 @@ def sync_once(mautic: MauticAPI, api_url: str, forward_token: str, state: dict, 
             if existing:
                 contact_id = existing["id"]
                 print(f"  Contact exists: {email} (id={contact_id}), adding tags: {tags}")
-                if tags:
-                    mautic.update_contact_tags(contact_id, tags)
+                mautic.update_contact_tags(contact_id, tags, ip_address=ip)
             else:
-                print(f"  Creating contact: {email} (first_name={first_name}, tags={tags})")
-                mautic.create_contact(email, first_name, tags)
+                print(f"  Creating contact: {email} (first_name={first_name}, tags={tags}, ip={ip or '-'})")
+                mautic.create_contact(email, first_name, tags, ip_address=ip)
                 new_count += 1
 
             synced[email] = {
