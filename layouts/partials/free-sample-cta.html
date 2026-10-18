@@ -1,0 +1,21 @@
+{{- /*
+  free-sample-cta.html — persistent CTA on every blog article.
+
+  Links ONLY the two free samples verified live on Gumroad (API check 2026-10-18)
+  plus the on-site storefront. After b3bab0a removed links to unpublished
+  products, do not add links to anything that is not confirmed live.
+
+  URLs (verified via Gumroad API, price=0):
+    https://slashmaster6.gumroad.com/l/workflow-builder-sample
+    https://slashmaster6.gumroad.com/l/prompt-library-sample
+*/ -}}
+{{ if and .IsPage (eq .Section "blog") }}
+<div style="margin-top:28px;padding:20px 22px;background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.35);border-radius:12px">
+  <p style="font-size:15px;font-weight:800;color:#f0f0f8;margin:0 0 6px">🎁 Want to try before you buy?</p>
+  <p style="font-size:13.5px;color:var(--muted);margin:0 0 14px">Both samples are 100% free on Gumroad — no account needed. Or browse the full catalogue in the <a href="/products/" style="color:#4ade80;font-weight:600">Slashman Tools storefront</a>.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <a href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&amp;utm_medium=blog&amp;utm_campaign=free_sample_cta&amp;utm_content=workflow_sample" target="_blank" rel="noopener" style="display:inline-block;background:#16a34a;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:8px;font-size:13.5px">Free Sample Workflow</a>
+    <a href="https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=slashmantools&amp;utm_medium=blog&amp;utm_campaign=free_sample_cta&amp;utm_content=prompt_sample" target="_blank" rel="noopener" style="display:inline-block;background:#16a34a;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:8px;font-size:13.5px">Free Prompt Library Sample</a>
+  </div>
+</div>
+{{ end }}
