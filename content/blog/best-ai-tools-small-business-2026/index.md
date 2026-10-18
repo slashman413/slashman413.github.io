@@ -57,7 +57,7 @@ If you sell across languages, models now translate *and preserve tone* better th
 
 ### 10. The Everything Bundle — when you want the whole stack in one buy
 
-If you're a solo founder or micro-team building AI-powered products or operations, our [Everything Bundle](https://slashmaster6.gumroad.com/l/everything-bundle?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=best-ai-tools-2026&utm_content=bundle) bundles the workflow builder, prompt library, courses, and starter kits at one price — the tools on this list, pre-integrated. The [AI Starter Bundle](https://slashmaster6.gumroad.com/l/ai-starter-bundle?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=best-ai-tools-2026&utm_content=bundle-starter) is the cheaper entry point if you're just starting.
+If you're a solo founder or micro-team building AI-powered products or operations, our [AI Developer Stack Bundle](https://slashmaster6.gumroad.com/l/ai-dev-stack?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=best-ai-tools-2026&utm_content=bundle) packages the tooling to orchestrate, ship and host AI workflows at one price. The [free AI Prompt Library sample](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=best-ai-tools-2026&utm_content=prompt-sample) is the zero-cost entry point if you're just starting.
 
 ## What NOT to buy (2026 edition)
 
@@ -100,5 +100,5 @@ That's less than one hour of an agency's time, for a full back office. The tools
 ## Next steps
 
 - Pick ONE category from this list and solve it this week — don't buy the stack at once.
-- If automation is your pick, start with the [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=best-ai-tools-2026&utm_content=footer) (free sample [here](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=best-ai-tools-2026&utm_content=footer-sample)) or the [Everything Bundle](https://slashmaster6.gumroad.com/l/everything-bundle?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=best-ai-tools-2026&utm_content=footer-bundle).
+- If automation is your pick, start with the [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=best-ai-tools-2026&utm_content=footer) (free sample [here](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=best-ai-tools-2026&utm_content=footer-sample)) or the [AI Developer Stack Bundle](https://slashmaster6.gumroad.com/l/ai-dev-stack?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=best-ai-tools-2026&utm_content=footer-bundle).
 - Compare against last year's landscape: [AI tools for digital product creators](/blog/ai-tools-for-digital-product-creators-guide/) and [the AI productivity toolkit](/blog/ai-productivity-toolkit-guide/).

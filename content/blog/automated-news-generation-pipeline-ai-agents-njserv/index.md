@@ -33,7 +33,7 @@ author: "Wayne Chang"
 
 In 2026, AI automation is not a buzzword anymore - it is the backbone of every successful digital business. Whether you are a solopreneur, a small team, or a growing startup, understanding how to leverage AI tools and frameworks can mean the difference between struggling with manual processes and scaling efficiently.
 
-This article covers [**2-Person Chat News Automation**](https://slashmaster6.gumroad.com/l/njserv?utm_source=blog&utm_medium=article&utm_campaign=automated-news-generation-pipeline-ai-agents-njserv) in depth - not just what it does, but how it fits into a complete AI-powered business pipeline that actually works in production.
+This article covers **2-Person Chat News Automation** in depth - not just what it does, but how it fits into a complete AI-powered business pipeline that actually works in production.
 
 We have built, tested, and refined these workflows over many months of real production use. Every example, every number, every recommendation comes from actual experience - not theory or marketing copy.
 
@@ -206,11 +206,11 @@ In our experience, teams using 2-Person Chat News Automation see:
 These numbers come from actual production deployments, not marketing projections.
 ## Conclusion
 
-The key insight from this article is simple: AI automation works when you have the right framework and the discipline to execute. [**2-Person Chat News Automation**](https://slashmaster6.gumroad.com/l/njserv?utm_source=blog&utm_medium=article&utm_campaign=automated-news-generation-pipeline-ai-agents-njserv) provides that framework.
+The key insight from this article is simple: AI automation works when you have the right framework and the discipline to execute. **2-Person Chat News Automation** provides that framework.
 
 ### What to do next
 
-1. **[Get 2-Person Chat News Automation**](https://slashmaster6.gumroad.com/l/njserv?utm_source=blog&utm_medium=article&utm_campaign=automated-news-generation-pipeline-ai-agents-njserv) - $19 one-time payment
+1. **[Try the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=blog&utm_medium=article&utm_campaign=automated-news-generation-pipeline-ai-agents-njserv)** - see a validated multi-agent workflow end to end
 2. **[Explore our related guides](/blog/ultimate-ai-automation-guide-2026/) - Full frameworks and tutorials
 3. **[Join our community](https://github.com/slashman413) - Get support and share your experience
 

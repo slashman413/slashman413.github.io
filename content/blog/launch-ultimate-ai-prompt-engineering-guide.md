@@ -24,6 +24,4 @@ It's everything you need to stop wrestling with LLMs and start directing them.
 
 
 
-You can get it now on Gumroad for just $4.99. We're keeping the price accessible because we believe solid prompt engineering is a foundational skill every builder should have.
-
-**[Get the Guide →](https://slashmaster6.gumroad.com/l/wememw?utm_source=slashmantools&utm_medium=blog&utm_campaign=launch-post)**
+> **Update (October 2026):** this guide is no longer sold separately. Its prompts now live in the [AI Prompt Library](https://slashmaster6.gumroad.com/l/diwoc?utm_source=slashmantools&utm_medium=blog&utm_campaign=launch-post) (95+ prompts), and you can [try 12 of them free](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=slashmantools&utm_medium=blog&utm_campaign=launch-post) first.

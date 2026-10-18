@@ -165,7 +165,7 @@ Honesty matters here. A workflow builder is the wrong tool when:
 4. Run it once with real data.
 5. Fix the prompts, set the schedule, done.
 
-Thirty minutes from "I keep doing this by hand" to "it runs itself every Monday." Then repeat for the second most painful task. Ten workflows later, you have an automated back office — which is exactly what our [Everything Bundle](https://slashmaster6.gumroad.com/l/everything-bundle) covers end to end.
+Thirty minutes from "I keep doing this by hand" to "it runs itself every Monday." Then repeat for the second most painful task. Ten workflows later, you have an automated back office — and our [AI Developer Stack Bundle](https://slashmaster6.gumroad.com/l/ai-dev-stack) covers the orchestration, shipping and hosting around it.
 
 ## FAQ
 
@@ -181,4 +181,4 @@ Thirty minutes from "I keep doing this by hand" to "it runs itself every Monday.
 
 - Read the [AI workflow builder tutorial](/blog/ai-workflow-builder-tutorial/) for a hands-on walkthrough.
 - See what [AI workflow automation tools](/blog/ai-workflow-automation-tools/) exist beyond this guide.
-- Get the [AI Workflow Builder ($99)](https://slashmaster6.gumroad.com/l/ai-workflow-builder) with the [free sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample) — or grab the [Everything Bundle](https://slashmaster6.gumroad.com/l/everything-bundle) and automate your whole back office.
+- Get the [AI Workflow Builder ($99)](https://slashmaster6.gumroad.com/l/ai-workflow-builder) with the [free sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample) — or grab the [AI Developer Stack Bundle](https://slashmaster6.gumroad.com/l/ai-dev-stack) for the wider stack.

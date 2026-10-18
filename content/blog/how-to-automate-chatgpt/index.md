@@ -131,5 +131,5 @@ Three levels:
 ## Next steps
 
 - Start with one workflow from this list — the one that matches your most hated weekly task.
-- Use the [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder) (free sample [here](https://slashmaster6.gumroad.com/l/workflow-builder-sample)) or the [Everything Bundle](https://slashmaster6.gumroad.com/l/everything-bundle) to scale across all 12.
+- Use the [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder) (free sample [here](https://slashmaster6.gumroad.com/l/workflow-builder-sample)) and the [AI Developer Stack Bundle](https://slashmaster6.gumroad.com/l/ai-dev-stack) when you are ready to run them as a full stack.
 - Read the [AI workflow builder guide](/blog/ai-workflow-builder-complete-guide/) for the full build methodology.

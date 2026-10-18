@@ -83,7 +83,7 @@ If you already run n8n and are wondering when the AI part should move out of nod
 
 - **Zapier**: free tier is a toy; serious automation lands $30-200/month. The per-task model punishes high-frequency workflows.
 - **n8n**: self-hosted is free (you pay in time and server). Cloud starts around $20/month. At 10k+ task volumes it crushes Zapier on price.
-- **AI workflow builder**: one-time $99 for ours ([AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder)) + cents per run in LLM API costs. The [Everything Bundle](https://slashmaster6.gumroad.com/l/everything-bundle) covers the full stack if you want both layers in one purchase.
+- **AI workflow builder**: one-time $99 for ours ([AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder)) + cents per run in LLM API costs. The [AI Developer Stack Bundle](https://slashmaster6.gumroad.com/l/ai-dev-stack) covers orchestration, shipping and hosting if you want the wider stack in one purchase.
 
 Don't choose by headline price — choose by where your *pain* is: integration glue, AI judgment, or both.
 

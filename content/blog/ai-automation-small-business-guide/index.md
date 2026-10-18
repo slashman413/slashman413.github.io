@@ -129,6 +129,6 @@ Keep a one-page scorecard. Two workflows that each save 3 hours a week and hold 
 
 ## Next steps
 
-- Start with the [AI Workflow Builder ($99)](https://slashmaster6.gumroad.com/l/ai-workflow-builder) — one-time purchase, includes the free sample workflow — or cover everything with the [Everything Bundle ($199)](https://slashmaster6.gumroad.com/l/everything-bundle).
+- Start with the [AI Workflow Builder ($99)](https://slashmaster6.gumroad.com/l/ai-workflow-builder) — one-time purchase, includes the free sample workflow — or cover orchestration, shipping and hosting with the [AI Developer Stack Bundle ($79)](https://slashmaster6.gumroad.com/l/ai-dev-stack).
 - Read the [ultimate AI automation guide](/blog/ultimate-ai-automation-guide-2026/) for the bigger picture, and [solopreneur automation](/blog/solopreneur-ai-automation-2026-guide/) for the one-person perspective.
 - Need the specific tools ranked? See [best AI tools for small business in 2026](/blog/best-ai-tools-small-business-2026/).

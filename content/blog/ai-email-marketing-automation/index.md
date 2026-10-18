@@ -101,5 +101,5 @@ A solo founder can run the entire pipeline for under $10/month. The [Ship With A
 ## Next steps
 
 - Set up capture + the 3-day drip this week — the architecture is in our [marketing automation guide](/blog/ai-marketing-automation-workflow-2026/).
-- Use the [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder) for the personalization layer, or cover the whole stack with the [Everything Bundle](https://slashmaster6.gumroad.com/l/everything-bundle).
+- Use the [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder) for the personalization layer, or cover the wider stack with the [AI Developer Stack Bundle](https://slashmaster6.gumroad.com/l/ai-dev-stack).
 - See the full journey in [the 4-hour automated business pipeline](/blog/automated-ai-business-pipeline-4-hours-mgtpcn/).

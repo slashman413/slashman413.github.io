@@ -66,12 +66,6 @@ Feishu, on the other hand, approaches productivity as a unified suite of communi
 - **Choose Notion** if you are a solopreneur, a small creative agency, or a team whose primary need is a beautifully structured knowledge base and asynchronous project management.
 - **Choose Feishu** if you have a fast-moving, highly collaborative team that needs real-time chat, video, and documents living in the exact same ecosystem without context switching.
 
-## Supercharge Your Workspace
-
-If you decide that Feishu's integrated approach is the winner for your team, don't start from an empty workspace. We have packaged our exact operational setups into ready-to-use templates.
-
-[**Get Our Premium Feishu Templates**](https://slashmaster6.gumroad.com/l/feishu-templates?utm_source=blog&utm_medium=article&utm_campaign=feishu-vs-notion-comparison-2026) - $49 to instantly install the project management, OKR tracking, and wiki structures we use to run a highly efficient digital business.
-
 ---
 
 ## Related Articles
