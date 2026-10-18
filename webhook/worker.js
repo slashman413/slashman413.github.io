@@ -97,10 +97,17 @@ export default {
       }
       const days = Math.min(parseInt(url.searchParams.get("days") || "30", 10) || 30, 90);
       const cutoff = new Date(Date.now() - days * 86400000).toISOString().slice(0, 10);
-      const list = await env.LEADS.list({ prefix: `hit:${site}:`, limit: 1000 });
+      // Follow the cursor: one list() page caps at 1000 keys (site × event × day).
+      const hitKeys = [];
+      let cursor;
+      do {
+        const page = await env.LEADS.list({ prefix: `hit:${site}:`, limit: 1000, ...(cursor ? { cursor } : {}) });
+        hitKeys.push(...page.keys);
+        cursor = page.listComplete ? undefined : page.cursor;
+      } while (cursor);
       const rows = [];
       const totals = {};
-      const allKeys = list.keys.filter((k) => {
+      const allKeys = hitKeys.filter((k) => {
         const [, , , day] = k.name.split(":");
         return day >= cutoff;
       });

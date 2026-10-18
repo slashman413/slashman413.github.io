@@ -1,12 +1,12 @@
 ---
 title: "Privacy Policy"
-description: "Privacy Policy for the free online tools at slashmantools.us — how we handle cookies, advertising (Google AdSense), analytics and affiliate links."
+description: "Privacy Policy for slashmantools.us — cookies, advertising (Google AdSense), analytics, affiliate links, and the personal data handled by our email sign-up forms."
 date: 2026-07-01
-lastmod: 2026-07-20
+lastmod: 2026-10-18
 ---
 <nav><a href="/">Home</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></nav>
 
-<p class="muted">Last updated: 2026-06-28</p>
+<p class="muted">Last updated: 2026-10-18</p>
 
 <p>This site (<a href="https://slashmantools.us/">slashmantools.us</a>, "intelligent agents", "we", "us")
 is a collection of free, browser-based online tools, calculators and data dashboards. This Privacy Policy
@@ -55,17 +55,41 @@ commission at <strong>no extra cost to you</strong>. This does not influence the
 Amazon (affiliate links), an anonymous view-counter, and image-generation/QR services for specific tools.
 Your interaction with those services is governed by their own privacy policies.</p>
 
-<h2>7. Children's Privacy</h2>
+<h2>7. Email Sign-Up and Visitor Tracking</h2>
+<p>Unlike the tools, the optional email sign-up forms (newsletter, free downloads) do collect personal data.</p>
+<ul>
+  <li><strong>What we collect:</strong> the email address (and first name, if you give one) you submit, the
+      page and campaign you signed up from (UTM tags, referrer), and technical details of the request: your
+      IP address, approximate country, and browser user agent. Pages also load a tracking script from our
+      Mautic server that sets a cookie and records the pages you visit on this site, so visits can be linked
+      to your sign-up.</li>
+  <li><strong>Why:</strong> to send you what you asked for (the download or newsletter), to block spam
+      sign-ups (we rate-limit by IP address), and to understand which pages and campaigns lead to sign-ups.
+      We do not sell your data.</li>
+  <li><strong>Who processes it:</strong> Cloudflare (the sign-up endpoint runs as a Cloudflare Worker and
+      stores sign-ups in Cloudflare Workers KV); our self-hosted Mautic marketing server
+      (leads.slashmantools.us), which receives your sign-up details including your IP address; and, when it
+      is used to deliver a download, the email provider Resend.</li>
+  <li><strong>How long we keep it:</strong> sign-up records are kept until you unsubscribe or ask us to
+      delete them. Anti-spam rate-limit records expire after 10 minutes. The site's page-view counters are
+      aggregate daily totals with no IP address or cookie.</li>
+  <li><strong>Unsubscribe or delete:</strong> use the unsubscribe link in any email we send, or email
+      <a href="mailto:slashman413@gmail.com">slashman413@gmail.com</a> to unsubscribe, see what we hold, or
+      have your record deleted from Cloudflare and Mautic. We act on requests within 30 days. To stop the
+      tracking cookie, block or delete cookies for leads.slashmantools.us in your browser.</li>
+</ul>
+
+<h2>8. Children's Privacy</h2>
 <p>The site is not directed to children under 13 and we do not knowingly collect personal data from them.</p>
 
-<h2>8. Your Choices</h2>
+<h2>9. Your Choices</h2>
 <p>You can disable cookies in your browser, opt out of personalized ads via the links in Section 4, and
-use browser privacy/ad-control tools. The tools remain usable without providing any personal data.</p>
+use browser privacy/ad-control tools. The tools remain usable without providing any personal data; signing up for email is optional (see Section 7).</p>
 
-<h2>9. Changes</h2>
+<h2>10. Changes</h2>
 <p>We may update this policy; the "Last updated" date above reflects the latest revision.</p>
 
-<h2>10. Contact</h2>
+<h2>11. Contact</h2>
 <p>Questions about this policy: <a href="mailto:slashman413@gmail.com">slashman413@gmail.com</a></p>
 
 <p class="muted"><a href="/">Home</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/terms/">Terms of Service</a></p>
