@@ -1,6 +1,7 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 {{ with .Content }}<div class="dateline"></div>{{ . }}{{ end }}
+{{ partial "free-sample-cta.html" . }}
 <ul class="postlist">
   {{ range .Pages.ByDate.Reverse }}
   <li><a class="card" href="{{ .RelPermalink }}">
