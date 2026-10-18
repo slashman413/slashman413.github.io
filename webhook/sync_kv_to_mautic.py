@@ -276,6 +276,14 @@ def main():
         print("!! MAUTIC_API_USER / MAUTIC_API_PASSWORD not set.", file=sys.stderr)
         sys.exit(1)
 
+    try:
+        import fcntl
+        lock_fd = open("/tmp/sync_kv_to_mautic.lock", "w")
+        fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except (BlockingIOError, OSError):
+        print("  .. Another sync_kv_to_mautic instance is already running; skipping.")
+        return
+
     mautic = MauticAPI(mautic_base, mautic_user, mautic_pass)
     state = load_state(STATE_FILE)
 

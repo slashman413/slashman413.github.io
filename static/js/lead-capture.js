@@ -20,15 +20,14 @@
 (function () {
   "use strict";
 
-  // STOP-GAP endpoint: web3forms (client-side, HTTPS, public). The old default
-  // http://100.80.243.33:8081/subscribe was a Tailscale-private IP → unreachable
-  // from the public web, mixed-content-blocked on HTTPS, and 404 on Mautic.
-  var DEFAULT_ENDPOINT = "https://api.web3forms.com/submit";
+  // Production endpoint: self-owned Cloudflare Worker (api.slashmantools.us/subscribe).
+  // Worker handles KV deduplication, rate-limiting, honeypots, and feeds Mautic.
+  var DEFAULT_ENDPOINT = "https://api.slashmantools.us/subscribe";
 
   function endpointFor(form) {
     if (window.LEAD_ENDPOINT) return window.LEAD_ENDPOINT;
     var action = form.getAttribute("action") || "";
-    if (/^https?:\/\//.test(action) && !/form\.kit|YOUR_FORM/.test(action)) {
+    if (/^https?:\/\//.test(action) && !/form\.kit|YOUR_FORM|web3forms/.test(action)) {
       return action;
     }
     return DEFAULT_ENDPOINT;
@@ -253,18 +252,16 @@
       if (utm[k]) body[k] = utm[k];
     });
     // Providers that require an access key + email metadata (e.g. web3forms).
-    // window.LEAD_ACCESS_KEY is injected from Hugo params (see head.html). When
-    // the endpoint flips back to the self-owned Worker / Mautic proxy, just drop
-    // the key param and these extra fields are ignored.
+    var endpoint = endpointFor(form);
     var accessKey = window.LEAD_ACCESS_KEY || fd.get("access_key") || "";
-    if (accessKey) {
+    if (accessKey && /web3forms\.com/.test(endpoint)) {
       body.access_key = accessKey;
       body.subject = "New slashmantools lead — " + source;
       body.from_name = "slashmantools.us";
       body.botcheck = ""; // web3forms honeypot (empty = human)
     }
 
-    fetch(endpointFor(form), {
+    fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
