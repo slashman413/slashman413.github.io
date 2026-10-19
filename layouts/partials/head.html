@@ -1,6 +1,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Theme: applied before paint so every view (not just the nav bar) renders in the
+     chosen theme with no flash. Same localStorage key the unified nav writes. -->
+<script>(function(){try{var t=localStorage.getItem('slashtools_theme');if(t!=='light'&&t!=='dark')t='dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 {{ $noindex := or (eq .Section "news") .Params.noindex }}
 {{ partial "meta.html" . }}
 {{/* hreflang is emitted inside meta.html — do not duplicate it here */}}
@@ -71,5 +74,26 @@ pre{background:#0d0d16;border:1px solid var(--border);border-radius:10px;padding
   .navbar label{cursor:pointer;color:var(--accent);font-size:22px}
   .content{padding:26px 18px}
 }
+/* ---------------------------------------------------------------------------
+   Light theme — opt-in via <html data-theme="light"> (set by unified-nav.js /
+   the pre-paint script above). The nav bar already themed via unified-nav.css;
+   this makes the *rest of every view* (sidebar, content, cards, footer, mobile
+   bar) switch with it, so the whole page shares one theme instead of only the
+   top bar changing. Attribute selectors out-specify the dark base rules above.
+   ------------------------------------------------------------------------- */
+[data-theme="light"]{--bg:#f6f7fb;--panel:#ffffff;--text:#1c1f2b;--muted:#5a5f75;--accent:#4f46e5;--border:rgba(15,17,32,.12)}
+[data-theme="light"] .brand{color:#171a24}
+[data-theme="light"] .nav a{color:#33374a}
+[data-theme="light"] .nav a.active{color:#171a24}
+[data-theme="light"] h1{color:#171a24}
+[data-theme="light"] h2,[data-theme="light"] h3{color:#23263a}
+[data-theme="light"] th{background:rgba(15,17,32,.04);color:#23263a}
+[data-theme="light"] code{background:rgba(15,17,32,.06)}
+[data-theme="light"] pre{background:#eef0f7}
+[data-theme="light"] .card{background:#ffffff}
+[data-theme="light"] .card:hover{background:rgba(99,102,241,.08)}
+[data-theme="light"] .card .t{color:#23263a}
+[data-theme="light"] .card .m,[data-theme="light"] .side-foot{color:#8a8fa8}
+[data-theme="light"] .footer a{color:#4f46e5}
 </style>
 </head>

@@ -2,53 +2,47 @@
    Slashman Tools — Unified Cross-Tool Navigation Bar
    ============================================================================
    File    : unified-nav.css
-   Version : 1.1.0 (2026-08-03: Guides dropdown styles)
-   Author  : ArchitectUX (@slashman413 design division)
+   Version : 2.0.0 (2026-08-13: Vercel-style monochrome, English-only, self-contained)
+   Author  : @slashman413 design division
 
    Drop-in nav styles. Every rule is scoped under .sn-nav / .sn-* so it can be
    injected into ANY tool page without clashing with the page's own styles.
-   Depends on the tokens from design-system.css (--sn-*); if you do NOT load
-   design-system.css, the nav still works because this file re-declares the
-   few tokens the nav actually needs at the top (marked "nav-local").
+   Self-contained: re-declares its own tokens (--sn-*), so it does not depend on
+   design-system.css. Pair with unified-nav.js.
 
-   Pair with unified-nav.js which renders the <nav> from a config object.
+   Aesthetic: near-monochrome, high-contrast, tight geometry — a calm, product-
+   grade top bar. No gradients, no emoji, no color accents fighting for attention.
    ========================================================================== */
 
-/* --- nav-local token fallbacks (used only if design-system.css is absent) --- */
+/* --- Tokens (self-contained; dark is the default theme) --- */
 :root {
-  --sn-primary: #6366f1;
-  --sn-primary-400: #818cf8;
-  --sn-accent: #a5b4fc;
-  --sn-bg: #0a0a0f;
-  --sn-surface: #101018;
-  --sn-surface-2: #16161f;
-  --sn-surface-3: #1d1d29;
-  --sn-border: rgba(255, 255, 255, 0.08);
-  --sn-border-strong: rgba(255, 255, 255, 0.14);
-  --sn-text: #e8e8f0;
-  --sn-text-2: #c7c7f0;
-  --sn-text-muted: #7878a0;
-  --sn-text-faint: #55557a;
-  --sn-nav-height: 60px;
-  --sn-transition: 0.18s ease;
-  --sn-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
-                  "Noto Sans TC", "Noto Sans SC", "PingFang TC", "PingFang SC",
-                  "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
+  --sn-bg: #000000;
+  --sn-fg: #ededed;            /* primary text */
+  --sn-fg-muted: #a1a1a1;      /* secondary text / inactive links */
+  --sn-fg-faint: #7a7a7a;
+  --sn-surface: #0a0a0a;       /* the bar itself */
+  --sn-surface-2: #141414;     /* hover / control fills */
+  --sn-border: rgba(255, 255, 255, 0.10);
+  --sn-border-strong: rgba(255, 255, 255, 0.16);
+  --sn-hover: rgba(255, 255, 255, 0.06);
+  --sn-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+  --sn-nav-height: 64px;
+  --sn-radius: 8px;
+  --sn-transition: 0.15s ease;
+  --sn-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                  "Noto Sans", Helvetica, Arial, sans-serif;
 }
 [data-theme="light"] {
-  --sn-primary: #6366f1;
-  --sn-primary-400: #818cf8;
-  --sn-accent: #4f46e5;
-  --sn-bg: #f6f7fb;
+  --sn-bg: #ffffff;
+  --sn-fg: #171717;
+  --sn-fg-muted: #656565;
+  --sn-fg-faint: #8f8f8f;
   --sn-surface: #ffffff;
-  --sn-surface-2: #f0f1f7;
-  --sn-surface-3: #e6e8f2;
-  --sn-border: rgba(15, 17, 32, 0.10);
-  --sn-border-strong: rgba(15, 17, 32, 0.18);
-  --sn-text: #171a24;
-  --sn-text-2: #23263a;
-  --sn-text-muted: #5a5f75;
-  --sn-text-faint: #8a8fa8;
+  --sn-surface-2: #f4f4f4;
+  --sn-border: rgba(0, 0, 0, 0.09);
+  --sn-border-strong: rgba(0, 0, 0, 0.15);
+  --sn-hover: rgba(0, 0, 0, 0.05);
+  --sn-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
 /* --- The bar --- */
@@ -56,211 +50,188 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: color-mix(in srgb, var(--sn-surface) 88%, transparent);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--sn-surface) 80%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid var(--sn-border);
   font-family: var(--sn-font-sans);
+  -webkit-font-smoothing: antialiased;
 }
-/* Fallback when color-mix() is unsupported (older browsers) */
 @supports not (background: color-mix(in srgb, red 50%, transparent)) {
   .sn-nav { background: var(--sn-surface); }
 }
 
 .sn-nav-inner {
-  max-width: var(--sn-container-xl, 1280px);
+  max-width: 1200px;
   margin: 0 auto;
   height: var(--sn-nav-height);
-  padding: 0 var(--sn-space-4, 16px);
+  padding: 0 24px;
   display: flex;
   align-items: center;
-  gap: var(--sn-space-4, 16px);
+  gap: 16px;
 }
 
 /* --- Brand --- */
 .sn-brand {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 17px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  color: var(--sn-text);
+  gap: 9px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.017em;
+  color: var(--sn-fg);
   text-decoration: none;
   white-space: nowrap;
 }
-.sn-brand:hover { text-decoration: none; color: var(--sn-text); }
+.sn-brand:hover { text-decoration: none; color: var(--sn-fg); }
 .sn-brand__logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  background: var(--sn-brand-gradient, linear-gradient(135deg, #a5b4fc, #f0abfc, #67e8f9));
-  font-size: 16px;
+  color: var(--sn-fg);
   flex: 0 0 auto;
 }
-.sn-brand__text { background: var(--sn-brand-gradient, linear-gradient(135deg, #a5b4fc, #f0abfc, #67e8f9)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.sn-brand__logo svg { display: block; }
+
+/* Divider between brand and links (subtle, Vercel-ish) */
+.sn-links::before {
+  content: "";
+  align-self: stretch;
+  width: 1px;
+  margin: 18px 4px 18px 6px;
+  background: var(--sn-border);
+}
 
 /* --- Desktop links --- */
 .sn-links {
   display: flex;
   align-items: center;
   gap: 2px;
-  margin-left: var(--sn-space-2, 8px);
   flex: 1;
   min-width: 0;
 }
 .sn-link {
   display: inline-flex;
   align-items: center;
-  padding: 8px 13px;
-  border-radius: 9px;
-  font-size: 14.5px;
-  font-weight: 600;
-  color: var(--sn-text-2);
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--sn-fg-muted);
   text-decoration: none;
   white-space: nowrap;
   transition: background-color var(--sn-transition), color var(--sn-transition);
 }
-.sn-link:hover { background: rgba(99, 102, 241, 0.12); color: var(--sn-text); text-decoration: none; }
-.sn-link.sn-active {
-  background: rgba(99, 102, 241, 0.18);
-  color: var(--sn-accent);
-  box-shadow: inset 0 -2px 0 var(--sn-primary);
-}
+.sn-link:hover { background: var(--sn-hover); color: var(--sn-fg); text-decoration: none; }
+.sn-link.sn-active { color: var(--sn-fg); font-weight: 600; }
 
 /* --- Guides dropdown (items with `children`) --- */
 .sn-dd-wrap { position: relative; }
 .sn-dd-wrap > .sn-link::after {
-  content: "▾";
-  margin-left: 5px;
-  font-size: 10.5px;
-  opacity: 0.65;
+  content: "";
+  width: 6px; height: 6px;
+  margin-left: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-1px) rotate(45deg);
+  opacity: 0.55;
+  transition: transform var(--sn-transition);
 }
+.sn-dd-wrap:hover > .sn-link::after { transform: translateY(1px) rotate(45deg); }
 .sn-dd {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  padding-top: 8px;            /* hover bridge — keeps the menu open while moving the mouse */
+  padding-top: 8px;            /* hover bridge */
   z-index: 1001;
 }
 .sn-dd-inner {
-  min-width: 224px;
+  min-width: 220px;
   background: var(--sn-surface);
   border: 1px solid var(--sn-border-strong);
   border-radius: 12px;
   padding: 6px;
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--sn-shadow);
 }
 .sn-dd-wrap:hover .sn-dd,
 .sn-dd-wrap:focus-within .sn-dd { display: block; }
 .sn-dd .sn-link {
   display: block;
-  padding: 9px 12px;
-  border-radius: 8px;
+  padding: 9px 10px;
+  border-radius: 7px;
   white-space: nowrap;
-  font-size: 14px;
+  font-size: 13.5px;
 }
-.sn-dd .sn-link:hover { background: rgba(99, 102, 241, 0.12); }
-.sn-dd .sn-link.sn-active {
-  background: rgba(99, 102, 241, 0.18);
-  color: var(--sn-accent);
-  box-shadow: none;
-}
-[data-theme="light"] .sn-dd-inner { box-shadow: 0 14px 36px rgba(15, 17, 32, 0.18); }
+.sn-dd .sn-link:hover { background: var(--sn-hover); }
+.sn-dd .sn-link.sn-active { color: var(--sn-fg); background: var(--sn-hover); }
 
 /* --- Right-side actions --- */
 .sn-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   flex: 0 0 auto;
 }
 
-/* Language switcher */
-.sn-lang {
-  display: inline-flex;
-  align-items: center;
-  background: var(--sn-surface-2);
-  border: 1px solid var(--sn-border-strong);
-  border-radius: var(--sn-radius-full, 999px);
-  padding: 3px;
-}
-.sn-lang-btn {
-  border: none;
-  background: transparent;
-  color: var(--sn-text-faint);
-  font-family: inherit;
-  font-size: 12.5px;
-  font-weight: 700;
-  line-height: 1;
-  padding: 6px 9px;
-  border-radius: var(--sn-radius-full, 999px);
-  cursor: pointer;
-  transition: background-color var(--sn-transition), color var(--sn-transition);
-}
-.sn-lang-btn:hover { color: var(--sn-text); }
-.sn-lang-btn[aria-pressed="true"] {
-  background: var(--sn-primary);
-  color: #fff;
-}
-
-/* Theme toggle (cycles dark → light → system) */
+/* Theme toggle (dark <-> light) */
 .sn-theme {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--sn-border-strong);
-  border-radius: var(--sn-radius-full, 999px);
-  background: var(--sn-surface-2);
-  color: var(--sn-text-2);
-  font-size: 15px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--sn-border);
+  border-radius: var(--sn-radius);
+  background: transparent;
+  color: var(--sn-fg-muted);
   cursor: pointer;
-  transition: background-color var(--sn-transition), border-color var(--sn-transition);
+  transition: background-color var(--sn-transition), color var(--sn-transition), border-color var(--sn-transition);
 }
-.sn-theme:hover { background: var(--sn-surface-3); border-color: var(--sn-primary-400); }
-.sn-theme:focus-visible, .sn-lang-btn:focus-visible, .sn-burger:focus-visible {
-  outline: 2px solid var(--sn-primary-400);
+.sn-theme:hover { background: var(--sn-surface-2); color: var(--sn-fg); border-color: var(--sn-border-strong); }
+.sn-theme svg { display: block; }
+
+.sn-theme:focus-visible,
+.sn-support:focus-visible,
+.sn-burger:focus-visible,
+.sn-link:focus-visible {
+  outline: 2px solid var(--sn-fg);
   outline-offset: 2px;
 }
 
-/* Ko-fi support button */
-.sn-kofi {
+/* Support link — Vercel-style primary button (inverted foreground) */
+.sn-support {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: var(--sn-radius-full, 999px);
-  background: var(--sn-brand-gradient, linear-gradient(135deg, #a5b4fc, #f0abfc, #67e8f9));
-  color: #0a0a0f;
-  font-size: 13px;
-  font-weight: 800;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: var(--sn-radius);
+  background: var(--sn-fg);
+  color: var(--sn-bg);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
   text-decoration: none;
   white-space: nowrap;
-  transition: filter var(--sn-transition), transform var(--sn-transition);
+  transition: opacity var(--sn-transition);
 }
-.sn-kofi:hover { filter: brightness(1.1); transform: translateY(-1px); text-decoration: none; color: #0a0a0f; }
+.sn-support:hover { opacity: 0.85; text-decoration: none; color: var(--sn-bg); }
 
 /* Hamburger (mobile only) */
 .sn-burger {
   display: none;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border: 1px solid var(--sn-border-strong);
-  border-radius: 9px;
-  background: var(--sn-surface-2);
-  color: var(--sn-text);
-  font-size: 19px;
-  line-height: 1;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--sn-border);
+  border-radius: var(--sn-radius);
+  background: transparent;
+  color: var(--sn-fg);
   cursor: pointer;
 }
+.sn-burger svg { display: block; }
 
 /* --- Mobile slide-down panel --- */
 .sn-panel {
@@ -268,11 +239,18 @@
   flex-direction: column;
   border-top: 1px solid var(--sn-border);
   background: var(--sn-surface);
-  padding: var(--sn-space-2, 8px) var(--sn-space-4, 16px) var(--sn-space-4, 16px);
+  padding: 8px 16px 16px;
 }
 .sn-nav[data-open="true"] .sn-panel { display: flex; }
-.sn-panel .sn-link { padding: 12px 10px; font-size: 15px; border-bottom: 1px solid var(--sn-border); border-radius: 8px; }
-.sn-panel .sn-link:last-of-type { border-bottom: none; }
+.sn-panel .sn-link {
+  padding: 12px 10px;
+  font-size: 15px;
+  border-bottom: 1px solid var(--sn-border);
+  border-radius: 0;
+}
+.sn-panel .sn-link:hover { background: var(--sn-hover); }
+.sn-panel > .sn-link:last-of-type,
+.sn-panel .sn-dd-wrap:last-of-type .sn-link:last-child { border-bottom: none; }
 /* mobile panel: dropdown children inline, indented under the parent */
 .sn-panel .sn-dd { display: block; position: static; padding-top: 0; }
 .sn-panel .sn-dd-inner {
@@ -288,31 +266,23 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 12px;
-  flex-wrap: wrap;
+  margin-top: 14px;
 }
-.sn-panel .sn-kofi { flex: 1; justify-content: center; }
+.sn-panel .sn-support { flex: 1; justify-content: center; height: 40px; }
 
 /* --- Responsive --- */
 @media (max-width: 900px) {
+  .sn-nav-inner { padding: 0 16px; }
   .sn-links { display: none; }
   .sn-burger { display: inline-flex; }
-  .sn-lang .sn-lang-btn { padding: 6px 8px; font-size: 12px; }
 }
 
 @media (max-width: 480px) {
-  .sn-brand__text { display: none; }        /* icon-only brand on tiny screens */
-  .sn-kofi span { display: none; }          /* ☕ only */
-  .sn-kofi { padding: 8px 11px; }
-  .sn-lang { padding: 2px; }
-  .sn-lang-btn { padding: 5px 7px; }
+  .sn-support { display: none; }             /* keep the top bar to brand + theme + menu */
+  .sn-panel .sn-support { display: inline-flex; }
 }
 
 /* --- Reduced motion --- */
 @media (prefers-reduced-motion: reduce) {
-  .sn-nav, .sn-panel { transition: none; }
+  .sn-nav, .sn-panel, .sn-link, .sn-theme, .sn-support, .sn-dd-wrap > .sn-link::after { transition: none; }
 }
-
-/* --- Light-theme adjustments that need a touch more contrast --- */
-[data-theme="light"] .sn-kofi { color: #171a24; }
-[data-theme="light"] .sn-kofi:hover { color: #171a24; }
