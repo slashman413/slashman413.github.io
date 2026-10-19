@@ -23,7 +23,10 @@ FEEDS = [
     "https://hnrss.org/frontpage",
 ]
 UA = {"User-Agent": "Mozilla/5.0 (IntellectualGuides news bot)"}
-DEEPSEEK_BASE = "https://api.deepseek.com/chat/completions"
+# 2026-10-15: endpoint is overridable so local cron jobs can fail over to an
+# OpenAI-compatible server (the DGX SGLang endpoint) when DeepSeek is down.
+# Default keeps existing behaviour.
+DEEPSEEK_BASE = os.environ.get("DEEPSEEK_BASE") or "https://api.deepseek.com/chat/completions"
 DEFAULT_MODEL = "deepseek-v4-flash"
 
 
@@ -110,7 +113,11 @@ def deepseek(prompt, key, retries=3):
     for attempt in range(1, retries + 1):
         req = urllib.request.Request(DEEPSEEK_BASE, data=body, headers=headers)
         try:
-            with urllib.request.urlopen(req, timeout=180) as r:
+            # 2026-10-15: per-request timeout is overridable via DEEPSEEK_TIMEOUT.
+            # Local SGLang (qwen3.8-27b) needs ~200-400s for a full article, so
+            # the old hardcoded 180s cut local generations off mid-stream.
+            req_timeout = int(os.environ.get("DEEPSEEK_TIMEOUT", "180"))
+            with urllib.request.urlopen(req, timeout=req_timeout) as r:
                 d = json.loads(r.read())
         except urllib.error.HTTPError as e:
             detail = e.read().decode("utf-8", "replace")[:800]
