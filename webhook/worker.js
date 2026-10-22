@@ -20,6 +20,7 @@
  *   GET  /leads       → export leads KV   (requires ?token=MAUTIC_FORWARD_TOKEN)
  *   GET  /hit         → no-cookie counter pixel (?s=<site>&e=<event>), 1x1 GIF
  *   GET  /stats       → daily counter totals   (?s=<site>&days=<n>)
+ *   POST /cleanup     → admin: delete test lead keys (?token=MAUTIC_FORWARD_TOKEN, body {"emails":[...]})
  *
  * See ./README.md for the full deploy + configuration guide.
  */
@@ -172,6 +173,50 @@ export default {
       filtered.sort((a, b) => (b.created_at || "").localeCompare(a.created_at || ""));
       const limit = Math.min(parseInt(url.searchParams.get("limit") || "100", 10), 500);
       return json({ ok: true, total: filtered.length, leads: filtered.slice(0, limit) }, 200, origin);
+    }
+
+    // --- POST /cleanup — admin: delete test lead keys (token-guarded) ----
+    // The KV key-level REST API is not routable from outside, so admin
+    // deletion goes through the Worker itself (its LEADS binding works).
+    // Body: { "emails": [...] }  Auth: ?token=MAUTIC_FORWARD_TOKEN.
+    // Deletes only lead:* keys for the given emails; never rl:* or hit:*.
+    if (url.pathname === "/cleanup") {
+      if (request.method !== "POST") {
+        return json({ ok: false, error: "method_not_allowed" }, 405, origin);
+      }
+      const token = url.searchParams.get("token") || "";
+      if (!env.MAUTIC_FORWARD_TOKEN || token !== env.MAUTIC_FORWARD_TOKEN) {
+        return json({ ok: false, error: "unauthorized" }, 401, origin);
+      }
+      if (!env.LEADS) {
+        return json({ ok: false, error: "kv_not_configured" }, 503, origin);
+      }
+      let body;
+      try { body = await request.json(); } catch {
+        return json({ ok: false, error: "bad_request" }, 400, origin);
+      }
+      const emails = Array.isArray(body.emails) ? body.emails : [];
+      const results = [];
+      for (const email of emails.slice(0, 500)) {
+        const key = `lead:${String(email).trim().toLowerCase()}`;
+        try {
+          const existed = await env.LEADS.get(key);
+          if (existed !== null) {
+            await env.LEADS.delete(key);
+            results.push({ email, deleted: true });
+          } else {
+            results.push({ email, deleted: false });
+          }
+        } catch (e) {
+          results.push({ email, deleted: false, error: String(e) });
+        }
+      }
+      return json({
+        ok: true,
+        requested: emails.length,
+        deleted: results.filter(r => r.deleted).length,
+        results,
+      }, 200, origin);
     }
 
     if (url.pathname !== "/subscribe") {
