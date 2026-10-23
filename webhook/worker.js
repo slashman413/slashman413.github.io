@@ -21,6 +21,7 @@
  *   GET  /hit         → no-cookie counter pixel (?s=<site>&e=<event>), 1x1 GIF
  *   GET  /stats       → daily counter totals   (?s=<site>&days=<n>)
  *   POST /cleanup     → admin: delete test lead keys (Authorization: Bearer ADMIN_TOKEN, body {"emails":[...]})
+ *   POST /license/line-chat-pro → verify a Gumroad license key, return a signed PRO token
  *
  * See ./README.md for the full deploy + configuration guide.
  */
@@ -31,6 +32,7 @@ const JSON_HEADERS = { "content-type": "application/json; charset=utf-8" };
 const ALLOWED_ORIGINS = [
   "https://slashmantools.us",
   "https://slashman413.github.io",
+  "https://ckw19810413.github.io",
   "http://localhost:1313", // hugo server
   "http://127.0.0.1:1313",
 ];
@@ -38,6 +40,12 @@ const ALLOWED_ORIGINS = [
 // Max lead submissions per IP per rolling window (defense against form spam).
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_SECONDS = 60 * 10; // 10 minutes
+
+// /license/line-chat-pro: verification attempts per IP per window, and how
+// many times a Single Pass key may be activated (1 + one retry).
+const LICENSE_RATE_LIMIT_MAX = 20;
+const SINGLE_PASS_MAX_USES = 2;
+const DAY_SECONDS = 60 * 60 * 24;
 
 // Cookieless counter (/hit, /stats): site + event names are a closed charset so
 // arbitrary callers can't flood KV with junk keys; daily rows expire after 400d.
@@ -215,6 +223,43 @@ export default {
         deleted: results.filter(r => r.deleted).length,
         results,
       }, 200, origin);
+    }
+
+    // --- /license/line-chat-pro — LINE Chat Generator PRO activation -------
+    // The browser sends the Gumroad license key; we verify it against the
+    // Gumroad product and return a token signed with LICENSE_SIGNING_JWK
+    // (ECDSA P-256). The app checks the signature with the embedded public
+    // key, so PRO state can't be granted by editing localStorage.
+    if (url.pathname === "/license/line-chat-pro") {
+      if (request.method !== "POST") {
+        return json({ ok: false, error: "method_not_allowed" }, 405, origin);
+      }
+      if (!env.LICENSE_SIGNING_JWK || !env.LINE_CHAT_PRO_PRODUCT_ID) {
+        return json({ ok: false, error: "not_configured" }, 503, origin);
+      }
+      const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+      if (env.LEADS) {
+        const rlKey = `rl:lic:${ip}`;
+        const count = parseInt((await env.LEADS.get(rlKey)) || "0", 10);
+        if (count >= LICENSE_RATE_LIMIT_MAX) {
+          return json({ ok: false, error: "rate_limited" }, 429, origin);
+        }
+        ctx.waitUntil(
+          env.LEADS.put(rlKey, String(count + 1), { expirationTtl: RATE_LIMIT_WINDOW_SECONDS })
+        );
+      }
+      let body;
+      try {
+        body = await parseBody(request);
+      } catch {
+        return json({ ok: false, error: "invalid_body" }, 400, origin);
+      }
+      const key = String(body?.license_key || "").trim();
+      if (!/^[A-Za-z0-9-]{8,64}$/.test(key)) {
+        return json({ ok: false, error: "invalid_key" }, 400, origin);
+      }
+      const result = await verifyLineChatProKey(env, key);
+      return json(result.body, result.status, origin);
     }
 
     if (url.pathname !== "/subscribe") {
@@ -446,6 +491,69 @@ async function isAdmin(request, env) {
     crypto.subtle.digest("SHA-256", enc.encode(env.ADMIN_TOKEN)),
   ]);
   return crypto.subtle.timingSafeEqual(a, b);
+}
+
+/**
+ * Check a key with Gumroad and map the purchase to a PRO plan:
+ *   Single Pass → one export (key accepted at most SINGLE_PASS_MAX_USES times)
+ *   30-Day Pass → unlimited until 30 days after purchase
+ *   Lifetime    → unlimited; the token lasts 30 days and the app re-verifies
+ */
+async function verifyLineChatProKey(env, key) {
+  const res = await fetch("https://api.gumroad.com/v2/licenses/verify", {
+    method: "POST",
+    body: new URLSearchParams({
+      product_id: env.LINE_CHAT_PRO_PRODUCT_ID,
+      license_key: key,
+      increment_uses_count: "true",
+    }),
+  });
+  const data = await res.json().catch(() => null);
+  if (!data?.success || !data.purchase) {
+    return { status: res.status === 404 ? 404 : 502, body: { ok: false, error: res.status === 404 ? "unknown_key" : "gumroad_error" } };
+  }
+  const p = data.purchase;
+  if (p.refunded || p.chargebacked || p.disputed) {
+    return { status: 403, body: { ok: false, error: "purchase_revoked" } };
+  }
+  // `variants` is {"方案 Plan": "Lifetime"} on current Gumroad, "(Lifetime)" on older payloads.
+  const v = p.variants;
+  const variant = (v && typeof v === "object" ? Object.values(v).join(" ") : String(v || "")).toLowerCase();
+  const plan = variant.includes("lifetime") ? "lifetime"
+    : variant.includes("30-day") ? "monthly"
+    : "single_pass";
+  const now = Math.floor(Date.now() / 1000);
+  let exp = now + 30 * DAY_SECONDS;
+  if (plan === "monthly") {
+    exp = Math.floor(Date.parse(p.sale_timestamp) / 1000) + 30 * DAY_SECONDS;
+    if (!(exp > now)) return { status: 403, body: { ok: false, error: "expired" } };
+  } else if (plan === "single_pass") {
+    if ((data.uses || 0) > SINGLE_PASS_MAX_USES) {
+      return { status: 403, body: { ok: false, error: "single_pass_used" } };
+    }
+    exp = now + DAY_SECONDS;
+  }
+  const payload = { v: 1, plan, key: key.slice(-4), iat: now, exp };
+  return { status: 200, body: { ok: true, plan, exp, token: await signToken(env, payload) } };
+}
+
+/** `<base64url(payload JSON)>.<base64url(ECDSA P-256/SHA-256 signature)>` */
+async function signToken(env, payload) {
+  const jwk = JSON.parse(env.LICENSE_SIGNING_JWK);
+  const privKey = await crypto.subtle.importKey(
+    "jwk", jwk, { name: "ECDSA", namedCurve: "P-256" }, false, ["sign"]
+  );
+  const body = b64url(new TextEncoder().encode(JSON.stringify(payload)));
+  const sig = await crypto.subtle.sign(
+    { name: "ECDSA", hash: "SHA-256" }, privKey, new TextEncoder().encode(body)
+  );
+  return `${body}.${b64url(new Uint8Array(sig))}`;
+}
+
+function b64url(bytes) {
+  let s = "";
+  for (const b of bytes) s += String.fromCharCode(b);
+  return btoa(s).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
 
 function json(body, status, origin) {

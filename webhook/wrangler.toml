@@ -36,3 +36,8 @@ FROM_EMAIL = "Slashman Tools <hello@slashmantools.us>"
 REPLY_TO = "hello@slashmantools.us"
 DOWNLOAD_URL = "https://slashmantools.us/toolkit/"
 # FORWARD_URL = "https://your-n8n-or-make-webhook.example/lead"   # optional
+# Gumroad product `line-chat-generator-pro` (slashmaster6). The signing key is
+# the secret LICENSE_SIGNING_JWK (ECDSA P-256 private JWK; local copy in
+# ~/.priv/line-chat-pro-signing-key.jwk). Its public half is in the app's
+# src/utils/proStore.ts.
+LINE_CHAT_PRO_PRODUCT_ID = "9JbqLBa_JoTzJTWm0yN8Aw=="

@@ -77,6 +77,7 @@ DNS). The forms already expect that URL.
 | `FORWARD_URL`     | `[vars]`         | Downstream webhook (n8n/Make/ESP) — optional         |
 | `RESEND_API_KEY`  | `wrangler secret`| Enables transactional email — optional               |
 | `FORWARD_SECRET`  | `wrangler secret`| Bearer token sent to `FORWARD_URL` — optional        |
+| `LICENSE_SIGNING_JWK` | `wrangler secret`| ECDSA P-256 private JWK that signs LINE Chat Generator PRO tokens (`/license/line-chat-pro`); local copy `~/.priv/line-chat-pro-signing-key.jwk` |
 
 ## CI
 
