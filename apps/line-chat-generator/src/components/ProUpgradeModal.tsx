@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import {
   PRICING_PLANS,
+  PRO_SALES_OPEN,
   ProStatus,
   activateLicense,
   resetProStatus,
@@ -237,26 +238,33 @@ export const ProUpgradeModal: React.FC<ProUpgradeModalProps> = ({
                   </ul>
                 </div>
 
-                <a
-                  href={plan.gumroadUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all ${
-                    isSelected
-                      ? 'bg-[#06C755] hover:bg-[#05b34c] text-white shadow-lg shadow-[#06C755]/25'
-                      : 'bg-slate-700 hover:bg-slate-600 text-slate-200'
-                  }`}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <span>立即線上購買</span>
-                  <ExternalLink size={12} />
-                </a>
+                {PRO_SALES_OPEN ? (
+                  <a
+                    href={plan.gumroadUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all ${
+                      isSelected
+                        ? 'bg-[#06C755] hover:bg-[#05b34c] text-white shadow-lg shadow-[#06C755]/25'
+                        : 'bg-slate-700 hover:bg-slate-600 text-slate-200'
+                    }`}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <span>立即線上購買</span>
+                    <ExternalLink size={12} />
+                  </a>
+                ) : (
+                  <span className="w-full py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center bg-slate-800 text-slate-400 cursor-default">
+                    即將開放購買
+                  </span>
+                )}
               </div>
             );
           })}
         </div>
 
         {/* License Key Activation Section */}
+        {PRO_SALES_OPEN && (
         <div className="p-5 rounded-2xl bg-slate-950/70 border border-slate-800">
           <div className="flex items-center gap-2 mb-2 text-xs font-bold text-slate-200">
             <Key size={15} className="text-amber-400" />
@@ -268,7 +276,7 @@ export const ProUpgradeModal: React.FC<ProUpgradeModalProps> = ({
               type="text"
               value={licenseInput}
               onChange={(e) => setLicenseInput(e.target.value)}
-              placeholder="例如：LINEPRO2026 或 GUM-XXXX-XXXX"
+              placeholder="輸入 Gumroad 授權序號"
               className="flex-1 rounded-xl bg-slate-900 border border-slate-700 px-3.5 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#06C755]"
             />
             <button
@@ -278,25 +286,6 @@ export const ProUpgradeModal: React.FC<ProUpgradeModalProps> = ({
               啟用授權
             </button>
           </form>
-
-          {/* Test / Demo Promo Code Hint */}
-          <div className="mt-2.5 flex items-center justify-between text-[11px] text-slate-400">
-            <div className="flex items-center gap-1">
-              <Sparkles size={12} className="text-amber-400" />
-              <span>
-                💡 體驗金鑰：點擊填入{' '}
-                <button
-                  type="button"
-                  onClick={() => setLicenseInput('LINEPRO2026')}
-                  className="font-mono text-emerald-400 font-bold underline hover:text-emerald-300"
-                >
-                  LINEPRO2026
-                </button>
-                （立即體驗終身 VIP 權限）
-              </span>
-            </div>
-            <span className="text-[10px] text-slate-500">支援即時在線啟用</span>
-          </div>
 
           {activationMsg && (
             <div
@@ -310,6 +299,7 @@ export const ProUpgradeModal: React.FC<ProUpgradeModalProps> = ({
             </div>
           )}
         </div>
+        )}
       </div>
     </div>
   );

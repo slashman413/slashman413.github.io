@@ -18,13 +18,11 @@ const DEFAULT_STATUS: ProStatus = {
   unlockedVideosCount: 0,
 };
 
-// Recognized VIP license keys and prefix patterns
-const BUILTIN_KEYS: Record<string, PlanType> = {
-  LINEPRO2026: 'lifetime',
-  SLASHMAN_VIP: 'lifetime',
-  GUMROAD_PRO: 'monthly',
-  PROPASS_DEMO: 'single_pass',
-};
+// PRO sales stay closed until the Gumroad product `line-chat-generator-pro`
+// exists and license keys are verified server-side (Gumroad /v2/licenses/verify
+// via the api.slashmantools.us Worker). While closed, no client-side code path
+// can grant PRO: buy buttons are hidden and any stored PRO state is ignored.
+export const PRO_SALES_OPEN = false;
 
 export const PRICING_PLANS = [
   {
@@ -83,7 +81,7 @@ export const PRICING_PLANS = [
 ];
 
 export function getProStatus(): ProStatus {
-  if (typeof window === 'undefined') return DEFAULT_STATUS;
+  if (typeof window === 'undefined' || !PRO_SALES_OPEN) return DEFAULT_STATUS;
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return DEFAULT_STATUS;
@@ -120,50 +118,11 @@ export function activateLicense(inputKey: string): {
     return { success: false, message: '請輸入有效的啟用金鑰或序號！' };
   }
 
-  // Check built-in keys
-  if (BUILTIN_KEYS[cleanKey]) {
-    const plan = BUILTIN_KEYS[cleanKey];
-    const newStatus: ProStatus = {
-      isPro: true,
-      planType: plan,
-      licenseKey: cleanKey,
-      activatedAt: Date.now(),
-      unlockedPhotosCount: plan === 'single_pass' ? 5 : 99999,
-      unlockedVideosCount: plan === 'single_pass' ? 5 : 99999,
-    };
-    saveProStatus(newStatus);
-    return {
-      success: true,
-      message: `🎉 成功啟用 ${plan === 'lifetime' ? '終身 VIP 尊榮版' : '創作者 Pro 版'}！已解鎖無浮水印下載權限。`,
-      status: newStatus,
-    };
-  }
-
-  // Check valid patterns (e.g., LINE-PRO-XXXX-XXXX or GUM-XXXX-XXXX)
-  const isLineProPattern = /^LINE-PRO-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(cleanKey);
-  const isGumroadPattern = /^GUM-[A-Z0-9]{4,12}$/.test(cleanKey);
-  const isSlashVIPPattern = /^SLASH-[A-Z0-9]{4,8}$/.test(cleanKey);
-
-  if (isLineProPattern || isGumroadPattern || isSlashVIPPattern) {
-    const newStatus: ProStatus = {
-      isPro: true,
-      planType: 'lifetime',
-      licenseKey: cleanKey,
-      activatedAt: Date.now(),
-      unlockedPhotosCount: 99999,
-      unlockedVideosCount: 99999,
-    };
-    saveProStatus(newStatus);
-    return {
-      success: true,
-      message: '🎉 授權序號驗證成功！已解鎖全功能無浮水印與 4K 導出權限。',
-      status: newStatus,
-    };
-  }
-
+  // Keys are only ever accepted after server-side verification, which is not
+  // live yet. There are deliberately no built-in keys or key patterns here.
   return {
     success: false,
-    message: '無效的啟用金鑰。請確認輸入是否正確，或測試使用體驗金鑰 LINEPRO2026',
+    message: 'PRO 授權驗證尚未開放，敬請期待。',
   };
 }
 

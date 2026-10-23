@@ -7,3 +7,6 @@ webhook/
 
 # build/upload artifacts
 scripts/upload-report.json
+
+# line-chat-generator build output (published via apps/line-chat-generator/deploy.sh)
+apps/line-chat-generator/dist/
