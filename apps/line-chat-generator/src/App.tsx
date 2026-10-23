@@ -20,7 +20,7 @@ import { ProUpgradeModal } from './components/ProUpgradeModal';
 import { PhotoDownloadModal } from './components/PhotoDownloadModal';
 import { VideoDownloadModal } from './components/VideoDownloadModal';
 import { captureScreenshot } from './utils/export';
-import { getProStatus, ProStatus } from './utils/proStore';
+import { getProStatus, refreshProStatus, consumeSinglePass, ProStatus } from './utils/proStore';
 import {
   playTypingSound,
   playSentSound,
@@ -65,11 +65,15 @@ export const App: React.FC = () => {
     const handleProUpdate = () => {
       setProStatus(getProStatus());
     };
+    const handleStorage = () => {
+      void refreshProStatus();
+    };
     window.addEventListener('line_chat_pro_updated', handleProUpdate);
-    window.addEventListener('storage', handleProUpdate);
+    window.addEventListener('storage', handleStorage);
+    void refreshProStatus();
     return () => {
       window.removeEventListener('line_chat_pro_updated', handleProUpdate);
-      window.removeEventListener('storage', handleProUpdate);
+      window.removeEventListener('storage', handleStorage);
     };
   }, []);
 
@@ -194,6 +198,7 @@ export const App: React.FC = () => {
         isPro: isPro,
         filename: `line-chat-${isPro ? 'pro-4k-' : ''}${Date.now()}.png`,
       });
+      if (isPro) consumeSinglePass();
     } catch (err) {
       alert('截圖生成失敗，請稍後再試！');
     } finally {
@@ -242,6 +247,7 @@ export const App: React.FC = () => {
         a.href = url;
         a.download = `line-chat-video-${isPro ? 'pro-' : ''}${Date.now()}.webm`;
         a.click();
+        if (isPro) consumeSinglePass();
         stream.getTracks().forEach((track) => track.stop());
         setIsRecordingWatermark(false);
         setIsRecording(false);

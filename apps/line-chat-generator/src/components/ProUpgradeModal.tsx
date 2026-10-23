@@ -37,6 +37,7 @@ export const ProUpgradeModal: React.FC<ProUpgradeModalProps> = ({
 }) => {
   const [selectedPlanId, setSelectedPlanId] = useState<string>(defaultPlan);
   const [licenseInput, setLicenseInput] = useState<string>('');
+  const [isActivating, setIsActivating] = useState<boolean>(false);
   const [activationMsg, setActivationMsg] = useState<{
     text: string;
     isError: boolean;
@@ -44,9 +45,11 @@ export const ProUpgradeModal: React.FC<ProUpgradeModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleActivate = (e: React.FormEvent) => {
+  const handleActivate = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = activateLicense(licenseInput);
+    setIsActivating(true);
+    const res = await activateLicense(licenseInput);
+    setIsActivating(false);
     if (res.success && res.status) {
       setActivationMsg({ text: res.message, isError: false });
       onStatusChange(res.status);
@@ -59,7 +62,7 @@ export const ProUpgradeModal: React.FC<ProUpgradeModalProps> = ({
   };
 
   const handleReset = () => {
-    if (confirm('確定要清除目前的 PRO 授權狀態並切換回免費版嗎？')) {
+    if (confirm('確定要在這台裝置登出 PRO 授權嗎？之後可再次輸入序號啟用。')) {
       resetProStatus();
       onStatusChange({
         isPro: false,
@@ -67,7 +70,7 @@ export const ProUpgradeModal: React.FC<ProUpgradeModalProps> = ({
         unlockedPhotosCount: 0,
         unlockedVideosCount: 0,
       });
-      setActivationMsg({ text: '已恢復為免費版本狀態。', isError: false });
+      setActivationMsg({ text: '已登出，恢復為免費版本。', isError: false });
     }
   };
 
@@ -118,7 +121,12 @@ export const ProUpgradeModal: React.FC<ProUpgradeModalProps> = ({
                   </span>
                 </div>
                 <p className="text-xs text-slate-400">
-                  授權金鑰：{proStatus.licenseKey || '已永久解鎖'} • 享有無限次無浮水印截圖與影片導出
+                  授權序號：{proStatus.licenseKey}{' • '}
+                  {proStatus.planType === 'single_pass'
+                    ? '可導出一次無浮水印截圖或影片'
+                    : proStatus.planType === 'monthly' && proStatus.expiresAt
+                      ? `無限次導出，效期至 ${new Date(proStatus.expiresAt).toLocaleDateString('zh-TW')}`
+                      : '享有無限次無浮水印截圖與影片導出'}
                 </p>
               </div>
             </div>
@@ -127,7 +135,7 @@ export const ProUpgradeModal: React.FC<ProUpgradeModalProps> = ({
               onClick={handleReset}
               className="text-xs text-slate-400 hover:text-red-400 underline transition-colors px-2 py-1"
             >
-              清除授權 (測試用)
+              登出授權
             </button>
           </div>
         )}
@@ -268,7 +276,7 @@ export const ProUpgradeModal: React.FC<ProUpgradeModalProps> = ({
         <div className="p-5 rounded-2xl bg-slate-950/70 border border-slate-800">
           <div className="flex items-center gap-2 mb-2 text-xs font-bold text-slate-200">
             <Key size={15} className="text-amber-400" />
-            <span>已經在 Gumroad 或贊助獲得序號？輸入啟用碼立即解鎖：</span>
+            <span>已在 Gumroad 購買？貼上收據中的授權序號立即解鎖：</span>
           </div>
 
           <form onSubmit={handleActivate} className="flex gap-2">
@@ -281,9 +289,10 @@ export const ProUpgradeModal: React.FC<ProUpgradeModalProps> = ({
             />
             <button
               type="submit"
-              className="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black text-xs shadow-md transition-all active:scale-95"
+              disabled={isActivating}
+              className="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black text-xs shadow-md transition-all active:scale-95 disabled:opacity-60"
             >
-              啟用授權
+              {isActivating ? '驗證中…' : '啟用授權'}
             </button>
           </form>
 

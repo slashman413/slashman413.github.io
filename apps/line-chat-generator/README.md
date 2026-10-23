@@ -13,8 +13,14 @@ Then commit + push both repos.
 
 ## PRO status
 
-`PRO_SALES_OPEN` in `src/utils/proStore.ts` is `false`: buy buttons and the
-license form are hidden and no client-side code can grant PRO. Before turning
-it on, the Gumroad product `line-chat-generator-pro` must exist and keys must
-be verified server-side (Gumroad `/v2/licenses/verify` via the
-api.slashmantools.us Worker, returning a signed token).
+PRO is sold as Gumroad product `line-chat-generator-pro` on slashmaster6
+(Single Pass NT$39, 30-Day Pass NT$99, Lifetime NT$249; one-time payments, the
+receipt shows a license key). The app posts the key to
+`https://api.slashmantools.us/license/line-chat-pro` (`webhook/worker.js`), which
+checks it with Gumroad `/v2/licenses/verify` and returns a token signed with
+ECDSA P-256. The app stores the token and grants PRO only while its signature
+(public key `LICENSE_PUBLIC_JWK` in `src/utils/proStore.ts`) and expiry check
+out. Single Pass: one export per activation, key accepted at most twice.
+30-Day Pass: valid 30 days from purchase. Lifetime: token lasts 30 days, then
+re-enter the key. If the signing key is rotated, update both the Worker secret
+`LICENSE_SIGNING_JWK` and `LICENSE_PUBLIC_JWK`.
