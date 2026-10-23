@@ -65,7 +65,8 @@ cd slashman413.github.io/webhook
 npm install
 npx wrangler login                                   # << Wayne's Cloudflare account
 npx wrangler kv namespace create LEADS               # paste returned id → wrangler.toml [[kv_namespaces]].id
-npx wrangler secret put MAUTIC_FORWARD_TOKEN         # invent a strong token; reuse in Step 3
+npx wrangler secret put MAUTIC_FORWARD_TOKEN         # bearer token sent to the Mautic receiver
+npx wrangler secret put ADMIN_TOKEN                  # separate strong token for /leads + /cleanup; reuse in Step 4
 # optional: npx wrangler secret put RESEND_API_KEY   # only if you want the lead-magnet email
 npx wrangler deploy
 ```
@@ -84,7 +85,7 @@ immediately, no DNS needed, just a longer hostname.
 ### Step 4 — Schedule the sync (host cron)
 ```bash
 LEADS_API_URL="https://leads.slashmantools.us/leads" \
-MAUTIC_FORWARD_TOKEN="<same token as Step 1>" \
+ADMIN_TOKEN="<ADMIN_TOKEN from Step 1>" \
 MAUTIC_BASE_URL="http://localhost:8081" \
 MAUTIC_API_USER="<step 3>" MAUTIC_API_PASSWORD="<step 3>" \
 python3 /home/wayne/workspace/github/slashman413/slashman413.github.io/webhook/sync_kv_to_mautic.py

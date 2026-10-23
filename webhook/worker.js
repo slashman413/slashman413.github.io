@@ -17,10 +17,10 @@
  * Endpoints:
  *   POST /subscribe   → capture a lead   (JSON or form-encoded body)
  *   GET  /health      → liveness probe   ({ ok: true })
- *   GET  /leads       → export leads KV   (requires ?token=MAUTIC_FORWARD_TOKEN)
+ *   GET  /leads       → export leads KV   (Authorization: Bearer ADMIN_TOKEN)
  *   GET  /hit         → no-cookie counter pixel (?s=<site>&e=<event>), 1x1 GIF
  *   GET  /stats       → daily counter totals   (?s=<site>&days=<n>)
- *   POST /cleanup     → admin: delete test lead keys (?token=MAUTIC_FORWARD_TOKEN, body {"emails":[...]})
+ *   POST /cleanup     → admin: delete test lead keys (Authorization: Bearer ADMIN_TOKEN, body {"emails":[...]})
  *
  * See ./README.md for the full deploy + configuration guide.
  */
@@ -130,13 +130,12 @@ export default {
       });
     }
 
-    // --- GET /leads — export all captured leads (requires MAUTIC_FORWARD_TOKEN) ---
+    // --- GET /leads — export all captured leads (requires ADMIN_TOKEN) ---
     if (url.pathname === "/leads") {
       if (request.method !== "GET") {
         return json({ ok: false, error: "method_not_allowed" }, 405, origin);
       }
-      const token = url.searchParams.get("token") || "";
-      if (!env.MAUTIC_FORWARD_TOKEN || token !== env.MAUTIC_FORWARD_TOKEN) {
+      if (!(await isAdmin(request, env))) {
         return json({ ok: false, error: "unauthorized" }, 401, origin);
       }
       if (!env.LEADS) {
@@ -178,14 +177,13 @@ export default {
     // --- POST /cleanup — admin: delete test lead keys (token-guarded) ----
     // The KV key-level REST API is not routable from outside, so admin
     // deletion goes through the Worker itself (its LEADS binding works).
-    // Body: { "emails": [...] }  Auth: ?token=MAUTIC_FORWARD_TOKEN.
+    // Body: { "emails": [...] }  Auth: Authorization: Bearer ADMIN_TOKEN.
     // Deletes only lead:* keys for the given emails; never rl:* or hit:*.
     if (url.pathname === "/cleanup") {
       if (request.method !== "POST") {
         return json({ ok: false, error: "method_not_allowed" }, 405, origin);
       }
-      const token = url.searchParams.get("token") || "";
-      if (!env.MAUTIC_FORWARD_TOKEN || token !== env.MAUTIC_FORWARD_TOKEN) {
+      if (!(await isAdmin(request, env))) {
         return json({ ok: false, error: "unauthorized" }, 401, origin);
       }
       if (!env.LEADS) {
@@ -195,7 +193,7 @@ export default {
       try { body = await request.json(); } catch {
         return json({ ok: false, error: "bad_request" }, 400, origin);
       }
-      const emails = Array.isArray(body.emails) ? body.emails : [];
+      const emails = Array.isArray(body?.emails) ? body.emails : [];
       const results = [];
       for (const email of emails.slice(0, 500)) {
         const key = `lead:${String(email).trim().toLowerCase()}`;
@@ -429,6 +427,25 @@ function corsHeaders(origin) {
     "Access-Control-Max-Age": "86400",
     Vary: "Origin",
   };
+}
+
+/**
+ * Admin auth for /leads and /cleanup: `Authorization: Bearer <ADMIN_TOKEN>`.
+ * ADMIN_TOKEN is its own secret, separate from MAUTIC_FORWARD_TOKEN (which is
+ * sent to the Mautic receiver), and never travels in the URL. Both values are
+ * hashed first so the constant-time compare works on equal-length buffers.
+ */
+async function isAdmin(request, env) {
+  if (!env.ADMIN_TOKEN) return false;
+  const header = request.headers.get("authorization") || "";
+  const provided = header.startsWith("Bearer ") ? header.slice(7) : "";
+  if (!provided) return false;
+  const enc = new TextEncoder();
+  const [a, b] = await Promise.all([
+    crypto.subtle.digest("SHA-256", enc.encode(provided)),
+    crypto.subtle.digest("SHA-256", enc.encode(env.ADMIN_TOKEN)),
+  ]);
+  return crypto.subtle.timingSafeEqual(a, b);
 }
 
 function json(body, status, origin) {

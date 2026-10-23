@@ -7,7 +7,7 @@ Architecture:
                                               ↓ (this script, runs on cron)
                                      Mautic API (localhost:8081)
 
-The Worker exposes a GET /leads endpoint (requires MAUTIC_FORWARD_TOKEN).
+The Worker exposes a GET /leads endpoint (requires ADMIN_TOKEN as a Bearer header).
 This script polls it, creates/updates Mautic contacts, and tracks what's been synced.
 
 Run:  python3 sync_kv_to_mautic.py         # one-shot sync
@@ -15,7 +15,7 @@ Run:  python3 sync_kv_to_mautic.py         # one-shot sync
 
 Set env vars:
   LEADS_API_URL    — Worker GET /leads URL
-  MAUTIC_FORWARD_TOKEN — secret token for /leads auth
+  ADMIN_TOKEN      — Worker admin secret for /leads auth (sent as a Bearer header)
   MAUTIC_BASE_URL  — Mautic base URL (default: http://localhost:8081)
   MAUTIC_API_USER  — Mautic API username
   MAUTIC_API_PASSWORD — Mautic API password
@@ -114,13 +114,14 @@ class MauticAPI:
 # ---------------------------------------------------------------------------
 def fetch_leads(api_url: str, token: str, since: str = "", limit: int = 500) -> list[dict]:
     """Fetch leads from the Worker's GET /leads endpoint."""
-    params = f"token={urlparse.quote(token)}&limit={limit}"
+    params = f"limit={limit}"
     if since:
         params += f"&since={urlparse.quote(since)}"
     url = f"{api_url.rstrip('/')}/leads?{params}"
     req = urlrequest.Request(url, headers={
         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
         "Accept": "application/json",
+        "Authorization": f"Bearer {token}",
     })
     # NOTE: the Worker's /leads does a KV list + one KV get per lead; with ~100
     # leads that takes ~60-90s end to end. timeout=30 was the historical cause
@@ -264,13 +265,13 @@ def main():
     args = parser.parse_args()
 
     api_url = os.environ.get("LEADS_API_URL", "http://100.80.243.33:8081")
-    forward_token = os.environ.get("MAUTIC_FORWARD_TOKEN", "")
+    forward_token = os.environ.get("ADMIN_TOKEN", "")
     mautic_base = os.environ.get("MAUTIC_BASE_URL", "http://localhost:8081")
     mautic_user = os.environ.get("MAUTIC_API_USER", "")
     mautic_pass = os.environ.get("MAUTIC_API_PASSWORD", "")
 
     if not forward_token:
-        print("!! MAUTIC_FORWARD_TOKEN not set. Set it to match what's in the Worker's secret.", file=sys.stderr)
+        print("!! ADMIN_TOKEN not set. Set it to match the Worker's ADMIN_TOKEN secret.", file=sys.stderr)
         sys.exit(1)
     if not mautic_user or not mautic_pass:
         print("!! MAUTIC_API_USER / MAUTIC_API_PASSWORD not set.", file=sys.stderr)
