@@ -21,11 +21,15 @@ const DEFAULT_STATUS: ProStatus = {
 // Keys are verified by the api.slashmantools.us Worker (Gumroad
 // /v2/licenses/verify), which returns a token signed with ECDSA P-256. PRO is
 // granted only while a stored token passes the signature check below, so
-// editing localStorage can't unlock it.
+// editing localStorage can't unlock it. Tokens last 30 days (Single Pass: 1),
+// so the full key is kept too and the token is silently renewed when it is
+// within REFRESH_WINDOW_MS of expiry or already expired.
 export const PRO_SALES_OPEN = true;
 
 const LICENSE_ENDPOINT = 'https://api.slashmantools.us/license/line-chat-pro';
 const TOKEN_KEY = 'slashmantools_line_chat_pro_token_v2';
+const LICENSE_KEY_STORE = 'slashmantools_line_chat_pro_key_v2';
+const REFRESH_WINDOW_MS = 3 * 24 * 60 * 60 * 1000;
 const LICENSE_PUBLIC_JWK: JsonWebKey = {"kty":"EC","crv":"P-256","x":"_ctdvJKSjgtV-c4jZ44xk9MbUDjCc5v-Pm61jH2NyiY","y":"5g6Fj1D8Vl7_2tdtfi5T96segsD2weYXu4OirkFcn8Q"};
 
 export const PRICING_PLANS = [
@@ -88,6 +92,7 @@ interface TokenPayload {
   v: number;
   plan: PlanType;
   key: string;
+  kh?: string;
   iat: number;
   exp: number;
 }
@@ -102,7 +107,8 @@ function b64urlDecode(s: string): Uint8Array<ArrayBuffer> {
   return Uint8Array.from(bin, (c) => c.charCodeAt(0));
 }
 
-async function verifyToken(token: string): Promise<TokenPayload | null> {
+/** Payload of a token with a valid signature, whether or not it has expired. */
+async function readToken(token: string): Promise<TokenPayload | null> {
   const [body, sig] = token.split('.');
   if (!body || !sig || !crypto?.subtle) return null;
   try {
@@ -121,11 +127,15 @@ async function verifyToken(token: string): Promise<TokenPayload | null> {
     );
     if (!ok) return null;
     const payload = JSON.parse(new TextDecoder().decode(b64urlDecode(body))) as TokenPayload;
-    if (payload.v !== 1 || !(payload.exp * 1000 > Date.now())) return null;
-    return payload;
+    return payload.v === 1 ? payload : null;
   } catch {
     return null;
   }
+}
+
+async function verifyToken(token: string): Promise<TokenPayload | null> {
+  const payload = await readToken(token);
+  return payload && payload.exp * 1000 > Date.now() ? payload : null;
 }
 
 function statusFromPayload(p: TokenPayload): ProStatus {
@@ -148,13 +158,59 @@ export function getProStatus(): ProStatus {
   return verifiedStatus;
 }
 
+// Server answers that mean the key will never work again: forget it.
+const FATAL_ERRORS = new Set(['unknown_key', 'purchase_revoked', 'expired', 'single_pass_used', 'activation_limit', 'invalid_key']);
+
+let renewing: Promise<void> | null = null;
+
+/** Silently re-activate a 30-Day / Lifetime token with the stored key. */
+function renewToken(key: string, oldToken: string): Promise<void> {
+  renewing ??= (async () => {
+    try {
+      const res = await fetch(LICENSE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ license_key: key, refresh_token: oldToken }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (data.ok && data.token && (await verifyToken(data.token))) {
+        localStorage.setItem(TOKEN_KEY, data.token);
+      } else if (FATAL_ERRORS.has(data.error)) {
+        localStorage.removeItem(TOKEN_KEY);
+        localStorage.removeItem(LICENSE_KEY_STORE);
+      }
+      // Network / Gumroad errors: keep both and retry on the next load.
+    } catch {
+      /* offline: retry on the next load */
+    } finally {
+      renewing = null;
+    }
+  })();
+  return renewing;
+}
+
 /** Re-check the stored token (on load and when another tab changes it). */
 export async function refreshProStatus(): Promise<ProStatus> {
   if (typeof window === 'undefined' || !PRO_SALES_OPEN) return DEFAULT_STATUS;
-  const token = localStorage.getItem(TOKEN_KEY);
-  const payload = token ? await verifyToken(token) : null;
-  if (token && !payload) localStorage.removeItem(TOKEN_KEY);
-  verifiedStatus = payload ? statusFromPayload(payload) : DEFAULT_STATUS;
+  let token = localStorage.getItem(TOKEN_KEY);
+  let payload = token ? await readToken(token) : null;
+  const key = localStorage.getItem(LICENSE_KEY_STORE);
+  if (
+    token && payload && key &&
+    (payload.plan === 'lifetime' || payload.plan === 'monthly') &&
+    payload.exp * 1000 - Date.now() < REFRESH_WINDOW_MS
+  ) {
+    await renewToken(key, token);
+    token = localStorage.getItem(TOKEN_KEY);
+    payload = token ? await readToken(token) : null;
+  }
+  const valid = !!payload && payload.exp * 1000 > Date.now();
+  // Keep an expired-but-genuine token while the key is stored: the next
+  // renewal (e.g. after being offline) needs it to avoid counting as a new activation.
+  if (token && (!payload || (!valid && !localStorage.getItem(LICENSE_KEY_STORE)))) {
+    localStorage.removeItem(TOKEN_KEY);
+  }
+  verifiedStatus = valid && payload ? statusFromPayload(payload) : DEFAULT_STATUS;
   notify();
   return verifiedStatus;
 }
@@ -164,6 +220,7 @@ const ACTIVATION_ERRORS: Record<string, string> = {
   purchase_revoked: '此訂單已退款或取消，授權無法使用。',
   expired: '此 30 天通行證已過期，歡迎重新購買。',
   single_pass_used: '此單次暢享包序號已使用過。',
+  activation_limit: '此序號的啟用次數已達上限，如需協助請透過 Gumroad 收據聯絡我們。',
   rate_limited: '嘗試次數過多，請 10 分鐘後再試。',
   invalid_key: '序號格式不正確。',
 };
@@ -192,6 +249,8 @@ export async function activateLicense(inputKey: string): Promise<{
       };
     }
     localStorage.setItem(TOKEN_KEY, data.token);
+    if (payload.plan === 'single_pass') localStorage.removeItem(LICENSE_KEY_STORE);
+    else localStorage.setItem(LICENSE_KEY_STORE, cleanKey);
     verifiedStatus = statusFromPayload(payload);
     notify();
     return { success: true, message: '🎉 PRO 授權已啟用！', status: verifiedStatus };
@@ -209,6 +268,7 @@ export function consumeSinglePass(): void {
 export function resetProStatus(): void {
   if (typeof window === 'undefined') return;
   localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem(LICENSE_KEY_STORE);
   localStorage.removeItem('slashmantools_line_chat_pro_v1');
   verifiedStatus = DEFAULT_STATUS;
   notify();

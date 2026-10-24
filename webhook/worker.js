@@ -42,9 +42,13 @@ const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_SECONDS = 60 * 10; // 10 minutes
 
 // /license/line-chat-pro: verification attempts per IP per window, and how
-// many times a Single Pass key may be activated (1 + one retry).
+// many times a key may be activated (Gumroad `uses`). Single Pass = 1 + one
+// retry; 30-Day / Lifetime caps stop one key being shared widely. Silent
+// token refreshes don't count (see verifyLineChatProKey).
 const LICENSE_RATE_LIMIT_MAX = 20;
 const SINGLE_PASS_MAX_USES = 2;
+const MONTHLY_MAX_USES = 20;
+const LIFETIME_MAX_USES = 50;
 const DAY_SECONDS = 60 * 60 * 24;
 
 // Cookieless counter (/hit, /stats): site + event names are a closed charset so
@@ -258,7 +262,8 @@ export default {
       if (!/^[A-Za-z0-9-]{8,64}$/.test(key)) {
         return json({ ok: false, error: "invalid_key" }, 400, origin);
       }
-      const result = await verifyLineChatProKey(env, key);
+      const refreshToken = typeof body?.refresh_token === "string" ? body.refresh_token.slice(0, 2048) : "";
+      const result = await verifyLineChatProKey(env, key, refreshToken);
       return json(result.body, result.status, origin);
     }
 
@@ -496,16 +501,24 @@ async function isAdmin(request, env) {
 /**
  * Check a key with Gumroad and map the purchase to a PRO plan:
  *   Single Pass → one export (key accepted at most SINGLE_PASS_MAX_USES times)
- *   30-Day Pass → unlimited until 30 days after purchase
- *   Lifetime    → unlimited; the token lasts 30 days and the app re-verifies
+ *   30-Day Pass → unlimited until 30 days after sale_timestamp (server-side)
+ *   Lifetime    → unlimited; each token lasts 30 days
+ * The app keeps the key and silently re-activates when its token is near or
+ * past expiry, sending the old token as `refreshToken`. A refresh carrying a
+ * token we signed for this same key doesn't increment Gumroad `uses`, so the
+ * activation caps count devices, not monthly renewals.
  */
-async function verifyLineChatProKey(env, key) {
+async function verifyLineChatProKey(env, key, refreshToken = "") {
+  const kh = await keyHash(key);
+  const prev = refreshToken ? await readOwnToken(env, refreshToken) : null;
+  const isRefresh = !!prev && (prev.plan === "lifetime" || prev.plan === "monthly")
+    && (prev.kh ? prev.kh === kh : prev.key === key.slice(-4));
   const res = await fetch("https://api.gumroad.com/v2/licenses/verify", {
     method: "POST",
     body: new URLSearchParams({
       product_id: env.LINE_CHAT_PRO_PRODUCT_ID,
       license_key: key,
-      increment_uses_count: "true",
+      increment_uses_count: isRefresh ? "false" : "true",
     }),
   });
   const data = await res.json().catch(() => null);
@@ -522,19 +535,53 @@ async function verifyLineChatProKey(env, key) {
   const plan = variant.includes("lifetime") ? "lifetime"
     : variant.includes("30-day") ? "monthly"
     : "single_pass";
+  const uses = data.uses || 0;
   const now = Math.floor(Date.now() / 1000);
   let exp = now + 30 * DAY_SECONDS;
   if (plan === "monthly") {
     exp = Math.floor(Date.parse(p.sale_timestamp) / 1000) + 30 * DAY_SECONDS;
     if (!(exp > now)) return { status: 403, body: { ok: false, error: "expired" } };
-  } else if (plan === "single_pass") {
-    if ((data.uses || 0) > SINGLE_PASS_MAX_USES) {
+    if (!isRefresh && uses > MONTHLY_MAX_USES) {
+      return { status: 403, body: { ok: false, error: "activation_limit", max: MONTHLY_MAX_USES } };
+    }
+  } else if (plan === "lifetime") {
+    if (!isRefresh && uses > LIFETIME_MAX_USES) {
+      return { status: 403, body: { ok: false, error: "activation_limit", max: LIFETIME_MAX_USES } };
+    }
+  } else {
+    if (uses > SINGLE_PASS_MAX_USES) {
       return { status: 403, body: { ok: false, error: "single_pass_used" } };
     }
     exp = now + DAY_SECONDS;
   }
-  const payload = { v: 1, plan, key: key.slice(-4), iat: now, exp };
-  return { status: 200, body: { ok: true, plan, exp, token: await signToken(env, payload) } };
+  const payload = { v: 1, plan, key: key.slice(-4), kh, iat: now, exp };
+  return { status: 200, body: { ok: true, plan, exp, refreshed: isRefresh, token: await signToken(env, payload) } };
+}
+
+/** First 16 hex chars of SHA-256(key): binds a token to its key without storing the key. */
+async function keyHash(key) {
+  const d = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(key)));
+  return Array.from(d.slice(0, 8), (b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+/** Payload of a token this Worker signed (expired or not), else null. */
+async function readOwnToken(env, token) {
+  const [body, sig] = String(token).split(".");
+  if (!body || !sig) return null;
+  try {
+    const { d, key_ops, ...pub } = JSON.parse(env.LICENSE_SIGNING_JWK);
+    const pubKey = await crypto.subtle.importKey(
+      "jwk", pub, { name: "ECDSA", namedCurve: "P-256" }, false, ["verify"]
+    );
+    const ok = await crypto.subtle.verify(
+      { name: "ECDSA", hash: "SHA-256" }, pubKey, b64urlDecode(sig), new TextEncoder().encode(body)
+    );
+    if (!ok) return null;
+    const payload = JSON.parse(new TextDecoder().decode(b64urlDecode(body)));
+    return payload?.v === 1 ? payload : null;
+  } catch {
+    return null;
+  }
 }
 
 /** `<base64url(payload JSON)>.<base64url(ECDSA P-256/SHA-256 signature)>` */
@@ -548,6 +595,11 @@ async function signToken(env, payload) {
     { name: "ECDSA", hash: "SHA-256" }, privKey, new TextEncoder().encode(body)
   );
   return `${body}.${b64url(new Uint8Array(sig))}`;
+}
+
+function b64urlDecode(s) {
+  const b64 = s.replace(/-/g, "+").replace(/_/g, "/");
+  return Uint8Array.from(atob(b64 + "=".repeat((4 - (b64.length % 4)) % 4)), (c) => c.charCodeAt(0));
 }
 
 function b64url(bytes) {
