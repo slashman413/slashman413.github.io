@@ -4,8 +4,8 @@ description: "AI 入門組合整合 AI Prompt 庫與基礎教學，從提示詞�
 date: 2026-08-02
 slug: ai-starter
 tags: [ai, bundle, beginners, prompts, learning]
-product_url: "https://slashmaster6.gumroad.com/l/lapcqb"
-product_price: "49"
+product_url: "https://slashmaster6.gumroad.com/l/nulyms"
+product_price: "79"
 product_brand: "Slashman Tools"
 product_sku: "SMT-AST"
 product_category: "Software > AI Tools"
@@ -39,8 +39,8 @@ sitemap:
 <li>從入門到進階的學習路徑</li>
 <li>一次購買，永久使用</li>
     </ul>
-    <a href="https://slashmaster6.gumroad.com/l/lapcqb?utm_source=slashmantools&utm_medium=product-page&utm_campaign=ai-starter" target="_blank" rel="noopener" class="cta-button">
-      立即購買 $49 →
+    <a href="https://slashmaster6.gumroad.com/l/nulyms?utm_source=slashmantools&utm_medium=product-page&utm_campaign=ai-starter" target="_blank" rel="noopener" class="cta-button">
+      立即購買 $79 →
     </a>
   </div>
   

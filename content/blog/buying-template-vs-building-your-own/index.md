@@ -7,7 +7,7 @@ slug: "buying-template-vs-building-your-own"
 author: "Wayne Chang"
 tags: ["templates", "build-vs-buy", "data-model", "automation", "feishu"]
 schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/xohjh"
+product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
 product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-FSH"
@@ -120,7 +120,7 @@ One more thing worth noticing: teams tend to outgrow one-off documents faster th
 
 ## Get Feishu Template Marketplace
 
-[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=buying-template-vs-building-your-own) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
+[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=buying-template-vs-building-your-own) — **Free**, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
 
 ## Related reading
 

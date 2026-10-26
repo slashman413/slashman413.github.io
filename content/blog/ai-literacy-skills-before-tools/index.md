@@ -7,7 +7,7 @@ slug: "ai-literacy-skills-before-tools"
 author: "Wayne Chang"
 tags: ["ai-literacy", "prompting", "automation", "beginners", "evaluation"]
 schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/lapcqb"
+product_url: "https://slashmaster6.gumroad.com/l/nulyms"
 product_price: "49"
 product_brand: "Slashman Tools"
 product_sku: "SMT-AIS"
@@ -127,11 +127,11 @@ The useful heuristic is to automate the boring middle and keep humans at the edg
 4. Add logging around retries, including the reason for each retry. Ten minutes now saves an afternoon of guessing later.
 5. Write down one task you will deliberately keep manual this quarter, and the reason. Putting the boundary in writing keeps you from drifting into automating something you never wanted automated.
 
-If you would rather start from prepared material than assemble it yourself, the AI Starter Bundle is $49 USD one-time: an entry-level course plus a prompt library, aimed at people starting with no technical background.
+If you would rather start from prepared material than assemble it yourself, the AI Developer Stack Bundle is $79 USD one-time: an entry-level course plus a prompt library, aimed at people starting with no technical background.
 
-## Get AI Starter Bundle
+## Get AI Developer Stack Bundle
 
-[**AI Starter Bundle**](https://slashmaster6.gumroad.com/l/lapcqb?utm_source=blog&utm_medium=article&utm_campaign=ai-literacy-skills-before-tools) — **$49**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-starter/).
+[**AI Developer Stack Bundle**](https://slashmaster6.gumroad.com/l/nulyms?utm_source=blog&utm_medium=article&utm_campaign=ai-literacy-skills-before-tools) — **$79**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-starter/).
 
 ## Related reading
 

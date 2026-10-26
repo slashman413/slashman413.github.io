@@ -1,21 +1,21 @@
 ---
-title: "AI Starter Bundle Review 2026: The Complete Beginner Kit for Learning AI"
+title: "AI Developer Stack Bundle Review 2026: The Complete Beginner Kit for Learning AI"
 date: "2026-08-02T08:00:00+08:00"
-description: "AI Starter Bundle review: the complete beginner kit for learning AI — foundation course, 100+ prompt library and practical guides in one package. $49."
+description: "AI Developer Stack Bundle review: the complete beginner kit for learning AI — foundation course, 100+ prompt library and practical guides in one package. $79."
 slug: "ai-starter"
 draft: false
 schema: "ProductReview"
 tags: [ai, bundle, beginners, prompts, learning, course]
-product_url: "https://slashmaster6.gumroad.com/l/lapcqb"
-product_price: "49"
+product_url: "https://slashmaster6.gumroad.com/l/nulyms"
+product_price: "79"
 product_brand: "Slashman Tools"
 product_sku: "SMT-AIS"
 product_category: "Online Course"
 product_currency: "USD"
-seo_title: 'AI Starter Bundle: Complete Beginner AI Kit'
+seo_title: 'AI Developer Stack Bundle: Complete Beginner AI Kit'
 keywords: ['ai starter bundle', 'ai beginner kit', 'learn ai bundle', 'ai prompts for beginners', 'ai course bundle']
 faq:
-  - q: 'Who is the AI Starter Bundle for?'
+  - q: 'Who is the AI Developer Stack Bundle for?'
     a: 'Absolute beginners who want one coherent path into AI: a foundation course, 100+ prompt library and practical guides in a single bundle.'
   - q: 'Does it include a course?'
     a: 'Yes — the bundle combines a beginner-friendly course with the prompt library, so you learn the concepts and apply them immediately.'
@@ -28,12 +28,12 @@ sitemap:
   changefreq: monthly
 ---
 
-# AI Starter Bundle Review 2026: The Complete Beginner Kit for Learning AI
+# AI Developer Stack Bundle Review 2026: The Complete Beginner Kit for Learning AI
 
 
-Starting with AI in 2026 is overwhelming: dozens of tools, endless tutorials, and no clear path from "curious" to "competent." The **AI Starter Bundle** solves that with a curated package — a foundation course, a 100+ prompt library, and practical guides — designed to take a complete beginner to real AI skills in one purchase. Here is our hands-on review of the **$49** bundle.
+Starting with AI in 2026 is overwhelming: dozens of tools, endless tutorials, and no clear path from "curious" to "competent." The **AI Developer Stack Bundle** solves that with a curated package — a foundation course, a 100+ prompt library, and practical guides — designed to take a complete beginner to real AI skills in one purchase. Here is our hands-on review of the **$79** bundle.
 
-👉 [**Get the AI Starter Bundle on Gumroad ($49)**](https://slashmaster6.gumroad.com/l/lapcqb?utm_source=blog&utm_medium=seo&utm_campaign=lapcqb)
+👉 [**Get the AI Developer Stack Bundle on Gumroad ($79)**](https://slashmaster6.gumroad.com/l/nulyms?utm_source=blog&utm_medium=seo&utm_campaign=lapcqb)
 
 ## What's Inside
 
@@ -61,8 +61,8 @@ The bundle combines everything a beginner needs to get from zero to productive:
 
 ## The Verdict
 
-At **$49**, the AI Starter Bundle prices itself as a complete solution rather than a single course — and that is exactly what it delivers. If you want to skip the months of random tutorials and start with a structured, all-in-one kit, this is the package to start with in 2026.
+At **$79**, the AI Developer Stack Bundle prices itself as a complete solution rather than a single course — and that is exactly what it delivers. If you want to skip the months of random tutorials and start with a structured, all-in-one kit, this is the package to start with in 2026.
 
-👉 [**Get the AI Starter Bundle on Gumroad ($49)**](https://slashmaster6.gumroad.com/l/lapcqb?utm_source=blog&utm_medium=seo&utm_campaign=lapcqb)
+👉 [**Get the AI Developer Stack Bundle on Gumroad ($79)**](https://slashmaster6.gumroad.com/l/nulyms?utm_source=blog&utm_medium=seo&utm_campaign=lapcqb)
 
 *Ready to go beyond the basics? Level up with the [AI Course](/blog/ai-course/) for advanced applied skills, or the [AI Developer Stack Bundle](/blog/ai-dev-stack/) for the full development toolchain.*

@@ -7,7 +7,7 @@ slug: "versioning-templates-without-losing-customisations"
 author: "Wayne Chang"
 tags: ["versioning", "templates", "semver", "changelog", "release-management"]
 schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/xohjh"
+product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
 product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-FSH"
@@ -144,7 +144,7 @@ Finally, do not auto-update a copy the buyer has edited. If you must push change
 
 ## Get Feishu Template Marketplace
 
-[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=versioning-templates-without-losing-customisations) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
+[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=versioning-templates-without-losing-customisations) — **Free**, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
 
 ## Related reading
 

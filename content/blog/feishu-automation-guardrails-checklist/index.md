@@ -7,7 +7,7 @@ slug: "feishu-automation-guardrails-checklist"
 author: "Wayne Chang"
 tags: ["feishu", "automation", "audit-logs", "permissions", "rollback"]
 schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/xohjh"
+product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
 product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-FSH"
@@ -140,7 +140,7 @@ If standing up the bases your flow writes into is still ahead of you, the Feishu
 
 ## Get Feishu Template Marketplace
 
-[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=feishu-automation-guardrails-checklist) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
+[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=feishu-automation-guardrails-checklist) — **Free**, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
 
 ## Related reading
 

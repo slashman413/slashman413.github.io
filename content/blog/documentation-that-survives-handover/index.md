@@ -7,7 +7,7 @@ slug: "documentation-that-survives-handover"
 author: "Wayne Chang"
 tags: ["documentation", "runbooks", "changelog", "handover", "devops"]
 schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/xohjh"
+product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
 product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-FSH"
@@ -140,7 +140,7 @@ This pays off twice. The same files that onboard a new maintainer are the ones y
 
 ## Get Feishu Template Marketplace
 
-[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=documentation-that-survives-handover) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
+[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=documentation-that-survives-handover) — **Free**, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
 
 ## Related reading
 

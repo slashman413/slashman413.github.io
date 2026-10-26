@@ -28,7 +28,7 @@ Si quieres empezar rápidamente, te recomendamos nuestra **[AI Prompt Library ($
 ## Paso 2: Crea tu primer producto digital
 
 Para los principiantes, comenzar con plantillas o kits de herramientas es lo más fácil.
-- **Productos basados en plantillas**: Si eres experto en ciertas herramientas de productividad, puedes crear plantillas especializadas. Por ejemplo, la colaboración en equipo es un gran desafío para muchas empresas. Puedes revisar estos **[Feishu Templates ($19)](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)**, que ofrecen una serie de plantillas de gestión adaptadas para mejorar la eficiencia del equipo en un 300%.
+- **Productos basados en plantillas**: Si eres experto en ciertas herramientas de productividad, puedes crear plantillas especializadas. Por ejemplo, la colaboración en equipo es un gran desafío para muchas empresas. Puedes consultar nuestra **[Muestra Gratuita de la Librería de Prompts de IA](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)** para obtener prompts prácticos para tu equipo.
 - **Productos basados en conocimiento**: Si tienes un conocimiento profundo en un campo específico, considera crear un curso en línea. Si deseas aprender a utilizar la IA para el emprendimiento, te recomendamos encarecidamente este **[AI Course ($69)](https://slashmaster6.gumroad.com/l/vzalgb?utm_source=blog&utm_medium=seo&utm_campaign=vzalgb)**. Desde niveles básicos hasta avanzados, te enseña paso a paso cómo construir un sistema automatizado de ingresos impulsado por IA.
 
 ## Paso 3: Marketing sistemático y ventas automatizadas

@@ -7,7 +7,7 @@ slug: "designing-course-upgrade-path"
 author: "Wayne Chang"
 tags: ["course-design", "education", "automation", "product-design"]
 schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/lapcqb"
+product_url: "https://slashmaster6.gumroad.com/l/nulyms"
 product_price: "49"
 product_brand: "Slashman Tools"
 product_sku: "SMT-AIS"
@@ -157,11 +157,11 @@ The `return None` line is the most important one in the file. An upgrade path th
 2. **Ship a probe, not a quiz.** Make it runnable inside the learner's own project, have it print what it found, and have it link to one module.
 3. **Write the exercise before the module.** Every full-course module should require the learner's own project as input. If the exercise works on a toy dataset, it does not belong in the upgrade path.
 4. **Move the offer.** Delete upgrade language from lesson one. Put it in the final lesson of the module that just answered the learner's question.
-5. **Audit the sales page for honesty.** If you sell an entry kit like the AI Starter Bundle — $49 USD one-time, the entry-level course plus a prompt library, aimed at people starting from no technical background — say plainly what it does not cover. Naming the boundary is what makes the next step legible instead of pushy.
+5. **Audit the sales page for honesty.** If you sell an entry kit like the AI Developer Stack Bundle — $79 USD one-time, the entry-level course plus a prompt library, aimed at people starting from no technical background — say plainly what it does not cover. Naming the boundary is what makes the next step legible instead of pushy.
 
 ## Get AI Starter Bundle
 
-[**AI Starter Bundle**](https://slashmaster6.gumroad.com/l/lapcqb?utm_source=blog&utm_medium=article&utm_campaign=designing-course-upgrade-path) — **$49**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-starter/).
+[**AI Developer Stack Bundle**](https://slashmaster6.gumroad.com/l/nulyms?utm_source=blog&utm_medium=article&utm_campaign=designing-course-upgrade-path) — **$79**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-starter/).
 
 ## Related reading
 

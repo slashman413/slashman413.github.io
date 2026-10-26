@@ -7,7 +7,7 @@ slug: "solo-consultant-intake-follow-up"
 author: "Wayne Chang"
 tags: ["automation", "consulting", "intake", "follow-up", "workflow"]
 schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/lapcqb"
+product_url: "https://slashmaster6.gumroad.com/l/nulyms"
 product_price: "49"
 product_brand: "Slashman Tools"
 product_sku: "SMT-AIS"
@@ -145,11 +145,11 @@ A quieter break came earlier. The normalizer filled `budget_band` with `10k_to_2
 2. Route contradictions to a `needs_review` path and treat that folder as a hard gate in front of the proposal queue.
 3. Split your proposal template into seven sections and mark sections 5, 6 and 7 as human-only. Do not let a generated fee paragraph reach a client.
 4. Implement all three stop rules from the table above, and log the deciding query and message id with every send. Without the log, the stop condition is a guess.
-5. Run the cadence in dry-run mode for two weeks before it sends anything: write the messages you would have sent into the digest instead. If you are starting from no technical background, the AI Starter Bundle ($49, one-time) is the entry-level course plus a prompt library — it will not build this pipeline for you, but it is the cheapest way to get the vocabulary before you wire anything to a live client inbox.
+5. Run the cadence in dry-run mode for two weeks before it sends anything: write the messages you would have sent into the digest instead. If you are starting from no technical background, the AI Developer Stack Bundle ($79, one-time) is the entry-level course plus a prompt library — it will not build this pipeline for you, but it is the cheapest way to get the vocabulary before you wire anything to a live client inbox.
 
 ## Get AI Starter Bundle
 
-[**AI Starter Bundle**](https://slashmaster6.gumroad.com/l/lapcqb?utm_source=blog&utm_medium=article&utm_campaign=solo-consultant-intake-follow-up) — **$49**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-starter/).
+[**AI Developer Stack Bundle**](https://slashmaster6.gumroad.com/l/nulyms?utm_source=blog&utm_medium=article&utm_campaign=solo-consultant-intake-follow-up) — **$79**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-starter/).
 
 ## Related reading
 

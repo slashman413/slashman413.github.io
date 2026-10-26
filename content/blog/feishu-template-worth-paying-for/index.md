@@ -7,7 +7,7 @@ slug: "feishu-template-worth-paying-for"
 author: "Wayne Chang"
 tags: ["feishu", "templates", "automation", "permissions", "no-code"]
 schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/xohjh"
+product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
 product_price: "29"
 product_brand: "Slashman Tools"
 product_sku: "SMT-FSH"
@@ -108,7 +108,7 @@ The last one is the failure mode people find in month two, when notifications st
 
 ## Get Feishu Template Marketplace
 
-[**Feishu Template Marketplace**](https://slashmaster6.gumroad.com/l/xohjh?utm_source=blog&utm_medium=article&utm_campaign=feishu-template-worth-paying-for) — **$29**, one-time payment, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
+[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=feishu-template-worth-paying-for) — **Free**, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
 
 ## Related reading
 

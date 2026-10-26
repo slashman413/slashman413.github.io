@@ -75,7 +75,7 @@ This is our flagship product — a multi-agent orchestration framework. The deve
 
 After analyzing what customers were buying, I created bundled offerings:
 
-- **AI Starter Bundle** ($49) — Prompt Library + foundation course
+- **AI Developer Stack Bundle** ($79) — Prompt Library + foundation course
 - **Developer Stack** ($79) — Cowork Pro + DGX Spark Kit
 - **Investor Bundle** ($58) — ETF Dashboard + Prompt Library
 
