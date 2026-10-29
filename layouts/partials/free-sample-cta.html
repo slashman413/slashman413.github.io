@@ -1,9 +1,13 @@
 {{- /*
   free-sample-cta.html — persistent CTA on every blog article.
 
-  Links ONLY the two free samples verified live on Gumroad (API check 2026-10-18)
-  plus the on-site storefront. After b3bab0a removed links to unpublished
-  products, do not add links to anything that is not confirmed live.
+  Email-gated free-sample acquisition:
+    1. Visitor enters email → Worker /subscribe → KV → Mautic (campaign 10 drip)
+    2. On success, Gumroad download links are revealed below.
+    3. <noscript> fallback shows links directly for JS-disabled users.
+
+  lead-capture.js auto-binds any form with [data-lead-form].
+  The form's data-success attribute points to the reveal container.
 
   URLs (verified via Gumroad API, price=0):
     https://slashmaster6.gumroad.com/l/workflow-builder-sample
@@ -12,10 +16,45 @@
 {{ if eq .Section "blog" }}
 <div style="margin-top:28px;padding:20px 22px;background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.35);border-radius:12px">
   <p style="font-size:15px;font-weight:800;color:#f0f0f8;margin:0 0 6px">🎁 Want to try before you buy?</p>
-  <p style="font-size:13.5px;color:var(--muted);margin:0 0 14px">Both samples are 100% free on Gumroad — no account needed. Or browse the full catalogue in the <a href="/products/" style="color:#4ade80;font-weight:600">Slashman Tools storefront</a>.</p>
-  <div style="display:flex;gap:10px;flex-wrap:wrap">
-    <a href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&amp;utm_medium=blog&amp;utm_campaign=free_sample_cta&amp;utm_content=workflow_sample" target="_blank" rel="noopener" style="display:inline-block;background:#16a34a;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:8px;font-size:13.5px">Free Sample Workflow</a>
-    <a href="https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=slashmantools&amp;utm_medium=blog&amp;utm_campaign=free_sample_cta&amp;utm_content=prompt_sample" target="_blank" rel="noopener" style="display:inline-block;background:#16a34a;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:8px;font-size:13.5px">Free Prompt Library Sample</a>
+  <p style="font-size:13.5px;color:var(--muted);margin:0 0 14px">Both samples are 100% free. Enter your email to unlock the download links and get our 3-day AI toolkit drip in your inbox.</p>
+
+  <!-- Email-gate form (lead-capture.js auto-binds via data-lead-form) -->
+  <div id="free-sample-gate-form">
+    <form data-lead-form data-source="free-sample-cta" data-success="#free-sample-gate-reveal"
+          style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
+      <input type="email" name="email" placeholder="you@example.com" required
+             style="flex:1;min-width:200px;padding:10px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#f0f0f8;font-size:14px;outline:none"
+             onfocus="this.style.borderColor='#4ade80'" onblur="this.style.borderColor='rgba(255,255,255,.12)'">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"
+             style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <input type="hidden" name="tags" value="free-sample-gate">
+      <button type="submit"
+              style="background:#16a34a;color:#fff;border:none;border-radius:8px;font-weight:700;padding:10px 18px;font-size:13.5px;cursor:pointer;white-space:nowrap">
+        Unlock Downloads
+      </button>
+    </form>
+    <p style="font-size:11px;color:var(--muted);margin:0">No spam. Unsubscribe anytime. We respect your privacy.</p>
   </div>
+
+  <!-- Revealed after successful email submission -->
+  <div id="free-sample-gate-reveal" style="display:none">
+    <p style="font-size:13px;color:#4ade80;font-weight:600;margin:0 0 10px">✅ You're in! Click below to grab your free samples:</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&amp;utm_medium=blog&amp;utm_campaign=free_sample_cta&amp;utm_content=workflow_sample" target="_blank" rel="noopener" style="display:inline-block;background:#16a34a;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:8px;font-size:13.5px">Free Sample Workflow</a>
+      <a href="https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=slashmantools&amp;utm_medium=blog&amp;utm_campaign=free_sample_cta&amp;utm_content=prompt_sample" target="_blank" rel="noopener" style="display:inline-block;background:#16a34a;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:8px;font-size:13.5px">Free Prompt Library Sample</a>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin:10px 0 0">Direct links above • Direct download from Gumroad (no account required). Also check your inbox — we've emailed the links to you too.</p>
+  </div>
+
+  <!-- No-JS fallback: show links directly so no one is locked out -->
+  <noscript>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&amp;utm_medium=blog&amp;utm_campaign=free_sample_cta&amp;utm_content=workflow_sample" target="_blank" rel="noopener" style="display:inline-block;background:#16a34a;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:8px;font-size:13.5px">Free Sample Workflow</a>
+      <a href="https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=slashmantools&amp;utm_medium=blog&amp;utm_campaign=free_sample_cta&amp;utm_content=prompt_sample" target="_blank" rel="noopener" style="display:inline-block;background:#16a34a;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:8px;font-size:13.5px">Free Prompt Library Sample</a>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px">Both samples are 100% free on Gumroad — no account needed. Or browse the full catalogue in the <a href="/products/" style="color:#4ade80;font-weight:600">Slashman Tools storefront</a>.</p>
+  </noscript>
+
+  <p style="font-size:12px;color:var(--muted);margin:14px 0 0">Or browse the full catalogue in the <a href="/products/" style="color:#4ade80;font-weight:600">Slashman Tools storefront</a>.</p>
 </div>
 {{ end }}
