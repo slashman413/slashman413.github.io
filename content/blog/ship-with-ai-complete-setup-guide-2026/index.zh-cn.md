@@ -450,10 +450,10 @@ if __name__ == "__main__":
 
 ```bash
 # Clone and setup
-cd /home/wayne/workspace/github/slashman413/slashmantools.us
+cd slashmantools.us
 
 # Run the generator
-python3 /home/wayne/slashman413/scripts/content_generation.py
+python3 scripts/content_generation.py
 
 # Build locally
 rm -rf public/
