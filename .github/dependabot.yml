@@ -1,0 +1,14 @@
+version: 2
+updates:
+  # apps/line-chat-generator is on Tailwind v3 (postcss plugin + tailwind.config.js).
+  # A v4 bump needs a deliberate migration (@tailwindcss/postcss, @import "tailwindcss",
+  # @theme tokens), so majors are ignored. open-pull-requests-limit: 0 keeps version
+  # update PRs off; security updates still run and honor the ignore.
+  - package-ecosystem: npm
+    directory: /apps/line-chat-generator
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    ignore:
+      - dependency-name: tailwindcss
+        update-types: ["version-update:semver-major"]
