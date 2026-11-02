@@ -1,6 +1,6 @@
 # 市場契合度與推廣報告
 
-_資料驅動自動產生（無需 AI）· 2026-10-26（第 44 週）_
+_資料驅動自動產生（無需 AI）· 2026-11-02（第 45 週）_
 
 > 分析對象：[slashmantools.us](https://slashmantools.us) 上的免費工具。
 > 訊號：**瀏覽數**＝Abacus 實際頁面瀏覽（真實互動）；**搜尋熱度**＝Google Trends 近 3 個月平均（0–100）；**趨勢**＝近期 vs 前期方向。
@@ -9,22 +9,22 @@ _資料驅動自動產生（無需 AI）· 2026-10-26（第 44 週）_
 
 | 工具 | 瀏覽數 | 搜尋熱度 | 趨勢 | 需求 | 曝光 | 判讀 |
 |------|------:|--------:|:--:|:--:|:--:|------|
-| [AI 提示詞庫](https://slashmantools.us/ai-prompt-library/) | 72 | 2.7 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
-| [Token 成本計算器](https://slashmantools.us/token-cost-calculator/) | 51 | 0.0 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
-| [開發工具合集](https://slashmantools.us/dev-tools/) | 49 | 0.5 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
-| [AI 圖片尺寸計算器](https://slashmantools.us/ai-image-size-calculator/) | 49 | 0.0 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
-| [JSON & Regex 開發工具](https://slashmantools.us/json-regex-devtools/) | 46 | 0.0 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
-| [強密碼產生器](https://slashmantools.us/password-generator/) | — | 24.4 | ↓ | Med | ? | — |
-| [字數計算器](https://slashmantools.us/word-counter/) | — | 16.2 | ↑ | Med | ? | — |
-| [複利計算器](https://slashmantools.us/compound-calculator/) | — | 9.8 | → | Low | ? | — |
+| [AI 提示詞庫](https://slashmantools.us/ai-prompt-library/) | 72 | 2.6 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
+| [AI 圖片尺寸計算器](https://slashmantools.us/ai-image-size-calculator/) | 59 | 0.0 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
+| [Token 成本計算器](https://slashmantools.us/token-cost-calculator/) | 54 | 0.0 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
+| [開發工具合集](https://slashmantools.us/dev-tools/) | 51 | 0.5 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
+| [JSON & Regex 開發工具](https://slashmantools.us/json-regex-devtools/) | 48 | 0.0 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
+| [強密碼產生器](https://slashmantools.us/password-generator/) | — | 23.8 | ↓ | Med | ? | — |
+| [字數計算器](https://slashmantools.us/word-counter/) | — | 16.9 | ↑ | Med | ? | — |
+| [複利計算器](https://slashmantools.us/compound-calculator/) | — | 9.6 | → | Low | ? | — |
 | [單位換算器](https://slashmantools.us/unit-converter/) | — | 2.3 | → | Low | ? | — |
-| [計算器合集](https://slashmantools.us/calculators/) | — | 43.0 | ↓ | High | ? | — |
-| [番茄鐘專注計時器](https://slashmantools.us/pomodoro-focus-timer/) | — | 11.8 | → | Low | ? | — |
+| [計算器合集](https://slashmantools.us/calculators/) | — | 41.7 | ↓ | High | ? | — |
+| [番茄鐘專注計時器](https://slashmantools.us/pomodoro-focus-timer/) | — | 12.3 | → | Low | ? | — |
 | [配色工具](https://slashmantools.us/color-tools/) | — | 0.0 | → | Low | ? | — |
-| [QR Code 產生器](https://slashmantools.us/qr-code-generator/) | — | 78.3 | → | High | ? | — |
+| [QR Code 產生器](https://slashmantools.us/qr-code-generator/) | — | 79.4 | → | High | ? | — |
 | [圖片壓縮器](https://slashmantools.us/image-compressor/) | — | 5.7 | → | Low | ? | — |
-| [PDF 工具](https://slashmantools.us/pdf-tools/) | — | 19.6 | ↓ | Med | ? | — |
-| [本地 LLM VRAM 計算器](https://slashmantools.us/llm-calc/) | — | 2.1 | ↑ | Low | ? | — |
+| [PDF 工具](https://slashmantools.us/pdf-tools/) | — | 18.5 | ↓ | Med | ? | — |
+| [本地 LLM VRAM 計算器](https://slashmantools.us/llm-calc/) | — | 1.1 | ↑ | Low | ? | — |
 
 判讀說明：**需求**由搜尋熱度分級、**曝光**由瀏覽數相對分級，兩者交叉得到行動建議。
 
@@ -35,7 +35,7 @@ _資料驅動自動產生（無需 AI）· 2026-10-26（第 44 週）_
 ### QR Code 產生器
 **Threads / X（短）**
 ```
-QR Code 產生器 — 免費 QR，永久有效。免費工具，不用註冊：https://slashmantools.us/qr-code-generator/
+想做個 QR Code？ QR Code 產生器：連結、Wi-Fi、文字都能做，免費不過期。免費、免註冊，開瀏覽器就能用 👉 https://slashmantools.us/qr-code-generator/
 #qrcode #行銷 #小店家
 ```
 **Facebook / IG（中）**
@@ -52,7 +52,7 @@ QR Code 產生器｜免費 QR，永久有效
 ### 計算器合集
 **Threads / X（短）**
 ```
-計算器合集 — 日常計算，一站搞定。免費工具，不用註冊：https://slashmantools.us/calculators/
+需要算一下？ 計算器合集：日常理財、數學、健康計算器都在這。免費、免註冊，開瀏覽器就能用 👉 https://slashmantools.us/calculators/
 #計算器 #工具 #生產力
 ```
 **Facebook / IG（中）**
@@ -69,7 +69,7 @@ QR Code 產生器｜免費 QR，永久有效
 ### 強密碼產生器
 **Threads / X（短）**
 ```
-強密碼產生器 — 安全密碼，一鍵生成。免費工具，不用註冊：https://slashmantools.us/password-generator/
+密碼還在用生日？ 強密碼產生器：100% 在你瀏覽器產生，密碼不外傳。免費、免註冊，開瀏覽器就能用 👉 https://slashmantools.us/password-generator/
 #資安 #密碼 #隱私 #infosec
 ```
 **Facebook / IG（中）**
