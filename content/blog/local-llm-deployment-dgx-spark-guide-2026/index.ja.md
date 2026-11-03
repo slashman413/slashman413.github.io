@@ -8,12 +8,10 @@ tags: ["ai", "local-llm", "dgx-spark", "deployment", "vllm", "ollama"]
 author: "Wayne Chang"
 faq:
   - q: "ローカルLLMデプロイにはどのくらいのVRAM（メモリ）が必要ですか？"
-    a: "7B〜14Bモデル（4bit量子化）なら12GB〜16GBのコンシューマーGPUで動作します。32B〜72Bクラスの実用モデルを長文コンテキスト（32K）やマルチエージェント環境で安定稼働させるには、96GB〜128GBの統合メモリを備えた NVIDIA DGX Spark (GB10) などのワークステーションが最適です。"
+    a: "7B〜14Bモデル（4bit量子化）なら12GB〜16GBのコンシューマーGPUで動作します。32B〜72Bクラスの実用モデルを長文コンテキスト（32K）やマルチエージェント環境で安定稼働させるには、128 GBの統合メモリを備えた NVIDIA DGX Spark (GB10) などのワークステーションが最適です。"
   - q: "vLLM、Ollama、llama.cpp のどれを選ぶべきですか？"
     a: "個人での迅速なプロトタイピングやGGUFモデルの試用には Ollama が最適です。一方、複数のAIエージェントやチームメンバーが同時にリクエストを送る本番API環境では、Continuous Batching に対応した vLLM が圧倒的なスループットを発揮します。"
 ---
-
-# ローカルLLMデプロイ完全ガイド（2026年版）：NVIDIA DGX Spark (GB10) でオープンソースAIモデルを自社運用する方法
 
 ## なぜ2026年に「ローカルLLMデプロイ（自社運用）」が選ばれるのか？
 
@@ -23,7 +21,7 @@ faq:
 2. **従量課金（トークン費用）の撤廃**：マルチエージェントや24時間稼働の自動化パイプラインを回しても、毎月のAPI請求が膨らむことはありません。かかるのは月約30ドル程度の電気代だけです。
 3. **レート制限（Rate Limit）なし・オフライン対応**：外部APIの障害や429エラー（速度制限）に業務ワークフローを止められることがなくなります。
 
-本ガイドでは、96GB〜128GBのユニファイドメモリ（統合メモリ）を搭載した **NVIDIA DGX Spark (GB10)** を中心に、本番環境で使えるローカルLLMインフラの構築手順を解説します。（さらに詳細なベンチマークや英語版の包括ガイドは [Local LLM Deployment (2026) Complete Guide](/blog/local-llm-deployment-guide-2026/) および [DGX Spark セルフホスティング完全ガイド](/ja/blog/self-hosting-llm-dgx-spark-complete-guide/) もあわせてご覧ください。）
+本ガイドでは、128 GBのユニファイドメモリ（統合メモリ）を搭載した **NVIDIA DGX Spark (GB10)** を中心に、本番環境で使えるローカルLLMインフラの構築手順を解説します。（さらに詳細なベンチマークや英語版の包括ガイドは [Local LLM Deployment (2026) Complete Guide](/blog/local-llm-deployment-guide-2026/) および [DGX Spark セルフホスティング完全ガイド](/ja/blog/self-hosting-llm-dgx-spark-complete-guide/) もあわせてご覧ください。）
 
 ---
 
@@ -35,7 +33,7 @@ faq:
 |---|---|---|---|
 | **7B – 14B**（高速分類・チャット・コード補完） | GGUF `Q4_K_M` / `FP8` | 8 GB – 16 GB | RTX 4070 Ti / 4080 / 4090 (16GB–24GB) |
 | **32B – 35B**（高精度推論・多言語生成・関数呼び出し） | `FP8` / AWQ 4-bit | 22 GB – 36 GB | RTX 4090/5090 または **NVIDIA DGX Spark (GB10)** |
-| **70B – 72B**（複雑な推論・72B+7B デュアルモデル運用） | AWQ / GGUF `Q4_K_M` | 58 GB – 68 GB | **NVIDIA DGX Spark (96GB–128GB 統合メモリ)** |
+| **70B – 72B**（複雑な推論・72B+7B デュアルモデル運用） | AWQ / GGUF `Q4_K_M` | 58 GB – 68 GB | **NVIDIA DGX Spark (128 GB 統合メモリ)** |
 
 ### 2. 推論ランタイムの選び方
 

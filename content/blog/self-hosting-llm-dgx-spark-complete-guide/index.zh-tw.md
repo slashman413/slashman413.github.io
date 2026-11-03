@@ -7,9 +7,9 @@ slug: self-hosting-llm-dgx-spark-complete-guide
 tags: [ai, llm, self-hosting, dgx, vllm, 自架ai, 本地llm部署]
 faq:
   - q: "自架 AI 與本地 LLM 部署需要多少硬體預算與 VRAM？"
-    a: "入門級自架 AI 可使用 24GB VRAM 顯示卡（如 RTX 4090/5090）執行 14B–32B Q4 模型；若需同時執行 70B/72B 旗艦模型與多 Agent 並行推理，配備 96GB–128GB 統一記憶體的 NVIDIA DGX Spark (GB10) 或 Mac Studio 是性價比最高的生產環境選擇。"
+    a: "入門級自架 AI 可使用 24GB VRAM 顯示卡（如 RTX 4090/5090）執行 14B–32B Q4 模型；若需同時執行 70B/72B 旗艦模型與多 Agent 並行推理，配備 128 GB 統一記憶體的 NVIDIA DGX Spark (GB10) 或 Mac Studio 是性價比最高的生產環境選擇。"
   - q: "NVIDIA DGX Spark 評價如何？適合台灣個人開發者與中小企業自架 AI 嗎？"
-    a: "根據我們連續數月的生產環境實測，DGX Spark (GB10) 在約 150W 低功耗下可穩定以 12–15 tok/s 執行 Qwen 2.5/3 72B (Q4_K_M)，或以 22–28 tok/s 執行 32B 模型。相較每月 $350–$450 的雲端 API 帳單，中度以上用量約 2–3 個月即可回本。"
+    a: "我們於 2026-11-03 在自家 DGX Spark (GB10) 上以 SGLang 實測 Qwen3.8-27B (NVFP4)：單請求中位生成速度約 29 tok/s、首字延遲約 0.22 秒；4 並行時總吞吐量約 92 tok/s（24 個固定提示詞、每請求最多 256 tokens）。相較每月 $350–$450 的雲端 API 帳單，中度以上用量約 2–3 個月即可回本（此回本試算為估算，非實測）。"
   - q: "本地 LLM 部署該選 vLLM、Ollama 還是 llama.cpp？"
     a: "單人互動測試與快速載入 GGUF 模型首選 Ollama；需要多人共用、多 Agent 並行呼叫與高吞吐量 OpenAI 相容 API 的生產環境，強烈建議使用 vLLM 搭配 systemd 與健康檢查 watchdog。"
 ---
@@ -49,8 +49,6 @@ faq:
 }
 </script>
 
-# 自架 AI 與本地 LLM 部署完整指南：在 NVIDIA DGX Spark (GB10) 從零到生產環境
-
 ## 為什麼 2026 年需要自架 AI 與本地 LLM 部署？
 
 每個月，雲端 AI 模型變得更強大，但 API 帳單與隱私合規成本也同步飆升。對於需要全天候運行自動化工作流、多 Agent 系統或處理內部敏感資料的團隊與獨立開發者來說，**自架 AI（Self-Hosted AI）**與**本地 LLM 部署（Local LLM Deployment）**提供了雲端 API 無法取代的三大核心優勢：
@@ -61,11 +59,11 @@ faq:
 
 在開始設定之前，先根據您的工作負載選擇最適合的**自架 AI 硬體層級**：
 
-| 自架 AI 硬體方案 | 可用 VRAM / 統一記憶體 | 適合本地 LLM 部署規模 | 實測推論速度 (Q4/FP8) | 典型功耗 | 適用場景 |
+| 自架 AI 硬體方案 | 可用 VRAM / 統一記憶體 | 適合本地 LLM 部署規模 | 單請求推論速度（RTX/Mac 為參考值；DGX Spark 為本站實測） | 典型功耗 | 適用場景 |
 |---|---|---|---|---|---|
 | **RTX 4090 / 5090 單卡工作站** | 24GB–32GB GDDR6X/GDDR7 | 7B–32B (AWQ / GGUF Q4) | 45–85 tok/s | 350W–450W | 低延遲單模型 Coding 助手、個人高速推論 |
 | **Apple Mac Studio (M3/M4 Max/Ultra)** | 64GB–128GB 統一記憶體 | 32B–70B (GGUF / MLX) | 15–32 tok/s | 60W–120W | macOS 桌面環境、靜音本地開發測試 |
-| **NVIDIA DGX Spark (GB10 超級晶片)** | 96GB–128GB LPDDR5X 統一記憶體 | **32B FP16 或 70B/72B Q4 + 7B 雙模型並行** | 12–25 tok/s | **~150W** | **Linux 24/7 生產環境、CUDA/vLLM 原生生態、多 Agent 伺服器** |
+| **NVIDIA DGX Spark (GB10 超級晶片)** | 128 GB LPDDR5X 統一記憶體 | **32B FP16 或 70B/72B Q4 + 7B 雙模型並行** | ~29 tok/s（27B NVFP4，SGLang 實測中位數） | **~150W** | **Linux 24/7 生產環境、CUDA/vLLM 原生生態、多 Agent 伺服器** |
 
 ---
 
@@ -80,21 +78,21 @@ faq:
 | 規格項目 | NVIDIA DGX Spark (GB10) 實測配置 | 實戰影響與評價 |
 |---|---|---|
 | **運算晶片** | NVIDIA GB10 Grace Blackwell Superchip | 原生支援 CUDA、vLLM、FP8 與 NVFP4 硬體加速，無需像 Mac 轉譯或妥協相容性 |
-| **統一記憶體池** | 96GB–128GB LPDDR5X（CPU + GPU 共用） | **最大殺手鐧**：單機即可載入 70B/72B 大模型，或同時常駐「32B 主力模型 + 7B 快速分類模型 + Embedding 模型」 |
+| **統一記憶體池** | 128 GB LPDDR5X（CPU + GPU 共用） | **最大殺手鐧**：單機即可載入 70B/72B 大模型，或同時常駐「32B 主力模型 + 7B 快速分類模型 + Embedding 模型」 |
 | **儲存介面** | 高速 NVMe SSD | 建議將 `HF_HOME` 指向 NVMe，70B 模型冷啟動載入約 35–50 秒，熱啟動（Page Cache）僅需 8–12 秒 |
 | **機身與散熱噪音** | 緊湊型桌上型機（Mini-ITX 等級） | 滿載功耗僅約 150W，可直接放在辦公室或書房全天候開機，不像傳統 4U 機架伺服器吵雜耗電 |
 
-### 2. DGX Spark 本地 LLM 部署實測速度與記憶體佔用表
+### 2. DGX Spark 本地 LLM 部署實測速度（2026-11-03 實測）
 
-以下數據為我們在 DGX Spark 上使用 **vLLM (`--gpu-memory-utilization 0.90`, `--max-model-len 32768`)** 針對繁體中文與程式碼任務進行的實測表現：
+**測量方法：** 2026-11-03 於本站 24/7 運行的 DGX Spark (GB10, 128 GB 統一記憶體) 上，對 SGLang 伺服器（版本 `0.0.0.dev0+qwen38.27b.g561c8f3`，模型 `Qwen3.8-27B-NVFP4`，`modelopt_fp4` 量化，DFLASH 推測解碼 8 draft tokens）送出 **24 個固定提示詞**（中英文問答、程式碼、摘要），`temperature=0`、每請求最多 256 tokens、關閉 thinking，以串流方式分別在 **並行數 1 與 4** 各跑一輪。下表為 24 個請求的中位數與四分位距（IQR = Q1–Q3）。
 
-| 模型名稱 | 參數量 | 量化格式 | 權重 + KV Cache 記憶體佔用 | 單請求生成速度 (tok/s) | 4 並行總吞吐量 (tok/s) | 首字延遲 (TTFT) | 繁中/Agent 實測評價 |
-|---|---|---|---|---|---|---|---|
-| **Qwen 3 / Qwen 2.5 72B Instruct** | 72B | GGUF / AWQ Q4_K_M | ~48GB（含 32K KV 快取約 68GB） | 12–15 tok/s | 34–42 tok/s | ~80ms/tok | 繁體中文理解與長文推理頂尖，適合非即時背景 Agent |
-| **Llama 3.3 / 3.1 70B Instruct** | 70B | AWQ / GPTQ 4-bit | ~46GB（含 32K KV 快取約 65GB） | 10–13 tok/s | 30–38 tok/s | ~90ms/tok | 英文指令遵循與結構化輸出極穩 |
-| **Qwen 2.5 / Qwen 3 32B Instruct** | 32B | FP8 / FP16 | ~34GB (FP8) / ~64GB (FP16) | 20–28 tok/s | 65–82 tok/s | ~40ms/tok | **主力首選**：速度與智商完美平衡，適合 Tool Calling |
-| **DeepSeek-R1 Distill Qwen 32B** | 32B | Q4_K_M / FP8 | ~22GB–34GB | 22–30 tok/s | 70–88 tok/s | ~38ms/tok | 複雜邏輯、數學與程式碼除錯首選 |
-| **Phi-4 / Qwen 2.5 14B Instruct** | 14B | FP16 / Q8_0 | ~16GB–28GB | 35–48 tok/s | 110+ tok/s | ~22ms/tok | 適合即時互動、Email 分類與格式驗證閘門 |
+| 指標 | 並行數 1（24 請求） | 並行數 4（24 請求） |
+|---|---|---|
+| **單請求生成速度 (decode tok/s)** 中位數 [IQR] | **29.4** [24.2–33.6] | **24.9** [21.8–29.7] |
+| **首字延遲 TTFT** 中位數 [IQR] | **0.217 s** [0.215–0.219] | **0.341 s** [0.338–0.343] |
+| **總吞吐量**（總輸出 tokens ÷ 牆鐘時間） | 28.7 tok/s | **91.9 tok/s** |
+
+**解讀與限制：** 生成速度的 IQR 較寬，主要來自推測解碼的接受率隨內容而變（程式碼與制式文字較快）。每個提示詞僅測一次，且伺服器同時為其他內部服務常駐，數字可能略受干擾；提示詞很短，TTFT 不代表長 context 的預填（prefill）延遲。功耗未以插座電表量測，故不列入。舊版本頁面列出的 72B / 70B / 32B / 14B 模型速度並未在此硬體上重新實測，已移除。原始資料與測試腳本：每筆請求的 CSV 與 Python 腳本保存於本站內部任務紀錄。
 
 ### 3. DGX Spark 綜合優缺點評價（買前必看）
 

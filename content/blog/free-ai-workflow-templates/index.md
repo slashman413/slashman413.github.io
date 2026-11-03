@@ -16,8 +16,6 @@ faq:
     a: "Visit our live interactive sample page at /workflow-builder-sample/ to inspect and download a complete, dependency-checked multi-agent workflow package for $0."
 ---
 
-# Free AI Workflow Templates: 8 Copy-Paste JSON Automation Blueprints & DAGs (2026)
-
 The fastest way to ship a reliable AI automation is not reading another theory thread — it is starting from a **validated workflow template** with explicit input/output contracts, deterministic quality checks, and a human review gate.
 
 We turned this page into a complete **transactional template hub**: every one of the **8 free AI workflow templates** below includes its **multi-agent DAG diagram**, **validation rules**, and **copy-pasteable / downloadable JSON workflow definitions** you can run today.

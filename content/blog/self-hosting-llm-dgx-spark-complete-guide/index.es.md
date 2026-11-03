@@ -6,8 +6,6 @@ slug: self-hosting-llm-dgx-spark-complete-guide
 tags: [ai, llm, self-hosting, dgx, vllm]
 ---
 
-# The Complete Guide to Self-Hosting AI Models on DGX Spark
-
 ## Why Self-Hosting AI Matters in 2026
 
 Every month, AI models get better but more expensive. The cost trajectory is unsustainable for anyone running AI in production at scale. Self-hosting offers three advantages that cloud APIs simply cannot match:
@@ -25,12 +23,12 @@ The DGX Spark (NVIDIA GB10) is the perfect entry point. At ~$1000, it offers eno
 | Specification | Value |
 |---------------|-------|
 | GPU | NVIDIA GB10 (unified memory) |
-| Unified Memory | 96GB (GPU + CPU share) |
+| Unified Memory | 128 GB (GPU + CPU share) |
 | Storage | NVMe SSD (user-supplied) |
 | Form Factor | Compact desktop |
 | Power | ~150W under load |
 
-The 96GB unified memory is the killer feature. You can run models that simply won't fit on consumer GPUs (24GB VRAM) or even data center cards (80GB HBM).
+The 128 GB unified memory is the killer feature. You can run models that simply won't fit on consumer GPUs (24GB VRAM) or even data center cards (80GB HBM).
 
 ### What Models Fit?
 
@@ -42,7 +40,7 @@ The 96GB unified memory is the killer feature. You can run models that simply wo
 | Qwen 2.5 32B | 32B | FP16 | ~64GB |
 | Phi-4 | 14B | FP16 | ~28GB |
 
-The headroom matters. With 96GB and a 72B model at ~48GB, you have 48GB left for system overhead, multiple models, and concurrency.
+The headroom matters. With 128 GB and a 72B model at ~48GB, you have roughly 80 GB left for system overhead, multiple models, and concurrency.
 
 ## Step-by-Step vLLM Deployment
 
@@ -137,7 +135,7 @@ curl http://localhost:8000/v1/chat/completions \
 
 ## Memory Management Tuning
 
-The key to running models on DGX Spark is managing the 96GB shared memory pool. Here are the parameters that matter:
+The key to running models on DGX Spark is managing the 128 GB shared memory pool. Here are the parameters that matter:
 
 ### gpu-memory-utilization
 
@@ -175,7 +173,7 @@ This prevents OOM errors but may slow down generation when swapping occurs.
 
 ## Running Multiple Models
 
-With 96GB, you can run two models simultaneously:
+With 128 GB, you can run two models simultaneously:
 
 ```bash
 # Primary model (72B)
@@ -295,7 +293,7 @@ server {
 
 ## Conclusion
 
-Self-hosting on DGX Spark is mature enough for production use in 2026. The combination of 96GB unified memory, vLLM's optimization, and a single $1000 investment makes it one of the most cost-effective ways to run AI at scale.
+Self-hosting on DGX Spark is mature enough for production use in 2026. The combination of 128 GB unified memory, vLLM's optimization, and a single $1000 investment makes it one of the most cost-effective ways to run AI at scale.
 
 The key takeaways:
 1. Start with Q4_K_M quantization for the best balance

@@ -15,8 +15,6 @@ faq:
     a: "At 10M+ blended tokens per day (~300M tokens/month), cloud frontier APIs cost $450–$1,350/month. A $1,600 24GB GPU workstation breaks even in 2–4 months, and a $3,999 128GB DGX Spark server breaks even in 3.5–7 months while running 70B models at $0 per token."
 ---
 
-# Local LLMs in 2026: Complete Model Benchmark, VRAM Matrix & Cloud Break-Even Guide
-
 Two years ago, running **local LLMs** meant compromising heavily on reasoning, tool-calling reliability, and context length. In 2026, open-weight models—led by **Qwen 3 / 2.5 (14B–72B)**, **Llama 3.3 70B**, and **DeepSeek-R1 Distill (14B–70B)**—routinely match or beat mid-tier commercial cloud APIs on coding, structured JSON extraction, and multi-agent workflows.
 
 This guide replaces generic hype with the numbers you actually need to choose and run **local LLMs** on your own hardware:

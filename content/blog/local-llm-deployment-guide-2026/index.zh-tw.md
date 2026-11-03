@@ -6,8 +6,6 @@ slug: local-llm-deployment-guide-2026
 tags: [llm, deployment, vllm, self-hosting, gpu, qwen, local-llm]
 ---
 
-# Local LLM Deployment 2026 — vLLM, Ollama, and Choosing the Right Stack
-
 ## Why Run Models Locally at All?
 
 In 2026 the API-versus-local question is no longer about ideology — it is about the shape of your workload. Local inference wins when any of these are true:
@@ -33,7 +31,7 @@ The single most important planning number is **VRAM**, because that is what deci
 Two hardware families dominate:
 
 1. **NVIDIA consumer/prosumer GPUs** (e.g., 24 GB cards) — the compatibility sweet spot: CUDA everywhere, vLLM and llama.cpp both first-class.
-2. **Unified-memory machines** (e.g., DGX Spark-class GB10 systems with ~96 GB shared memory) — one pool for CPU+GPU means you can host a 30–35B class model comfortably *and* keep the rest of the system usable, which is exactly the setup our [self-hosting guide](/blog/self-hosting-llm-dgx-spark-complete-guide/) documents in detail.
+2. **Unified-memory machines** (e.g., DGX Spark-class GB10 systems with 128 GB shared memory) — one pool for CPU+GPU means you can host a 30–35B class model comfortably *and* keep the rest of the system usable, which is exactly the setup our [self-hosting guide](/blog/self-hosting-llm-dgx-spark-complete-guide/) documents in detail.
 
 **CPU/RAM rule:** give the OS at least 16 GB of system RAM beyond what the model needs, or the page cache thrashes and every token slows down.
 

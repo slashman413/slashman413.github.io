@@ -6,8 +6,6 @@ slug: self-hosted-ai-solopreneurs
 tags: [llm, self-hosting, dgx, vllm, solopreneur, ai]
 ---
 
-# Self-Hosted AI for Solopreneurs — The Complete 2026 Guide
-
 ## The Question Nobody Answers Honestly
 
 "Should I run my own AI models?" The content industry answers with either hype ("own your AI, cut API costs 90%!") or dismissal ("just use the API, self-hosting is a hobby"). Both are wrong for the same reason: they treat self-hosting as a universal decision. It is not. It is a workload-specific decision, and for a solopreneur the honest answer is usually "yes for some workloads, no for others" — with a clear line between them.
