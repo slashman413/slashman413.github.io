@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Workflow Builder Sample: Validated Multi-Agent DAG & JSON Blueprint — Slashman Tools</title>
+<meta name="description" content="Inspect, copy, and download a free, production-validated multi-agent AI workflow sample (Grill-Me spec, 5-node DAG, typed JSON schema contracts, and Python runner preview) from Slashman Tools.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://slashmantools.us/workflow-builder-sample/">
+<meta property="og:site_name" content="Slashman Tools">
+<meta property="og:title" content="Free AI Workflow Builder Sample: Validated Multi-Agent DAG & JSON Blueprint">
+<meta property="og:description" content="Download a working multi-agent workflow JSON blueprint, Grill-Me specification, and validated DAG topology for $0.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slashmantools.us/workflow-builder-sample/">
+<meta property="og:image" content="https://slashmantools.us/og.png">
+<meta name="google-site-verification" content="jV8Xt5l-peRpLknp7xKYpvN8N5tCAkMctq0D-3RVyzk">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Slashman AI Workflow Builder — Free Sample Multi-Agent Workflow",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Linux, macOS, Windows, Docker, Python 3.11+",
+  "url": "https://slashmantools.us/workflow-builder-sample/",
+  "description": "Free downloadable multi-agent workflow blueprint demonstrating the Grill-Me specification loop, static DAG validation, JSON schema contracts, and Python orchestration code.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://slashmantools.us/workflow-builder-sample/"
+  }
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--panel:#12121c;--text:#e4e4f0;--muted:#8888a8;--accent:#a5b4fc;--accent2:#6366f1;--border:rgba(255,255,255,.1);--green:#34d399}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;padding:24px 16px 64px}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:880px;margin:0 auto}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:32px;flex-wrap:wrap;gap:12px}
+.brand{font-weight:800;font-size:18px;color:#fff}
+.navlinks{font-size:13.5px;display:flex;gap:16px;flex-wrap:wrap}
+.badge{display:inline-block;background:rgba(52,211,153,.14);color:var(--green);font-size:12px;font-weight:700;padding:4px 12px;border-radius:99px;margin-bottom:12px}
+h1{font-size:32px;font-weight:800;color:#fff;line-height:1.22;margin-bottom:12px}
+.lead{font-size:16px;color:var(--muted);margin-bottom:24px;max-width:740px}
+.cta-bar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px;padding:18px 20px;background:var(--panel);border:1px solid var(--border);border-radius:12px;align-items:center;justify-content:space-between}
+.btn-primary{background:var(--accent2);color:#fff;padding:11px 20px;border-radius:8px;font-weight:700;font-size:14px;display:inline-block;border:none;cursor:pointer}
+.btn-secondary{background:rgba(52,211,153,.16);color:var(--green);border:1px solid rgba(52,211,153,.4);padding:10px 18px;border-radius:8px;font-weight:700;font-size:14px;display:inline-block;cursor:pointer}
+h2{font-size:21px;font-weight:800;color:#fff;margin:28px 0 12px;border-left:3px solid var(--accent2);padding-left:10px}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:20px}
+.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px}
+pre{background:#07070c;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:#a7f3d0;white-space:pre-wrap;line-height:1.55;overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+th,td{border:1px solid var(--border);padding:10px 12px;text-align:left}
+th{background:rgba(99,102,241,.12);color:#fff}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;color:var(--muted);text-align:center}
+</style>
+<script>
+function copyBlock(id, btn){
+  var text = document.getElementById(id).innerText.trim();
+  navigator.clipboard.writeText(text).then(function(){
+    var orig = btn.innerText;
+    btn.innerText = 'Copied!';
+    setTimeout(function(){ btn.innerText = orig; }, 1600);
+  });
+}
+function downloadSampleJson(){
+  var text = document.getElementById('sample-dag-json').innerText.trim() + '\n';
+  var blob = new Blob([text], {type: 'application/json'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'slashman-workflow-builder-sample.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="brand" href="/">Slashman Tools</a>
+    <div class="navlinks">
+      <a href="/blog/free-ai-workflow-templates/">8 Free Workflow Templates</a>
+      <a href="/blog/ai-workflow-builder/">AI Workflow Builder Review ($99)</a>
+      <a href="/blog/ai-workflow-builder-complete-guide/">Complete Guide</a>
+      <a href="/prompt-library-sample/">Prompt Sample</a>
+      <a href="/products/">All Products</a>
+    </div>
+  </div>
+
+  <span class="badge">100% FREE ON-SITE SAMPLE · VALIDATED MULTI-AGENT DAG + JSON</span>
+  <h1>Free AI Workflow Builder Sample: Multi-Agent Research → Draft → Fact-Check → Publish Pipeline</h1>
+  <p class="lead">Inspect, copy, and download a complete working artifact generated by <strong>Slashman AI Workflow Builder</strong>. Below is the resolved <strong>Grill-Me specification</strong>, the <strong>static pre-flight DAG verification table</strong>, and the complete <strong>JSON workflow blueprint</strong> ready to run or import.</p>
+
+  <div class="cta-bar">
+    <div>
+      <strong style="color:#fff;font-size:15px">Grab the JSON blueprint right here or download the full sample archive:</strong>
+      <div style="font-size:13px;color:var(--muted)">Includes spec.yaml, validated workflow.json, and generated Python interfaces.</div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button type="button" class="btn-secondary" onclick="downloadSampleJson()">Download workflow.json ($0) ↓</button>
+      <a class="btn-secondary" href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=sample-page&utm_campaign=workflow-builder-sample" rel="noopener">Gumroad Sample ZIP ↗</a>
+      <a class="btn-primary" href="https://slashmaster6.gumroad.com/l/amwkf?utm_source=slashmantools&utm_medium=sample-page&utm_campaign=ai-workflow-builder">Get Full Studio ($99) →</a>
+    </div>
+  </div>
+
+  <h2>1. Visual DAG Topology & Pre-Flight Static Checks</h2>
+  <div class="panel">
+    <pre style="color:#c7d2fe">[Trigger: Topic Brief]
+       │
+       ▼
+[Node 1: researcher] ──(sources_json: >=5 verified URLs)──► [Node 2: outliner]
+       │                                                            │
+       │                                            (outline_md: 6 H2 sections)
+       │                                                            ▼
+       └──────────────(ground_truth_notes)─────────────► [Node 3: technical_writer]
+                                                                    │
+                                                        (draft_md + code + table)
+                                                                    ▼
+                                                         [Node 4: fact_validator]
+                                                                    │
+                                                  (PASS: 0 unsupported claims)
+                                                                    ▼
+                                                      [Node 5: cms_packager + Gate]</pre>
+    <table>
+      <thead>
+        <tr><th>Pre-Flight Check</th><th>Status</th><th>What the Validator Verified Before Execution</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Cycle Detection (DAG)</strong></td><td style="color:#34d399;font-weight:700">PASS</td><td>Topological sort `[researcher, outliner, technical_writer, fact_validator, cms_packager]` has 0 cycles.</td></tr>
+        <tr><td><strong>Reachability & Islands</strong></td><td style="color:#34d399;font-weight:700">PASS</td><td>All 5 nodes reachable from trigger; 0 orphan outputs.</td></tr>
+        <tr><td><strong>Schema Contract Match</strong></td><td style="color:#34d399;font-weight:700">PASS</td><td>Upstream `sources_json` array schema matches `fact_validator` input contract.</td></tr>
+        <tr><td><strong>Tool Boundary Allow-List</strong></td><td style="color:#34d399;font-weight:700">PASS</td><td>Only `researcher` has `web_fetch`; `technical_writer` has 0 network tools.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>2. Complete Downloadable Workflow JSON Definition</h2>
+  <div class="panel">
+    <div class="panel-head">
+      <strong style="color:#fff">File: <code>slashman-workflow-builder-sample.json</code></strong>
+      <div style="display:flex;gap:8px">
+        <button type="button" class="btn-primary" style="padding:6px 12px;font-size:12px" onclick="copyBlock('sample-dag-json', this)">Copy JSON</button>
+        <button type="button" class="btn-secondary" style="padding:6px 12px;font-size:12px" onclick="downloadSampleJson()">Download .json ↓</button>
+      </div>
+    </div>
+    <pre id="sample-dag-json">{
+  "$schema": "https://slashmantools.us/schemas/workflow-v1.json",
+  "workflow_id": "research-draft-edit-publish-sample",
+  "version": "1.2.0",
+  "name": "Verified Technical Content & Research Pipeline",
+  "grill_me_spec": {
+    "goal": "Produce a fact-checked 1,500-word technical guide with runnable code and zero unsupported claims.",
+    "inputs": ["topic", "target_query", "canonical_internal_links"],
+    "outputs": ["hugo_markdown_bundle", "verification_report_json"],
+    "constraints": ["No external network calls after researcher step", "Max cost $0.18 per run"],
+    "success_criteria": ["All numeric claims traced to researcher URLs", "Title <= 60 chars", "Meta <= 155 chars"],
+    "edge_cases": ["If < 3 primary sources found, abort before writer step and alert human"]
+  },
+  "nodes": [
+    {
+      "id": "researcher",
+      "agent_model": "claude-opus-or-local-qwen-72b",
+      "allowed_tools": ["web_search", "fetch_url"],
+      "input_contract": { "topic": "string", "target_query": "string" },
+      "output_contract": {
+        "sources": "array[{url: string, title: string, key_metrics: array[string]}]"
+      },
+      "pre_flight_rule": "len(sources) >= 5"
+    },
+    {
+      "id": "outliner",
+      "depends_on": ["researcher"],
+      "agent_model": "local-qwen-32b-instruct",
+      "allowed_tools": [],
+      "input_contract": { "sources": "from:researcher.sources", "target_query": "string" },
+      "output_contract": { "h1": "string", "h2_sections": "array[string]", "table_spec": "string" },
+      "pre_flight_rule": "5 <= len(h2_sections) <= 8"
+    },
+    {
+      "id": "technical_writer",
+      "depends_on": ["outliner", "researcher"],
+      "agent_model": "claude-sonnet-or-local-qwen-72b",
+      "allowed_tools": [],
+      "input_contract": { "outline": "from:outliner", "sources": "from:researcher.sources" },
+      "output_contract": { "draft_markdown": "string", "word_count": "integer" },
+      "pre_flight_rule": "word_count >= 1400"
+    },
+    {
+      "id": "fact_validator",
+      "depends_on": ["technical_writer", "researcher"],
+      "agent_model": "local-qwen-32b-instruct",
+      "allowed_tools": [],
+      "input_contract": { "draft_markdown": "from:technical_writer.draft_markdown", "sources": "from:researcher.sources" },
+      "output_contract": { "verified_markdown": "string", "unsupported_claims": "array[string]", "passed": "boolean" },
+      "pre_flight_rule": "passed == true and len(unsupported_claims) == 0"
+    },
+    {
+      "id": "cms_packager",
+      "depends_on": ["fact_validator"],
+      "agent_model": "local-qwen-7b-instruct",
+      "allowed_tools": ["write_draft_bundle"],
+      "input_contract": { "verified_markdown": "from:fact_validator.verified_markdown" },
+      "output_contract": { "seo_title": "string", "meta_description": "string", "faq_schema": "array[{q,a}]" },
+      "pre_flight_rule": "len(seo_title) <= 60 and len(meta_description) <= 155"
+    }
+  ],
+  "human_approval_gate": {
+    "after_node": "cms_packager",
+    "channel": "pull_request_review",
+    "timeout_hours": 24
+  }
+}</pre>
+  </div>
+
+  <div class="cta-bar">
+    <div>
+      <strong style="color:#fff;font-size:16px">Turn your own plain-English prompts into validated multi-agent Python repos</strong>
+      <div style="font-size:13.5px;color:var(--muted)">Slashman AI Workflow Builder ($99 one-time, MIT license) includes the full Grill-Me Studio, AST DAG Validator, and Python/CI exporter.</div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn-primary" href="/blog/ai-workflow-builder/">Read Full Review →</a>
+      <a class="btn-secondary" href="https://slashmaster6.gumroad.com/l/amwkf?utm_source=slashmantools&utm_medium=sample-page-footer&utm_campaign=ai-workflow-builder">Buy on Gumroad ($99) ↗</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="/">Home</a> · <a href="/blog/free-ai-workflow-templates/">8 Free Workflow Templates</a> · <a href="/products/">Products</a> · <a href="/prompt-library-sample/">Prompt Library Sample</a> · <a href="/about/">About</a> · <a href="/privacy/">Privacy</a>
+  </div>
+</div>
+</body>
+</html>

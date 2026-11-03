@@ -333,8 +333,10 @@ Cowork Pro handles the routing automatically through its brain registry and disp
 ---
 
 **Related:**
+- [Free AI Workflow Templates: 8 Copy-Paste JSON Automation Blueprints](/blog/free-ai-workflow-templates/) — Downloadable multi-agent JSON templates (including our Content Factory & Digest blueprints) and [live workflow sample (`/workflow-builder-sample/`)](/workflow-builder-sample/)
+- [Best AI Workflow Builder for Multi-Agent Systems in 2026](/blog/ai-workflow-builder/) — Turn plain-English prompts into validated DAGs
 - [Cowork Pro](/blog/cowork-pro/) — Orchestrate your content factory
-- [AI Prompt Library](/blog/ai-prompt-library/) — 300+ prompts for content production
+- [AI Prompt Library](/blog/ai-prompt-library/) — 300+ prompts for content production ([try 12 free sample prompts](/prompt-library-sample/))
 - [Self-Hosting LLMs on DGX Spark](/blog/self-hosting-llm-dgx-spark-complete-guide/) — Run models locally
 - [Automated Content Pipeline](/blog/automated-content-pipeline-cowork-pro/) — Step-by-step guide
 - [Productivity Topic Hub](/categories/productivity/) — All productivity guides & tools

@@ -70,7 +70,7 @@ DAG（有向無環圖）是工作流的骨架：節點是 agent/工具，邊是�
 驗證過的 DAG 生成程式碼時，有三個不可妥協的要素：
 
 1. **型別化介面**（interfaces.py）：每個節點的輸入輸出都有明確型別，IDE 與靜態檢查器都認得
-2. **Retry + fallback**：LLM 呼叫不是可靠的——`LLM_MAX_RETRIES`、`DEFAULT_AGENT_FALLBACK`、`continue_on_error=True` 是標配
+2. **Retry + fallback**：LLM 呼叫不是可靠的——`LLM_MAX_RETRIES`、`DEFAULT_AGENT_FALLBACK`、`continue_on_error=True` 是標配。若你的多 Agent 工作流需要全天候高頻執行，建議搭配**[自架 AI 與本地 LLM 部署完整指南（NVIDIA DGX Spark 評價與實測數據）](/zh-tw/blog/self-hosting-llm-dgx-spark-complete-guide/)**，將高頻節點指向本地 vLLM 伺服器以消除雲端 API Token 成本與 Rate Limit 限制。
 3. **CI 從第一天就在**：生成的專案直接附 GitHub Actions workflow，合規即測試
 
 ## 實戰案例：競品定價監控工作流
@@ -114,4 +114,4 @@ edge_cases:
 
 這套方法論已經工具化了：[AI Workflow Builder](https://slashmaster6.gumroad.com/l/amwkf?utm_source=blog&utm_medium=seo&utm_campaign=aiwb) 實作了完整的 Grill-Me 規格迴圈、DAG 驗證器與 Python 程式碼生成。$99 一次買斷、MIT 授權、自架部署——適合把多 Agent 工作流當工程做的團隊。
 
-延伸閱讀：[Grill-Me 互動規格設計：讓 AI 只問該問的問題](/blog/grill-me-spec-design/) · [使用 AI Workflow Builder 建立第一個 AI 工作流](/blog/ai-workflow-builder-tutorial/) · [Cowork Pro：多 Agent 任務編排](/blog/cowork-pro/)
+延伸閱讀：[自架 AI 與本地 LLM 部署完整指南：NVIDIA DGX Spark (GB10) 評價與實測數據](/zh-tw/blog/self-hosting-llm-dgx-spark-complete-guide/) · [Grill-Me 互動規格設計：讓 AI 只問該問的問題](/blog/grill-me-spec-design/) · [使用 AI Workflow Builder 建立第一個 AI 工作流](/zh-tw/blog/ai-workflow-builder-tutorial/) · [Cowork Pro：多 Agent 任務編排](/zh-tw/blog/cowork-pro/)

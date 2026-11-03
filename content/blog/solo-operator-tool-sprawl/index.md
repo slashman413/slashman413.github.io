@@ -8,10 +8,10 @@ author: "Wayne Chang"
 tags: ["tooling", "automation", "solopreneur", "workflow", "devops"]
 schema: "ProductReview"
 product_url: "https://slashmaster6.gumroad.com/l/nulyms"
-product_price: "49"
+product_price: "79"
 product_brand: "Slashman Tools"
-product_sku: "SMT-AIS"
-product_category: "Online Course"
+product_sku: "SMT-ADS"
+product_category: "Software > Developer Tools"
 product_currency: "USD"
 seo_title: "The Solo Operator's Tool Sprawl Problem, and When to Stop"
 faq:
@@ -139,13 +139,13 @@ The `replaces` field does the real work. A tool with an empty `replaces` field i
 - **Cancel or export anything with no exit path.** Either you can pull the data out or you schedule the migration. Leaving it undecided is how sprawl compounds.
 - **Move one piece of glue out of a UI and into a script you own.** Start with the job that breaks most often. One dispatcher, one log format, one alert channel.
 - **Set a quarterly review.** Put the `review_on` dates on a calendar entry, not just in the file. The script only helps if something runs it.
-- **If you're starting from zero and the real blocker is not knowing what to automate yet,** work through the basics before buying infrastructure. We publish an [AI Developer Stack Bundle](/products/ai-starter-bundle) — the entry-level course plus prompt library, $79 one-time, aimed at people with no technical background.
+- **If you're starting from zero and the real blocker is not knowing what to automate yet,** work through the basics before buying infrastructure. We publish an [AI Developer Stack Bundle](/blog/ai-dev-stack/) — the foundation framework, deployment configs plus prompt library, $79 one-time, alongside our [DGX Spark Deployment Kit](/blog/dgx-spark-kit/) and full [Slashman Tools product catalog](/products/).
 
 For the wider picture of how these pieces fit together once the stack is small, the [complete framework walkthrough](/blog/ultimate-ai-automation-guide-2026/) is the longer read.
 
 ## Get AI Developer Stack Bundle
 
-[**AI Developer Stack Bundle**](https://slashmaster6.gumroad.com/l/nulyms?utm_source=blog&utm_medium=article&utm_campaign=solo-operator-tool-sprawl) — **$79**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-starter/).
+[**AI Developer Stack Bundle**](https://slashmaster6.gumroad.com/l/nulyms?utm_source=blog&utm_medium=article&utm_campaign=solo-operator-tool-sprawl) — **$79**, one-time payment, instant download. See the full breakdown on the [review page](/blog/ai-dev-stack/).
 
 ## Related reading
 

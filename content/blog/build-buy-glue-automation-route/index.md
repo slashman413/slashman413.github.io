@@ -109,7 +109,7 @@ Build locks you in the opposite way. No vendor can raise prices or deprecate the
 2. Time-box a glue prototype before you build or buy. One day, one script, real data, real failure. Bash plus cron is enough to learn whether the API is honest about pagination and rate limits.
 3. Turn on failure notifications before launch, not after. One channel, one alert per failed run, with a run ID you can search for, plus a heartbeat that fires when runs stop happening.
 4. Price the exit. Estimate the hours to migrate off the vendor, or the hours to hand your script to another person. Compare that number against the cost of leaving things as they are.
-5. If the answer is build and the domain is AI plumbing, the [AI Developer Stack Bundle](/products/ai-developer-stack-bundle/) is $79 one-time and includes a prompt library, agent framework, deployment tooling and tutorials that come pre-configured to work together, which shortens the parts that are not your actual product.
+5. If the answer is build and the domain is AI plumbing, the [AI Developer Stack Bundle](/blog/ai-dev-stack/) is $79 one-time and includes a prompt library, agent framework, deployment tooling and tutorials that come pre-configured to work together, which shortens the parts that are not your actual product.
 
 ## Get AI Developer Stack Bundle
 

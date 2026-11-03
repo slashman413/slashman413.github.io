@@ -199,7 +199,13 @@ aliases: ["/blog/2026-%E5%B9%B4%E4%BD%A0%E5%BF%85%E9%A0%88%E7%9F%A5%E9%81%93%E7%
 - **即貼即用**範本，一鍵複製貼上。
 - **定期更新**，確保提示詞能適應最新的 AI 模型（GPT-5、Claude 3.5 等）。
 
-不要讓工具限制了你的潛力。**[立即點擊此處取得 AI 提示詞庫](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc)**，讓你的效率翻倍，把時間留給真正重要的事情！
+不要讓工具限制了你的潛力。你可以先前往 **[免費 AI 提示詞樣本頁面 (`/prompt-library-sample/`)](/prompt-library-sample/)** 線上預覽並一鍵複製 12 組實戰提示詞，或直接查看 **[AI 提示詞庫完整評測](/zh-tw/blog/ai-prompt-library/)** 與 **[在 Gumroad 取得完整 300+ AI 提示詞庫 ($39)](https://slashmaster6.gumroad.com/l/diwoc?utm_source=blog&utm_medium=seo&utm_campaign=diwoc)**，讓你的效率翻倍，把時間留給真正重要的事情！
+
+**延伸閱讀：**
+- [AI 提示詞庫完整介紹與評測](/zh-tw/blog/ai-prompt-library/)
+- [AI 提示詞庫使用指南 (2026)](/zh-tw/blog/ai-prompt-library-usage-guide-2026/)
+- [50 AI Productivity Prompts (English Copy-Paste Cards)](/blog/50-ai-productivity-prompts-you-must-know-in-2026/)
+- [如何設計多 Agent AI 工作流](/zh-tw/blog/designing-multi-agent-ai-workflows-guide/)
 
 ---
 *這篇文章有幫助到你嗎？與你的同事和好朋友分享，一起成為 2026 年高效率工作者！*

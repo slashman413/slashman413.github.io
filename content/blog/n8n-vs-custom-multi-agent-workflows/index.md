@@ -267,7 +267,9 @@ The best time to move is when you notice yourself writing the third Code node, n
 
 ## Related reading
 
-- [Zapier vs n8n vs AI Workflow Builder](/blog/zapier-vs-n8n-vs-ai-workflow-builder/): picking an automation tool in the first place
+- [Zapier vs n8n (2026): Cost at Scale, Latency Benchmarks & AI Workflow Builder Comparison](/blog/zapier-vs-n8n-vs-ai-workflow-builder/): reproducible 1k/10k/100k monthly task math and webhook benchmarks
+- [8 Free AI Workflow Templates (2026)](/blog/free-ai-workflow-templates/): copy-pasteable JSON & multi-agent DAG templates
+- [Interactive AI Workflow Builder Sample](/workflow-builder-sample/): inspect a validated multi-agent DAG in your browser
 - [n8n workflow tutorial](/blog/n8n-workflow-tutorial-guide-2026/): build your first n8n AI automation
 - [Build your first AI workflow with AI Workflow Builder](/blog/ai-workflow-builder-tutorial/): the price monitor from this article, step by step
 - [Designing multi-agent AI workflows](/blog/designing-multi-agent-ai-workflows-guide/): contracts between agents

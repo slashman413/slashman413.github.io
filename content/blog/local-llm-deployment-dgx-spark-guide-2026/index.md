@@ -74,6 +74,7 @@ Free first: the [DGX Spark field notes](https://github.com/slashman413/dgx-spark
 
 ## Related Articles
 
+- [Local LLM Deployment (2026): vLLM vs Ollama vs llama.cpp & VRAM Sizing Guide](/blog/local-llm-deployment-guide-2026/)
+- [Self-Hosting AI Models on DGX Spark — Complete Production Guide](/blog/self-hosting-llm-dgx-spark-complete-guide/)
 - [Cowork Pro vs CrewAI Comparison](/blog/cowork-pro-vs-crewai-comparison-2026/)
 - [AI Prompt Library Usage Guide](/blog/ai-prompt-library-usage-guide-2026/)
-- [Feishu vs Notion: Which is Best?](/blog/feishu-vs-notion-comparison-2026/)

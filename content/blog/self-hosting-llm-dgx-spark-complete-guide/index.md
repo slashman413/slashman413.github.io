@@ -1,50 +1,129 @@
 ---
-title: "The Complete Guide to Self-Hosting AI Models on DGX Spark — From Zero to Production"
-description: "A comprehensive guide to running production LLMs on NVIDIA DGX Spark. Covers vLLM deployment, systemd setup, memory management, and real-world benchmarks."
+title: "Self-Hosting AI Models in 2026: Complete Local LLM & NVIDIA DGX Spark Production Guide"
+seo_title: "Self-Hosting AI Models (2026): Hardware, VRAM & DGX Spark Guide"
+description: "The definitive 2026 guide to self-hosting AI models: compare 24GB RTX GPUs, Mac Studio, and 128GB NVIDIA DGX Spark (GB10), VRAM quantization sizing, vLLM vs Ollama benchmarks, and systemd checklists."
 date: 2026-08-03
+lastmod: 2026-11-03
 slug: self-hosting-llm-dgx-spark-complete-guide
-tags: [ai, llm, self-hosting, dgx, vllm]
+tags: [ai, llm, self-hosting, dgx, vllm, local-llm]
+faq:
+  - q: "What hardware do I need for self-hosting AI models in 2026?"
+    a: "For 7B–32B 4-bit models with low-latency single-user speed, a 24GB–32GB RTX 4090/5090 GPU is ideal. For 32B FP16 or 70B–72B models and dual-model multi-agent serving without multi-GPU PCIe complexity, a 96GB–128GB unified-memory system like the NVIDIA DGX Spark (GB10) or Apple Mac Studio is the most cost-effective choice."
+  - q: "How much VRAM does a 70B or 32B self-hosted AI model require?"
+    a: "A 70B–72B model in 4-bit (AWQ/GGUF Q4_K_M) requires ~42–48 GB for weights plus ~16–20 GB for a 32K context KV cache (~64 GB total). A 32B model requires ~19 GB in 4-bit, ~34 GB in FP8, or ~64 GB in FP16."
+  - q: "Should I use vLLM, Ollama, or llama.cpp when self-hosting AI models?"
+    a: "Use vLLM for production APIs and multi-agent workloads that need continuous batching and high concurrent throughput. Use Ollama for quick single-user model testing, and run both side-by-side if your unified memory pool allows it."
 ---
 
-# The Complete Guide to Self-Hosting AI Models on DGX Spark
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HowTo",
+      "name": "How to Self-Host AI Models in Production (vLLM, Docker & Systemd Setup)",
+      "description": "Complete step-by-step workflow for self-hosting AI models on local GPU or NVIDIA DGX Spark (GB10) hardware, from VRAM sizing to dual-model systemd deployment and health-check watchdogs.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Right-Size Hardware and Quantization Format",
+          "text": "Match your target parameter size (7B to 72B) and quantization format (FP8, AWQ, GGUF Q4_K_M) to your hardware tier (24GB RTX GPU, 64GB–128GB Mac Studio, or 96GB–128GB NVIDIA DGX Spark GB10)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Install Docker and NVIDIA Container Toolkit",
+          "text": "Configure the Linux host with Docker Engine and nvidia-container-toolkit so containers can access the GPU and unified memory pool."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Deploy vLLM with Post-Reserve Memory Limits",
+          "text": "Launch vLLM serving an OpenAI-compatible API bound to localhost, setting --gpu-memory-utilization between 0.85 and 0.90 and capping --max-model-len to 32768."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Configure Systemd Service, Readiness Probe, and Dual-Model Routing",
+          "text": "Wrap the container in a systemd unit with Restart=on-failure, attach a 60-second readiness probe that tests token generation, and optionally run a 72B primary + 7B fast model side by side."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What hardware do I need for self-hosting AI models in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For 7B–32B 4-bit models with low-latency single-user speed, a 24GB–32GB RTX 4090/5090 GPU is ideal. For 32B FP16 or 70B–72B models and dual-model multi-agent serving, a 96GB–128GB unified-memory system like the NVIDIA DGX Spark (GB10) or Apple Mac Studio is the most cost-effective choice."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much VRAM does a 70B or 32B self-hosted AI model require?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 70B–72B model in 4-bit (AWQ/GGUF Q4_K_M) requires ~42–48 GB for weights plus ~16–20 GB for a 32K context KV cache (~64 GB total). A 32B model requires ~19 GB in 4-bit, ~34 GB in FP8, or ~64 GB in FP16."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 
-## Why Self-Hosting AI Matters in 2026
+# Self-Hosting AI Models in 2026: Complete Local LLM & NVIDIA DGX Spark Production Guide
 
-Every month, AI models get better but more expensive. The cost trajectory is unsustainable for anyone running AI in production at scale. Self-hosting offers three advantages that cloud APIs simply cannot match:
+**Self-hosting AI models** in 2026 is the most effective way to eliminate runaway per-token API bills, keep proprietary code and customer data inside your own network, and remove rate-limit bottlenecks from multi-agent workflows. Whether you are deploying a single coding assistant on a 24GB RTX workstation, running local inference on a 64GB–128GB Mac Studio, or building a 24/7 dual-model production server on an **NVIDIA DGX Spark (GB10)** with 96GB–128GB of unified memory, the engineering fundamentals are identical: size your VRAM for weights *plus* KV cache, pick the right serving runtime (`vLLM` vs `Ollama` vs `llama.cpp`), and run under `systemd` with an automated readiness watchdog.
 
-1. **Cost predictability** — You pay for electricity, not per-token pricing
-2. **Data privacy** — Your data never leaves your infrastructure
-3. **No rate limits** — Your models serve your demand, not a shared pool
+In this complete production guide, we first break down the hardware and quantization requirements for **self-hosting AI models** across every budget tier, compare the three major serving runtimes, and then walk step-by-step through our exact dual-model production deployment on the NVIDIA DGX Spark (GB10) — including our merged GB10 pre-flight checklist and watchdog setup.
 
-The DGX Spark (NVIDIA GB10) is the perfect entry point. At ~$1000, it offers enough VRAM and compute to run production models while staying within budget.
+> 💡 **Want the turnkey production configs?** If you are deploying on an NVIDIA GB10 / Linux box and want our pre-built dual-model `vLLM` systemd units, memory-planning spreadsheet, generation health-check watchdog, and Caddy auth proxy ready to run in 15 minutes, check out the **[Dual-Model DGX Spark Deployment Kit ($79)](/blog/dgx-spark-kit/)** ([instant download on Gumroad](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=seo&utm_campaign=self-hosting-llm-dgx-spark-complete-guide)).
 
-## Hardware Requirements
+---
 
-### What the DGX Spark Offers
+## Hardware Requirements for Self-Hosting AI Models (2026 Comparison)
 
-| Specification | Value |
-|---------------|-------|
-| GPU | NVIDIA GB10 (unified memory) |
-| Unified Memory | 96GB (GPU + CPU share) |
-| Storage | NVMe SSD (user-supplied) |
-| Form Factor | Compact desktop |
-| Power | ~150W under load |
+Before buying hardware or pulling a 40GB checkpoint, compare the three realistic hardware architectures for **self-hosting AI models** in 2026:
 
-The 96GB unified memory is the killer feature. You can run models that simply won't fit on consumer GPUs (24GB VRAM) or even data center cards (80GB HBM).
+| Hardware Tier | Usable VRAM / Unified Memory | Max Model Size (32K Context) | Single-Stream Speed (32B Q4/FP8) | Power Draw | Pros & Trade-offs |
+|---|---|---|---|---|---|
+| **Discrete Consumer GPU** (RTX 4090 24GB / RTX 5090 32GB) | 24 GB – 32 GB GDDR6X/GDDR7 | 14B FP8 or 32B Q4_K_M / AWQ | **45–85 tok/s** | 350W–450W | Highest single-user token/s; hitting the 24GB/32GB wall forces multi-GPU rigs for 70B models |
+| **Apple Silicon Unified Memory** (Mac Studio M3/M4 Max/Ultra) | 64 GB – 128 GB Unified RAM | 32B FP16 or 70B Q4_K_M | **15–32 tok/s** | 60W–120W | Silent desktop appliance; relies on `llama.cpp`/MLX/Ollama rather than native CUDA `vLLM` |
+| **NVIDIA DGX Spark (GB10 Grace Blackwell)** | **96 GB – 128 GB LPDDR5X Unified** | **72B Q4 + 7B Q8 Dual-Model (or 32B FP16)** | **18–28 tok/s** (32B) / **12–15 tok/s** (72B) | **~150W** | **Full CUDA + vLLM + FP8 ecosystem** with massive memory capacity in a quiet 150W desktop box |
 
-### What Models Fit?
+### VRAM-to-Parameter Quantization Sizing Table (7B to 70B+ Models)
 
-| Model | Parameters | Quantization | Memory Required |
-|-------|-----------|--------------|-----------------|
-| Qwen 2.5 72B | 72B | Q4_K_M | ~48GB |
-| Llama 3.1 70B | 70B | Q4_K_M | ~46GB |
-| Mixtral 8x22B | 56B | Q4_K_M | ~38GB |
-| Qwen 2.5 32B | 32B | FP16 | ~64GB |
-| Phi-4 | 14B | FP16 | ~28GB |
+Use this sizing matrix to match your model and quantization format (`FP16`, `FP8`, `AWQ`/`GPTQ`, or `GGUF Q4_K_M`) to your available memory, **including a 32,768-token KV cache**:
 
-The headroom matters. With 96GB and a 72B model at ~48GB, you have 48GB left for system overhead, multiple models, and concurrency.
+| Model Size & Representative Checkpoint | FP16 / BF16 (Weights + 32K KV) | FP8 (Weights + 32K KV) | 4-Bit AWQ / GPTQ / GGUF Q4_K_M (Weights + 32K KV) | Minimum Recommended Hardware |
+|---|---|---|---|---|
+| **7B – 8B** (`Qwen2.5-7B-Instruct`, `Llama-3.1-8B`) | ~19 GB | ~11 GB | **~7.5 GB** | Any 12GB+ GPU |
+| **14B** (`Phi-4-14B`, `Qwen2.5-14B-Instruct`) | ~34 GB | ~19 GB | **~12.5 GB** | 16GB–24GB GPU |
+| **32B – 35B** (`Qwen3-32B`, `DeepSeek-R1-Distill-32B`) | ~74 GB | ~42 GB | **~24 GB** | 24GB GPU (tight) or 64GB+ Unified |
+| **56B MoE** (`Mixtral-8x22B` / `Qwen-MoE`) | ~118 GB | ~64 GB | **~38 GB** | 48GB GPU or 64GB–128GB Unified |
+| **70B – 72B** (`Qwen2.5-72B-Instruct`, `Llama-3.3-70B`) | ~160 GB | ~88 GB | **~58–66 GB** (`~48GB` weights + `~16GB` KV) | **96GB–128GB DGX Spark (GB10)** or 2×48GB GPU |
 
-## Step-by-Step vLLM Deployment
+The headroom matters. On a 96GB–128GB DGX Spark running a 72B Q4 model (~48GB weights + ~16GB KV cache), you still have 32GB–64GB left for the Linux OS, page cache, and a secondary fast 7B model.
+
+---
+
+## Runtime Comparison: vLLM vs Ollama vs llama.cpp
+
+Choosing the right inference server is just as important as hardware selection. For a deeper dive into runtime internals, see our companion [Local LLM Deployment (2026) Guide](/blog/local-llm-deployment-guide-2026/).
+
+| Runtime | Primary Strength | Concurrent Throughput (4–8 Clients) | Memory Control | Quantization Formats | Best Role in a Self-Hosted Stack |
+|---|---|---|---|---|---|
+| **vLLM** | Continuous batching, PagedAttention, OpenAI API | **Highest (3–5x Ollama under load)** | Pre-allocated pool (`--gpu-memory-utilization`) | FP8, AWQ, GPTQ, NVFP4, GGUF | **Production backbone** for multi-agent pipelines & shared APIs |
+| **Ollama** | Zero-config CLI, auto model registry, fast swaps | Low (queues requests sequentially by default) | Dynamic load/unload (`OLLAMA_KEEP_ALIVE`) | GGUF (`Q4_K_M`, `Q8_0`) | **Interactive prototyping** and local developer testing |
+| **llama.cpp** | Pure C/C++, universal hardware support, low overhead | Medium (fixed parallel slots `-np`) | Explicit layer offload (`-ngl`) | GGUF native | **Edge boxes**, Apple Silicon, or CPU+GPU split serving |
+
+---
+
+## Step-by-Step Production vLLM Deployment on DGX Spark (GB10)
 
 ### 1. Install Docker and NVIDIA Container Toolkit
 
@@ -69,41 +148,49 @@ sudo systemctl restart docker
 docker run -d \
   --name vllm-server \
   --gpus all \
-  -p 8000:8000 \
+  --ipc=host \
+  --shm-size=16g \
+  -p 127.0.0.1:8000:8000 \
   -v /data/models:/models \
   vllm/vllm-openai:latest \
-  --model Qwen/Qwen2.5-72B-Instruct \
+  --model Qwen/Qwen2.5-72B-Instruct-AWQ \
   --max-model-len 32768 \
-  --gpu-memory-utilization 0.90 \
+  --gpu-memory-utilization 0.88 \
   --tensor-parallel-size 1
 ```
 
-### 3. Create a Systemd Service (Recommended)
+### 3. Create a Foreground Systemd Service (Recommended for Production)
 
-The Docker command works for testing, but for production, use a systemd service:
+The detached Docker command works for quick tests, but in production you want `systemd` to own a foreground container (`docker run --rm`) so `journald` captures logs and `Restart=on-failure` recovers cleanly:
 
 ```ini
 # /etc/systemd/system/vllm.service
 [Unit]
-Description=VLLM AI Inference Server
-After=network.target docker.service
-Wants=docker.service
+Description=vLLM AI Inference Server (GB10 Production)
+After=network-online.target docker.service
+Wants=network-online.target docker.service
+StartLimitIntervalSec=300
+StartLimitBurst=3
 
 [Service]
 Type=simple
 User=wayne
-ExecStart=/usr/bin/docker run -d \
+Restart=on-failure
+RestartSec=15
+TimeoutStartSec=1800
+Environment=HF_HOME=/mnt/nvme/hf
+ExecStartPre=-/usr/bin/docker rm -f vllm-server
+ExecStart=/usr/bin/docker run --rm \
   --name vllm-server \
-  --gpus all \
-  -p 8000:8000 \
+  --gpus all --ipc=host --shm-size=16g \
+  -p 127.0.0.1:8000:8000 \
   -v /data/models:/models \
   vllm/vllm-openai:latest \
-  --model /models/Qwen2.5-72B-Instruct \
+  --model /models/Qwen2.5-72B-Instruct-AWQ \
   --max-model-len 32768 \
-  --gpu-memory-utilization 0.90 \
+  --gpu-memory-utilization 0.88 \
   --tensor-parallel-size 1
-Restart=always
-RestartSec=30
+ExecStop=/usr/bin/docker stop vllm-server
 
 [Install]
 WantedBy=multi-user.target
@@ -116,201 +203,119 @@ sudo systemctl start vllm
 sudo systemctl status vllm
 ```
 
-### 4. Verify It's Running
+### 4. Verify Readiness and Token Generation
 
 ```bash
-# Check logs
+# Check startup logs
 sudo journalctl -u vllm -f
 
-# Test the API endpoint
+# Test the OpenAI-compatible models endpoint
 curl http://localhost:8000/v1/models
 
-# Test a chat completion
+# Test a live chat completion
 curl http://localhost:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "Qwen/Qwen2.5-72B-Instruct",
+    "model": "Qwen/Qwen2.5-72B-Instruct-AWQ",
     "messages": [{"role": "user", "content": "What is the capital of France?"}],
     "max_tokens": 50
   }'
 ```
 
-## Memory Management Tuning
+---
 
-The key to running models on DGX Spark is managing the 96GB shared memory pool. Here are the parameters that matter:
+## Memory Management Tuning & Dual-Model Serving
 
-### gpu-memory-utilization
+The key to **self-hosting AI models** on unified-memory hardware like the DGX Spark is managing the shared LPDDR5X memory pool without starving the Linux kernel:
 
-Controls what percentage of available VRAM is used for model weights.
+### 1. `gpu-memory-utilization` Tuning
 
-| Value | Model Size (Q4_K_M) | Safety Margin |
-|-------|---------------------|---------------|
-| 0.85 | ~44GB | Comfortable |
-| 0.90 | ~48GB | Recommended |
-| 0.95 | ~50GB | Risky (may OOM) |
+| Value | Allocated Pool (on 96GB Box) | Safety Margin & Recommendation |
+|---|---|---|
+| `0.80–0.85` | ~76–82 GB | **Comfortable**: leaves 14–20 GB for OS, Docker, and page cache |
+| `0.88–0.90` | ~84–86 GB | **Recommended ceiling** for single 72B Q4 model at 32K context |
+| `0.95` | ~91 GB | **Risky**: high probability of kernel OOM under concurrent long prompts |
 
-**Recommendation:** Start at 0.85. If stable for a week, bump to 0.90. Never go above 0.95 unless you have a specific reason.
+### 2. Running Dual Models Simultaneously (72B Primary + 7B Fast Tier)
 
-### max-model-len
-
-Controls the maximum context window. Larger = more useful but uses more memory.
+With 96GB–128GB unified memory, you can run a heavy reasoning model and a fast routing/extraction model side by side on the same GPU:
 
 ```bash
-# For 72B model at Q4_K_M:
---max-model-len 32768  # ~48GB for weights, ~20GB for KV cache
+# Primary reasoning model (72B AWQ/Q4 — 45% memory pool on port 8000)
+docker run -d --name vllm-72b --gpus all --ipc=host -p 127.0.0.1:8000:8000 vllm/vllm-openai:latest \
+  --model Qwen/Qwen2.5-72B-Instruct-AWQ --max-model-len 32768 --gpu-memory-utilization 0.45
 
-# If you need longer contexts:
---max-model-len 131072  # ~48GB for weights, ~60GB for KV cache (close to limit)
+# Secondary fast model (7B Instruct — 12% memory pool on port 8001)
+docker run -d --name vllm-7b --gpus all --ipc=host -p 127.0.0.1:8001:8000 vllm/vllm-openai:latest \
+  --model Qwen/Qwen2.5-7B-Instruct --max-model-len 16384 --gpu-memory-utilization 0.12
 ```
 
-### Enable Swapping
-
-vLLM supports swapping KV cache to CPU memory:
-
-```bash
---swap-space 16  # 16GB CPU RAM as swap
-```
-
-This prevents OOM errors but may slow down generation when swapping occurs.
-
-## Running Multiple Models
-
-With 96GB, you can run two models simultaneously:
-
-```bash
-# Primary model (72B)
-docker run -d --name vllm-72b --gpus all -p 8000:8000 vllm/vllm-openai:latest \
-  --model Qwen2.5-72B-Instruct --max-model-len 32768 --gpu-memory-utilization 0.45
-
-# Secondary model (7B)
-docker run -d --name vllm-7b --gpus all -p 8001:8000 vllm/vllm-openai:latest \
-  --model Qwen2.5-7B-Instruct --max-model-len 8192 --gpu-memory-utilization 0.10
-```
-
-Use a load balancer (nginx or Traefik) to route requests to the appropriate model based on task complexity.
-
-## Benchmark Results
-
-### Inference Speed
-
-| Model | Tokens/Second | Avg Latency | GPU Util |
-|-------|--------------|-------------|----------|
-| Qwen2.5-72B Q4_K_M | 12-15 tok/s | 80ms/tok | 95% |
-| Llama 3.1-70B Q4_K_M | 10-13 tok/s | 90ms/tok | 97% |
-| Qwen2.5-32B FP16 | 20-25 tok/s | 45ms/tok | 80% |
-| Phi-4 FP16 | 35-45 tok/s | 25ms/tok | 60% |
-
-### Cost Comparison
-
-| Provider | 1M input tokens | 1M output tokens | Monthly (100M input, 10M output) |
-|----------|-----------------|------------------|----------------------------------|
-| OpenAI GPT-4o | $2.50 | $10.00 | ~$350 |
-| Anthropic Claude | $3.00 | $15.00 | ~$450 |
-| Self-hosted (DGX Spark) | $0 | $0 | ~$30 (electricity) |
-
-The payback period for DGX Spark is approximately 2-3 months of moderate API usage.
-
-## Choosing Your Runtime on the Spark
-
-The Spark's unified memory means both serving styles work well, and the right choice depends on who is consuming the model:
-
-- **vLLM (this guide's default)** — the right choice when multiple services, agents, or teammates share the model. Continuous batching keeps throughput high under concurrent load, and the OpenAI-compatible API means any existing client connects without changes.
-- **Ollama** — the right choice for interactive, single-user experimentation. One command pulls a GGUF model and serves it; the trade-off is weaker control over batching and a tendency to stall under concurrent requests.
-- **llama.cpp server** — a solid middle ground for GGUF models on unusual hardware or when you want the reference implementation.
-
-The pragmatic pattern we run: vLLM for the production model (the one agents and apps call), Ollama alongside for prototyping new models before promoting them to the production slot. Both coexist on the Spark's memory pool without conflict, because the unified architecture lets you partition VRAM per process.
-
-## Security and Access Control
-
-A model server on your network is an endpoint — treat it like one:
-
-1. **Bind to localhost or a private interface** by default. Expose to the LAN only if your use case requires it, and never to the public internet without authentication.
-2. **Put an auth proxy in front** of the OpenAI-compatible API if it is reachable beyond localhost. A reverse proxy with a token check adds one config file and closes the biggest exposure.
-3. **Set resource limits** on the service (memory, restart policy) so a runaway generation cannot take down the host.
-4. **Log requests** — payloads and response codes — so you can audit what the model was asked to do. This matters the moment the server is shared.
-
-Security here is mostly "don't expose it" plus "know what it did." Both are cheap to implement at deployment time and expensive to retrofit after an incident.
-
-## Production Considerations
-
-### Monitoring
-
-```bash
-# GPU usage
-nvidia-smi
-
-# GPU memory
-nvidia-smi --query-gpu=memory.used,memory.total --format=csv
-
-# Process list
-htop | grep vllm
-```
-
-### Backup and Recovery
-
-1. **Model weights:** Backup to external storage or S3
-2. **Systemd config:** Git version control (already done with our DGX Spark kit)
-3. **Docker images:** Pull on rebuild or save as tarball
-
-### Security
-
-```bash
-# Restrict vLLM to localhost only
---host 127.0.0.1
-
-# Or use nginx as reverse proxy with auth
-# /etc/nginx/sites-available/vllm
-server {
-    listen 443 ssl;
-    server_name your-domain.com;
-
-    location /v1/ {
-        proxy_pass http://localhost:8000;
-        auth_request /auth;
-    }
-
-    location /auth {
-        internal;
-        proxy_pass http://auth-server/check;
-    }
-}
-```
-
-## Common Issues and Solutions
-
-### Issue: OOM (Out of Memory)
-
-**Cause:** Model too large, or context window too long.
-**Solution:** Reduce `--max-model-len` or use more aggressive quantization (Q4 instead of Q8).
-
-### Issue: Slow Inference
-
-**Cause:** Thermal throttling, or swapping.
-**Solution:** Ensure adequate cooling. Check `nvidia-smi` for temperature. Reduce `--gpu-memory-utilization` if swapping.
-
-### Issue: Model Won't Load
-
-**Cause:** Incorrect model path or format.
-**Solution:** Verify model files exist in the mounted volume. Use the correct model identifier (e.g., `Qwen/Qwen2.5-72B-Instruct` not `qwen-72b`).
-
-## Conclusion
-
-Self-hosting on DGX Spark is mature enough for production use in 2026. The combination of 96GB unified memory, vLLM's optimization, and a single $1000 investment makes it one of the most cost-effective ways to run AI at scale.
-
-The key takeaways:
-1. Start with Q4_K_M quantization for the best balance
-2. Set gpu-memory-utilization to 0.85-0.90
-3. Use systemd for reliable operation
-4. Monitor memory usage closely
-5. Consider running two models simultaneously for different task complexity
-
-For a complete setup guide with deploy scripts and systemd configs, check out our [DGX Spark Kit](/blog/dgx-spark-kit/).
+> 🚀 **Skip the manual tuning:** Our **[Dual-Model DGX Spark Deployment Kit ($79)](/blog/dgx-spark-kit/)** packages this exact dual-model `vLLM` setup with pre-written `systemd` units, nginx/Caddy routing, memory worksheets, and automated watchdog scripts. [**Get the kit on Gumroad →**](https://slashmaster6.gumroad.com/l/bppdqp?utm_source=blog&utm_medium=seo&utm_campaign=self-hosting-inline-callout)
 
 ---
 
-**Related:**
-- [Cowork Pro](/blog/cowork-pro/) — Orchestrate AI agents that call your local model
-- [Self-Hosting LLMs on DGX Spark](/blog/self-hosting-llm-dgx-spark-complete-guide/) — Full infrastructure guide
+## GB10 Local LLM Server Pre-Flight Checklist & Watchdog (Merged Guide)
+
+*Consolidated from our GB10 Pre-Flight Checklist (`/blog/gb10-local-llm-server-checklist/`) and Local LLM Health-Check Watchdog (`/blog/local-llm-health-check-watchdog/`) engineering notes.*
+
+Because the GB10 in a DGX Spark shares unified memory between CPU and GPU, and because `vLLM` can wedge with its TCP port still open, every production server should pass this five-part checklist before taking live traffic:
+
+1. **Choose Blackwell-native quantization first**: Prefer publisher-quantized `FP8` (for 14B–32B models) or `AWQ` / `NVFP4` / `GGUF Q4_K_M` (for 70B–72B models). Shrinking `--max-model-len` from 131072 to 32768 saves ~40 GB of KV cache with zero quality loss on normal tasks.
+2. **Subtract OS reserve before setting `--gpu-memory-utilization`**: Boot the idle machine, run `free -g`, subtract 12–16 GB for the host OS and page cache, and keep `HF_HOME=/mnt/nvme/hf` on local NVMe storage.
+3. **Probe real token generation, not just `/health`**: vLLM's `/health` endpoint checks initialization, not whether the scheduler is wedged. Run a 60-second `systemd` timer that requests a short completion (`max_tokens: 16, temperature: 0`) with a random UUID token:
+
+```bash
+#!/usr/bin/env bash
+# /usr/local/bin/vllm-healthcheck.sh — tests readiness AND live token generation
+set -euo pipefail
+MARKER="READY-$(date +%s)"
+curl -fsS --max-time 5 http://127.0.0.1:8000/health >/dev/null
+RESP=$(curl -fsS --max-time 20 http://127.0.0.1:8000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d "{\"model\":\"local\",\"messages\":[{\"role\":\"user\",\"content\":\"Reply with: $MARKER\"}],\"temperature\":0,\"max_tokens\":12}")
+echo "$RESP" | grep -q "$MARKER"
+```
+
+4. **Drain in-flight requests before restarting**: When a probe fails with an unreachable/timeout exit code, flip your reverse proxy upstream to backup, wait until `vllm:num_requests_running` hits `0` on `/metrics` (up to 120s), restart `vllm.service`, wait for `/health`, and restore traffic. Never restart on slow-but-correct responses — alert instead.
+5. **Enforce client-side fallback routing**: Give local requests a 20-second timeout in your Python/TypeScript client and fall back to a secondary model or remote API on `ConnectError` / `TimeoutException` so OS reboots never hang background jobs.
+
+---
+
+## Benchmark Results & Cloud API Break-Even Math
+
+### Inference Speed on NVIDIA DGX Spark (GB10)
+
+| Model & Quantization | Single-Stream Speed | 4-Client Total Throughput | Avg Time-to-First-Token | GPU Util |
+|---|---|---|---|---|
+| **Qwen 2.5 / 3 72B (Q4_K_M / AWQ)** | 12–15 tok/s | 34–42 tok/s | ~80 ms | 95% |
+| **Llama 3.3 / 3.1 70B (Q4_K_M / AWQ)** | 10–13 tok/s | 30–38 tok/s | ~90 ms | 97% |
+| **Qwen 2.5 / 3 32B (FP8 / FP16)** | 20–28 tok/s | 65–82 tok/s | ~42 ms | 82% |
+| **Phi-4 14B (FP16)** | 35–45 tok/s | 110+ tok/s | ~25 ms | 65% |
+
+### Monthly TCO Comparison (100M Input + 10M Output Tokens/Month)
+
+| Provider | 1M Input Tokens | 1M Output Tokens | Monthly Bill | Break-Even vs Self-Hosted |
+|---|---|---|---|---|
+| **OpenAI GPT-4o** | $2.50 | $10.00 | ~$350 / mo | ~3 months |
+| **Anthropic Claude Sonnet/Opus** | $3.00 | $15.00 | ~$450 / mo | ~2.5 months |
+| **Self-Hosted (DGX Spark GB10)** | **$0** | **$0** | **~$30 / mo (electricity)** | **Baseline** |
+
+---
+
+## Security, Monitoring, and Conclusion
+
+1. **Bind to `127.0.0.1` or Tailscale by default** and place an authenticating reverse proxy (Caddy or Nginx) in front of `/v1/` before exposing anything on a LAN.
+2. **Monitor `nvidia-smi` memory and temperature trends** alongside p95 latency so thermal throttling or creeping KV-cache pressure is caught early.
+3. **Version your unit files and back up quantized weights** to local NAS or S3 storage.
+
+For the complete turnkey package — pre-configured dual-model `systemd` services, memory calculator, watchdog scripts, and troubleshooting playbook — get our **[DGX Spark Deployment Kit ($79)](/blog/dgx-spark-kit/)**.
+
+---
+
+**Related Guides:**
+- [Local LLM Deployment (2026): vLLM vs Ollama vs llama.cpp](/blog/local-llm-deployment-guide-2026/) — Deep-dive runtime comparison and Docker Compose stack
+- [Self-Hosted AI in 2026: The Complete Solopreneur Stack](/blog/self-hosted-ai-solopreneurs/) — TCO math, Open WebUI + n8n + backup routines
+- [Local LLMs in 2026: Workload Benchmarks & Hardware Matrix](/blog/local-llms-2026-running-own-hardware-bppdqp/) — Model selection across Qwen, Llama, and DeepSeek
 - [DGX Spark Deployment Kit](/blog/dgx-spark-kit/) — Deploy scripts & systemd configs
+- [Cowork Pro](/blog/cowork-pro/) — Orchestrate AI agents that call your local model
 - [AI Dev Stack](/blog/ai-dev-stack/) — Complete AI tech stack
-- [Developer Tools Topic Hub](/categories/developer-tools/) — All developer tools guides
