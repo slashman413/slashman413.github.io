@@ -7,6 +7,18 @@
        duplicate the canonical /blog/<slug>/ landing pages. */ -}}
 <h1>{{ .Title }}</h1>
 {{ with .Content }}<div class="dateline"></div>{{ . }}{{ end }}
+
+<div style="margin:20px 0 24px;padding:16px 18px;background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.28);border-radius:12px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center">
+  <div>
+    <strong style="color:#a5b4fc;font-size:15px">🎁 Try the Free Interactive Samples First</strong>
+    <div style="color:#a1a1aa;font-size:13.5px;margin-top:4px">Test our production prompt templates and multi-agent DAG schemas directly in your browser before purchasing.</div>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <a href="/prompt-library-sample/" style="padding:8px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#e4e4e7;text-decoration:none;font-size:13px;font-weight:600">Prompt Library Sample →</a>
+    <a href="/workflow-builder-sample/" style="padding:8px 14px;background:#818cf8;color:#0a0a0f;border-radius:8px;text-decoration:none;font-size:13px;font-weight:700">Workflow Builder Sample →</a>
+  </div>
+</div>
+
 {{ $lang := .Language.Lang }}
 {{ $products := site.Data.products }}
 {{ if $products }}
@@ -28,5 +40,38 @@
   </li>
   {{ end }}
 </ul>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": {{ .Title | jsonify }},
+  "description": {{ .Description | jsonify }},
+  "numberOfItems": {{ len $products }},
+  "itemListElement": [
+    {{- range $idx, $p := $products }}
+    {{- if $idx }},{{ end }}
+    {
+      "@type": "ListItem",
+      "position": {{ add $idx 1 }},
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": {{ $p.title | jsonify }},
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Linux, macOS, Windows, Web",
+        "url": {{ printf "%s%s" (strings.TrimRight "/" site.BaseURL) $p.url | jsonify }},
+        "offers": {
+          "@type": "Offer",
+          "price": {{ $p.price | jsonify }},
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": {{ $p.buy | jsonify }}
+        }
+      }
+    }
+    {{- end }}
+  ]
+}
+</script>
 {{ end }}
 {{ end }}

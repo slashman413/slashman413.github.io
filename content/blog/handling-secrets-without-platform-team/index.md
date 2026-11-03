@@ -167,7 +167,7 @@ It also helps to write down what a leak costs you in time, so the next one is fa
 - **Write the revocation list.** One page, the table above as the template, stored in a private repo or a password manager note. Fill in the "revoke at" column with actual URLs, not "AWS console."
 - **Pick one source of truth and migrate one key.** Start with the credential with the widest scope, which is usually the one your main service uses.
 - **Rehearse a rotation on a low-stakes key.** A staging API token, not the production database. Write down every consumer you had to touch.
-- **If you self-host inference on a GB10 box, keep the same discipline for its API keys.** The systemd-unit pattern above is the one used by the [DGX Spark LLM Deployment Kit](/products/dgx-spark-llm-deployment-kit/) ($49, one-time), which ships systemd units, memory planning, health checks, a watchdog and a troubleshooting playbook for running vLLM models on an NVIDIA GB10 (DGX Spark) — including where to put the token that fronts the endpoint so it never lands in a shell history.
+- **If you self-host inference on a GB10 box, keep the same discipline for its API keys.** The systemd-unit pattern above is the one used by the [DGX Spark LLM Deployment Kit](/blog/dgx-spark-kit/) ($79, one-time), which ships systemd units, memory planning, health checks, a watchdog and a troubleshooting playbook for running vLLM models on an NVIDIA GB10 (DGX Spark) — including where to put the token that fronts the endpoint so it never lands in a shell history.
 
 ## Get DGX Spark LLM Deployment Kit
 
