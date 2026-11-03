@@ -10,7 +10,7 @@ faq:
   - q: "What is the best runtime for local LLM deployment in 2026: vLLM, Ollama, or llama.cpp?"
     a: "Use vLLM for production multi-agent pipelines and shared team APIs where continuous batching and high concurrent throughput matter. Use Ollama for single-user interactive prototyping, and llama.cpp for CPU+GPU hybrid inference or Apple Silicon/heterogeneous hardware."
   - q: "How much VRAM do I need for local LLM deployment?"
-    a: "A 7B–9B model in Q4/FP8 needs 6–10 GB VRAM; a 14B model needs 10–16 GB; a 32B–35B model needs 20–24 GB in 4-bit AWQ/GGUF (or 36 GB in FP8); and a 70B–72B model requires 42–48 GB for weights plus 12–20 GB for a 32K KV cache, fitting comfortably on a 96GB–128GB unified-memory box like the NVIDIA DGX Spark (GB10)."
+    a: "A 7B–9B model in Q4/FP8 needs 6–10 GB VRAM; a 14B model needs 10–16 GB; a 32B–35B model needs 20–24 GB in 4-bit AWQ/GGUF (or 36 GB in FP8); and a 70B–72B model requires 42–48 GB for weights plus 12–20 GB for a 32K KV cache, fitting comfortably on a 128 GB unified-memory box like the NVIDIA DGX Spark (GB10)."
   - q: "Why isn't systemd Restart=always enough for a local LLM server?"
     a: "Restart=always only triggers when the OS process exits. When a local LLM server wedges due to KV-cache exhaustion or a CUDA lockup, the port stays open and /health still returns 200. You need a generation watchdog probe that sends a short completion request and classifies exit codes before draining and restarting."
 ---
@@ -75,8 +75,6 @@ faq:
 }
 </script>
 
-# Local LLM Deployment (2026): vLLM vs Ollama vs llama.cpp, VRAM Sizing & Production Stack
-
 **Local LLM deployment** in 2026 is no longer an experimental weekend project — it is an engineering decision driven by workload economics, data sovereignty, and multi-agent throughput. When you run autonomous agents, automated content pipelines, or internal code/document analysis around the clock, cloud API token meters and rate limits quickly become your largest operational bottleneck.
 
 This guide is our complete production reference for **local LLM deployment**: how to calculate real VRAM budgets across 7B to 72B models, how `vLLM`, `Ollama`, and `llama.cpp` compare under real concurrent load, and the exact `docker compose`, `systemd`, pre-flight checklist, and watchdog scripts we run on our own hardware (including our [self-hosting AI models on NVIDIA DGX Spark guide](/blog/self-hosting-llm-dgx-spark-complete-guide/) and [DGX Spark local LLM deployment walkthrough](/blog/local-llm-deployment-dgx-spark-guide-2026/)).
@@ -103,7 +101,7 @@ The single most important number in **local LLM deployment** is **available VRAM
 | **7B – 9B** (Qwen 2.5/3 7B, Llama 3.1 8B) | 15–18 GB | 8–10 GB | 5–6.5 GB | +2–4 GB | 12GB–16GB Consumer GPU (RTX 4070 Ti / 4080) | Fast classification, routing, JSON extraction |
 | **14B** (Phi-4 14B, Qwen 2.5 14B) | 28–30 GB | 15–16 GB | 8.5–10 GB | +4–6 GB | 16GB–24GB GPU (RTX 4090 / 5080) | General coding, bilingual summarization |
 | **30B – 35B** (Qwen 3 / 2.5 32B, DeepSeek-R1 32B) | 64–68 GB | 34–36 GB | 18–21 GB | +8–12 GB | 24GB–32GB GPU (tight Q4) or **64GB–128GB Unified Memory** | **Sweet spot**: tool calling, agentic coding, complex synthesis |
-| **70B – 72B** (Qwen 2.5/3 72B, Llama 3.3 70B) | 140–145 GB | 72–76 GB | 42–48 GB | +16–22 GB | **96GB–128GB NVIDIA DGX Spark (GB10)**, Mac Studio, or 2×24GB/48GB GPUs | Frontier-grade local reasoning, long-context multi-agent pipelines |
+| **70B – 72B** (Qwen 2.5/3 72B, Llama 3.3 70B) | 140–145 GB | 72–76 GB | 42–48 GB | +16–22 GB | **128 GB NVIDIA DGX Spark (GB10)**, Mac Studio, or 2×24GB/48GB GPUs | Frontier-grade local reasoning, long-context multi-agent pipelines |
 
 **Critical unified-memory rule:** On unified-memory architectures like the NVIDIA GB10 (DGX Spark) or Apple Silicon, CPU and GPU share one physical RAM pool. Always leave **12–16 GB of system RAM** untouched for the Linux kernel, Docker runtime, and disk page cache, or page-cache thrashing will cut token generation speed in half.
 
@@ -111,13 +109,13 @@ The single most important number in **local LLM deployment** is **available VRAM
 
 ## Chapter 2: Runtime Comparison — vLLM vs Ollama vs llama.cpp
 
-You do not need one runtime for everything; you need the runtime whose scheduling architecture matches your concurrency profile. Here is our measured 2026 benchmark and feature comparison across **vLLM**, **Ollama**, and **llama.cpp**:
+You do not need one runtime for everything; you need the runtime whose scheduling architecture matches your concurrency profile. Here is an indicative 2026 comparison across **vLLM**, **Ollama**, and **llama.cpp**. The speed rows are typical ranges, not a controlled benchmark; for numbers we actually measured on our DGX Spark (Qwen3.8-27B NVFP4 on SGLang: ~29 tok/s single-stream median, ~92 tok/s aggregate at concurrency 4, 24 prompts, 2026-11-03), see the [self-hosting guide](/blog/self-hosting-llm-dgx-spark-complete-guide/):
 
 | Metric / Capability | **vLLM (Production API Standard)** | **Ollama (Rapid Prototyping)** | **llama.cpp (`llama-server`)** |
 |---|---|---|---|
 | **Scheduling Architecture** | Continuous batching + PagedAttention + prefix caching | Go wrapper over `llama.cpp` with dynamic model loading | Native C/C++ GGML/GGUF server with parallel slots (`-np`) |
-| **Single-User Speed (32B Q4/FP8 on GB10)** | **22–28 tok/s** (TTFT ~38ms) | **20–25 tok/s** (TTFT ~45ms) | **21–26 tok/s** (TTFT ~40ms) |
-| **8-Concurrent-Request Throughput (32B)** | **115–145 tok/s total** (scales cleanly) | **24–32 tok/s total** (serializes/queues heavily) | **48–65 tok/s total** (depends on `-np` KV split) |
+| **Single-User Speed (32B Q4/FP8 on GB10, indicative)** | **22–28 tok/s** (TTFT ~38ms) | **20–25 tok/s** (TTFT ~45ms) | **21–26 tok/s** (TTFT ~40ms) |
+| **8-Concurrent-Request Throughput (32B, indicative)** | **115–145 tok/s total** (scales cleanly) | **24–32 tok/s total** (serializes/queues heavily) | **48–65 tok/s total** (depends on `-np` KV split) |
 | **VRAM Allocation Strategy** | Pre-allocates fixed pool (`--gpu-memory-utilization 0.85`) | Loads on demand, unloads after `OLLAMA_KEEP_ALIVE` timer | Allocates exact GGUF layers (`-ngl`) + fixed context buffer |
 | **Supported Quantization Formats** | FP8, AWQ, GPTQ, NVFP4, BitsAndBytes, GGUF | GGUF (`Q4_K_M`, `Q5_K_M`, `Q8_0`) | GGUF (`Q2_K` through `Q8_0`, IQ4_XS) |
 | **Schema / Guided Decoding** | **First-class** (`guided_json`, `response_format` FSM) | Basic JSON mode / tool calls | Grammar-based GBNF + JSON schema |

@@ -6,8 +6,6 @@ slug: self-hosting-llm-dgx-spark-complete-guide
 tags: [ai, llm, self-hosting, dgx, vllm]
 ---
 
-# The Complete Guide to Self-Hosting AI Models on DGX Spark
-
 ## Why Self-Hosting AI Matters in 2026
 
 Every month, AI models get better but more expensive. The cost trajectory is unsustainable for anyone running AI in production at scale. Self-hosting offers three advantages that cloud APIs simply cannot match:
@@ -25,12 +23,12 @@ The DGX Spark (NVIDIA GB10) is the perfect entry point. At ~$1000, it offers eno
 | Specification | Value |
 |---------------|-------|
 | GPU | NVIDIA GB10 (unified memory) |
-| Unified Memory | 96GB (GPU + CPU share) |
+| Unified Memory | 128 GB (GPU + CPU share) |
 | Storage | NVMe SSD (user-supplied) |
 | Form Factor | Compact desktop |
 | Power | ~150W under load |
 
-The 96GB unified memory is the killer feature. You can run models that simply won't fit on consumer GPUs (24GB VRAM) or even data center cards (80GB HBM).
+The 128 GB unified memory is the killer feature. You can run models that simply won't fit on consumer GPUs (24GB VRAM) or even data center cards (80GB HBM).
 
 ### What Models Fit?
 
@@ -42,7 +40,7 @@ The 96GB unified memory is the killer feature. You can run models that simply wo
 | Qwen 2.5 32B | 32B | FP16 | ~64GB |
 | Phi-4 | 14B | FP16 | ~28GB |
 
-The headroom matters. With 96GB and a 72B model at ~48GB, you have 48GB left for system overhead, multiple models, and concurrency.
+The headroom matters. With 128 GB and a 72B model at ~48GB, you have roughly 80 GB left for system overhead, multiple models, and concurrency.
 
 ## Step-by-Step vLLM Deployment
 
@@ -137,7 +135,7 @@ curl http://localhost:8000/v1/chat/completions \
 
 ## Memory Management Tuning
 
-The key to running models on DGX Spark is managing the 96GB shared memory pool. Here are the parameters that matter:
+The key to running models on DGX Spark is managing the 128 GB shared memory pool. Here are the parameters that matter:
 
 ### gpu-memory-utilization
 
@@ -175,7 +173,7 @@ This prevents OOM errors but may slow down generation when swapping occurs.
 
 ## Running Multiple Models
 
-With 96GB, you can run two models simultaneously:
+With 128 GB, you can run two models simultaneously:
 
 ```bash
 # Primary model (72B)
@@ -191,14 +189,17 @@ Use a load balancer (nginx or Traefik) to route requests to the appropriate mode
 
 ## Benchmark Results
 
-### Inference Speed
+### Inference Speed（実測 2026-11-03）
 
-| Model | Tokens/Second | Avg Latency | GPU Util |
-|-------|--------------|-------------|----------|
-| Qwen2.5-72B Q4_K_M | 12-15 tok/s | 80ms/tok | 95% |
-| Llama 3.1-70B Q4_K_M | 10-13 tok/s | 90ms/tok | 97% |
-| Qwen2.5-32B FP16 | 20-25 tok/s | 45ms/tok | 80% |
-| Phi-4 FP16 | 35-45 tok/s | 25ms/tok | 60% |
+**測定方法：** 2026-11-03、当サイトで 24 時間稼働している DGX Spark (GB10, 128 GB ユニファイドメモリ) 上の SGLang サーバー（ビルド `0.0.0.dev0+qwen38.27b.g561c8f3`、モデル `Qwen3.8-27B-NVFP4`、`modelopt_fp4` 量子化、DFLASH 投機的デコード 8 draft tokens）に対し、**固定の 24 プロンプト**（Q&A・コード・要約、英語/中国語）を `temperature=0`、最大 256 出力トークン、thinking 無効でストリーミング送信し、**同時実行数 1 と 4** で各 1 回計測しました。数値は 24 リクエストの中央値と四分位範囲（IQR = Q1–Q3）です。
+
+| 指標 | 同時実行数 1（24 リクエスト） | 同時実行数 4（24 リクエスト） |
+|---|---|---|
+| **リクエスト単位の生成速度 (decode tok/s)** 中央値 [IQR] | **29.4** [24.2–33.6] | **24.9** [21.8–29.7] |
+| **TTFT（最初のトークンまでの時間）** 中央値 [IQR] | **0.217 秒** [0.215–0.219] | **0.341 秒** [0.338–0.343] |
+| **合計スループット**（総出力トークン ÷ 経過時間） | 28.7 tok/s | **91.9 tok/s** |
+
+**注意点：** 生成速度の IQR が広いのは、投機的デコードの受理率が内容によって変わるためです（コードや定型文は速い）。各プロンプトは 1 回のみ計測し、サーバーは他の社内ワークロードも処理しているため多少のノイズがあります。プロンプトが短いため、TTFT は長いコンテキストのプリフィル遅延を表しません。消費電力はコンセント側で計測していないため記載しません。以前の版にあった 72B / 70B / 32B / 14B の数値はこのハードウェアで再計測していないため削除しました。
 
 ### Cost Comparison
 
@@ -295,7 +296,7 @@ server {
 
 ## Conclusion
 
-Self-hosting on DGX Spark is mature enough for production use in 2026. The combination of 96GB unified memory, vLLM's optimization, and a single $1000 investment makes it one of the most cost-effective ways to run AI at scale.
+Self-hosting on DGX Spark is mature enough for production use in 2026. The combination of 128 GB unified memory, vLLM's optimization, and a single $1000 investment makes it one of the most cost-effective ways to run AI at scale.
 
 The key takeaways:
 1. Start with Q4_K_M quantization for the best balance

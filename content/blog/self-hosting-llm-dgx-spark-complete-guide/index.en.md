@@ -8,7 +8,7 @@ slug: self-hosting-llm-dgx-spark-complete-guide
 tags: [ai, llm, self-hosting, dgx, vllm, local-llm]
 faq:
   - q: "What hardware do I need for self-hosting AI models in 2026?"
-    a: "For 7B–32B 4-bit models with low-latency single-user speed, a 24GB–32GB RTX 4090/5090 GPU is ideal. For 32B FP16 or 70B–72B models and dual-model multi-agent serving without multi-GPU PCIe complexity, a 96GB–128GB unified-memory system like the NVIDIA DGX Spark (GB10) or Apple Mac Studio is the most cost-effective choice."
+    a: "For 7B–32B 4-bit models with low-latency single-user speed, a 24GB–32GB RTX 4090/5090 GPU is ideal. For 32B FP16 or 70B–72B models and dual-model multi-agent serving without multi-GPU PCIe complexity, a 128 GB unified-memory system like the NVIDIA DGX Spark (GB10) or Apple Mac Studio is the most cost-effective choice."
   - q: "How much VRAM does a 70B or 32B self-hosted AI model require?"
     a: "A 70B–72B model in 4-bit (AWQ/GGUF Q4_K_M) requires ~42–48 GB for weights plus ~16–20 GB for a 32K context KV cache (~64 GB total). A 32B model requires ~19 GB in 4-bit, ~34 GB in FP8, or ~64 GB in FP16."
   - q: "Should I use vLLM, Ollama, or llama.cpp when self-hosting AI models?"
@@ -28,7 +28,7 @@ faq:
           "@type": "HowToStep",
           "position": 1,
           "name": "Right-Size Hardware and Quantization Format",
-          "text": "Match your target parameter size (7B to 72B) and quantization format (FP8, AWQ, GGUF Q4_K_M) to your hardware tier (24GB RTX GPU, 64GB–128GB Mac Studio, or 96GB–128GB NVIDIA DGX Spark GB10)."
+          "text": "Match your target parameter size (7B to 72B) and quantization format (FP8, AWQ, GGUF Q4_K_M) to your hardware tier (24GB RTX GPU, 64GB–128GB Mac Studio, or 128 GB NVIDIA DGX Spark GB10)."
         },
         {
           "@type": "HowToStep",
@@ -58,7 +58,7 @@ faq:
           "name": "What hardware do I need for self-hosting AI models in 2026?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "For 7B–32B 4-bit models with low-latency single-user speed, a 24GB–32GB RTX 4090/5090 GPU is ideal. For 32B FP16 or 70B–72B models and dual-model multi-agent serving, a 96GB–128GB unified-memory system like the NVIDIA DGX Spark (GB10) or Apple Mac Studio is the most cost-effective choice."
+            "text": "For 7B–32B 4-bit models with low-latency single-user speed, a 24GB–32GB RTX 4090/5090 GPU is ideal. For 32B FP16 or 70B–72B models and dual-model multi-agent serving, a 128 GB unified-memory system like the NVIDIA DGX Spark (GB10) or Apple Mac Studio is the most cost-effective choice."
           }
         },
         {
@@ -75,9 +75,7 @@ faq:
 }
 </script>
 
-# Self-Hosting AI Models in 2026: Complete Local LLM & NVIDIA DGX Spark Production Guide
-
-**Self-hosting AI models** in 2026 is the most effective way to eliminate runaway per-token API bills, keep proprietary code and customer data inside your own network, and remove rate-limit bottlenecks from multi-agent workflows. Whether you are deploying a single coding assistant on a 24GB RTX workstation, running local inference on a 64GB–128GB Mac Studio, or building a 24/7 dual-model production server on an **NVIDIA DGX Spark (GB10)** with 96GB–128GB of unified memory, the engineering fundamentals are identical: size your VRAM for weights *plus* KV cache, pick the right serving runtime (`vLLM` vs `Ollama` vs `llama.cpp`), and run under `systemd` with an automated readiness watchdog.
+**Self-hosting AI models** in 2026 is the most effective way to eliminate runaway per-token API bills, keep proprietary code and customer data inside your own network, and remove rate-limit bottlenecks from multi-agent workflows. Whether you are deploying a single coding assistant on a 24GB RTX workstation, running local inference on a 64GB–128GB Mac Studio, or building a 24/7 dual-model production server on an **NVIDIA DGX Spark (GB10)** with 128 GB of unified memory, the engineering fundamentals are identical: size your VRAM for weights *plus* KV cache, pick the right serving runtime (`vLLM` vs `Ollama` vs `llama.cpp`), and run under `systemd` with an automated readiness watchdog.
 
 In this complete production guide, we first break down the hardware and quantization requirements for **self-hosting AI models** across every budget tier, compare the three major serving runtimes, and then walk step-by-step through our exact dual-model production deployment on the NVIDIA DGX Spark (GB10) — including our merged GB10 pre-flight checklist and watchdog setup.
 
@@ -89,11 +87,11 @@ In this complete production guide, we first break down the hardware and quantiza
 
 Before buying hardware or pulling a 40GB checkpoint, compare the three realistic hardware architectures for **self-hosting AI models** in 2026:
 
-| Hardware Tier | Usable VRAM / Unified Memory | Max Model Size (32K Context) | Single-Stream Speed (32B Q4/FP8) | Power Draw | Pros & Trade-offs |
+| Hardware Tier | Usable VRAM / Unified Memory | Max Model Size (32K Context) | Single-Stream Speed (RTX/Mac: typical published figures; DGX Spark: our measurement) | Power Draw | Pros & Trade-offs |
 |---|---|---|---|---|---|
 | **Discrete Consumer GPU** (RTX 4090 24GB / RTX 5090 32GB) | 24 GB – 32 GB GDDR6X/GDDR7 | 14B FP8 or 32B Q4_K_M / AWQ | **45–85 tok/s** | 350W–450W | Highest single-user token/s; hitting the 24GB/32GB wall forces multi-GPU rigs for 70B models |
 | **Apple Silicon Unified Memory** (Mac Studio M3/M4 Max/Ultra) | 64 GB – 128 GB Unified RAM | 32B FP16 or 70B Q4_K_M | **15–32 tok/s** | 60W–120W | Silent desktop appliance; relies on `llama.cpp`/MLX/Ollama rather than native CUDA `vLLM` |
-| **NVIDIA DGX Spark (GB10 Grace Blackwell)** | **96 GB – 128 GB LPDDR5X Unified** | **72B Q4 + 7B Q8 Dual-Model (or 32B FP16)** | **18–28 tok/s** (32B) / **12–15 tok/s** (72B) | **~150W** | **Full CUDA + vLLM + FP8 ecosystem** with massive memory capacity in a quiet 150W desktop box |
+| **NVIDIA DGX Spark (GB10 Grace Blackwell)** | **128 GB LPDDR5X Unified** | **72B Q4 + 7B Q8 Dual-Model (or 32B FP16)** | **~29 tok/s** median (27B NVFP4 on SGLang, measured 2026-11-03) | **~150W** | **Full CUDA + vLLM + FP8 ecosystem** with massive memory capacity in a quiet 150W desktop box |
 
 ### VRAM-to-Parameter Quantization Sizing Table (7B to 70B+ Models)
 
@@ -105,9 +103,9 @@ Use this sizing matrix to match your model and quantization format (`FP16`, `FP8
 | **14B** (`Phi-4-14B`, `Qwen2.5-14B-Instruct`) | ~34 GB | ~19 GB | **~12.5 GB** | 16GB–24GB GPU |
 | **32B – 35B** (`Qwen3-32B`, `DeepSeek-R1-Distill-32B`) | ~74 GB | ~42 GB | **~24 GB** | 24GB GPU (tight) or 64GB+ Unified |
 | **56B MoE** (`Mixtral-8x22B` / `Qwen-MoE`) | ~118 GB | ~64 GB | **~38 GB** | 48GB GPU or 64GB–128GB Unified |
-| **70B – 72B** (`Qwen2.5-72B-Instruct`, `Llama-3.3-70B`) | ~160 GB | ~88 GB | **~58–66 GB** (`~48GB` weights + `~16GB` KV) | **96GB–128GB DGX Spark (GB10)** or 2×48GB GPU |
+| **70B – 72B** (`Qwen2.5-72B-Instruct`, `Llama-3.3-70B`) | ~160 GB | ~88 GB | **~58–66 GB** (`~48GB` weights + `~16GB` KV) | **128 GB DGX Spark (GB10)** or 2×48GB GPU |
 
-The headroom matters. On a 96GB–128GB DGX Spark running a 72B Q4 model (~48GB weights + ~16GB KV cache), you still have 32GB–64GB left for the Linux OS, page cache, and a secondary fast 7B model.
+The headroom matters. On a 128 GB DGX Spark running a 72B Q4 model (~48GB weights + ~16GB KV cache), you still have roughly 64 GB left for the Linux OS, page cache, and a secondary fast 7B model.
 
 ---
 
@@ -230,15 +228,15 @@ The key to **self-hosting AI models** on unified-memory hardware like the DGX Sp
 
 ### 1. `gpu-memory-utilization` Tuning
 
-| Value | Allocated Pool (on 96GB Box) | Safety Margin & Recommendation |
+| Value | Allocated Pool (on 128 GB Box) | Safety Margin & Recommendation |
 |---|---|---|
-| `0.80–0.85` | ~76–82 GB | **Comfortable**: leaves 14–20 GB for OS, Docker, and page cache |
-| `0.88–0.90` | ~84–86 GB | **Recommended ceiling** for single 72B Q4 model at 32K context |
-| `0.95` | ~91 GB | **Risky**: high probability of kernel OOM under concurrent long prompts |
+| `0.80–0.85` | ~102–109 GB | **Comfortable**: leaves ~19–26 GB for OS, Docker, and page cache |
+| `0.88–0.90` | ~113–115 GB | **Recommended ceiling** for single 72B Q4 model at 32K context |
+| `0.95` | ~122 GB | **Risky**: high probability of kernel OOM under concurrent long prompts |
 
 ### 2. Running Dual Models Simultaneously (72B Primary + 7B Fast Tier)
 
-With 96GB–128GB unified memory, you can run a heavy reasoning model and a fast routing/extraction model side by side on the same GPU:
+With 128 GB unified memory, you can run a heavy reasoning model and a fast routing/extraction model side by side on the same GPU:
 
 ```bash
 # Primary reasoning model (72B AWQ/Q4 — 45% memory pool on port 8000)
@@ -283,14 +281,17 @@ echo "$RESP" | grep -q "$MARKER"
 
 ## Benchmark Results & Cloud API Break-Even Math
 
-### Inference Speed on NVIDIA DGX Spark (GB10)
+### Inference Speed on NVIDIA DGX Spark (GB10) — measured 2026-11-03
 
-| Model & Quantization | Single-Stream Speed | 4-Client Total Throughput | Avg Time-to-First-Token | GPU Util |
-|---|---|---|---|---|
-| **Qwen 2.5 / 3 72B (Q4_K_M / AWQ)** | 12–15 tok/s | 34–42 tok/s | ~80 ms | 95% |
-| **Llama 3.3 / 3.1 70B (Q4_K_M / AWQ)** | 10–13 tok/s | 30–38 tok/s | ~90 ms | 97% |
-| **Qwen 2.5 / 3 32B (FP8 / FP16)** | 20–28 tok/s | 65–82 tok/s | ~42 ms | 82% |
-| **Phi-4 14B (FP16)** | 35–45 tok/s | 110+ tok/s | ~25 ms | 65% |
+**Method:** measured on our own 24/7 DGX Spark (GB10, 128 GB unified memory) against an SGLang server (build `0.0.0.dev0+qwen38.27b.g561c8f3`, model `Qwen3.8-27B-NVFP4`, `modelopt_fp4` quantization, DFLASH speculative decoding with 8 draft tokens). We streamed a **fixed set of 24 prompts** (Q&A, code, summaries, EN/ZH) at `temperature=0`, max 256 output tokens, thinking disabled, once at **concurrency 1** and once at **concurrency 4**. Values are the median and interquartile range (IQR = Q1–Q3) across the 24 requests.
+
+| Metric | Concurrency 1 (n = 24 requests) | Concurrency 4 (n = 24 requests) |
+|---|---|---|
+| **Per-request decode speed (tok/s)**, median [IQR] | **29.4** [24.2–33.6] | **24.9** [21.8–29.7] |
+| **Time-to-first-token**, median [IQR] | **0.217 s** [0.215–0.219] | **0.341 s** [0.338–0.343] |
+| **Aggregate throughput** (total output tokens ÷ wall time) | 28.7 tok/s | **91.9 tok/s** |
+
+**Caveats:** the wide decode IQR comes mostly from speculative-decoding acceptance varying with content (code and boilerplate decode faster). Each prompt was run once, on a server that also serves other internal workloads, so expect some noise. The prompts are short, so TTFT here does not represent long-context prefill. We did not measure wall-socket power, so no power figure is claimed. Figures for 72B / 70B / 32B / 14B models shown in earlier versions of this page were not re-measured on this hardware and have been removed.
 
 ### Monthly TCO Comparison (100M Input + 10M Output Tokens/Month)
 

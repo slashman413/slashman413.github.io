@@ -22,7 +22,7 @@ sitemap:
 ---
 
 <div class="product-landing">
-  <h1>AI Workflow Builder - 一句提示詞，產生驗證過的多 Agent AI 工作流</h1>
+  <h2>AI Workflow Builder - 一句提示詞，產生驗證過的多 Agent AI 工作流</h2>
   <p class="lead">把「一句自然語言提示」變成「驗證過、有依賴檢查的多 Agent AI 工作流」。模糊之處在前期由互動式 <strong>Grill-Me</strong> 規格迴圈解決——而不是等到上線才發現。自架部署、MIT 授權、一次購買永久使用。<strong>(現在提供免費 Workflow Sample 下載體驗)</strong></p>
   
   <div class="product-card">

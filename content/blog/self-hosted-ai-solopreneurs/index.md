@@ -31,8 +31,6 @@ faq:
     a: "No. The highest-ROI architecture is hybrid: run 80–90% of high-volume, repetitive, or privacy-sensitive tasks (classification, extraction, first drafts, code indexing) on self-hosted AI at $0/token, and route the 10–20% of frontier reasoning or burst spikes to cloud APIs."
 ---
 
-# Self-Hosted AI in 2026: The Complete Stack, Hardware & TCO Guide for Solopreneurs and Small Teams
-
 "Should we run our own **self-hosted AI** stack or just pay for cloud APIs?"
 
 Most advice on **self-hosted AI** falls into two traps: hardware hobbyists who claim you should unplug from every cloud API immediately, or SaaS vendors who claim running a local model requires a full-time DevOps team. Both are wrong because they treat self-hosting as an ideology instead of a **workload-specific capital allocation decision**.

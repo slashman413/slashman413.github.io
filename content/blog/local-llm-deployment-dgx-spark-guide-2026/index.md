@@ -27,8 +27,6 @@ author: "Wayne Chang"
 }
 </script>
 
-# Local LLM Deployment Guide: Running AI Models on DGX Spark in 2026
-
 ## Why Deploy LLMs Locally?
 
 For the past few years, cloud-based AI models have dominated the landscape. But in 2026, **local LLM deployment** has become a critical strategy for digital businesses. Relying solely on cloud APIs introduces privacy risks, unpredictable costs, and latency issues. 

@@ -13,8 +13,6 @@ faq:
     a: "若您是單人測試或快速切換 GGUF 模型，Ollama 最方便；若要串接 n8n、AI Workflow Builder 或多 Agent 系統進行高並行生產推論，建議使用 vLLM 搭配 systemd 守護進程。"
 ---
 
-# 本地 LLM 部署指南（2026）：在 NVIDIA DGX Spark (GB10) 自架 AI 模型與實戰架構
-
 ## 為什麼 2026 年企業與獨立開發者都在轉向「本地 LLM 部署」？
 
 過去幾年，雲端 AI API 是大多數團隊的起點；但在 2026 年，**本地 LLM 部署（Local LLM Deployment）**與**自架 AI** 已成為數位產品與自動化團隊的核心基礎建設。完全依賴雲端 API 會帶來三大痛點：
@@ -23,7 +21,7 @@ faq:
 2. **難以預測的 Token 帳單**：當您使用多 Agent 工作流（Multi-Agent Workflows）全天候執行研究、寫作或資料清理時，API 費用會隨呼叫次數暴增；自架 AI 則將變動成本轉為每月僅約 NT$950（~$30）的固定電費。
 3. **離線可用與零 Rate Limit**：本地端點不會因為雲端供應商當機或 429 速率限制而導致自動化管線中斷。
 
-在這篇指南中，我們將說明如何建立您自己的本地 AI 推論基礎設施，並聚焦於具備 96GB–128GB 統一記憶體的 **NVIDIA DGX Spark (GB10)** 與我們打包好的生產環境設定。如需完整的指令逐步教學與基準測試，也請參考我們的旗艦長文：**[自架 AI 與本地 LLM 部署完整指南：在 NVIDIA DGX Spark (GB10) 從零到生產環境（含 DGX Spark 評價與實測數據）](/zh-tw/blog/self-hosting-llm-dgx-spark-complete-guide/)**。
+在這篇指南中，我們將說明如何建立您自己的本地 AI 推論基礎設施，並聚焦於具備 128 GB 統一記憶體的 **NVIDIA DGX Spark (GB10)** 與我們打包好的生產環境設定。如需完整的指令逐步教學與基準測試，也請參考我們的旗艦長文：**[自架 AI 與本地 LLM 部署完整指南：在 NVIDIA DGX Spark (GB10) 從零到生產環境（含 DGX Spark 評價與實測數據）](/zh-tw/blog/self-hosting-llm-dgx-spark-complete-guide/)**。
 
 ---
 
@@ -37,7 +35,7 @@ faq:
 |---|---|---|---|
 | **7B – 14B**（輕量分類、快速問答） | GGUF `Q4_K_M` / `FP8` | 8 GB – 16 GB | RTX 4070 Ti / 4080 / 4090 |
 | **32B – 35B**（主力程式碼、繁中寫作、Agent 工具呼叫） | `FP8` / AWQ 4-bit | 22 GB – 36 GB | RTX 4090/5090 或 **NVIDIA DGX Spark (GB10)** |
-| **70B – 72B**（深度推理、長文分析、雙模型並行） | AWQ / GGUF `Q4_K_M` | 58 GB – 68 GB | **NVIDIA DGX Spark (96GB–128GB 統一記憶體)** |
+| **70B – 72B**（深度推理、長文分析、雙模型並行） | AWQ / GGUF `Q4_K_M` | 58 GB – 68 GB | **NVIDIA DGX Spark (128 GB 統一記憶體)** |
 
 ### 2. 推論軟體框架比較（vLLM vs Ollama vs llama.cpp）
 
