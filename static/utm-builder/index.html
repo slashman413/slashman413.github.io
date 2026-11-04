@@ -138,5 +138,6 @@ const pc=el("presets");
 PRESETS.forEach(([label,vals])=>{const b=document.createElement("button");b.textContent=label;b.onclick=()=>{F.source.value=vals.source;F.medium.value=vals.medium;if(!F.campaign.value.trim())F.campaign.value=vals.campaign;build();if(typeof gtag==="function")gtag("event","select_content",{content_type:"utm_preset",item_id:vals.source});};pc.appendChild(b);});
 build();
 </script>
+<script src="https://slashmantools.us/shared/google-signup.js" defer></script>
 </body>
 </html>
