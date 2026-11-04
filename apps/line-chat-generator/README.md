@@ -28,3 +28,20 @@ expiry or already expired; the refresh sends the old token, so the Worker
 doesn't count it against the activation cap (Gumroad `uses`: 30-Day 20,
 Lifetime 50 → error `activation_limit`). If the signing key is rotated, update both the Worker secret
 `LICENSE_SIGNING_JWK` and `LICENSE_PUBLIC_JWK`.
+
+## Google sign-up card
+
+`index.html` loads Google's script and the shared `slashmantools.us/shared/google-signup.js`,
+which draws the bottom card and sends the credential to
+`https://api.slashmantools.us/subscribe/google`. The Worker verifies the ID token and takes the
+email from it. `src/index.css` moves the card right on desktop and adds scroll room; `App.tsx`
+hides it during dialogs and captures, because recording grabs the whole tab.
+
+The card doesn't appear under `npm run dev`: the script skips non-HTTPS pages, and Google only
+accepts this client on the authorized origins. Test on the live URLs:
+
+- https://slashmantools.us/line-chat-generator/
+- https://ckw19810413.github.io/line-chat-generator/
+
+To see the card again after dismissing or signing up, run this in the console, then reload:
+`localStorage.removeItem('sm_google_signup')`

@@ -53,6 +53,7 @@ export const App: React.FC = () => {
   const [isRecording, setIsRecording] = useState<boolean>(false);
   const [isExporting, setIsExporting] = useState<boolean>(false);
   const [isLegalOpen, setIsLegalOpen] = useState<boolean>(false);
+  const [isCapturePending, setIsCapturePending] = useState<boolean>(false);
 
   // Chat scroll container ref
   const chatScrollRef = useRef<HTMLDivElement>(null);
@@ -206,6 +207,15 @@ export const App: React.FC = () => {
     }
   };
 
+  // The Google sign-up card floats above everything (shared/google-signup.js). Keep it off
+  // dialogs, and off captures: recording grabs the whole tab, so it would land in the video.
+  useEffect(() => {
+    const hide =
+      isPhotoDownloadOpen || isVideoDownloadOpen || isUpgradeOpen || isLegalOpen ||
+      isCapturePending || isRecording || isExporting;
+    document.documentElement.toggleAttribute('data-hide-signup-prompt', hide);
+  }, [isPhotoDownloadOpen, isVideoDownloadOpen, isUpgradeOpen, isLegalOpen, isCapturePending, isRecording, isExporting]);
+
   // Start Video Recording
   const handleStartRecording = async ({
     watermark,
@@ -216,6 +226,7 @@ export const App: React.FC = () => {
     fps: number;
     isPro: boolean;
   }) => {
+    setIsCapturePending(true);
     try {
       setIsRecordingWatermark(watermark && !isPro);
 
@@ -273,6 +284,8 @@ export const App: React.FC = () => {
       console.log('Video recording cancelled or not supported');
       setIsRecordingWatermark(false);
       setIsRecording(false);
+    } finally {
+      setIsCapturePending(false);
     }
   };
 

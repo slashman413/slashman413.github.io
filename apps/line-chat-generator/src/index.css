@@ -25,3 +25,19 @@
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+/* Bottom Google sign-up card (injected by shared/google-signup.js, hidden from here by App.tsx).
+   Desktop: right side, because the left holds the editor's controls.
+   Everywhere: scroll room, so nothing stays stuck under the card. */
+html[data-hide-signup-prompt] #sm-google-prompt {
+  display: none;
+}
+@media (min-width: 1024px) {
+  html #sm-google-prompt {
+    left: auto;
+    right: 16px;
+  }
+}
+body:has(#sm-google-prompt:not([hidden])) {
+  padding-bottom: 190px;
+}
