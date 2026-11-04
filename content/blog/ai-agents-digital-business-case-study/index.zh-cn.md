@@ -53,7 +53,7 @@ This was our first product. The process took 3 days:
 
 **Day 3:** Agent created landing page, Gumroad listing, and initial promotional content.
 
-**Result:** 23 sales in first month. Revenue: $667.
+**Result:** Published on Gumroad with landing page and documentation in 3 days.
 
 **Lesson learned:** The quality of output depends entirely on the quality of the agent's instructions. Generic "write prompts" produces generic results. Specific "write Python automation prompts for a solopreneur running a content agency using Claude Code and GitHub Actions" produces usable content.
 
@@ -69,7 +69,7 @@ This is our flagship product — a multi-agent orchestration framework. The deve
 
 **Key insight:** AI agents are excellent at scaffolding and boilerplate, but critical architecture decisions still require human judgment. My role was to define the vision, review agent outputs, and make judgment calls on implementation details.
 
-**Result:** 47 sales in first month. Revenue: $4,653.
+**Result:** Deployed in production to orchestrate daily multi-agent workflows and listed on Gumroad.
 
 ## Product 3-5: The Toolkit Bundle
 
@@ -128,9 +128,7 @@ Quality trumps quantity by 20x. One well-researched 3,000-word review drives mor
 | Total articles | 200+ |
 | Time invested (my time) | ~20 hours/week |
 | Agent time saved | ~120 hours/week equivalent |
-| Monthly revenue range | $2,000–$5,000 (growing) |
 | Customer acquisition cost | $0 (organic only) |
-| Return on investment | 400%+ (mainly time investment) |
 
 ## Tools You Need to Replicate This
 
