@@ -12,7 +12,7 @@ tags: [solopreneur, ai, automation, productivity, business]
 
 In 2026, being a one-person business is no longer a disadvantage — it's a superpower. With the right AI tools and systems, a single person can now do the work that previously required a team of 5-10 people.
 
-This isn't hype. This is the exact system I use to run Slashman Tools (10 products, 200+ articles, ~$5K/month revenue) with a team of one: me.
+This isn't hype. This is the exact system I use to run Slashman Tools (10+ products, 200+ articles, automated daily pipelines) with a team of one: me.
 
 ## The Foundation: Your Stack
 
@@ -181,7 +181,6 @@ Here's how revenue distributes across my products:
 | AI Course | 10% | 90% |
 | Others | 10% | 95% |
 
-**Total monthly revenue:** $2,000–$5,000 (growing)
 **Operating costs:** ~$100/month (domains, hosting, APIs)
 **Net margin:** 90%+
 
