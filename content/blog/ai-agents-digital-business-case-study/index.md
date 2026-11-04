@@ -1,6 +1,6 @@
 ---
 title: "How I Built a 10-Product Digital Business Using Only AI Agents — A Complete Case Study"
-description: "A detailed case study of building a 10-product digital business using AI agents for content creation, product development, customer support, and marketing. Real numbers, real results."
+description: "A detailed case study of building a 10-product digital business using AI agents for content creation, product development, customer support, and marketing."
 date: 2026-08-03
 slug: ai-agents-digital-business-case-study
 tags: [ai, agents, business, case-study, automation]
@@ -17,7 +17,7 @@ Most "build a business with AI" articles are fluff. They tell you AI can do ever
 - $19–$99 price range
 - ~200 blog articles supporting products
 - Zero paid ads
-- Revenue driven by organic SEO and Twitter content
+- Distribution through organic SEO and Twitter content
 
 ## Why AI Agents Work for Digital Products
 
