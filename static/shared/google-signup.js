@@ -56,6 +56,7 @@
 
   function suppressed() {
     if (window.top !== window) return true; // embedded tool iframes
+    if (location.protocol !== "https:") return true; // Google refuses plain-http origins (button 403s)
     if (SKIP_PATHS.test(location.pathname)) return true;
     var saved = storeGet();
     return saved === "done" || (saved && Number(saved) > Date.now());
