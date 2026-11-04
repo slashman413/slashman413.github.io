@@ -16,7 +16,7 @@
   if (window.__smGoogleSignup) return;
   window.__smGoogleSignup = true;
 
-  var CLIENT_ID = "";
+  var CLIENT_ID = "743655601010-slhoc53f98gaaane92lduamfc6835kv5.apps.googleusercontent.com";
   var ENDPOINT = "https://api.slashmantools.us/subscribe/google";
   var PRIVACY_URL = "https://slashmantools.us/privacy/#google-sign-in";
   var GIS_SRC = "https://accounts.google.com/gsi/client";
