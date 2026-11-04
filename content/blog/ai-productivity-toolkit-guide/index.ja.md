@@ -155,5 +155,5 @@ Start with five prompts. Build one workflow. Run it for two weeks. That is the e
 **Related:**
 - [AI Prompt Library](/blog/ai-prompt-library/) — 300+ tested prompts organized by job
 - [AI Prompt Engineering for Productivity](/blog/ai-prompt-engineering-productivity-guide/) — The method behind the prompts
-- [Feishu Templates for Team Efficiency](/blog/feishu-templates-team-efficiency-guide/) — Team-level workflow templates
+- [Feishu Templates for Team Efficiency](/blog/how-to-increase-team-efficiency-by-300-with-feishu-templates/) — Team-level workflow templates
 - [Productivity Topic Hub](/categories/productivity/) — All productivity guides & tools

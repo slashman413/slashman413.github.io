@@ -116,7 +116,7 @@ MODEL_SNAPSHOT=gpt-4o-2024-11-20 pytest tests/prompts -k summarize_ticket
 
 The failing case IDs are your rewrite work list. That is the point: a model upgrade becomes a bounded task with a known end, instead of a week of eyeballing outputs.
 
-Then delete. A prompt with no caller in the repository and no test is not an asset; it is a thing you will re-evaluate during the next migration for no reason. Git history is your archive. If you need an old prompt back, `git log --diff-filter=D -- prompts/` finds it. The instinct that makes teams keep one-off documents around is the same one that turns a prompt folder into a museum, as covered in [why templates beat one-off documents](/blog/feishu-templates-team-efficiency-guide/). Retire aggressively. You can always recover a file; you cannot recover the review time you spend on dead prompts.
+Then delete. A prompt with no caller in the repository and no test is not an asset; it is a thing you will re-evaluate during the next migration for no reason. Git history is your archive. If you need an old prompt back, `git log --diff-filter=D -- prompts/` finds it. The instinct that makes teams keep one-off documents around is the same one that turns a prompt folder into a museum, as covered in [why templates beat one-off documents](/blog/how-to-increase-team-efficiency-by-300-with-feishu-templates/). Retire aggressively. You can always recover a file; you cannot recover the review time you spend on dead prompts.
 
 ## What to do next
 
