@@ -40,4 +40,7 @@ DOWNLOAD_URL = "https://slashmantools.us/toolkit/"
 # the secret LICENSE_SIGNING_JWK (ECDSA P-256 private JWK; local copy in
 # ~/.priv/line-chat-pro-signing-key.jwk). Its public half is in the app's
 # src/utils/proStore.ts.
+# Web OAuth client id for POST /subscribe/google (public, not a secret). Must match
+# CLIENT_ID in static/shared/google-signup.js. Empty = the route answers 503.
+GOOGLE_CLIENT_ID = ""
 LINE_CHAT_PRO_PRODUCT_ID = "9JbqLBa_JoTzJTWm0yN8Aw=="

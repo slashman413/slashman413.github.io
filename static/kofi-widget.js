@@ -1,6 +1,7 @@
 /*! kofi-widget.js — shared Ko-fi floating support button for all slashmantools.us pages.
  *  Single source of truth: edit ONLY this file to change the button everywhere.
  *  Usage on any page:  <script src="https://slashmantools.us/kofi-widget.js" defer></script>
+ *  Also pulls in shared/google-signup.js, since this is the one script the tools and dashboards all load.
  */
 (function () {
   if (window.__kofiLoaded) return;
@@ -19,4 +20,9 @@
     } catch (e) {}
   };
   document.head.appendChild(s);
+
+  var signup = document.createElement("script");
+  signup.src = "https://slashmantools.us/shared/google-signup.js";
+  signup.defer = true;
+  document.head.appendChild(signup);
 })();

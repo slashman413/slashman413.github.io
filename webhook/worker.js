@@ -16,6 +16,7 @@
  *
  * Endpoints:
  *   POST /subscribe   → capture a lead   (JSON or form-encoded body)
+ *   POST /subscribe/google → capture a lead from a Google ID token ({ credential, ... })
  *   GET  /health      → liveness probe   ({ ok: true })
  *   GET  /leads       → export leads KV   (Authorization: Bearer ADMIN_TOKEN)
  *   GET  /hit         → no-cookie counter pixel (?s=<site>&e=<event>), 1x1 GIF
@@ -31,6 +32,7 @@ const JSON_HEADERS = { "content-type": "application/json; charset=utf-8" };
 // Origins allowed to call this Worker from the browser.
 const ALLOWED_ORIGINS = [
   "https://slashmantools.us",
+  "https://tools.slashmantools.us",
   "https://slashman413.github.io",
   "https://ckw19810413.github.io",
   "http://localhost:1313", // hugo server
@@ -55,6 +57,9 @@ const DAY_SECONDS = 60 * 60 * 24;
 // arbitrary callers can't flood KV with junk keys; daily rows expire after 400d.
 const COUNTER_KEY_RE = /^[a-z0-9_-]{1,32}$/;
 const COUNTER_TTL_SECONDS = 60 * 60 * 24 * 400;
+const GOOGLE_JWKS_URL = "https://www.googleapis.com/oauth2/v3/certs";
+const GOOGLE_ISSUERS = ["accounts.google.com", "https://accounts.google.com"];
+const GOOGLE_CLOCK_SKEW_SECONDS = 60;
 const PIXEL_GIF = Uint8Array.from(
   atob("R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"),
   (c) => c.charCodeAt(0)
@@ -267,7 +272,8 @@ export default {
       return json(result.body, result.status, origin);
     }
 
-    if (url.pathname !== "/subscribe") {
+    const isGoogleSignup = url.pathname === "/subscribe/google";
+    if (url.pathname !== "/subscribe" && !isGoogleSignup) {
       return json({ ok: false, error: "not_found" }, 404, origin);
     }
 
@@ -286,6 +292,19 @@ export default {
     if ((payload.website || payload._hp || "").trim() !== "") {
       // Pretend success so bots don't learn they were caught.
       return json({ ok: true }, 200, origin);
+    }
+
+    // --- Google sign-up: the email comes only from the verified ID token ----
+    if (isGoogleSignup) {
+      if (!env.GOOGLE_CLIENT_ID) {
+        return json({ ok: false, error: "google_not_configured" }, 503, origin);
+      }
+      const claims = await verifyGoogleCredential(payload.credential, env.GOOGLE_CLIENT_ID);
+      if (!claims) {
+        return json({ ok: false, error: "invalid_credential" }, 401, origin);
+      }
+      payload.email = claims.email;
+      payload.first_name = claims.given_name || "";
     }
 
     // --- Validate email ----------------------------------------------------
@@ -341,6 +360,8 @@ export default {
       referer: request.headers.get("Referer") || "",
       created_at: now,
     };
+    // Records that this lead saw the marketing notice in the prompt and clicked through.
+    if (isGoogleSignup) lead.consent = "google-prompt-marketing-v1";
 
     // --- Persist (idempotent by email) ------------------------------------
     let isNew = true;
@@ -367,7 +388,7 @@ export default {
       ])
     );
 
-    return json({ ok: true, new: isNew }, 200, origin);
+    return json({ ok: true, new: isNew, ...(isGoogleSignup ? { email } : {}) }, 200, origin);
   },
 };
 
@@ -595,6 +616,47 @@ async function signToken(env, payload) {
     { name: "ECDSA", hash: "SHA-256" }, privKey, new TextEncoder().encode(body)
   );
   return `${body}.${b64url(new Uint8Array(sig))}`;
+}
+
+/**
+ * Verify a Google Identity Services ID token (RS256 JWT). Returns its claims, or
+ * null unless the signature, issuer, audience, expiry and email_verified all pass.
+ */
+async function verifyGoogleCredential(credential, clientId) {
+  try {
+    const [rawHeader, rawClaims, rawSig] = String(credential || "").split(".");
+    if (!rawHeader || !rawClaims || !rawSig) return null;
+    const decoder = new TextDecoder();
+    const header = JSON.parse(decoder.decode(b64urlDecode(rawHeader)));
+    const claims = JSON.parse(decoder.decode(b64urlDecode(rawClaims)));
+    if (header.alg !== "RS256") return null;
+
+    const res = await fetch(GOOGLE_JWKS_URL, { cf: { cacheEverything: true, cacheTtl: 3600 } });
+    if (!res.ok) return null;
+    const { keys } = await res.json();
+    const jwk = keys.find((k) => k.kid === header.kid);
+    if (!jwk) return null;
+
+    const key = await crypto.subtle.importKey(
+      "jwk",
+      jwk,
+      { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
+      false,
+      ["verify"]
+    );
+    const signed = new TextEncoder().encode(`${rawHeader}.${rawClaims}`);
+    const valid = await crypto.subtle.verify("RSASSA-PKCS1-v1_5", key, b64urlDecode(rawSig), signed);
+    if (!valid) return null;
+
+    const nowSeconds = Math.floor(Date.now() / 1000);
+    if (!GOOGLE_ISSUERS.includes(claims.iss)) return null;
+    if (claims.aud !== clientId) return null;
+    if (!(claims.exp + GOOGLE_CLOCK_SKEW_SECONDS > nowSeconds)) return null;
+    if (claims.email_verified !== true || !claims.email) return null;
+    return claims;
+  } catch (_) {
+    return null;
+  }
 }
 
 function b64urlDecode(s) {

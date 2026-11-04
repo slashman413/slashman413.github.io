@@ -2,11 +2,11 @@
 title: "Privacy Policy"
 description: "Privacy Policy for slashmantools.us — cookies, advertising (Google AdSense), analytics, affiliate links, and the personal data handled by our email sign-up forms."
 date: 2026-07-01
-lastmod: 2026-10-18
+lastmod: 2026-11-04
 ---
 <nav><a href="/">Home</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></nav>
 
-<p class="muted">Last updated: 2026-10-18</p>
+<p class="muted">Last updated: 2026-11-04</p>
 
 <p>This site (<a href="https://slashmantools.us/">slashmantools.us</a>, "intelligent agents", "we", "us")
 is a collection of free, browser-based online tools, calculators and data dashboards. This Privacy Policy
@@ -78,6 +78,15 @@ Your interaction with those services is governed by their own privacy policies.<
       have your record deleted from Cloudflare and Mautic. We act on requests within 30 days. To stop the
       tracking cookie, block or delete cookies for leads.slashmantools.us in your browser.</li>
 </ul>
+
+<h2 id="google-sign-in">7a. Sign-Up With Google</h2>
+<p>A prompt on slashmantools.us, tools.slashmantools.us and ckw19810413.github.io lets you join the email list
+with "Continue with Google". It runs only if you click the button. Google then sends us your verified email
+address and first name, which we store as described in Section 7 and use to send new tools, guides and product
+promotions. We do not receive your password or access anything else in your Google account, and we do not
+sell this data. You can unsubscribe at any time. The prompt loads Google's sign-in script; see
+<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.
+Dismissing it keeps it hidden for 30 days, using your browser's local storage.</p>
 
 <h2>8. Children's Privacy</h2>
 <p>The site is not directed to children under 13 and we do not knowingly collect personal data from them.</p>
