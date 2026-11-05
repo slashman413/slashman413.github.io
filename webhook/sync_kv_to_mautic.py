@@ -30,6 +30,7 @@ import time
 import base64
 import hashlib
 import argparse
+import subprocess
 from typing import Any
 from urllib import request as urlrequest
 from urllib import parse as urlparse
@@ -107,6 +108,80 @@ class MauticAPI:
         if ip_address:
             payload["ipAddress"] = ip_address
         return self._request("PATCH", f"contacts/{contact_id}/edit", payload)
+
+
+# ---------------------------------------------------------------------------
+# Campaign enrollment (direct DB — Mautic has no public campaign-add API)
+# ---------------------------------------------------------------------------
+# Mautic's public API (v1/v2) exposes GET/DELETE for campaign leads but no
+# POST/PUT to add a lead to a campaign. Campaign auto-enrollment requires a
+# trigger event in the campaign graph, which campaign 10 does not have. The
+# only reliable path is a direct INSERT INTO campaign_leads on the mautic-db-1
+# container; Mautic's mautic:campaigns:trigger cron then schedules the D1/D2/D3
+# events. PK is (campaign_id, lead_id) so INSERT IGNORE is idempotent.
+MAUTIC_DB_ENV = os.environ.get("MAUTIC_DB_ENV", "/home/wayne/docker/mautic/.env")
+MAUTIC_DB_CONTAINER = os.environ.get("MAUTIC_DB_CONTAINER", "mautic-db-1")
+MAUTIC_DB_NAME = os.environ.get("MAUTIC_DB_NAME", "mautic_db")
+MAUTIC_DB_USER = os.environ.get("MAUTIC_DB_USER", "mautic_user")
+WELCOME_CAMPAIGN_ID = int(os.environ.get("WELCOME_CAMPAIGN_ID", "10"))
+
+
+def _mautic_db_password() -> str:
+    """Read the Mautic DB password from the compose .env (no hardcoding)."""
+    with open(MAUTIC_DB_ENV) as f:
+        for line in f:
+            line = line.strip()
+            if line.startswith("MYSQL_PASSWORD="):
+                return line.split("=", 1)[1]
+    raise RuntimeError(f"MYSQL_PASSWORD not found in {MAUTIC_DB_ENV}")
+
+
+def enroll_in_campaign(lead_id: int, campaign_id: int = WELCOME_CAMPAIGN_ID) -> bool:
+    """Enroll a Mautic lead into a campaign via direct DB INSERT (idempotent).
+
+    Requires docker access to the mautic DB container. Returns True on success.
+    """
+    try:
+        pwd = _mautic_db_password()
+    except Exception as e:
+        print(f"  !! campaign enrollment unavailable ({e})", file=sys.stderr)
+        return False
+    sql = (
+        "INSERT IGNORE INTO campaign_leads "
+        "(lead_id, campaign_id, date_added, manually_added, manually_removed, rotation) "
+        f"VALUES ({int(lead_id)}, {int(campaign_id)}, NOW(), 1, 0, 0);"
+    )
+    check = (
+        f"SELECT COUNT(*) FROM campaign_leads "
+        f"WHERE campaign_id={int(campaign_id)} AND lead_id={int(lead_id)};"
+    )
+    try:
+        proc = subprocess.run(
+            ["docker", "exec", MAUTIC_DB_CONTAINER,
+             "mysql", f"-u{MAUTIC_DB_USER}", f"-p{pwd}", MAUTIC_DB_NAME, "-e", sql],
+            capture_output=True, text=True, timeout=30,
+        )
+        if proc.returncode != 0:
+            err = (proc.stderr or proc.stdout or "").strip()
+            print(f"  !! campaign enrollment DB error: {err}", file=sys.stderr)
+            return False
+        # INSERT IGNORE exits 0 even when 0 rows were inserted (e.g. FK
+        # violation because the lead id does not exist yet). Verify the row
+        # actually exists before reporting success.
+        chk = subprocess.run(
+            ["docker", "exec", MAUTIC_DB_CONTAINER,
+             "mysql", f"-u{MAUTIC_DB_USER}", f"-p{pwd}", MAUTIC_DB_NAME,
+             "-N", "-e", check],
+            capture_output=True, text=True, timeout=30,
+        )
+        count = (chk.stdout or "").strip()
+        if count and count != "0":
+            return True
+        print(f"  !! campaign enrollment: no row for lead {lead_id} (FK violation or missing lead)", file=sys.stderr)
+        return False
+    except Exception as e:
+        print(f"  !! campaign enrollment failed: {e}", file=sys.stderr)
+        return False
 
 
 # ---------------------------------------------------------------------------
@@ -230,8 +305,15 @@ def sync_once(mautic: MauticAPI, api_url: str, forward_token: str, state: dict, 
                 mautic.update_contact_tags(contact_id, tags, ip_address=ip)
             else:
                 print(f"  Creating contact: {email} (first_name={first_name}, tags={tags}, ip={ip or '-'})")
-                mautic.create_contact(email, first_name, tags, ip_address=ip)
+                created = mautic.create_contact(email, first_name, tags, ip_address=ip)
+                contact_id = created.get("id")
                 new_count += 1
+
+            # Enroll into the welcome drip (campaign 10). Mautic has no
+            # public campaign-add API; the DB INSERT is idempotent and the
+            # mautic:campaigns:trigger cron then schedules D1/D2/D3.
+            if contact_id and enroll_in_campaign(contact_id):
+                print(f"  Enrolled {email} (lead {contact_id}) in campaign {WELCOME_CAMPAIGN_ID}")
 
             synced[email] = {
                 "synced_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
