@@ -6,13 +6,6 @@ draft: false
 slug: "feishu-template-worth-paying-for"
 author: "Wayne Chang"
 tags: ["feishu", "templates", "automation", "permissions", "no-code"]
-schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
-product_price: "29"
-product_brand: "Slashman Tools"
-product_sku: "SMT-FSH"
-product_category: "Software > Productivity"
-product_currency: "USD"
 seo_title: "What Makes a Feishu Template Worth Paying For"
 faq:
   - q: "Do paid Feishu templates work without advanced permissions enabled?"

@@ -6,13 +6,6 @@ draft: false
 slug: "feishu-automation-guardrails-checklist"
 author: "Wayne Chang"
 tags: ["feishu", "automation", "audit-logs", "permissions", "rollback"]
-schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
-product_price: "29"
-product_brand: "Slashman Tools"
-product_sku: "SMT-FSH"
-product_category: "Software > Productivity"
-product_currency: "USD"
 seo_title: "Guardrails for a Feishu Automation That Touches Real Data"
 faq:
   - q: "Does a Feishu bot need bitable:app just to read records?"

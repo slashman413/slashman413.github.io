@@ -6,13 +6,6 @@ draft: false
 slug: "documentation-that-survives-handover"
 author: "Wayne Chang"
 tags: ["documentation", "runbooks", "changelog", "handover", "devops"]
-schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
-product_price: "29"
-product_brand: "Slashman Tools"
-product_sku: "SMT-FSH"
-product_category: "Software > Productivity"
-product_currency: "USD"
 seo_title: "Documentation That Survives the Person Who Wrote It"
 faq:
   - q: "How long should a decision log entry be?"

@@ -6,13 +6,6 @@ draft: false
 slug: "versioning-templates-without-losing-customisations"
 author: "Wayne Chang"
 tags: ["versioning", "templates", "semver", "changelog", "release-management"]
-schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
-product_price: "29"
-product_brand: "Slashman Tools"
-product_sku: "SMT-FSH"
-product_category: "Software > Productivity"
-product_currency: "USD"
 seo_title: "Versioning a Template So Buyers Do Not Lose Their Customisat"
 faq:
   - q: "Does semver really make sense for something that is not code?"

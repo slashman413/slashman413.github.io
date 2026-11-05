@@ -6,13 +6,6 @@ draft: false
 slug: "workspace-templates-beat-one-off-docs"
 author: "Wayne Chang"
 tags: ["templates", "context-engineering", "feishu", "ai-assistants", "team-workflows"]
-schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
-product_price: "29"
-product_brand: "Slashman Tools"
-product_sku: "SMT-FSH"
-product_category: "Software > Productivity"
-product_currency: "USD"
 seo_title: "Why Team Workspace Templates Beat One-Off Documents in 2026"
 faq:
   - q: "Do I have to use a database tool to get these benefits?"
