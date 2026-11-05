@@ -170,20 +170,6 @@ Each product goes through the same pipeline:
 
 The critical insight: **most products share the same infrastructure**. My Hugo website handles all 10 products. My GitHub Actions deploy all of them. My Mautic instance manages all customer data. This is the power of automation.
 
-## Revenue Breakdown
-
-Here's how revenue distributes across my products:
-
-| Product | Revenue Share | Margin |
-|---------|--------------|--------|
-| Cowork Pro | 45% | 95% |
-| ETF Dashboard | 20% | 90% |
-| AI Course | 10% | 90% |
-| Others | 10% | 95% |
-
-**Operating costs:** ~$100/month (domains, hosting, APIs)
-**Net margin:** 90%+
-
 ## What Doesn't Work (And Why)
 
 ### ❌ Trying to do everything manually
@@ -206,7 +192,7 @@ Ran the business on gut feeling. After implementing analytics, 80% of my "best i
 
 ### ✅ One channel, done well
 
-Twitter is my primary channel. I post 3x/day with consistent content. It drives most of my traffic and sales.
+Twitter is my primary channel. I post 3x/day with consistent content.
 
 ### ✅ Fewer products, more depth
 
