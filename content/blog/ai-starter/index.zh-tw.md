@@ -71,7 +71,6 @@ sitemap:
 - [繁體中文 AI 實戰課程 - 4 單元 17 堂](/blog/ai-course/) — 從零到進階系統學習
 - [AI Prompt Engineering for Productivity — A Practical Playbook](/blog/ai-prompt-engineering-productivity-guide/) — 實戰提示詞工程
 - [The AI Productivity Toolkit — 50+ Prompts and Workflow Templates](/blog/ai-productivity-toolkit-guide/) — 生產力模板集
-- [飛書模板市集 - 團隊效率提升 300%](/blog/feishu-templates/) — 團隊協作模板
 
 </div>
 

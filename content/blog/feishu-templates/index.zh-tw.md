@@ -1,34 +1,19 @@
 ---
-title: "飛書模板市集 - 團隊效率提升 300% 的管理模板套裝"
-description: "飛書模板市集提供企業級管理模板，涵蓋專案管理、OKR、會議紀要、客戶管理等場景。立即導入，讓團隊效率提升 300%。"
+title: "飛書模板市集（已停售）"
+description: "飛書模板市集已停售。本頁保留作為參考，記錄這套模板曾涵蓋的專案管理、OKR、會議紀要與客戶管理等場景。"
 date: 2026-08-02
 slug: feishu-templates
 tags: [templates, productivity, feishu, notion, project-management, teams]
-product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
-product_price: "29"
-product_brand: "Slashman Tools"
-product_sku: "SMT-FT"
-product_category: "Software > Templates"
-product_currency: "USD"
-seo_title: '飛書模板評價：20+ 專業團隊管理模板'
+seo_title: '飛書模板市集（已停售）'
 keywords: ['飛書模板', '飛書專案管理', '釘釘模板', '團隊效率', 'Lark 模板']
-faq:
-  - q: '包含哪些模板？'
-    a: '20+ 個專業模板，涵蓋專案管理、OKR、會議紀要、CRM 與數據分析等場景，適用於飛書（Lark）與釘釘團隊。'
-  - q: '國際版 Lark 可以用嗎？'
-    a: '可以。飛書在海外稱為 Lark，模板使用飛書/Lark 原生功能建置，可直接匯入使用。'
-  - q: '如何交付？'
-    a: '以可分享的飛書/Lark 文件交付，附一鍵匯入教學，不需要管理員權限或安裝外掛。'
-  - q: '適合誰使用？'
-    a: '適合重度使用飛書或釘釘的團隊——不用再從零重做專案、會議與客戶追蹤表。'
 sitemap:
   priority: 0.8
   changefreq: monthly
 ---
 
 <div class="product-landing">
-  <h1>飛書模板市集 - 團隊效率提升 300% 的管理模板套裝</h1>
-  <p class="lead">飛書模板市集提供企業級管理模板套裝，涵蓋專案管理、OKR、會議紀要、客戶管理等 20+ 場景。導入即用，省下數百小時的建置時間。</p>
+  <h1>飛書模板市集（已停售）</h1>
+  <p class="lead"><strong>本產品已停售。</strong>本頁保留作為參考，內容描述的是這套模板當時的販售內容。</p>
   
   <div class="product-card">
     <ul class="features">
@@ -36,17 +21,16 @@ sitemap:
 <li>涵蓋專案管理、OKR、會議紀要、客戶管理</li>
 <li>與飛書原生整合，零學習成本</li>
 <li>團隊協作流程最佳化</li>
-<li>持續更新，一次購買終身使用</li>
     </ul>
     <a href="https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=slashmantools&utm_medium=product-page&utm_campaign=feishu-templates" target="_blank" rel="noopener" class="cta-button">
-      立即免費下載 →
+      免費下載 AI Prompt Library 範本 →
     </a>
   </div>
   
   
 ## 為什麼需要飛書模板？
 
-團隊管理最大的時間成本在於「從零開始建流程」。飛書模板市集提供：
+團隊管理最大的時間成本在於「從零開始建流程」。飛書模板市集曾提供：
 
 - **專案管理** - 任務看板、進度追蹤、里程碑管理
 - **OKR 管理** - 目標設定、關鍵結果追蹤、週期回顧
@@ -59,10 +43,6 @@ sitemap:
 - 想要系統化管理的創業公司
 - 專案經理和團隊主管
 - 想要提升協作效率的任何人
-
-## 與其他產品搭配
-
-飛書模板與 [AI Prompt 庫](/blog/ai-prompt-library/) 搭配使用，可以讓 AI 自動生成會議紀要、專案報告和客戶回覆，進一步提升團隊效率。
 
 ## 相關 productivity 資源
 

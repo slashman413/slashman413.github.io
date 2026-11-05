@@ -139,11 +139,10 @@ The loop itself is boring on purpose: one inbox, a public FAQ document shipped i
 2. Write `manifest.json` and adopt MAJOR/MINOR/PATCH in a `CHANGELOG.md`. Decide what counts as a breaking change before your first buyer, not after.
 3. Draft the one-page license and a known-failures section for the FAQ. Ship automations disabled and say so in the first install step.
 4. Set the support boundary in writing: one inbox, weekly batch, defects become patches, customisation is out of scope.
-5. If you want to see what a finished bundle looks like before assembling your own, Feishu Template Marketplace is $29 one-time and ships twenty-plus ready-made Feishu/DingTalk templates covering project tracking, OKRs, meeting notes and documentation.
 
-## Get Feishu Template Marketplace
+## Get the free AI Prompt Library sample
 
-[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=selling-a-feishu-template-product) — **Free**, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
+[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=selling-a-feishu-template-product) — **Free**, instant download.
 
 ## Related reading
 

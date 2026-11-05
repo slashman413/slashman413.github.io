@@ -1,6 +1,6 @@
 ---
 title: "Feishu (Lark) Templates for Team Efficiency — A Complete Playbook"
-description: "How to turn Feishu (Lark) into your team's operating system: documentation structure, project trackers, meeting workflows, approval flows, and the template library we built."
+description: "How to turn Feishu (Lark) into your team's operating system: documentation structure, project trackers, meeting workflows, and approval flows."
 date: 2026-08-03
 slug: feishu-templates-team-efficiency-guide
 tags: [templates, feishu, productivity, teams, project-management, notion]
@@ -93,7 +93,7 @@ Templates only compound if they are shared. The system:
 3. **Iterate** — after a month, review which fields were actually used; delete the rest.
 4. **Onboard** — new members learn the structure from the Wiki Index, not from tribal knowledge.
 
-This is exactly the approach behind the [Feishu Template Marketplace](/blog/feishu-templates/): a tested library of docs, Base tables, and workflows — wiki structures, project trackers, meeting systems, and approval flows — so a team starts with a working operating system instead of an empty workspace. It is the same playbook a Notion team would follow, applied to Feishu's native tools.
+This is the same playbook a Notion team would follow, applied to Feishu's native tools.
 
 ## Remote and Hybrid Team Routines
 
@@ -112,7 +112,7 @@ Most teams adopting Feishu are migrating from Notion or Google Docs, and most mi
 1. **Move the wiki, not the archives** — migrate the pages people actually open weekly. Historical archives stay where they are, linked from the index.
 2. **Recreate structure in Base, don't import tables** — a Notion database import lands as a pile of rows; rebuilding the views (kanban, by owner, due-soon) in Base is what makes the data usable.
 3. **Run both systems for two weeks** — the migration window is a feature, not a bug: it lets the team discover which Feishu workflows are better before the old system is shut off.
-4. **Cut over on a date, not a feeling** — a firm deadline is what forces the muscle memory. The [Feishu Template Marketplace](/blog/feishu-templates/) exists precisely because this sequence is painful to invent from scratch; the templates remove the "what should the structure even look like" phase of the migration.
+4. **Cut over on a date, not a feeling** — a firm deadline is what forces the muscle memory.
 
 ### The Weekly Team Rhythm
 
@@ -140,7 +140,6 @@ Feishu becomes a team operating system when structure precedes usage: a three-la
 Build the four core templates — Wiki Index, project one-pager, meeting notes, task board — publish them as space templates, and enforce them for a month. Structure is the productivity feature.
 
 **Related:**
-- [Feishu Template Marketplace](/blog/feishu-templates/) — The ready-made template library
 - [AI Prompt Engineering for Productivity](/blog/ai-prompt-engineering-productivity-guide/) — Prompt templates for team workflows
 - [AI Productivity Toolkit](/blog/ai-productivity-toolkit-guide/) — Prompts plus workflow templates
 - [Productivity Topic Hub](/categories/productivity/) — All productivity guides & tools

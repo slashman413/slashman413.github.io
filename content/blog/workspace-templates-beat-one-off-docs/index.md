@@ -132,11 +132,11 @@ Prose hasn't become useless, either. A design rationale, a postmortem narrative,
 2. Convert one existing document into a structured record and run the same question against both. The difference shows up in whether the assistant cites a value or hedges.
 3. Write the tool schema before the automation. If a field can't be expressed as a typed parameter, it isn't defined yet.
 4. Add a validator at the write boundary and a changelog for the template itself. That is the same discipline the [AI automation guide](/blog/ultimate-ai-automation-guide-2026/) applies to workflows: make the interface explicit, then automate against it.
-5. If you would rather start from working examples than a blank schema, the Feishu Template Marketplace is a $29 one-time pack of twenty-plus ready-made Feishu/DingTalk templates covering project tracking, OKRs, meeting notes and documentation. Use them as reference schemas, then trim the fields you won't fill.
+5. If you would rather start from working examples than a blank schema, use published templates as reference schemas, then trim the fields you won't fill.
 
-## Get Feishu Template Marketplace
+## Get the free AI Prompt Library sample
 
-[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=workspace-templates-beat-one-off-docs) — **Free**, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
+[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=workspace-templates-beat-one-off-docs) — **Free**, instant download.
 
 ## Related reading
 
