@@ -6,13 +6,6 @@ draft: false
 slug: "buying-template-vs-building-your-own"
 author: "Wayne Chang"
 tags: ["templates", "build-vs-buy", "data-model", "automation", "feishu"]
-schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
-product_price: "29"
-product_brand: "Slashman Tools"
-product_sku: "SMT-FSH"
-product_category: "Software > Productivity"
-product_currency: "USD"
 seo_title: "Buying a Template vs Building Your Own: Variables That Decid"
 faq:
   - q: "How do I know my data model is stable enough to buy a template for?"

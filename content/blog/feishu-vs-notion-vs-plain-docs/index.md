@@ -6,13 +6,6 @@ draft: false
 slug: "feishu-vs-notion-vs-plain-docs"
 author: "Wayne Chang"
 tags: ["feishu", "notion", "markdown", "api", "automation"]
-schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
-product_price: "29"
-product_brand: "Slashman Tools"
-product_sku: "SMT-FSH"
-product_category: "Software > Productivity"
-product_currency: "USD"
 seo_title: "Feishu, Notion or Plain Docs: Which Reads Best to an Assista"
 faq:
   - q: "Can an assistant read Notion pages that were never shared with the integration?"

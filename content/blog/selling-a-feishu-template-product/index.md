@@ -6,13 +6,6 @@ draft: false
 slug: "selling-a-feishu-template-product"
 author: "Wayne Chang"
 tags: ["feishu", "templates", "product-design", "licensing", "support"]
-schema: "ProductReview"
-product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
-product_price: "29"
-product_brand: "Slashman Tools"
-product_sku: "SMT-FSH"
-product_category: "Software > Productivity"
-product_currency: "USD"
 seo_title: "Selling a Feishu Template as a Product: Design Notes"
 faq:
   - q: "Do I need a paid storefront to sell a Feishu template?"
