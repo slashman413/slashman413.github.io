@@ -109,6 +109,16 @@ class MauticAPI:
             payload["ipAddress"] = ip_address
         return self._request("PATCH", f"contacts/{contact_id}/edit", payload)
 
+    def add_utm_tags(self, contact_id: int, utm: dict[str, str], referer: str = "",
+                     user_agent: str = "") -> dict:
+        """Record the lead's utm_* values on the contact (Mautic lead_utmtags)."""
+        payload: dict[str, Any] = dict(utm)
+        if referer:
+            payload["referer"] = referer
+        if user_agent:
+            payload["useragent"] = user_agent
+        return self._request("POST", f"contacts/{contact_id}/utm/add", payload)
+
 
 # ---------------------------------------------------------------------------
 # Campaign enrollment (direct DB — Mautic has no public campaign-add API)
@@ -217,6 +227,15 @@ def fetch_leads(api_url: str, token: str, since: str = "", limit: int = 500) -> 
 # ---------------------------------------------------------------------------
 # Main sync logic
 # ---------------------------------------------------------------------------
+UTM_KEYS = ("utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term")
+
+
+def mask_email(email: str) -> str:
+    """Log-safe form of an address: sync.log must not collect subscriber emails."""
+    local, _, domain = email.partition("@")
+    return f"{local[:1]}***@{domain}"
+
+
 def load_state(state_file: str) -> dict:
     """Load sync timestamp from state file."""
     if os.path.exists(state_file):
@@ -301,26 +320,37 @@ def sync_once(mautic: MauticAPI, api_url: str, forward_token: str, state: dict, 
             existing = mautic.find_contact_by_email(email)
             if existing:
                 contact_id = existing["id"]
-                print(f"  Contact exists: {email} (id={contact_id}), adding tags: {tags}")
+                print(f"  Contact exists: {mask_email(email)} (id={contact_id}), adding tags: {tags}")
                 mautic.update_contact_tags(contact_id, tags, ip_address=ip)
             else:
-                print(f"  Creating contact: {email} (first_name={first_name}, tags={tags}, ip={ip or '-'})")
+                print(f"  Creating contact: {mask_email(email)} (tags={tags})")
                 created = mautic.create_contact(email, first_name, tags, ip_address=ip)
                 contact_id = created.get("id")
                 new_count += 1
+
+            # Carry the visitor's attribution onto the contact. A failure here
+            # is logged, not raised: it must not stop the drip enrollment below.
+            utm = {k: v for k in UTM_KEYS if (v := str(lead.get(k) or "").strip())}
+            if contact_id and utm:
+                try:
+                    mautic.add_utm_tags(contact_id, utm, referer=lead.get("referrer") or "",
+                                        user_agent=lead.get("user_agent") or "")
+                    print(f"  Recorded UTM on lead {contact_id}: {utm}")
+                except Exception as e:
+                    print(f"  !! UTM write failed for lead {contact_id}: {e}", file=sys.stderr)
 
             # Enroll into the welcome drip (campaign 10). Mautic has no
             # public campaign-add API; the DB INSERT is idempotent and the
             # mautic:campaigns:trigger cron then schedules D1/D2/D3.
             if contact_id and enroll_in_campaign(contact_id):
-                print(f"  Enrolled {email} (lead {contact_id}) in campaign {WELCOME_CAMPAIGN_ID}")
+                print(f"  Enrolled {mask_email(email)} (lead {contact_id}) in campaign {WELCOME_CAMPAIGN_ID}")
 
             synced[email] = {
                 "synced_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                 "tags": tags,
             }
         except Exception as e:
-            print(f"  !! Failed to sync {email}: {e}", file=sys.stderr)
+            print(f"  !! Failed to sync {mask_email(email)}: {e}", file=sys.stderr)
             continue
 
         # Track latest timestamp

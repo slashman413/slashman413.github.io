@@ -90,6 +90,32 @@
     return out;
   }
 
+  // --- Checkout link attribution ------------------------------------------
+  // Gumroad links ship with fixed placement UTMs. A visitor who arrived with
+  // their own UTMs gets those on every checkout link instead, so a sale can be
+  // traced to the campaign that brought them. All five keys are replaced so an
+  // incoming set never mixes with leftover placement values.
+  var CHECKOUT_LINK_SELECTOR = 'a[href*="gumroad.com"]';
+
+  function decorateCheckoutLink(link, utm) {
+    try {
+      var url = new URL(link.href);
+      if (!/(^|\.)gumroad\.com$/.test(url.hostname)) return;
+      UTM_KEYS.forEach(function (k) {
+        url.searchParams.delete(k);
+        if (utm[k]) url.searchParams.set(k, utm[k]);
+      });
+      link.href = url.toString();
+    } catch (_) {}
+  }
+
+  function decorateCheckoutLinks(root, utm) {
+    if (!utm.utm_source) return;
+    if (root.matches && root.matches(CHECKOUT_LINK_SELECTOR)) decorateCheckoutLink(root, utm);
+    var links = root.querySelectorAll ? root.querySelectorAll(CHECKOUT_LINK_SELECTOR) : [];
+    for (var i = 0; i < links.length; i++) decorateCheckoutLink(links[i], utm);
+  }
+
   function readReferrer() {
     try {
       return document.referrer || "";
@@ -310,6 +336,7 @@
   function init() {
     var forms = document.querySelectorAll("[data-lead-form]");
     for (var i = 0; i < forms.length; i++) bindForm(forms[i]);
+    decorateCheckoutLinks(document, readUtm());
   }
 
   if (document.readyState === "loading") {
@@ -320,7 +347,9 @@
 
   // Bind forms injected after load (e.g. the mid-article CTA added by
   // cta-ab.js, or future dynamic blocks) without re-binding existing ones.
+  // Checkout links injected later get the visitor's UTMs the same way.
   if (window.MutationObserver) {
+    var observedUtm = readUtm();
     var mo = new MutationObserver(function (mutations) {
       for (var m = 0; m < mutations.length; m++) {
         var added = mutations[m].addedNodes;
@@ -330,6 +359,7 @@
           if (node.matches && node.matches("[data-lead-form]")) bindForm(node);
           var nested = node.querySelectorAll ? node.querySelectorAll("[data-lead-form]") : [];
           for (var q = 0; q < nested.length; q++) bindForm(nested[q]);
+          decorateCheckoutLinks(node, observedUtm);
         }
       }
     });
