@@ -137,13 +137,13 @@ Switching platforms to improve parse reliability is almost never worth it. Freez
 2. **Give the assistant its own machine identity.** A Feishu app with a tenant token, or a dedicated Notion integration. Then deliberately request a document you never shared with it and confirm the error you get matches your expectations.
 3. **Check pagination handling before you trust a sync.** Run your script twice against the same collection and assert the row counts match. Cursor bugs show up as quiet duplicates, not crashes.
 4. **Snapshot to Markdown weekly.** A flat export per collection is your escape hatch if an API version changes or a permission is revoked mid-quarter.
-5. **If you are starting from zero on Feishu or DingTalk, borrow a schema instead of designing one.** The [Feishu Template Marketplace](/blog/workspace-templates-beat-one-off-docs/) is a $29 one-time pack of twenty-plus ready-made templates covering project tracking, OKRs, meeting notes and documentation. The templates themselves are not the point; the pre-agreed field names are.
+5. **If you are starting from zero on Feishu or DingTalk, borrow a schema instead of designing one.** The templates themselves are not the point; the pre-agreed field names are.
 
 If the sync keeps failing after that, the problem is usually the machine identity and not the format — the same triage logic in [Triage Habits for Automation That Fails While You Sleep](/blog/triage-automation-failures-while-you-sleep/) applies here.
 
-## Get Feishu Template Marketplace
+## Get the free AI Prompt Library sample
 
-[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=feishu-vs-notion-vs-plain-docs) — **Free**, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
+[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=feishu-vs-notion-vs-plain-docs) — **Free**, instant download.
 
 ## Related reading
 

@@ -1,39 +1,23 @@
 ---
-title: "Feishu Template Marketplace Review 2026: 20+ Professional Templates for Feishu & DingTalk Teams"
+title: "Feishu Template Marketplace (Retired): What the 20+ Template Pack Covered"
 date: "2026-08-02T08:00:00+08:00"
-description: "Feishu Template Marketplace review: 20+ professional templates for Feishu (Lark) and DingTalk — project management, CRM, data analysis. $29."
+description: "The Feishu Template Marketplace is no longer sold. This page records what the pack covered: project management, CRM and data analysis templates for Feishu (Lark) and DingTalk."
 slug: "feishu-templates"
 draft: false
-schema: "ProductReview"
 tags: [templates, productivity, feishu, lark, dingtalk, project-management, teams]
-product_url: "https://slashmaster6.gumroad.com/l/prompt-library-sample"
-product_price: "29"
-product_brand: "Slashman Tools"
-product_sku: "SMT-FSH"
-product_category: "Software > Productivity"
-product_currency: "USD"
-seo_title: 'Feishu Templates Review: 20+ Professional Templates'
+seo_title: 'Feishu Template Marketplace (Retired)'
 keywords: ['feishu templates', 'lark templates', 'feishu project management', 'dingtalk templates', 'team productivity']
-faq:
-  - q: 'What templates are included?'
-    a: '20+ professional templates covering project management, OKR, meeting notes, CRM and data analysis, built for Feishu (Lark) and DingTalk teams.'
-  - q: 'Do the templates work with Lark (international Feishu)?'
-    a: 'Yes — Feishu is branded Lark outside China; the templates are built on native Feishu/Lark base features and import directly.'
-  - q: 'How are the templates delivered?'
-    a: 'Delivered as shareable Feishu/Lark documents with one-click import instructions — no admin rights or plugins required.'
-  - q: 'Who is this for?'
-    a: 'Teams that live in Feishu or DingTalk and want to stop rebuilding project, meeting and CRM trackers from scratch.'
 sitemap:
   priority: 0.9
   changefreq: monthly
 ---
 
-# Feishu Template Marketplace Review 2026: 20+ Professional Templates for Feishu & DingTalk Teams
+# Feishu Template Marketplace (Retired): What the 20+ Template Pack Covered
+
+> **This product is retired and no longer for sale.** This page stays up for reference and describes the pack as it was sold.
 
 
-Feishu (Lark) and DingTalk are the collaboration platforms of choice for most teams in Taiwan and China — but a blank workspace is not a system. The **Feishu Template Marketplace** is a pack of 20+ professionally designed, copy-paste-ready templates that turn a raw Feishu/DingTalk account into an organized operation. Here is our hands-on review of the **$29** pack.
-
-👉 [**Get the Free AI Prompt Library Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)
+Feishu (Lark) and DingTalk are the collaboration platforms of choice for most teams in Taiwan and China — but a blank workspace is not a system. The **Feishu Template Marketplace** was a pack of 20+ professionally designed, copy-paste-ready templates that turn a raw Feishu/DingTalk account into an organized operation.
 
 ## What's Inside
 
@@ -58,11 +42,10 @@ Every template is designed by an experienced PM and ships with usage instruction
 - **Copy-paste ready** — no technical background required; import and start using
 - **Professionally designed** — built by senior PMs who have run these exact workflows
 - **Broad coverage** — project management, CRM, analytics and collaboration in one pack
-- **Continuously updated** — new templates are added based on user feedback
 
-## The Verdict
+## Where to Go Instead
 
-At **$29**, the Feishu Template Marketplace is the fastest way to take a Feishu or DingTalk workspace from empty to organized. If your team has been "getting by" with ad-hoc docs and scattered sheets, the 20+ structured templates — and the workflows they encode — are worth far more than the price.
+This pack is no longer available. For ready-made prompts you can use with your team today, start with the free sample below.
 
 👉 [**Get the Free AI Prompt Library Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)
 

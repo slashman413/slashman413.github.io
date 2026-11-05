@@ -136,11 +136,10 @@ This pays off twice. The same files that onboard a new maintainer are the ones y
 2. Take the alert that wakes you up most often and write a one-page runbook for it. Then hand it to someone and watch them follow it cold.
 3. Write interface lists for your two busiest services using the fields above, and commit them next to the code.
 4. Add required "Why" and "Migration" lines to your changelog template and your pull request template, so the habit does not depend on memory.
-5. If your team works in Feishu or DingTalk, Feishu Template Marketplace is $29 one-time and includes twenty-plus ready-made templates covering project tracking, OKRs, meeting notes and documentation, which gives you a working shape rather than an empty page. The value still comes from the dates, reasons and owners you fill in.
 
-## Get Feishu Template Marketplace
+## Get the free AI Prompt Library sample
 
-[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=documentation-that-survives-handover) — **Free**, instant download. See the full breakdown on the [review page](/blog/feishu-templates/).
+[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=documentation-that-survives-handover) — **Free**, instant download.
 
 ## Related reading
 
