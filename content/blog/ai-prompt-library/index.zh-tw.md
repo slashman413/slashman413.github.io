@@ -1,22 +1,22 @@
 ---
-title: "AI Prompt 庫 - 300+ 高質量提示詞，10 倍提升你的 AI 使用效率 (附免費樣本)"
-description: "AI Prompt 庫包含 300+ 經過實戰驗證的提示詞模板，適用於 ChatGPT、Claude、Gemini 等大語言模型。涵蓋行銷、程式開發、寫作、商業分析等場景，提高你的 AI 使用效率。"
+title: "AI Prompt 庫 - 95+ 高質量提示詞，10 倍提升你的 AI 使用效率 (附免費樣本)"
+description: "AI Prompt 庫包含 95+ 經過實戰驗證的提示詞模板，適用於 ChatGPT、Claude、Gemini 等大語言模型。涵蓋行銷、程式開發、寫作、商業分析等場景，提高你的 AI 使用效率。"
 date: 2026-08-02
 slug: ai-prompt-library
 tags: [ai, prompts, productivity, tools, chatgpt, claude]
 product_url: "https://slashmaster6.gumroad.com/l/diwoc"
-product_price: "29"
+product_price: "39"
 product_brand: "Slashman Tools"
 product_sku: "SMT-APL"
 product_category: "Software > AI Tools"
 product_currency: "USD"
-seo_title: 'AI Prompt 庫評價：300+ 實戰驗證提示詞模板'
+seo_title: 'AI Prompt 庫評價：95+ 實戰驗證提示詞模板'
 keywords: ['AI Prompt 庫', 'ChatGPT 提示詞', 'Midjourney 提示詞', 'prompt 工程', 'AI 提示詞庫']
 faq:
-  - q: '$29 值得嗎？'
+  - q: '$39 值得嗎？'
     a: '如果你是每天使用 AI 的創作者、行銷或開發者，一個現成的高品質提示詞省下的摸索時間就值回票價。如果不確定，建議先下載免費樣本體驗！'
   - q: 'AI Prompt 庫包含哪些內容？'
-    a: '包含 300+ 經過實戰驗證的提示詞模板，涵蓋行銷文案、程式開發、商業分析、設計與日常辦公等場景，並按專業用途分類整理。'
+    a: '包含 95+ 經過實戰驗證的提示詞模板，涵蓋行銷文案、程式開發、商業分析、設計與日常辦公等場景，並按專業用途分類整理。'
   - q: '如何交付？'
     a: '以可搜尋的 Notion 資料庫交付，也可以匯出成 CSV，融入你現有的工作流程。'
   - q: '支援哪些 AI 工具？'
@@ -27,12 +27,12 @@ sitemap:
 ---
 
 <div class="product-landing">
-  <h1>AI Prompt 庫 - 300+ 高質量提示詞，10 倍提升你的 AI 使用效率</h1>
-  <p class="lead">AI Prompt 庫包含 300+ 經過實戰驗證的提示詞模板，適用於 ChatGPT、Claude、Gemini 等大語言模型。涵蓋行銷、程式開發、寫作、商業分析等場景，提高你的 AI 使用效率。<strong>強烈建議先下載免費樣本體驗！</strong></p>
+  <h1>AI Prompt 庫 - 95+ 高質量提示詞，10 倍提升你的 AI 使用效率</h1>
+  <p class="lead">AI Prompt 庫包含 95+ 經過實戰驗證的提示詞模板，適用於 ChatGPT、Claude、Gemini 等大語言模型。涵蓋行銷、程式開發、寫作、商業分析等場景，提高你的 AI 使用效率。<strong>強烈建議先下載免費樣本體驗！</strong></p>
   
   <div class="product-card">
     <ul class="features">
-      <li>300+ 精心設計的提示詞模板</li>
+      <li>95+ 精心設計的提示詞模板</li>
 <li>適用於 ChatGPT、Claude、Gemini 等主流 AI</li>
 <li>涵蓋行銷、程式開發、寫作、商業分析等場景</li>
 <li>每日持續更新，增加新提示詞</li>
@@ -40,7 +40,7 @@ sitemap:
     </ul>
     <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
       <a href="https://slashmaster6.gumroad.com/l/diwoc?utm_source=slashmantools&utm_medium=product-page&utm_campaign=ai-prompt-library" target="_blank" rel="noopener" class="cta-button">
-        立即購買 $29 →
+        立即購買 $39 →
       </a>
       <a href="https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=slashmantools&utm_medium=product-page&utm_campaign=ai-prompt-library-sample" target="_blank" rel="noopener" class="cta-button secondary" data-ab-test="leadmagnet" data-ab-placement="hero" data-ab-text-a="下載免費樣本" data-ab-text-b="先試用免費樣本" data-ab-color-a="#4f46e5" data-ab-color-b="#10b981" data-ab-color-c="#f59e0b">
         下載免費樣本
