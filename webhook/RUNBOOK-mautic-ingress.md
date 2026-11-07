@@ -17,10 +17,10 @@ flagship offer w/ UTM (60) → Day 5 exit tag. Magnet file:
 
 ## Why this exists
 
-The blog's `LEAD_ENDPOINT` was `http://100.80.243.33:8081/subscribe`. Fatal three
+The blog's `LEAD_ENDPOINT` was `http://<TAILNET_IP>:8081/subscribe`. Fatal three
 ways — **every subscribe failed silently, list growth = 0**:
 
-1. `100.80.243.33` is a **Tailscale (100.64/10 CGNAT) private IP** — public
+1. `<TAILNET_IP>` is a **Tailscale (100.64/10 CGNAT) private IP** — public
    visitors cannot route to it.
 2. The site is **HTTPS**, so an `http://` POST is **mixed content** → browser-blocked.
 3. Even inside the tailnet, `POST /subscribe` is **404** — Mautic has no such route
@@ -107,8 +107,8 @@ git commit -am "feat(leads): durable Worker→KV→Mautic ingress; retire web3fo
 
 ## Alternative if Cloudflare is off the table
 
-**Tailscale Funnel** (verified available on node `aitopatom-a4e2`) can expose a
-public HTTPS endpoint at `https://aitopatom-a4e2.tail5cf769.ts.net/...` **without any
+**Tailscale Funnel** (verified available on node `<TAILNET_NODE>`) can expose a
+public HTTPS endpoint at `https://<TAILNET_NODE>.<TAILNET>.ts.net/...` **without any
 Cloudflare account**. But it (a) needs Funnel enabled in the tailnet ACL
 (`nodeAttrs`/`funnel` — admin-console grant), (b) must be **path-scoped to
 `/form/submit` + `/mtc/*` only** (never funnel `/s/` admin), and (c) still needs a CORS

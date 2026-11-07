@@ -14,7 +14,7 @@ Run:  python3 sync_kv_to_mautic.py         # one-shot sync
       python3 sync_kv_to_mautic.py --watch  # poll every 60s (for testing)
 
 Set env vars:
-  LEADS_API_URL    — Worker GET /leads URL
+  LEADS_API_URL    — Worker GET /leads URL (required, no hardcoded default)
   ADMIN_TOKEN      — Worker admin secret for /leads auth (sent as a Bearer header)
   MAUTIC_BASE_URL  — Mautic base URL (default: http://localhost:8081)
   MAUTIC_API_USER  — Mautic API username
@@ -376,12 +376,15 @@ def main():
     parser.add_argument("--limit", type=int, default=500, help="Max leads per fetch")
     args = parser.parse_args()
 
-    api_url = os.environ.get("LEADS_API_URL", "http://100.80.243.33:8081")
+    api_url = os.environ.get("LEADS_API_URL", "")
     forward_token = os.environ.get("ADMIN_TOKEN", "")
     mautic_base = os.environ.get("MAUTIC_BASE_URL", "http://localhost:8081")
     mautic_user = os.environ.get("MAUTIC_API_USER", "")
     mautic_pass = os.environ.get("MAUTIC_API_PASSWORD", "")
 
+    if not api_url:
+        print("!! LEADS_API_URL not set. Set it to the Worker's /leads URL.", file=sys.stderr)
+        sys.exit(1)
     if not forward_token:
         print("!! ADMIN_TOKEN not set. Set it to match the Worker's ADMIN_TOKEN secret.", file=sys.stderr)
         sys.exit(1)
