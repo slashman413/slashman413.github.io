@@ -97,7 +97,7 @@ title = "Slashman Tools"
   gaId = "G-MY95FHB8JG"
   # Lead-capture endpoint. STOP-GAP (2026-08-01): pointed at web3forms
   # (client-side, HTTPS, public). The previous value —
-  # http://100.80.243.33:8081/subscribe — was fatal three ways: a Tailscale
+  # http://100.64.0.1:8081/subscribe (example Tailscale IP — real value redacted) — was fatal three ways: a Tailscale
   # PRIVATE IP (public visitors can't reach it), HTTP-on-HTTPS mixed content
   # (browsers block it), and a 404 (Mautic 8081 has no /subscribe route), so
   # every subscribe silently failed and list growth was 0. Durable fix (public
