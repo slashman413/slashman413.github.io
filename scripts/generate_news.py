@@ -96,7 +96,7 @@ def recent_titles(n=10):
 
 def deepseek(prompt, key, retries=3):
     model = os.environ.get("DEEPSEEK_MODEL") or DEFAULT_MODEL
-    body = json.dumps({
+    body = {
         "model": model,
         "messages": [{"role": "user", "content": prompt}],
         "temperature": 0.7,
@@ -107,7 +107,16 @@ def deepseek(prompt, key, retries=3):
         "max_tokens": 16384,
         "stream": False,
         "response_format": {"type": "json_object"},
-    }).encode()
+    }
+    # 2026-11-09: local SGLang runs qwen3.8-27b, a thinking model. With thinking
+    # on, the reasoning phase eats the whole 16384 token budget and
+    # finish_reason=length lands with an EMPTY content field -> "empty content
+    # (finish_reason=length)" on every attempt. SGLang honors the Qwen
+    # chat-template flag; set DEEPSEEK_DISABLE_THINKING=1 for SGLang runs only
+    # (verified: content comes back without reasoning_content, finish=stop).
+    if os.environ.get("DEEPSEEK_DISABLE_THINKING") == "1":
+        body["chat_template_kwargs"] = {"enable_thinking": False}
+    body = json.dumps(body).encode()
     headers = {**UA, "Content-Type": "application/json", "Authorization": f"Bearer {key}"}
     last_err = None
     for attempt in range(1, retries + 1):
