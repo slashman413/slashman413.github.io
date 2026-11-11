@@ -217,6 +217,14 @@
 
     var box = document.createElement("div");
     box.className = "mid-article-cta";
+    // TODO(mautic): this injected form has no `action` attribute — submissions
+    // rely on lead-capture.js POSTing to window.LEAD_ENDPOINT
+    // (https://api.slashmantools.us/subscribe), a Cloudflare Worker that syncs
+    // KV leads to the tailnet-only Mautic instance (http://localhost:8081) via
+    // webhook/sync_kv_to_mautic.py. No public Mautic form/dashboard URL is
+    // documented in this repo; if a public Mautic form URL (form 15,
+    // "midarticlesubscribe") is ever exposed, add it as a native form action
+    // so the form works without JS/Worker.
     box.innerHTML =
       '<p class="mac-title">Enjoying this guide?</p>' +
       '<p class="mac-sub">Get a free weekly roundup of practical AI tools and automation walkthroughs — plus the AI Productivity Toolkit on signup. No spam, unsubscribe anytime.</p>' +
