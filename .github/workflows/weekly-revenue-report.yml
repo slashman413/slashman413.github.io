@@ -40,7 +40,7 @@ jobs:
         run: echo "REPORT_DATE=$(date -u +'%Y-%m-%d')" >> "$GITHUB_ENV"
 
       - name: Commit and push report
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5
         with:
           # NOTE: this input is passed to `git commit -m` verbatim — shell
           # command substitution like $(date ...) is NOT expanded here.
