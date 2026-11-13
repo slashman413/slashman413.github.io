@@ -35,6 +35,8 @@ const ALLOWED_ORIGINS = [
   "https://tools.slashmantools.us",
   "https://slashman413.github.io",
   "https://ckw19810413.github.io",
+  "https://workflow-builders.com",
+  "https://www.workflow-builders.com",
   "http://localhost:1313", // hugo server
   "http://127.0.0.1:1313",
 ];
