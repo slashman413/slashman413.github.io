@@ -19,6 +19,8 @@ sitemap:
 
 Feishu (Lark) and DingTalk are the collaboration platforms of choice for most teams in Taiwan and China — but a blank workspace is not a system. The **Feishu Template Marketplace** was a pack of 20+ professionally designed, copy-paste-ready templates that turn a raw Feishu/DingTalk account into an organized operation.
 
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=feishu-templates&utm_content=top).
+
 ## What's Inside
 
 The marketplace covers the workflows every team actually runs, with templates for:

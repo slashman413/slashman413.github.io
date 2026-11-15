@@ -25,6 +25,8 @@ faq:
 
 One machine that serves an LLM, renders images, encodes video and runs overnight batch jobs sounds like a capacity problem. On a unified-memory box it is mostly a budgeting problem, because the GPU and the CPU draw from the same pool. These are the conventions that keep a single GB10-class machine honest for a single operator.
 
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=one-gpu-box-multiple-workloads&utm_content=top).
+
 ## Unified memory changes the arithmetic
 
 On a discrete card you track two numbers: host RAM and VRAM. `nvidia-smi` reports the second one, and that is the number that kills you. On GB10 (Grace Blackwell with coherent LPDDR5X shared between CPU and GPU) there is one pool. The capacity figure describes the whole machine, not the accelerator, and no separate VRAM ceiling exists to plan against.

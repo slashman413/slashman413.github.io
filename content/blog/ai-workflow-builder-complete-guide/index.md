@@ -40,6 +40,8 @@ Most teams use AI backwards. They open a chat window, paste a mega-prompt, copy 
 
 An **AI workflow builder** replaces ad-hoc prompting with deterministic systems engineering. Instead of chatting with one model, you define the **process** once in plain language—*"collect competitor pricing, extract structured numbers with quoted evidence, compare against yesterday's baseline, draft an executive alert, and hold anything ambiguous for human review"*—and the builder compiles that specification into a validated, multi-agent Directed Acyclic Graph (DAG) that runs on a schedule or webhook.
 
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=ai-workflow-builder-complete-guide&utm_content=top).
+
 > **Looking for a tool-by-tool buyer's comparison?** If you want to compare pricing and features across Slashman, n8n, Gumloop, Make, Zapier, and LangGraph, jump to our **[6 Best AI Workflow Builders in 2026 (Tested & Compared)](/blog/ai-workflow-builder/)**. This page is the **complete architecture and implementation guide** to how an AI workflow builder works, how to design agent contracts, and how to ship your first production pipeline in 30 minutes.
 
 ---

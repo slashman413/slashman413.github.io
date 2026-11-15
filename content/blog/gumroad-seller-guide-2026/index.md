@@ -14,6 +14,8 @@ A digital product is the closest thing to a perfect business model for one perso
 
 This guide is the practical playbook we use on the Slashman Tools store: how to pick what to sell, how to price it, how to build a listing that converts, and how to launch without a following. It is written from a decade of product-launch patterns distilled into what actually moves units.
 
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=gumroad-seller-guide-2026&utm_content=top).
+
 ## Chapter 1: Choosing What to Sell
 
 Every successful digital product answers a question the buyer already has. The four product types that sell best on marketplaces like Gumroad:

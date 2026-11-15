@@ -25,6 +25,8 @@ faq:
 
 Most first AI automations fail on scope, not tooling. "Automate my inbox" is a department, not a task, and no model or orchestrator will make an undefined job well-defined. The cheapest hour you spend on the project is the one before you write any prompt.
 
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=scope-your-first-ai-automation&utm_content=top).
+
 ## Scope problems get misdiagnosed as tooling problems
 
 When an automation produces garbage, the reflex is to swap the model, add retrieval, or move to a different workflow tool. Sometimes that helps. More often you have moved the same unbounded job onto a new stack, where it fails for the same reason.

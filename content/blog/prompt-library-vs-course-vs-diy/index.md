@@ -25,6 +25,8 @@ faq:
 
 Three ways to get good at prompting get sold as if they were substitutes: buy a curated library, take a course, or build your own collection from scratch. They are not substitutes. They pay off at different points, they cost different amounts to keep alive, and they break differently the first time you swap models.
 
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=prompt-library-vs-course-vs-diy&utm_content=top).
+
 ## The three options, and what each one hands you
 
 A curated library hands you finished strings. You paste, you fill in the blanks, you get output. The value is coverage: someone already wrote prompts for summarizing a thread, reviewing a diff, drafting a cold email, tagging support tickets.

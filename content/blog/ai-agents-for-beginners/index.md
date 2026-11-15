@@ -11,6 +11,8 @@ tags: ["ai agents", "beginners", "automation", "multi-agent", "llm"]
 
 "AI agent" is the most overused word in tech right now — and the most misunderstood. Some people use it to mean any chatbot. Others use it to mean software that runs your whole business while you sleep. Both are wrong, and the gap between the hype and the practical reality is exactly where beginners get lost. This guide cuts through it: what an agent actually is, how it differs from a chatbot, what real agents do today, and a concrete path to building your first one.
 
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=ai-agents-for-beginners&utm_content=top).
+
 ## What is an AI agent, really?
 
 An **AI agent** is a program that uses an LLM to decide what to do next, takes actions, observes the results, and repeats — until a goal is met. The three defining traits:

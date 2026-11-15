@@ -19,6 +19,8 @@ Most "build a business with AI" articles are fluff. They tell you AI can do ever
 - Zero paid ads
 - Distribution through organic SEO and Twitter content
 
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=ai-agents-digital-business-case-study&utm_content=top).
+
 ## Why AI Agents Work for Digital Products
 
 Digital products are unique in that they don't require physical inventory, customer shipping, or complex supply chains. The entire value proposition is **information and tools** — and that's exactly what AI agents excel at creating.

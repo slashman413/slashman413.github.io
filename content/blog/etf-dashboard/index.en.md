@@ -35,6 +35,8 @@ Taiwan's ETF market has exploded over the past few years — dividend ETFs, sect
 
 👉 [**Get ETF Dashboard on Gumroad ($29)**](https://slashmaster6.gumroad.com/l/etf-dashboard?utm_source=blog&utm_medium=seo&utm_campaign=etf-dashboard)
 
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=etf-dashboard&utm_content=top).
+
 ## What Is ETF Dashboard?
 
 ETF Dashboard is a Taiwan-focused ETF analysis platform that combines real-time market data, technical analysis, asset allocation guidance, and historical backtesting in one dashboard. Instead of stitching together free charting sites and manual tracking sheets, you get:

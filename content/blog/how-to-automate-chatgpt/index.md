@@ -19,6 +19,8 @@ You have used ChatGPT hundreds of times. You have also copy-pasted its output in
 
 Here are 12 workflows you can copy, ranked by how quickly they pay for themselves.
 
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=how-to-automate-chatgpt&utm_content=top).
+
 ## The one pattern behind all 12
 
 Every workflow below follows this skeleton:

@@ -15,6 +15,8 @@ The insight that kicked off the field is simple: a model's output is bounded by 
 
 This guide explains what context engineering is, the five techniques that define it, and how to start applying it — whether you chat with models daily or build automated pipelines.
 
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=what-is-context-engineering&utm_content=top).
+
 ## Where prompt engineering ends and context engineering begins
 
 | | Prompt engineering | Context engineering |
