@@ -1,6 +1,6 @@
 # 市場契合度與推廣報告
 
-_資料驅動自動產生（無需 AI）· 2026-11-09（第 46 週）_
+_資料驅動自動產生（無需 AI）· 2026-11-16（第 47 週）_
 
 > 分析對象：[slashmantools.us](https://slashmantools.us) 上的免費工具。
 > 訊號：**瀏覽數**＝Abacus 實際頁面瀏覽（真實互動）；**搜尋熱度**＝Google Trends 近 3 個月平均（0–100）；**趨勢**＝近期 vs 前期方向。
@@ -9,22 +9,22 @@ _資料驅動自動產生（無需 AI）· 2026-11-09（第 46 週）_
 
 | 工具 | 瀏覽數 | 搜尋熱度 | 趨勢 | 需求 | 曝光 | 判讀 |
 |------|------:|--------:|:--:|:--:|:--:|------|
-| [AI 提示詞庫](https://slashmantools.us/ai-prompt-library/) | 75 | 2.5 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
-| [AI 圖片尺寸計算器](https://slashmantools.us/ai-image-size-calculator/) | 61 | 0.0 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
-| [Token 成本計算器](https://slashmantools.us/token-cost-calculator/) | 58 | 0.0 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
-| [開發工具合集](https://slashmantools.us/dev-tools/) | 54 | 0.5 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
-| [JSON & Regex 開發工具](https://slashmantools.us/json-regex-devtools/) | 52 | 0.0 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
-| [強密碼產生器](https://slashmantools.us/password-generator/) | — | 23.1 | ↓ | Med | ? | — |
-| [字數計算器](https://slashmantools.us/word-counter/) | — | 17.2 | → | Med | ? | — |
-| [複利計算器](https://slashmantools.us/compound-calculator/) | — | 9.3 | → | Low | ? | — |
-| [單位換算器](https://slashmantools.us/unit-converter/) | — | 2.3 | → | Low | ? | — |
-| [計算器合集](https://slashmantools.us/calculators/) | — | 40.5 | ↓ | High | ? | — |
-| [番茄鐘專注計時器](https://slashmantools.us/pomodoro-focus-timer/) | — | 12.6 | → | Low | ? | — |
+| [AI 提示詞庫](https://slashmantools.us/ai-prompt-library/) | 77 | 2.3 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
+| [AI 圖片尺寸計算器](https://slashmantools.us/ai-image-size-calculator/) | 63 | 0.0 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
+| [Token 成本計算器](https://slashmantools.us/token-cost-calculator/) | 61 | 0.0 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
+| [開發工具合集](https://slashmantools.us/dev-tools/) | 56 | 0.4 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
+| [JSON & Regex 開發工具](https://slashmantools.us/json-regex-devtools/) | 55 | 0.0 | → | Low | High | ⭐ 小眾卻高曝光 → 隱藏招牌 |
+| [強密碼產生器](https://slashmantools.us/password-generator/) | — | 22.3 | ↓ | Med | ? | — |
+| [字數計算器](https://slashmantools.us/word-counter/) | — | 17.4 | → | Med | ? | — |
+| [複利計算器](https://slashmantools.us/compound-calculator/) | — | 8.9 | → | Low | ? | — |
+| [單位換算器](https://slashmantools.us/unit-converter/) | — | 2.2 | → | Low | ? | — |
+| [計算器合集](https://slashmantools.us/calculators/) | — | 38.3 | ↓ | Med | ? | — |
+| [番茄鐘專注計時器](https://slashmantools.us/pomodoro-focus-timer/) | — | 12.9 | → | Low | ? | — |
 | [配色工具](https://slashmantools.us/color-tools/) | — | 0.0 | → | Low | ? | — |
-| [QR Code 產生器](https://slashmantools.us/qr-code-generator/) | — | 79.5 | → | High | ? | — |
-| [圖片壓縮器](https://slashmantools.us/image-compressor/) | — | 5.7 | → | Low | ? | — |
-| [PDF 工具](https://slashmantools.us/pdf-tools/) | — | 18.2 | ↓ | Med | ? | — |
-| [本地 LLM VRAM 計算器](https://slashmantools.us/llm-calc/) | — | 1.2 | → | Low | ? | — |
+| [QR Code 產生器](https://slashmantools.us/qr-code-generator/) | — | 79.3 | → | High | ? | — |
+| [圖片壓縮器](https://slashmantools.us/image-compressor/) | — | 5.4 | → | Low | ? | — |
+| [PDF 工具](https://slashmantools.us/pdf-tools/) | — | 16.6 | ↓ | Med | ? | — |
+| [本地 LLM VRAM 計算器](https://slashmantools.us/llm-calc/) | — | 1.3 | → | Low | ? | — |
 
 判讀說明：**需求**由搜尋熱度分級、**曝光**由瀏覽數相對分級，兩者交叉得到行動建議。
 
@@ -35,7 +35,7 @@ _資料驅動自動產生（無需 AI）· 2026-11-09（第 46 週）_
 ### QR Code 產生器
 **Threads / X（短）**
 ```
-幾秒做出一個 QR Code。QR Code 產生器 免費幫你搞定 → https://slashmantools.us/qr-code-generator/
+QR Code 產生器 — 免費 QR，永久有效。免費工具，不用註冊：https://slashmantools.us/qr-code-generator/
 #qrcode #行銷 #小店家
 ```
 **Facebook / IG（中）**
@@ -52,7 +52,7 @@ QR Code 產生器｜免費 QR，永久有效
 ### 計算器合集
 **Threads / X（短）**
 ```
-各種計算器一站找齊。計算器合集 免費幫你搞定 → https://slashmantools.us/calculators/
+計算器合集 — 日常計算，一站搞定。免費工具，不用註冊：https://slashmantools.us/calculators/
 #計算器 #工具 #生產力
 ```
 **Facebook / IG（中）**
@@ -69,7 +69,7 @@ QR Code 產生器｜免費 QR，永久有效
 ### 強密碼產生器
 **Threads / X（短）**
 ```
-3 秒產生一組破解不了的高強度密碼。強密碼產生器 免費幫你搞定 → https://slashmantools.us/password-generator/
+強密碼產生器 — 安全密碼，一鍵生成。免費工具，不用註冊：https://slashmantools.us/password-generator/
 #資安 #密碼 #隱私 #infosec
 ```
 **Facebook / IG（中）**
