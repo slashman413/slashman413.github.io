@@ -14,6 +14,7 @@
 <meta property="og:url" content="https://slashmantools.us/workflow-builder-sample/">
 <meta property="og:image" content="https://slashmantools.us/og.png">
 <meta name="google-site-verification" content="jV8Xt5l-peRpLknp7xKYpvN8N5tCAkMctq0D-3RVyzk">
+<script src="/js/lead-capture.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -103,9 +104,31 @@ function downloadSampleJson(){
     </div>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <button type="button" class="btn-secondary" onclick="downloadSampleJson()">Download workflow.json ($0) ↓</button>
-      <a class="btn-secondary" href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=sample-page&utm_campaign=workflow-builder-sample" rel="noopener">Gumroad Sample ZIP ↗</a>
+      <a class="btn-secondary" href="#free-sample-gate">Unlock Sample ZIP ($0) ↓</a>
       <a class="btn-primary" href="https://slashmaster6.gumroad.com/l/amwkf?utm_source=slashmantools&utm_medium=sample-page&utm_campaign=ai-workflow-builder">Get Full Studio ($99) →</a>
     </div>
+  </div>
+
+  <!-- Email-gate for Gumroad Free Sample ZIP (mirrors layouts/partials/free-sample-cta.html) -->
+  <div id="free-sample-gate" style="margin-bottom:32px;padding:20px 22px;background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.35);border-radius:12px">
+    <p style="font-size:15px;font-weight:800;color:#fff;margin:0 0 6px">🎁 Download the Complete Sample Archive ($0)</p>
+    <p style="font-size:13.5px;color:var(--muted);margin:0 0 14px">Enter your email to unlock the full Gumroad sample ZIP (spec.yaml, workflow.json, and Python interfaces) plus our 3-day AI toolkit drip.</p>
+    <div id="free-sample-gate-form">
+      <form action="https://api.slashmantools.us/subscribe" method="post" data-lead-form data-source="sample-page-workflow-builder" data-success="#free-sample-gate-reveal" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
+        <input type="email" name="email" placeholder="you@example.com" required style="flex:1;min-width:200px;padding:10px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#fff;font-size:14px;outline:none">
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <input type="hidden" name="tags" value="free-sample-gate">
+        <button type="submit" style="background:#16a34a;color:#fff;border:none;border-radius:8px;font-weight:700;padding:10px 18px;font-size:13.5px;cursor:pointer;white-space:nowrap">Unlock Sample ZIP</button>
+      </form>
+      <p style="font-size:11.5px;color:var(--muted);margin:0">No spam. Unsubscribe anytime.</p>
+    </div>
+    <div id="free-sample-gate-reveal" style="display:none">
+      <p style="font-size:13px;color:var(--green);font-weight:600;margin:0 0 10px">✅ You're in! Grab the Gumroad Sample ZIP below:</p>
+      <a class="btn-secondary" href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=sample-page&utm_campaign=workflow-builder-sample" target="_blank" rel="noopener">Gumroad Sample ZIP ↗</a>
+    </div>
+    <noscript>
+      <a class="btn-secondary" href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=sample-page&utm_campaign=workflow-builder-sample" rel="noopener">Gumroad Sample ZIP ↗</a>
+    </noscript>
   </div>
 
   <h2>1. Visual DAG Topology & Pre-Flight Static Checks</h2>

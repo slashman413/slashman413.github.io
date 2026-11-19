@@ -113,7 +113,7 @@ One more thing worth noticing: teams tend to outgrow one-off documents faster th
 
 ## Get the free AI Prompt Library sample
 
-[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=buying-template-vs-building-your-own) — **Free**, instant download.
+[**AI Prompt Library — Free Sample**](#free-sample-cta) — **Free**, instant download.
 
 ## Related reading
 

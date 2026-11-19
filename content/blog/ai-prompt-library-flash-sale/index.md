@@ -14,7 +14,7 @@ faq:
   - q: 'When does the sale end?'
     a: '2026-10-23 at 15:00 UTC+8 (48 hours from launch of this post). After that the price returns to $39.'
   - q: 'Is there a free option?'
-    a: 'Yes. The free sample gives you 12 of the highest-converting prompts from the library so you can test the quality before buying: https://slashmaster6.gumroad.com/l/prompt-library-sample'
+    a: 'Yes. The free sample gives you 12 of the highest-converting prompts from the library so you can test the quality before buying: https://slashmantools.us/prompt-library-sample/'
 product_url: 'https://slashmaster6.gumroad.com/l/diwoc'
 product_price: '19.99'
 product_brand: 'Slashman Tools'
@@ -48,4 +48,4 @@ If you use ChatGPT or Claude daily, the value is practical: a tested prompt for 
 
 ## Not sure yet? Start free
 
-Take the [free sample](https://slashmaster6.gumroad.com/l/prompt-library-sample) — 12 of the highest-converting prompts from the library, no purchase required. Drop them into ChatGPT or Claude and judge the quality yourself. If the sample prompts earn a place in your workflow, the full library is the version with the other 80+.
+Take the [free sample](#free-sample-cta) — 12 of the highest-converting prompts from the library, no purchase required. Drop them into ChatGPT or Claude and judge the quality yourself. If the sample prompts earn a place in your workflow, the full library is the version with the other 80+.

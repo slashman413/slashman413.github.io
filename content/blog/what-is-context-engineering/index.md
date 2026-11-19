@@ -15,7 +15,7 @@ The insight that kicked off the field is simple: a model's output is bounded by 
 
 This guide explains what context engineering is, the five techniques that define it, and how to start applying it — whether you chat with models daily or build automated pipelines.
 
-> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=what-is-context-engineering&utm_content=top).
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](#free-sample-cta).
 
 ## Where prompt engineering ends and context engineering begins
 
@@ -95,7 +95,7 @@ Same model. Same prompt quality. Radically better output — because the context
 
 ## Context engineering and your automated workflows
 
-If you run any automated pipeline — content, reports, support — context engineering is already your biggest lever, whether you call it that or not. The researcher agent *is* a context engineer: it decides what the writer sees. Our [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder) bakes this in: each agent step receives only the filtered output of the previous step, with validation gates on what passes through. The [free sample workflow](https://slashmaster6.gumroad.com/l/workflow-builder-sample) shows the pattern in a running example.
+If you run any automated pipeline — content, reports, support — context engineering is already your biggest lever, whether you call it that or not. The researcher agent *is* a context engineer: it decides what the writer sees. Our [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder) bakes this in: each agent step receives only the filtered output of the previous step, with validation gates on what passes through. The [free sample workflow](#free-sample-cta) shows the pattern in a running example.
 
 For the broader skill set, our [prompt engineering guide](/blog/prompt-engineering-guide-beginners/) covers the message layer, and the [10 prompting techniques](/blog/10-ai-prompting-techniques-save-10-hours-diwoc/) post is a practical companion.
 
@@ -113,4 +113,4 @@ For the broader skill set, our [prompt engineering guide](/blog/prompt-engineeri
 
 - Practice level 1 today: one prompt, one missing document, better answer.
 - Read the [multi-agent workflow design guide](/blog/designing-multi-agent-ai-workflows-guide/) to see context engineering in action.
-- Get the [AI Prompt Library](https://slashmaster6.gumroad.com/l/diwoc) (free sample [here](https://slashmaster6.gumroad.com/l/prompt-library-sample)) to shortcut the message layer while you master the context layer.
+- Get the [AI Prompt Library](https://slashmaster6.gumroad.com/l/diwoc) (free sample [here](#free-sample-cta)) to shortcut the message layer while you master the context layer.

@@ -15,7 +15,7 @@ schema: "Article"
 This tutorial takes you through [AI Workflow Builder](https://slashmaster6.gumroad.com/l/amwkf?utm_source=blog&utm_medium=seo&utm_campaign=aiwb) from installation all the way to "first workflow live." In about 30 minutes, you will build a real, working multi-agent workflow: **daily competitor price monitoring**.
 
 <div class="product-cta" style="margin:20px 0;padding:16px 18px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.25);border-radius:12px">
-<strong>🎁 Want to see the output before you install anything?</strong> The <a href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&amp;utm_medium=blog-cta&amp;utm_campaign=ai-workflow-builder-tutorial&amp;utm_content=top" target="_blank" rel="noopener">free AI Workflow Builder sample</a> has a real validated DAG and the Python project generated from it, so you can inspect exactly what this tutorial builds.
+<strong>🎁 Want to see the output before you install anything?</strong> The <a href="#free-sample-cta">free AI Workflow Builder sample</a> has a real validated DAG and the Python project generated from it, so you can inspect exactly what this tutorial builds.
 </div>
 
 ## Prerequisites
@@ -128,7 +128,7 @@ A: No. Builder designs and validates workflows; Cowork Pro dispatches execution 
 <p style="font-size:17px;font-weight:800;margin:0 0 6px">Build your own multi-agent workflows</p>
 <p style="margin:0 0 14px">AI Workflow Builder turns a prompt into a validated DAG and runnable Python, with Grill-Me Q&amp;A, pre-flight validation and GitHub publishing. Perpetual source-code license.</p>
 <p style="margin:0"><a href="https://slashmaster6.gumroad.com/l/ai-workflow-builder?utm_source=blog&amp;utm_medium=cta-bottom&amp;utm_campaign=aiwb-tutorial" target="_blank" rel="noopener" style="display:inline-block;padding:10px 22px;background:#a5b4fc;color:#0a0a0f;border-radius:10px;font-weight:700;text-decoration:none">Get AI Workflow Builder — $99 →</a></p>
-<p style="font-size:13px;margin:10px 0 0">Not ready? <a href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=blog&amp;utm_medium=cta-bottom&amp;utm_campaign=aiwb-tutorial" target="_blank" rel="noopener">Download the free sample workflow</a> first.</p>
+<p style="font-size:13px;margin:10px 0 0">Not ready? <a href="#free-sample-cta">Download the free sample workflow</a> first.</p>
 </div>
 
 ## Next Steps

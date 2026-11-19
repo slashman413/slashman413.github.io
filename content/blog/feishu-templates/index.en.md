@@ -19,7 +19,7 @@ sitemap:
 
 Feishu (Lark) and DingTalk are the collaboration platforms of choice for most teams in Taiwan and China — but a blank workspace is not a system. The **Feishu Template Marketplace** was a pack of 20+ professionally designed, copy-paste-ready templates that turn a raw Feishu/DingTalk account into an organized operation.
 
-> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=feishu-templates&utm_content=top).
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](#free-sample-cta).
 
 ## What's Inside
 
@@ -49,6 +49,6 @@ Every template is designed by an experienced PM and ships with usage instruction
 
 This pack is no longer available. For ready-made prompts you can use with your team today, start with the free sample below.
 
-👉 [**Get the Free AI Prompt Library Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)
+👉 [**Get the Free AI Prompt Library Sample**](#free-sample-cta)
 
 *Looking for more ways to systematize your work? See [Cowork Pro](/blog/cowork-pro/) for AI agent orchestration.*

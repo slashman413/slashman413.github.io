@@ -35,7 +35,7 @@ Running one AI agent is easy. Running ten — across different models, machines,
 
 **Cowork Pro** solves exactly that. It is a filesystem-based **MCP server** plus a web dashboard that lets you coordinate AI agents from multiple platforms — Claude Code, Antigravity (AGY), Hermes, and any local or remote model — through a single pane of glass. Here is a deep, practical review of what it does, who it is for, and whether the $59 price is worth it in 2026.
 
-> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=cowork-pro&utm_content=top).
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](#free-sample-cta).
 
 👉 [**Get Cowork Pro on Gumroad now ($59)**](https://slashmaster6.gumroad.com/l/xfhfps?utm_source=blog&utm_medium=seo&utm_campaign=xfhfps)
 

@@ -11,7 +11,7 @@ tags: ["ai agents", "beginners", "automation", "multi-agent", "llm"]
 
 "AI agent" is the most overused word in tech right now — and the most misunderstood. Some people use it to mean any chatbot. Others use it to mean software that runs your whole business while you sleep. Both are wrong, and the gap between the hype and the practical reality is exactly where beginners get lost. This guide cuts through it: what an agent actually is, how it differs from a chatbot, what real agents do today, and a concrete path to building your first one.
 
-> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=ai-agents-for-beginners&utm_content=top).
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](#free-sample-cta).
 
 ## What is an AI agent, really?
 
@@ -74,7 +74,7 @@ The fastest path in 2026 is not a framework — it is a **workflow builder with 
 
 **Project: "The 5-source researcher."** Goal: for any topic, return 5 credible sources with a one-line summary of each.
 
-1. Open your builder (or use a prompt-driven one like our [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder), [free sample here](https://slashmaster6.gumroad.com/l/workflow-builder-sample)).
+1. Open your builder (or use a prompt-driven one like our [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder), [free sample here](#free-sample-cta)).
 2. Create one agent step with this spec: *"You are a research agent. For {TOPIC}: (1) run a web search, (2) open the top results, (3) keep only sources that are authoritative and recent, (4) stop when you have 5. Output: numbered list with title, URL, and a 1-line summary of each. If you cannot verify a source loads, drop it. Max 10 search steps."*
 3. Give the agent two tools: `web_search(query)` and `read_url(url)`.
 4. Add a validation rule after the step: exactly 5 sources, each with URL + summary, no duplicates.
@@ -104,6 +104,6 @@ For most small businesses, 80% of wins come from workflows with a couple of agen
 
 ## Next steps
 
-- Practice with the [free workflow sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample), then scale with the [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder).
+- Practice with the [free workflow sample](#free-sample-cta), then scale with the [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder).
 - Read [how to design multi-agent workflows](/blog/designing-multi-agent-ai-workflows-guide/) and the [agent frameworks comparison](/blog/ai-agent-frameworks-2026-comparison-nulyms/).
 - If your first "agent" is really a long-running operation, look at [Cowork Pro](https://slashmaster6.gumroad.com/l/cowork-pro) — a task-based multi-agent server for exactly that.

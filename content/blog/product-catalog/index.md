@@ -55,9 +55,11 @@ One page, every live product on [slashmaster6.gumroad.com](https://slashmaster6.
 
 Not sure which one fits? Test-drive the quality before spending anything:
 
-- **[AI Prompt Library — Free Sample (12 prompts) — $0](https://slashmaster6.gumroad.com/l/prompt-library-sample)**
+- **[AI Prompt Library — Free Sample (12 prompts) — $0](#free-sample-cta)**
   12 of the highest-converting prompts from the full library. Drop them into ChatGPT or Claude and judge the quality yourself.
-- **[AI Workflow Builder — Free Sample Workflow — $0](https://slashmaster6.gumroad.com/l/workflow-builder-sample)**
+- **[AI Workflow Builder — Free Sample Workflow — $0](#free-sample-cta)**
   A complete validated multi-agent DAG plus the Python project generated from it, so you can see exactly how a finished workflow is structured before you buy.
 
 Free samples are the fastest way to decide: use them on a real task from your week, and if the output saves you time, the paid version is the same thing at scale.
+
+{{< free-sample-cta >}}

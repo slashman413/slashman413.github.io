@@ -132,7 +132,7 @@ This pays off twice. The same files that onboard a new maintainer are the ones y
 
 ## Get the free AI Prompt Library sample
 
-[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=documentation-that-survives-handover) — **Free**, instant download.
+[**AI Prompt Library — Free Sample**](#free-sample-cta) — **Free**, instant download.
 
 ## Related reading
 

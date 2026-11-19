@@ -1,0 +1,3 @@
+{{- /* Shortcode wrapper for layouts/partials/free-sample-cta.html */ -}}
+{{- $source := .Get "source" | default "blog-inline-free-sample-cta" -}}
+{{ partial "free-sample-cta.html" (dict "page" .Page "force" true "source" $source) }}

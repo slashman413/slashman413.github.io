@@ -19,7 +19,7 @@ You have used ChatGPT hundreds of times. You have also copy-pasted its output in
 
 Here are 12 workflows you can copy, ranked by how quickly they pay for themselves.
 
-> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=how-to-automate-chatgpt&utm_content=top).
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](#free-sample-cta).
 
 ## The one pattern behind all 12
 
@@ -109,7 +109,7 @@ The trigger can be a schedule, a webhook, a new file, or a form submission. The 
 
 Three levels:
 
-1. **No-code builder** — most of the workflows above fit a visual or prompt-driven builder. Ours ([AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder), [free sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample)) is prompt-driven: describe the flow, get a validated pipeline. For the integration-heavy ones, add n8n or Zapier for the plumbing — see our [Zapier vs n8n vs AI workflow builder](/blog/zapier-vs-n8n-vs-ai-workflow-builder/) comparison.
+1. **No-code builder** — most of the workflows above fit a visual or prompt-driven builder. Ours ([AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder), [free sample](#free-sample-cta)) is prompt-driven: describe the flow, get a validated pipeline. For the integration-heavy ones, add n8n or Zapier for the plumbing — see our [Zapier vs n8n vs AI workflow builder](/blog/zapier-vs-n8n-vs-ai-workflow-builder/) comparison.
 2. **API + scripts** — if you already code: the OpenAI-compatible API is one HTTP call. A cron job + a 50-line script covers most of these. Our [n8n tutorial](/blog/n8n-workflow-tutorial-guide-2026/) shows the middle path.
 3. **Hybrid** — builder for the AI layer, integration tool for the data layer. This is what we run in production.
 
@@ -133,5 +133,5 @@ Three levels:
 ## Next steps
 
 - Start with one workflow from this list — the one that matches your most hated weekly task.
-- Use the [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder) (free sample [here](https://slashmaster6.gumroad.com/l/workflow-builder-sample)) and the [AI Developer Stack Bundle](https://slashmaster6.gumroad.com/l/ai-dev-stack) when you are ready to run them as a full stack.
+- Use the [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder) (free sample [here](#free-sample-cta)) and the [AI Developer Stack Bundle](https://slashmaster6.gumroad.com/l/ai-dev-stack) when you are ready to run them as a full stack.
 - Read the [AI workflow builder guide](/blog/ai-workflow-builder-complete-guide/) for the full build methodology.

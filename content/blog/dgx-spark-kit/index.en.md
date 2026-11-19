@@ -45,7 +45,7 @@ The NVIDIA DGX Spark (GB10) is the most exciting local AI hardware of the decade
 
 Free first: the [DGX Spark field notes](https://github.com/slashman413/dgx-spark-field-notes) on GitHub list 8 real GB10 failure modes, each with its exact error text and fix.
 
-> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=dgx-spark-kit&utm_content=top).
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](#free-sample-cta).
 
 ## What You Get
 

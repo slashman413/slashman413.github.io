@@ -78,7 +78,7 @@ Compare that with the alternative: an automation consultant bills $100-250/hour,
 
 **Week 1 — Find the leak.** List every task you did last week, grouped by "recurring" vs "one-off." Pick the most painful recurring task. Write down the process as a paragraph (what triggers it, what the output is, how long it takes you).
 
-**Week 2 — Build the first workflow.** Use a workflow builder or a no-code tool. The [free sample workflow](https://slashmaster6.gumroad.com/l/workflow-builder-sample) from our [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder) is a real, working example of the structure — research → draft → edit → publish. Copy the pattern, swap in your task. Set up a human review step.
+**Week 2 — Build the first workflow.** Use a workflow builder or a no-code tool. The [free sample workflow](#free-sample-cta) from our [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder) is a real, working example of the structure — research → draft → edit → publish. Copy the pattern, swap in your task. Set up a human review step.
 
 **Week 3 — Run it with supervision.** Execute it with real data every day. Fix the prompts (this is where the quality comes from — see our [prompt engineering guide](/blog/prompt-engineering-guide-beginners/)). Measure time saved honestly.
 

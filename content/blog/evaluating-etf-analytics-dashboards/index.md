@@ -25,7 +25,7 @@ faq:
 
 Most ETF analytics tools open with the same screenshot: a candlestick chart, two moving averages, and a backtest equity curve that only goes up. None of that tells you whether the numbers are reproducible, or whether the backtest would have survived the ETFs that no longer trade. Below is a checklist you can run against a tool before you pay for it.
 
-> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=evaluating-etf-analytics-dashboards&utm_content=top).
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](#free-sample-cta).
 
 ## Data provenance and update cadence
 

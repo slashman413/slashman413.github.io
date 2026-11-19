@@ -34,7 +34,7 @@ The internet is flooded with "ultimate" prompt guides, cheat sheets, and courses
 
 To give you the most accurate **AI Prompt Library review**, I didn't just skim it. I integrated it directly into my daily workflow for 30 days. Here is the honest breakdown of whether this $39 investment is actually worth your money in 2026.
 
-> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=ai-prompt-library&utm_content=top).
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](#free-sample-cta).
 
 ## Day 1-10: First Impressions and Setup
 

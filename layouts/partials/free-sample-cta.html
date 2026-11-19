@@ -1,5 +1,11 @@
 {{- /*
-  free-sample-cta.html — persistent CTA on every blog article.
+  free-sample-cta.html — email-gated free-sample acquisition CTA.
+
+  Accepts either:
+    - a Page context (`.`), e.g. from `layouts/_default/single.html` or `list.html`
+      (renders only when `.Section == "blog"`), OR
+    - a dict `(dict "page" . "force" true "source" "homepage-free-sample")`
+      so it can be embedded on the homepage or via shortcode.
 
   Email-gated free-sample acquisition:
     1. Visitor enters email → Worker /subscribe → KV → Mautic (campaign 10 drip)
@@ -7,20 +13,36 @@
     3. <noscript> fallback shows links directly for JS-disabled users.
 
   lead-capture.js auto-binds any form with [data-lead-form].
-  The form's data-success attribute points to the reveal container.
+  Per-page counter via .Store ensures unique IDs when multiple gates appear
+  on the same page.
 
   URLs (verified via Gumroad API, price=0):
     https://slashmaster6.gumroad.com/l/workflow-builder-sample
     https://slashmaster6.gumroad.com/l/prompt-library-sample
 */ -}}
-{{ if eq .Section "blog" }}
-<div style="margin-top:28px;padding:20px 22px;background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.35);border-radius:12px">
+{{- $page := . -}}
+{{- $force := false -}}
+{{- $source := "free-sample-cta" -}}
+{{- if reflect.IsMap . -}}
+  {{- $page = .page -}}
+  {{- $force = .force | default false -}}
+  {{- $source = .source | default "free-sample-cta" -}}
+{{- end -}}
+{{ if or (eq $page.Section "blog") $force }}
+{{- $page.Store.Add "freeSampleGateIdx" 1 -}}
+{{- $idx := $page.Store.Get "freeSampleGateIdx" -}}
+{{- $anchorId := cond (eq $idx 1) "free-sample-cta" (printf "free-sample-cta-%d" $idx) -}}
+<div id="{{ $anchorId }}" style="margin-top:28px;padding:20px 22px;background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.35);border-radius:12px">
   <p style="font-size:15px;font-weight:800;color:#f0f0f8;margin:0 0 6px">🎁 Want to try before you buy?</p>
   <p style="font-size:13.5px;color:var(--muted);margin:0 0 14px">Both samples are 100% free. Enter your email to unlock the download links and get our 3-day AI toolkit drip in your inbox.</p>
 
   <!-- Email-gate form (lead-capture.js auto-binds via data-lead-form) -->
-  <div id="free-sample-gate-form">
-    <form data-lead-form data-source="free-sample-cta" data-success="#free-sample-gate-reveal"
+  <div id="free-sample-gate-form-{{ $idx }}">
+    <form action="{{ site.Params.leadEndpoint | default "https://api.slashmantools.us/subscribe" }}"
+          method="post"
+          data-lead-form
+          data-source="{{ $source }}"
+          data-success="#free-sample-gate-reveal-{{ $idx }}"
           style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
       <input type="email" name="email" placeholder="you@example.com" required
              style="flex:1;min-width:200px;padding:10px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#f0f0f8;font-size:14px;outline:none"
@@ -37,7 +59,7 @@
   </div>
 
   <!-- Revealed after successful email submission -->
-  <div id="free-sample-gate-reveal" style="display:none">
+  <div id="free-sample-gate-reveal-{{ $idx }}" style="display:none">
     <p style="font-size:13px;color:#4ade80;font-weight:600;margin:0 0 10px">✅ You're in! Click below to grab your free samples:</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <a href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&amp;utm_medium=blog&amp;utm_campaign=free_sample_cta&amp;utm_content=workflow_sample" target="_blank" rel="noopener" style="display:inline-block;background:#16a34a;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:8px;font-size:13.5px">Free Sample Workflow</a>

@@ -201,4 +201,4 @@ We maintain ours this way, and the [AI Prompt Library](https://slashmaster6.gumr
 
 - Steal the [10 prompting techniques that save 10 hours](/blog/10-ai-prompting-techniques-save-10-hours-diwoc/) — a practical companion to this guide.
 - See [300 real prompts](/blog/300-ai-prompts-actually-work-breakdown-diwoc/) broken down by why they work.
-- Get the [AI Prompt Library — 95+ battle-tested, copy-paste prompts ($39)](https://slashmaster6.gumroad.com/l/diwoc) or start with the [free 12-prompt sample](https://slashmaster6.gumroad.com/l/prompt-library-sample).
+- Get the [AI Prompt Library — 95+ battle-tested, copy-paste prompts ($39)](https://slashmaster6.gumroad.com/l/diwoc) or start with the [free 12-prompt sample](#free-sample-cta).

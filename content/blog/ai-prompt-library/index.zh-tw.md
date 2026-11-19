@@ -42,7 +42,7 @@ sitemap:
       <a href="https://slashmaster6.gumroad.com/l/diwoc?utm_source=slashmantools&utm_medium=product-page&utm_campaign=ai-prompt-library" target="_blank" rel="noopener" class="cta-button">
         立即購買 $39 →
       </a>
-      <a href="https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=slashmantools&utm_medium=product-page&utm_campaign=ai-prompt-library-sample" target="_blank" rel="noopener" class="cta-button secondary" data-ab-test="leadmagnet" data-ab-placement="hero" data-ab-text-a="下載免費樣本" data-ab-text-b="先試用免費樣本" data-ab-color-a="#4f46e5" data-ab-color-b="#10b981" data-ab-color-c="#f59e0b">
+      <a href="#free-sample-cta" class="cta-button secondary" data-ab-test="leadmagnet" data-ab-placement="hero" data-ab-text-a="下載免費樣本" data-ab-text-b="先試用免費樣本" data-ab-color-a="#4f46e5" data-ab-color-b="#10b981" data-ab-color-c="#f59e0b">
         下載免費樣本
       </a>
     </div>

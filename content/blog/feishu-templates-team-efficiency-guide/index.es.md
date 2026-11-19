@@ -57,4 +57,4 @@ Para los equipos de marketing, la planificación de contenidos es crucial. Utili
 
 Mejorar la eficiencia del equipo no requiere obligar a los empleados a trabajar horas extras, sino brindarles mejores herramientas y métodos. Las plantillas de Feishu pueden duplicar fácilmente la eficiencia de su equipo al eliminar el trabajo repetitivo, establecer procesos estandarizados y promover la transparencia de la información.
 
-No dejes que el tedioso trabajo administrativo te detenga. ¡Comience a implementar las plantillas de Feishu ahora, combínelas con **[Free AI Prompt Library Sample](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)** y experimente la máxima emoción de un aumento de eficiencia del 300%!
+No dejes que el tedioso trabajo administrativo te detenga. ¡Comience a implementar las plantillas de Feishu ahora, combínelas con **[Free AI Prompt Library Sample](#free-sample-cta)** y experimente la máxima emoción de un aumento de eficiencia del 300%!

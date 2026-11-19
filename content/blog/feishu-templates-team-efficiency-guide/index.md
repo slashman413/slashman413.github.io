@@ -60,4 +60,4 @@ For marketing teams, content planning is crucial. Use templates to track the dra
 
 Improving team efficiency doesn't mean forcing employees to work overtime; it means providing better tools and methods. By eliminating repetitive work, establishing standardized processes, and promoting information transparency, Feishu Templates can easily double or triple your team's efficiency.
 
-Stop letting tedious management tasks slow you down. Start implementing Feishu Templates today, pair them with **[Free AI Prompt Library Sample](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)**, and experience the ultimate thrill of a 300% efficiency boost!
+Stop letting tedious management tasks slow you down. Start implementing Feishu Templates today, pair them with **[Free AI Prompt Library Sample](#free-sample-cta)**, and experience the ultimate thrill of a 300% efficiency boost!

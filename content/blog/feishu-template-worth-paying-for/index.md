@@ -100,7 +100,7 @@ The last one is the failure mode people find in month two, when notifications st
 
 ## Get the free AI Prompt Library sample
 
-[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=feishu-template-worth-paying-for) — **Free**, instant download.
+[**AI Prompt Library — Free Sample**](#free-sample-cta) — **Free**, instant download.
 
 ## Related reading
 

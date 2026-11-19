@@ -42,7 +42,7 @@ This is the layer that makes emails feel human without a human writing them. Con
 - **Draft** — generate the first email referencing their actual request, not a template ("I saw you're interested in {X} — here's the exact workflow for it...").
 - **Gate** — a scoring step rejects formulaic drafts (must contain ≥1 specific reference) and re-drafts.
 
-The result: every lead gets a first email that reads like it was written for them, in the 5-minute window where replies are most likely. This is a text-generation task — exactly what our [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder) is for; the [free sample workflow](https://slashmaster6.gumroad.com/l/workflow-builder-sample) demonstrates the draft → validate → send pattern.
+The result: every lead gets a first email that reads like it was written for them, in the 5-minute window where replies are most likely. This is a text-generation task — exactly what our [AI Workflow Builder](https://slashmaster6.gumroad.com/l/ai-workflow-builder) is for; the [free sample workflow](#free-sample-cta) demonstrates the draft → validate → send pattern.
 
 ## Layer 3 — Automation: the 3-day drip that runs itself
 

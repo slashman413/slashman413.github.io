@@ -129,7 +129,7 @@ Prose hasn't become useless, either. A design rationale, a postmortem narrative,
 
 ## Get the free AI Prompt Library sample
 
-[**AI Prompt Library — Free Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=article&utm_campaign=workspace-templates-beat-one-off-docs) — **Free**, instant download.
+[**AI Prompt Library — Free Sample**](#free-sample-cta) — **Free**, instant download.
 
 ## Related reading
 

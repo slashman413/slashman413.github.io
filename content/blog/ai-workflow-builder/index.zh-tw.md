@@ -38,7 +38,7 @@ sitemap:
       <a href="https://slashmaster6.gumroad.com/l/amwkf?utm_source=slashmantools&utm_medium=product-page&utm_campaign=aiwb" target="_blank" rel="noopener" class="cta-button">
         立即購買 $99 →
       </a>
-      <a href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=product-page&utm_campaign=aiwb-sample" target="_blank" rel="noopener" class="cta-button secondary" data-ab-test="leadmagnet" data-ab-placement="hero" data-ab-text-a="取得免費體驗版" data-ab-text-b="下載免費 Sample" data-ab-color-a="#4f46e5" data-ab-color-b="#10b981" data-ab-color-c="#f59e0b">
+      <a href="#free-sample-cta" class="cta-button secondary" data-ab-test="leadmagnet" data-ab-placement="hero" data-ab-text-a="取得免費體驗版" data-ab-text-b="下載免費 Sample" data-ab-color-a="#4f46e5" data-ab-color-b="#10b981" data-ab-color-c="#f59e0b">
         取得免費體驗版
       </a>
     </div>

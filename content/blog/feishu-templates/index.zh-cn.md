@@ -47,6 +47,6 @@ Every template is designed by an experienced PM and ships with usage instruction
 
 This pack is no longer available. For ready-made prompts you can use with your team today, start with the free sample below.
 
-👉 [**Get the Free AI Prompt Library Sample**](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=blog&utm_medium=seo&utm_campaign=xohjh)
+👉 [**Get the Free AI Prompt Library Sample**](#free-sample-cta)
 
 *Looking for more ways to systematize your work? See [Cowork Pro](/blog/cowork-pro/) for AI agent orchestration.*

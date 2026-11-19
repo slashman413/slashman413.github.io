@@ -25,7 +25,7 @@ Here's the short answer, then the long one:
 - **Use both** in most real businesses: n8n at the edges (triggers, webhooks, SaaS plumbing) and a code workflow in the middle (the agents).
 
 <div class="product-cta" style="margin:20px 0;padding:16px 18px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.25);border-radius:12px">
-<strong>🎁 Want to see what a "custom multi-agent workflow" actually looks like?</strong> The <a href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&amp;utm_medium=blog-cta&amp;utm_campaign=n8n-vs-custom&amp;utm_content=top" target="_blank" rel="noopener">free AI Workflow Builder sample</a> contains a validated DAG and the Python project generated from it. It's the "code" side of this comparison, ready to open in your editor.
+<strong>🎁 Want to see what a "custom multi-agent workflow" actually looks like?</strong> The <a href="#free-sample-cta">free AI Workflow Builder sample</a> contains a validated DAG and the Python project generated from it. It's the "code" side of this comparison, ready to open in your editor.
 </div>
 
 ## What we mean by each side
@@ -250,7 +250,7 @@ Plan for it from day one. Use a run ID per execution, structured logs per step, 
 n8n is distributed under its Sustainable Use License, which allows internal business use. There are restrictions on things like reselling it as a hosted service. Read the license for your situation. We're not lawyers, and the terms are n8n's to define.
 
 **Where does AI Workflow Builder fit?**
-It covers the "custom code" side without the blank-page cost. You describe the workflow, it validates the DAG before execution, and it generates a Python project with typed interfaces, retries, fallbacks and CI. You run that code yourself, wherever you like, including behind an n8n trigger. The [free sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=blog&utm_medium=faq&utm_campaign=n8n-vs-custom) shows real output.
+It covers the "custom code" side without the blank-page cost. You describe the workflow, it validates the DAG before execution, and it generates a Python project with typed interfaces, retries, fallbacks and CI. You run that code yourself, wherever you like, including behind an n8n trigger. The [free sample](#free-sample-cta) shows real output.
 
 ## The bottom line
 
@@ -262,7 +262,7 @@ The best time to move is when you notice yourself writing the third Code node, n
 <p style="font-size:17px;font-weight:800;margin:0 0 6px">Turn one prompt into a tested multi-agent workflow</p>
 <p style="font-size:14px;margin:0 0 14px">AI Workflow Builder asks a few clarifying questions, validates the DAG before anything runs, and generates a Python project with typed interfaces, retries, fallbacks and CI. One-time purchase, source included.</p>
 <p style="margin:0"><a href="https://slashmaster6.gumroad.com/l/ai-workflow-builder?utm_source=blog&amp;utm_medium=cta-bottom&amp;utm_campaign=n8n-vs-custom" target="_blank" rel="noopener" style="display:inline-block;padding:10px 22px;background:#a5b4fc;color:#0a0a0f;border-radius:10px;font-weight:700;text-decoration:none">Get AI Workflow Builder — $99 →</a></p>
-<p style="font-size:13px;margin:10px 0 0">Not ready? <a href="https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=blog&amp;utm_medium=cta-bottom&amp;utm_campaign=n8n-vs-custom" target="_blank" rel="noopener">Download the free sample workflow</a> first.</p>
+<p style="font-size:13px;margin:10px 0 0">Not ready? <a href="#free-sample-cta">Download the free sample workflow</a> first.</p>
 </div>
 
 ## Related reading

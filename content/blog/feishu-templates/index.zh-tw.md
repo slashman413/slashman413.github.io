@@ -22,7 +22,7 @@ sitemap:
 <li>與飛書原生整合，零學習成本</li>
 <li>團隊協作流程最佳化</li>
     </ul>
-    <a href="https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=slashmantools&utm_medium=product-page&utm_campaign=feishu-templates" target="_blank" rel="noopener" class="cta-button">
+    <a href="#free-sample-cta" class="cta-button">
       免費下載 AI Prompt Library 範本 →
     </a>
   </div>

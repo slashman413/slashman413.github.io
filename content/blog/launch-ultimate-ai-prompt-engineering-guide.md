@@ -24,4 +24,4 @@ It's everything you need to stop wrestling with LLMs and start directing them.
 
 
 
-> **Update (October 2026):** this guide is no longer sold separately. Its prompts now live in the [AI Prompt Library](https://slashmaster6.gumroad.com/l/diwoc?utm_source=slashmantools&utm_medium=blog&utm_campaign=launch-post) (95+ prompts), and you can [try 12 of them free](https://slashmaster6.gumroad.com/l/prompt-library-sample?utm_source=slashmantools&utm_medium=blog&utm_campaign=launch-post) first.
+> **Update (October 2026):** this guide is no longer sold separately. Its prompts now live in the [AI Prompt Library](https://slashmaster6.gumroad.com/l/diwoc?utm_source=slashmantools&utm_medium=blog&utm_campaign=launch-post) (95+ prompts), and you can [try 12 of them free](#free-sample-cta) first.

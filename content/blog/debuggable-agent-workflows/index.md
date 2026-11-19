@@ -27,7 +27,7 @@ Agent workflows rarely fail with a stack trace. A step returns a plausible-looki
 
 None of that requires a platform. It requires deciding, before you write the prompt, what a step may accept and what it must produce.
 
-> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=slashmantools&utm_medium=blog-cta&utm_campaign=debuggable-agent-workflows&utm_content=top).
+> **🎁 Free sample:** see a real validated multi-agent workflow and the Python project generated from it — [download the free AI Workflow Builder sample](#free-sample-cta).
 
 ## Define every step as a job with an explicit contract
 

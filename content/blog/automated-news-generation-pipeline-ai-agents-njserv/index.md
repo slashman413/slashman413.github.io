@@ -210,7 +210,7 @@ The key insight from this article is simple: AI automation works when you have t
 
 ### What to do next
 
-1. **[Try the free AI Workflow Builder sample](https://slashmaster6.gumroad.com/l/workflow-builder-sample?utm_source=blog&utm_medium=article&utm_campaign=automated-news-generation-pipeline-ai-agents-njserv)** - see a validated multi-agent workflow end to end
+1. **[Try the free AI Workflow Builder sample](#free-sample-cta)** - see a validated multi-agent workflow end to end
 2. **[Explore our related guides](/blog/ultimate-ai-automation-guide-2026/) - Full frameworks and tutorials
 3. **[Join our community](https://github.com/slashman413) - Get support and share your experience
 
