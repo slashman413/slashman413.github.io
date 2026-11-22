@@ -161,7 +161,13 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 
 <!-- Lead-capture endpoint: self-owned Cloudflare Worker (repo: /webhook/).
      Form data goes to the Worker (validate → rate-limit → KV → email download
-     link → forward to Mautic funnel). No third-party form provider involved. -->
+     link → forward to Mautic funnel). No third-party form provider involved.
+     TODO(mautic): this #signup-form has no `action` attribute — submissions
+     work only via lead-capture.js POSTing to the Worker above. The Worker
+     syncs KV leads to the tailnet-only Mautic instance (http://localhost:8081)
+     via webhook/sync_kv_to_mautic.py; no public Mautic form/dashboard URL is
+     documented in this repo. If a public Mautic form URL is ever exposed,
+     add it here as a native form action so the form works without JS. -->
 <script>window.LEAD_ENDPOINT="https://api.slashmantools.us/subscribe";</script>
 <script src="/js/lead-capture.js" defer></script>
 <script>
