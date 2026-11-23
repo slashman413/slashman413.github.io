@@ -1,12 +1,34 @@
 ---
-title: "How to Build an AI-Powered Content Factory — Complete Technical Guide"
-description: "Build a complete content factory using AI agents: topic research, content generation, SEO optimization, and deployment. Full technical walkthrough with Cowork Pro."
+title: "How to Build an AI Content Factory — Complete Technical Guide (2026)"
+seo_title: "How to Build an AI Content Factory: Technical Guide (2026)"
+description: "Build an AI content factory step by step: topic research, multi-agent drafting, quality gates, SEO checks and Git-based deploys — with workflow YAML and a launch checklist."
 date: 2026-08-03
+lastmod: 2026-11-23
 slug: build-ai-content-factory-technical-guide
 tags: [ai, content-factory, cowpro, automation, tutorial]
+keywords: ["AI content factory", "build an AI content factory", "AI content factory architecture", "multi-agent content production", "AI content quality gates"]
+faq:
+  - q: "What is an AI content factory?"
+    a: "A repeatable production line for content where each stage — topic research, drafting, review, SEO and publishing — has a defined input, output and quality gate, and AI agents handle the repetitive stages while a human owns direction and final approval."
+  - q: "How is an AI content factory different from an AI content pipeline?"
+    a: "A pipeline is the sequence of steps. A factory adds the parts that keep quality stable at volume: a topic map that prevents keyword cannibalization, automated gates that block thin or unsourced drafts, and measurement that decides what gets produced next."
+  - q: "Can AI-generated content rank on Google?"
+    a: "Google's guidance targets content made primarily to manipulate rankings, not the tool used to write it. Pages that show first-hand experience, accurate sourced claims and a clear search intent can rank; mass-produced pages with no added value are treated as scaled content abuse."
+  - q: "How many people do you need to run a content factory?"
+    a: "One person can run a small factory if the gates are automated: the human sets topics, reviews flagged drafts and approves publishing. Review time, not generation time, is the real capacity limit, so size output to the hours you can actually spend reviewing."
+  - q: "What should a content factory measure?"
+    a: "Per page: indexation, impressions, clicks and conversions, read from Search Console and your own analytics. Review them on a fixed cadence (for example every 45 days) and invest in the pages and clusters that already earn impressions instead of starting new topics each cycle."
 ---
 
-# How to Build an AI-Powered Content Factory
+An **AI content factory** is what you get when you stop asking a chatbot for articles and start running content like a production line: every stage has an owner, an input, an output and a gate that can say "no". This guide walks through the architecture we run on this site — research, multi-agent drafting, automated quality gates, SEO checks and Git-based deploys — with the workflow definition, the gates and the launch checklist.
+
+**Quick answer — the 5 stages of an AI content factory:**
+
+1. **Topic intelligence** — pick queries with a named search intent and check who already ranks.
+2. **Briefing** — turn each query into a brief: audience, angle, structure, internal links, sources.
+3. **Drafting** — an agent writes from the brief, never from a bare topic.
+4. **Quality gates** — automated checks (depth, sources, cannibalization, schema) plus human approval.
+5. **Publish and measure** — commit, build, deploy, then read indexation and impressions per page and feed the results back into stage 1.
 
 ## What Is a Content Factory?
 
@@ -50,7 +72,8 @@ checks = {
     "has_tables": ("|" in article),
     "has_internal_links": (article.count("/blog/") >= 3),
     "has_faq": ("### FAQ" in article),
-    "keyword_density": (calculate_density(primary_keyword) in range(1.5, 2.5)),
+    "primary_keyword_in_title": (primary_keyword.lower() in title.lower()),
+    "keyword_not_owned_elsewhere": (primary_keyword not in hub_map_owned_keywords),
 }
 ```
 
@@ -222,7 +245,7 @@ Let's go through a complete example:
 **Writing Phase:**
 - Article structure: 3000+ words with code examples, tables, benchmarks
 - Internal links: Link to 5 existing articles about specific tools
-- SEO: Target 1.5-2.5% keyword density
+- SEO: Use the primary keyword naturally in the title, first paragraph and one H2 — no density targets
 
 **Review Phase:**
 - Check accuracy of benchmarks
@@ -234,7 +257,7 @@ Let's go through a complete example:
 - Optimize title tag (<60 chars)
 - Write meta description (<155 chars)
 - Add structured data (JSON-LD)
-- Verify keyword placement in H1, H2, first paragraph
+- Confirm exactly one H1 per page and that no other page already owns the primary keyword
 
 **Deploy Phase:**
 - Commit to Git
@@ -244,15 +267,19 @@ Let's go through a complete example:
 
 ## Real Results
 
-### Our Content Factory Numbers
+### What We Actually Measure
 
-| Metric | Value |
-|--------|-------|
-| Articles/month | 200+ |
-| Avg. production time | 15 min/article |
-| Quality score | 4.2/5.0 |
-| Cost per article | $0.02 (API costs) |
-| Human review time | 2 hours/article |
+We publish production numbers only when they can be checked, so instead of a vanity table here is what the factory tracks for every page, and where each number comes from:
+
+| Metric | Source | Why it matters |
+|--------|--------|----------------|
+| Indexed (yes/no) per URL | Search engine index checks | A page that is not indexed cannot earn anything |
+| Impressions and clicks per query | Search Console / Bing Webmaster Tools | Tells you which pages have traction worth doubling down on |
+| Organic visits per page | Your own analytics (we use Mautic page hits) | Independent of the search engines' own reporting |
+| Review time per article | Task logs | The real capacity limit of the factory |
+| Gate failures by type | Pipeline logs | Shows which stage produces bad drafts |
+
+The lesson from running it: generation is nearly free, **review and indexation are the bottlenecks**. A factory that publishes faster than it can review — or faster than search engines index — produces pages that never get seen.
 
 ### What Works vs. What Doesn't
 
@@ -262,7 +289,7 @@ Let's go through a complete example:
 | Tool comparisons with benchmarks | Very Good | Keep |
 | Case studies with real data | Outstanding | Prioritize |
 | Generic "how-to" guides | Poor | Reduce |
-| FAQ pages | Terrible | Remove |
+| Standalone FAQ-only pages | Poor | Fold the questions into the guide they belong to |
 | Listicles without depth | Poor | Remove |
 
 ### Editorial Standards That Survive Scale
@@ -284,7 +311,7 @@ These four checks are what let the factory scale without the quality cliff — a
 
 ### 2. Internal Linking Matters Most
 
-An article with 5+ relevant internal links performs 2x better than one with no links. Build your content graph strategically.
+Internal links are how search engines discover new pages and understand which page owns a topic. Link every new article from its pillar page and from 3–5 related articles, using descriptive anchor text, so it is crawled quickly and does not compete with its siblings.
 
 ### 3. Human Judgment Is Irreplaceable
 
@@ -316,6 +343,18 @@ To build your own content factory:
 4. **Automate the rest** — Use AI agents for volume
 5. **Review every article** — Quality control is non-negotiable
 6. **Measure and iterate** — Track what works, optimize based on data
+
+## AI Content Factory Launch Checklist
+
+Before the first automated article ships, confirm:
+
+- [ ] A topic map exists and every primary keyword has exactly one owning page
+- [ ] Each brief names the query, its intent and the 3 pages that currently rank
+- [ ] Drafts that fail the depth, source or cannibalization gate are blocked, not just flagged
+- [ ] Every page renders one H1, a self-referencing canonical and valid JSON-LD (Article, plus FAQPage only when the FAQ is visible on the page)
+- [ ] Translated pages are actually translated — an English body under a `/zh-cn/` URL is a broken page, not a localized one
+- [ ] Deploys go through a reviewed pull request and are verified live (HTTP 200, new title visible)
+- [ ] A dated measurement checkpoint is on the calendar 4–8 weeks out
 
 ## Advanced: Multi-Model Orchestration
 
