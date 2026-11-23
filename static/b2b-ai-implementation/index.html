@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(){try{var t=localStorage.getItem('slashtools_theme');if(t!=='light'&&t!=='dark')t='dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
+<title>Fixed-Scope B2B AI Workflow Implementation ($2,500 · 14-Day SLA) — Slashman Tools</title>
+<meta name="description" content="Ship a production multi-agent AI workflow in 14 calendar days for a fixed $2,500 fee. Includes workflow audit, custom architecture, end-to-end integration, full IP ownership, and 30 days post-launch support.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://slashmantools.us/b2b-ai-implementation">
+<link rel="alternate" hreflang="en" href="https://slashmantools.us/b2b-ai-implementation">
+<link rel="alternate" hreflang="x-default" href="https://slashmantools.us/b2b-ai-implementation">
+<meta name="google-site-verification" content="jV8Xt5l-peRpLknp7xKYpvN8N5tCAkMctq0D-3RVyzk">
+<meta name="theme-color" content="#08090d">
+<link rel="icon" href="/icon-192.png">
+<link rel="manifest" href="/manifest.json">
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Slashman Tools">
+<meta property="og:title" content="Fixed-Scope B2B AI Workflow Implementation — $2,500 · 14-Day SLA">
+<meta property="og:description" content="Workflow audit, custom multi-agent DAG architecture, end-to-end integration, 14-day delivery SLA, and 30 days post-launch support. One fixed price: $2,500 USD.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slashmantools.us/b2b-ai-implementation">
+<meta property="og:image" content="https://slashmantools.us/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fixed-Scope B2B AI Workflow Implementation — $2,500 · 14-Day SLA">
+<meta name="twitter:description" content="Production multi-agent AI workflow deployed to your stack in 14 days for $2,500 fixed. Full code ownership + 30 days support.">
+<meta name="twitter:image" content="https://slashmantools.us/og.png">
+<meta name="twitter:site" content="@KWC59125740">
+<meta name="twitter:creator" content="@KWC59125740">
+
+<!-- Slashman Unified Navigation -->
+<link rel="stylesheet" href="/shared/unified-nav.css">
+
+<!-- Plausible Analytics -->
+<script async src="https://plausible.io/js/pa-hbvftcuWUzpbm1U3JgkNE.js"></script>
+<script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MY95FHB8JG');</script>
+
+<!-- Structured Data: Service + Offer + FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Fixed-Scope B2B AI Agent & Workflow Implementation",
+  "serviceType": "AI Workflow Architecture and Production Deployment",
+  "url": "https://slashmantools.us/b2b-ai-implementation",
+  "description": "Fixed-scope $2,500 B2B implementation sprint delivering a workflow audit, custom multi-agent architecture, end-to-end integration, automated tests, 14-day delivery SLA, and 30 days post-launch support.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Slashman Tools",
+    "url": "https://slashmantools.us/",
+    "email": "slashman413@gmail.com"
+  },
+  "areaServed": "Worldwide",
+  "offers": {
+    "@type": "Offer",
+    "name": "14-Day Fixed-Scope AI Workflow Implementation Sprint",
+    "price": "2500.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://slashmantools.us/b2b-ai-implementation#checkout"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is included in the $2,500 fixed-scope implementation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The sprint covers one end-to-end production AI workflow: workflow audit and written specification, custom validated multi-agent DAG architecture, end-to-end integration into your existing tools (up to 4 external connectors), automated static pre-flight and mock-handler test suite, deployment to your infrastructure, runbook handover within 14 calendar days, and 30 days of post-launch engineering support."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who owns the code, prompts, and infrastructure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You own 100% of the repository, prompt templates, JSON schemas, DAG definitions, and deployment scripts upon delivery. Everything runs in your cloud or self-hosted environment using your own API keys—no vendor lock-in or recurring platform markup."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the 14-day delivery SLA work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 14-calendar-day clock starts once we sign off on the Day 2 written workflow specification and receive test credentials/sandbox access. Milestones are reviewed on Day 2 (Spec), Day 6 (Architecture & Pre-Flight), Day 11 (Integration Staging), and Day 14 (Production Cutover)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does 30 days of post-launch support cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For 30 calendar days after production cutover, we fix regressions, tune prompt/schema edge cases discovered on live traffic, adjust retry or guardrail thresholds, and answer engineering handover questions within one business day."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #08090d;
+  --surface: #10121a;
+  --surface-2: #161925;
+  --ink: #eef0f6;
+  --muted: #969db5;
+  --faint: #6c738c;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --accent: #4f6ef7;
+  --accent-hover: #6380ff;
+  --accent-soft: rgba(79, 110, 247, 0.12);
+  --emerald: #10b981;
+  --emerald-soft: rgba(16, 185, 129, 0.12);
+  --amber: #f59e0b;
+  --amber-soft: rgba(245, 158, 11, 0.12);
+  --danger: #f87171;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+[data-theme="light"] {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #eef1f8;
+  --ink: #121521;
+  --muted: #4b5268;
+  --faint: #6b7280;
+  --border: rgba(18, 21, 33, 0.11);
+  --border-strong: rgba(18, 21, 33, 0.22);
+  --accent: #3b55d9;
+  --accent-hover: #2f46bf;
+  --accent-soft: rgba(59, 85, 217, 0.09);
+  --emerald: #059669;
+  --emerald-soft: rgba(5, 150, 105, 0.10);
+  --amber: #d97706;
+  --amber-soft: rgba(217, 119, 6, 0.10);
+  --danger: #dc2626;
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--accent);
+  color: #ffffff;
+  padding: 10px 16px;
+  font-weight: 600;
+  z-index: 2000;
+}
+.skip-link:focus { left: 12px; top: 12px; border-radius: var(--radius-sm); }
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 64px 0 56px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.95fr);
+  gap: 44px;
+  align-items: start;
+}
+
+.hero-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--emerald);
+  background: var(--emerald-soft);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.hero-meta .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--emerald);
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 3.8vw, 3.05rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  margin-bottom: 18px;
+  max-width: 18ch;
+}
+
+.hero-lead {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 58ch;
+  margin-bottom: 28px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  text-decoration: none;
+}
+.btn:hover { text-decoration: none; }
+
+.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+}
+.btn-primary:hover { background: var(--accent-hover); }
+
+.btn-secondary {
+  background: var(--surface-2);
+  color: var(--ink);
+  border-color: var(--border-strong);
+}
+.btn-secondary:hover { background: var(--surface); border-color: var(--accent); }
+
+.btn-emerald {
+  background: var(--emerald);
+  color: #04130d;
+  font-weight: 700;
+}
+.btn-emerald:hover { filter: brightness(1.07); }
+
+.oss-proof {
+  font-size: 14px;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.oss-proof code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+}
+
+/* Spec Summary Card */
+.spec-card {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.spec-card-head {
+  padding: 22px 24px 18px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.spec-price {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.spec-price-note {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.spec-rows {
+  list-style: none;
+  padding: 8px 24px 18px;
+}
+.spec-rows li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.spec-rows li:last-child { border-bottom: none; }
+.spec-rows .k { color: var(--muted); }
+.spec-rows .v { font-family: var(--font-mono); font-size: 13.5px; font-weight: 600; color: var(--ink); text-align: right; }
+
+.spec-card-foot {
+  padding: 16px 24px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.spec-card-foot .btn { width: 100%; }
+.spec-card-foot .micro {
+  font-size: 12.5px;
+  color: var(--faint);
+  text-align: center;
+}
+
+/* ---------- Sections ---------- */
+.section {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-header {
+  max-width: 66ch;
+  margin-bottom: 36px;
+}
+.section-header h2 {
+  font-size: clamp(1.5rem, 2.5vw, 2.05rem);
+  letter-spacing: -0.025em;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.section-header p {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* ---------- Scope Ledger ---------- */
+.ledger {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.ledger-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1.5fr) minmax(180px, 0.65fr);
+  gap: 24px;
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.ledger-row:last-child { border-bottom: none; }
+.ledger-row.ledger-head {
+  background: var(--surface-2);
+  padding: 12px 24px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.ledger-title {
+  font-weight: 700;
+  font-size: 15.5px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.ledger-sub {
+  font-size: 13.5px;
+  color: var(--faint);
+}
+.ledger-desc {
+  font-size: 14.5px;
+  color: var(--muted);
+}
+.ledger-desc ul {
+  margin: 8px 0 0 18px;
+}
+.ledger-desc li { margin-bottom: 4px; }
+.ledger-artifact {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--emerald);
+  background: var(--emerald-soft);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  line-height: 1.5;
+}
+
+.boundary-box {
+  margin-top: 20px;
+  padding: 20px 24px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--amber);
+  border-radius: var(--radius-md);
+  display: grid;
+  grid-template-columns: minmax(180px, 0.45fr) minmax(0, 1.55fr);
+  gap: 20px;
+  align-items: start;
+}
+.boundary-box h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.boundary-box p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ---------- 14-Day SLA Timeline ---------- */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.phase {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.phase-day {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  align-self: flex-start;
+}
+.phase h3 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.phase p {
+  font-size: 14px;
+  color: var(--muted);
+  flex: 1;
+}
+.phase-gate {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--faint);
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Comparison Table ---------- */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+th, td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+th {
+  background: var(--surface-2);
+  font-weight: 700;
+  color: var(--ink);
+}
+td:first-child { font-weight: 600; color: var(--ink); width: 28%; }
+td { color: var(--muted); }
+.col-highlight { background: var(--accent-soft); color: var(--ink); }
+
+/* ---------- Conversion Hub (Booking + Stripe Checkout) ---------- */
+.convert-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+.panel-accent {
+  border-color: var(--accent);
+}
+
+.panel h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.panel .panel-sub {
+  font-size: 14.5px;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.field {
+  margin-bottom: 14px;
+}
+.field label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 14.5px;
+}
+.field textarea { resize: vertical; min-height: 84px; }
+
+.intent-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.intent-tab {
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+.intent-tab[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.status-msg {
+  margin-top: 12px;
+  font-size: 13.5px;
+  min-height: 20px;
+}
+.status-msg.err { color: var(--danger); }
+.status-msg.ok { color: var(--emerald); }
+
+.booking-success {
+  display: none;
+  padding: 18px;
+  background: var(--emerald-soft);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-md);
+  margin-top: 14px;
+}
+.booking-success h4 {
+  font-size: 15.5px;
+  color: var(--emerald);
+  margin-bottom: 6px;
+}
+.booking-success p {
+  font-size: 14px;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.checkout-summary {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  margin-bottom: 18px;
+}
+.checkout-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  padding: 7px 0;
+  color: var(--muted);
+}
+.checkout-line.total {
+  border-top: 1px solid var(--border-strong);
+  margin-top: 8px;
+  padding-top: 12px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.checkout-line .mono { font-family: var(--font-mono); color: var(--ink); }
+
+.checkout-note {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.calendar-slot {
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13.5px;
+}
+.calendar-slot .btn-secondary {
+  background: var(--surface);
+}
+
+/* ---------- FAQ ---------- */
+.faq-list {
+  display: grid;
+  gap: 10px;
+  max-width: 78ch;
+}
+.faq-list details {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+}
+.faq-list summary {
+  font-weight: 700;
+  font-size: 15.5px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after {
+  content: "+";
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--muted);
+  flex: 0 0 auto;
+}
+.faq-list details[open] summary::after { content: "−"; color: var(--accent); }
+.faq-list details p {
+  margin-top: 12px;
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 36px 0 56px;
+  font-size: 13.5px;
+  color: var(--faint);
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.footer-links a { color: var(--muted); }
+.footer-links a:hover { color: var(--ink); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .hero-grid, .convert-grid { grid-template-columns: 1fr; }
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ledger-row { grid-template-columns: 1fr; gap: 10px; }
+  .ledger-row.ledger-head { display: none; }
+  .boundary-box { grid-template-columns: 1fr; gap: 8px; }
+}
+@media (max-width: 600px) {
+  .hero { padding: 40px 0 36px; }
+  .section { padding: 44px 0; }
+  .timeline, .field-row, .intent-tabs { grid-template-columns: 1fr; }
+  .panel { padding: 20px; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<nav id="sn-nav" aria-label="Site navigation"></nav>
+
+<main id="main-content">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-meta">
+          <span class="dot" aria-hidden="true"></span>
+          Fixed-scope B2B engineering sprint · 2 slots open this month
+        </div>
+        <h1>Production AI agent workflows, shipped in 14 days.</h1>
+        <p class="hero-lead">
+          Skip agency retainers and brittle no-code glue. We audit one high-leverage internal process, design a validated multi-agent DAG architecture, integrate it end-to-end into your stack, and hand over tested, self-hosted code—for a fixed <strong>$2,500</strong> with a <strong>14-day delivery SLA</strong> and <strong>30 days of post-launch support</strong>.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#booking" data-cta="hero-book">Book a 20-minute scoping call</a>
+          <a class="btn btn-secondary" href="#checkout" data-cta="hero-checkout">Review $2,500 Stripe checkout</a>
+        </div>
+        <div class="oss-proof">
+          <span>Inspect our open-source workflow engine before you talk to us:</span>
+          <a href="https://github.com/slashman413/ai-workflow-builder" target="_blank" rel="noopener">github.com/slashman413/ai-workflow-builder</a>
+          <code>node examples/run-workflow-demo.mjs</code>
+        </div>
+      </div>
+
+      <aside class="spec-card" aria-label="Offer summary">
+        <div class="spec-card-head">
+          <div>
+            <div class="spec-price">$2,500</div>
+            <div class="spec-price-note">USD · fixed scope, one-time fee</div>
+          </div>
+        </div>
+        <ul class="spec-rows">
+          <li><span class="k">Delivery SLA</span><span class="v">14 calendar days</span></li>
+          <li><span class="k">Post-launch warranty</span><span class="v">30 days included</span></li>
+          <li><span class="k">Architecture</span><span class="v">Validated multi-agent DAG</span></li>
+          <li><span class="k">Code &amp; IP ownership</span><span class="v">100% client-owned repo</span></li>
+          <li><span class="k">Billing method</span><span class="v">Stripe checkout / invoice</span></li>
+        </ul>
+        <div class="spec-card-foot">
+          <a class="btn btn-emerald" href="#checkout" id="hero-checkout-cta" data-cta="spec-card-checkout">Start $2,500 sprint checkout</a>
+          <p class="micro">Zero recurring platform markup · Runs on your own API keys</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Explicit Scope -->
+  <section class="section" id="scope">
+    <div class="wrap">
+      <div class="section-header">
+        <h2>Explicit fixed scope and deliverables</h2>
+        <p>Every engagement ships five concrete engineering artifacts with acceptance checks—no open-ended hourly billing and no slide-deck consulting.</p>
+      </div>
+
+      <div class="ledger" role="table" aria-label="Fixed-scope deliverables">
+        <div class="ledger-row ledger-head" role="row">
+          <div role="columnheader">Deliverable</div>
+          <div role="columnheader">What we engineer</div>
+          <div role="columnheader">Acceptance artifact</div>
+        </div>
+
+        <div class="ledger-row" role="row">
+          <div role="cell">
+            <div class="ledger-title">1. Workflow audit &amp; specification</div>
+            <div class="ledger-sub">Days 1–2</div>
+          </div>
+          <div class="ledger-desc" role="cell">
+            Structured technical teardown of your target workflow (lead triage, ops intake, content ops, support routing, or incident response). We map inputs, failure modes, human-in-the-loop approval gates, and credential boundaries before writing production code.
+          </div>
+          <div class="ledger-artifact" role="cell">Signed spec.yaml + failure-mode &amp; security boundary matrix</div>
+        </div>
+
+        <div class="ledger-row" role="row">
+          <div role="cell">
+            <div class="ledger-title">2. Custom multi-agent architecture</div>
+            <div class="ledger-sub">Days 3–6</div>
+          </div>
+          <div class="ledger-desc" role="cell">
+            Deterministic DAG orchestration built on our hexagonal ports-and-adapters pattern: typed JSON Schema contracts between every node, strict tool allow-lists, and a 5-check static pre-flight gate (structural, reachability, schema, tool boundary, security).
+          </div>
+          <div class="ledger-artifact" role="cell">Validated workflow.json DAG + typed schema contracts</div>
+        </div>
+
+        <div class="ledger-row" role="row">
+          <div role="cell">
+            <div class="ledger-title">3. End-to-end integration</div>
+            <div class="ledger-sub">Days 7–11</div>
+          </div>
+          <div class="ledger-desc" role="cell">
+            Live adapters connecting your workflow to up to 4 production systems (e.g., HubSpot/Pipedrive, Slack, Gmail/Resend, PostgreSQL, Linear/Jira, GitHub, or custom REST webhooks) with idempotency keys, retry backoff, and dead-letter logging.
+          </div>
+          <div class="ledger-artifact" role="cell">Production Python or Node.js repository + live connector suite</div>
+        </div>
+
+        <div class="ledger-row" role="row">
+          <div role="cell">
+            <div class="ledger-title">4. Automated tests &amp; deployment</div>
+            <div class="ledger-sub">Days 12–14</div>
+          </div>
+          <div class="ledger-desc" role="cell">
+            Deterministic mock-handler simulation suite (zero-cost CI tests), GitHub Actions pipeline, Docker/cloud deployment config to your environment, observability hooks, and a 30-minute recorded handover walkthrough.
+          </div>
+          <div class="ledger-artifact" role="cell">Passing CI suite + deployed workflow + ops runbook</div>
+        </div>
+
+        <div class="ledger-row" role="row">
+          <div role="cell">
+            <div class="ledger-title">5. 30 days post-launch support</div>
+            <div class="ledger-sub">Days 15–44</div>
+          </div>
+          <div class="ledger-desc" role="cell">
+            Direct async engineering warranty covering production bug fixes, prompt or schema edge-case tuning from real traffic, guardrail calibration, and team Q&amp;A with a 1-business-day response commitment.
+          </div>
+          <div class="ledger-artifact" role="cell">30-day warranty SLA + direct engineering support channel</div>
+        </div>
+      </div>
+
+      <div class="boundary-box">
+        <h3>Out of scope (explicitly excluded)</h3>
+        <p>
+          To guarantee the $2,500 fixed price and 14-day SLA, one sprint covers <strong>one core multi-agent workflow</strong> (up to 8 DAG nodes and 4 external API/webhook integrations). Custom model fine-tuning, bespoke multi-user SaaS frontends, SOC 2 audit certification, and ongoing LLM API token fees (billed directly to your OpenAI/Anthropic/local provider account) are outside this fixed package and can be scoped separately if needed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14-Day Delivery SLA -->
+  <section class="section" id="timeline">
+    <div class="wrap">
+      <div class="section-header">
+        <h2>14-day delivery SLA schedule</h2>
+        <p>Four milestone checkpoints keep the build visible and predictable from kickoff to production cutover.</p>
+      </div>
+
+      <div class="timeline">
+        <article class="phase">
+          <span class="phase-day">Days 1–2</span>
+          <h3>Audit &amp; spec sign-off</h3>
+          <p>20-minute scoping review, input/output audit, guardrail policy definition, and written <code>spec.yaml</code> lock before implementation begins.</p>
+          <div class="phase-gate">Gate 1: Signed scope &amp; sandbox access</div>
+        </article>
+
+        <article class="phase">
+          <span class="phase-day">Days 3–6</span>
+          <h3>Architecture &amp; pre-flight</h3>
+          <p>Build the multi-agent DAG, typed JSON schemas, tool allow-lists, and deterministic mock simulation verifying every branch without touching live data.</p>
+          <div class="phase-gate">Gate 2: 5/5 static pre-flight checks green</div>
+        </article>
+
+        <article class="phase">
+          <span class="phase-day">Days 7–11</span>
+          <h3>End-to-end integration</h3>
+          <p>Wire real API connectors, webhook triggers, idempotency, retries, and structured error alerts in your staging environment.</p>
+          <div class="phase-gate">Gate 3: Staging dry-run on real payloads</div>
+        </article>
+
+        <article class="phase">
+          <span class="phase-day">Days 12–14</span>
+          <h3>Cutover &amp; 30-day support</h3>
+          <p>Deploy to production, transfer 100% repository ownership, deliver runbook + walkthrough video, and start the 30-day post-launch warranty.</p>
+          <div class="phase-gate">Gate 4: Production sign-off + SLA clock</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- OSS vs Done-for-You Comparison -->
+  <section class="section" id="comparison">
+    <div class="wrap">
+      <div class="section-header">
+        <h2>Open-source starter vs. $2,500 implementation</h2>
+        <p>Start with our public MIT-licensed starter repo to evaluate our engineering standards, or hire us to ship your custom workflow in 14 days.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th>Self-Hosted OSS Starter ($0)</th>
+              <th class="col-highlight">B2B Implementation Sprint ($2,500 fixed)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Engine &amp; 5-check pre-flight gate</td>
+              <td>Included in <a href="https://github.com/slashman413/ai-workflow-builder" target="_blank" rel="noopener">ai-workflow-builder</a></td>
+              <td class="col-highlight">Included + custom rules tuned to your domain</td>
+            </tr>
+            <tr>
+              <td>Workflow audit &amp; spec</td>
+              <td>DIY using Grill-Me CLI</td>
+              <td class="col-highlight">Hands-on audit + signed failure-mode spec</td>
+            </tr>
+            <tr>
+              <td>Production integrations</td>
+              <td>Mock handlers &amp; sample templates</td>
+              <td class="col-highlight">Up to 4 live CRM/Slack/DB/API connectors</td>
+            </tr>
+            <tr>
+              <td>Delivery timeline</td>
+              <td>Your team's engineering bandwidth</td>
+              <td class="col-highlight">14-calendar-day delivery SLA</td>
+            </tr>
+            <tr>
+              <td>Post-launch support</td>
+              <td>GitHub Issues (best effort)</td>
+              <td class="col-highlight">30 days dedicated engineering support</td>
+            </tr>
+            <tr>
+              <td>Code &amp; IP ownership</td>
+              <td>MIT license</td>
+              <td class="col-highlight">100% private client-owned repo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conversion Hub: Booking + Stripe Checkout -->
+  <section class="section" id="booking">
+    <div class="wrap">
+      <div class="section-header">
+        <h2>Book your scoping call or reserve via Stripe checkout</h2>
+        <p>Choose the path that fits your process: schedule a 20-minute technical scoping call first, or lock a 14-day sprint slot directly.</p>
+      </div>
+
+      <div class="convert-grid">
+        <!-- Left: Discovery Call Booking -->
+        <div class="panel">
+          <h3>Discovery call booking</h3>
+          <p class="panel-sub">20-minute engineering review of your workflow, data boundaries, and 14-day feasibility—no sales deck.</p>
+
+          <!-- Dynamic Calendar Booking Slot (auto-upgrades when B2B_OFFER_CONFIG.bookingCalendarUrl is set) -->
+          <div class="calendar-slot" id="calendar-booking-bar">
+            <div>
+              <strong>Direct calendar booking</strong>
+              <div style="color:var(--muted);font-size:13px" id="calendar-slot-note">Submit your preferred window below for a confirmed Google Meet / Zoom invite within 24 hours.</div>
+            </div>
+            <a class="btn btn-secondary" id="external-booking-btn" href="#b2b-intake-form" style="padding:9px 14px;font-size:13.5px">Pick preferred window</a>
+          </div>
+
+          <div class="intent-tabs" role="group" aria-label="Request type">
+            <button type="button" class="intent-tab" id="tab-booking" aria-pressed="true" data-intent="booking-call">Book 20-min scoping call</button>
+            <button type="button" class="intent-tab" id="tab-checkout" aria-pressed="false" data-intent="stripe-checkout-invoice">Request $2,500 Stripe checkout</button>
+          </div>
+
+          <form id="b2b-intake-form" novalidate>
+            <input type="hidden" name="intent" id="field-intent" value="booking-call">
+            <!-- Honeypot -->
+            <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
+            <div class="field-row">
+              <div class="field">
+                <label for="field-name">Your name</label>
+                <input type="text" id="field-name" name="name" autocomplete="name" placeholder="Alex Chen" required>
+              </div>
+              <div class="field">
+                <label for="field-email">Work email</label>
+                <input type="email" id="field-email" name="email" autocomplete="email" inputmode="email" placeholder="alex@company.com" required>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="field-company">Company / team</label>
+                <input type="text" id="field-company" name="company" autocomplete="organization" placeholder="Acme Operations">
+              </div>
+              <div class="field">
+                <label for="field-window">Preferred call window</label>
+                <select id="field-window" name="window">
+                  <option value="us-morning">Americas AM (09:00–12:00 ET)</option>
+                  <option value="us-afternoon">Americas PM (13:00–17:00 ET)</option>
+                  <option value="eu-business">Europe (09:00–17:00 CET)</option>
+                  <option value="apac-business">APAC (09:00–18:00 UTC+8)</option>
+                  <option value="async-only">Async only (spec + Stripe link)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="field-workflow">Target workflow &amp; tools to integrate</label>
+              <textarea id="field-workflow" name="workflow" placeholder="Example: Triage inbound B2B leads from web forms, enrich company data, route qualified deals to HubSpot + Slack with human approval before outreach."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="intake-submit-btn" style="width:100%">Request discovery call slot</button>
+            <p id="intake-status" class="status-msg" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="booking-success" id="booking-success-box" role="status" aria-live="polite">
+            <h4 id="success-title">Booking request received</h4>
+            <p id="success-desc">We recorded your brief and will reply within 24 hours with a confirmed calendar invite.</p>
+            <a id="success-mailto" class="btn btn-secondary" href="mailto:slashman413@gmail.com" style="font-size:13.5px;padding:9px 14px">Open pre-filled email copy</a>
+          </div>
+        </div>
+
+        <!-- Right: $2,500 Stripe Checkout Panel -->
+        <div class="panel panel-accent" id="checkout">
+          <h3>$2,500 fixed-scope Stripe checkout</h3>
+          <p class="panel-sub">Lock one of this month's two implementation sprint slots. Transparent fixed price—no hidden add-ons.</p>
+
+          <div class="checkout-summary" aria-label="Price breakdown">
+            <div class="checkout-line"><span>Workflow audit &amp; written spec</span><span class="mono">Included</span></div>
+            <div class="checkout-line"><span>Custom multi-agent DAG architecture</span><span class="mono">Included</span></div>
+            <div class="checkout-line"><span>End-to-end integration (up to 4 tools)</span><span class="mono">Included</span></div>
+            <div class="checkout-line"><span>14-day delivery SLA &amp; CI test suite</span><span class="mono">Included</span></div>
+            <div class="checkout-line"><span>30 days post-launch engineering support</span><span class="mono">Included</span></div>
+            <div class="checkout-line total"><span>Total fixed fee</span><span class="mono">$2,500 USD</span></div>
+          </div>
+
+          <a class="btn btn-emerald" id="stripe-checkout-btn" href="#booking" style="width:100%" data-cta="checkout-panel-primary">Proceed to $2,500 Stripe checkout</a>
+
+          <div class="checkout-note" id="stripe-checkout-note">
+            <strong>Direct Stripe checkout &amp; B2B invoicing:</strong> Pay by corporate card, Apple Pay, or ACH via Stripe once scope is confirmed. Need a W-8BEN, formal SOW, or company PO on the invoice? Request it in the booking form or email <a href="mailto:slashman413@gmail.com?subject=B2B%20AI%20Implementation%20(%242%2C500%20Fixed%20Scope)">slashman413@gmail.com</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="section-header">
+        <h2>Common technical and commercial questions</h2>
+      </div>
+
+      <div class="faq-list">
+        <details open>
+          <summary>Do you need access to our production credentials or sensitive customer data?</summary>
+          <p>No. During Days 3–11 we build and validate against deterministic mock handlers and sandbox credentials. Production API keys are injected into your own secret manager or CI environment during Day 12–14 cutover—our team never stores your production customer data.</p>
+        </details>
+
+        <details>
+          <summary>What happens if our workflow turns out to be larger than one $2,500 sprint?</summary>
+          <p>We identify scope boundaries during the free 20-minute scoping call and Day 1–2 audit before building. If your process spans multiple independent workflows, we isolate the highest-ROI slice that fits cleanly inside the 14-day / $2,500 fixed sprint so you see working production output before committing to a second sprint.</p>
+        </details>
+
+        <details>
+          <summary>Which LLM providers and runtime stacks do you deploy on?</summary>
+          <p>We deploy clean Python 3.11+ or Node.js/TypeScript services (Docker-ready for AWS, GCP, Fly.io, Railway, Render, or self-hosted Linux/DGX boxes). The hexagonal adapter layer works with OpenAI, Anthropic, Google Gemini, OpenRouter, or self-hosted OpenAI-compatible local models (vLLM / Ollama).</p>
+        </details>
+
+        <details>
+          <summary>How is the 14-day delivery SLA enforced?</summary>
+          <p>The 14-calendar-day SLA starts once both parties approve the Day 2 written specification and sandbox access is provided. If we miss the 14-day production delivery window due to anything on our side, we extend your post-launch support window by 30 additional days at no charge.</p>
+        </details>
+
+        <details>
+          <summary>Can we inspect your code quality before booking?</summary>
+          <p>Yes. Our open-source starter repository at <a href="https://github.com/slashman413/ai-workflow-builder" target="_blank" rel="noopener">github.com/slashman413/ai-workflow-builder</a> includes the real Grill-Me spec loop, 5-check static pre-flight gate, deterministic mock simulator, Python code generator, and 330+ automated tests.</p>
+        </details>
+
+        <details>
+          <summary>What payment methods and invoicing options do you accept?</summary>
+          <p>Payments are processed in USD via Stripe (credit/debit card, corporate card, or Stripe-hosted invoice). For teams requiring a formal Statement of Work (SOW) or company billing address on the receipt, include your billing contact in the booking request.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>&copy; 2026 Slashman Tools · Fixed-scope B2B AI workflow engineering</div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/products/">Products</a>
+      <a href="/services/">Services</a>
+      <a href="/workflow-builder-sample/">Workflow Sample</a>
+      <a href="https://github.com/slashman413/ai-workflow-builder" target="_blank" rel="noopener">GitHub OSS</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/shared/unified-nav.js" defer></script>
+<script>
+(function () {
+  "use strict";
+
+  /* =========================================================================
+     Single-source deployment config for external Checkout & Booking links.
+     Populate with verified live URLs once created in Stripe / Cal.com:
+       stripeCheckoutUrl  -> https://buy.stripe.com/...
+       bookingCalendarUrl -> https://cal.com/... or https://calendly.com/...
+     ========================================================================= */
+  window.B2B_OFFER_CONFIG = {
+    stripeCheckoutUrl: "",
+    bookingCalendarUrl: "",
+    leadEndpoint: "https://api.slashmantools.us/subscribe",
+    contactEmail: "slashman413@gmail.com",
+    priceUsd: 2500,
+    deliveryDays: 14,
+    supportDays: 30
+  };
+
+  var cfg = window.B2B_OFFER_CONFIG;
+  var UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+
+  function readUtm() {
+    var out = {};
+    try {
+      var params = new URLSearchParams(window.location.search);
+      UTM_KEYS.forEach(function (k) {
+        var v = params.get(k);
+        if (v) out[k] = v.slice(0, 120);
+      });
+      if (!out.utm_source) {
+        var saved = sessionStorage.getItem("lead_utm");
+        if (saved) out = JSON.parse(saved);
+      } else {
+        sessionStorage.setItem("lead_utm", JSON.stringify(out));
+      }
+    } catch (_) {}
+    return out;
+  }
+
+  function appendUtm(rawUrl, utm) {
+    try {
+      var u = new URL(rawUrl);
+      UTM_KEYS.forEach(function (k) {
+        if (utm[k]) u.searchParams.set(k, utm[k]);
+      });
+      return u.toString();
+    } catch (_) {
+      return rawUrl;
+    }
+  }
+
+  function trackEvent(name, props) {
+    try {
+      if (typeof window.gtag === "function") window.gtag("event", name, props || {});
+      if (typeof window.plausible === "function") window.plausible(name, { props: props || {} });
+    } catch (_) {}
+  }
+
+  var utm = readUtm();
+
+  // Wire live Stripe Checkout URL if configured; otherwise route cleanly to invoice request tab.
+  var stripeBtn = document.getElementById("stripe-checkout-btn");
+  var heroCheckoutCta = document.getElementById("hero-checkout-cta");
+  var stripeNote = document.getElementById("stripe-checkout-note");
+
+  function setIntent(intent) {
+    var intentInput = document.getElementById("field-intent");
+    var tabBooking = document.getElementById("tab-booking");
+    var tabCheckout = document.getElementById("tab-checkout");
+    var submitBtn = document.getElementById("intake-submit-btn");
+    if (!intentInput) return;
+    intentInput.value = intent;
+    var isCheckout = intent === "stripe-checkout-invoice";
+    tabBooking.setAttribute("aria-pressed", String(!isCheckout));
+    tabCheckout.setAttribute("aria-pressed", String(isCheckout));
+    submitBtn.textContent = isCheckout
+      ? "Request $2,500 Stripe checkout link & SOW"
+      : "Request discovery call slot";
+  }
+
+  if (cfg.stripeCheckoutUrl && /^https:\/\/(buy|checkout)\.stripe\.com\//.test(cfg.stripeCheckoutUrl)) {
+    var liveStripeUrl = appendUtm(cfg.stripeCheckoutUrl, utm);
+    [stripeBtn, heroCheckoutCta].forEach(function (btn) {
+      if (!btn) return;
+      btn.href = liveStripeUrl;
+      btn.target = "_blank";
+      btn.rel = "noopener noreferrer";
+      btn.addEventListener("click", function () {
+        trackEvent("begin_checkout", { currency: "USD", value: cfg.priceUsd, item: "b2b-ai-implementation" });
+      });
+    });
+  } else {
+    if (stripeBtn) {
+      stripeBtn.textContent = "Request $2,500 Stripe checkout invoice";
+      stripeBtn.addEventListener("click", function () {
+        setIntent("stripe-checkout-invoice");
+        trackEvent("begin_checkout", { currency: "USD", value: cfg.priceUsd, mode: "invoice_request" });
+        var nameEl = document.getElementById("field-name");
+        if (nameEl) setTimeout(function () { nameEl.focus(); }, 150);
+      });
+    }
+    if (heroCheckoutCta) {
+      heroCheckoutCta.addEventListener("click", function () {
+        setIntent("stripe-checkout-invoice");
+      });
+    }
+    if (stripeNote) {
+      stripeNote.innerHTML =
+        '<strong>Instant Stripe invoice onboarding:</strong> Submit your company email and workflow scope in the form to receive your $2,500 Stripe Checkout invoice link and written SOW within 1 business day (card, corporate card, or ACH), or email <a href="mailto:' +
+        cfg.contactEmail +
+        '?subject=B2B%20AI%20Implementation%20(%242%2C500%20Stripe%20Invoice)">' +
+        cfg.contactEmail +
+        "</a>.";
+    }
+  }
+
+  // Wire live external booking calendar (Cal.com / Calendly / Google Appointments) if configured.
+  var externalBookingBtn = document.getElementById("external-booking-btn");
+  var calendarSlotNote = document.getElementById("calendar-slot-note");
+  if (cfg.bookingCalendarUrl && /^https:\/\//.test(cfg.bookingCalendarUrl)) {
+    var liveCalUrl = appendUtm(cfg.bookingCalendarUrl, utm);
+    if (externalBookingBtn) {
+      externalBookingBtn.href = liveCalUrl;
+      externalBookingBtn.target = "_blank";
+      externalBookingBtn.rel = "noopener noreferrer";
+      externalBookingBtn.textContent = "Open live booking calendar";
+      externalBookingBtn.addEventListener("click", function () {
+        trackEvent("book_discovery_call", { channel: "external_calendar" });
+      });
+    }
+    if (calendarSlotNote) {
+      calendarSlotNote.textContent = "Pick an exact 20-minute slot directly on our live calendar, or submit your workflow brief below.";
+    }
+  }
+
+  // Intent tabs
+  var tabBookingEl = document.getElementById("tab-booking");
+  var tabCheckoutEl = document.getElementById("tab-checkout");
+  if (tabBookingEl) tabBookingEl.addEventListener("click", function () { setIntent("booking-call"); });
+  if (tabCheckoutEl) tabCheckoutEl.addEventListener("click", function () { setIntent("stripe-checkout-invoice"); });
+
+  // Live intake & booking form submission -> Cloudflare Worker (KV + Mautic sync)
+  var form = document.getElementById("b2b-intake-form");
+  var statusEl = document.getElementById("intake-status");
+  var successBox = document.getElementById("booking-success-box");
+  var successTitle = document.getElementById("success-title");
+  var successDesc = document.getElementById("success-desc");
+  var successMailto = document.getElementById("success-mailto");
+
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var name = (document.getElementById("field-name").value || "").trim();
+      var email = (document.getElementById("field-email").value || "").trim();
+      var company = (document.getElementById("field-company").value || "").trim();
+      var win = (document.getElementById("field-window").value || "us-morning").trim();
+      var workflow = (document.getElementById("field-workflow").value || "").trim();
+      var intent = (document.getElementById("field-intent").value || "booking-call").trim();
+      var hp = (form.querySelector('[name="website"]').value || "").trim();
+
+      if (!name) {
+        statusEl.className = "status-msg err";
+        statusEl.textContent = "Enter your name so we know who to address the invite to.";
+        document.getElementById("field-name").focus();
+        return;
+      }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        statusEl.className = "status-msg err";
+        statusEl.textContent = "Enter a valid work email address.";
+        document.getElementById("field-email").focus();
+        return;
+      }
+
+      var submitBtn = document.getElementById("intake-submit-btn");
+      var origLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting…";
+      statusEl.className = "status-msg";
+      statusEl.textContent = "";
+
+      var displayName = company ? (name + " (" + company + ")") : name;
+      var payload = {
+        email: email,
+        first_name: displayName.slice(0, 80),
+        tags: ["b2b-ai-implementation", intent, "slot-" + win].join(",").slice(0, 200),
+        source: "b2b-ai-implementation",
+        variant: (intent + ":" + win).slice(0, 60),
+        website: hp,
+        referrer: document.referrer || ""
+      };
+      UTM_KEYS.forEach(function (k) {
+        if (utm[k]) payload[k] = utm[k];
+      });
+
+      var mailSubject = intent === "stripe-checkout-invoice"
+        ? "B2B AI Implementation ($2,500 Fixed Scope — Stripe Checkout Request)"
+        : "B2B AI Implementation — 20-Min Discovery Call Booking";
+      var mailBody = [
+        "Name: " + name,
+        "Work Email: " + email,
+        "Company: " + (company || "N/A"),
+        "Request Type: " + intent,
+        "Preferred Window: " + win,
+        "",
+        "Target Workflow & Tools:",
+        workflow || "(Will share on the call)"
+      ].join("\n");
+      var mailtoHref = "mailto:" + cfg.contactEmail +
+        "?subject=" + encodeURIComponent(mailSubject) +
+        "&body=" + encodeURIComponent(mailBody);
+
+      fetch(cfg.leadEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+        .then(function (res) {
+          return res.json().catch(function () { return { ok: res.ok }; });
+        })
+        .then(function (data) {
+          if (data && data.ok) {
+            trackEvent("generate_lead", {
+              event_category: "b2b_offer",
+              event_label: intent,
+              value: cfg.priceUsd,
+              currency: "USD"
+            });
+            form.style.display = "none";
+            if (successTitle) {
+              successTitle.textContent = intent === "stripe-checkout-invoice"
+                ? "$2,500 Stripe invoice request logged"
+                : "Discovery call request logged";
+            }
+            if (successDesc) {
+              successDesc.textContent = intent === "stripe-checkout-invoice"
+                ? "We recorded your request for " + email + " and will send your $2,500 Stripe Checkout link and SOW within 1 business day. Want to attach extra workflow specs right away?"
+                : "We recorded your preferred window (" + win + ") for " + email + " and will reply within 24 hours with your calendar invite. Want to share extra context by email now?";
+            }
+            if (successMailto) successMailto.href = mailtoHref;
+            if (successBox) successBox.style.display = "block";
+          } else {
+            statusEl.className = "status-msg err";
+            statusEl.innerHTML =
+              'Could not submit automatically right now. <a href="' + mailtoHref + '">Send your booking brief directly by email</a>.';
+            submitBtn.disabled = false;
+            submitBtn.textContent = origLabel;
+          }
+        })
+        .catch(function () {
+          statusEl.className = "status-msg err";
+          statusEl.innerHTML =
+            'Network error submitting form. <a href="' + mailtoHref + '">Send your booking brief directly by email</a>.';
+          submitBtn.disabled = false;
+          submitBtn.textContent = origLabel;
+        });
+    });
+  }
+})();
+</script>
+</body>
+</html>
