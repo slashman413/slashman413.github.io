@@ -1,4 +1,5 @@
 ---
+b2b_cta: true
 title: "Best AI Workflow Builder in 2026: 6 Multi-Agent & Automation Tools Compared"
 seo_title: "Best AI Workflow Builder (2026): Top 6 Multi-Agent Tools Compared"
 date: "2026-08-03T08:00:00+08:00"

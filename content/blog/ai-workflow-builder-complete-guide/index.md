@@ -1,4 +1,5 @@
 ---
+b2b_cta: true
 title: "AI Workflow Builder (2026): Multi-Agent Architecture, Schema Contracts & Complete Implementation Guide"
 slug: "ai-workflow-builder-complete-guide"
 date: 2026-08-31

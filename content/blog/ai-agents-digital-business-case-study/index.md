@@ -1,4 +1,5 @@
 ---
+b2b_cta: true
 title: "How I Built a 10-Product Digital Business Using Only AI Agents — A Complete Case Study"
 description: "A detailed case study of building a 10-product digital business using AI agents for content creation, product development, customer support, and marketing."
 date: 2026-08-03

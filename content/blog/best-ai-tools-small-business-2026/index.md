@@ -1,4 +1,5 @@
 ---
+b2b_cta: true
 title: "Best AI Tools for Small Business in 2026 (Tested, Budget-Priced)"
 slug: "best-ai-tools-small-business-2026"
 date: 2026-09-21

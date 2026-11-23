@@ -1,0 +1,15 @@
+{{- /*
+  b2b-offer-cta.html — cross-link to the $2,500 fixed-scope B2B implementation offer.
+  Rendered on single pages whose front matter sets `b2b_cta: true`, and on the
+  /products/ hub. Every link carries utm_source=site so the 30-day review
+  (goal-2c438b06) can attribute offer-page visits to the owned site.
+  Accepts a Page (utm_content = slug) or (dict "content" "<label>").
+*/ -}}
+{{- $content := "page" -}}
+{{- if reflect.IsMap . -}}{{- $content = .content | default "page" -}}{{- else -}}{{- $content = .File.ContentBaseName | default .Slug | default "page" -}}{{- if eq $content "index" -}}{{- $content = path.Base .File.Dir -}}{{- end -}}{{- end -}}
+{{- $href := printf "https://slashmantools.us/b2b-ai-implementation?utm_source=site&utm_medium=cta&utm_campaign=b2b-offer&utm_content=%s" (urlize $content) -}}
+<aside class="b2b-offer-cta" style="margin:28px 0;padding:20px 22px;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.35);border-radius:12px">
+  <p style="font-size:15px;font-weight:800;color:#f0f0f8;margin:0 0 6px">💼 Want this implemented for your team? Fixed-scope $2,500 setup</p>
+  <p style="font-size:13.5px;color:var(--muted);margin:0 0 14px">We audit one ops workflow, build it as a validated multi-agent pipeline on the open-source <a href="https://github.com/slashman413/ai-workflow-builder" rel="noopener">AI Workflow Builder</a> stack, wire it into your tools with an approval gate, and hand over the code. One price, 14-day delivery, 30 days of support.</p>
+  <a href="{{ $href }}" style="display:inline-block;padding:10px 18px;background:#818cf8;color:#0a0a0f;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px">See the $2,500 scope →</a>
+</aside>

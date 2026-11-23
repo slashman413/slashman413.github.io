@@ -1,4 +1,5 @@
 ---
+b2b_cta: true
 title: "Build, Buy, or Glue: How to Choose an Automation Route"
 description: "Build it, buy it, or glue existing tools: compare the three automation routes on time to first value, upkeep, failure visibility and lock-in."
 date: "2026-09-24T08:00:00+08:00"

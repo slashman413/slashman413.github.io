@@ -1,4 +1,5 @@
 ---
+b2b_cta: true
 title: "Cowork Pro Review 2026: Orchestrate AI Agents from One Dashboard"
 date: "2026-08-02T08:00:00+08:00"
 description: "Cowork Pro review: orchestrate AI agents from one dashboard — a multi-agent MCP framework dispatching tasks across Claude, Gemini and local models."

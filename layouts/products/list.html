@@ -19,6 +19,8 @@
   </div>
 </div>
 
+{{ partial "b2b-offer-cta.html" (dict "content" "products-hub") }}
+
 {{ $lang := .Language.Lang }}
 {{ $products := site.Data.products }}
 {{ if $products }}

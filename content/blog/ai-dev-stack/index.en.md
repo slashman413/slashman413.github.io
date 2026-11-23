@@ -1,4 +1,5 @@
 ---
+b2b_cta: true
 title: "Best AI Developer Stack Toolkit for Builders in 2026"
 date: "2026-08-02T08:00:00+08:00"
 description: "Review of the ultimate AI Developer Stack Bundle. Includes prompt library, development framework, deployment tools, and comprehensive tutorials."
