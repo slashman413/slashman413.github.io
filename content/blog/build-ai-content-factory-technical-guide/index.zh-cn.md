@@ -1,150 +1,156 @@
 ---
-title: "How to Build an AI-Powered Content Factory — Complete Technical Guide"
-description: "Build a complete content factory using AI agents: topic research, content generation, SEO optimization, and deployment. Full technical walkthrough with Cowork Pro."
+title: "AI 内容工厂搭建教程：从选题到发布的完整技术指南（2026）"
+seo_title: "AI 内容工厂搭建教程：多 Agent 完整技术指南（2026）"
+description: "手把手搭建 AI 内容工厂：选题研究、多 Agent 写作、自动质量关卡、SEO 检查与 Git 自动发布，附工作流 YAML 与上线检查清单。"
 date: 2026-08-03
+lastmod: 2026-11-23
 slug: build-ai-content-factory-technical-guide
 tags: [ai, content-factory, cowpro, automation, tutorial]
+keywords: ["AI内容工厂", "AI内容工厂搭建", "AI内容工厂 教程", "多Agent内容生产", "AI写作 质量控制"]
+faq:
+  - q: "什么是 AI 内容工厂？"
+    a: "AI 内容工厂是一条可重复的内容生产线：选题、写作、审核、SEO 和发布每个环节都有明确的输入、输出和质量关卡。重复性的环节交给 AI Agent，人负责方向判断和最终审批。"
+  - q: "AI 内容工厂和 AI 内容流水线有什么区别？"
+    a: "流水线只是步骤的先后顺序。工厂在流水线之上多了三样东西：防止关键词自相残杀的选题地图、拦截空洞或无来源稿件的自动关卡，以及决定下一批写什么的数据复盘。"
+  - q: "AI 写的内容能在搜索引擎获得排名吗？"
+    a: "搜索引擎打击的是“为操纵排名而批量生产、没有增量价值”的内容，而不是写作工具本身。能体现亲身经验、论据有来源、精准对应搜索意图的页面依然可以获得排名。"
+  - q: "一个人能运营 AI 内容工厂吗？"
+    a: "可以，前提是关卡自动化：人负责定选题、审核被标记的稿件、批准发布。真正的产能上限是审核时间而不是生成时间，所以产量要按你实际能投入的审核时间来定。"
+  - q: "内容工厂应该看哪些数据？"
+    a: "按页面看：是否被收录、展示次数、点击、转化，数据来自 Search Console（或百度/必应站长平台）和你自己的统计工具。固定周期（例如每 45 天）复盘一次，把资源投向已经有展示量的页面和主题簇，而不是每轮都开新题。"
 ---
 
-# How to Build an AI-Powered Content Factory
+**AI 内容工厂**的意思是：不再让聊天机器人“随便写一篇”，而是把内容当成生产线来运营——每个环节都有负责人、输入、输出，以及一个可以说“不”的质量关卡。本文完整拆解我们在本站实际运行的架构：选题研究、多 Agent 写作、自动质量关卡、SEO 检查和基于 Git 的自动发布，并附上工作流定义、关卡代码和上线检查清单。
 
-## What Is a Content Factory?
+**快速回答——AI 内容工厂的 5 个环节：**
 
-A content factory is a systematic, repeatable process for producing content at scale. Unlike ad-hoc AI writing (which produces inconsistent results), a content factory treats content production like a manufacturing line: each step has clear inputs, outputs, quality checks, and handoff protocols.
+1. **选题情报**：只选有明确搜索意图的关键词，并先看清楚现在是谁排在前面。
+2. **写作简报**：把每个关键词变成简报——读者是谁、差异化角度、文章结构、内链、引用来源。
+3. **Agent 写作**：Agent 根据简报写稿，绝不只丢一个题目给它。
+4. **质量关卡**：自动检查（深度、来源、关键词冲突、结构化数据）+ 人工审批。
+5. **发布与复盘**：提交、构建、部署，然后按页面读取收录和展示数据，反馈回第 1 步。
 
-The result: consistent, high-quality content produced at machine speed.
+## 什么是内容工厂？
 
-## Why Most AI Content Fails
+内容工厂是一套系统化、可重复的规模化内容生产流程。和临时性的 AI 写作（结果时好时坏）不同，内容工厂把内容生产当成制造流水线：每一步都有清晰的输入、输出、质检和交接规则。
 
-Before building your content factory, understand why most attempts fail:
+结果是：以机器的速度，稳定地产出高质量内容。
 
-### Problem 1: Generic Prompts → Generic Output
+## 为什么大多数 AI 内容会失败
+
+动手搭建之前，先搞清楚大多数尝试为什么失败。
+
+### 问题 1：笼统的提示词 → 笼统的输出
 
 ```python
-# BAD: Generic prompt
-prompt = f"Write an article about {topic}"
+# 错误示范：笼统的提示词
+prompt = f"写一篇关于 {topic} 的文章"
 
-# GOOD: Structured prompt with context
+# 正确示范：带上下文的结构化提示词
 prompt = f"""
-Write a {word_count}-word article about {topic}.
-Context: This is for readers who are {audience_description}.
-Competitors cover: {competitor_analysis}
-We need to differentiate by: {unique_angle}
-Include these sections: {structure}
-Use these keywords: {keywords}
-Link to these internal articles: {internal_links}
+写一篇约 {word_count} 字、主题为 {topic} 的文章。
+读者画像：{audience_description}
+竞争对手已经写了：{competitor_analysis}
+我们的差异化角度：{unique_angle}
+必须包含的章节：{structure}
+自然使用的关键词：{keywords}
+需要内链到的文章：{internal_links}
 """
 ```
 
-### Problem 2: No Quality Control
+### 问题 2：没有质量控制
 
-Writing an article is easy. Ensuring it's good requires systematic checks:
+写出一篇文章很容易，保证它写得好需要系统化的检查：
 
 ```python
-# Quality checklist
+# 质量检查清单
 checks = {
     "word_count": (article_length >= 1500),
-    "has_introduction": ("## Introduction" in article),
-    "has_conclusion": ("## Conclusion" in article),
+    "has_introduction": ("## 引言" in article),
+    "has_conclusion": ("## 总结" in article),
     "has_code_examples": ("```" in article),
     "has_tables": ("|" in article),
     "has_internal_links": (article.count("/blog/") >= 3),
-    "has_faq": ("### FAQ" in article),
-    "keyword_density": (calculate_density(primary_keyword) in range(1.5, 2.5)),
+    "primary_keyword_in_title": (primary_keyword in title),
+    "keyword_not_owned_elsewhere": (primary_keyword not in hub_map_owned_keywords),
 }
 ```
 
-### Problem 3: No Content Strategy
+### 问题 3：没有内容策略
 
-Random articles don't build authority. You need a content strategy:
+零散的文章建立不了权威度。你需要一个内容策略：先定 3–5 个**支柱主题**，每个支柱下有一篇支柱文章，再围绕它写若干篇支撑文章，并且互相内链。
 
 ```
-┌─────────────────────────────────────────────────┐
-│              Content Pillars                     │
-│                                                  │
-│  AI Automation    Investment    Developer Tools  │
-│  ┌─────────┐     ┌────────┐   ┌──────────────┐ │
-│  │Pillar   │     │Pillar  │   │Pillar        │ │
-│  │Article 1│     │Article 1│   │Article 1     │ │
-│  ├─────────┤     ├────────┤   ├──────────────┤ │
-│  │Article 2│     │Article 2│   │Article 2     │ │
-│  ├─────────┤     ├────────┤   ├──────────────┤ │
-│  │Article 3│     │Article 3│   │Article 3     │ │
-│  └─────────┘     └────────┘   └──────────────┘ │
-│       │                │                │        │
-│       ▼                ▼                ▼        │
-│  ┌─────────┐     ┌────────┐   ┌──────────────┐ │
-│  │Support  │     │Support │   │Support       │ │
-│  │Article  │     │Articles │   │Articles      │ │
-│  └─────────┘     └────────┘   └──────────────┘ │
-└─────────────────────────────────────────────────┘
+支柱主题：     AI 自动化        投资理财        开发者工具
+                  │                │                │
+支柱文章：     完整指南 A       完整指南 B       完整指南 C
+                  │                │                │
+支撑文章：   教程 / 对比 / 案例（每篇只负责一个关键词，并链回支柱文章）
 ```
 
-## The Content Factory Architecture
+## 内容工厂架构
 
-### Layer 1: Topic Intelligence
+### 第 1 层：选题情报
 
-Every piece of content starts with research. Our system does this automatically:
+每篇内容都从研究开始。我们的系统会自动完成：
 
 ```bash
-# Topic research pipeline
-1. Scan Reddit for trending topics in niche
-2. Analyze Google Trends data
-3. Review competitor content gaps
-4. Generate topic briefs with keyword suggestions
-5. Prioritize by search volume vs. competition
+# 选题研究流程
+1. 扫描细分领域社区的热门话题
+2. 分析搜索趋势数据
+3. 找出竞争对手内容的空白
+4. 生成带关键词建议的选题简报
+5. 按“搜索量 vs. 竞争度”排序
 ```
 
-### Layer 2: Content Generation
+### 第 2 层：内容生成
 
-Multiple agents work in parallel on different aspects:
+多个 Agent 并行负责不同环节：
 
 ```
 ┌──────────────┐    ┌──────────────┐    ┌──────────────┐
-│  Research    │───→│  Writing     │───→│  Review      │
-│  Agent       │    │  Agent       │    │  Agent       │
+│  研究 Agent  │───→│  写作 Agent  │───→│  审核 Agent  │
 └──────────────┘    └──────────────┘    └──────────────┘
                            ↑
 ┌──────────────┐    ┌──────────────┐
-│  SEO Agent   │───→│  Deploy      │
-│  Agent       │    │  Agent       │
+│  SEO Agent   │───→│  发布 Agent  │
 └──────────────┘    └──────────────┘
 ```
 
-### Layer 3: Quality Assurance
+### 第 3 层：质量保证
 
-Every article goes through automated and human review:
+每篇文章都要经过自动 + 人工审核：
 
-| Check | Automated | Human |
+| 检查项 | 自动 | 人工 |
 |-------|-----------|-------|
-| Word count | ✅ | - |
-| Grammar/typos | ✅ | ✅ |
-| Technical accuracy | ✅ | ✅ |
-| Unique insights | - | ✅ |
-| SEO optimization | ✅ | - |
-| Internal linking | ✅ | - |
-| Final approval | - | ✅ |
+| 字数 | ✅ | - |
+| 语法 / 错别字 | ✅ | ✅ |
+| 技术准确性 | ✅ | ✅ |
+| 独到见解 | - | ✅ |
+| SEO 优化 | ✅ | - |
+| 内链 | ✅ | - |
+| 最终批准 | - | ✅ |
 
-## Step-by-Step Implementation
+## 分步实施
 
-### Step 1: Set Up Your Cowork Pro Instance
+### 第 1 步：部署 Cowork Pro
 
 ```bash
-# Clone Cowork Pro
+# 克隆 Cowork Pro
 git clone https://github.com/slashman413/cowork.git
 cd cowork
 
-# Install dependencies
+# 安装依赖
 npm install
 
-# Start the server
+# 启动服务
 node server/index.js
 ```
 
-### Step 2: Register Your Brains
+### 第 2 步：注册模型 Agent
 
 ```python
-# Register model agents
+# 注册模型 Agent
 brains = [
     {
         "id": "research-specialist",
@@ -164,9 +170,9 @@ brains = [
 ]
 ```
 
-### Step 3: Create Your Content Pipeline
+### 第 3 步：定义内容流水线
 
-Define your pipeline as a workflow:
+把流水线写成工作流：
 
 ```yaml
 # workflow.yaml
@@ -176,165 +182,180 @@ steps:
     agent: research-specialist
     input: topic_direction
     output: topic_brief
-    
+
   - name: write
     agent: content-writer
     input: topic_brief
     output: draft_article
-    
+
   - name: review
     agent: editor
     input: draft_article
     output: reviewed_article
-    
+
   - name: seo
     agent: seo-agent
     input: reviewed_article
     output: seo_optimized_article
-    
+
   - name: deploy
     agent: deploy-agent
     input: seo_optimized_article
     output: published_article
 ```
 
-### Step 4: Build Your Topic Cluster
+### 第 4 步：建立主题簇
 
-Start with 3-5 pillar topics:
+从 3–5 个支柱主题开始：
 
-| Pillar | Subtopics | Articles |
+| 支柱 | 子主题 | 规划篇数 |
 |--------|-----------|----------|
-| AI Automation | Agents, workflows, tools, monitoring | 20+ |
-| Investment | ETF strategies, automated investing, portfolio tracking | 15+ |
-| Developer Tools | Self-hosting, local models, deployment, security | 25+ |
-| Productivity | AI tools, templates, workflows, case studies | 30+ |
+| AI 自动化 | Agent、工作流、工具、监控 | 20+ |
+| 投资理财 | ETF 策略、自动化投资、组合追踪 | 15+ |
+| 开发者工具 | 自托管、本地模型、部署、安全 | 25+ |
+| 效率提升 | AI 工具、模板、工作流、案例 | 30+ |
 
-### Step 5: Write Your First Article
+### 第 5 步：写第一篇文章
 
-Let's go through a complete example:
+完整走一遍：
 
-**Research Phase:**
-- Topic: "How to choose the right AI model for your use case"
-- Target audience: Small business owners, developers
-- Primary keyword: "choose AI model"
-- Competitor gap: Most guides are theoretical; we'll be practical with benchmarks
+**研究阶段：**
+- 选题：“如何为你的场景选择合适的 AI 模型”
+- 目标读者：小企业主、开发者
+- 主关键词：“AI 模型 怎么选”
+- 竞品空白：多数文章偏理论，我们用实测数据讲实操
 
-**Writing Phase:**
-- Article structure: 3000+ words with code examples, tables, benchmarks
-- Internal links: Link to 5 existing articles about specific tools
-- SEO: Target 1.5-2.5% keyword density
+**写作阶段：**
+- 结构：3000 字以上，含代码示例、表格、实测数据
+- 内链：链接到 5 篇相关工具文章
+- SEO：在标题、首段和一个 H2 中自然出现主关键词，不追求“关键词密度”
 
-**Review Phase:**
-- Check accuracy of benchmarks
-- Verify code examples work
-- Ensure tone is consistent
-- Verify internal links are relevant
+**审核阶段：**
+- 核对实测数据
+- 验证代码可以运行
+- 统一语气
+- 确认内链相关
 
-**SEO Phase:**
-- Optimize title tag (<60 chars)
-- Write meta description (<155 chars)
-- Add structured data (JSON-LD)
-- Verify keyword placement in H1, H2, first paragraph
+**SEO 阶段：**
+- 标题标签控制在 30 个汉字左右
+- 描述控制在 80 个汉字左右
+- 添加结构化数据（JSON-LD）
+- 确认每页只有一个 H1，且没有其他页面已占用这个主关键词
 
-**Deploy Phase:**
-- Commit to Git
-- GitHub Actions builds Hugo site
-- Verify deployment
-- Update sitemap
+**发布阶段：**
+- 提交到 Git
+- GitHub Actions 构建 Hugo 站点
+- 验证线上页面（HTTP 200、新标题可见）
+- 更新 sitemap
 
-## Real Results
+## 实际运行结果
 
-### Our Content Factory Numbers
+### 我们真正追踪的数据
 
-| Metric | Value |
-|--------|-------|
-| Articles/month | 200+ |
-| Avg. production time | 15 min/article |
-| Quality score | 4.2/5.0 |
-| Cost per article | $0.02 (API costs) |
-| Human review time | 2 hours/article |
+我们只公布可以核实的数字。所以这里不放“虚荣指标”，而是列出工厂为每个页面追踪什么、数据从哪里来：
 
-### What Works vs. What Doesn't
+| 指标 | 数据来源 | 为什么重要 |
+|--------|--------|----------------|
+| 每个 URL 是否被收录 | 搜索引擎收录检查 | 没被收录的页面什么都得不到 |
+| 每个关键词的展示和点击 | Search Console / 必应站长工具 | 告诉你哪些页面已经有起色、值得加码 |
+| 每页自然搜索访问 | 自己的统计（我们用 Mautic 页面访问记录） | 不依赖搜索引擎自己的报表 |
+| 每篇审核时长 | 任务日志 | 工厂真正的产能上限 |
+| 各类关卡拦截次数 | 流水线日志 | 告诉你哪个环节在产出坏稿 |
 
-| Content Type | Performance | Recommendation |
+跑下来最大的教训：生成几乎零成本，**审核和收录才是瓶颈**。发布速度超过审核速度，或者超过搜索引擎的收录速度，产出的页面就没人看得到。
+
+### 哪些有效、哪些无效
+
+| 内容类型 | 表现 | 建议 |
 |--------------|-------------|----------------|
-| In-depth tutorials (2000+ words) | Excellent | Keep & expand |
-| Tool comparisons with benchmarks | Very Good | Keep |
-| Case studies with real data | Outstanding | Prioritize |
-| Generic "how-to" guides | Poor | Reduce |
-| FAQ pages | Terrible | Remove |
-| Listicles without depth | Poor | Remove |
+| 深度教程（2000 字以上） | 优秀 | 保留并扩充 |
+| 带实测数据的工具对比 | 很好 | 保留 |
+| 有真实数据的案例 | 最佳 | 优先 |
+| 泛泛的“怎么做”文章 | 差 | 减少 |
+| 只有问答的独立 FAQ 页 | 差 | 把问题并入它所属的指南 |
+| 没有深度的清单文 | 差 | 删除 |
 
-### Editorial Standards That Survive Scale
+### 能撑住规模的编辑标准
 
-The factory's quality bar has to be a written standard, not a vibe — because at 200 articles a month, no human can re-review every word. Our editorial standard has four checks, applied automatically before anything ships:
+质量标准必须写成规则，而不是凭感觉——量一大，没有人能逐字复审。我们的编辑标准有四道关卡，发布前自动执行：
 
-1. **Depth floor** — no article ships under 1,500 words unless it is a genuinely short reference. Thin content is the fast path to "why is my traffic flat."
-2. **The uniqueness gate** — every piece must contain at least one element that cannot be machine-copied: real numbers from our own operation, a worked example, or a decision log. Generic rewrites of generic sources fail the gate.
-3. **The citation rule** — claims about products, prices, or results link to a primary source on this site. Unsupported claims are the #1 AdSense and E-E-A-T killer.
-4. **The cluster check** — before publishing, the article's primary keyword is checked against the hub map: if another page owns it, the article is retitled or merged. No cannibalization, ever.
+1. **深度下限**：除非是真正的短参考页，否则不足 1500 字不发布。内容单薄是“流量为什么一直不涨”的最快路径。
+2. **独特性关卡**：每篇必须至少包含一项机器无法照抄的内容——来自我们自己运营的真实数字、完整的实操示例，或者决策记录。
+3. **引用规则**：关于产品、价格、结果的说法，必须链接到一手来源。无依据的说法是 E-E-A-T 的头号杀手。
+4. **主题簇检查**：发布前，把文章的主关键词和主题地图对照；如果其他页面已经占用，就改题或合并。绝不让自己的页面互相抢排名。
 
-These four checks are what let the factory scale without the quality cliff — and they are the same standards that turned this site's content from a liability into the architecture documented in the [content cluster guide](/blog/automated-content-pipeline-cowork-pro/). Enforce them in the pipeline itself (as automated gates in the workflow definition) rather than in review, and the factory keeps its quality at any volume — because the gates, not the reviewers, are the bottleneck that never gets tired.
+把这四道关卡写进流水线本身（工作流里的自动关卡），而不是留给人工审核，工厂在任何产量下都能保持质量——因为关卡不会累。更完整的主题簇架构见[自动化内容流水线指南](/zh-cn/blog/automated-content-pipeline-cowork-pro/)。
 
-## Key Lessons
+## 关键经验
 
-### 1. Quality > Quantity
+### 1. 质量 > 数量
 
-10 great articles drive more traffic than 100 mediocre ones. Focus on depth, not breadth.
+10 篇好文章带来的流量，比 100 篇平庸文章更多。追求深度，而不是广度。
 
-### 2. Internal Linking Matters Most
+### 2. 内链最重要
 
-An article with 5+ relevant internal links performs 2x better than one with no links. Build your content graph strategically.
+内链是搜索引擎发现新页面、判断“哪个页面负责哪个主题”的方式。每篇新文章都要从支柱文章和 3–5 篇相关文章链入，使用描述性的锚文本，这样它会被尽快抓取，也不会和兄弟页面抢排名。
 
-### 3. Human Judgment Is Irreplaceable
+### 3. 人的判断不可替代
 
-AI can generate content, but it can't:
-- Have genuine opinions
-- Share personal experience
-- Make strategic content decisions
-- Spot nuanced errors
+AI 能生成内容，但它不能：
+- 拥有真正的观点
+- 分享亲身经验
+- 做内容战略决策
+- 发现细微的错误
 
-Your role: direction, judgment, quality control. AI's role: volume, consistency, speed.
+你的角色：方向、判断、质量控制。AI 的角色：产量、一致性、速度。
 
-### 4. Measure Everything
+### 4. 一切都要度量
 
-Track which content drives:
-- Traffic (Google Search Console)
-- Conversions (Gumroad analytics)
-- Email signups (Mautic)
-- Social shares (Twitter API)
+追踪哪些内容带来了：
+- 流量（Search Console）
+- 转化（Gumroad 后台）
+- 邮件订阅（Mautic）
+- 社交分享
 
-Double down on what works. Stop doing what doesn't.
+对有效的加码，对无效的停止。
 
-## Getting Started
+## 上线检查清单
 
-To build your own content factory:
+第一篇自动化文章发布之前，确认：
 
-1. **Start with Cowork Pro** — [Cowork Pro](/blog/cowork-pro/)
-2. **Define 3 content pillars** — Choose topics you know well
-3. **Write 5 pillar articles manually** — Establish quality benchmarks
-4. **Automate the rest** — Use AI agents for volume
-5. **Review every article** — Quality control is non-negotiable
-6. **Measure and iterate** — Track what works, optimize based on data
+- [ ] 已有主题地图，每个主关键词只对应一个页面
+- [ ] 每份简报都写明关键词、搜索意图和当前排名前 3 的页面
+- [ ] 没通过深度、来源或关键词冲突关卡的稿件会被直接拦截，而不只是标记
+- [ ] 每页只有一个 H1、自引用 canonical、有效的 JSON-LD（Article；页面上确实显示 FAQ 时才加 FAQPage）
+- [ ] 翻译页面真的翻译了——`/zh-cn/` 网址下放英文正文是坏页面，不是本地化页面
+- [ ] 部署走经过审核的 Pull Request，并在线上验证（HTTP 200、新标题可见）
+- [ ] 4–8 周后的复盘检查点已经排进日程
 
-## Advanced: Multi-Model Orchestration
+## 开始搭建
 
-For best results, use different models for different tasks:
+1. **从 Cowork Pro 开始**：[Cowork Pro](/zh-cn/blog/cowork-pro/)
+2. **定 3 个内容支柱**：选你真正懂的主题
+3. **手写 5 篇支柱文章**：建立质量基准
+4. **其余自动化**：用 AI Agent 承担产量
+5. **每篇都审核**：质量控制没有商量余地
+6. **度量并迭代**：根据数据调整
 
-| Task | Best Model | Why |
+## 进阶：多模型编排
+
+不同任务用不同模型，效果最好：
+
+| 任务 | 推荐模型 | 原因 |
 |------|-----------|-----|
-| Research | Claude Opus | Deep analysis, pattern recognition |
-| Writing | Qwen 35B | Good balance of quality and cost |
-| SEO | Custom scripts | Deterministic, fast |
-| Review | Claude Opus | Nuanced quality judgment |
+| 研究 | Claude Opus | 深度分析、模式识别 |
+| 写作 | Qwen 35B | 质量与成本的平衡 |
+| SEO | 自定义脚本 | 确定性强、速度快 |
+| 审核 | Claude Opus | 细腻的质量判断 |
 
-Cowork Pro handles the routing automatically through its brain registry and dispatcher system.
+Cowork Pro 通过它的 Agent 注册表和调度器自动完成这些路由。
 
 ---
 
-**Related:**
-- [Cowork Pro](/blog/cowork-pro/) — Orchestrate your content factory
-- [AI Prompt Library](/blog/ai-prompt-library/) — 300+ prompts for content production
-- [Self-Hosting LLMs on DGX Spark](/blog/self-hosting-llm-dgx-spark-complete-guide/) — Run models locally
-- [Automated Content Pipeline](/blog/automated-content-pipeline-cowork-pro/) — Step-by-step guide
-- [Productivity Topic Hub](/categories/productivity/) — All productivity guides & tools
+**相关阅读：**
+- [免费 AI 工作流模板：8 个可直接复制的 JSON 自动化蓝图](/blog/free-ai-workflow-templates/)（英文），以及[在线工作流示例](/workflow-builder-sample/)
+- [2026 多 Agent 系统最佳 AI Workflow Builder](/zh-cn/blog/ai-workflow-builder/)：用自然语言生成经过验证的工作流 DAG
+- [Cowork Pro](/zh-cn/blog/cowork-pro/)：编排你的内容工厂
+- [AI Prompt 库](/zh-cn/blog/ai-prompt-library/)：内容生产用的提示词合集（[免费试用 12 个样本提示词](/prompt-library-sample/)）
+- [在 DGX Spark 上自托管大模型](/zh-cn/blog/self-hosting-llm-dgx-spark-complete-guide/)：本地运行模型
+- [自动化内容流水线](/zh-cn/blog/automated-content-pipeline-cowork-pro/)：分步指南

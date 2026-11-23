@@ -1,13 +1,25 @@
 ---
 title: "The Ultimate Guide to Slash Commands for Developers (2026)"
-description: "Discover how AI coding agents like Claude, ChatGPT, and Cursor revived slash commands and learn how to implement them in your daily developer workflow for maximum productivity."
+seo_title: "Slash Commands for Developers: Custom Command Guide (2026)"
+description: "How developers use slash commands in AI coding agents — and how to create custom slash commands in Claude Code, Cursor, Codex CLI and Gemini CLI, with file paths, arguments and examples."
 date: 2026-08-12
+lastmod: 2026-11-23
 slug: slash-commands-for-developers-guide-2026
 tags: [ai tools, developer productivity, slash commands, workflow automation]
 categories: ["AI tools", "developer productivity"]
+keywords: ["slash commands for developers", "custom slash commands", "Claude Code custom slash commands", "Cursor custom commands", "Gemini CLI custom commands", "Codex CLI custom prompts"]
+faq:
+  - q: "What is a slash command in an AI coding agent?"
+    a: "A slash command is a saved instruction you trigger by typing / followed by its name. In AI coding agents it expands into a full prompt — often with the current file, selection or arguments injected — so a repeated multi-paragraph request becomes a few keystrokes."
+  - q: "How do I create a custom slash command in Claude Code?"
+    a: "Create a Markdown file in .claude/commands/ in your project (shared with the repo) or ~/.claude/commands/ (personal). The file name becomes the command name, the body is the prompt, and $ARGUMENTS is replaced with whatever you type after the command. Recent versions also turn skills in .claude/skills/<name>/SKILL.md into slash commands."
+  - q: "Where do Cursor custom commands live?"
+    a: "Cursor reads plain Markdown files from .cursor/commands/ in the project; typing / in the Agent input lists them. Check your Cursor version's docs, because the feature is newer than Cursor's rules system."
+  - q: "Can I share slash commands with my team?"
+    a: "Yes, when the tool reads them from the repository: Claude Code's .claude/commands/, Cursor's .cursor/commands/ and Gemini CLI's .gemini/commands/ can all be committed. Codex CLI custom prompts live in ~/.codex/prompts/ in your home directory, so they are personal unless you distribute them some other way."
+  - q: "Should a slash command contain the whole prompt or call a script?"
+    a: "Keep the reasoning in the prompt and the deterministic work in scripts. A good /release command, for example, tells the agent to run the existing test and changelog scripts and then summarise the result, rather than describing those steps in prose the model has to re-interpret every time."
 ---
-
-# The Ultimate Guide to Slash Commands for Developers (2026)
 
 The modern software engineering landscape is constantly shifting, but few interaction models have experienced as dramatic and powerful a resurgence as **slash commands for developers**. Originally popularized decades ago in text-based tools like IRC and later adapted by workplace communication platforms like Slack, slash commands have found an incredibly potent new life in 2026. Thanks to the meteoric rise of AI coding agents—such as Claude, ChatGPT, Cursor, and our specialized tools here at Slashman Tools—slash commands are no longer simply shortcuts for formatting text or fetching a GIF. Today, they are the fastest, most efficient way to orchestrate complex development tasks, refactor massive codebases, and trigger autonomous AI workflows. 
 
@@ -104,6 +116,88 @@ Sometimes, you don't know exactly what you want, or your requirements are too va
 
 ---
 
+## How to Create Custom Slash Commands (Claude Code, Cursor, Codex CLI, Gemini CLI)
+
+Most people searching for slash commands want one thing: to turn a prompt they keep retyping into a `/command`. Every major AI coding tool now supports this, and they all use the same idea — **a text file whose name becomes the command and whose body becomes the prompt** — with different folders and placeholder syntax.
+
+| Tool | Where the file goes | Format | Arguments | Shareable via repo? |
+| --- | --- | --- | --- | --- |
+| Claude Code | `.claude/commands/<name>.md` (project) or `~/.claude/commands/` (personal); skills in `.claude/skills/<name>/SKILL.md` | Markdown, optional YAML front matter | `$ARGUMENTS`, or `$1`, `$2`… | Yes (project folder) |
+| Cursor | `.cursor/commands/<name>.md` | Plain Markdown | Text typed after the command is passed along with the prompt | Yes |
+| Gemini CLI | `.gemini/commands/<name>.toml` (project) or `~/.gemini/commands/` (user) | TOML with a `prompt` field | `{{args}}` | Yes (project folder) |
+| Codex CLI | `~/.codex/prompts/<name>.md`, invoked as `/prompts:<name>` | Markdown | `$ARGUMENTS`, `$1`…`$9` | No — home directory only |
+
+*Paths and syntax as documented by each vendor at the time of writing (November 2026). These tools ship weekly, so check your version's docs if a command does not appear — especially Codex CLI, where skills are replacing custom prompts.*
+
+### Claude Code: a `/review-pr` command
+
+Save this as `.claude/commands/review-pr.md` and commit it, so everyone on the team gets the same review:
+
+```markdown
+---
+description: Review the current branch against main for bugs and missing tests
+argument-hint: [focus area]
+---
+Review the diff between this branch and main.
+
+Focus on: $ARGUMENTS
+
+1. List correctness bugs first, each with file:line and a one-line fix.
+2. Then list missing tests for changed behaviour.
+3. Skip style nits unless they hide a bug.
+```
+
+Type `/review-pr error handling` and Claude Code substitutes `error handling` for `$ARGUMENTS`. The `description` is what shows in the `/` menu. Subfolders group related commands, which keeps a large `/` menu readable.
+
+### Cursor: a `/explain-module` command
+
+Save as `.cursor/commands/explain-module.md`:
+
+```markdown
+Explain the module in the current file for a new team member:
+what it is responsible for, its public functions, what calls it,
+and the one thing most likely to surprise someone changing it.
+Keep it under 200 words.
+```
+
+Type `/` in the Agent input and pick `explain-module`. Because the file lives in the repo, it is versioned and reviewed like code.
+
+### Gemini CLI: a `/git:commit` command
+
+Gemini CLI uses TOML, and subfolders become namespaces. Save as `.gemini/commands/git/commit.toml`:
+
+```toml
+description = "Write a conventional commit message for the staged changes"
+prompt = """
+Write a Conventional Commits message for the staged diff below.
+Extra context from the user: {{args}}
+
+!{git diff --staged}
+"""
+```
+
+The `!{...}` block runs the shell command and inlines its output before the prompt is sent; Gemini CLI asks for confirmation before running it.
+
+### Codex CLI: a personal `/prompts:changelog`
+
+Save as `~/.codex/prompts/changelog.md`:
+
+```markdown
+Summarise the commits since tag $1 as a user-facing changelog,
+grouped into Added / Changed / Fixed. Ignore merge commits.
+```
+
+Run it as `/prompts:changelog v1.4.0`. Because the folder is in your home directory, commit a copy to a shared dotfiles repo if your team wants the same prompt.
+
+### Rules that make custom commands worth keeping
+
+- **One job per command.** `/review-pr` and `/write-tests` beat one `/do-everything`.
+- **Put inputs in arguments, not edits.** If you keep editing the file before running it, that part belongs in `$ARGUMENTS` / `{{args}}`.
+- **Let scripts do the deterministic work.** Have the command run your existing test or lint script and interpret the result, instead of describing the steps in prose.
+- **Review commands like code.** Project commands run with your permissions; read a teammate's new command before you use it.
+
+---
+
 ## How to Implement Slash Commands in Daily Developer Workflows
 
 Reading about these powerful tools is one thing; making them a seamless, habitual part of your daily routine is another challenge entirely. If you want to harness the full potential of slash commands for developers, you need a deliberate implementation strategy. Here is a step-by-step guide to overhauling your workflow and supercharging your productivity.
@@ -116,7 +210,7 @@ While traditional editors like VS Code and IntelliJ have admirable AI plugins (l
 
 Pay close attention to the instructions you give your AI repeatedly. Do you constantly ask it to "format this according to standard PEP 8 rules and add type hints"? Do you frequently type "rewrite this React component using Tailwind CSS and functional components"? 
 
-Most modern AI tools allow you to create custom slash commands. Take those repetitive, paragraph-long instructions and map them to `/pep8` or `/react-tail`. This micro-optimization saves immense mental energy over a week of coding and ensures absolute consistency in the AI's output. 
+Most modern AI tools allow you to create custom slash commands (see the [step-by-step section above](#how-to-create-custom-slash-commands-claude-code-cursor-codex-cli-gemini-cli) for exact file paths). Take those repetitive, paragraph-long instructions and map them to `/pep8` or `/react-tail`. This micro-optimization saves immense mental energy over a week of coding and ensures absolute consistency in the AI's output. 
 
 ### Step 3: Integrate Commands into the Terminal
 
@@ -144,7 +238,7 @@ Our library is a carefully curated, constantly updated collection of battle-test
 
 ### Premium Workflows and Toolkits on Gumroad
 
-For developers, technical founders, and engineering teams ready to take their productivity to the absolute limit, we offer premium, production-ready systems. Head over to our [Gumroad store](https://slashman.gumroad.com/) to explore our advanced products.
+For developers, technical founders, and engineering teams ready to take their productivity to the absolute limit, we offer premium, production-ready systems. Head over to our [Gumroad store](https://slashmaster6.gumroad.com/?utm_source=blog&utm_medium=article&utm_campaign=slash-commands-for-developers-guide-2026) to explore our advanced products.
 
 One of our flagship offerings is the **Cowork Pro** framework. This isn't a toy or a simple wrapper API; it is a robust, enterprise-grade multi-agent orchestration system designed to run entirely on your local hardware (ensuring total privacy) or deployed in the cloud. With Cowork Pro, you can configure extremely powerful slash commands that trigger entire teams of specialized AI agents. Imagine typing a single command and having one agent research a third-party API, another agent write the integration code, a third agent write the exhaustive documentation, and a final agent deploy the changes to a staging server for your review. 
 
