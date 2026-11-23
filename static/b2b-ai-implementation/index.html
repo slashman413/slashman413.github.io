@@ -797,7 +797,7 @@ td { color: var(--muted); }
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#booking" data-cta="hero-book">Book a 20-minute scoping call</a>
-          <a class="btn btn-secondary" href="#checkout" data-cta="hero-checkout">Request $2,500 Stripe checkout invoice + SOW</a>
+          <a class="btn btn-secondary" href="https://slashmaster6.gumroad.com/l/b2b-ai-implementation" target="_blank" rel="noopener noreferrer" data-checkout-link data-cta="hero-checkout">Pay $2,500 now &mdash; secure checkout</a>
         </div>
         <div class="oss-proof">
           <span>Inspect our open-source workflow engine before you talk to us:</span>
@@ -818,10 +818,10 @@ td { color: var(--muted); }
           <li><span class="k">Post-launch warranty</span><span class="v">30 days included</span></li>
           <li><span class="k">Architecture</span><span class="v">Validated multi-agent DAG</span></li>
           <li><span class="k">Code &amp; IP ownership</span><span class="v">100% client-owned repo</span></li>
-          <li><span class="k">Billing method</span><span class="v">Stripe checkout / invoice</span></li>
+          <li><span class="k">Billing method</span><span class="v">Card / PayPal checkout or invoice</span></li>
         </ul>
         <div class="spec-card-foot">
-          <a class="btn btn-emerald" href="#checkout" id="hero-checkout-cta" data-cta="spec-card-checkout">Request your $2,500 Stripe invoice + SOW</a>
+          <a class="btn btn-emerald" href="https://slashmaster6.gumroad.com/l/b2b-ai-implementation" target="_blank" rel="noopener noreferrer" id="hero-checkout-cta" data-checkout-link data-cta="spec-card-checkout">Pay $2,500 &amp; start your sprint</a>
           <p class="micro">Zero recurring platform markup · Runs on your own API keys</p>
         </div>
       </aside>
@@ -1002,11 +1002,11 @@ td { color: var(--muted); }
     </div>
   </section>
 
-  <!-- Conversion Hub: Booking + Stripe Checkout -->
+  <!-- Conversion Hub: Booking + Checkout -->
   <section class="section" id="booking">
     <div class="wrap">
       <div class="section-header">
-        <h2>Book your scoping call or request your Stripe checkout invoice</h2>
+        <h2>Book your scoping call or pay via secure checkout</h2>
         <p>Choose the path that fits your process: schedule a 20-minute technical scoping call first, or lock a 14-day sprint slot directly.</p>
       </div>
 
@@ -1079,9 +1079,9 @@ td { color: var(--muted); }
           </div>
         </div>
 
-        <!-- Right: $2,500 Stripe Checkout Panel -->
+        <!-- Right: $2,500 Checkout Panel -->
         <div class="panel panel-accent" id="checkout">
-          <h3>$2,500 fixed-scope Stripe checkout</h3>
+          <h3>$2,500 fixed-scope checkout</h3>
           <p class="panel-sub">Lock one of this month's two implementation sprint slots. Transparent fixed price—no hidden add-ons.</p>
 
           <div class="checkout-summary" aria-label="Price breakdown">
@@ -1093,10 +1093,11 @@ td { color: var(--muted); }
             <div class="checkout-line total"><span>Total fixed fee</span><span class="mono">$2,500 USD</span></div>
           </div>
 
-          <a class="btn btn-emerald" id="stripe-checkout-btn" href="#booking" style="width:100%" data-cta="checkout-panel-primary">Request $2,500 Stripe checkout invoice + SOW</a>
+          <a class="btn btn-emerald" id="stripe-checkout-btn" href="https://slashmaster6.gumroad.com/l/b2b-ai-implementation" target="_blank" rel="noopener noreferrer" style="width:100%" data-checkout-link data-cta="checkout-panel-primary">Pay $2,500 now &mdash; secure checkout</a>
+          <p class="micro" style="text-align:center;margin-top:10px">Prefer to split it? <a id="deposit-checkout-link" href="https://slashmaster6.gumroad.com/l/b2b-ai-implementation-deposit" target="_blank" rel="noopener noreferrer" data-checkout-link data-cta="checkout-panel-deposit">Pay a $1,250 kickoff deposit (50%)</a></p>
 
           <div class="checkout-note" id="stripe-checkout-note">
-            <strong>Stripe checkout &amp; B2B invoicing:</strong> Pay by corporate card, Apple Pay, or ACH via Stripe once scope is confirmed. Need a W-8BEN, formal SOW, or company PO on the invoice? Request it in the booking form or email <a href="mailto:slashman413@gmail.com?subject=B2B%20AI%20Implementation%20(%242%2C500%20Fixed%20Scope)">slashman413@gmail.com</a>.
+            <strong>Secure checkout &amp; B2B invoicing:</strong> Pay instantly by card or PayPal via Gumroad secure checkout; your receipt arrives by email and we follow up to schedule kickoff. Prefer ACH, a Stripe-hosted invoice, or a company PO? Need a W-8BEN, formal SOW, or company PO on the invoice? Request it in the booking form or email <a href="mailto:slashman413@gmail.com?subject=B2B%20AI%20Implementation%20(%242%2C500%20Fixed%20Scope)">slashman413@gmail.com</a>.
           </div>
         </div>
       </div>
@@ -1138,7 +1139,7 @@ td { color: var(--muted); }
 
         <details>
           <summary>What payment methods and invoicing options do you accept?</summary>
-          <p>Payments are processed in USD via Stripe (credit/debit card, corporate card, or Stripe-hosted invoice). For teams requiring a formal Statement of Work (SOW) or company billing address on the receipt, include your billing contact in the booking request.</p>
+          <p>Payments are processed in USD via Gumroad secure checkout (credit/debit card, corporate card, or PayPal), or by Stripe-hosted invoice on request. For teams requiring a formal Statement of Work (SOW) or company billing address on the receipt, include your billing contact in the booking request.</p>
         </details>
       </div>
     </div>
@@ -1167,12 +1168,13 @@ td { color: var(--muted); }
 
   /* =========================================================================
      Single-source deployment config for external Checkout & Booking links.
-     Populate with verified live URLs once created in Stripe / Cal.com:
-       stripeCheckoutUrl  -> https://buy.stripe.com/...
+     Populate with verified live URLs once created in Stripe / Gumroad / Cal.com:
+       stripeCheckoutUrl  -> https://buy.stripe.com/... or https://<seller>.gumroad.com/l/...
        bookingCalendarUrl -> https://cal.com/... or https://calendly.com/...
      ========================================================================= */
   window.B2B_OFFER_CONFIG = {
-    stripeCheckoutUrl: "",
+    stripeCheckoutUrl: "https://slashmaster6.gumroad.com/l/b2b-ai-implementation",
+    depositCheckoutUrl: "https://slashmaster6.gumroad.com/l/b2b-ai-implementation-deposit",
     bookingCalendarUrl: "",
     leadEndpoint: "https://api.slashmantools.us/subscribe",
     contactEmail: "slashman413@gmail.com",
@@ -1223,7 +1225,7 @@ td { color: var(--muted); }
 
   var utm = readUtm();
 
-  // Wire live Stripe Checkout URL if configured; otherwise route cleanly to invoice request tab.
+  // Wire live checkout URL (Stripe Payment Link or Gumroad) if configured; otherwise route cleanly to invoice request tab.
   var stripeBtn = document.getElementById("stripe-checkout-btn");
   var heroCheckoutCta = document.getElementById("hero-checkout-cta");
   var stripeNote = document.getElementById("stripe-checkout-note");
@@ -1243,9 +1245,17 @@ td { color: var(--muted); }
       : "Request discovery call slot";
   }
 
-  if (cfg.stripeCheckoutUrl && /^https:\/\/(buy|checkout)\.stripe\.com\//.test(cfg.stripeCheckoutUrl)) {
+  var CHECKOUT_URL_RE = /^https:\/\/((buy|checkout)\.stripe\.com|[a-z0-9-]+\.gumroad\.com)\//;
+  if (cfg.stripeCheckoutUrl && CHECKOUT_URL_RE.test(cfg.stripeCheckoutUrl)) {
     var liveStripeUrl = appendUtm(cfg.stripeCheckoutUrl, utm);
-    [stripeBtn, heroCheckoutCta].forEach(function (btn) {
+    var depositLink = document.getElementById("deposit-checkout-link");
+    if (depositLink && cfg.depositCheckoutUrl && CHECKOUT_URL_RE.test(cfg.depositCheckoutUrl)) {
+      depositLink.href = appendUtm(cfg.depositCheckoutUrl, utm);
+      depositLink.addEventListener("click", function () {
+        trackEvent("begin_checkout", { currency: "USD", value: cfg.priceUsd / 2, item: "b2b-ai-implementation-deposit" });
+      });
+    }
+    Array.prototype.slice.call(document.querySelectorAll("[data-checkout-link]:not(#deposit-checkout-link)")).forEach(function (btn) {
       if (!btn) return;
       btn.href = liveStripeUrl;
       btn.target = "_blank";
