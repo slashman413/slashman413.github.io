@@ -155,6 +155,7 @@ If you're serious about this, start with one product. Build it with agents. See 
 ---
 
 **Ready to build your AI-powered business?**
+- [AI Tools for Digital Product Creators: 2026 Stack & Guide](/blog/ai-tools-for-digital-product-creators-guide/) — Stage-by-stage comparison of the AI tools we use to research, draft, and package digital products
 - [Cowork Pro](/blog/cowork-pro/) — The orchestration framework I use
 - [AI Prompt Library](/blog/ai-prompt-library/) — Start with the basics
 - [AI Dev Stack](/blog/ai-dev-stack/) — Complete AI tech stack
