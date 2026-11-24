@@ -107,6 +107,14 @@
         "@type": "Answer",
         "text": "For 30 calendar days after production cutover, we fix regressions, tune prompt/schema edge cases discovered on live traffic, adjust retry or guardrail thresholds, and answer engineering handover questions within one business day."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "How do the $1,250 kickoff deposit and $1,250 balance invoice work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you choose the 50/50 split option, you pay a $1,250 kickoff deposit upfront via Gumroad. The remaining $1,250 balance invoice is issued after kickoff deliverable acceptance (sign-off on the Day 1-2 workflow audit and written spec.yaml), payable Net 14 via a dedicated Gumroad $1,250 balance link or invoice (ACH, wire, company PO, or Stripe-hosted invoice). Cancellations before kickoff starts receive a 100% refund; cancellations before kickoff deliverable acceptance forfeit only the $1,250 kickoff deposit with no balance invoice issued."
+      }
     }
   ]
 }
@@ -686,6 +694,39 @@ td { color: var(--muted); }
   line-height: 1.55;
 }
 
+.balance-terms {
+  margin-top: 14px;
+  padding: 14px 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.balance-terms-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.balance-terms ul {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+}
+.balance-terms li strong {
+  color: var(--ink);
+}
+.balance-terms code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink);
+}
+
 .calendar-slot {
   margin-bottom: 18px;
   padding: 14px 16px;
@@ -1096,6 +1137,16 @@ td { color: var(--muted); }
           <a class="btn btn-emerald" id="stripe-checkout-btn" href="https://slashmaster6.gumroad.com/l/b2b-ai-implementation" target="_blank" rel="noopener noreferrer" style="width:100%" data-checkout-link data-cta="checkout-panel-primary">Pay $2,500 now &mdash; secure checkout</a>
           <p class="micro" style="text-align:center;margin-top:10px">Prefer to split it? <a id="deposit-checkout-link" href="https://slashmaster6.gumroad.com/l/b2b-ai-implementation-deposit" target="_blank" rel="noopener noreferrer" data-checkout-link data-cta="checkout-panel-deposit">Pay a $1,250 kickoff deposit (50%)</a></p>
 
+          <div class="balance-terms" id="balance-invoice-terms" aria-label="Balance invoice terms">
+            <div class="balance-terms-title">$1,250 balance invoice terms (50/50 split option)</div>
+            <ul>
+              <li><strong>When issued:</strong> The remaining $1,250 balance invoice is issued after kickoff deliverable acceptance — specifically, once you review and sign off on the Gate 1 kickoff deliverable (Day 1–2 workflow audit and written <code>spec.yaml</code>).</li>
+              <li><strong>Payment window:</strong> Net 14 calendar days from the balance invoice issue date. Final production repository handover and cutover completion require settlement of the $1,250 balance.</li>
+              <li><strong>Payment method:</strong> Pay via our dedicated Gumroad $1,250 balance link (credit/debit card, corporate card, or PayPal) or by invoice (ACH, wire, company PO, or Stripe-hosted invoice on request).</li>
+              <li><strong>Refund &amp; cancellation terms:</strong> Cancel prior to Day 1 kickoff work starting for a 100% refund of your $1,250 kickoff deposit (or full $2,500 prepayment). If either party cancels during Day 1–2 discovery before kickoff deliverable acceptance, the $1,250 kickoff deposit is non-refundable as compensation for completed audit and specification work (full-prepayment clients receive a $1,250 refund of the unearned second half) and no $1,250 balance invoice is issued. Once the kickoff deliverable is accepted and implementation begins, the $1,250 balance invoice is non-refundable except in the event Slashman Tools fails to deliver the agreed fixed scope, in which case any unearned balance is waived or refunded (delivery delays on our side are additionally covered by the 14-day SLA remedy of +30 days free support).</li>
+            </ul>
+          </div>
+
           <div class="checkout-note" id="stripe-checkout-note">
             <strong>Secure checkout &amp; B2B invoicing:</strong> Pay instantly by card or PayPal via Gumroad secure checkout; your receipt arrives by email and we follow up to schedule kickoff. Prefer ACH, a Stripe-hosted invoice, or a company PO? Need a W-8BEN, formal SOW, or company PO on the invoice? Request it in the booking form or email <a href="mailto:slashman413@gmail.com?subject=B2B%20AI%20Implementation%20(%242%2C500%20Fixed%20Scope)">slashman413@gmail.com</a>.
           </div>
@@ -1139,7 +1190,12 @@ td { color: var(--muted); }
 
         <details>
           <summary>What payment methods and invoicing options do you accept?</summary>
-          <p>Payments are processed in USD via Gumroad secure checkout (credit/debit card, corporate card, or PayPal), or by Stripe-hosted invoice on request. For teams requiring a formal Statement of Work (SOW) or company billing address on the receipt, include your billing contact in the booking request.</p>
+          <p>Payments are processed in USD via Gumroad secure checkout (credit/debit card, corporate card, or PayPal), or by invoice (ACH, wire, company PO, or Stripe-hosted invoice) on request. You can pay the full $2,500 upfront or start with the $1,250 kickoff deposit (50%). For teams requiring a formal Statement of Work (SOW) or company billing address on the receipt, include your billing contact in the booking request.</p>
+        </details>
+
+        <details>
+          <summary>How do the $1,250 kickoff deposit and $1,250 balance invoice work?</summary>
+          <p>When splitting the sprint 50/50, the $1,250 kickoff deposit reserves your slot and funds Day 1–2 discovery. The $1,250 balance invoice is issued after kickoff deliverable acceptance (your sign-off on the Gate 1 workflow audit and written <code>spec.yaml</code>), on Net 14 terms, payable via a Gumroad $1,250 balance link or invoice. Cancel before Day 1 kickoff starts for a 100% refund; if cancelled before Gate 1 deliverable acceptance, only the $1,250 kickoff deposit applies and no balance invoice is issued.</p>
         </details>
       </div>
     </div>
