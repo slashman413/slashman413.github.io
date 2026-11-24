@@ -59,7 +59,7 @@ Six steps, seven with the trigger. Small enough to hold in your head, large enou
 
 Two failure modes appear at this stage. Over-decomposition splits "fetch the order" into parse ID, build URL, call API, parse response, which gives you four steps you will never test individually. Under-decomposition collapses "handle the refund" into one step, so a policy rejection and a network timeout land in the same bucket.
 
-Write the spec down before you build anything. YAML is fine. The point is that it is reviewable and versionable.
+Write the spec down before you build anything. YAML is fine. The point is that it is reviewable and versionable (if you want an AI coding agent to extract these six dimensions interactively one question at a time, use the [Grill-Me prompt and interaction specification loop](/blog/grill-me-spec-design/)).
 
 ```yaml
 name: refund-triage
@@ -215,6 +215,7 @@ If you want the wider map of where this fits, [the automation framework guide](/
 
 ## Related reading
 
+- [Grill-Me Prompt & Interaction Specification Design](/blog/grill-me-spec-design/)
 - [The Ultimate Guide to AI Automation 2026](/blog/ultimate-ai-automation-guide-2026/)
 - [How I Built a 10-Product Digital Business](/blog/ai-agents-digital-business-case-study/)
 - [Building an AI Content Factory](/blog/build-ai-content-factory-technical-guide/)
